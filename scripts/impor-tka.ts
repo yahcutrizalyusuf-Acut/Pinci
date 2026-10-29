@@ -37,7 +37,7 @@ const TEMUAN_TERCATAT: Record<string, string> = {
   'B01-d05': 'laporan-mutu: sebagian bisa dijawab dari pengetahuan adat (diagnostik, bukan butir rapor)',
 };
 
-/** Istilah keagamaan yang dicari di bahan (aturan 9: belum ada isi keagamaan). */
+/** Istilah keagamaan yang dicatat di laporan (tidak mengubah status butir). */
 const ISTILAH_AGAMA = ['mengaji', 'meunasah', 'masjid', 'musala', 'salat', 'sholat', 'magrib', 'tarawih', 'Ramadan', 'Teungku', 'doa', 'berdoa', 'Allah', 'Al-Qur.an', 'zakat', 'Idulfitri', 'Iduladha', 'pesantren', 'dayah'];
 
 function daftarBerkas(folder: string, awalan: RegExp): string[] {
@@ -122,23 +122,10 @@ export function utama(opsi: { tulis: boolean } = { tulis: true }): PaketTka {
     const t = TEMUAN_TERCATAT[b.id];
     if (t) b.catatan = [...(b.catatan ?? []), t];
   }
-  // ── istilah keagamaan (CLAUDE.md aturan 9): bahan tidak diubah; butir/teks ditandai untuk keputusan Acut ──
+  // ── istilah keagamaan: Acut memutuskan bahan dipakai apa adanya (29 Okt 2026); hanya dicatat di laporan ──
   const tandaiAgama = (isi: string): string[] => ISTILAH_AGAMA.filter((k) => new RegExp(`\\b${k}\\b`, 'i').test(isi));
-  const catatanAgama = (kata: string[]) => `memuat istilah keagamaan (${kata.join(', ')}); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)`;
-  for (const b of semuaButir) {
-    const kata = tandaiAgama(JSON.stringify([b.stimulus, b.pertanyaan, b.pilihan]));
-    if (kata.length) {
-      b.status = 'perlu_dicek';
-      b.catatan = [...(b.catatan ?? []), catatanAgama(kata)];
-    }
-  }
-  for (const t of teks) {
-    const kata = tandaiAgama(JSON.stringify(t.isi));
-    if (kata.length) {
-      t.status = 'perlu_dicek';
-      t.catatan = [catatanAgama(kata)];
-    }
-  }
+  const butirAgama = semuaButir.filter((b) => tandaiAgama(JSON.stringify([b.stimulus, b.pertanyaan, b.pilihan])).length > 0);
+  const teksAgama = teks.map((t) => ({ id: t.id, kata: tandaiAgama(JSON.stringify(t.isi)) })).filter((t) => t.kata.length > 0);
   const tercatatTidakKetemu = Object.keys(TEMUAN_TERCATAT).filter((id) => !semuaButir.some((b) => b.id === id));
 
   // ── pemeriksa kunci ──
@@ -385,14 +372,12 @@ export function utama(opsi: { tulis: boolean } = { tulis: true }): PaketTka {
     '',
   );
   if (!opsi.tulis) return paket;
-  const butirAgama = semuaButir.filter((x) => (x.catatan ?? []).some((c) => c.includes('istilah keagamaan')));
-  const teksAgama = teks.filter((t) => t.status === 'perlu_dicek');
   L.push(
-    '## 8. Istilah keagamaan (menunggu keputusan Acut)',
+    '## 8. Istilah keagamaan (dipakai apa adanya)',
     '',
-    `CLAUDE.md aturan 9: belum ada isi keagamaan. Bahan asli **tidak diubah**. ${butirAgama.length} butir dan ${teksAgama.length} teks yang memuat istilah keagamaan diberi status \`perlu_dicek\`. Aplikasi tidak memakainya di Jalur Mandiri, mini try out, dan putaran Baca Ulang otomatis; simulasi tetap utuh 30 butir.`,
+    `Keputusan Acut (29 Okt 2026): bahan TKA dipakai apa adanya sebagai latar budaya. Bahan asli **tidak diubah** dan butir tidak ditandai. ${butirAgama.length} butir dan ${teksAgama.length} teks memuat istilah di bawah. Kata keagamaan baru di isi buatan sendiri ditanyakan dulu ke Acut sebelum ditulis.`,
     '',
-    `- Teks: ${teksAgama.map((t) => `${t.id} (${(t.catatan ?? [''])[0].replace(/^memuat istilah keagamaan \(([^)]*)\).*$/, '$1')})`).join(', ') || '—'}`,
+    `- Teks: ${teksAgama.map((t) => `${t.id} (${t.kata.join(', ')})`).join(', ') || '—'}`,
     `- Butir: ${butirAgama.map((x) => x.id).join(', ') || '—'}`,
     '',
   );

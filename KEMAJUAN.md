@@ -19,7 +19,7 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 
 ## Berikutnya
 
-1. Keputusan Acut: latar keagamaan di bahan TKA, jam tenang, dan istilah Inggris (lihat `LAPORAN-PEMBANGUNAN.md` bagian 6).
+1. Keputusan Acut 29 Okt sudah diterapkan (`docs/rancangan/keputusan.md` bagian K).
 2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
 3. Sambungkan Supabase setelah proyek dibuat.
 4. Lanjut ke kelas 1–5.

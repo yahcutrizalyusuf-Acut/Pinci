@@ -222,7 +222,7 @@ export interface Teks {
   /** topik yang dilatih Pertanyaan 2, misal "B01" */
   melatih?: string;
   pertanyaan: Butir[];
-  /** 'perlu_dicek' bila teks memuat istilah keagamaan (CLAUDE.md aturan 9) — menunggu keputusan Acut */
+  /** 'perlu_dicek' bila guru menandai teks perlu diperbaiki */
   status?: StatusPeriksa;
   catatan?: string[];
 }

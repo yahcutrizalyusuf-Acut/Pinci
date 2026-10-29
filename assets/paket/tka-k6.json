@@ -13022,12 +13022,9 @@
           "periksa": [
             "`12 * 7 == 84`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "D",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "D"
         }
       ],
       "soalCadangan": [
@@ -13294,12 +13291,9 @@
           "periksa": [
             "`3 * 1000 / 12 == 250`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "D",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "D"
         }
       ],
       "latihanRumah": [
@@ -14597,12 +14591,9 @@
           "periksa": [
             "`(8 + 14) * 8 / 2 == 88`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         }
       ],
       "latihanRumah": [
@@ -15835,12 +15826,9 @@
           "periksa": [
             "`180 - 90 - 35 == 55`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         }
       ],
       "latihanRumah": [
@@ -17005,14 +16993,11 @@
             "`14 * 8 == 112 and 2 * (14 + 10) == 48`",
             "`14 * 10 != 112 and 2 * (14 + 8) != 48 and 14 * 8 / 2 != 112`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgk",
           "kunci": [
             "A",
             "C"
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         },
         {
@@ -18010,12 +17995,9 @@
           "periksa": [
             "`20 * 12 - 4 * 4 == 224`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "M15-k12",
@@ -19092,12 +19074,9 @@
           "periksa": [
             "`(12 - F(1,4) * 12) * (1 - F(25,100)) == F('6.75')`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "M16-k06",
@@ -19271,12 +19250,9 @@
           "periksa": [
             "`100 * 80 * 50 / 1000 == 400`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         }
       ],
       "latihanRumah": [
@@ -20589,12 +20565,9 @@
           "periksa": [
             "`(18 - 4) * 50 * 50 == 35000`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         },
         {
           "id": "M17-k12",
@@ -26102,12 +26075,9 @@
           "periksa": [
             "`6 * 12 / 4 == 18`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "M21-kz3",
@@ -27548,12 +27518,9 @@
           "periksa": [
             "`4 * 5 == 20`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "M22-kz2",
@@ -30400,7 +30367,7 @@
             "`15 * 8 / 30 != 16`",
             "`15 * 8 / 20 == 6`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgkat",
           "kategori": [
             "Benar",
@@ -30410,9 +30377,6 @@
             "B",
             "S",
             "B"
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         }
       ],
@@ -31065,12 +31029,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B01-k07",
@@ -31817,12 +31778,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "B01-d02",
@@ -31868,7 +31826,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "A",
           "stimulus": [
@@ -31884,9 +31842,6 @@
               "jenis": "teks",
               "isi": "Sore itu, Rafli pulang dari sekolah di Lamteumen. Langit tiba-tiba menjadi gelap. Rafli berlari kecil ke meunasah. Di sana, ia duduk di teras. Hujan turun sangat deras. Pak Teungku keluar membawa segelas teh hangat. Rafli menggigil sambil memegang gelas itu. Setengah jam kemudian, hujan reda. Rafli mencium tangan Pak Teungku sebelum pulang."
             }
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         },
         {
@@ -31934,7 +31889,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "C",
           "stimulus": [
@@ -31946,9 +31901,6 @@
               "jenis": "teks",
               "isi": "Sore itu, Rafli pulang dari sekolah di Lamteumen. Langit tiba-tiba menjadi gelap. Rafli berlari kecil ke meunasah. Di sana, ia duduk di teras. Hujan turun sangat deras. Pak Teungku keluar membawa segelas teh hangat. Rafli menggigil sambil memegang gelas itu. Setengah jam kemudian, hujan reda. Rafli mencium tangan Pak Teungku sebelum pulang."
             }
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         },
         {
@@ -31995,7 +31947,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "A",
           "stimulus": [
@@ -32011,9 +31963,6 @@
               "jenis": "teks",
               "isi": "Sore itu, Rafli pulang dari sekolah di Lamteumen. Langit tiba-tiba menjadi gelap. Rafli berlari kecil ke meunasah. Di sana, ia duduk di teras. Hujan turun sangat deras. Pak Teungku keluar membawa segelas teh hangat. Rafli menggigil sambil memegang gelas itu. Setengah jam kemudian, hujan reda. Rafli mencium tangan Pak Teungku sebelum pulang."
             }
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         },
         {
@@ -32061,7 +32010,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "B",
           "stimulus": [
@@ -32075,8 +32024,7 @@
             }
           ],
           "catatan": [
-            "laporan-mutu: sebagian bisa dijawab dari pengetahuan adat (diagnostik, bukan butir rapor)",
-            "memuat istilah keagamaan (meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
+            "laporan-mutu: sebagian bisa dijawab dari pengetahuan adat (diagnostik, bukan butir rapor)"
           ]
         },
         {
@@ -33245,12 +33193,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         }
       ],
       "latihanRumah": [
@@ -33542,12 +33487,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B02-kz4",
@@ -34022,12 +33964,11 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "B",
           "catatan": [
-            "verifikasi-akhir 4.7: urutan/panjang pilihan belum ideal; sengaja tidak diperbaiki",
-            "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
+            "verifikasi-akhir 4.7: urutan/panjang pilihan belum ideal; sengaja tidak diperbaiki"
           ]
         },
         {
@@ -34086,12 +34027,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B03-k04",
@@ -34949,12 +34887,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         },
         {
           "id": "B03-kz4",
@@ -35072,12 +35007,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "D",
-          "catatan": [
-            "memuat istilah keagamaan (Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "D"
         },
         {
           "id": "B03-tk2",
@@ -35482,12 +35414,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B04-k04",
@@ -36048,12 +35977,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "D",
-          "catatan": [
-            "memuat istilah keagamaan (magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "D"
         }
       ],
       "latihanRumah": [
@@ -36118,12 +36044,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (masjid, salat); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B04-tb2",
@@ -36823,12 +36746,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "D",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "D"
         },
         {
           "id": "B05-k03",
@@ -37514,12 +37434,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "B05-tb2",
@@ -37742,12 +37659,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (salat, magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "B05-kz4",
@@ -37855,12 +37769,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (masjid); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         },
         {
           "id": "B05-tk2",
@@ -38637,12 +38548,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         },
         {
           "id": "B06-k06",
@@ -38770,7 +38678,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgkat",
           "kategori": [
             "Benar",
@@ -38781,9 +38689,6 @@
             "S",
             "B",
             "S"
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         },
         {
@@ -38841,12 +38746,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         }
       ],
       "latihanRumah": [
@@ -40131,12 +40033,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "B07-k12",
@@ -40189,7 +40088,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgkat",
           "kategori": [
             "Benar",
@@ -40200,9 +40099,6 @@
             "S",
             "B",
             "S"
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         }
       ],
@@ -42763,12 +42659,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         }
       ],
       "soalCadangan": [
@@ -44038,12 +43931,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B10-k07",
@@ -44545,12 +44435,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "D",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "D"
         }
       ],
       "latihanRumah": [
@@ -46133,12 +46020,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         },
         {
           "id": "B11-tb2",
@@ -46598,12 +46482,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "D",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, meunasah, magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "D"
         },
         {
           "id": "B11-tk3",
@@ -47133,12 +47014,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B12-k10",
@@ -47306,12 +47184,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "B12-k06",
@@ -48793,7 +48668,7 @@
             "`(60 - 1) // 18 == 3`",
             "`12 * 18 != lcm(12, 18)`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgkat",
           "kategori": [
             "Benar",
@@ -48804,9 +48679,6 @@
             "B",
             "B",
             "S"
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (masjid); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         },
         {
@@ -49102,12 +48974,9 @@
           "periksa": [
             "`8 + 6 * 5 == 38`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "S1-19",
@@ -50055,12 +49924,9 @@
           "periksa": [
             "`abs(F(21,2) * 30 - 6 * 30) == 135 and 360 - 135 == 225`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "S2-03",
@@ -50930,7 +50796,7 @@
             "`24 * 15 == 360 and 2 * (24 + 15) == 78`",
             "`24 + 15 != 78 and 2 * (24 + 15) != 360`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgk",
           "kunci": [
             "A",
@@ -50960,10 +50826,7 @@
             }
           ],
           "judulStimulus": "Teks B: Halaman meunasah",
-          "grupStimulus": "S2-B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S2-B"
         },
         {
           "id": "S2-16",
@@ -51009,7 +50872,7 @@
             "`8 * 6 / 2 != 8 * 10 / 2`",
             "`8 + 6 + 10 == 24`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgkat",
           "kategori": [
             "Benar",
@@ -51045,10 +50908,7 @@
             }
           ],
           "judulStimulus": "Teks B: Halaman meunasah",
-          "grupStimulus": "S2-B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S2-B"
         },
         {
           "id": "S2-17",
@@ -51122,14 +50982,11 @@
           "periksa": [
             "`(24 * 15 - 8 * 6 / 2) * 5000 == 1680000`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "C",
           "judulStimulus": "Teks B: Halaman meunasah",
-          "grupStimulus": "S2-B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S2-B"
         },
         {
           "id": "S2-18",
@@ -52487,12 +52344,9 @@
           "periksa": [
             "`(240000 + 330000 - 30000) / 3 == 180000`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         },
         {
           "id": "S3-10",
@@ -53507,15 +53361,12 @@
             "`248 * 39 == 9672 and (9672 + 50) // 100 * 100 == 9700 and (9672 + 500) // 1000 * 1000 == 10000`",
             "`(9672 + 50) // 100 * 100 != 9600 and (9672 + 500) // 1000 * 1000 != 200 * 40`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgk",
           "kunci": [
             "A",
             "C",
             "E"
-          ],
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
           ]
         },
         {
@@ -54706,12 +54557,9 @@
           "periksa": [
             "`45 * 24 / 8 - 60 == 75`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         },
         {
           "id": "S4-15",
@@ -56533,7 +56381,7 @@
           "periksa": [
             "`6 * 1 == 6 and 30 - (11 + 7 + 4 + 2) == 6`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "C",
           "stimulus": [
@@ -56566,10 +56414,7 @@
             }
           ],
           "judulStimulus": "Teks C: Survei Kegiatan Sore",
-          "grupStimulus": "S5-C",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-C"
         },
         {
           "id": "S5-12",
@@ -56615,7 +56460,7 @@
             "`4 + 2 == 6`",
             "`not (11 > 30 / 2)`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgkat",
           "kategori": [
             "Benar",
@@ -56657,10 +56502,7 @@
             }
           ],
           "judulStimulus": "Teks C: Survei Kegiatan Sore",
-          "grupStimulus": "S5-C",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-C"
         },
         {
           "id": "S5-13",
@@ -56711,7 +56553,7 @@
           "periksa": [
             "`4 < 5 and 2 < 5 and not (6 < 5) and not (7 < 5)`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgk",
           "kunci": [
             "D",
@@ -56747,10 +56589,7 @@
             }
           ],
           "judulStimulus": "Teks C: Survei Kegiatan Sore",
-          "grupStimulus": "S5-C",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-C"
         },
         {
           "id": "S5-14",
@@ -56795,7 +56634,7 @@
           "periksa": [
             "`max([11, 7, 6, 4, 2]) == 11`"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "A",
           "stimulus": [
@@ -56828,10 +56667,7 @@
             }
           ],
           "judulStimulus": "Teks C: Survei Kegiatan Sore",
-          "grupStimulus": "S5-C",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-C"
         },
         {
           "id": "S5-15",
@@ -56877,7 +56713,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "D",
           "stimulus": [
@@ -56910,10 +56746,7 @@
             }
           ],
           "judulStimulus": "Teks C: Survei Kegiatan Sore",
-          "grupStimulus": "S5-C",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-C"
         },
         {
           "id": "S5-16",
@@ -56958,7 +56791,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "A",
           "stimulus": [
@@ -56988,10 +56821,7 @@
             }
           ],
           "judulStimulus": "Teks D: Puisi untuk Nenek",
-          "grupStimulus": "S5-D",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-D"
         },
         {
           "id": "S5-17",
@@ -57037,7 +56867,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
           "kunci": "C",
           "stimulus": [
@@ -57067,10 +56897,7 @@
             }
           ],
           "judulStimulus": "Teks D: Puisi untuk Nenek",
-          "grupStimulus": "S5-D",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-D"
         },
         {
           "id": "S5-18",
@@ -57112,7 +56939,7 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pgkat",
           "kategori": [
             "Benar",
@@ -57151,10 +56978,7 @@
             }
           ],
           "judulStimulus": "Teks D: Puisi untuk Nenek",
-          "grupStimulus": "S5-D",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "grupStimulus": "S5-D"
         },
         {
           "id": "S5-19",
@@ -58448,10 +58272,6 @@
           "bentuk": "pg",
           "kunci": "B"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -58578,10 +58398,6 @@
           "bentuk": "pg",
           "kunci": "A"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (Idulfitri); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -58817,12 +58633,9 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "C",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "C"
         },
         {
           "id": "T06-q2",
@@ -58868,17 +58681,10 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "B",
-          "catatan": [
-            "memuat istilah keagamaan (mengaji, meunasah, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "B"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (mengaji, meunasah, salat, tarawih, Ramadan, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -59427,10 +59233,6 @@
           "bentuk": "pg",
           "kunci": "C"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (Ramadan); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -60403,10 +60205,6 @@
           "bentuk": "pg",
           "kunci": "A"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (meunasah, salat, Teungku); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -60823,10 +60621,6 @@
           "bentuk": "pg",
           "kunci": "D"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (magrib); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -61643,10 +61437,6 @@
           "bentuk": "pg",
           "kunci": "A"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (mengaji); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -61942,10 +61732,6 @@
           "bentuk": "pg",
           "kunci": "C"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -62283,10 +62069,6 @@
           "bentuk": "pg",
           "kunci": "D"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {
@@ -62439,17 +62221,10 @@
           "periksa": [
             "tidak ada hitungan"
           ],
-          "status": "perlu_dicek",
+          "status": "belum_diperiksa",
           "bentuk": "pg",
-          "kunci": "A",
-          "catatan": [
-            "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
-          ]
+          "kunci": "A"
         }
-      ],
-      "status": "perlu_dicek",
-      "catatan": [
-        "memuat istilah keagamaan (meunasah); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)"
       ]
     },
     {

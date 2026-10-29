@@ -26,7 +26,7 @@ b.push('Cara memeriksa:', '');
 b.push('1. Centang kotak setelah satu kelompok selesai diperiksa.');
 b.push('2. Tulis nomor butir dan perbaikannya di kolom catatan atau di berkas terpisah.');
 b.push('3. Kunci Matematika sudah dihitung ulang oleh kode. Yang perlu dilihat guru: bahasa, kesesuaian kelas, dan pengecoh.');
-b.push('4. Tanda ⚠ berarti **perlu dicek**: ada istilah keagamaan (aturan 9) atau catatan pemeriksa. Butir ini belum dipakai di latihan harian.', '');
+b.push('4. Tanda ⚠ berarti **perlu dicek**: ada catatan dari pemeriksa kunci. Butir ini belum dipakai di latihan harian.', '');
 
 // TKA
 const tka = baca('tka-k6.json');

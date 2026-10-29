@@ -7,7 +7,7 @@ Cara memeriksa:
 1. Centang kotak setelah satu kelompok selesai diperiksa.
 2. Tulis nomor butir dan perbaikannya di kolom catatan atau di berkas terpisah.
 3. Kunci Matematika sudah dihitung ulang oleh kode. Yang perlu dilihat guru: bahasa, kesesuaian kelas, dan pengecoh.
-4. Tanda ⚠ berarti **perlu dicek**: ada istilah keagamaan (aturan 9) atau catatan pemeriksa. Butir ini belum dipakai di latihan harian.
+4. Tanda ⚠ berarti **perlu dicek**: ada catatan dari pemeriksa kunci. Butir ini belum dipakai di latihan harian.
 
 ## 1. Persiapan TKA (`tka-k6.json`): 36 topik, 5 simulasi, 36 teks, 982 butir
 
@@ -27,74 +27,74 @@ Catatan dari pemeriksa materi: T35-q2 (kutipan tidak sama dengan teks), M17-k10 
 | ☐ | M08 | Simulasi 1 | 17 | - | |
 | ☐ | M09 | Satuan Panjang, Berat, dan Volume | 21 | - | |
 | ☐ | M10 | Waktu, Kecepatan, dan Laju Perubahan | 21 | - | |
-| ☐ | M11 | Keliling dan Luas Bangun Datar | 21 | ⚠ M11-k12, M11-k11 | |
-| ☐ | M12 | Sudut dan Kekongruenan | 21 | ⚠ M12-k11 | |
-| ☐ | M13 | Penaksiran dan Pembulatan | 21 | ⚠ M13-k11 | |
-| ☐ | M14 | Simulasi 2 | 17 | ⚠ M14-k09 | |
-| ☐ | M15 | Volume Kubus dan Balok | 21 | ⚠ M15-k09 | |
-| ☐ | M16 | Luas Permukaan dan Bangun Ruang Gabungan | 21 | ⚠ M16-k05, M16-k12 | |
-| ☐ | M17 | Visualisasi Spasial | 21 | ⚠ M17-k09 | |
+| ☐ | M11 | Keliling dan Luas Bangun Datar | 21 | - | |
+| ☐ | M12 | Sudut dan Kekongruenan | 21 | - | |
+| ☐ | M13 | Penaksiran dan Pembulatan | 21 | - | |
+| ☐ | M14 | Simulasi 2 | 17 | - | |
+| ☐ | M15 | Volume Kubus dan Balok | 21 | - | |
+| ☐ | M16 | Luas Permukaan dan Bangun Ruang Gabungan | 21 | - | |
+| ☐ | M17 | Visualisasi Spasial | 21 | - | |
 | ☐ | M18 | Rasio dan Perbandingan | 21 | - | |
 | ☐ | M19 | Perbandingan Senilai, Berbalik Nilai, dan Skala | 21 | - | |
 | ☐ | M20 | Simulasi 3 | 17 | - | |
-| ☐ | M21 | Piktogram, Diagram Batang, dan Tabel Frekuensi | 22 | ⚠ M21-kz2 | |
-| ☐ | M22 | Menafsirkan Data dan Rata-rata | 22 | ⚠ M22-kz1 | |
+| ☐ | M21 | Piktogram, Diagram Batang, dan Tabel Frekuensi | 22 | - | |
+| ☐ | M22 | Menafsirkan Data dan Rata-rata | 22 | - | |
 | ☐ | M23 | Latihan PG Kompleks dan PG Kategori | 21 | - | |
-| ☐ | M24 | Latihan Bertempo dan Simulasi Akhir Matematika | 17 | ⚠ M24-tk3 | |
-| ☐ | B01 | Diagnostik dan Cara Membaca Soal Berstimulus | 31 | ⚠ B01-k05, B01-d01, B01-d02, B01-d03, B01-d04, B01-d05 | |
-| ☐ | B02 | Informasi Tersurat dan Arti Kata dari Konteks | 21 | ⚠ B02-k12, B02-kz3 | |
-| ☐ | B03 | Menyusun Ulang Informasi | 21 | ⚠ B03-k02, B03-k03, B03-kz3, B03-tk1 | |
-| ☐ | B04 | Ide Pokok dan Gagasan Pendukung | 21 | ⚠ B04-k03, B04-k12, B04-tb1 | |
-| ☐ | B05 | Tokoh, Peristiwa, dan Amanat | 21 | ⚠ B05-k02, B05-tb1, B05-kz3, B05-tk1 | |
-| ☐ | B06 | Perubahan pada Tokoh dan Latar | 21 | ⚠ B06-k05, B06-k09, B06-k12 | |
-| ☐ | B07 | Makna Ungkapan, Idiom, dan Majas | 21 | ⚠ B07-k09, B07-k12 | |
+| ☐ | M24 | Latihan Bertempo dan Simulasi Akhir Matematika | 17 | - | |
+| ☐ | B01 | Diagnostik dan Cara Membaca Soal Berstimulus | 31 | - | |
+| ☐ | B02 | Informasi Tersurat dan Arti Kata dari Konteks | 21 | - | |
+| ☐ | B03 | Menyusun Ulang Informasi | 21 | - | |
+| ☐ | B04 | Ide Pokok dan Gagasan Pendukung | 21 | - | |
+| ☐ | B05 | Tokoh, Peristiwa, dan Amanat | 21 | - | |
+| ☐ | B06 | Perubahan pada Tokoh dan Latar | 21 | - | |
+| ☐ | B07 | Makna Ungkapan, Idiom, dan Majas | 21 | - | |
 | ☐ | B08 | Fakta dan Opini | 21 | - | |
-| ☐ | B09 | Membaca Infografik, Grafik, dan Tabel | 21 | ⚠ B09-k11 | |
-| ☐ | B10 | Menilai Relevansi dan Kesesuaian | 21 | ⚠ B10-k05, B10-k12 | |
-| ☐ | B11 | Puisi dan Respons Emosional | 21 | ⚠ B11-tb1, B11-tk2 | |
-| ☐ | B12 | Latihan Bentuk Soal dan Simulasi Akhir | 17 | ⚠ B12-k08, B12-k03 | |
+| ☐ | B09 | Membaca Infografik, Grafik, dan Tabel | 21 | - | |
+| ☐ | B10 | Menilai Relevansi dan Kesesuaian | 21 | - | |
+| ☐ | B11 | Puisi dan Respons Emosional | 21 | - | |
+| ☐ | B12 | Latihan Bentuk Soal dan Simulasi Akhir | 17 | - | |
 
 | ✓ | Simulasi | Judul | Butir | Perlu dicek | Catatan |
 |---|---|---|---|---|---|
-| ☐ | S1 | Simulasi 1 Matematika (M08 · P11) | 30 | ⚠ S1-13, S1-18 | |
-| ☐ | S2 | Simulasi 2 Matematika (M14 · P20) | 30 | ⚠ S2-02, S2-15, S2-16, S2-17 | |
-| ☐ | S3 | Simulasi 3 Matematika (M20 · P29) | 30 | ⚠ S3-09, S3-25 | |
-| ☐ | S4 | Simulasi Akhir Matematika (M24 · P35) | 30 | ⚠ S4-14 | |
-| ☐ | S5 | Simulasi Akhir Bahasa Indonesia (B12 · P36) | 30 | ⚠ S5-11, S5-12, S5-13, S5-14, S5-15, S5-16, S5-17, S5-18 | |
+| ☐ | S1 | Simulasi 1 Matematika (M08 · P11) | 30 | - | |
+| ☐ | S2 | Simulasi 2 Matematika (M14 · P20) | 30 | - | |
+| ☐ | S3 | Simulasi 3 Matematika (M20 · P29) | 30 | - | |
+| ☐ | S4 | Simulasi Akhir Matematika (M24 · P35) | 30 | - | |
+| ☐ | S5 | Simulasi Akhir Bahasa Indonesia (B12 · P36) | 30 | - | |
 
 | ✓ | Teks | Judul | Pertanyaan | Status | Catatan |
 |---|---|---|---|---|---|
 | ☐ | T01 | Sarapan di Warung Kopi | 2 | belum diperiksa | |
 | ☐ | T02 | Jadwal Labi-Labi | 2 | belum diperiksa | |
-| ☐ | T03 | Layang-Layang Haikal | 2 | ⚠ perlu dicek | |
-| ☐ | T04 | Timphan Buatan Nenek | 2 | ⚠ perlu dicek | |
+| ☐ | T03 | Layang-Layang Haikal | 2 | belum diperiksa | |
+| ☐ | T04 | Timphan Buatan Nenek | 2 | belum diperiksa | |
 | ☐ | T05 | Tabungan Kelas Enam | 2 | belum diperiksa | |
-| ☐ | T06 | Meunasah di Kajhu | 2 | ⚠ perlu dicek | |
+| ☐ | T06 | Meunasah di Kajhu | 2 | belum diperiksa | |
 | ☐ | T07 | Pasar Ikan Lampulo | 2 | belum diperiksa | |
 | ☐ | T08 | Kebun Cabai Pak Hasan | 2 | belum diperiksa | |
 | ☐ | T09 | Perahu Kertas Syifa | 2 | belum diperiksa | |
-| ☐ | T10 | Belanja Meugang | 2 | ⚠ perlu dicek | |
+| ☐ | T10 | Belanja Meugang | 2 | belum diperiksa | |
 | ☐ | T11 | Lomba Lari Blang Padang | 2 | belum diperiksa | |
 | ☐ | T12 | Merawat Sepeda | 2 | belum diperiksa | |
 | ☐ | T13 | Botol Minum Intan | 2 | belum diperiksa | |
 | ☐ | T14 | Kapal ke Sabang | 2 | belum diperiksa | |
 | ☐ | T15 | Kebun Sekolah Lampineung | 2 | belum diperiksa | |
 | ☐ | T16 | Pagar Kandang Kambing | 2 | belum diperiksa | |
-| ☐ | T17 | Jam Dinding Meunasah | 2 | ⚠ perlu dicek | |
+| ☐ | T17 | Jam Dinding Meunasah | 2 | belum diperiksa | |
 | ☐ | T18 | Rumah Panggung Nenek | 2 | belum diperiksa | |
 | ☐ | T19 | Panen Padi Kakek Ridwan | 2 | belum diperiksa | |
-| ☐ | T20 | Jualan Sore Ramadan | 2 | ⚠ perlu dicek | |
+| ☐ | T20 | Jualan Sore Ramadan | 2 | belum diperiksa | |
 | ☐ | T21 | Hujan di Krueng Aceh | 2 | belum diperiksa | |
 | ☐ | T22 | Akuarium Si Api | 2 | belum diperiksa | |
 | ☐ | T23 | Kotak Hadiah untuk Nenek | 2 | belum diperiksa | |
 | ☐ | T24 | Sampan Tua Kakek | 2 | belum diperiksa | |
 | ☐ | T25 | Lomba Menyusun Kubus | 2 | belum diperiksa | |
-| ☐ | T26 | Warung Mi Aceh | 2 | ⚠ perlu dicek | |
+| ☐ | T26 | Warung Mi Aceh | 2 | belum diperiksa | |
 | ☐ | T27 | Sampah di Pantai | 2 | belum diperiksa | |
-| ☐ | T28 | Peta Jalan Sehat | 2 | ⚠ perlu dicek | |
+| ☐ | T28 | Peta Jalan Sehat | 2 | belum diperiksa | |
 | ☐ | T29 | Kedai Jus Kak Putroe | 2 | belum diperiksa | |
-| ☐ | T30 | Perpustakaan Keliling | 2 | ⚠ perlu dicek | |
-| ☐ | T31 | Olahraga Kesukaan Kelas Enam | 2 | ⚠ perlu dicek | |
+| ☐ | T30 | Perpustakaan Keliling | 2 | belum diperiksa | |
+| ☐ | T31 | Olahraga Kesukaan Kelas Enam | 2 | belum diperiksa | |
 | ☐ | T32 | Percobaan Tanaman Jagung | 2 | belum diperiksa | |
 | ☐ | T33 | Lomba Perahu Hias | 2 | belum diperiksa | |
 | ☐ | T34 | Babak Akhir Cerdas Cermat | 2 | belum diperiksa | |

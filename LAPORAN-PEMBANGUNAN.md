@@ -56,11 +56,11 @@ Expo Go belum disiapkan karena belum ada token Expo. Caranya ada di `docs/CARA-M
 - Tanpa iklan, analytics, atau pelacak. Izin Android hanya internet dan pengaturan suara; kamera, mikrofon, dan lokasi diblokir.
 - Rincian ada di `docs/LAPORAN-PEMERIKSAAN.md`.
 
-## 6. Perlu keputusan Acut
+## 6. Keputusan Acut (29 Oktober)
 
-1. **Latar keagamaan di bahan TKA.** Ada 63 soal dan 10 teks dengan kata seperti meunasah, mengaji, salat, atau Ramadan. Bahannya tidak saya ubah, tetapi untuk sementara tidak dipakai di latihan harian. Pilihannya: dibiarkan sebagai budaya Aceh, atau kalimatnya dinetralkan.
-2. **Jam tenang 21.00.** Apakah orang tua boleh mematikannya?
-3. **Istilah "Level", "game", dan "Mini try out"** masih dipakai di layar. Apakah perlu diganti?
+1. **Latar keagamaan di bahan TKA** dipakai apa adanya. Soal dan teks yang sempat disisihkan (63 soal, 10 teks) kembali dipakai di latihan harian dan Baca Ulang. Kata yang berhubungan dengan agama di isi baru akan ditanyakan dulu ke Acut.
+2. **Jam tenang** tetap mulai 21.00, dan orang tua boleh mematikannya.
+3. **Istilah "Level", "game", dan "Mini try out"** dibiarkan.
 
 Keputusan lain yang saya ambil sendiri (33 butir) ada di `KEPUTUSAN-PEMBANGUNAN.md`.
 
@@ -70,4 +70,4 @@ Keputusan lain yang saya ambil sendiri (33 butir) ada di `KEPUTUSAN-PEMBANGUNAN.
 |---|---|
 | Coba APK di HP bersama anak, lalu catat yang membingungkan | Acut |
 | Periksa isi memakai `docs/DAFTAR-PERIKSA-GURU.md`, mulai dari TKA | Guru pemeriksa |
-| Putuskan tiga hal di bagian 6 dan buat proyek Supabase, lalu sesi Claude berikutnya menerapkan dan menyambungkan | Acut, lalu Claude Code |
+| Buat proyek Supabase, lalu sesi Claude berikutnya menyambungkannya | Acut, lalu Claude Code |

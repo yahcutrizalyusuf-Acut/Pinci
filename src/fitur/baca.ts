@@ -30,7 +30,7 @@ export function pecahKata(isi: string): string[] {
 export function teksBerikut(semua: Teks[], sesiBaca: Sesi[]): Teks {
   const dibaca = new Map<string, string>();
   for (const s of sesiBaca) if (s.rujukan) dibaca.set(s.rujukan, s.mulai);
-  // Teks yang menunggu keputusan (istilah keagamaan) tidak dipakai di putaran otomatis.
+  // Teks yang ditandai perlu dicek (guru atau pemeriksa kunci) tidak dipakai di putaran otomatis.
   const pakai = semua.filter((t) => t.status !== 'perlu_dicek');
   const belum = pakai.find((t) => !dibaca.has(t.id));
   if (belum) return belum;

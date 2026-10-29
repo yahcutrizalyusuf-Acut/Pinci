@@ -27,7 +27,7 @@ Keputusan yang diambil sendiri selama pembangunan, beserta alasannya. Rancangan 
 | 21 | TKA: petunjuk dari bahan hanya satu tahap (Petunjuk) + Langkah sebagai pembahasan; aplikasi menurunkan tahap 2/3 dari langkah pembahasan, tidak mengarang | Bahan tidak punya 3 tahap |
 | 22 | TKA: kode penyebab salah B/H/S ditebak mesin dari alasan pengecoh, belum diperiksa guru | Bahan tidak memberi kode di semua pengecoh |
 | 23 | Bahasa Inggris: kosakata harus bisa digambar emoji; nama hari/bulan dan angka 20–100 hanya muncul di kalimat, bukan kosakata bergambar | Desain B05 berbasis gambar |
-| 24 | Butir dan teks TKA yang memuat istilah keagamaan ditandai `perlu_dicek` saat impor, tidak diubah; tidak dipakai di Jalur Mandiri, mini try out, dan Baca Ulang; simulasi tetap utuh | Aturan 9 melarang isi keagamaan, tetapi bahan milik Acut; keputusan ubah atau biarkan ada di tangan Acut |
+| 24 | ~~Butir dan teks TKA yang memuat istilah keagamaan ditandai `perlu_dicek`~~ → **Diganti keputusan Acut 29 Okt:** bahan dipakai apa adanya; istilahnya hanya dicatat di `docs/LAPORAN-IMPOR-TKA.md` bagian 8 | `keputusan.md` bagian K no. 1 |
 | 25 | Penjaga waktu memeriksa blok 15 menit dan batas harian setiap kali waktu disimpan, lalu membuka Istirahat atau Cukup di tengah layar | Temuan pemeriksa produk: tanpa ini anak bisa bertahan di satu layar melewati batas |
 | 26 | Alasan pengecoh TKA disaring sebelum tampil ke anak (`alasanUntukAnak`): bagian untuk guru dan kata "salah" dibuang; alasan lengkap tetap di rapor orang tua | Aturan tampilan: tanpa kata "salah" di layar anak; bahan asli tidak diubah |
 | 27 | Batas belajar dipotong ≤ 10 menit × kelas saat dibaca, bukan hanya saat disimpan | Kelas anak bisa diubah tanpa membuka pengaturan waktu |
@@ -36,4 +36,5 @@ Keputusan yang diambil sendiri selama pembangunan, beserta alasannya. Rancangan 
 | 30 | Tantang Ayah menampilkan jumlah soal tepat bersama, tanpa hitungan per orang | Aturan 4: bintang bukan skor pembanding |
 | 31 | `expo-haptics` dihapus | Tidak dipakai, dan izin getar diblokir |
 | 32 | Expo Go/EAS Update dilewati; caranya ditulis di `docs/CARA-MEMBUAT-APK.md` | `EXPO_TOKEN` tidak tersedia |
-| 33 | "Level", "game", dan "Mini try out" tetap dipakai di layar; "Skor" diganti "Hasil" | Istilah dipakai di rancangan dan desain; menunggu keputusan Acut |
+| 33 | "Level", "game", dan "Mini try out" tetap dipakai di layar; "Skor" diganti "Hasil" | Dikukuhkan Acut 29 Okt (`keputusan.md` bagian K no. 3) |
+| 34 | Jam tenang boleh dimatikan orang tua (bawaan tetap 21.00) | Dikukuhkan Acut 29 Okt (`keputusan.md` bagian K no. 2) |

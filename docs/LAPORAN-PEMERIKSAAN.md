@@ -27,7 +27,7 @@ Pemeriksa produk mencocokkan aplikasi dengan `CLAUDE.md`, `keputusan.md`, dan at
 | 5 | Layar orang tua di luar tab bisa dibuka lewat tautan tanpa PIN; "PIN lama" di Ganti PIN bisa ditebak tanpa batas | **Diperbaiki.** Penjaga PIN dipindah ke `ortu/_layout.tsx` sehingga semua layar orang tua terjaga. Ganti PIN memakai kunci 5 kali salah yang sama |
 | 6 | Tantang Ayah menghitung bintang per orang, jadi bintang berubah menjadi skor | **Diperbaiki.** Hitungan per orang dihapus; akhir permainan menampilkan "… menjawab N soal dengan tepat bersama!" |
 | 7 | Tips orang tua memuat "setelah salat" | **Diperbaiki.** Diganti kegiatan umum |
-| 8 | Bahan TKA milik Acut memuat latar keagamaan (meunasah, mengaji, salat, dan lainnya) | **Ditandai, bahan tidak diubah.** Lihat bagian "Menunggu keputusan Acut" |
+| 8 | Bahan TKA milik Acut memuat latar keagamaan (meunasah, mengaji, salat, dan lainnya) | **Diputuskan Acut:** dipakai apa adanya. Lihat bagian "Keputusan Acut" |
 | 9 | Layar Waktu main berjudul "Belajar dulu, ya" dan menampilkan daftar syarat | **Diperbaiki.** Kalimat diganti; daftar syarat dihapus |
 | 10 | Istilah Inggris di layar: Level, game, Mini try out, Skor, Spam | **Sebagian.** "Skor" diganti "Hasil". "Level", "game", dan "Mini try out" tetap karena dipakai rancangan dan desain. "Spam" ada di layar masuk orang tua (mode Supabase, belum aktif) |
 | 11 | Orang tua bisa mematikan jam tenang; simulasi TKA tidak memeriksa jam tenang | **Dicatat.** Rancangan memberi orang tua pilihan ini. Perlu ketegasan Acut: apakah 21.00 batas mutlak? |
@@ -59,20 +59,17 @@ Pemeriksa mengambil 60 butir acak dengan benih 20261029: 20 TKA, 15 Lancar, 15 B
 | TKA T35-q2: kutipan tidak sama dengan teks; ungkapan disebut "kata" | **Diteruskan ke guru** (bahan Acut) |
 | TKA M17-k10: kalimat petunjuk denah ada di kolom pertanyaan | **Diteruskan ke guru** |
 | TKA M12-k07, M12-tb2: kongruen dan sudut pelurus condong ke SMP | **Diteruskan ke guru:** cocokkan dengan kisi-kisi TKA SD |
-| TKA T06, S5-11, S5-16: latar keagamaan | **Ditandai `perlu_dicek`** (lihat di bawah) |
+| TKA T06, S5-11, S5-16: latar keagamaan | **Dipakai apa adanya** (keputusan Acut) |
 
-## Menunggu keputusan Acut: latar keagamaan di bahan TKA
+## Keputusan Acut: latar keagamaan di bahan TKA
 
-Aturan 9 melarang isi keagamaan. Bahan TKA milik Acut memakai latar cerita seperti meunasah, mengaji, salat, Ramadan, dan Teungku. Saya **tidak mengubah bahan Acut**. Yang saya lakukan:
+Bahan TKA milik Acut memakai latar cerita seperti meunasah, mengaji, salat, Ramadan, dan Teungku. Pada 29 Okt 2026 Acut memutuskan bahan ini **dipakai apa adanya** (`docs/rancangan/keputusan.md` bagian K).
 
-- Skrip impor (`scripts/impor-tka.ts`) menandai butir dan teks yang memuat istilah itu sebagai `perlu_dicek`. Hasilnya 63 butir dan 10 teks (T03, T04, T06, T10, T17, T20, T26, T28, T30, T31). Daftarnya ada di `docs/LAPORAN-IMPOR-TKA.md` bagian 8.
-- Butir dan teks itu **tidak dipakai** di Jalur Mandiri, mini try out, dan putaran Baca Ulang.
-- Simulasi tetap utuh supaya sama dengan lembar kertas.
+- Penanda `perlu_dicek` dicabut, dan semua butir serta teks kembali dipakai.
+- Daftar istilahnya tetap dicatat di `docs/LAPORAN-IMPOR-TKA.md` bagian 8.
+- Syarat dari Acut: kata yang berhubungan dengan agama di isi baru ditanyakan dulu sebelum ditulis.
 
-Pilihan untuk Acut:
-
-1. Biarkan sebagai kearifan lokal Aceh.
-2. Netralkan kalimatnya, misalnya "balai desa" atau "belajar kelompok". Setelah itu impor ulang, dan penandanya hilang sendiri.
+Jam tenang (temuan no. 11) dan istilah Inggris (no. 10) juga sudah diputuskan Acut: dibiarkan seperti sekarang.
 
 ## Uji tanpa sinyal
 
