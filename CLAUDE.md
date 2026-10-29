@@ -29,7 +29,7 @@ Pintar Main adalah aplikasi Android belajar untuk anak SD dan orang tuanya. Mask
 6. Batas waktu: belajar ≤ 10 menit × kelas per hari, dibagi blok ≤ 15 menit dengan layar istirahat. Game: kelas 1–2 20 menit, kelas 3–6 30 menit, orang tua bisa mengatur 0–60 menit. Jam tenang bawaan mulai 21.00.
 7. Uang di Pasar Gampong **bergaya sederhana, bukan tiruan uang Rupiah asli**.
 8. Layar anak memakai slogan "Pintar itu seru!". Slogan "Belajar dulu, main kemudian!" hanya untuk orang tua dan Play Store.
-9. Belum ada isi keagamaan. Jangan menambahkannya.
+9. Belum ada isi keagamaan buatan sendiri. Bahan TKA milik Acut dipakai apa adanya (latar budaya). **Setiap kata yang berhubungan dengan agama ditanyakan dulu ke Acut sebelum ditulis** (`keputusan.md` bagian K).
 10. Setiap soal dan teks buatan sendiri diberi status `belum_diperiksa` sampai guru memeriksanya. Kunci jawaban Matematika **dihitung ulang oleh kode**, tidak cukup ditulis tangan.
 11. Bahasa di layar: Bahasa Indonesia baku yang sederhana, kalimat pendek, tanpa istilah Inggris (kecuali isi pelajaran Bahasa Inggris).
 

@@ -300,3 +300,11 @@ Pemeriksa menemukan tenggat ahli hukum dan diskusi berbayar ditulis berbeda-beda
 | 6 | Batas anggaran masa gratis (usul Rp1,5 juta) | Bersama diskusi berbayar; sementara angka peringatan `06-rilis/03` bagian 4 berlaku | — |
 | 7 | ~~Pilihan lembar 15 soal atau takaran 2–5 menit~~ | **Selesai 20 Okt:** lembar 20 soal, takaran 2–5 menit (B7 no. 3) | — |
 | 8 | Pengajar dan tanggal pertemuan pertama kelas luring TKA | Jumat 11 Des | Latihan rumah TKA dibuka menurut Jalur Mandiri untuk semua |
+
+## K. Keputusan Acut setelah pembangunan pertama (29 Okt 2026)
+
+| # | Hal | Keputusan |
+|---|---|---|
+| 1 | Latar keagamaan di bahan TKA (meunasah, mengaji, salat, Ramadan, dan lainnya) | **Dipakai apa adanya** sebagai latar budaya; tidak ditandai dan tidak disaring. Syarat: setiap kata yang berhubungan dengan agama di isi baru **ditanyakan dulu ke Acut** sebelum ditulis |
+| 2 | Jam tenang 21.00 | Bawaan tetap 21.00; **orang tua boleh mematikannya** |
+| 3 | Istilah "Level", "game", "Mini try out" di layar | **Dibiarkan** |

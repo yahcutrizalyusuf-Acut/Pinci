@@ -1,0 +1,59 @@
+name: Bangun APK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: bangun-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      EXPO_PUBLIC_DATA_MODE: ${{ vars.EXPO_PUBLIC_DATA_MODE || 'lokal' }}
+      EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+      EXPO_PUBLIC_TKA_BUKA: ${{ vars.EXPO_PUBLIC_TKA_BUKA || '2027-01-04' }}
+      EXPO_PUBLIC_FITUR_GURU: ${{ vars.EXPO_PUBLIC_FITUR_GURU }}
+      EXPO_NO_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Pasang paket
+        run: npm ci
+
+      - name: Periksa (tsc + eslint + jest)
+        run: npm run periksa
+
+      # Folder android/ dibuat dari app.json (tidak disimpan di repo).
+      - name: Siapkan proyek Android
+        run: npx expo prebuild -p android --no-install
+
+      # Ditandatangani kunci debug bawaan, cukup untuk dipasang dan diuji di HP.
+      - name: Bangun APK
+        working-directory: android
+        run: ./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pintar-main-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+          retention-days: 30
