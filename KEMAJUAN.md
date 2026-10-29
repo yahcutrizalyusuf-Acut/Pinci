@@ -1,22 +1,29 @@
 # Kemajuan Pembangunan
 
-Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanjutkan dari tahap yang belum selesai.
+Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanjutkan.
 
 | Tahap | Status | Catatan |
 |---|---|---|
 | 0 Persiapan repo | Selesai | `docs/RENCANA-PEMBANGUNAN.md` |
 | 1 Fondasi | Selesai | Expo SDK 58, desain, Pinci, data, penjaga waktu, bunyi |
-| 2 Lancar Matematika | Selesai | mesin kelas 1–6, jurus 36 level, layar A04–A06, tes penempatan |
-| 3 Persiapan TKA | Sedang | paket `tka-k6.json` sudah diimpor; layar sedang dibangun |
-| 4 Empat game | Sedang | logika selesai dan teruji; layar belum |
-| 5 Mode orang tua | Sedang | PIN, Kabar, Ruang anak, Rapor, Bimbingan, Atur, Pengaturan waktu, Kelola guru jadi; Mode Dampingi belum |
-| 6 Baca Ulang | Belum | teks T01–T36 ada di `tka-k6.json` |
-| 7 Bahasa Inggris | Sedang | 4 paket (48 unit) selesai; layar belum |
-| 8 Gudang Ilmu | Sedang | paket 41 kartu selesai; layar belum |
-| 9 Supabase | Belum | |
-| 10 Uji menyeluruh | Belum | |
-| 11 APK | Belum | ikon dan layar pembuka sudah dibuat |
+| 2 Lancar Matematika | Selesai | Mesin kelas 1–6, 36 jurus, tes penempatan, 8.100 lembar teruji |
+| 3 Persiapan TKA | Selesai | 36 topik, 5 simulasi, mini try out, rapor penyebab. `docs/LAPORAN-IMPOR-TKA.md` |
+| 4 Empat game | Selesai | Pasar Gampong, Ular Tangga Lurus, Susun Kubus, Tebak Kata |
+| 5 Mode orang tua dan Dampingi | Selesai | PIN, Kabar, Rapor, Bimbingan, Atur, Mode Dampingi |
+| 6 Baca Ulang | Selesai | 36 teks, pengukur kecepatan baca |
+| 7 Bahasa Inggris | Selesai | 48 unit, tingkat 3–6 |
+| 8 Gudang Ilmu | Selesai | 41 kartu kelas 6 |
+| 9 Supabase | Selesai (mati) | `docs/CARA-MENYAMBUNG-SUPABASE.md`, `supabase/migrations/` |
+| 10 Uji menyeluruh | Selesai | `docs/BANDING-DESAIN.md`, `docs/LAPORAN-PEMERIKSAAN.md` |
+| 11 APK | Selesai | Bangun APK hijau, artifact `pintar-main-apk`. Expo Go dilewati (belum ada `EXPO_TOKEN`) |
+
+## Berikutnya
+
+1. Keputusan Acut: latar keagamaan di bahan TKA, jam tenang, dan istilah Inggris (lihat `LAPORAN-PEMBANGUNAN.md` bagian 6).
+2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
+3. Sambungkan Supabase setelah proyek dibuat.
+4. Lanjut ke kelas 1–5.
 
 **Perintah untuk melanjutkan:** "Lanjutkan pembangunan dari KEMAJUAN.md."
 
-**Cara memeriksa:** `npm run periksa` (tsc + eslint + jest). Pratinjau web: `EXPO_PUBLIC_TKA_BUKA=mati npx expo export -p web --output-dir dist && node scripts/sajikan-web.cjs dist 8081`.
+**Cara memeriksa:** `npm run periksa`. Pratinjau web: `EXPO_PUBLIC_TKA_BUKA=mati npx expo export -p web --output-dir dist && node scripts/sajikan-web.cjs dist 8081`. Tangkapan layar: `node scripts/tangkap-layar.cjs`. Daftar guru: `node scripts/buat-daftar-guru.cjs`.
