@@ -46,6 +46,14 @@ export default function BerandaBelajar() {
             ) : null}
             <Pressable
               accessibilityRole="button"
+              accessibilityLabel="Mode Dampingi"
+              onPress={() => router.push({ pathname: '/ortu/pin', params: { tujuan: '/dampingi' } })}
+              style={{ width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', opacity: 0.45 }}
+            >
+              <Ikon nama="dua_orang" ukuran={20} warna={warna.teksKedua} />
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
               accessibilityLabel="Mode orang tua"
               onPress={() => router.push('/ortu/pin')}
               style={{ width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', opacity: 0.45 }}

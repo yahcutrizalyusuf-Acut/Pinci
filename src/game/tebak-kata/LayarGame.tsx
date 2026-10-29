@@ -149,7 +149,9 @@ export default function LayarGame(props: PropsLayarGame) {
   const satuKotak = soal.jenis === 'baku' || soal.jenis === 'inggris';
   const kecil = kelompokKelas(kelas) === 'awal';
   const hurufKotak = satuKotak ? 30 : soal.jenis === 'imbuhan' ? 30 : soal.jawaban.length > 2 ? 32 : 40;
-  const hurufUbin = satuKotak ? 28 : soal.jenis === 'imbuhan' ? 30 : 40;
+  const terpanjang = Math.max(...soal.pilihan.map((x) => x.length), 1);
+  // Huruf mengecil untuk potongan panjang supaya tidak terpotong (adjustsFontSizeToFit tidak bekerja di web).
+  const hurufUbin = satuKotak ? 28 : Math.min(soal.jenis === 'imbuhan' ? 30 : 40, Math.floor((kolomLebar(soal.pilihan.length) - 16) / (terpanjang * 0.62)));
   const kolom = satuKotak ? 1 : soal.pilihan.length === 4 ? 2 : 3;
   const lebarUbin: `${number}%` = kolom === 1 ? '100%' : kolom === 2 ? '48%' : '31%';
   const tinggiUbin = satuKotak ? 72 : 96;
@@ -289,4 +291,9 @@ export default function LayarGame(props: PropsLayarGame) {
       </View>
     </BingkaiGame>
   );
+}
+
+/** Perkiraan lebar satu ubin (dp) di layar 360 dp: 2 kolom ≈ 158, 3 kolom ≈ 102. */
+function kolomLebar(nPilihan: number): number {
+  return nPilihan === 4 ? 158 : 102;
 }
