@@ -1,0 +1,2350 @@
+{
+  "id": "inggris-t5",
+  "versi": "1.0.0",
+  "tingkat": 5,
+  "fase": "C",
+  "unit": [
+    {
+      "id": "t5-u01",
+      "nomor": 1,
+      "judul": "What Time Is It?",
+      "tema": "Jam dan waktu",
+      "kosakata": [
+        {
+          "id": "t5-u01-k01",
+          "kata": "clock",
+          "arti": "jam dinding",
+          "emoji": "🕰️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k02",
+          "kata": "watch",
+          "arti": "jam tangan",
+          "emoji": "⌚",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k03",
+          "kata": "one o'clock",
+          "arti": "pukul satu",
+          "emoji": "🕐",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k04",
+          "kata": "three o'clock",
+          "arti": "pukul tiga",
+          "emoji": "🕒",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k05",
+          "kata": "seven o'clock",
+          "arti": "pukul tujuh",
+          "emoji": "🕖",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k06",
+          "kata": "half past nine",
+          "arti": "pukul setengah sepuluh",
+          "emoji": "🕤",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k07",
+          "kata": "morning",
+          "arti": "pagi",
+          "emoji": "🌅",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k08",
+          "kata": "evening",
+          "arti": "sore",
+          "emoji": "🌆",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-k09",
+          "kata": "night",
+          "arti": "malam",
+          "emoji": "🌙",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u01-p01",
+          "kalimat": "What time is it?",
+          "arti": "Jam berapa sekarang?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-p02",
+          "kalimat": "It's seven o'clock.",
+          "arti": "Sekarang pukul tujuh.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-p03",
+          "kalimat": "I go to bed at nine o'clock at night.",
+          "arti": "Aku tidur pukul sembilan malam.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u01-d01",
+          "ucapan": "It's one o'clock.",
+          "kunci": "t5-u01-k03",
+          "pengecoh": [
+            "t5-u01-k04",
+            "t5-u01-k05",
+            "t5-u01-k06"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-d02",
+          "ucapan": "It's half past nine.",
+          "kunci": "t5-u01-k06",
+          "pengecoh": [
+            "t5-u01-k03",
+            "t5-u01-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-d03",
+          "ucapan": "I wake up early in the morning.",
+          "kunci": "t5-u01-k07",
+          "pengecoh": [
+            "t5-u01-k08",
+            "t5-u01-k09"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-d04",
+          "ucapan": "Look at my new watch.",
+          "kunci": "t5-u01-k02",
+          "pengecoh": [
+            "t5-u01-k01",
+            "t5-u01-k07"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-d05",
+          "ucapan": "It's three o'clock.",
+          "kunci": "t5-u01-k04",
+          "pengecoh": [
+            "t5-u01-k03",
+            "t5-u01-k05",
+            "t5-u01-k06"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u01-s01",
+          "kalimat": "What time is it?",
+          "arti": "Jam berapa sekarang?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-s02",
+          "kalimat": "It's half past nine.",
+          "arti": "Sekarang pukul setengah sepuluh.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-s03",
+          "kalimat": "I wake up at seven o'clock.",
+          "arti": "Aku bangun pukul tujuh.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u01-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u01-k01",
+            "t5-u01-k02",
+            "t5-u01-k03",
+            "t5-u01-k04",
+            "t5-u01-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u01-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u01-k06",
+            "t5-u01-k07",
+            "t5-u01-k08",
+            "t5-u01-k09"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u02",
+      "nomor": 2,
+      "judul": "Every Day",
+      "tema": "Kata kerja sehari-hari",
+      "kosakata": [
+        {
+          "id": "t5-u02-k01",
+          "kata": "wake up",
+          "arti": "bangun tidur",
+          "emoji": "⏰",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k02",
+          "kata": "brush teeth",
+          "arti": "menyikat gigi",
+          "emoji": "🪥",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k03",
+          "kata": "take a bath",
+          "arti": "mandi",
+          "emoji": "🛁",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k04",
+          "kata": "eat",
+          "arti": "makan",
+          "emoji": "🍽️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k05",
+          "kata": "drink",
+          "arti": "minum",
+          "emoji": "🥤",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k06",
+          "kata": "walk",
+          "arti": "berjalan kaki",
+          "emoji": "🚶",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k07",
+          "kata": "run",
+          "arti": "berlari",
+          "emoji": "🏃",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k08",
+          "kata": "write",
+          "arti": "menulis",
+          "emoji": "✍️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k09",
+          "kata": "wash",
+          "arti": "mencuci",
+          "emoji": "🧼",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-k10",
+          "kata": "sleep",
+          "arti": "tidur",
+          "emoji": "😴",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u02-p01",
+          "kalimat": "I brush my teeth every morning.",
+          "arti": "Aku menyikat gigi setiap pagi.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-p02",
+          "kalimat": "She walks to school.",
+          "arti": "Dia berjalan kaki ke sekolah.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-p03",
+          "kalimat": "We eat dinner together.",
+          "arti": "Kami makan malam bersama.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u02-d01",
+          "ucapan": "I take a bath after school.",
+          "kunci": "t5-u02-k03",
+          "pengecoh": [
+            "t5-u02-k02",
+            "t5-u02-k09"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-d02",
+          "ucapan": "Let's run to the park!",
+          "kunci": "t5-u02-k07",
+          "pengecoh": [
+            "t5-u02-k06",
+            "t5-u02-k10"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-d03",
+          "ucapan": "Please wash your hands.",
+          "kunci": "t5-u02-k09",
+          "pengecoh": [
+            "t5-u02-k03",
+            "t5-u02-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-d04",
+          "ucapan": "I sleep at night.",
+          "kunci": "t5-u02-k10",
+          "pengecoh": [
+            "t5-u02-k01",
+            "t5-u02-k04"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-d05",
+          "ucapan": "He writes his name.",
+          "kunci": "t5-u02-k08",
+          "pengecoh": [
+            "t5-u02-k04",
+            "t5-u02-k05",
+            "t5-u02-k07"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u02-s01",
+          "kalimat": "I brush my teeth every morning.",
+          "arti": "Aku menyikat gigi setiap pagi.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-s02",
+          "kalimat": "She walks to school.",
+          "arti": "Dia berjalan kaki ke sekolah.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-s03",
+          "kalimat": "We wash our hands before we eat.",
+          "arti": "Kami mencuci tangan sebelum makan.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u02-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u02-k01",
+            "t5-u02-k02",
+            "t5-u02-k03",
+            "t5-u02-k04",
+            "t5-u02-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u02-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u02-k06",
+            "t5-u02-k07",
+            "t5-u02-k08",
+            "t5-u02-k09",
+            "t5-u02-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u03",
+      "nomor": 3,
+      "judul": "Jobs",
+      "tema": "Pekerjaan",
+      "kosakata": [
+        {
+          "id": "t5-u03-k01",
+          "kata": "doctor",
+          "arti": "dokter",
+          "emoji": "🧑‍⚕️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k02",
+          "kata": "teacher",
+          "arti": "guru",
+          "emoji": "🧑‍🏫",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k03",
+          "kata": "farmer",
+          "arti": "petani",
+          "emoji": "🧑‍🌾",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k04",
+          "kata": "cook",
+          "arti": "juru masak",
+          "emoji": "🧑‍🍳",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k05",
+          "kata": "firefighter",
+          "arti": "pemadam kebakaran",
+          "emoji": "🧑‍🚒",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k06",
+          "kata": "police officer",
+          "arti": "polisi",
+          "emoji": "👮",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k07",
+          "kata": "pilot",
+          "arti": "pilot",
+          "emoji": "🧑‍✈️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k08",
+          "kata": "mechanic",
+          "arti": "montir",
+          "emoji": "🧑‍🔧",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k09",
+          "kata": "artist",
+          "arti": "pelukis",
+          "emoji": "🧑‍🎨",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-k10",
+          "kata": "astronaut",
+          "arti": "astronaut",
+          "emoji": "🧑‍🚀",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u03-p01",
+          "kalimat": "What do you want to be?",
+          "arti": "Kamu ingin menjadi apa?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-p02",
+          "kalimat": "I want to be a doctor.",
+          "arti": "Aku ingin menjadi dokter.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-p03",
+          "kalimat": "My mother is a teacher.",
+          "arti": "Ibuku seorang guru.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u03-d01",
+          "ucapan": "She is a farmer.",
+          "kunci": "t5-u03-k03",
+          "pengecoh": [
+            "t5-u03-k01",
+            "t5-u03-k04"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-d02",
+          "ucapan": "He flies an airplane. He is a pilot.",
+          "kunci": "t5-u03-k07",
+          "pengecoh": [
+            "t5-u03-k10",
+            "t5-u03-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-d03",
+          "ucapan": "I want to be an artist.",
+          "kunci": "t5-u03-k09",
+          "pengecoh": [
+            "t5-u03-k02",
+            "t5-u03-k04",
+            "t5-u03-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-d04",
+          "ucapan": "My uncle is a cook.",
+          "kunci": "t5-u03-k04",
+          "pengecoh": [
+            "t5-u03-k03",
+            "t5-u03-k06"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-d05",
+          "ucapan": "The police officer is kind.",
+          "kunci": "t5-u03-k06",
+          "pengecoh": [
+            "t5-u03-k05",
+            "t5-u03-k01"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u03-s01",
+          "kalimat": "I want to be a doctor.",
+          "arti": "Aku ingin menjadi dokter.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-s02",
+          "kalimat": "My father is a farmer.",
+          "arti": "Ayahku seorang petani.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-s03",
+          "kalimat": "What do you want to be?",
+          "arti": "Kamu ingin menjadi apa?",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u03-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u03-k01",
+            "t5-u03-k02",
+            "t5-u03-k03",
+            "t5-u03-k04",
+            "t5-u03-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u03-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u03-k06",
+            "t5-u03-k07",
+            "t5-u03-k08",
+            "t5-u03-k09",
+            "t5-u03-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u04",
+      "nomor": 4,
+      "judul": "Places in Town",
+      "tema": "Tempat di kota",
+      "kosakata": [
+        {
+          "id": "t5-u04-k01",
+          "kata": "school",
+          "arti": "sekolah",
+          "emoji": "🏫",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k02",
+          "kata": "hospital",
+          "arti": "rumah sakit",
+          "emoji": "🏥",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k03",
+          "kata": "bank",
+          "arti": "bank",
+          "emoji": "🏦",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k04",
+          "kata": "post office",
+          "arti": "kantor pos",
+          "emoji": "🏤",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k05",
+          "kata": "hotel",
+          "arti": "hotel",
+          "emoji": "🏨",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k06",
+          "kata": "store",
+          "arti": "toko",
+          "emoji": "🏪",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k07",
+          "kata": "park",
+          "arti": "taman",
+          "emoji": "🏞️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k08",
+          "kata": "stadium",
+          "arti": "stadion",
+          "emoji": "🏟️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k09",
+          "kata": "train station",
+          "arti": "stasiun kereta",
+          "emoji": "🚉",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-k10",
+          "kata": "house",
+          "arti": "rumah",
+          "emoji": "🏠",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u04-p01",
+          "kalimat": "Where is the hospital?",
+          "arti": "Di mana rumah sakit?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-p02",
+          "kalimat": "The bank is next to the hotel.",
+          "arti": "Bank ada di sebelah hotel.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-p03",
+          "kalimat": "I buy bread at the store.",
+          "arti": "Aku membeli roti di toko.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u04-d01",
+          "ucapan": "Where is the post office?",
+          "kunci": "t5-u04-k04",
+          "pengecoh": [
+            "t5-u04-k03",
+            "t5-u04-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-d02",
+          "ucapan": "We play soccer at the stadium.",
+          "kunci": "t5-u04-k08",
+          "pengecoh": [
+            "t5-u04-k07",
+            "t5-u04-k01"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-d03",
+          "ucapan": "I buy milk at the store.",
+          "kunci": "t5-u04-k06",
+          "pengecoh": [
+            "t5-u04-k04",
+            "t5-u04-k10"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-d04",
+          "ucapan": "The doctor works at the hospital.",
+          "kunci": "t5-u04-k02",
+          "pengecoh": [
+            "t5-u04-k01",
+            "t5-u04-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-d05",
+          "ucapan": "Let's wait at the train station.",
+          "kunci": "t5-u04-k09",
+          "pengecoh": [
+            "t5-u04-k08",
+            "t5-u04-k03"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u04-s01",
+          "kalimat": "Where is the hospital?",
+          "arti": "Di mana rumah sakit?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-s02",
+          "kalimat": "The bank is next to the hotel.",
+          "arti": "Bank ada di sebelah hotel.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-s03",
+          "kalimat": "My house is near the park.",
+          "arti": "Rumahku dekat taman.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u04-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u04-k01",
+            "t5-u04-k02",
+            "t5-u04-k03",
+            "t5-u04-k04",
+            "t5-u04-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u04-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u04-k06",
+            "t5-u04-k07",
+            "t5-u04-k08",
+            "t5-u04-k09",
+            "t5-u04-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u05",
+      "nomor": 5,
+      "judul": "Getting Around",
+      "tema": "Transportasi",
+      "kosakata": [
+        {
+          "id": "t5-u05-k01",
+          "kata": "car",
+          "arti": "mobil",
+          "emoji": "🚗",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k02",
+          "kata": "bus",
+          "arti": "bus",
+          "emoji": "🚌",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k03",
+          "kata": "train",
+          "arti": "kereta api",
+          "emoji": "🚆",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k04",
+          "kata": "airplane",
+          "arti": "pesawat terbang",
+          "emoji": "✈️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k05",
+          "kata": "ship",
+          "arti": "kapal",
+          "emoji": "🚢",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k06",
+          "kata": "bicycle",
+          "arti": "sepeda",
+          "emoji": "🚲",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k07",
+          "kata": "motorcycle",
+          "arti": "sepeda motor",
+          "emoji": "🏍️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k08",
+          "kata": "taxi",
+          "arti": "taksi",
+          "emoji": "🚕",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k09",
+          "kata": "boat",
+          "arti": "perahu",
+          "emoji": "⛵",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-k10",
+          "kata": "truck",
+          "arti": "truk",
+          "emoji": "🚚",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u05-p01",
+          "kalimat": "How do you go to school?",
+          "arti": "Bagaimana kamu pergi ke sekolah?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-p02",
+          "kalimat": "I go to school by bicycle.",
+          "arti": "Aku pergi ke sekolah naik sepeda.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-p03",
+          "kalimat": "My father goes to work by motorcycle.",
+          "arti": "Ayahku pergi bekerja naik sepeda motor.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u05-d01",
+          "ucapan": "I go to school by bus.",
+          "kunci": "t5-u05-k02",
+          "pengecoh": [
+            "t5-u05-k01",
+            "t5-u05-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-d02",
+          "ucapan": "The airplane is in the sky.",
+          "kunci": "t5-u05-k04",
+          "pengecoh": [
+            "t5-u05-k05",
+            "t5-u05-k03"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-d03",
+          "ucapan": "We go to the island by boat.",
+          "kunci": "t5-u05-k09",
+          "pengecoh": [
+            "t5-u05-k05",
+            "t5-u05-k04"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-d04",
+          "ucapan": "My bicycle is blue.",
+          "kunci": "t5-u05-k06",
+          "pengecoh": [
+            "t5-u05-k07",
+            "t5-u05-k01"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-d05",
+          "ucapan": "The truck is very big.",
+          "kunci": "t5-u05-k10",
+          "pengecoh": [
+            "t5-u05-k02",
+            "t5-u05-k03",
+            "t5-u05-k08"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u05-s01",
+          "kalimat": "I go to school by bicycle.",
+          "arti": "Aku pergi ke sekolah naik sepeda.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-s02",
+          "kalimat": "How do you go to school?",
+          "arti": "Bagaimana kamu pergi ke sekolah?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-s03",
+          "kalimat": "The train is very fast.",
+          "arti": "Kereta api itu sangat cepat.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u05-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u05-k01",
+            "t5-u05-k02",
+            "t5-u05-k03",
+            "t5-u05-k04",
+            "t5-u05-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u05-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u05-k06",
+            "t5-u05-k07",
+            "t5-u05-k08",
+            "t5-u05-k09",
+            "t5-u05-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u06",
+      "nomor": 6,
+      "judul": "At the Store",
+      "tema": "Belanja dan harga",
+      "kosakata": [
+        {
+          "id": "t5-u06-k01",
+          "kata": "money",
+          "arti": "uang",
+          "emoji": "💵",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k02",
+          "kata": "wallet",
+          "arti": "dompet",
+          "emoji": "👛",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k03",
+          "kata": "basket",
+          "arti": "keranjang",
+          "emoji": "🧺",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k04",
+          "kata": "shopping cart",
+          "arti": "troli belanja",
+          "emoji": "🛒",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k05",
+          "kata": "shopping bag",
+          "arti": "tas belanja",
+          "emoji": "🛍️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k06",
+          "kata": "receipt",
+          "arti": "struk belanja",
+          "emoji": "🧾",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k07",
+          "kata": "bread",
+          "arti": "roti",
+          "emoji": "🍞",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k08",
+          "kata": "milk",
+          "arti": "susu",
+          "emoji": "🥛",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k09",
+          "kata": "eggs",
+          "arti": "telur",
+          "emoji": "🥚",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-k10",
+          "kata": "apples",
+          "arti": "apel",
+          "emoji": "🍎",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u06-p01",
+          "kalimat": "How much is the bread?",
+          "arti": "Berapa harga roti itu?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-p02",
+          "kalimat": "It's ten thousand rupiah.",
+          "arti": "Harganya sepuluh ribu rupiah.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-p03",
+          "kalimat": "I want to buy some apples.",
+          "arti": "Aku ingin membeli beberapa apel.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u06-d01",
+          "ucapan": "How much is the milk?",
+          "kunci": "t5-u06-k08",
+          "pengecoh": [
+            "t5-u06-k07",
+            "t5-u06-k09"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-d02",
+          "ucapan": "Put the eggs in the basket.",
+          "kunci": "t5-u06-k09",
+          "pengecoh": [
+            "t5-u06-k10",
+            "t5-u06-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-d03",
+          "ucapan": "My money is in my wallet.",
+          "kunci": "t5-u06-k02",
+          "pengecoh": [
+            "t5-u06-k05",
+            "t5-u06-k06"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-d04",
+          "ucapan": "I want to buy some apples.",
+          "kunci": "t5-u06-k10",
+          "pengecoh": [
+            "t5-u06-k07",
+            "t5-u06-k08",
+            "t5-u06-k09"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-d05",
+          "ucapan": "Here is your receipt.",
+          "kunci": "t5-u06-k06",
+          "pengecoh": [
+            "t5-u06-k01",
+            "t5-u06-k02"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u06-s01",
+          "kalimat": "How much is the bread?",
+          "arti": "Berapa harga roti itu?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-s02",
+          "kalimat": "It's twenty thousand rupiah.",
+          "arti": "Harganya dua puluh ribu rupiah.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-s03",
+          "kalimat": "I want to buy some eggs.",
+          "arti": "Aku ingin membeli telur.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u06-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u06-k01",
+            "t5-u06-k02",
+            "t5-u06-k03",
+            "t5-u06-k04",
+            "t5-u06-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u06-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u06-k06",
+            "t5-u06-k07",
+            "t5-u06-k08",
+            "t5-u06-k09",
+            "t5-u06-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u07",
+      "nomor": 7,
+      "judul": "How's the Weather?",
+      "tema": "Cuaca",
+      "kosakata": [
+        {
+          "id": "t5-u07-k01",
+          "kata": "sunny",
+          "arti": "cerah",
+          "emoji": "☀️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k02",
+          "kata": "cloudy",
+          "arti": "berawan",
+          "emoji": "☁️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k03",
+          "kata": "rainy",
+          "arti": "hujan",
+          "emoji": "🌧️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k04",
+          "kata": "windy",
+          "arti": "berangin",
+          "emoji": "🌬️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k05",
+          "kata": "snowy",
+          "arti": "bersalju",
+          "emoji": "🌨️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k06",
+          "kata": "foggy",
+          "arti": "berkabut",
+          "emoji": "🌫️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k07",
+          "kata": "hot",
+          "arti": "panas",
+          "emoji": "🥵",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k08",
+          "kata": "cold",
+          "arti": "dingin",
+          "emoji": "🥶",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k09",
+          "kata": "rainbow",
+          "arti": "pelangi",
+          "emoji": "🌈",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-k10",
+          "kata": "umbrella",
+          "arti": "payung",
+          "emoji": "☂️",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u07-p01",
+          "kalimat": "How's the weather today?",
+          "arti": "Bagaimana cuaca hari ini?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-p02",
+          "kalimat": "It's sunny and hot.",
+          "arti": "Cuacanya cerah dan panas.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-p03",
+          "kalimat": "Bring your umbrella.",
+          "arti": "Bawalah payungmu.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u07-d01",
+          "ucapan": "It's rainy today.",
+          "kunci": "t5-u07-k03",
+          "pengecoh": [
+            "t5-u07-k01",
+            "t5-u07-k02"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-d02",
+          "ucapan": "It's cold and snowy.",
+          "kunci": "t5-u07-k05",
+          "pengecoh": [
+            "t5-u07-k04",
+            "t5-u07-k06"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-d03",
+          "ucapan": "Look! A rainbow!",
+          "kunci": "t5-u07-k09",
+          "pengecoh": [
+            "t5-u07-k10",
+            "t5-u07-k01"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-d04",
+          "ucapan": "It's very windy outside.",
+          "kunci": "t5-u07-k04",
+          "pengecoh": [
+            "t5-u07-k02",
+            "t5-u07-k06",
+            "t5-u07-k03"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-d05",
+          "ucapan": "Open your umbrella.",
+          "kunci": "t5-u07-k10",
+          "pengecoh": [
+            "t5-u07-k09",
+            "t5-u07-k03"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u07-s01",
+          "kalimat": "How's the weather today?",
+          "arti": "Bagaimana cuaca hari ini?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-s02",
+          "kalimat": "It's sunny and hot.",
+          "arti": "Cuacanya cerah dan panas.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-s03",
+          "kalimat": "Bring your umbrella. It's rainy.",
+          "arti": "Bawalah payungmu. Sekarang hujan.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u07-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u07-k01",
+            "t5-u07-k02",
+            "t5-u07-k03",
+            "t5-u07-k04",
+            "t5-u07-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u07-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u07-k06",
+            "t5-u07-k07",
+            "t5-u07-k08",
+            "t5-u07-k09",
+            "t5-u07-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u08",
+      "nomor": 8,
+      "judul": "Nature Around Us",
+      "tema": "Alam di sekitar kita",
+      "kosakata": [
+        {
+          "id": "t5-u08-k01",
+          "kata": "mountain",
+          "arti": "gunung",
+          "emoji": "⛰️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k02",
+          "kata": "beach",
+          "arti": "pantai",
+          "emoji": "🏖️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k03",
+          "kata": "sea",
+          "arti": "laut",
+          "emoji": "🌊",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k04",
+          "kata": "island",
+          "arti": "pulau",
+          "emoji": "🏝️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k05",
+          "kata": "tree",
+          "arti": "pohon",
+          "emoji": "🌳",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k06",
+          "kata": "flower",
+          "arti": "bunga",
+          "emoji": "🌸",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k07",
+          "kata": "leaf",
+          "arti": "daun",
+          "emoji": "🍃",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k08",
+          "kata": "rock",
+          "arti": "batu",
+          "emoji": "🪨",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k09",
+          "kata": "star",
+          "arti": "bintang",
+          "emoji": "⭐",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-k10",
+          "kata": "moon",
+          "arti": "bulan",
+          "emoji": "🌙",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u08-p01",
+          "kalimat": "There are many stars in the sky.",
+          "arti": "Ada banyak bintang di langit.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-p02",
+          "kalimat": "Let's go to the beach.",
+          "arti": "Ayo pergi ke pantai.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-p03",
+          "kalimat": "The mountain is very high.",
+          "arti": "Gunung itu sangat tinggi.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u08-d01",
+          "ucapan": "The sea is blue.",
+          "kunci": "t5-u08-k03",
+          "pengecoh": [
+            "t5-u08-k02",
+            "t5-u08-k04"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-d02",
+          "ucapan": "There is a big tree in my yard.",
+          "kunci": "t5-u08-k05",
+          "pengecoh": [
+            "t5-u08-k06",
+            "t5-u08-k07"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-d03",
+          "ucapan": "The moon is bright tonight.",
+          "kunci": "t5-u08-k10",
+          "pengecoh": [
+            "t5-u08-k09",
+            "t5-u08-k01"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-d04",
+          "ucapan": "This flower smells nice.",
+          "kunci": "t5-u08-k06",
+          "pengecoh": [
+            "t5-u08-k07",
+            "t5-u08-k05",
+            "t5-u08-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-d05",
+          "ucapan": "We climb the mountain.",
+          "kunci": "t5-u08-k01",
+          "pengecoh": [
+            "t5-u08-k08",
+            "t5-u08-k04"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u08-s01",
+          "kalimat": "Let's go to the beach.",
+          "arti": "Ayo pergi ke pantai.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-s02",
+          "kalimat": "There are many stars in the sky.",
+          "arti": "Ada banyak bintang di langit.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-s03",
+          "kalimat": "The mountain is very high.",
+          "arti": "Gunung itu sangat tinggi.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u08-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u08-k01",
+            "t5-u08-k02",
+            "t5-u08-k03",
+            "t5-u08-k04",
+            "t5-u08-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u08-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u08-k06",
+            "t5-u08-k07",
+            "t5-u08-k08",
+            "t5-u08-k09",
+            "t5-u08-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u09",
+      "nomor": 9,
+      "judul": "My Hobbies",
+      "tema": "Hobi",
+      "kosakata": [
+        {
+          "id": "t5-u09-k01",
+          "kata": "reading",
+          "arti": "membaca",
+          "emoji": "📖",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k02",
+          "kata": "painting",
+          "arti": "melukis",
+          "emoji": "🎨",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k03",
+          "kata": "singing",
+          "arti": "bernyanyi",
+          "emoji": "🎤",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k04",
+          "kata": "dancing",
+          "arti": "menari",
+          "emoji": "💃",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k05",
+          "kata": "swimming",
+          "arti": "berenang",
+          "emoji": "🏊",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k06",
+          "kata": "cooking",
+          "arti": "memasak",
+          "emoji": "🍳",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k07",
+          "kata": "fishing",
+          "arti": "memancing",
+          "emoji": "🎣",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k08",
+          "kata": "cycling",
+          "arti": "bersepeda",
+          "emoji": "🚴",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k09",
+          "kata": "gardening",
+          "arti": "berkebun",
+          "emoji": "🌱",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-k10",
+          "kata": "playing soccer",
+          "arti": "bermain sepak bola",
+          "emoji": "⚽",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u09-p01",
+          "kalimat": "What's your hobby?",
+          "arti": "Apa hobimu?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-p02",
+          "kalimat": "My hobby is painting.",
+          "arti": "Hobiku melukis.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-p03",
+          "kalimat": "I like swimming on Sundays.",
+          "arti": "Aku suka berenang setiap hari Minggu.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u09-d01",
+          "ucapan": "My hobby is reading.",
+          "kunci": "t5-u09-k01",
+          "pengecoh": [
+            "t5-u09-k02",
+            "t5-u09-k03"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-d02",
+          "ucapan": "She likes dancing.",
+          "kunci": "t5-u09-k04",
+          "pengecoh": [
+            "t5-u09-k03",
+            "t5-u09-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-d03",
+          "ucapan": "We go fishing with Grandpa.",
+          "kunci": "t5-u09-k07",
+          "pengecoh": [
+            "t5-u09-k05",
+            "t5-u09-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-d04",
+          "ucapan": "I like playing soccer.",
+          "kunci": "t5-u09-k10",
+          "pengecoh": [
+            "t5-u09-k08",
+            "t5-u09-k05",
+            "t5-u09-k04"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-d05",
+          "ucapan": "My mother likes gardening.",
+          "kunci": "t5-u09-k09",
+          "pengecoh": [
+            "t5-u09-k06",
+            "t5-u09-k02"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u09-s01",
+          "kalimat": "What's your hobby?",
+          "arti": "Apa hobimu?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-s02",
+          "kalimat": "My hobby is painting.",
+          "arti": "Hobiku melukis.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-s03",
+          "kalimat": "I like cycling with my friends.",
+          "arti": "Aku suka bersepeda dengan teman-temanku.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u09-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u09-k01",
+            "t5-u09-k02",
+            "t5-u09-k03",
+            "t5-u09-k04",
+            "t5-u09-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u09-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u09-k06",
+            "t5-u09-k07",
+            "t5-u09-k08",
+            "t5-u09-k09",
+            "t5-u09-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u10",
+      "nomor": 10,
+      "judul": "Let's Make Music",
+      "tema": "Alat musik",
+      "kosakata": [
+        {
+          "id": "t5-u10-k01",
+          "kata": "guitar",
+          "arti": "gitar",
+          "emoji": "🎸",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k02",
+          "kata": "piano",
+          "arti": "piano",
+          "emoji": "🎹",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k03",
+          "kata": "drum",
+          "arti": "drum",
+          "emoji": "🥁",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k04",
+          "kata": "violin",
+          "arti": "biola",
+          "emoji": "🎻",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k05",
+          "kata": "trumpet",
+          "arti": "trompet",
+          "emoji": "🎺",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k06",
+          "kata": "saxophone",
+          "arti": "saksofon",
+          "emoji": "🎷",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k07",
+          "kata": "flute",
+          "arti": "seruling",
+          "emoji": "🪈",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k08",
+          "kata": "maracas",
+          "arti": "marakas",
+          "emoji": "🪇",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-k09",
+          "kata": "accordion",
+          "arti": "akordeon",
+          "emoji": "🪗",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u10-p01",
+          "kalimat": "Can you play the guitar?",
+          "arti": "Bisakah kamu bermain gitar?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-p02",
+          "kalimat": "Yes, I can. I can play the piano too.",
+          "arti": "Ya, aku bisa. Aku juga bisa bermain piano.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-p03",
+          "kalimat": "She plays the violin.",
+          "arti": "Dia bermain biola.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u10-d01",
+          "ucapan": "I can play the drum.",
+          "kunci": "t5-u10-k03",
+          "pengecoh": [
+            "t5-u10-k01",
+            "t5-u10-k02"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-d02",
+          "ucapan": "She plays the violin.",
+          "kunci": "t5-u10-k04",
+          "pengecoh": [
+            "t5-u10-k01",
+            "t5-u10-k06"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-d03",
+          "ucapan": "Listen to the trumpet!",
+          "kunci": "t5-u10-k05",
+          "pengecoh": [
+            "t5-u10-k06",
+            "t5-u10-k07"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-d04",
+          "ucapan": "My brother plays the flute.",
+          "kunci": "t5-u10-k07",
+          "pengecoh": [
+            "t5-u10-k05",
+            "t5-u10-k09",
+            "t5-u10-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-d05",
+          "ucapan": "Shake the maracas!",
+          "kunci": "t5-u10-k08",
+          "pengecoh": [
+            "t5-u10-k03",
+            "t5-u10-k09"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u10-s01",
+          "kalimat": "Can you play the guitar?",
+          "arti": "Bisakah kamu bermain gitar?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-s02",
+          "kalimat": "I can play the piano.",
+          "arti": "Aku bisa bermain piano.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-s03",
+          "kalimat": "She plays the violin every day.",
+          "arti": "Dia bermain biola setiap hari.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u10-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u10-k01",
+            "t5-u10-k02",
+            "t5-u10-k03",
+            "t5-u10-k04",
+            "t5-u10-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u10-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u10-k05",
+            "t5-u10-k06",
+            "t5-u10-k07",
+            "t5-u10-k08",
+            "t5-u10-k09"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u11",
+      "nomor": 11,
+      "judul": "What Are You Wearing?",
+      "tema": "Pakaian",
+      "kosakata": [
+        {
+          "id": "t5-u11-k01",
+          "kata": "shirt",
+          "arti": "kemeja",
+          "emoji": "👕",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k02",
+          "kata": "pants",
+          "arti": "celana panjang",
+          "emoji": "👖",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k03",
+          "kata": "dress",
+          "arti": "gaun",
+          "emoji": "👗",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k04",
+          "kata": "jacket",
+          "arti": "jaket",
+          "emoji": "🧥",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k05",
+          "kata": "cap",
+          "arti": "topi",
+          "emoji": "🧢",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k06",
+          "kata": "socks",
+          "arti": "kaus kaki",
+          "emoji": "🧦",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k07",
+          "kata": "shoes",
+          "arti": "sepatu",
+          "emoji": "👟",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k08",
+          "kata": "scarf",
+          "arti": "syal",
+          "emoji": "🧣",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k09",
+          "kata": "gloves",
+          "arti": "sarung tangan",
+          "emoji": "🧤",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-k10",
+          "kata": "glasses",
+          "arti": "kacamata",
+          "emoji": "👓",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u11-p01",
+          "kalimat": "What are you wearing?",
+          "arti": "Kamu memakai apa?",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-p02",
+          "kalimat": "I'm wearing a red cap.",
+          "arti": "Aku memakai topi merah.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-p03",
+          "kalimat": "These shoes are new.",
+          "arti": "Sepatu ini baru.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u11-d01",
+          "ucapan": "I'm wearing a blue shirt.",
+          "kunci": "t5-u11-k01",
+          "pengecoh": [
+            "t5-u11-k02",
+            "t5-u11-k04"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-d02",
+          "ucapan": "Put on your socks.",
+          "kunci": "t5-u11-k06",
+          "pengecoh": [
+            "t5-u11-k07",
+            "t5-u11-k09"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-d03",
+          "ucapan": "It's cold. Wear your jacket.",
+          "kunci": "t5-u11-k04",
+          "pengecoh": [
+            "t5-u11-k01",
+            "t5-u11-k08"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-d04",
+          "ucapan": "My grandfather wears glasses.",
+          "kunci": "t5-u11-k10",
+          "pengecoh": [
+            "t5-u11-k05",
+            "t5-u11-k09",
+            "t5-u11-k03"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-d05",
+          "ucapan": "She's wearing a yellow dress.",
+          "kunci": "t5-u11-k03",
+          "pengecoh": [
+            "t5-u11-k02",
+            "t5-u11-k01"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u11-s01",
+          "kalimat": "I'm wearing a red cap.",
+          "arti": "Aku memakai topi merah.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-s02",
+          "kalimat": "These shoes are new.",
+          "arti": "Sepatu ini baru.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-s03",
+          "kalimat": "What are you wearing today?",
+          "arti": "Kamu memakai apa hari ini?",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u11-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u11-k01",
+            "t5-u11-k02",
+            "t5-u11-k03",
+            "t5-u11-k04",
+            "t5-u11-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u11-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u11-k06",
+            "t5-u11-k07",
+            "t5-u11-k08",
+            "t5-u11-k09",
+            "t5-u11-k10"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    },
+    {
+      "id": "t5-u12",
+      "nomor": 12,
+      "judul": "Rules at School",
+      "tema": "Peraturan di sekolah dan rumah",
+      "kosakata": [
+        {
+          "id": "t5-u12-k01",
+          "kata": "raise your hand",
+          "arti": "mengangkat tangan",
+          "emoji": "🙋",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k02",
+          "kata": "be quiet",
+          "arti": "diam, tidak berisik",
+          "emoji": "🤫",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k03",
+          "kata": "shout",
+          "arti": "berteriak",
+          "emoji": "📢",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k04",
+          "kata": "run",
+          "arti": "berlari",
+          "emoji": "🏃",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k05",
+          "kata": "trash can",
+          "arti": "tempat sampah",
+          "emoji": "🗑️",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k06",
+          "kata": "phone",
+          "arti": "telepon genggam",
+          "emoji": "📱",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k07",
+          "kata": "sit down",
+          "arti": "duduk",
+          "emoji": "🪑",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k08",
+          "kata": "help",
+          "arti": "menolong",
+          "emoji": "🤝",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-k09",
+          "kata": "wait",
+          "arti": "menunggu",
+          "emoji": "⏳",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "pola": [
+        {
+          "id": "t5-u12-p01",
+          "kalimat": "You can't run in the classroom.",
+          "arti": "Kamu tidak boleh berlari di dalam kelas.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-p02",
+          "kalimat": "You can raise your hand.",
+          "arti": "Kamu boleh mengangkat tangan.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-p03",
+          "kalimat": "Put your trash in the trash can.",
+          "arti": "Buanglah sampahmu ke tempat sampah.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "dengar": [
+        {
+          "id": "t5-u12-d01",
+          "ucapan": "Please be quiet in the library.",
+          "kunci": "t5-u12-k02",
+          "pengecoh": [
+            "t5-u12-k03",
+            "t5-u12-k01"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-d02",
+          "ucapan": "You can't shout in class.",
+          "kunci": "t5-u12-k03",
+          "pengecoh": [
+            "t5-u12-k02",
+            "t5-u12-k04"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-d03",
+          "ucapan": "Please sit down.",
+          "kunci": "t5-u12-k07",
+          "pengecoh": [
+            "t5-u12-k04",
+            "t5-u12-k09"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-d04",
+          "ucapan": "You can't use a phone in class.",
+          "kunci": "t5-u12-k06",
+          "pengecoh": [
+            "t5-u12-k05",
+            "t5-u12-k08",
+            "t5-u12-k03"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-d05",
+          "ucapan": "Please wait in line.",
+          "kunci": "t5-u12-k09",
+          "pengecoh": [
+            "t5-u12-k07",
+            "t5-u12-k01"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ],
+      "susun": [
+        {
+          "id": "t5-u12-s01",
+          "kalimat": "You can't run in the classroom.",
+          "arti": "Kamu tidak boleh berlari di dalam kelas.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-s02",
+          "kalimat": "You can raise your hand.",
+          "arti": "Kamu boleh mengangkat tangan.",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-s03",
+          "kalimat": "We help our friends.",
+          "arti": "Kami menolong teman-teman kami.",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "permainan": [
+        {
+          "id": "t5-u12-g01",
+          "jenis": "cocokkan",
+          "kata": [
+            "t5-u12-k01",
+            "t5-u12-k02",
+            "t5-u12-k03",
+            "t5-u12-k04",
+            "t5-u12-k05"
+          ],
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t5-u12-g02",
+          "jenis": "tebak_gambar",
+          "kata": [
+            "t5-u12-k05",
+            "t5-u12-k06",
+            "t5-u12-k07",
+            "t5-u12-k08",
+            "t5-u12-k09"
+          ],
+          "status": "belum_diperiksa"
+        }
+      ]
+    }
+  ]
+}
