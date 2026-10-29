@@ -4,7 +4,7 @@ import { Tabs } from 'expo-router/js-tabs';
 
 import { useData } from '@/data/konteks';
 import { warna } from '@/desain/token';
-import { NavBawah, type PropsBilahTab } from '@/komponen/NavBawah';
+import { NavBawah } from '@/komponen/NavBawah';
 
 export default function TabOrtu() {
   const { ortuTerbuka } = useData();
@@ -15,7 +15,7 @@ export default function TabOrtu() {
       tabBar={(p) => (
         <NavBawah
           ortu
-          props={p as unknown as PropsBilahTab}
+          props={p}
           item={[
             { nama: 'index', label: 'Kabar', ikon: 'pesan' },
             { nama: 'rapor', label: 'Rapor', ikon: 'grafik' },

@@ -4,7 +4,7 @@ import { Tabs } from 'expo-router/js-tabs';
 
 import { useData, useMuat } from '@/data/konteks';
 import { warna } from '@/desain/token';
-import { NavBawah, type PropsBilahTab } from '@/komponen/NavBawah';
+import { NavBawah } from '@/komponen/NavBawah';
 
 export default function TataLetakAnak() {
   const { anakAktif } = useData();
@@ -19,7 +19,7 @@ export default function TataLetakAnak() {
       screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: warna.kremLembut } }}
       tabBar={(p) => (
         <NavBawah
-          props={p as unknown as PropsBilahTab}
+          props={p}
           item={[
             { nama: 'index', label: 'Belajar', ikon: 'rumah' },
             { nama: 'gudang', label: 'Gudang Ilmu', ikon: 'buku' },

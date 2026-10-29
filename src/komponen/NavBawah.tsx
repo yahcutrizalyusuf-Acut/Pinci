@@ -12,10 +12,10 @@ export interface ItemNav {
   titik?: boolean;
 }
 
-/** Bagian kecil dari props tabBar react-navigation yang kita pakai. */
+/** Bagian kecil dari props tabBar expo-router 58 (BottomTabBarProps) yang kita pakai. */
 export interface PropsBilahTab {
   state: { index: number; routes: { key: string; name: string }[] };
-  navigation: { navigate: (nama: string) => void; emit: (e: { type: 'tabPress'; target: string; canPreventDefault: true }) => { defaultPrevented: boolean } };
+  navigateToTab: (routeKey: string) => void;
 }
 
 export function NavBawah({ props, item, ortu = false }: { props: PropsBilahTab; item: ItemNav[]; ortu?: boolean }) {
@@ -44,9 +44,7 @@ export function NavBawah({ props, item, ortu = false }: { props: PropsBilahTab; 
             accessibilityLabel={it.label}
             onPress={() => {
               const route = props.state.routes.find((r) => r.name === it.nama);
-              if (!route) return;
-              const e = props.navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
-              if (!terpilih && !e.defaultPrevented) props.navigation.navigate(it.nama);
+              if (route && !terpilih) props.navigateToTab(route.key);
             }}
             style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 2 }}
           >
