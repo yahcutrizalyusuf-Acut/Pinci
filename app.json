@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Pintar Main",
+    "slug": "pintar-main",
+    "version": "0.2.0",
+    "orientation": "portrait",
+    "icon": "./assets/gambar/ikon.png",
+    "scheme": "pintarmain",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#FFF6E5",
+    "android": {
+      "package": "id.pintarmain.app",
+      "versionCode": 2,
+      "adaptiveIcon": {
+        "backgroundColor": "#3BB273",
+        "foregroundImage": "./assets/gambar/ikon-depan.png"
+      },
+      "permissions": [],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.READ_CONTACTS",
+        "com.google.android.gms.permission.AD_ID"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/gambar/ikon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FFF6E5",
+          "image": "./assets/gambar/pembuka.png",
+          "imageWidth": 160
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false,
+      "reactCompiler": true
+    }
+  }
+}
