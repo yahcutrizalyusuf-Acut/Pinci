@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 
+import { kiniMs } from '@/data/alat';
 import { useData } from '@/data/konteks';
 import { huruf, warna } from '@/desain/token';
 import { KepalaLayar, TeksOrtu } from '@/komponen/dasar';
@@ -24,8 +25,19 @@ export default function GantiPin() {
     if (p.length < 4) return;
     setTimeout(() => setPin(''), 200);
     if (tahap === 'lama') {
-      if (await repo.periksaPin(p)) setTahap('baru');
-      else setSalah(true);
+      const v = (await repo.nilai<{ n: number; sampai: number }>('pin_salah')) ?? { n: 0, sampai: 0 };
+      if (v.sampai > kiniMs()) {
+        setSalah(true);
+        return;
+      }
+      if (await repo.periksaPin(p)) {
+        await repo.aturNilai('pin_salah', { n: 0, sampai: 0 });
+        setTahap('baru');
+      } else {
+        const n = v.n + 1;
+        await repo.aturNilai('pin_salah', { n: n >= 5 ? 0 : n, sampai: n >= 5 ? kiniMs() + 5 * 60_000 : 0 });
+        setSalah(true);
+      }
     } else if (tahap === 'baru') {
       setBaru(p);
       setTahap('ulang');

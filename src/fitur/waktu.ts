@@ -1,4 +1,5 @@
 /** Kait penjaga waktu untuk layar: menghitung detik belajar/main dan memeriksa izin. */
+import { useRouter } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import { AppState } from 'react-native';
 
@@ -28,7 +29,9 @@ export function ruteHalangan(s: StatusBelajar): '/istirahat' | '/cukup' | '/cuku
  * Hitung detik selama layar terbuka dan aplikasi aktif. `jenis` = 'belajar' atau 'main'.
  * `jeda` menghentikan hitungan (layar Jeda). Disimpan tiap 10 detik dan saat layar ditutup.
  */
-export function useHitungWaktu(jenis: 'belajar' | 'main', jeda = false, mode: 'sendiri' | 'dampingi' = 'sendiri') {
+export function useHitungWaktu(jenis: 'belajar' | 'main', jeda = false, mode: 'sendiri' | 'dampingi' = 'sendiri', penjaga = true) {
+  const router = useRouter();
+  const sudahDihalangi = useRef(false);
   const { repo, anakAktif } = useData();
   const tertunda = useRef(0);
   const terakhir = useRef(0);
@@ -42,7 +45,18 @@ export function useHitungWaktu(jenis: 'belajar' | 'main', jeda = false, mode: 's
       if (d <= 0) return;
       tertunda.current -= d;
       const p = await repo.pemakaian(id);
-      await repo.simpanPemakaian(jenis === 'belajar' ? tambahBelajar(p, d, new Date()) : tambahMain(p, d));
+      const baru = jenis === 'belajar' ? tambahBelajar(p, d, new Date()) : tambahMain(p, d);
+      await repo.simpanPemakaian(baru);
+      // Blok 15 menit habis atau batas harian tercapai di tengah layar: buka Istirahat/Cukup.
+      // Istirahat dibuka di atas layar ini, jadi setelah istirahat anak kembali ke soal yang sama.
+      if (jenis === 'belajar' && penjaga && !sudahDihalangi.current) {
+        const r = ruteHalangan(statusBelajar(baru, await repo.pengaturan(id), new Date()));
+        if (r) {
+          sudahDihalangi.current = true;
+          router.push(r);
+          setTimeout(() => (sudahDihalangi.current = false), 5000);
+        }
+      }
     };
     terakhir.current = kiniMs();
     const detak = setInterval(() => {
@@ -61,5 +75,5 @@ export function useHitungWaktu(jenis: 'belajar' | 'main', jeda = false, mode: 's
       tertunda.current += !jeda && aktif.current ? (kiniMs() - terakhir.current) / 1000 : 0;
       simpan().catch(() => undefined);
     };
-  }, [repo, anakAktif, jenis, jeda, mode]);
+  }, [repo, anakAktif, jenis, jeda, mode, penjaga, router]);
 }

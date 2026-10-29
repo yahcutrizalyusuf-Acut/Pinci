@@ -222,6 +222,9 @@ export interface Teks {
   /** topik yang dilatih Pertanyaan 2, misal "B01" */
   melatih?: string;
   pertanyaan: Butir[];
+  /** 'perlu_dicek' bila teks memuat istilah keagamaan (CLAUDE.md aturan 9) — menunggu keputusan Acut */
+  status?: StatusPeriksa;
+  catatan?: string[];
 }
 
 export interface PaketTka {

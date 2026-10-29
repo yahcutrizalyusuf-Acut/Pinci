@@ -10,6 +10,7 @@ import { kiniMs } from '@/data/alat';
 import { useData } from '@/data/konteks';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { titip } from '@/fitur/sementara';
+import { alasanUntukAnak } from '@/fitur/teks-anak';
 import { petunjukBertahap, simpanLatihanTka, soalSesi, type JawabanTka } from '@/fitur/tka';
 import { cekBelajar, ruteHalangan, useHitungWaktu } from '@/fitur/waktu';
 import { ambilTopik, penyebabSalah, periksaJawaban, type JawabanAnak } from '@/isi/tka/pemuat';
@@ -166,7 +167,7 @@ export default function LatihanTka() {
           <View style={{ backgroundColor: '#FFF4E5', borderRadius: 16, padding: 14, gap: 6 }}>
             <Text style={{ fontFamily: huruf.judulTebal, fontSize: 18, color: '#B86E00' }}>Hampir! Jawabannya {typeof b.kunci === 'string' ? b.kunci : b.bentuk === 'pgk' ? b.kunci.join(', ') : 'yang ditandai hijau'}.</Text>
             {sebab.map((s) => (
-              <TeksKaya key={s.pilihan} teks={`${s.pilihan}: ${s.alasan}`} ukuran={15} warnaTeks={warna.teksKedua} />
+              <TeksKaya key={s.pilihan} teks={`${s.pilihan}: ${alasanUntukAnak(s.alasan)}`} ukuran={15} warnaTeks={warna.teksKedua} />
             ))}
             {b.pembahasan ? <TeksKaya teks={`Langkah: ${b.pembahasan}`} ukuran={15} /> : null}
           </View>

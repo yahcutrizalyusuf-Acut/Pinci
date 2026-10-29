@@ -199,7 +199,8 @@ export function miniMingguIni(sesi: Sesi[], sekarang: Date): boolean {
 
 /** Soal satu sesi Jalur Mandiri (≤ 10, ringan → berat) atau latihan rumah topik itu. */
 export function soalSesi(idTopik: string, rumah: boolean, paket: PaketTka = paketTkaBawaan()): Butir[] {
-  if (rumah) return latihanRumah(paket, idTopik);
+  const sah = (b: Butir) => b.status !== 'perlu_dicek';
+  if (rumah) return latihanRumah(paket, idTopik).filter(sah);
   const s = soalBerjenjang(paket, idTopik);
-  return [...s.terbimbing.slice(0, 3), ...s.kelas.slice(0, 5), ...s.cadangan.slice(0, 2)].slice(0, 10);
+  return [...s.terbimbing.filter(sah).slice(0, 3), ...s.kelas.filter(sah).slice(0, 5), ...s.cadangan.filter(sah).slice(0, 2)].slice(0, 10);
 }

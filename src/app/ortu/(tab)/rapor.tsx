@@ -155,7 +155,7 @@ export default function Rapor() {
                 </Text>
                 {data.tka.miniTryout.length > 0 ? (
                   <>
-                    <Text style={{ fontFamily: huruf.ortuSedang, fontSize: 14, color: warna.teksKedua }}>Skor mini try out (dari 6)</Text>
+                    <Text style={{ fontFamily: huruf.ortuSedang, fontSize: 14, color: warna.teksKedua }}>Hasil mini try out (tepat dari 6 soal)</Text>
                     <GrafikGaris nilai={data.tka.miniTryout} tinggi={110} format={(n) => String(n)} />
                   </>
                 ) : null}

@@ -58,7 +58,7 @@ export default function Simulasi() {
   const detikPerSoal = useRef<number[]>([]);
   const masukSoal = useRef(0);
   const sudahKumpul = useRef(false);
-  useHitungWaktu('belajar', !mulai || jeda);
+  useHitungWaktu('belajar', !mulai || jeda, 'sendiri', false);
 
 
   const kumpulkan = async () => {

@@ -132,7 +132,7 @@ describe('paket sungguhan', () => {
       const ada = periksaKunci(b).temuan.length > 0;
       if (ada) expect(b.status).toBe('perlu_dicek');
     }
-    for (const b of butir) if (b.status === 'perlu_dicek') expect(b.catatan?.some((c) => c.startsWith('pemeriksa kunci'))).toBe(true);
+    for (const b of butir) if (b.status === 'perlu_dicek') expect(b.catatan?.some((c) => c.startsWith('pemeriksa kunci') || c.startsWith('memuat istilah keagamaan'))).toBe(true);
   });
 
   test('sebagian besar kunci Matematika dihitung ulang (≥ 85%)', () => {

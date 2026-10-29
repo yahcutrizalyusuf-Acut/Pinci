@@ -4,7 +4,7 @@ import { ScrollView, Text, View } from 'react-native';
 
 import { useMuat } from '@/data/konteks';
 import { huruf, warna } from '@/desain/token';
-import { ARTI_KODE } from '@/fitur/tka-rapor';
+import { alasanUntukAnak, SARAN_ANAK } from '@/fitur/teks-anak';
 import { cariButir, penyebabSalah } from '@/isi/tka/pemuat';
 import { paketTka } from '@/isi/tka/paket';
 import { KepalaLayar } from '@/komponen/dasar';
@@ -33,9 +33,9 @@ export default function Pembahasan() {
                 Jawabanmu: {j.jawaban || '–'} · Kunci: {j.kunci}
               </Text>
               {sebab.map((s) => (
-                <TeksKaya key={s.pilihan} teks={`${s.pilihan}: ${s.alasan}`} ukuran={14} warnaTeks={warna.teksKedua} />
+                <TeksKaya key={s.pilihan} teks={`${s.pilihan}: ${alasanUntukAnak(s.alasan)}`} ukuran={14} warnaTeks={warna.teksKedua} />
               ))}
-              {j.kodeSalah && ARTI_KODE[j.kodeSalah] ? <Text style={{ fontFamily: huruf.anak, fontSize: 13, color: '#B86E00' }}>{ARTI_KODE[j.kodeSalah].split(' — ')[0]}</Text> : null}
+              {j.kodeSalah && SARAN_ANAK[j.kodeSalah] ? <Text style={{ fontFamily: huruf.anak, fontSize: 13, color: '#B86E00' }}>{SARAN_ANAK[j.kodeSalah]}</Text> : null}
               {b.pembahasan ? <TeksKaya teks={`Langkah: ${b.pembahasan}`} ukuran={14} /> : null}
             </View>
           );

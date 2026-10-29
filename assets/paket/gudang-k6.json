@@ -5122,7 +5122,7 @@
               },
               {
                 "id": "bi6-watak-tokoh-s4",
-                "bacaan": "Adik menumpahkan air di buku Rani. Rani menarik napas, lalu berkata, \"Tidak apa-apa, nanti kita jemur bersama.\"",
+                "bacaan": "Adik menumpahkan air ke buku Rani. Rani menarik napas, lalu berkata, \"Tidak apa-apa, nanti kita jemur bersama.\"",
                 "pertanyaan": "Watak Rani adalah …",
                 "bentuk": "pg",
                 "pilihan": [
@@ -5397,12 +5397,12 @@
                 "pertanyaan": "Latar waktu di awal cerita adalah …",
                 "bentuk": "pg",
                 "pilihan": [
-                  "Malam",
-                  "Pagi",
-                  "Sore",
-                  "Tengah malam"
+                  "malam",
+                  "pagi",
+                  "sore",
+                  "tengah malam"
                 ],
-                "kunci": "Pagi",
+                "kunci": "pagi",
                 "petunjuk": [
                   "Latar waktu menjawab kapan.",
                   "Lihat kalimat pertama.",
@@ -6199,7 +6199,7 @@
               },
               {
                 "id": "bi6-puisi-s4",
-                "bacaan": "Sawah Ayah kering retak / Padi layu tak bergerak / Ayah menatap langit diam / Menunggu hujan sejak malam",
+                "bacaan": "Sawah Ayah kering retak / Padi layu tak bergerak / Ayah duduk di pematang / Menunggu hujan sejak malam",
                 "pertanyaan": "Perasaan dalam puisi itu adalah …",
                 "bentuk": "pg",
                 "pilihan": [
@@ -6211,21 +6211,21 @@
                 "kunci": "cemas dan sedih",
                 "petunjuk": [
                   "Lingkari kata yang membawa perasaan.",
-                  "Ada kata kering retak, layu, dan diam.",
+                  "Ada kata kering retak dan layu.",
                   "Kata-kata itu membawa rasa senang atau sedih?"
                 ],
-                "pembahasan": "Sawah kering, padi layu, dan Ayah menatap langit diam membawa rasa cemas dan sedih.",
+                "pembahasan": "Sawah kering retak dan padi layu membawa rasa cemas dan sedih.",
                 "tingkat": "sedang"
               },
               {
                 "id": "bi6-puisi-s5",
-                "bacaan": "Sawah Ayah kering retak / Padi layu tak bergerak / Ayah menatap langit diam / Menunggu hujan sejak malam",
+                "bacaan": "Sawah Ayah kering retak / Padi layu tak bergerak / Ayah duduk di pematang / Menunggu hujan sejak malam",
                 "pertanyaan": "Larik yang menunjukkan Ayah berharap adalah …",
                 "bentuk": "pg",
                 "pilihan": [
                   "Sawah Ayah kering retak",
                   "Padi layu tak bergerak",
-                  "Ayah menatap langit diam",
+                  "Ayah duduk di pematang",
                   "Menunggu hujan sejak malam"
                 ],
                 "kunci": "Menunggu hujan sejak malam",

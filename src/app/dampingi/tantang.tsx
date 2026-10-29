@@ -35,11 +35,8 @@ export default function TantangAyah() {
       <View style={{ flex: 1, padding: 16, alignItems: 'center', justifyContent: 'center', gap: 16 }}>
         <Pinci ekspresi="merayakan" ukuran={130} />
         <Text style={{ fontFamily: huruf.judul, fontSize: 30, color: warna.hijauTua }}>Seru sekali!</Text>
-        <Text style={{ fontFamily: huruf.anak, fontSize: 20, color: warna.teks }}>
-          {HEWAN[anak.hewan].emoji} {anak.nama}: {'⭐'.repeat(bintang.anak)}
-        </Text>
-        <Text style={{ fontFamily: huruf.anak, fontSize: 20, color: warna.teks }}>
-          🧑 {sapaan}: {'⭐'.repeat(bintang.ortu)}
+        <Text style={{ fontFamily: huruf.anak, fontSize: 20, color: warna.teks, textAlign: 'center' }}>
+          {HEWAN[anak.hewan].emoji} {anak.nama} dan {sapaan} menjawab {bintang.anak + bintang.ortu} soal dengan tepat bersama!
         </Text>
         <Tombol label="Kembali ke menu" besar style={{ alignSelf: 'stretch' }} onPress={() => router.replace('/dampingi')} />
       </View>
@@ -58,7 +55,7 @@ export default function TantangAyah() {
         <View style={{ minWidth: 140, height: 76, borderRadius: 18, borderWidth: 3, borderColor: tampil === false ? warna.oranye : warna.hijauDaun, backgroundColor: warna.putih, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 }}>
           <Text style={{ fontFamily: huruf.anak, fontSize: 40, color: tampil === false ? warna.hijauTua : warna.teks }}>{tampil === false ? s.kunci : isian || '?'}</Text>
         </View>
-        {tampil !== null ? <Text style={{ fontFamily: huruf.anakTebal, fontSize: 18, color: tampil ? warna.hijauTua : '#B86E00' }}>{tampil ? 'Betul! ⭐' : `Jawabannya ${s.kunci}.`}</Text> : null}
+        {tampil !== null ? <Text style={{ fontFamily: huruf.anakTebal, fontSize: 18, color: tampil ? warna.hijauTua : '#B86E00' }}>{tampil ? 'Betul! 👏' : `Jawabannya ${s.kunci}.`}</Text> : null}
       </View>
       {tampil === null ? (
         <PapanAngka

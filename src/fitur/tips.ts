@@ -20,7 +20,7 @@ export const TIPS: KartuTips[] = [
   T(4, 'Tanya caranya', 'Saat anak salah, tanya "Bagaimana caramu tadi?" sebelum menjelaskan. Sering anak menemukan sendiri kesalahannya.'),
   T(5, 'Jangan langsung memberi jawaban', 'Beri satu petunjuk kecil dulu. Biarkan anak menyelesaikan langkah terakhirnya sendiri.'),
   T(6, 'Rekor sendiri, bukan teman', 'Bandingkan anak dengan dirinya kemarin, bukan dengan kakak atau temannya.'),
-  T(7, 'Waktu yang sama setiap hari', 'Pilih satu waktu tetap, misalnya setelah salat atau setelah makan sore, supaya latihan menjadi kebiasaan.'),
+  T(7, 'Waktu yang sama setiap hari', 'Pilih satu waktu tetap, misalnya setelah mandi sore atau setelah makan malam, supaya latihan menjadi kebiasaan.'),
   T(8, 'Istirahat itu bagian dari belajar', 'Setelah 15 menit, biarkan anak minum dan bergerak. Otak anak lebih segar setelah jeda.'),
   T(9, 'Game bukan hadiah', 'Hindari kalimat "kalau selesai belajar, boleh main". Cukup katakan waktu main datang setelah belajar, seperti istirahat di sekolah.'),
   T(10, 'Matikan layar sebelum tidur', 'Jauhkan HP satu jam sebelum tidur. Jam tenang di aplikasi membantu Ayah Bunda.'),

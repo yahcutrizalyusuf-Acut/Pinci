@@ -37,6 +37,9 @@ const TEMUAN_TERCATAT: Record<string, string> = {
   'B01-d05': 'laporan-mutu: sebagian bisa dijawab dari pengetahuan adat (diagnostik, bukan butir rapor)',
 };
 
+/** Istilah keagamaan yang dicari di bahan (aturan 9: belum ada isi keagamaan). */
+const ISTILAH_AGAMA = ['mengaji', 'meunasah', 'masjid', 'musala', 'salat', 'sholat', 'magrib', 'tarawih', 'Ramadan', 'Teungku', 'doa', 'berdoa', 'Allah', 'Al-Qur.an', 'zakat', 'Idulfitri', 'Iduladha', 'pesantren', 'dayah'];
+
 function daftarBerkas(folder: string, awalan: RegExp): string[] {
   return readdirSync(folder)
     .filter((n) => n.endsWith('.md') && awalan.test(n))
@@ -56,7 +59,8 @@ function semuaButirTopik(t: Topik): Butir[] {
   return [...t.diagnostik, ...t.kuis, ...t.terbimbing, ...t.soalKelas, ...t.soalCadangan, ...t.tiket];
 }
 
-function utama(): void {
+/** Bangun paket dari bahan. `tulis: false` hanya mengembalikan paket (dipakai uji, tanpa menulis berkas). */
+export function utama(opsi: { tulis: boolean } = { tulis: true }): PaketTka {
   const masalah: MasalahBaca[] = [];
   const catatanStimulus: string[] = [];
   const sumberIsi: string[] = [];
@@ -118,6 +122,23 @@ function utama(): void {
     const t = TEMUAN_TERCATAT[b.id];
     if (t) b.catatan = [...(b.catatan ?? []), t];
   }
+  // ── istilah keagamaan (CLAUDE.md aturan 9): bahan tidak diubah; butir/teks ditandai untuk keputusan Acut ──
+  const tandaiAgama = (isi: string): string[] => ISTILAH_AGAMA.filter((k) => new RegExp(`\\b${k}\\b`, 'i').test(isi));
+  const catatanAgama = (kata: string[]) => `memuat istilah keagamaan (${kata.join(', ')}); bahan asli tidak diubah, menunggu keputusan Acut (CLAUDE.md aturan 9)`;
+  for (const b of semuaButir) {
+    const kata = tandaiAgama(JSON.stringify([b.stimulus, b.pertanyaan, b.pilihan]));
+    if (kata.length) {
+      b.status = 'perlu_dicek';
+      b.catatan = [...(b.catatan ?? []), catatanAgama(kata)];
+    }
+  }
+  for (const t of teks) {
+    const kata = tandaiAgama(JSON.stringify(t.isi));
+    if (kata.length) {
+      t.status = 'perlu_dicek';
+      t.catatan = [catatanAgama(kata)];
+    }
+  }
   const tercatatTidakKetemu = Object.keys(TEMUAN_TERCATAT).filter((id) => !semuaButir.some((b) => b.id === id));
 
   // ── pemeriksa kunci ──
@@ -144,8 +165,10 @@ function utama(): void {
     simulasi,
     teks,
   };
-  mkdirSync(join(AKAR, 'assets', 'paket'), { recursive: true });
-  writeFileSync(KELUAR_JSON, `${JSON.stringify(paket, null, 2)}\n`, 'utf8');
+  if (opsi.tulis) {
+    mkdirSync(join(AKAR, 'assets', 'paket'), { recursive: true });
+    writeFileSync(KELUAR_JSON, `${JSON.stringify(paket, null, 2)}\n`, 'utf8');
+  }
 
   // ── laporan ──
   const L: string[] = [];
@@ -361,12 +384,25 @@ function utama(): void {
     '- Kuis, terbimbing, tiket, dan diagnostik ikut diimpor (terpisah dari soal halaman 5); rancangan menyatakan tiket tetap di kertas, jadi aplikasi boleh tidak menampilkannya.',
     '',
   );
+  if (!opsi.tulis) return paket;
+  const butirAgama = semuaButir.filter((x) => (x.catatan ?? []).some((c) => c.includes('istilah keagamaan')));
+  const teksAgama = teks.filter((t) => t.status === 'perlu_dicek');
+  L.push(
+    '## 8. Istilah keagamaan (menunggu keputusan Acut)',
+    '',
+    `CLAUDE.md aturan 9: belum ada isi keagamaan. Bahan asli **tidak diubah**. ${butirAgama.length} butir dan ${teksAgama.length} teks yang memuat istilah keagamaan diberi status \`perlu_dicek\`. Aplikasi tidak memakainya di Jalur Mandiri, mini try out, dan putaran Baca Ulang otomatis; simulasi tetap utuh 30 butir.`,
+    '',
+    `- Teks: ${teksAgama.map((t) => `${t.id} (${(t.catatan ?? [''])[0].replace(/^memuat istilah keagamaan \(([^)]*)\).*$/, '$1')})`).join(', ') || '—'}`,
+    `- Butir: ${butirAgama.map((x) => x.id).join(', ') || '—'}`,
+    '',
+  );
   writeFileSync(KELUAR_LAPORAN, `${L.join('\n')}\n`, 'utf8');
 
   console.log(
     `Selesai: ${topik.length} topik, ${simulasi.length} simulasi, ${teks.length} teks, ${semuaButir.length} butir ` +
       `(gagal ${gagal.length}, peringatan ${peringatan.length}); kunci dihitung ulang ${berhasil}/${mat.length}, temuan ${temuanSemua.length}.`,
   );
+  return paket;
 }
 
-utama();
+if (require.main === module) utama();

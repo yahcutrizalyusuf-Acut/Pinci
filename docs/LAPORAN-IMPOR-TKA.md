@@ -209,3 +209,10 @@ Di luar butir: bantahan guru SD untuk M02 (`bantahan-M02-guru-sd.md`) — peruba
 - **Stimulus bersama simulasi** disalin ke setiap butirnya (`grupStimulus` menandai butir yang berbagi teks), supaya butir bisa dipakai sendiri.
 - Kuis, terbimbing, tiket, dan diagnostik ikut diimpor (terpisah dari soal halaman 5); rancangan menyatakan tiket tetap di kertas, jadi aplikasi boleh tidak menampilkannya.
 
+## 8. Istilah keagamaan (menunggu keputusan Acut)
+
+CLAUDE.md aturan 9: belum ada isi keagamaan. Bahan asli **tidak diubah**. 63 butir dan 10 teks yang memuat istilah keagamaan diberi status `perlu_dicek`. Aplikasi tidak memakainya di Jalur Mandiri, mini try out, dan putaran Baca Ulang otomatis; simulasi tetap utuh 30 butir.
+
+- Teks: T03 (magrib), T04 (Idulfitri), T06 (mengaji, meunasah, salat, tarawih, Ramadan, Teungku), T10 (Ramadan), T17 (meunasah, salat, Teungku), T20 (magrib), T26 (mengaji), T28 (meunasah), T30 (meunasah), T31 (meunasah)
+- Butir: M11-k12, M11-k11, M12-k11, M13-k11, M14-k09, M15-k09, M16-k05, M16-k12, M17-k09, M21-kz2, M22-kz1, M24-tk3, B01-d01, B01-d02, B01-d03, B01-d04, B01-d05, B01-k05, B02-kz3, B02-k12, B03-kz3, B03-k02, B03-k03, B03-tk1, B04-tb1, B04-k03, B04-k12, B05-kz3, B05-tb1, B05-k02, B05-tk1, B06-k05, B06-k09, B06-k12, B07-k09, B07-k12, B09-k11, B10-k05, B10-k12, B11-tb1, B11-tk2, B12-k08, B12-k03, S1-13, S1-18, S2-02, S2-15, S2-16, S2-17, S3-09, S3-25, S4-14, S5-11, S5-12, S5-13, S5-14, S5-15, S5-16, S5-17, S5-18, T06-q1, T06-q2, T31-q2
+

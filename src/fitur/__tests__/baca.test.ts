@@ -20,8 +20,11 @@ test('teks berikut: urut, lalu yang paling lama', () => {
   expect(teksBerikut(paketTka.teks, []).id).toBe('T01');
   expect(teksBerikut(paketTka.teks, [s('T01', '2026-11-01')]).id).toBe('T02');
   const semua = paketTka.teks.map((t, i) => s(t.id, `2026-11-${String(i + 1).padStart(2, '0')}`));
-  semua[5] = s('T06', '2026-10-01');
-  expect(teksBerikut(paketTka.teks, semua).id).toBe('T06');
+  semua[6] = s('T07', '2026-10-01');
+  expect(teksBerikut(paketTka.teks, semua).id).toBe('T07');
+  // teks yang menunggu keputusan (istilah keagamaan) tidak masuk putaran otomatis
+  semua[5] = s('T06', '2026-09-01');
+  expect(teksBerikut(paketTka.teks, semua).id).toBe('T07');
 });
 
 test('36 teks punya isi paragraf yang bisa dipecah', () => {

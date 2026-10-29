@@ -56,7 +56,7 @@ export default function WaktuMain() {
     if (!data) return null;
     switch (data.status.jenis) {
       case 'tunggu_inti':
-        return { judul: 'Belajar dulu, ya', teks: `Waktu main datang setelah belajar hari ini, seperti istirahat di sekolah. Yang belum: ${data.h.sisa.join(', ')}.` };
+        return { judul: 'Sebentar lagi, ya', teks: 'Waktu main datang sesudah belajar hari ini, seperti istirahat di sekolah.' };
       case 'habis':
         return { judul: 'Waktu main hari ini sudah selesai', teks: 'Sampai besok, ya!' };
       case 'mati':

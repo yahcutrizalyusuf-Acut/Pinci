@@ -251,10 +251,11 @@ export class Repositori {
 
   async pengaturan(anakId: string): Promise<PengaturanWaktu> {
     const p = await this.gudang.ambil('pengaturan_waktu', anakId);
-    if (p) return p;
     const anak = await this.anak(anakId);
     if (!anak) throw new Error('Anak tidak ditemukan');
-    return this.pengaturanBawaan(anak);
+    if (!p) return this.pengaturanBawaan(anak);
+    // Batas 10 menit × kelas tetap berlaku walau kelas anak diubah setelah pengaturan disimpan.
+    return { ...p, belajarMenit: Math.min(p.belajarMenit, batasBelajarBawaan(anak.kelas)) };
   }
 
   async aturPengaturan(p: PengaturanWaktu) {

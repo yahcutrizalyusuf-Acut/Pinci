@@ -196,9 +196,9 @@ const ISI: Isian[] = [
     c('5 ditaruh di antara 2 dan 3.', '23 × 11', '2 + 3 = [5]', '23 × 11 = {253}'),
   ]],
   // ---------- kelas 6 ----------
-  [6, 1, 'akar mencari angka yang dikali dirinya sendiri.', 'Kuadrat dan akar saling membalik.', [
+  [6, 1, 'kuadrat: angka dikali dirinya sendiri; akar adalah kebalikannya.', 'Kuadrat dan akar saling membalik.', [
     c('Angka berapa dikali dirinya jadi 144?', '√144', '[12] × 12 = 144', '√144 = {12}'),
-    c('Berakhiran 5: 1 × 2 = 2, lalu tempel 25.', '15²', '1 × 2 = [2]', '15² = {225}'),
+    c('Berakhiran 5: angka depan 1 dikali angka sesudahnya 2, hasilnya 2, lalu tempel 25.', '15²', '1 × 2 = [2]', '15² = {225}'),
     c(null, '√81', '[9] × 9 = 81', '√81 = {9}'),
   ]],
   [6, 2, 'ubah dulu ke per seratus.', 'Persen artinya per seratus.', [

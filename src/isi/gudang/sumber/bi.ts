@@ -35,7 +35,7 @@ const PUISI_HUJAN =
   'Hujan turun di atap rumah / Tik tik tik bernyanyi ramah / Adik tertawa di jendela / Pelangi datang membawa warna';
 
 const PUISI_SAWAH =
-  'Sawah Ayah kering retak / Padi layu tak bergerak / Ayah menatap langit diam / Menunggu hujan sejak malam';
+  'Sawah Ayah kering retak / Padi layu tak bergerak / Ayah duduk di pematang / Menunggu hujan sejak malam';
 
 export const KARTU_BI: KartuMentah[] = [
   {
@@ -412,7 +412,7 @@ export const KARTU_BI: KartuMentah[] = [
         1,
         ['Lihat ucapan Rani saat bukunya basah.', 'Rani berkata "Tidak apa-apa".', 'Rani tidak marah. Sifat apa itu?'],
         'Rani menahan diri dan mengajak menjemur buku bersama. Itu tanda sabar.',
-        { bacaan: 'Adik menumpahkan air di buku Rani. Rani menarik napas, lalu berkata, "Tidak apa-apa, nanti kita jemur bersama."' },
+        { bacaan: 'Adik menumpahkan air ke buku Rani. Rani menarik napas, lalu berkata, "Tidak apa-apa, nanti kita jemur bersama."' },
       ),
       pg(
         'Kalimat yang paling menunjukkan watak jujur adalah …',
@@ -536,7 +536,7 @@ export const KARTU_BI: KartuMentah[] = [
       ),
       pg(
         'Latar waktu di awal cerita adalah …',
-        ['Malam', 'Pagi', 'Sore', 'Tengah malam'],
+        ['malam', 'pagi', 'sore', 'tengah malam'],
         1,
         ['Latar waktu menjawab kapan.', 'Lihat kalimat pertama.', 'Kalimat pertama dimulai dengan "Pagi itu".'],
         'Kalimat pertama menyebut "Pagi itu".',
@@ -875,13 +875,13 @@ export const KARTU_BI: KartuMentah[] = [
         'Perasaan dalam puisi itu adalah …',
         ['riang', 'cemas dan sedih', 'bangga', 'lucu'],
         1,
-        ['Lingkari kata yang membawa perasaan.', 'Ada kata kering retak, layu, dan diam.', 'Kata-kata itu membawa rasa senang atau sedih?'],
-        'Sawah kering, padi layu, dan Ayah menatap langit diam membawa rasa cemas dan sedih.',
+        ['Lingkari kata yang membawa perasaan.', 'Ada kata kering retak dan layu.', 'Kata-kata itu membawa rasa senang atau sedih?'],
+        'Sawah kering retak dan padi layu membawa rasa cemas dan sedih.',
         { bacaan: PUISI_SAWAH },
       ),
       pg(
         'Larik yang menunjukkan Ayah berharap adalah …',
-        ['Sawah Ayah kering retak', 'Padi layu tak bergerak', 'Ayah menatap langit diam', 'Menunggu hujan sejak malam'],
+        ['Sawah Ayah kering retak', 'Padi layu tak bergerak', 'Ayah duduk di pematang', 'Menunggu hujan sejak malam'],
         3,
         ['Berharap berarti menginginkan sesuatu datang.', 'Apa yang diinginkan Ayah untuk sawahnya?', 'Cari larik yang memuat kata menunggu.'],
         'Larik "Menunggu hujan sejak malam" menunjukkan Ayah berharap hujan turun.',

@@ -30,9 +30,11 @@ export function pecahKata(isi: string): string[] {
 export function teksBerikut(semua: Teks[], sesiBaca: Sesi[]): Teks {
   const dibaca = new Map<string, string>();
   for (const s of sesiBaca) if (s.rujukan) dibaca.set(s.rujukan, s.mulai);
-  const belum = semua.find((t) => !dibaca.has(t.id));
+  // Teks yang menunggu keputusan (istilah keagamaan) tidak dipakai di putaran otomatis.
+  const pakai = semua.filter((t) => t.status !== 'perlu_dicek');
+  const belum = pakai.find((t) => !dibaca.has(t.id));
   if (belum) return belum;
-  return [...semua].sort((a, b) => (dibaca.get(a.id) ?? '').localeCompare(dibaca.get(b.id) ?? ''))[0];
+  return [...pakai].sort((a, b) => (dibaca.get(a.id) ?? '').localeCompare(dibaca.get(b.id) ?? ''))[0];
 }
 
 /** Rekor kpm bacaan dingin yang sah. */
