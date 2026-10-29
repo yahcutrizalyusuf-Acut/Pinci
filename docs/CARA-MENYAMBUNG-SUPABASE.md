@@ -1,5 +1,12 @@
 # Cara Menyambung Supabase
 
+> **Status 29 Okt 2026: sudah tersambung.**
+>
+> - Proyek: `pintar-main` di organisasi Pintar Main, region Southeast Asia (Singapore), alamat `https://nammubdjdjznpyodroel.supabase.co`.
+> - Skema awal dan uji RLS sudah dijalankan, dan uji RLS lulus.
+> - Masuk lewat email memakai kode 6 angka yang berlaku 10 menit, dikirim lewat SMTP Brevo. Uji kirim sudah sampai ke kotak masuk.
+> - Variabel GitHub sudah diisi: `EXPO_PUBLIC_DATA_MODE=supabase`, URL, dan anon key. APK dari proses Bangun APK sekarang memakai Supabase.
+
 Saat ini aplikasi berjalan **lokal**: semua data tersimpan di HP, tidak dikirim ke mana pun. Kalau nanti ingin orang tua melihat hasil anak dari HP lain, sambungkan ke Supabase dengan langkah di bawah. Kodenya sudah siap. Acut hanya perlu membuat proyek, mengisi dua kunci, dan mengubah satu saklar.
 
 ## Yang perlu disiapkan
