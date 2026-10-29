@@ -64,10 +64,14 @@ export default function AkhirLembar() {
           </View>
         </View>
         <View style={{ backgroundColor: warna.putih, borderRadius: 24, padding: 20, gap: 10 }}>
-          <Text style={{ fontFamily: huruf.anak, color: warna.teks }}>
-            <Text style={{ fontFamily: huruf.judul, fontSize: 48 }}>{hasil.benar}</Text>
-            <Text style={{ fontSize: 22 }}>  dari {hasil.jumlah} benar</Text>
-          </Text>
+          {penempatan ? (
+            <Text style={{ fontFamily: huruf.judulTebal, fontSize: 22, color: warna.teks }}>Pinci sudah menemukan level yang pas untukmu.</Text>
+          ) : (
+            <Text style={{ fontFamily: huruf.anak, color: warna.teks }}>
+              <Text style={{ fontFamily: huruf.judul, fontSize: 48 }}>{hasil.benar}</Text>
+              <Text style={{ fontSize: 22 }}>  dari {hasil.jumlah} benar</Text>
+            </Text>
+          )}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
             <Ikon nama="jam" ukuran={22} />
             <Text style={{ fontFamily: huruf.anak, fontSize: 18, color: warna.teks }}>{formatDurasi(hasil.detik)}</Text>

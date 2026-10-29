@@ -4,6 +4,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useData, useMuat } from '@/data/konteks';
+import { modeData } from '@/data/sinkron';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { hariIni } from '@/fitur/hari-ini';
 import { paketLengkap, tkaTerbuka } from '@/fitur/konfig';
@@ -38,7 +39,7 @@ export default function BerandaBelajar() {
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: 44 }}>
           <Logo />
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            {data && data.antre > 0 ? (
+            {data && data.antre > 0 && modeData() === 'supabase' ? (
               <View accessibilityLabel="Ada hasil yang belum terkirim" style={{ padding: 8, opacity: 0.6 }}>
                 <Ikon nama="awan" ukuran={20} warna={warna.teksKedua} />
               </View>
