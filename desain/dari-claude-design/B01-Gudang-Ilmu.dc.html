@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Gudang Ilmu</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Andika:wght@400;700&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+button { cursor: pointer; }
+</style>
+</helmet>
+<div style="width: 360px; height: 800px; box-sizing: border-box; background: #FFF6E5; font-family: 'Andika', sans-serif; color: #2D3142; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="flex: none; padding: 12px 16px 8px; display: flex; flex-direction: column; gap: 10px;">
+    <h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px;">Gudang Ilmu</h1>
+    <div style="display: flex; gap: 8px;" role="tablist">
+      <sc-if value="{{ isMath }}" hint-placeholder-val="{{ true }}">
+        <button type="button" role="tab" aria-selected="true" style="flex: 1; height: 48px; border: none; border-radius: 14px; background: #3A86FF; color: #FFFFFF; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 16px;">Matematika</button>
+        <button type="button" role="tab" aria-selected="false" onClick="{{ toBI }}" style="flex: 1; height: 48px; border: 2px solid #F3C9C9; border-radius: 14px; background: #FFFFFF; color: #B03C3C; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 16px;">B. Indonesia</button>
+      </sc-if>
+      <sc-if value="{{ isBI }}" hint-placeholder-val="{{ false }}">
+        <button type="button" role="tab" aria-selected="false" onClick="{{ toMath }}" style="flex: 1; height: 48px; border: 2px solid #C7DBFF; border-radius: 14px; background: #FFFFFF; color: #2A5DB0; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 16px;">Matematika</button>
+        <button type="button" role="tab" aria-selected="true" style="flex: 1; height: 48px; border: none; border-radius: 14px; background: #E85D5D; color: #FFFFFF; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 16px;">B. Indonesia</button>
+      </sc-if>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #5B6072;">
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #2E9E5B;"></span>Kuasai</span>
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #FFFFFF; border: 3px solid #2D3142; box-sizing: border-box;"></span>Belajar</span>
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; border: 2px dashed #9A917E; box-sizing: border-box;"></span>Belum</span>
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #E2DACA;"></span>Segera</span>
+    </div>
+  </div>
+
+  <div style="flex: 1; min-height: 0; position: relative; overflow: hidden;">
+    <svg width="360" height="560" viewBox="0 0 360 560" aria-hidden="true" style="position: absolute; left: 0; top: 0;">
+      <circle cx="320" cy="40" r="26" fill="#9FD8B4"/>
+      <circle cx="30" cy="250" r="30" fill="#9FD8B4"/>
+      <circle cx="335" cy="330" r="24" fill="#CDEBD8"/>
+      <circle cx="28" cy="470" r="22" fill="#CDEBD8"/>
+      <path d="M0 520 Q80 500 140 525 T360 515 V560 H0 Z" fill="#BFE3F7"/>
+      <path d="M100 500 C 160 470, 250 470, 260 420 S 110 360, 110 320 S 250 260, 260 220 S 120 150, 120 120 S 230 60, 240 40" stroke="#EAD9B6" stroke-width="30" fill="none" stroke-linecap="round"/>
+      <path d="M100 500 C 160 470, 250 470, 260 420 S 110 360, 110 320 S 250 260, 260 220 S 120 150, 120 120 S 230 60, 240 40" stroke="#F7EBD2" stroke-width="3" stroke-dasharray="2 12" fill="none" stroke-linecap="round"/>
+      <circle cx="300" cy="150" r="5" fill="#FF9F1C"/>
+      <circle cx="60" cy="390" r="5" fill="#E85D5D"/>
+    </svg>
+
+    <sc-if value="{{ isMath }}" hint-placeholder-val="{{ true }}">
+      <div style="position: absolute; left: 60px; top: 440px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #2E9E5B; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 0 #1F7A4D;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span style="font-size: 14px; font-weight: 700; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Perkalian</span>
+      </div>
+      <div style="position: absolute; left: 212px; top: 352px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #2E9E5B; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 0 #1F7A4D;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span style="font-size: 14px; font-weight: 700; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Pembagian</span>
+      </div>
+      <a href="B02-Kartu-Ilmu.dc.html" style="position: absolute; left: 56px; top: 262px; width: 104px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-decoration: none; color: #2D3142;">
+        <span style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; border: 5px solid #3A86FF; box-sizing: border-box; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 0 #2A5DB0;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#3A86FF" stroke-width="2.2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="#3A86FF"/></svg></span>
+        <span style="font-size: 14px; font-weight: 700; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Pecahan Senilai</span>
+        <span style="font-size: 12px; color: #2A5DB0;">Lanjutkan</span>
+      </a>
+      <div style="position: absolute; left: 212px; top: 182px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px dashed #9A917E; box-sizing: border-box;"></span>
+        <span style="font-size: 14px; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">KPK dan FPB</span>
+      </div>
+      <div style="position: absolute; left: 72px; top: 92px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px dashed #9A917E; box-sizing: border-box;"></span>
+        <span style="font-size: 14px; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Sudut</span>
+      </div>
+      <div style="position: absolute; left: 192px; top: 8px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #E2DACA; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#8A8270" stroke-width="2"/><path d="M12 8v4l3 2" stroke="#8A8270" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span style="font-size: 12px; font-weight: 700; color: #5B6072; background: #E6E9F0; border-radius: 999px; padding: 1px 8px;">Segera</span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isBI }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 60px; top: 440px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #2E9E5B; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 0 #1F7A4D;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span style="font-size: 14px; font-weight: 700; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Membaca lancar</span>
+      </div>
+      <a href="B03-Baca-Ulang.dc.html" style="position: absolute; left: 208px; top: 344px; width: 104px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-decoration: none; color: #2D3142;">
+        <span style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; border: 5px solid #E85D5D; box-sizing: border-box; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 0 #B03C3C;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#E85D5D" stroke-width="2.2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="#E85D5D"/></svg></span>
+        <span style="font-size: 14px; font-weight: 700; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Ide pokok</span>
+        <span style="font-size: 12px; color: #B03C3C;">Lanjutkan</span>
+      </a>
+      <div style="position: absolute; left: 60px; top: 262px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px dashed #9A917E; box-sizing: border-box;"></span>
+        <span style="font-size: 14px; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Kata baku</span>
+      </div>
+      <div style="position: absolute; left: 212px; top: 182px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; border: 2px dashed #9A917E; box-sizing: border-box;"></span>
+        <span style="font-size: 14px; text-align: center; background: #FFF6E5; border-radius: 8px; padding: 0 4px;">Puisi</span>
+      </div>
+      <div style="position: absolute; left: 72px; top: 92px; width: 96px; display: flex; flex-direction: column; align-items: center; gap: 2px;">
+        <span style="width: 64px; height: 64px; border-radius: 50%; background: #E2DACA; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#8A8270" stroke-width="2"/><path d="M12 8v4l3 2" stroke="#8A8270" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span style="font-size: 12px; font-weight: 700; color: #5B6072; background: #E6E9F0; border-radius: 999px; padding: 1px 8px;">Segera</span>
+      </div>
+    </sc-if>
+  </div>
+
+  <nav aria-label="Menu utama" style="height: 64px; flex: none; display: flex; background: #FFFFFF; border-top: 1px solid #F1E6CF;">
+    <a href="A03-Beranda-Belajar.dc.html" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" stroke="#6B6F80" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span style="font-size: 13px; color: #5B6072;">Belajar</span>
+    </a>
+    <a href="B01-Gudang-Ilmu.dc.html" aria-current="page" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <span style="padding: 2px 16px; border-radius: 999px; background: #D9F0E2; display: flex;"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19.5V5a2 2 0 0 1 2-2h12v14H7a2 2 0 0 0-2 2.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19" fill="#1F7A4D" stroke="#1F7A4D" stroke-width="2" stroke-linejoin="round"/></svg></span>
+      <span style="font-size: 13px; color: #1F7A4D; font-weight: 700;">Gudang Ilmu</span>
+    </a>
+    <a href="G01-Waktu-Main.dc.html" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#6B6F80" stroke-width="2"/><circle cx="9" cy="9" r="1.4" fill="#6B6F80"/><circle cx="15" cy="15" r="1.4" fill="#6B6F80"/><circle cx="12" cy="12" r="1.4" fill="#6B6F80"/></svg>
+      <span style="font-size: 13px; color: #5B6072;">Main</span>
+    </a>
+    <a href="A08-Pesan.dc.html" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke="#6B6F80" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span style="font-size: 13px; color: #5B6072;">Pesan</span>
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'math' };
+  }
+  renderVals() {
+    const t = this.state.tab;
+    return {
+      isMath: t === 'math',
+      isBI: t === 'bi',
+      toMath: () => this.setState({ tab: 'math' }),
+      toBI: () => this.setState({ tab: 'bi' })
+    };
+  }
+}
+</script>
+</body>
+</html>

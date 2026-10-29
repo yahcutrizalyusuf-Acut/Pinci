@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Kelola guru</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+button { cursor: pointer; }
+input[type=radio] { accent-color: #1F7A4D; }
+input::placeholder { color: #868C9E; }
+</style>
+</helmet>
+<div style="width: 360px; height: 800px; box-sizing: border-box; background: #F5F7FA; font-family: 'Nunito', sans-serif; color: #2D3142; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="height: 56px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 12px 0 4px; background: #FFFFFF;">
+    <a href="P08-Bimbingan.dc.html" aria-label="Kembali ke Bimbingan" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px;">Kelola guru</h1>
+  </div>
+
+  <div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding: 14px 16px 16px;">
+
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-weight: 800; font-size: 16px;">Undang guru</div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="email-guru" style="font-size: 14px; color: #5B6072; font-weight: 700;">Email guru</label>
+        <input id="email-guru" type="email" placeholder="nama@sekolah.sch.id" value="{{ email }}" onChange="{{ onEmail }}" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #D9DDE6; border-radius: 12px; font-family: 'Nunito', sans-serif; font-size: 16px; color: #2D3142; background: #FFFFFF;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: 14px; color: #5B6072; font-weight: 700;">Jenis akses</span>
+        <label style="display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid #E6E9F0; border-radius: 12px;">
+          <input type="radio" name="jenis-guru" checked="{{ isSekolah }}" onChange="{{ pickSekolah }}" style="width: 20px; height: 20px; margin: 1px 0 0;">
+          <span style="display: flex; flex-direction: column;"><span style="font-weight: 700; font-size: 15px;">Guru sekolah</span><span style="font-size: 13px; color: #5B6072;">Bisa melihat rapor dan memberi komentar</span></span>
+        </label>
+        <label style="display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid #E6E9F0; border-radius: 12px;">
+          <input type="radio" name="jenis-guru" checked="{{ isLes }}" onChange="{{ pickLes }}" style="width: 20px; height: 20px; margin: 1px 0 0;">
+          <span style="display: flex; flex-direction: column;"><span style="font-weight: 700; font-size: 15px;">Guru les</span><span style="font-size: 13px; color: #5B6072;">Bisa memberi tugas dan catatan</span></span>
+        </label>
+      </div>
+      <button type="button" onClick="{{ invite }}" style="height: 48px; border: none; border-radius: 14px; background: #3BB273; color: #2D3142; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 16px;">Kirim undangan</button>
+    </div>
+
+    <div style="font-weight: 800; font-size: 15px; padding-top: 2px;">Guru yang terhubung</div>
+    <sc-for list="{{ teachers }}" as="t" hint-placeholder-count="2">
+      <div style="background: #FFFFFF; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: #E4F4EB; color: #1F7A4D; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; flex: none;">{{ t.initial }}</span>
+          <span style="flex: 1; min-width: 0; display: flex; flex-direction: column;">
+            <span style="font-weight: 700; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ t.name }}</span>
+            <span style="font-size: 13px; color: #5B6072;">{{ t.kind }}</span>
+          </span>
+          <sc-if value="{{ t.isAllowed }}" hint-placeholder-val="{{ true }}"><span style="padding: 3px 8px; border-radius: 999px; background: #E4F4EB; color: #1F7A4D; font-size: 12px; font-weight: 800;">Diizinkan</span></sc-if>
+          <sc-if value="{{ t.isPending }}" hint-placeholder-val="{{ false }}"><span style="padding: 3px 8px; border-radius: 999px; background: #FFF0D9; color: #8A5200; font-size: 12px; font-weight: 800;">Menunggu</span></sc-if>
+          <sc-if value="{{ t.isRevoked }}" hint-placeholder-val="{{ false }}"><span style="padding: 3px 8px; border-radius: 999px; background: #E6E9F0; color: #5B6072; font-size: 12px; font-weight: 800;">Dicabut</span></sc-if>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <sc-if value="{{ t.canAllow }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ t.allow }}" style="height: 40px; padding: 0 18px; border: none; border-radius: 12px; background: #3BB273; color: #2D3142; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px;">Izinkan</button>
+          </sc-if>
+          <sc-if value="{{ t.canRevoke }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ t.revoke }}" style="height: 40px; padding: 0 18px; border: 1px solid #D9DDE6; border-radius: 12px; background: #FFFFFF; color: #2D3142; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px;">Cabut</button>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      kind: 'sekolah',
+      list: [
+        { name: 'Bu Rahmi', kind: 'Guru sekolah · lihat + komentar', status: 'allowed' },
+        { name: 'Pak Fajar', kind: 'Guru les · tugas + catatan', status: 'pending' }
+      ]
+    };
+  }
+  setStatus(i, status) {
+    const list = this.state.list.map((t, j) => (j === i ? { ...t, status: status } : t));
+    this.setState({ list: list });
+  }
+  renderVals() {
+    const s = this.state;
+    return {
+      email: s.email,
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      isSekolah: s.kind === 'sekolah',
+      isLes: s.kind === 'les',
+      pickSekolah: () => this.setState({ kind: 'sekolah' }),
+      pickLes: () => this.setState({ kind: 'les' }),
+      invite: () => {
+        const e = s.email.trim();
+        if (!e) return;
+        const kind = s.kind === 'sekolah' ? 'Guru sekolah · lihat + komentar' : 'Guru les · tugas + catatan';
+        this.setState({ email: '', list: s.list.concat([{ name: e, kind: kind, status: 'pending' }]) });
+      },
+      teachers: s.list.map((t, i) => ({
+        name: t.name,
+        kind: t.kind,
+        initial: t.name.replace(/^(Bu|Pak) /, '').charAt(0).toUpperCase(),
+        isAllowed: t.status === 'allowed',
+        isPending: t.status === 'pending',
+        isRevoked: t.status === 'revoked',
+        canAllow: t.status !== 'allowed',
+        canRevoke: t.status !== 'revoked',
+        allow: () => this.setStatus(i, 'allowed'),
+        revoke: () => this.setStatus(i, 'revoked')
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

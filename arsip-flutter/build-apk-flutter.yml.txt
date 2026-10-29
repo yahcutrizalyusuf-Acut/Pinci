@@ -1,0 +1,48 @@
+name: Bangun APK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      # Folder android/ dibuat otomatis kalau belum ada (file yang sudah ada tidak ditimpa).
+      - name: Siapkan folder Android
+        run: |
+          flutter create --org id.kanalcyber --project-name pintar_main --platforms android .
+          sed -i 's/android:label="pintar_main"/android:label="Pintar Main"/' android/app/src/main/AndroidManifest.xml
+
+      - name: Ambil paket
+        run: flutter pub get
+
+      - name: Periksa kode
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      - name: Uji
+        run: flutter test
+
+      - name: Bangun APK
+        run: flutter build apk --release
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pintar-main-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 14

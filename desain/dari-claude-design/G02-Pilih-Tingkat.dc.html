@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Pilih tingkat game</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Andika:wght@400;700&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+.pm-empuk { transition: transform 280ms cubic-bezier(.34,1.56,.64,1); }
+.pm-empuk:active { transform: scale(0.95); }
+</style>
+</helmet>
+<div style="width: 360px; height: 800px; box-sizing: border-box; background: #FFF6E5; font-family: 'Andika', sans-serif; color: #2D3142; display: flex; flex-direction: column; padding: 12px 16px 32px; gap: 20px; overflow: hidden;">
+
+  <div style="display: flex; align-items: center; gap: 10px; height: 56px;">
+    <a href="G01-Waktu-Main.dc.html" aria-label="Kembali ke peta" style="width: 48px; height: 48px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <h1 style="flex: 1; margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 26px;">Pasar Gampong</h1>
+    <svg width="72" height="44" viewBox="0 0 72 44" role="img" aria-label="Sisa waktu main masih banyak">
+      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#E6D5B0" stroke-width="3" stroke-dasharray="3 5" fill="none" stroke-linecap="round"/>
+      <circle cx="19" cy="19" r="9" fill="#FFC93C" stroke="#F0A500" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div style="font-size: 22px; text-align: center;">Mau main yang mana?</div>
+
+  <a href="G03-Pasar-Gampong.dc.html" class="pm-empuk" style="height: 240px; border-radius: 28px; background: #E4F4EB; border: 3px solid #9FD8B4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-decoration: none; color: #2D3142; box-shadow: 0 4px 0 #9FD8B4;">
+    <svg width="120" height="96" viewBox="0 0 120 96" aria-hidden="true">
+      <ellipse cx="60" cy="58" rx="40" ry="26" fill="#3BB273" stroke="#1F7A4D" stroke-width="3"/>
+      <path d="M32 52 Q60 30 88 52" stroke="#1F7A4D" stroke-width="2.5" fill="none"/>
+      <path d="M44 40 L52 60 M76 40 L68 60 M60 34 V60" stroke="#1F7A4D" stroke-width="2.5"/>
+      <circle cx="104" cy="54" r="11" fill="#9CD3A8" stroke="#1F7A4D" stroke-width="3"/>
+      <circle cx="107" cy="51" r="2.5" fill="#2D3142"/>
+      <path d="M30 80 v8 M90 80 v8" stroke="#1F7A4D" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 32px; line-height: 1;">Santai</span>
+    <span style="font-size: 18px; color: #2E6B4A;">Pelan-pelan, angka kecil</span>
+  </a>
+
+  <a href="G03-Pasar-Gampong.dc.html" class="pm-empuk" style="height: 240px; border-radius: 28px; background: #FFF0D9; border: 3px solid #FFD08A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-decoration: none; color: #2D3142; box-shadow: 0 4px 0 #FFD08A;">
+    <svg width="120" height="96" viewBox="0 0 120 96" aria-hidden="true">
+      <ellipse cx="56" cy="56" rx="34" ry="18" fill="#C98B55" stroke="#6B4423" stroke-width="3"/>
+      <path d="M30 70 L22 90 M44 72 L42 90 M70 72 L74 90 M82 68 L92 88" stroke="#6B4423" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="94" cy="36" r="14" fill="#C98B55" stroke="#6B4423" stroke-width="3"/>
+      <path d="M88 22 L82 6 M100 22 L106 6 M84 12 L78 10 M104 12 L110 10" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="98" cy="34" r="2.5" fill="#2D3142"/>
+      <path d="M8 40 h12 M4 52 h14 M10 64 h10" stroke="#FF9F1C" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 32px; line-height: 1;">Seru</span>
+    <span style="font-size: 18px; color: #8A5200;">Lebih banyak, angka besar</span>
+  </a>
+
+  <div style="flex: 1;"></div>
+  <div style="font-size: 16px; color: #5B6072; text-align: center;">Bisa ganti kapan saja.</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

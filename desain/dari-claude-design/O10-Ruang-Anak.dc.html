@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Ruang anak — Aisyah</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+button { cursor: pointer; }
+input::placeholder { color: #868C9E; }
+</style>
+</helmet>
+<div style="width: 360px; height: 800px; box-sizing: border-box; background: #F5F7FA; font-family: 'Nunito', sans-serif; color: #2D3142; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="height: 64px; flex: none; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 4px; background: #FFFFFF; border-bottom: 1px solid #E6E9F0;">
+    <a href="O09-Kabar.dc.html" aria-label="Kembali ke Kabar" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <span style="width: 40px; height: 40px; border-radius: 50%; background: #E6F0FF; display: flex; align-items: center; justify-content: center; font-size: 22px; flex: none;">🐘</span>
+    <span style="display: flex; flex-direction: column;">
+      <span style="font-weight: 700; font-size: 17px;">Aisyah · Kelas 4</span>
+      <span style="font-size: 13px; color: #5B6072;">Terakhir latihan 19.40</span>
+    </span>
+  </div>
+
+  <div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 14px 12px;">
+    <div style="align-self: center; padding: 4px 12px; border-radius: 999px; background: #E6E9F0; font-size: 12px; font-weight: 700; color: #5B6072;">Hari ini</div>
+
+    <div style="align-self: flex-start; width: 260px; background: #FFFFFF; border-radius: 16px 16px 16px 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(45,49,66,0.08);">
+      <div style="height: 6px; background: #3A86FF;"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 13px; font-weight: 700; color: #2A5DB0;">Lancar Matematika · Level 3</div>
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1;">19/20</span>
+          <span style="font-size: 15px;">benar</span>
+        </div>
+        <div style="font-size: 14px; color: #5B6072;">1 menit 12 detik</div>
+        <div style="align-self: flex-start; padding: 3px 10px; border-radius: 999px; background: #FFF0D9; font-size: 13px; font-weight: 700;">Rekor baru! (tadi 1:31)</div>
+        <div style="align-self: flex-end; font-size: 12px; color: #868C9E;">19.38</div>
+      </div>
+    </div>
+
+    <div style="align-self: flex-end; max-width: 260px; background: #E4F4EB; border-radius: 16px 16px 4px 16px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px;">
+      <span style="font-size: 16px; line-height: 1.4;">Ayah bangga kamu tidak menyerah di ×8</span>
+      <span style="align-self: flex-end; font-size: 12px; color: #1F7A4D;">19.39 ✓✓</span>
+    </div>
+
+    <div style="align-self: flex-start; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 16px; background: #FFFFFF; border-radius: 16px 16px 16px 4px; box-shadow: 0 1px 3px rgba(45,49,66,0.08);">
+      <span style="font-size: 40px; line-height: 1;">🚀</span>
+      <span style="font-size: 14px; font-weight: 700;">Lihat rekorku</span>
+      <span style="align-self: flex-end; font-size: 12px; color: #868C9E;">19.40</span>
+    </div>
+
+    <sc-for list="{{ sent }}" as="m" hint-placeholder-count="0">
+      <div style="align-self: flex-end; max-width: 260px; background: #E4F4EB; border-radius: 16px 16px 4px 16px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-size: 16px; line-height: 1.4;">{{ m.text }}</span>
+        <span style="align-self: flex-end; font-size: 12px; color: #1F7A4D;">Baru saja ✓</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="flex: none; display: flex; gap: 8px; padding: 8px 12px; overflow-x: auto;">
+    <sc-for list="{{ quick }}" as="q" hint-placeholder-count="3">
+      <button type="button" onClick="{{ q.send }}" style="flex: none; height: 40px; padding: 0 14px; border: 1px solid #BFE3CC; border-radius: 999px; background: #FFFFFF; color: #1F7A4D; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; white-space: nowrap;">{{ q.text }}</button>
+    </sc-for>
+  </div>
+
+  <div style="flex: none; display: flex; align-items: center; gap: 8px; padding: 8px 12px 14px;">
+    <label for="pesan-ortu" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Tulis pesan untuk Aisyah</label>
+    <input id="pesan-ortu" type="text" placeholder="Tulis pesan…" value="{{ draft }}" onChange="{{ onDraft }}" style="flex: 1; height: 48px; box-sizing: border-box; padding: 0 18px; border: 1px solid #E6E9F0; border-radius: 999px; background: #FFFFFF; font-family: 'Nunito', sans-serif; font-size: 16px; color: #2D3142; outline: none;">
+    <button type="button" onClick="{{ sendDraft }}" aria-label="Kirim" style="width: 48px; height: 48px; flex: none; border: none; border-radius: 50%; background: #1F7A4D; display: flex; align-items: center; justify-content: center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sent: [], draft: '' };
+  }
+  add(text) {
+    const t = (text || '').trim();
+    if (!t) return;
+    this.setState({ sent: this.state.sent.concat([{ text: t }]).slice(-3), draft: '' });
+  }
+  renderVals() {
+    const quick = ['Wah, rekor baru! Ayah bangga.', 'Terus semangat, Nak!', 'Istirahat dulu, ya.'];
+    return {
+      sent: this.state.sent,
+      draft: this.state.draft,
+      onDraft: (e) => this.setState({ draft: e.target.value }),
+      sendDraft: () => this.add(this.state.draft),
+      quick: quick.map((t) => ({ text: t, send: () => this.add(t) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,896 @@
+<title>Latihan Pandu Anak</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Lexend:wght@400;500;600&display=swap">
+<style>
+/* Layout: satu kolom seperti buku latihan di HP; tiap anak punya tangga latihan sendiri; layar soal = satu soal besar + papan angka */
+:root {
+  --bg: #F3F7F5;
+  --surface: #FFFFFF;
+  --ink: #15302A;
+  --muted: #5B716A;
+  --line: #D5E1DC;
+  --accent: #1F7A55;
+  --accent-soft: #DDF0E6;
+  --stamp: #CF3F35;
+  --gold: #B97F0F;
+  --key: #FFFFFF;
+  --key-press: #E6EFEB;
+  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1916; --surface: #16241F; --ink: #E3EEE9; --muted: #9AB2A9; --line: #2A3D36;
+    --accent: #4CC08B; --accent-soft: #1C3A2E; --stamp: #FF7366; --gold: #F0B94A;
+    --key: #1C2D27; --key-press: #263B33; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1916; --surface: #16241F; --ink: #E3EEE9; --muted: #9AB2A9; --line: #2A3D36;
+  --accent: #4CC08B; --accent-soft: #1C3A2E; --stamp: #FF7366; --gold: #F0B94A;
+  --key: #1C2D27; --key-press: #263B33; color-scheme: dark;
+}
+html, body { min-height: 100%; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 520px; margin: 0 auto; padding-block: 18px 40px; display: flex; flex-direction: column; gap: 18px; }
+h1, h2 { font-family: var(--font-display); line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: 30px; font-weight: 800; }
+h2 { font-size: 21px; font-weight: 700; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.label { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.tab { font-variant-numeric: tabular-nums; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.head { display: flex; flex-direction: column; gap: 6px; }
+.notice { padding: 12px 14px; border-radius: 12px; background: var(--accent-soft); font-size: 14px; }
+.notice.warn { background: transparent; border: 1.5px dashed var(--stamp); }
+
+.kids { display: flex; flex-direction: column; gap: 12px; }
+.kid { background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.kid-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.kid-name { font-family: var(--font-display); font-size: 24px; font-weight: 800; line-height: 1.1; }
+.ladder { display: grid; grid-template-columns: repeat(28, 1fr); gap: 2px; }
+.step { height: 10px; border-radius: 3px; background: var(--line); }
+.step.done { background: var(--accent); }
+.step.now { background: var(--gold); }
+.today { display: flex; gap: 6px; align-items: center; }
+.pip { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--accent); }
+.pip.on { background: var(--accent); }
+.linkbtn { background: none; border: 0; padding: 4px 0; color: var(--muted); font-size: 13px; text-decoration: underline; }
+.form { display: flex; flex-direction: column; gap: 10px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; padding: 16px; }
+.form label { display: flex; flex-direction: column; gap: 6px; }
+.form input, .form select {
+  font: inherit; font-size: 16px; padding: 11px 12px; border-radius: 12px; border: 1.5px solid var(--line);
+  background: var(--bg); color: var(--ink); width: 100%; box-sizing: border-box;
+}
+.btn {
+  border: 0; border-radius: 16px; padding: 15px 18px; font-family: var(--font-display); font-weight: 800; font-size: 21px;
+  background: var(--accent); color: var(--surface);
+}
+.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); font-size: 17px; padding: 12px 16px; }
+.btn:active { transform: translateY(1px); }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row > * { flex: 1 1 140px; }
+.history { display: flex; flex-direction: column; }
+.hrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.hrow:last-child { border-bottom: 0; }
+.why { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.why summary { cursor: pointer; font-weight: 600; }
+.why ul { margin: 6px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+
+.ready { display: flex; flex-direction: column; gap: 14px; text-align: center; padding-top: 10px; }
+.ready .big { font-family: var(--font-display); font-size: 54px; font-weight: 800; line-height: 1; }
+.targets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; text-align: left; }
+
+.work { display: flex; flex-direction: column; gap: 14px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; }
+.dot { height: 26px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--surface); font-size: 11px; color: var(--muted); padding: 0; font-variant-numeric: tabular-nums; }
+.dot.done { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+.dot.now { border-color: var(--ink); border-width: 2px; color: var(--ink); font-weight: 600; }
+.problem { background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; padding: 24px 12px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.eq { font-family: var(--font-display); font-weight: 700; font-size: clamp(42px, 12vw, 62px); line-height: 1; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; font-variant-numeric: tabular-nums; }
+.ans { min-width: 1.9em; height: 1.25em; border: 3px solid var(--ink); border-radius: 12px; display: grid; place-items: center; padding: 0 6px; }
+.ans.empty { border-style: dashed; color: var(--muted); }
+.pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.key { border: 1.5px solid var(--line); background: var(--key); border-radius: 14px; height: 60px; font-family: var(--font-display); font-weight: 700; font-size: 28px; }
+.key:active { background: var(--key-press); }
+.key.next { background: var(--accent); color: var(--surface); border-color: var(--accent); font-size: 20px; }
+.key.del { font-size: 18px; }
+
+.result { display: flex; flex-direction: column; gap: 16px; }
+.stamp-wrap { display: flex; align-items: center; gap: 18px; }
+.stamp { width: 108px; height: 108px; border-radius: 50%; border: 5px solid var(--stamp); color: var(--stamp); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 54px; transform: rotate(-8deg); flex: none; }
+.stamp.perfect { font-size: 40px; }
+@media (prefers-reduced-motion: no-preference) { .stamp { animation: thump .45s ease-out; } }
+@keyframes thump { 0% { transform: rotate(-8deg) scale(1.6); opacity: 0; } 100% { transform: rotate(-8deg) scale(1); opacity: 1; } }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.fact { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.fact b { font-family: var(--font-display); font-size: 22px; font-variant-numeric: tabular-nums; }
+.level-msg { padding: 14px 16px; border-radius: 14px; font-family: var(--font-display); font-size: 20px; font-weight: 700; line-height: 1.2; }
+.level-msg.up { background: var(--accent); color: var(--surface); }
+.level-msg.stay { background: var(--accent-soft); }
+.level-msg.down { border: 1.5px dashed var(--gold); }
+.level-msg span { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 400; margin-top: 4px; }
+.list { display: flex; flex-direction: column; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; }
+.li { display: grid; grid-template-columns: 36px 1fr auto; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); align-items: center; font-variant-numeric: tabular-nums; }
+.li:last-child { border-bottom: 0; }
+.li .no { color: var(--muted); font-size: 13px; }
+.wrong { color: var(--stamp); text-decoration: line-through; }
+.saved { font-size: 13px; color: var(--muted); }
+</style>
+
+<style>
+.lvls { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.lvl { height: 30px; border-radius: 8px; border: 1.5px solid var(--line); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--muted); }
+.lvl.done { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.lvl.now { border-color: var(--gold); border-width: 2.5px; color: var(--ink); }
+.banner { padding: 14px 16px; border-radius: 14px; border: 2px solid var(--stamp); display: flex; flex-direction: column; gap: 4px; }
+.banner b { color: var(--stamp); font-size: 16px; }
+.key.neg { grid-column: 1 / -1; height: 48px; color: var(--accent); }
+.jurus-inti { font-size: 18px; line-height: 1.5; margin: 0; }
+.ingat { padding: 10px 14px; border-radius: 12px; background: var(--accent-soft); font-size: 15px; }
+.ex { text-align: left; border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 14px; background: var(--surface); display: flex; flex-direction: column; gap: 6px; }
+.ex-q { font-family: var(--font-display); font-weight: 800; font-size: 26px; }
+.ex ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 2px; }
+.ex-a { font-family: var(--font-display); font-size: 22px; color: var(--accent); }
+.ex-a b { font-weight: 800; }
+.mix { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); }
+.chip.ulang { border-color: var(--gold); }
+.tes-tabel { width: 100%; border-collapse: collapse; font-size: 15px; }
+.tes-tabel td { padding: 6px 4px; border-bottom: 1px solid var(--line); }
+.tes-tabel td:last-child { text-align: right; white-space: nowrap; padding-left: 10px; }
+.ok { color: var(--accent); font-weight: 600; }
+.belum { color: var(--gold); font-weight: 600; }
+.key.skip { grid-column: 1 / -1; height: 48px; color: var(--muted); font-size: 18px; }
+.peta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.copybox { width: 100%; box-sizing: border-box; min-height: 90px; font: inherit; font-size: 13px; padding: 10px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); }
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+const TZ = "Asia/Jakarta";
+const MIN = "−", KALI = "×", BAGI = "÷";
+const SOAL = 20;
+
+// ---------- angka acak dengan benih ----------
+function rngFrom(str) {
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++) { h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+  return function () { h = Math.imul(h ^ (h >>> 16), 2246822507); h = Math.imul(h ^ (h >>> 13), 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; };
+}
+const ri = (r, a, b) => a + Math.floor(r() * (b - a + 1));
+const pilih = (r, arr) => arr[Math.floor(r() * arr.length)];
+const neg = n => (n < 0 ? "(" + MIN + Math.abs(n) + ")" : String(n));
+const tampil = n => (n < 0 ? MIN + Math.abs(n) : String(n));
+
+// n soal unik, kira-kira dari yang mudah ke yang sulit
+function kumpul(r, n, buat) {
+  const hasil = [], ada = new Set();
+  for (let t = 0; t < 5000 && hasil.length < n; t++) { const s = buat(); if (s && !ada.has(s.q)) { ada.add(s.q); hasil.push(s); } }
+  const z = hasil.map(h => h.z), sebar = Math.max(1, (Math.max(...z) - Math.min(...z)) * 0.3);
+  return hasil.map(h => [h, h.z + r() * sebar]).sort((x, y) => x[1] - y[1]).map(x => x[0]);
+}
+// gabung beberapa jenis soal: tiap jenis n soal, lalu diselang-seling
+function campur(r, daftar) {
+  const bagian = daftar.map(([g, n]) => g(r, n));
+  const out = [], ada = new Set();
+  let i = 0;
+  while (out.length < SOAL && i < 200) {
+    const b = bagian[i % bagian.length]; const s = b.shift();
+    if (s && !ada.has(s.q)) { ada.add(s.q); out.push(s); }
+    i++;
+  }
+  return out;
+}
+
+// ---------- jenis soal (semua dijawab di kepala) ----------
+const G = {
+  // kelas 1
+  tambah10: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 1, 9), b = ri(r, 1, 9); if (a + b > 10) return null; return { q: `${a} + ${b}`, k: a + b, z: a + b }; }),
+  kurang10: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 2, 10), b = ri(r, 1, a - 1); return { q: `${a} ${MIN} ${b}`, k: a - b, z: a }; }),
+  tambah20a: (r, n = SOAL) => kumpul(r, n, () => { const x = ri(r, 0, 8), b = ri(r, 1, 9); if (x + b > 9) return null; const a = 10 + x;
+    return r() < 0.75 ? { q: `${a} + ${b}`, k: a + b, z: b } : { q: `${b} + ${a}`, k: a + b, z: b + 2 }; }),
+  tambah20b: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 2, 9), b = ri(r, 2, 9); if (a + b < 11) return null; return { q: `${a} + ${b}`, k: a + b, z: a + b }; }),
+  kurang20: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 11, 19), b = ri(r, 2, 9); if (a - b < 1) return null; const pinjam = a % 10 < b;
+    if (!pinjam && r() < 0.6) return null; return { q: `${a} ${MIN} ${b}`, k: a - b, z: (pinjam ? 10 : 0) + b }; }),
+  // kelas 2
+  puluhan: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 1, 9), b = ri(r, 1, 9);
+    if (r() < 0.5) { if (a + b > 10) return null; return { q: `${a * 10} + ${b * 10}`, k: (a + b) * 10, z: a + b }; }
+    if (a <= b) return null; return { q: `${a * 10} ${MIN} ${b * 10}`, k: (a - b) * 10, z: a }; }),
+  tambah2d1: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 11, 89), b = ri(r, 2, 9); if (a % 10 === 0) return null; const simpan = a % 10 + b >= 10;
+    return { q: `${a} + ${b}`, k: a + b, z: (simpan ? 10 : 0) + b }; }),
+  kurang2d1: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 21, 99), b = ri(r, 2, 9); if (a % 10 === 0) return null; const pinjam = a % 10 < b;
+    return { q: `${a} ${MIN} ${b}`, k: a - b, z: (pinjam ? 10 : 0) + b }; }),
+  kali: (fams, d = 1, s = 10) => (r, n = SOAL) => kumpul(r, n, () => { const b = pilih(r, fams), x = ri(r, d, s);
+    return r() < 0.8 ? { q: `${x} ${KALI} ${b}`, k: x * b, z: x * b } : { q: `${b} ${KALI} ${x}`, k: x * b, z: x * b + 3 }; }),
+  bagi: (fams, d = 1, s = 10) => (r, n = SOAL) => kumpul(r, n, () => { const b = pilih(r, fams), x = ri(r, d, s); return { q: `${x * b} ${BAGI} ${b}`, k: x, z: x * b }; }),
+  duaPuluhan: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 11, 69), b = ri(r, 1, 3) * 10;
+    if (a % 10 === 0) return null;
+    if (r() < 0.5) { if (a + b > 99) return null; return { q: `${a} + ${b}`, k: a + b, z: a }; }
+    if (a - b < 1) return null; return { q: `${a} ${MIN} ${b}`, k: a - b, z: a }; }),
+  // kelas 3
+  tambah2d2: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 12, 69), b = ri(r, 11, 29); if (a + b > 99 || a % 10 === 0 || b % 10 === 0) return null;
+    const simpan = a % 10 + b % 10 >= 10; return { q: `${a} + ${b}`, k: a + b, z: (simpan ? 30 : 0) + a + b }; }),
+  kurang2d2: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 31, 99), b = ri(r, 11, 29); if (a - b < 5 || a % 10 === 0 || b % 10 === 0) return null;
+    const pinjam = a % 10 < b % 10; return { q: `${a} ${MIN} ${b}`, k: a - b, z: (pinjam ? 30 : 0) + a }; }),
+  // kelas 4
+  kaliPuluhan: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 2, 9), b = ri(r, 2, 9), jenis = pilih(r, [0, 0, 1, 2]);
+    if (jenis === 0) return { q: `${a} ${KALI} ${b * 10}`, k: a * b * 10, z: a * b };
+    if (jenis === 1) { if (b > 5) return null; return { q: `${a} ${KALI} ${b * 100}`, k: a * b * 100, z: a * b + 20 }; }
+    if (a * b > 30) return null; return { q: `${a * 10} ${KALI} ${b * 10}`, k: a * b * 100, z: a * b + 30 }; }),
+  kali2d1a: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 11, 25), b = ri(r, 2, 6); if (a % 10 === 0 || a * b > 150) return null; return { q: `${a} ${KALI} ${b}`, k: a * b, z: a * b }; }),
+  bagi2d1: (r, n = SOAL) => kumpul(r, n, () => { const q = ri(r, 11, 19), b = ri(r, 2, 6); if (q * b > 99) return null; return { q: `${q * b} ${BAGI} ${b}`, k: q, z: q * b }; }),
+  ratusan: (r, n = SOAL) => kumpul(r, n, () => { const jenis = pilih(r, [0, 1, 2]);
+    if (jenis === 0) { const a = ri(r, 11, 60) * 10, b = ri(r, 11, 40) * 10; if (a + b > 1000) return null; return { q: `${a} + ${b}`, k: a + b, z: a + b }; }
+    if (jenis === 1) { const a = ri(r, 2, 9) * 100, b = ri(r, 3, 19) * 10; if (b >= a) return null; return { q: `${a} ${MIN} ${b}`, k: a - b, z: a }; }
+    const a = ri(r, 21, 79), b = ri(r, 12, 29); if (a + b > 99 || a % 10 === 0 || b % 10 === 0) return null; return { q: `${a} + ${b}`, k: a + b, z: a + b }; }),
+  // kelas 5
+  kali2d1b: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 12, 49), b = ri(r, 3, 9); if (a % 10 === 0 || a * b > 400) return null; return { q: `${a} ${KALI} ${b}`, k: a * b, z: a * b }; }),
+  bagiBesar: (r, n = SOAL) => kumpul(r, n, () => { const b = ri(r, 2, 9);
+    if (r() < 0.6) { const x = ri(r, 2, 9) * 10; return { q: `${x * b} ${BAGI} ${b}`, k: x, z: x * b }; }
+    const q = ri(r, 11, 25); if (q * b > 150 || b > 6) return null; return { q: `${q * b} ${BAGI} ${b}`, k: q, z: q * b + 50 }; }),
+  kali1125: (r, n = SOAL) => kumpul(r, n, () => {
+    if (r() < 0.5) { const a = ri(r, 12, 45), s = Math.floor(a / 10) + a % 10; if (s > 9 || a % 10 === 0) return null; return { q: `${a} ${KALI} 11`, k: a * 11, z: a }; }
+    const a = pilih(r, [2, 3, 4, 5, 6, 8, 10, 12, 16, 20]); return r() < 0.7 ? { q: `${a} ${KALI} 25`, k: a * 25, z: a * 2 } : { q: `25 ${KALI} ${a}`, k: a * 25, z: a * 2 + 2 }; }),
+  kuadrat15: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 2, 15); return r() < 0.75 ? { q: `${a} ${KALI} ${a}`, k: a * a, z: a } : { q: `${a}²`, k: a * a, z: a + 1 }; }),
+  pecahanDari: (r, n = SOAL) => kumpul(r, n, () => {
+    const [lbl, num, den] = pilih(r, [["½", 1, 2], ["½", 1, 2], ["¼", 1, 4], ["⅓", 1, 3], ["⅕", 1, 5], ["¾", 3, 4], ["⅔", 2, 3]]);
+    const base = den * ri(r, 2, den === 2 ? 30 : 12); return { q: `${lbl} dari ${base}`, k: base / den * num, z: base / den * num + (num > 1 ? 20 : 0) }; }),
+  // kelas 6
+  akarKuadrat: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 2, 15); return r() < 0.5 ? { q: `${a}²`, k: a * a, z: a } : { q: `√${a * a}`, k: a, z: a }; }),
+  pangkat3: (r, n = SOAL) => kumpul(r, n, () => { const j = pilih(r, [0, 1, 2]);
+    if (j === 0) { const a = ri(r, 1, 6); return { q: `${a}³`, k: a ** 3, z: a }; }
+    if (j === 1) { const a = ri(r, 1, 6); return { q: `∛${a ** 3}`, k: a, z: a }; }
+    const a = ri(r, 11, 15); return { q: `${a}²`, k: a * a, z: a }; }),
+  negatif: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, -10, 10), b = ri(r, 1, 10);
+    if (r() < 0.5) { const kk = a + (r() < 0.5 ? b : -b); const bb = kk - a; if (!bb || (a >= 0 && bb > 0)) return null;
+      return { q: `${tampil(a)} + ${neg(bb)}`, k: kk, z: Math.abs(a) + Math.abs(bb) + (bb < 0 ? 5 : 0) }; }
+    const bb = r() < 0.6 ? b : -b; if (a >= 0 && bb > 0 && a - bb >= 0) return null; return { q: `${tampil(a)} ${MIN} ${neg(bb)}`, k: a - bb, z: Math.abs(a) + Math.abs(bb) + (bb < 0 ? 8 : 0) }; }),
+  persen: (r, n = SOAL) => kumpul(r, n, () => { const p = pilih(r, [10, 10, 20, 25, 50, 50, 75]);
+    const kel = { 10: 10, 20: 5, 25: 4, 50: 2, 75: 4 }[p]; const base = kel * ri(r, 2, p === 10 ? 30 : 20); if (base > 400) return null;
+    return { q: `${p}% dari ${base}`, k: base * p / 100, z: base * p / 100 + (p === 75 ? 30 : 0) }; }),
+  urutan: (r, n = SOAL) => kumpul(r, n, () => { const a = ri(r, 2, 20), b = ri(r, 2, 9), c = ri(r, 2, 9), j = pilih(r, [0, 1, 2, 3, 4]);
+    if (j === 0) return { q: `${a} + ${b} ${KALI} ${c}`, k: a + b * c, z: a + b * c };
+    if (j === 1) { if (a + 20 - b * c < 0) return null; return { q: `${a + 20} ${MIN} ${b} ${KALI} ${c}`, k: a + 20 - b * c, z: 30 + b * c }; }
+    if (j === 2) return { q: `${b} ${KALI} ${c} + ${a}`, k: b * c + a, z: a + b * c };
+    if (j === 3) return { q: `${b * c} ${BAGI} ${b} + ${a}`, k: c + a, z: a + c + 10 };
+    if (b + c > 12) return null; const m = ri(r, 2, 5); return { q: `(${b} + ${c}) ${KALI} ${m}`, k: (b + c) * m, z: 40 }; })
+};
+const rapikan = list => list.map(s => ({ q: s.q, k: s.k }));
+
+// ---------- level per kelas ----------
+const KELAS = {
+  1: [
+    { judul: "Penjumlahan sampai 10", contoh: "4 + 5", dt: 3, gen: r => G.tambah10(r) },
+    { judul: "Pengurangan sampai 10", contoh: "9 − 4", dt: 3, gen: r => G.kurang10(r) },
+    { judul: "Penjumlahan belasan", contoh: "13 + 5", dt: 3, gen: r => G.tambah20a(r) },
+    { judul: "Penjumlahan sampai 20", contoh: "8 + 7", dt: 3.5, gen: r => G.tambah20b(r) },
+    { judul: "Pengurangan sampai 20", contoh: "15 − 7", dt: 3.5, gen: r => G.kurang20(r) },
+    { judul: "Campur tambah dan kurang sampai 20", contoh: "9 + 6, 14 − 8", dt: 3.5, gen: r => campur(r, [[G.tambah20b, 10], [G.kurang20, 10]]) }
+  ],
+  2: [
+    { judul: "Tambah dan kurang puluhan", contoh: "30 + 40, 70 − 20", dt: 3, gen: r => G.puluhan(r) },
+    { judul: "2 angka tambah 1 angka", contoh: "34 + 5, 47 + 8", dt: 3.5, gen: r => G.tambah2d1(r) },
+    { judul: "2 angka kurang 1 angka", contoh: "36 − 4, 43 − 7", dt: 3.5, gen: r => G.kurang2d1(r) },
+    { judul: "Perkalian ×2, ×5, ×10", contoh: "7 × 5", dt: 3, gen: r => G.kali([2, 5, 10])(r) },
+    { judul: "Pembagian ÷2, ÷5, ÷10", contoh: "35 ÷ 5", dt: 3, gen: r => G.bagi([2, 5, 10])(r) },
+    { judul: "Campur kelas 2", contoh: "45 + 30, 6 × 5, 40 ÷ 10", dt: 4, gen: r => campur(r, [[G.duaPuluhan, 10], [G.kali([2, 5, 10]), 5], [G.bagi([2, 5, 10]), 5]]) }
+  ],
+  3: [
+    { judul: "Perkalian ×3 dan ×4", contoh: "7 × 4", dt: 3, gen: r => G.kali([3, 4], 2)(r) },
+    { judul: "Perkalian ×6 dan ×7", contoh: "8 × 6", dt: 3, gen: r => G.kali([6, 7], 2)(r) },
+    { judul: "Perkalian ×8 dan ×9", contoh: "7 × 9", dt: 3, gen: r => G.kali([8, 9], 2)(r) },
+    { judul: "Pembagian dari perkalian", contoh: "56 ÷ 7", dt: 3.5, gen: r => G.bagi([3, 4, 6, 7, 8, 9], 2)(r) },
+    { judul: "Tambah dan kurang 2 angka", contoh: "36 + 25, 64 − 28", dt: 6, gen: r => campur(r, [[G.tambah2d2, 10], [G.kurang2d2, 10]]) },
+    { judul: "Campur kali dan bagi", contoh: "6 × 8, 63 ÷ 9", dt: 3.5, gen: r => campur(r, [[G.kali([2, 3, 4, 5, 6, 7, 8, 9], 2), 10], [G.bagi([2, 3, 4, 5, 6, 7, 8, 9], 2), 10]]) }
+  ],
+  4: [
+    { judul: "Pemanasan perkalian dan pembagian", contoh: "7 × 8, 54 ÷ 6", dt: 3, gen: r => campur(r, [[G.kali([3, 4, 6, 7, 8, 9], 2), 10], [G.bagi([3, 4, 6, 7, 8, 9], 2), 10]]) },
+    { judul: "Kali puluhan dan ratusan", contoh: "4 × 30, 20 × 30", dt: 4, gen: r => G.kaliPuluhan(r) },
+    { judul: "2 angka kali 1 angka", contoh: "14 × 3, 23 × 4", dt: 6, gen: r => G.kali2d1a(r) },
+    { judul: "Pembagian hasil belasan", contoh: "48 ÷ 4, 75 ÷ 5", dt: 6, gen: r => G.bagi2d1(r) },
+    { judul: "Tambah dan kurang ratusan", contoh: "250 + 130, 400 − 150", dt: 6, gen: r => G.ratusan(r) },
+    { judul: "Campur kelas 4", contoh: "6 × 40, 18 × 3, 84 ÷ 6", dt: 5, gen: r => campur(r, [[G.kaliPuluhan, 7], [G.kali2d1a, 7], [G.bagi2d1, 6]]) }
+  ],
+  5: [
+    { judul: "2 angka kali 1 angka", contoh: "24 × 6, 35 × 4", dt: 6, gen: r => G.kali2d1b(r) },
+    { judul: "Pembagian puluhan", contoh: "240 ÷ 6, 96 ÷ 4", dt: 5, gen: r => G.bagiBesar(r) },
+    { judul: "Kali 11 dan kali 25", contoh: "23 × 11, 12 × 25", dt: 5, gen: r => G.kali1125(r) },
+    { judul: "Bilangan kuadrat", contoh: "12 × 12, 7²", dt: 4, gen: r => G.kuadrat15(r) },
+    { judul: "Pecahan dari bilangan", contoh: "½ dari 18, ¾ dari 24", dt: 5, gen: r => G.pecahanDari(r) },
+    { judul: "Campur kelas 5", contoh: "26 × 5, ⅓ dari 27, 14²", dt: 5.5, gen: r => campur(r, [[G.kali2d1b, 5], [G.bagiBesar, 5], [G.kali1125, 5], [G.pecahanDari, 5]]) }
+  ],
+  6: [
+    { judul: "Kuadrat dan akar kuadrat", contoh: "15², √144", dt: 4, gen: r => G.akarKuadrat(r) },
+    { judul: "Pangkat tiga dan akar pangkat tiga", contoh: "4³, ∛125", dt: 5, gen: r => G.pangkat3(r) },
+    { judul: "Bilangan negatif", contoh: "−3 + 8, 5 − 9", dt: 4, neg: true, gen: r => G.negatif(r) },
+    { judul: "Persen mudah", contoh: "25% dari 80", dt: 5, gen: r => G.persen(r) },
+    { judul: "Urutan operasi hitung", contoh: "3 + 4 × 5", dt: 7, gen: r => rapikan(G.urutan(r)) },
+    { judul: "Campur kelas 6", contoh: "√81, −4 + 9, 50% dari 64", dt: 5.5, neg: true, gen: r => campur(r, [[G.akarKuadrat, 5], [G.negatif, 5], [G.persen, 5], [r2 => rapikan(G.urutan(r2)), 5]]) }
+  ]
+};
+
+// ---------- Metode LANCAR: susunan lembar ----------
+// C — Campur dan selipkan: 14 soal level ini + 6 soal level sebelumnya, diselang-seling.
+const ACAK = "pandu-anak-v5-";
+const POS_LAMA = [1, 4, 7, 10, 13, 16];     // tempat soal level sebelumnya (30%)
+const POS_PERBAIKI = [3, 8, 12, 18];        // tempat soal yang salah atau lambat di lembar lalu
+const HARI_DAYA_TAHAN = 21;                 // uji daya tahan 3 minggu setelah lulus
+function sumberLama(level) {
+  if (level <= 1) return [];
+  if (level === 2) return [[1, 6]];
+  return [[level - 1, 4], [level - 2, 2]];
+}
+const tandai = (list, kelas, lv) => rapikan(list).map(s => ({ q: s.q, k: s.k, lv, dt: KELAS[kelas][lv - 1].dt }));
+// ambil n soal tersebar dari daftar (urut mudah ke sulit), lewati yang sudah ada
+function ambilSebar(daftar, n, ada, mulaiDari) {
+  const out = [], urut = [];
+  for (let j = 0; j < n; j++) urut.push(Math.min(daftar.length - 1, Math.round(mulaiDari + (j + 0.5) * (daftar.length - mulaiDari) / n)));
+  for (let i = 0; i < daftar.length; i++) if (!urut.includes(i)) urut.push(i);
+  for (const i of urut) { if (out.length >= n) break; const s = daftar[i]; if (s && !ada.has(s.q)) { ada.add(s.q); out.push(s); } }
+  return out;
+}
+function buatLembar(kelas, level, benih, perbaiki, dayaTahan) {
+  const L = KELAS[kelas][level - 1];
+  const ini = tandai(L.gen(rngFrom(ACAK + kelas + "-" + level + "-" + benih)), kelas, level).slice(0, SOAL);
+  const sumber = dayaTahan ? [[dayaTahan, 6]] : sumberLama(level);
+  let soal;
+  if (!sumber.length) soal = ini.slice();
+  else {
+    // 14 soal level ini, tersebar dari yang mudah sampai yang sulit
+    const pakai = [], ada = new Set();
+    for (let j = 0; j < 14; j++) { const s = ini[Math.round(j * (ini.length - 1) / 13)]; if (!ada.has(s.q)) { ada.add(s.q); pakai.push(s); } }
+    const lama = [];
+    sumber.forEach(([lv, n]) => {
+      const daftar = tandai(KELAS[kelas][lv - 1].gen(rngFrom(ACAK + "lama-" + kelas + "-" + lv + "-" + benih)), kelas, lv);
+      lama.push(...ambilSebar(daftar, n, ada, Math.floor(daftar.length / 4)));
+    });
+    // kalau soal lama kurang (jarang), isi dengan sisa soal level ini
+    const cadangan = ini.filter(s => !ada.has(s.q));
+    while (pakai.length + lama.length < SOAL && cadangan.length) { const s = cadangan.shift(); ada.add(s.q); pakai.push(s); }
+    soal = []; let a = 0, b = 0;
+    for (let i = 0; i < SOAL; i++) soal.push(POS_LAMA.includes(i) && b < lama.length ? lama[b++] : pakai[a] ? pakai[a++] : lama[b++]);
+  }
+  // soal yang salah atau lambat di lembar lalu muncul lagi
+  (perbaiki || []).slice(0, 4).forEach((u, i) => {
+    if (!soal.some(s => s.q === u.q)) soal[POS_PERBAIKI[i]] = { q: u.q, k: u.k, lv: u.lv || level, dt: u.dt || L.dt, ulang: true };
+  });
+  return soal;
+}
+// target waktu satu lembar = jumlah target tiap soal
+const targetLembar = soal => Math.round(soal.reduce((t, s) => t + s.dt, 0));
+function targetDetik(kelas, level) {
+  const dt = lv => KELAS[kelas][lv - 1].dt, lama = sumberLama(level);
+  const nLama = lama.reduce((t, [, n]) => t + n, 0);
+  return Math.round((SOAL - nLama) * dt(level) + lama.reduce((t, [lv, n]) => t + n * dt(lv), 0));
+}
+
+// ---------- L — Level anak: tes penempatan ----------
+// 4 soal per level, dari level 1 naik. Berhenti di level pertama yang belum lancar.
+const TES_N = 4;
+function buatTes(kelas, benih) {
+  const out = [], ada = new Set();
+  for (let lv = 1; lv <= LEVEL_N; lv++) {
+    const daftar = tandai(KELAS[kelas][lv - 1].gen(rngFrom(ACAK + "tes-" + kelas + "-" + lv + "-" + benih)), kelas, lv);
+    out.push(...ambilSebar(daftar, TES_N, ada, Math.floor(daftar.length / 5)));
+  }
+  return out;
+}
+const LEVEL_N = 6;
+// satu bagian tes dianggap lancar kalau 4 soal benar semua dan waktunya tidak lebih dari target
+function nilaiBagianTes(item) {
+  const benar = item.filter(s => s.benar).length, detik = item.reduce((t, s) => t + s.detik, 0), target = item.reduce((t, s) => t + s.dt, 0);
+  return { benar, detik: Math.round(detik * 10) / 10, target: Math.round(target), lancar: benar === item.length && detik <= target };
+}
+
+// ---------- A — Ajarkan jurus dulu: satu layar contoh jadi per level ----------
+const JURUS = {
+  "1-1": { inti: "Mulai dari angka yang lebih besar, lalu hitung maju sebanyak angka yang kecil.", ingat: "Hafalkan pasangan sepuluh: 1 + 9, 2 + 8, 3 + 7, 4 + 6, 5 + 5.",
+    contoh: [{ soal: "3 + 6", langkah: ["Mulai dari angka besar: 6", "Hitung maju 3 kali: 7, 8, 9"], jawab: 9 }, { soal: "2 + 8", langkah: ["Mulai dari 8", "Maju 2 kali: 9, 10"], jawab: 10 }] },
+  "1-2": { inti: "Pengurangan adalah penjumlahan yang dibalik. 9 − 4 artinya: 4 ditambah berapa supaya jadi 9?",
+    contoh: [{ soal: "9 − 4", langkah: ["4 + ? = 9", "4 + 5 = 9"], jawab: 5 }, { soal: "10 − 3", langkah: ["Pasangan sepuluh dari 3 adalah 7", "3 + 7 = 10"], jawab: 7 }] },
+  "1-3": { inti: "Angka belasan itu 10 dan satuannya. Jumlahkan satuannya saja, sepuluhnya tetap.",
+    contoh: [{ soal: "13 + 5", langkah: ["Satuan: 3 + 5 = 8", "10 dan 8 jadi 18"], jawab: 18 }, { soal: "4 + 12", langkah: ["Tukar dulu: 12 + 4", "Satuan: 2 + 4 = 6, jadi 16"], jawab: 16 }] },
+  "1-4": { inti: "Genapkan ke 10 dulu, baru tambah sisanya.", ingat: "Angka kembar juga membantu: 7 + 7 = 14, jadi 7 + 8 = 15.",
+    contoh: [{ soal: "8 + 7", langkah: ["8 butuh 2 untuk jadi 10", "7 dipecah: 2 dan 5", "10 + 5 = 15"], jawab: 15 }, { soal: "9 + 6", langkah: ["9 butuh 1 untuk jadi 10", "6 dipecah: 1 dan 5", "10 + 5 = 15"], jawab: 15 }] },
+  "1-5": { inti: "Turun ke 10 dulu, baru kurangi sisanya.",
+    contoh: [{ soal: "15 − 7", langkah: ["15 turun 5 jadi 10", "7 dipecah: 5 dan 2", "10 − 2 = 8"], jawab: 8 }, { soal: "13 − 9", langkah: ["Kurang 9 sama dengan kurang 10 lalu tambah 1", "13 − 10 = 3", "3 + 1 = 4"], jawab: 4 }] },
+  "1-6": { inti: "Lihat tandanya dulu: + atau −. Lalu pakai jurus genapkan 10.",
+    contoh: [{ soal: "9 + 6", langkah: ["Tanda +, genapkan ke 10: 9 + 1 = 10", "Sisanya 5: 10 + 5 = 15"], jawab: 15 }, { soal: "14 − 8", langkah: ["Tanda −, turun ke 10: 14 − 4 = 10", "Sisanya 4: 10 − 4 = 6"], jawab: 6 }] },
+  "2-1": { inti: "Puluhan dihitung seperti satuan, lalu tambahkan nol di belakang.",
+    contoh: [{ soal: "30 + 40", langkah: ["3 + 4 = 7", "7 puluhan = 70"], jawab: 70 }, { soal: "70 − 20", langkah: ["7 − 2 = 5", "5 puluhan = 50"], jawab: 50 }] },
+  "2-2": { inti: "Jumlahkan satuannya. Kalau lewat 10, genapkan dulu ke puluhan berikutnya.",
+    contoh: [{ soal: "34 + 5", langkah: ["Satuan: 4 + 5 = 9", "Jadi 39"], jawab: 39 }, { soal: "47 + 8", langkah: ["47 butuh 3 untuk jadi 50", "8 dipecah: 3 dan 5", "50 + 5 = 55"], jawab: 55 }] },
+  "2-3": { inti: "Kurangi satuannya. Kalau tidak cukup, turun ke puluhan bulat dulu.",
+    contoh: [{ soal: "36 − 4", langkah: ["Satuan: 6 − 4 = 2", "Jadi 32"], jawab: 32 }, { soal: "43 − 7", langkah: ["43 turun 3 jadi 40", "7 dipecah: 3 dan 4", "40 − 4 = 36"], jawab: 36 }] },
+  "2-4": { inti: "×2 artinya dobel. ×10 artinya tambah nol di belakang. ×5 adalah setengah dari ×10.",
+    contoh: [{ soal: "7 × 2", langkah: ["Dobel 7: 7 + 7"], jawab: 14 }, { soal: "7 × 5", langkah: ["7 × 10 = 70", "Setengah dari 70 = 35"], jawab: 35 }, { soal: "6 × 10", langkah: ["Tambah nol di belakang 6"], jawab: 60 }] },
+  "2-5": { inti: "Pembagian adalah perkalian yang dibalik. 35 ÷ 5 artinya: 5 dikali berapa supaya jadi 35?",
+    contoh: [{ soal: "35 ÷ 5", langkah: ["5 × ? = 35", "5 × 7 = 35"], jawab: 7 }, { soal: "60 ÷ 10", langkah: ["Buang satu nol dari 60"], jawab: 6 }, { soal: "16 ÷ 2", langkah: ["÷ 2 artinya setengah", "Setengah dari 16 = 8"], jawab: 8 }] },
+  "2-6": { inti: "Lihat tandanya dulu, lalu pakai jurus yang cocok.",
+    contoh: [{ soal: "45 + 30", langkah: ["Puluhannya saja: 4 + 3 = 7", "Satuan 5 tetap: 75"], jawab: 75 }, { soal: "6 × 5", langkah: ["6 × 10 = 60", "Setengahnya = 30"], jawab: 30 }, { soal: "40 ÷ 10", langkah: ["Buang satu nol"], jawab: 4 }] },
+  "3-1": { inti: "×4 artinya dobel, lalu dobel lagi. ×3 artinya ×2 ditambah satu kali lagi.",
+    contoh: [{ soal: "7 × 4", langkah: ["Dobel 7 = 14", "Dobel 14 = 28"], jawab: 28 }, { soal: "6 × 3", langkah: ["6 × 2 = 12", "12 + 6 = 18"], jawab: 18 }] },
+  "3-2": { inti: "Pakai ×5 yang sudah hafal, lalu tambahkan sisanya.",
+    contoh: [{ soal: "8 × 6", langkah: ["8 × 5 = 40", "Tambah satu 8 lagi: 40 + 8 = 48"], jawab: 48 }, { soal: "7 × 7", langkah: ["7 × 5 = 35", "Tambah dua 7: 35 + 14 = 49"], jawab: 49 }] },
+  "3-3": { inti: "×9 artinya ×10 lalu kurangi satu kali. ×8 artinya dobel tiga kali.",
+    contoh: [{ soal: "7 × 9", langkah: ["7 × 10 = 70", "70 − 7 = 63"], jawab: 63 }, { soal: "6 × 8", langkah: ["Dobel 6 = 12", "Dobel 12 = 24", "Dobel 24 = 48"], jawab: 48 }] },
+  "3-4": { inti: "Cari perkaliannya. 56 ÷ 7 artinya: 7 dikali berapa supaya jadi 56?",
+    contoh: [{ soal: "56 ÷ 7", langkah: ["7 × ? = 56", "7 × 8 = 56"], jawab: 8 }, { soal: "54 ÷ 9", langkah: ["9 × ? = 54", "9 × 6 = 54"], jawab: 6 }] },
+  "3-5": { inti: "Pisahkan puluhan dan satuan. Untuk mengurangi, kurangi puluhan bulat dulu, lalu betulkan.",
+    contoh: [{ soal: "36 + 25", langkah: ["Puluhan: 30 + 20 = 50", "Satuan: 6 + 5 = 11", "50 + 11 = 61"], jawab: 61 }, { soal: "64 − 28", langkah: ["28 hampir 30", "64 − 30 = 34", "Kelebihan 2, kembalikan: 34 + 2 = 36"], jawab: 36 }] },
+  "3-6": { inti: "Lihat tandanya. Untuk ÷, pikirkan perkaliannya.",
+    contoh: [{ soal: "6 × 8", langkah: ["6 × 5 = 30", "Tambah tiga 6: 30 + 18 = 48"], jawab: 48 }, { soal: "63 ÷ 9", langkah: ["9 × ? = 63", "9 × 7 = 63"], jawab: 7 }] },
+  "4-1": { inti: "Pemanasan: ingat lagi jurus ×5, ×9, dan dobel.",
+    contoh: [{ soal: "7 × 8", langkah: ["Dobel 7 = 14", "Dobel 14 = 28", "Dobel 28 = 56"], jawab: 56 }, { soal: "54 ÷ 6", langkah: ["6 × ? = 54", "6 × 9 = 54"], jawab: 9 }] },
+  "4-2": { inti: "Kalikan angka depannya, lalu tempelkan semua nolnya.",
+    contoh: [{ soal: "4 × 30", langkah: ["4 × 3 = 12", "Tempel satu nol: 120"], jawab: 120 }, { soal: "20 × 30", langkah: ["2 × 3 = 6", "Tempel dua nol: 600"], jawab: 600 }, { soal: "3 × 200", langkah: ["3 × 2 = 6", "Tempel dua nol: 600"], jawab: 600 }] },
+  "4-3": { inti: "Pecah angka besar menjadi puluhan dan satuan, kalikan masing-masing, lalu jumlahkan.",
+    contoh: [{ soal: "14 × 3", langkah: ["10 × 3 = 30", "4 × 3 = 12", "30 + 12 = 42"], jawab: 42 }, { soal: "23 × 4", langkah: ["20 × 4 = 80", "3 × 4 = 12", "80 + 12 = 92"], jawab: 92 }] },
+  "4-4": { inti: "Pecah angka yang dibagi menjadi bagian yang mudah dibagi.",
+    contoh: [{ soal: "48 ÷ 4", langkah: ["40 ÷ 4 = 10", "8 ÷ 4 = 2", "10 + 2 = 12"], jawab: 12 }, { soal: "75 ÷ 5", langkah: ["50 ÷ 5 = 10", "25 ÷ 5 = 5", "10 + 5 = 15"], jawab: 15 }] },
+  "4-5": { inti: "Lepas nolnya dulu, hitung, lalu kembalikan nolnya.",
+    contoh: [{ soal: "250 + 130", langkah: ["25 + 13 = 38", "Kembalikan nol: 380"], jawab: 380 }, { soal: "400 − 150", langkah: ["40 − 15 = 25", "Kembalikan nol: 250"], jawab: 250 }] },
+  "4-6": { inti: "Lihat soalnya dulu, lalu pilih jurus: tempel nol, pecah puluhan, atau pecah yang dibagi.",
+    contoh: [{ soal: "6 × 40", langkah: ["6 × 4 = 24", "Tempel nol: 240"], jawab: 240 }, { soal: "18 × 3", langkah: ["10 × 3 = 30", "8 × 3 = 24", "30 + 24 = 54"], jawab: 54 }, { soal: "84 ÷ 6", langkah: ["60 ÷ 6 = 10", "24 ÷ 6 = 4", "10 + 4 = 14"], jawab: 14 }] },
+  "5-1": { inti: "Pecah puluhan dan satuan. Untuk ×4, boleh juga dobel dua kali.",
+    contoh: [{ soal: "24 × 6", langkah: ["20 × 6 = 120", "4 × 6 = 24", "120 + 24 = 144"], jawab: 144 }, { soal: "35 × 4", langkah: ["Dobel 35 = 70", "Dobel 70 = 140"], jawab: 140 }] },
+  "5-2": { inti: "Lepas nolnya, bagi, lalu kembalikan nolnya. Atau pecah menjadi bagian yang mudah dibagi.",
+    contoh: [{ soal: "240 ÷ 6", langkah: ["24 ÷ 6 = 4", "Kembalikan nol: 40"], jawab: 40 }, { soal: "96 ÷ 4", langkah: ["80 ÷ 4 = 20", "16 ÷ 4 = 4", "20 + 4 = 24"], jawab: 24 }] },
+  "5-3": { inti: "×11: angka depan dan belakang tetap, tengahnya hasil jumlah keduanya. ×25: kalikan 100, lalu bagi 4.",
+    contoh: [{ soal: "23 × 11", langkah: ["Depan 2, belakang 3", "Tengah: 2 + 3 = 5", "Jadi 253"], jawab: 253 }, { soal: "12 × 25", langkah: ["12 × 100 = 1200", "1200 ÷ 4 = 300"], jawab: 300 }] },
+  "5-4": { inti: "Kuadrat artinya angka dikali dirinya sendiri.", ingat: "Hafalkan 11² sampai 15²: 121, 144, 169, 196, 225.",
+    contoh: [{ soal: "7²", langkah: ["7² = 7 × 7"], jawab: 49 }, { soal: "13 × 13", langkah: ["13 × 10 = 130", "13 × 3 = 39", "130 + 39 = 169"], jawab: 169 }] },
+  "5-5": { inti: "½ dari: bagi 2. ¼ dari: bagi 4. ¾ dari: bagi 4, lalu kali 3.",
+    contoh: [{ soal: "½ dari 18", langkah: ["18 ÷ 2 = 9"], jawab: 9 }, { soal: "¾ dari 24", langkah: ["24 ÷ 4 = 6", "6 × 3 = 18"], jawab: 18 }, { soal: "⅔ dari 15", langkah: ["15 ÷ 3 = 5", "5 × 2 = 10"], jawab: 10 }] },
+  "5-6": { inti: "Soal campur: baca dulu jenisnya, lalu pakai jurus yang cocok.",
+    contoh: [{ soal: "26 × 5", langkah: ["26 × 10 = 260", "Setengahnya = 130"], jawab: 130 }, { soal: "⅓ dari 27", langkah: ["27 ÷ 3 = 9"], jawab: 9 }, { soal: "14²", langkah: ["Hafalan: 14 × 14 = 196"], jawab: 196 }] },
+  "6-1": { inti: "√ bertanya: angka berapa yang dikali dirinya sendiri menghasilkan angka ini?",
+    contoh: [{ soal: "√144", langkah: ["? × ? = 144", "12 × 12 = 144"], jawab: 12 }, { soal: "15²", langkah: ["Angka berakhiran 5: 1 × (1 + 1) = 2", "Tempel 25 di belakang: 225"], jawab: 225 }] },
+  "6-2": { inti: "Pangkat tiga artinya angka dikali dirinya sendiri tiga kali.", ingat: "Hafalkan: 1, 8, 27, 64, 125, 216.",
+    contoh: [{ soal: "4³", langkah: ["4 × 4 = 16", "16 × 4 = 64"], jawab: 64 }, { soal: "∛125", langkah: ["? × ? × ? = 125", "5 × 5 × 5 = 125"], jawab: 5 }] },
+  "6-3": { inti: "Bayangkan termometer: tambah artinya naik, kurang artinya turun. Kurang negatif sama dengan tambah.",
+    contoh: [{ soal: "−3 + 8", langkah: ["Mulai di −3", "Naik 3 sampai 0, lalu naik 5 lagi"], jawab: 5 }, { soal: "5 − 9", langkah: ["Mulai di 5", "Turun 5 sampai 0, lalu turun 4 lagi"], jawab: -4 }, { soal: "4 − (−3)", langkah: ["Kurang negatif = tambah", "4 + 3 = 7"], jawab: 7 }] },
+  "6-4": { inti: "10% = bagi 10. 50% = setengah. 25% = bagi 4. 20% = bagi 5. 75% = bagi 4, lalu kali 3.",
+    contoh: [{ soal: "25% dari 80", langkah: ["25% artinya bagi 4", "80 ÷ 4 = 20"], jawab: 20 }, { soal: "75% dari 40", langkah: ["40 ÷ 4 = 10", "10 × 3 = 30"], jawab: 30 }] },
+  "6-5": { inti: "Urutannya: kurung dulu, lalu × dan ÷, baru + dan −.",
+    contoh: [{ soal: "3 + 4 × 5", langkah: ["× dulu: 4 × 5 = 20", "Lalu +: 3 + 20 = 23"], jawab: 23 }, { soal: "(2 + 3) × 4", langkah: ["Kurung dulu: 2 + 3 = 5", "5 × 4 = 20"], jawab: 20 }] },
+  "6-6": { inti: "Soal campur kelas 6: kenali jenisnya dulu, lalu pakai jurusnya.",
+    contoh: [{ soal: "√81", langkah: ["9 × 9 = 81"], jawab: 9 }, { soal: "−4 + 9", langkah: ["Mulai di −4", "Naik 4 sampai 0, lalu naik 5 lagi"], jawab: 5 }, { soal: "50% dari 64", langkah: ["50% artinya setengah", "64 ÷ 2 = 32"], jawab: 32 }] }
+};
+
+// ---------- bantu ----------
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const nilaiDari = salah => (salah <= 1 ? "A" : salah <= 4 ? "B" : salah <= 8 ? "C" : "D");
+function mmss(sec) { sec = Math.round(sec); return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0"); }
+function jam(ms) { return new Intl.DateTimeFormat("id-ID", { timeZone: TZ, hour: "2-digit", minute: "2-digit" }).format(new Date(ms)); }
+function tgl(ms) { return new Intl.DateTimeFormat("id-ID", { timeZone: TZ, weekday: "short", day: "numeric", month: "short" }).format(new Date(ms)); }
+function hariKey(ms) { return new Date(ms + 7 * 3600 * 1000).toISOString().slice(0, 10); }
+function isoJakarta(ms) { return new Date(ms + 7 * 3600 * 1000).toISOString().slice(0, 19) + "+07:00"; }
+function slug(nama) { return nama.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "anak"; }
+function lokal(kunci, nilai) { try { if (nilai === undefined) return JSON.parse(localStorage.getItem(kunci) || "null"); localStorage.setItem(kunci, JSON.stringify(nilai)); } catch (e) { return null; } }
+const LEVEL = 6, HARI_MS = 86400000;
+const punyaNeg = (kelas, level) => KELAS[kelas].slice(0, level).some(L => L.neg);
+// profil lama tetap dipakai: versi 4 membawa level dan rekornya; versi lebih lama mulai dari level 1
+function rapikanAnak(a) {
+  if (!a) return a;
+  const kelas = Math.min(6, Math.max(1, Number(a.kelas) || 1));
+  const baru = (Number(a.versi) || 0) >= 4;
+  const level = baru ? Math.min(LEVEL, Math.max(1, Number(a.level) || 1)) : 1;
+  const lulus = baru ? a.lulus || 0 : 0, terbaik = baru ? a.terbaik || {} : {};
+  const tesTgl = a.tesTgl || 0;
+  // anak yang belum pernah latihan di versi 4 ikut tes penempatan dulu
+  const perluTes = a.perluTes !== undefined ? !!a.perluTes : !tesTgl && level === 1 && !lulus && !Object.keys(terbaik).length;
+  return { id: a.id, nama: a.nama, kelas, level, lulus, terbaik, ulang: baru ? a.ulang || [] : [], hari: a.hari || "", hariIni: a.hariIni || 0,
+    dibuat: a.dibuat || Date.now(), terakhir: a.terakhir || 0, jurus: a.jurus || [], perluTes, tesTgl,
+    lulusTgl: a.lulusTgl || {}, dayaTahan: a.dayaTahan || {}, versi: 5 };
+}
+
+// ---------- keadaan ----------
+const app = document.getElementById("app");
+const awalLokal = {};
+Object.values({ ...(lokal("pa3-anak") || {}), ...(lokal("pa4-anak") || {}) }).forEach(a => { if (a && a.id) awalLokal[a.id] = rapikanAnak(a); });
+const S = { view: "home", anakDb: {}, anakLokal: awalLokal, aktif: null, form: false, atur: null,
+  lembar: null, idx: 0, jawab: [], detik: [], hapus: [], mulai: 0, enterTs: 0, hasil: null, ubah: null,
+  riwayat: [], db: null, dbState: "loading", saveState: "", salin: "" };
+function semuaAnak() {
+  const m = { ...S.anakLokal };
+  Object.values(S.anakDb).forEach(a => { const r = rapikanAnak(a); const l = m[r.id]; if (!l || ((Number(a.versi) || 0) >= 4 && (a.terakhir || 0) >= (l.terakhir || 0))) m[r.id] = r; });
+  return m;
+}
+const anak = id => semuaAnak()[id];
+
+// ---------- database ----------
+(async function () {
+  try {
+    for (let t = 0; t < 50 && !window.claude?.use; t++) await new Promise(r => setTimeout(r, 200));
+    const db = window.claude?.use ? await window.claude.use("db") : null;
+    if (!db) { S.dbState = "off"; rerenderHome(); return; }
+    const user = await window.claude.use("user");
+    const boleh = user ? user.canEdit() : null;
+    if (boleh === false) { S.dbState = "off"; rerenderHome(); return; }
+    S.db = db; S.dbState = "on";
+    let pertama = true;
+    db.collection("anak").onSnapshot(snap => {
+      const m = {}; snap.docs.forEach(d => { m[d.id] = d.data(); }); S.anakDb = m;
+      if (pertama) { pertama = false;
+        // profil yang hanya ada di HP ini, atau lebih baru di HP ini, dikirim sekali
+        Object.values(S.anakLokal).forEach(a => { const d = m[a.id]; if (!d || (a.terakhir || 0) > (d.terakhir || 0)) simpanAnak(a); });
+      }
+      rerenderHome(); }, () => {});
+    db.collection("hasil").orderBy("mulaiMs", "desc").limit(100).onSnapshot(snap => { S.riwayat = snap.docs.map(d => d.data()); rerenderHome(); }, () => {});
+    const tunda = lokal("pa4-tunda") || [];
+    const sisa = [];
+    for (const doc of tunda) { try { await db.collection("hasil").doc(doc.id).set(doc); } catch (e) { sisa.push(doc); } }
+    lokal("pa4-tunda", sisa);
+    rerenderHome();
+  } catch (e) { S.dbState = "off"; rerenderHome(); }
+})();
+function rerenderHome() { if (S.view === "home") render(); }
+async function simpanAnak(a) {
+  a = rapikanAnak({ ...a, versi: 5 });
+  S.anakLokal[a.id] = a; lokal("pa4-anak", S.anakLokal);
+  if (S.db) { try { await S.db.collection("anak").doc(a.id).set(a); } catch (e) {} }
+}
+async function simpanHasil(doc) {
+  if (!S.db) { tunda(doc); S.saveState = "off"; if (S.view === "result" || S.view === "tesHasil") render(); return; }
+  S.saveState = "saving"; render();
+  try { await S.db.collection("hasil").doc(doc.id).set(doc); S.saveState = "ok"; }
+  catch (e) { tunda(doc); S.saveState = e && e.code === "invalid_argument" ? "off" : "fail"; if (S.saveState === "off") { S.dbState = "off"; S.db = null; } }
+  if (S.view === "result" || S.view === "tesHasil") render();
+}
+function tunda(doc) { const t = lokal("pa4-tunda") || []; if (!t.some(x => x.id === doc.id)) { t.push(doc); lokal("pa4-tunda", t.slice(-60)); } }
+
+// ---------- alur ----------
+function tambahAnak(nama, kelas) {
+  const id = slug(nama); kelas = Number(kelas);
+  if (anak(id)) { const a = anak(id); const ganti = a.kelas !== kelas;
+    simpanAnak({ ...a, kelas, level: ganti ? 1 : a.level, lulus: ganti ? 0 : a.lulus, ulang: ganti ? [] : a.ulang, perluTes: ganti ? true : a.perluTes, terakhir: Date.now() });
+    S.form = false; render(); return; }
+  simpanAnak({ id, nama: nama.trim(), kelas, level: 1, lulus: 0, terbaik: {}, ulang: [], hari: "", hariIni: 0, dibuat: Date.now(), terakhir: Date.now(), perluTes: true });
+  S.form = false; render();
+}
+function cariDayaTahan(a) {
+  for (let lv = 1; lv < a.level; lv++) {
+    const key = a.kelas + "-" + lv, t = (a.lulusTgl || {})[key];
+    if (t && Date.now() - t >= HARI_DAYA_TAHAN * HARI_MS && !(a.dayaTahan || {})[key]) return lv;
+  }
+  return 0;
+}
+function siapkanLembar(a) {
+  const L = KELAS[a.kelas][a.level - 1], benih = String(Date.now());
+  const perbaiki = (a.ulang || []).filter(u => u.kelas === a.kelas && u.level === a.level);
+  const dayaTahan = cariDayaTahan(a);
+  const soal = buatLembar(a.kelas, a.level, benih, perbaiki, dayaTahan);
+  S.lembar = { kelas: a.kelas, level: a.level, judul: L.judul, neg: punyaNeg(a.kelas, a.level), soal, target: targetLembar(soal), dayaTahan };
+}
+function bukaAnak(id) {
+  const a = anak(id); S.aktif = id;
+  if (a.perluTes) { S.view = "tesAwal"; render(); window.scrollTo(0, 0); return; }
+  siapkanLembar(a);
+  S.view = (a.jurus || []).includes(a.kelas + "-" + a.level) ? "ready" : "jurus";
+  render(); window.scrollTo(0, 0);
+}
+function mulai() {
+  const n = S.lembar.soal.length;
+  S.idx = 0; S.jawab = Array(n).fill(""); S.detik = Array(n).fill(0); S.hapus = Array(n).fill(0);
+  S.mulai = Date.now(); S.enterTs = S.mulai; S.view = "work"; render(); window.scrollTo(0, 0);
+}
+function mulaiTes() {
+  const a = anak(S.aktif), soal = buatTes(a.kelas, String(Date.now()));
+  S.lembar = { tes: true, kelas: a.kelas, level: 0, judul: "Tes penempatan", neg: punyaNeg(a.kelas, LEVEL), soal, target: targetLembar(soal) };
+  mulai();
+}
+function catatWaktu() { const now = Date.now(); S.detik[S.idx] += (now - S.enterTs) / 1000; S.enterTs = now; }
+function pindah(i) { if (S.lembar.tes) return; catatWaktu(); S.idx = i; render(); }
+function tekan(k) {
+  if (S.view !== "work") return;
+  const cur = S.jawab[S.idx];
+  if (k === "del") { if (cur !== "") S.hapus[S.idx]++; S.jawab[S.idx] = cur.slice(0, -1); render(); return; }
+  if (k === "neg") { S.jawab[S.idx] = cur.startsWith(MIN) ? cur.slice(1) : MIN + cur; render(); return; }
+  if (k === "skip") { if (!S.lembar.tes) return; catatWaktu(); S.jawab[S.idx] = "x"; majuTes(); return; }
+  if (k === "next") {
+    if (cur === "" || cur === MIN) return;
+    catatWaktu();
+    if (S.lembar.tes) { majuTes(); return; }
+    const lanjut = S.jawab.findIndex((v, i) => i > S.idx && v === "");
+    const kosong = S.jawab.findIndex((v, i) => v === "" && i !== S.idx);
+    if (lanjut >= 0) S.idx = lanjut; else if (kosong >= 0) S.idx = kosong; else { selesai(); return; }
+    render(); return;
+  }
+  if (cur.replace(MIN, "").length >= 4) return;
+  S.jawab[S.idx] = cur + k; render();
+}
+const angka = v => (v === "" || v === MIN || v === "x" ? null : Number(v.replace(MIN, "-")));
+function rekamSoal(i) {
+  const q = S.lembar.soal[i], j = angka(S.jawab[i]);
+  return { no: i + 1, soal: q.q, kunci: q.k, jawab: j, benar: j === q.k, detik: Math.round(S.detik[i] * 10) / 10, hapus: S.hapus[i], lv: q.lv, dt: q.dt, ulang: !!q.ulang };
+}
+
+// ---------- tes penempatan ----------
+const itemTes = lv => S.lembar.soal.map((q, i) => (q.lv === lv ? rekamSoal(i) : null)).filter(Boolean);
+function majuTes() {
+  const i = S.idx, soal = S.lembar.soal, lv = soal[i].lv;
+  const akhirBagian = i === soal.length - 1 || soal[i + 1].lv !== lv;
+  if (akhirBagian) {
+    const n = nilaiBagianTes(itemTes(lv));
+    if (!n.lancar) { selesaiTes(lv, false); return; }
+    if (i === soal.length - 1) { selesaiTes(lv, true); return; }
+  }
+  S.idx = i + 1; render();
+}
+function selesaiTes(lvAkhir, semuaLancar) {
+  const akhir = Date.now(), a = anak(S.aktif), kelas = S.lembar.kelas;
+  const bagian = [];
+  for (let lv = 1; lv <= lvAkhir; lv++) bagian.push({ lv, judul: KELAS[kelas][lv - 1].judul, ...nilaiBagianTes(itemTes(lv)) });
+  const levelMulai = semuaLancar ? LEVEL : lvAkhir;
+  const lulusTgl = { ...(a.lulusTgl || {}) };
+  bagian.filter(b => b.lancar).forEach(b => { const key = kelas + "-" + b.lv; if (!lulusTgl[key]) lulusTgl[key] = akhir; });
+  const terjawab = S.lembar.soal.map((_, i) => i).filter(i => i <= S.idx).map(rekamSoal);
+  const salah = terjawab.filter(s => !s.benar).length;
+  simpanAnak({ ...a, level: levelMulai, lulus: 0, ulang: [], perluTes: false, tesTgl: akhir, lulusTgl, terakhir: akhir });
+  const doc = { id: S.mulai + "-" + Math.floor(Math.random() * 1e6), jenis: "tes", anakId: a.id, anak: a.nama, kelas, level: levelMulai,
+    judul: "Tes penempatan", kode: "K" + kelas + "-TES", mulaiMs: S.mulai, selesaiMs: akhir, mulai: isoJakarta(S.mulai), selesai: isoJakarta(akhir),
+    durasiDetik: Math.round((akhir - S.mulai) / 1000), targetDetik: targetLembar(S.lembar.soal.slice(0, terjawab.length)), salah, benar: terjawab.length - salah,
+    nilai: "Tes", levelMulai, levelSesudah: levelMulai, arah: "tes", bagian, soal: terjawab, zonaWaktu: TZ, versi: 5 };
+  S.hasil = doc; S.view = "tesHasil"; S.saveState = ""; S.salin = ""; render(); window.scrollTo(0, 0); simpanHasil(doc);
+}
+
+// ---------- lembar latihan ----------
+function selesai() {
+  const akhir = Date.now(), a = anak(S.aktif), { kelas, level, dayaTahan } = S.lembar, key = kelas + "-" + level;
+  const soal = S.lembar.soal.map((_, i) => rekamSoal(i));
+  const salah = soal.filter(s => !s.benar).length;
+  const durasi = Math.round((akhir - S.mulai) / 1000), target = S.lembar.target;
+  const tepat = salah <= 1 && durasi <= target, kilat = salah === 0 && durasi <= target * 0.66;
+  let baru = level, lulus = a.lulus || 0, arah = "stay";
+  const lulusTgl = { ...(a.lulusTgl || {}) }, dtCatat = { ...(a.dayaTahan || {}) };
+  if (kilat || tepat) { lulus = kilat ? 2 : lulus + 1; if (lulus >= 2) { lulus = 0; lulusTgl[key] = akhir; if (level < LEVEL) { baru = level + 1; arah = "up"; } else arah = "juara"; } }
+  else if (salah >= 6) { lulus = 0; if (level > 1) { baru = level - 1; arah = "down"; } }
+  else lulus = 0;
+  // uji daya tahan: soal level lama yang sudah lulus 3 minggu lalu
+  let dt = null;
+  if (dayaTahan) {
+    const item = soal.filter(s => s.lv === dayaTahan && !s.ulang), benar = item.filter(s => s.benar).length;
+    dt = { lv: dayaTahan, benar, n: item.length, ingat: benar >= item.length - 1 };
+    const k2 = kelas + "-" + dayaTahan;
+    if (dt.ingat) dtCatat[k2] = { benar, n: item.length, tgl: akhir }; else lulusTgl[k2] = akhir; // belum ingat: diuji lagi 3 minggu kemudian
+  }
+  const terbaik = { ...(a.terbaik || {}) }, lamaTerbaik = terbaik[key];
+  const rekor = salah <= 1 && (!lamaTerbaik || durasi < lamaTerbaik);
+  if (rekor) terbaik[key] = durasi;
+  const hari = hariKey(akhir), hariIni = (a.hari === hari ? a.hariIni || 0 : 0) + 1;
+  // soal yang salah, lalu soal yang terlalu lama, muncul lagi di lembar berikutnya
+  const perbaiki = [...soal.filter(s => !s.benar), ...soal.filter(s => s.benar && s.detik > 2 * s.dt).sort((x, y) => y.detik / y.dt - x.detik / x.dt)];
+  const ulang = arah === "stay" || arah === "down" ? perbaiki.slice(0, 4).map(s => ({ q: s.soal, k: s.kunci, lv: Math.min(s.lv, baru), dt: s.dt, kelas, level: baru })) : [];
+  simpanAnak({ ...a, level: baru, lulus, terbaik, ulang, hari, hariIni, lulusTgl, dayaTahan: dtCatat, terakhir: akhir });
+  const doc = { id: S.mulai + "-" + Math.floor(Math.random() * 1e6), jenis: "latihan", anakId: a.id, anak: a.nama, kelas, level, judul: S.lembar.judul,
+    kode: "K" + kelas + "-L" + level, mulaiMs: S.mulai, selesaiMs: akhir, mulai: isoJakarta(S.mulai), selesai: isoJakarta(akhir),
+    durasiDetik: durasi, targetDetik: target, salah, benar: SOAL - salah, nilai: nilaiDari(salah), tepat, kilat, rekor,
+    levelSesudah: baru, arah, dayaTahan: dt, soal, zonaWaktu: TZ, versi: 5 };
+  S.ubah = { arah, baru, lulus, rekor, lamaTerbaik, tepat, hariIni, dt };
+  S.hasil = doc; S.view = "result"; S.saveState = ""; S.salin = ""; render(); window.scrollTo(0, 0); simpanHasil(doc);
+}
+function teksSalin(h) {
+  if (h.jenis === "tes") {
+    const b = h.bagian.map(x => `L${x.lv} ${x.benar}/${TES_N} ${x.detik} dtk ${x.lancar ? "lancar" : "belum"}`).join("; ");
+    return `Tes penempatan · ${h.anak} · Kelas ${h.kelas}\n${tgl(h.mulaiMs)} ${jam(h.mulaiMs)} · mulai di Level ${h.levelMulai} (${KELAS[h.kelas][h.levelMulai - 1].judul})\n${b}`;
+  }
+  const salah = h.soal.filter(s => !s.benar).map(s => `${s.soal} = ${s.jawab ?? "-"} (benar ${s.kunci})`).join("; ");
+  const lambat = [...h.soal].sort((a, b) => b.detik - a.detik).slice(0, 3).map(s => `${s.soal} ${s.detik} dtk`).join("; ");
+  return `Latihan Hitung Cepat · ${h.anak} · Kelas ${h.kelas} Level ${h.level} (${h.judul})\n${tgl(h.mulaiMs)} ${jam(h.mulaiMs)}–${jam(h.selesaiMs)} · ${h.salah} salah · waktu ${mmss(h.durasiDetik)} (target ${mmss(h.targetDetik)})`
+    + (salah ? `\nSalah: ${salah}` : "") + `\nPaling lama: ${lambat}`
+    + (h.dayaTahan ? `\nUji daya tahan Level ${h.dayaTahan.lv}: ${h.dayaTahan.benar}/${h.dayaTahan.n} benar` : "");
+}
+// R — rapor jelas: soal yang paling sering salah atau paling lama, dari riwayat
+function petaSulit(id) {
+  const m = {};
+  S.riwayat.filter(r => r.anakId === id && (Number(r.versi) || 0) >= 4 && r.jenis !== "tes").forEach(r => (r.soal || []).forEach(s => {
+    const L = KELAS[r.kelas] && KELAS[r.kelas][(s.lv || r.level) - 1], dt = s.dt || (L ? L.dt : 4);
+    const x = m[s.soal] || (m[s.soal] = { soal: s.soal, n: 0, salah: 0, detik: 0, dt });
+    x.n++; if (!s.benar) x.salah++; x.detik += s.detik || 0;
+  }));
+  return Object.values(m).map(x => ({ ...x, rata: x.detik / x.n })).filter(x => x.salah > 0 || x.rata > 2 * x.dt)
+    .sort((a, b) => b.salah - a.salah || b.rata / b.dt - a.rata / a.dt).slice(0, 6);
+}
+
+// ---------- tampilan ----------
+function viewHome() {
+  const daftar = Object.values(semuaAnak()).sort((x, y) => (x.dibuat || 0) - (y.dibuat || 0));
+  const hari = hariKey(Date.now());
+  const kartu = daftar.map(a => {
+    const L = KELAS[a.kelas][a.level - 1], hi = a.hari === hari ? a.hariIni || 0 : 0;
+    const lv = KELAS[a.kelas].map((_, i) => `<span class="lvl ${i + 1 < a.level ? "done" : i + 1 === a.level ? "now" : ""}">${i + 1}</span>`).join("");
+    const pips = [0, 1].map(i => `<span class="pip ${hi > i ? "on" : ""}"></span>`).join("");
+    const best = a.terbaik && a.terbaik[a.kelas + "-" + a.level];
+    const peta = petaSulit(a.id);
+    const atur = S.atur === a.id ? `<div class="form">
+      <label><span class="label">Kelas</span><select id="atur-kelas">${[1, 2, 3, 4, 5, 6].map(k => `<option value="${k}" ${k === a.kelas ? "selected" : ""}>Kelas ${k} SD</option>`).join("")}</select></label>
+      <label><span class="label">Level</span><select id="atur-level">${[1, 2, 3, 4, 5, 6].map(l => `<option value="${l}" ${l === a.level ? "selected" : ""}>Level ${l}</option>`).join("")}</select></label>
+      <p class="small muted">Daftar level tiap kelas tertulis di bagian bawah halaman. Ganti kelas dengan Level 1 berarti anak ikut tes penempatan lagi.</p>
+      <div class="row"><button class="btn" data-act="atur-simpan" data-id="${a.id}">Simpan</button><button class="btn ghost" data-act="atur-tutup">Batal</button></div>
+      <button class="linkbtn" data-act="tes-ulang" data-id="${a.id}">Ulangi tes penempatan</button></div>` : "";
+    const isi = a.perluTes
+      ? `<div><span class="label">Langkah pertama</span><p><b>Tes penempatan ± 3 menit</b></p><p class="small muted">Supaya ${esc(a.nama)} langsung mulai di level yang pas: tidak terlalu mudah, tidak terlalu sulit.</p></div>
+         <button class="btn" data-act="latih" data-id="${a.id}">Mulai tes</button>`
+      : `<div><span class="label">Level ${a.level} · contoh ${esc(L.contoh)}</span><p><b>${esc(L.judul)}</b></p>
+         <p class="small muted">Target ${mmss(targetDetik(a.kelas, a.level))} untuk 20 soal${best ? " · rekor " + mmss(best) : ""}${a.lulus ? " · 1 lembar lagi untuk naik" : ""}</p></div>
+         <button class="btn" data-act="latih" data-id="${a.id}">Latihan</button>`;
+    return `<article class="kid"><div class="kid-top"><div><div class="kid-name">${esc(a.nama)}</div><span class="small muted">Kelas ${a.kelas} SD</span></div>
+      <div class="today">${pips}<span class="small muted">${hi}/2 hari ini</span></div></div>
+      <div class="lvls" aria-label="Level ${a.level} dari 6">${lv}</div>${isi}
+      ${peta.length ? `<details class="why"><summary>Soal yang perlu dilatih</summary><div class="peta">${peta.map(x => `<span class="chip">${esc(x.soal)} · ${x.salah ? "salah " + x.salah + "×" : x.rata.toFixed(1) + " dtk"}</span>`).join("")}</div>
+        <p class="small muted">Dari riwayat latihan terakhir. Soal ini otomatis muncul lagi di lembar berikutnya.</p></details>` : ""}
+      <button class="linkbtn" data-act="atur" data-id="${a.id}">Ubah kelas atau level</button>${atur}</article>`;
+  }).join("");
+  const form = S.form || !daftar.length ? `<div class="form"><span class="label">Tambah anak</span>
+      <label>Nama<input id="f-nama" autocomplete="off" placeholder="Nama panggilan anak"></label>
+      <label>Kelas<select id="f-kelas">${[1, 2, 3, 4, 5, 6].map(k => `<option value="${k}" ${k === 4 ? "selected" : ""}>Kelas ${k} SD</option>`).join("")}</select></label>
+      <p class="small muted">Anak mulai dengan tes penempatan ± 3 menit, lalu langsung latihan di level yang pas.</p>
+      <div class="row"><button class="btn" data-act="tambah">Simpan</button>${daftar.length ? `<button class="btn ghost" data-act="form-tutup">Batal</button>` : ""}</div></div>`
+    : `<button class="btn ghost" data-act="form">+ Tambah anak</button>`;
+  const banner = S.dbState === "off" ? `<div class="banner"><b>Hasil hanya tersimpan di HP ini</b><span class="small">Hasil latihan belum terkirim ke pemilik halaman. Setelah selesai latihan, tekan <b>Salin hasil</b> lalu kirim lewat WhatsApp.</span></div>` : "";
+  const hist = S.riwayat.filter(r => (Number(r.versi) || 0) >= 4).slice(0, 8).map(r => r.jenis === "tes"
+    ? `<div class="hrow"><span><b>${esc(r.anak)}</b> · Kelas ${r.kelas} · Tes penempatan<br><span class="small muted">${tgl(r.mulaiMs)}, ${jam(r.mulaiMs)}</span></span>
+      <span class="tab" style="text-align:right"><b>L${r.levelMulai}</b><br><span class="small muted">mulai di sini</span></span></div>`
+    : `<div class="hrow"><span><b>${esc(r.anak)}</b> · Kelas ${r.kelas} Level ${r.level}<br><span class="small muted">${tgl(r.mulaiMs)}, ${jam(r.mulaiMs)}–${jam(r.selesaiMs)}</span></span>
+      <span class="tab" style="text-align:right"><b>${r.nilai}</b><br><span class="small muted">${r.salah} salah · ${mmss(r.durasiDetik)}</span></span></div>`).join("");
+  const peta = [1, 2, 3, 4, 5, 6].map(k => `<li><b>Kelas ${k}:</b> ${KELAS[k].map((L, i) => `${i + 1}. ${esc(L.judul)}`).join(" · ")}</li>`).join("");
+  return `<header class="head"><span class="label">Pandu Anak · uji coba · Metode LANCAR</span><h1>Latihan Hitung Cepat</h1>
+    <p class="muted">Dua lembar sehari, 20 soal per lembar. Semua soal bisa dijawab di kepala, tanpa kalkulator.</p></header>
+    ${banner}<section class="kids">${kartu}</section>${form}
+    <details class="why"><summary>Cara kerja Metode LANCAR</summary><ul>
+      <li><b>Level anak:</b> tes penempatan singkat mencari level yang pas untuk anak di kelasnya.</li>
+      <li><b>Ajarkan jurus:</b> sebelum level baru, anak melihat satu layar jurus dengan contoh. Orang tua boleh membacakannya bersama.</li>
+      <li><b>Naik kalau tuntas dan lancar:</b> salah paling banyak 1 dan selesai sebelum target, dua lembar berturut-turut. Sempurna dan sangat cepat, langsung naik. Salah 6 atau lebih, turun satu level dulu.</li>
+      <li><b>Campur dan selipkan:</b> mulai Level 2, setiap lembar berisi 14 soal level ini dan 6 soal level sebelumnya, supaya yang sudah hafal tidak lupa. Soal yang salah atau terlalu lama muncul lagi.</li>
+      <li><b>Ajeg:</b> sebentar tapi tiap hari. Lembar kedua paling bagus dikerjakan di waktu lain, misalnya sore dan malam.</li>
+      <li><b>Rekor sendiri:</b> anak mengejar waktunya sendiri. Tiga minggu setelah lulus, level lama diuji lagi untuk melihat apakah masih ingat.</li></ul></details>
+    <details class="why"><summary>Daftar level tiap kelas</summary><ul>${peta}</ul></details>
+    ${hist ? `<section class="kids"><h2>Riwayat terbaru</h2><div class="history">${hist}</div></section>` : ""}`;
+}
+function viewTesAwal() {
+  const a = anak(S.aktif);
+  return `<div class="ready"><span class="label">${esc(a.nama)} · Kelas ${a.kelas}</span><div class="big" style="font-size:40px">Tes penempatan</div>
+    <p class="jurus-inti">Ada beberapa soal pendek, dari yang paling mudah. Jawab secepat dan setepat mungkin.</p>
+    <p class="muted">Kalau soalnya mulai sulit, itu bagus: artinya kita sudah menemukan level yang pas. Tekan <b>Belum bisa</b> kalau tidak tahu jawabannya.</p>
+    <p class="small muted">± 3 menit. Hasilnya tidak dinilai, hanya untuk menentukan titik mulai.</p>
+    <button class="btn" data-act="tes-mulai">Mulai tes</button>
+    <button class="btn ghost" data-act="tes-lewati">Lewati, mulai dari Level 1</button>
+    <button class="btn ghost" data-act="home">Kembali</button></div>`;
+}
+function viewTesHasil() {
+  const h = S.hasil, L = KELAS[h.kelas][h.levelMulai - 1];
+  const baris = h.bagian.map(b => `<tr><td>Level ${b.lv} · ${esc(b.judul)}</td><td>${b.benar}/${TES_N} · ${b.detik} dtk<br><span class="${b.lancar ? "ok" : "belum"}">${b.lancar ? "lancar" : "mulai di sini"}</span></td></tr>`).join("");
+  const saved = { saving: "Mengirim hasil…", ok: "Hasil terkirim dan tersimpan.", fail: "Hasil belum terkirim. Disimpan dulu di HP ini dan dikirim otomatis nanti.", off: "Hasil tersimpan di HP ini saja. Tekan Salin hasil untuk mengirimnya.", "": "" }[S.saveState];
+  return `<div class="result"><span class="label">${esc(h.anak)} · Kelas ${h.kelas} · Tes penempatan</span>
+    <h2>Mulai di Level ${h.levelMulai}</h2>
+    <div class="level-msg up">${esc(L.judul)}<span>Contoh: ${esc(L.contoh)}. Level di bawahnya sudah lancar.</span></div>
+    <table class="tes-tabel">${baris}</table>
+    <p class="saved">${saved}</p>
+    ${S.saveState !== "ok" ? `<button class="btn ghost" data-act="salin">Salin hasil</button>${S.salin === "manual" ? `<textarea class="copybox" readonly>${esc(teksSalin(h))}</textarea>` : S.salin === "ok" ? `<p class="small">Hasil tersalin. Tempel di WhatsApp.</p>` : ""}` : ""}
+    <div class="row"><button class="btn" data-act="latih" data-id="${esc(h.anakId)}">Lihat jurus Level ${h.levelMulai}</button><button class="btn ghost" data-act="home">Ke halaman anak</button></div></div>`;
+}
+function viewJurus() {
+  const a = anak(S.aktif), l = S.lembar, J = JURUS[l.kelas + "-" + l.level];
+  const contoh = J.contoh.map(c => `<div class="ex"><div class="ex-q">${esc(c.soal)} = ?</div><ol>${c.langkah.map(x => `<li>${esc(x)}</li>`).join("")}</ol>
+    <div class="ex-a">${esc(c.soal)} = <b>${esc(tampil(c.jawab))}</b></div></div>`).join("");
+  return `<div class="ready"><span class="label">${esc(a.nama)} · Jurus Level ${l.level}</span><div class="big" style="font-size:34px">${esc(l.judul)}</div>
+    <p class="jurus-inti">${esc(J.inti)}</p>${contoh}
+    ${J.ingat ? `<p class="ingat">${esc(J.ingat)}</p>` : ""}
+    <p class="small muted">Orang tua boleh membacakan jurus ini bersama anak. Jurus ini bisa dibuka lagi sebelum mulai latihan.</p>
+    <button class="btn" data-act="jurus-ok">Saya mengerti, lanjut</button></div>`;
+}
+function viewReady() {
+  const a = anak(S.aktif), l = S.lembar, best = a.terbaik && a.terbaik[l.kelas + "-" + l.level];
+  const nIni = l.soal.filter(s => s.lv === l.level && !s.ulang).length, nUlang = l.soal.filter(s => s.ulang).length, nLama = SOAL - nIni - nUlang;
+  const susun = `<div class="mix"><span class="chip">${nIni} soal Level ${l.level}</span>${nLama ? `<span class="chip">${nLama} soal ${l.dayaTahan ? "uji daya tahan Level " + l.dayaTahan : "ulangan level sebelumnya"}</span>` : ""}${nUlang ? `<span class="chip ulang">${nUlang} soal yang perlu diulang</span>` : ""}</div>`;
+  return `<div class="ready"><span class="label">${esc(a.nama)} · Kelas ${l.kelas} · Level ${l.level} dari 6</span><div class="big" style="font-size:40px">${esc(l.judul)}</div>
+    <p class="muted">Contoh: ${esc(KELAS[l.kelas][l.level - 1].contoh)}</p>${susun}
+    <div class="targets"><div class="fact"><span class="label">Target waktu</span><b>${mmss(l.target)}</b></div><div class="fact"><span class="label">Rekor</span><b>${best ? mmss(best) : "–"}</b></div></div>
+    ${l.neg ? `<p class="small muted">Untuk jawaban negatif, tekan tombol ${MIN} di bawah papan angka.</p>` : ""}
+    <p class="muted">20 soal. Jawab di kepala, secepat dan setepat mungkin.</p>
+    <button class="btn" data-act="start">Mulai</button><button class="linkbtn" data-act="jurus-lihat">Lihat jurus lagi</button><button class="btn ghost" data-act="home">Kembali</button></div>`;
+}
+function viewWork() {
+  const l = S.lembar, q = l.soal[S.idx], v = S.jawab[S.idx], n = l.soal.length;
+  const dots = l.tes ? "" : `<div class="dots">${l.soal.map((_, i) => `<button class="dot ${S.jawab[i] !== "" ? "done" : ""} ${i === S.idx ? "now" : ""}" data-act="go" data-i="${i}" aria-label="Soal ${i + 1}">${i + 1}</button>`).join("")}</div>`;
+  const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9"].map(k => `<button class="key" data-act="key" data-k="${k}">${k}</button>`).join("")
+    + `<button class="key del" data-act="key" data-k="del">Hapus</button><button class="key" data-act="key" data-k="0">0</button><button class="key next" data-act="key" data-k="next">Lanjut</button>`
+    + (l.neg ? `<button class="key neg" data-act="key" data-k="neg">${MIN} negatif</button>` : "")
+    + (l.tes ? `<button class="key skip" data-act="key" data-k="skip">Belum bisa, lanjut</button>` : "");
+  const sisa = S.jawab.filter(x => x === "").length;
+  const panjang = (q.q + " = 0000").length, ukuran = panjang > 18 ? "font-size:clamp(28px,8vw,42px)" : panjang > 13 ? "font-size:clamp(34px,10vw,52px)" : "";
+  const atas = l.tes ? `<span><b>Tes penempatan</b> <span class="muted small">bagian ${q.lv} dari ${LEVEL}</span></span><span class="muted small tab">soal ${S.idx + 1}</span>`
+    : `<span><b>Level ${l.level}</b> <span class="muted small">soal ${S.idx + 1} dari ${n}</span></span><span class="muted small tab">${sisa === 0 ? "Semua terisi" : sisa + " belum"}</span>`;
+  return `<div class="work"><div class="topbar">${atas}</div>${dots}
+    <div class="problem"><span class="muted small">(${S.idx + 1})</span>
+      <div class="eq" style="${ukuran}" aria-live="polite"><span>${esc(q.q)} =</span><span class="ans ${v === "" ? "empty" : ""}">${v === "" ? "?" : esc(v)}</span></div></div>
+    <div class="pad">${keys}</div>
+    ${!l.tes && sisa === 0 ? `<button class="btn" data-act="finish">Selesai, periksa</button>` : ""}</div>`;
+}
+function viewResult() {
+  const h = S.hasil, u = S.ubah, perfect = h.salah === 0;
+  const pesan = u.arah === "up" ? `Naik ke Level ${u.baru}!<span>${esc(KELAS[h.kelas][u.baru - 1].judul)}. Sebelum mulai, ada jurus baru.</span>`
+    : u.arah === "juara" ? `Juara kelas ${h.kelas}!<span>Semua level kelas ${h.kelas} sudah lancar. Coba kejar rekor, atau pindah ke kelas berikutnya lewat "Ubah kelas atau level".</span>`
+    : u.arah === "down" ? `Kita ulang Level ${u.baru} dulu<span>Supaya dasarnya lancar. Besok pasti lebih mudah.</span>`
+    : u.tepat ? `Tepat! Satu lembar lagi untuk naik<span>Salah paling banyak 1 dan di bawah ${mmss(h.targetDetik)}.</span>`
+    : h.salah <= 1 ? `Hampir! Tinggal lebih cepat<span>Target ${mmss(h.targetDetik)}. Kalahkan waktumu sendiri.</span>`
+    : `Tetap di Level ${h.level}<span>Soal yang salah muncul lagi di lembar berikutnya.</span>`;
+  const dtPesan = u.dt ? `<p class="ingat">Uji daya tahan Level ${u.dt.lv}: ${u.dt.benar} dari ${u.dt.n} benar. ${u.dt.ingat ? "Masih ingat, hebat!" : "Ada yang mulai lupa. Level itu akan diuji lagi nanti."}</p>` : "";
+  const salahList = h.soal.filter(s => !s.benar).map(s => `<div class="li"><span class="no">(${s.no})</span><span>${esc(s.soal)} = <span class="wrong">${s.jawab === null ? "-" : esc(tampil(s.jawab))}</span> <b>${esc(tampil(s.kunci))}</b></span><span class="small muted">${s.detik} dtk</span></div>`).join("");
+  const lambat = [...h.soal].sort((a, b) => b.detik - a.detik).slice(0, 3).map(s => `<div class="li"><span class="no">(${s.no})</span><span>${esc(s.soal)} = ${esc(tampil(s.kunci))}</span><span class="small muted">${s.detik} dtk</span></div>`).join("");
+  const saved = { saving: "Mengirim hasil…", ok: "Hasil terkirim dan tersimpan.", fail: "Hasil belum terkirim. Disimpan dulu di HP ini dan dikirim otomatis nanti.", off: "Hasil tersimpan di HP ini saja. Tekan Salin hasil untuk mengirimnya.", "": "" }[S.saveState];
+  return `<div class="result"><div class="stamp-wrap"><div class="stamp ${perfect ? "perfect" : ""}">${perfect ? "100" : h.nilai}</div>
+    <div><span class="label">${esc(h.anak)} · Kelas ${h.kelas} · Level ${h.level}</span><h2>${u.rekor ? "Rekor baru!" : perfect ? "Sempurna!" : "Selesai!"}</h2></div></div>
+    <div class="level-msg ${u.arah === "up" || u.arah === "juara" ? "up" : u.arah === "down" ? "down" : "stay"}">${pesan}</div>${dtPesan}
+    <div class="facts"><div class="fact"><span class="label">Salah</span><b>${h.salah}</b></div><div class="fact"><span class="label">Waktu</span><b>${mmss(h.durasiDetik)}</b></div>
+      <div class="fact"><span class="label">Target</span><b>${mmss(h.targetDetik)}</b></div></div>
+    <p class="small muted">${tgl(h.mulaiMs)}, ${jam(h.mulaiMs)}–${jam(h.selesaiMs)} · rata-rata ${(h.durasiDetik / SOAL).toFixed(1)} detik per soal${u.lamaTerbaik ? " · rekor sebelumnya " + mmss(u.lamaTerbaik) : ""}</p>
+    ${salahList ? `<section class="kids"><h2>Yang perlu diingat</h2><div class="list">${salahList}</div></section>` : ""}
+    <section class="kids"><h2>Soal paling lama</h2><div class="list">${lambat}</div></section>
+    <p class="saved">${saved}</p>
+    ${S.saveState !== "ok" ? `<button class="btn ghost" data-act="salin">Salin hasil</button>${S.salin === "manual" ? `<textarea class="copybox" id="copybox" readonly>${esc(teksSalin(h))}</textarea><p class="small muted">Tahan teks di atas, pilih Salin, lalu tempel di WhatsApp.</p>` : S.salin === "ok" ? `<p class="small">Hasil tersalin. Tempel di WhatsApp.</p>` : ""}` : ""}
+    ${u.hariIni === 1 ? `<p class="small muted">Lembar kedua paling bagus dikerjakan di waktu lain hari ini, misalnya sore atau malam.</p>` : ""}
+    <div class="row">${u.hariIni < 2 ? `<button class="btn" data-act="latih" data-id="${esc(h.anakId)}">Lembar ke-${u.hariIni + 1} hari ini</button>` : `<p class="notice">Dua lembar hari ini selesai. Sampai besok!</p>`}<button class="btn ghost" data-act="home">Ke halaman anak</button></div></div>`;
+}
+const VIEWS = { home: viewHome, tesAwal: viewTesAwal, tesHasil: viewTesHasil, jurus: viewJurus, ready: viewReady, work: viewWork, result: viewResult };
+function render() { app.innerHTML = (VIEWS[S.view] || viewHome)(); }
+app.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const act = b.dataset.act;
+  if (act === "latih") bukaAnak(b.dataset.id);
+  else if (act === "form") { S.form = true; render(); }
+  else if (act === "form-tutup") { S.form = false; render(); }
+  else if (act === "tambah") {
+    const nama = document.getElementById("f-nama").value, kelas = document.getElementById("f-kelas").value;
+    if (!nama.trim()) { document.getElementById("f-nama").focus(); return; }
+    tambahAnak(nama, kelas);
+  }
+  else if (act === "atur") { S.atur = S.atur === b.dataset.id ? null : b.dataset.id; render(); }
+  else if (act === "atur-tutup") { S.atur = null; render(); }
+  else if (act === "atur-simpan") {
+    const a = anak(b.dataset.id), k = Number(document.getElementById("atur-kelas").value), l = Number(document.getElementById("atur-level").value);
+    const sama = k === a.kelas && l === a.level, gantiKelas = k !== a.kelas;
+    simpanAnak({ ...a, kelas: k, level: l, lulus: sama ? a.lulus : 0, ulang: sama ? a.ulang : [], perluTes: gantiKelas ? l === 1 : sama ? a.perluTes : false, terakhir: Date.now() });
+    S.atur = null; render();
+  }
+  else if (act === "tes-ulang") { const a = anak(b.dataset.id); simpanAnak({ ...a, perluTes: true, terakhir: Date.now() }); S.atur = null; bukaAnak(a.id); }
+  else if (act === "tes-mulai") mulaiTes();
+  else if (act === "tes-lewati") { const a = anak(S.aktif); simpanAnak({ ...a, level: 1, lulus: 0, perluTes: false, terakhir: Date.now() }); bukaAnak(a.id); }
+  else if (act === "jurus-ok") {
+    const a = anak(S.aktif), key = S.lembar.kelas + "-" + S.lembar.level;
+    if (!(a.jurus || []).includes(key)) simpanAnak({ ...a, jurus: [...(a.jurus || []), key], terakhir: Date.now() });
+    S.view = "ready"; render(); window.scrollTo(0, 0);
+  }
+  else if (act === "jurus-lihat") { S.view = "jurus"; render(); window.scrollTo(0, 0); }
+  else if (act === "start") mulai();
+  else if (act === "home") { S.view = "home"; render(); window.scrollTo(0, 0); }
+  else if (act === "key") tekan(b.dataset.k);
+  else if (act === "go") pindah(Number(b.dataset.i));
+  else if (act === "finish") { catatWaktu(); selesai(); }
+  else if (act === "salin") {
+    const teks = teksSalin(S.hasil);
+    try { navigator.clipboard.writeText(teks).then(() => { S.salin = "ok"; render(); }, () => { S.salin = "manual"; render(); }); }
+    catch (err) { S.salin = "manual"; render(); }
+  }
+});
+document.addEventListener("keydown", e => {
+  if (S.view !== "work") return;
+  if (/^[0-9]$/.test(e.key)) tekan(e.key);
+  else if (e.key === "Backspace") tekan("del");
+  else if (e.key === "Enter") tekan("next");
+  else if (e.key === "-" && S.lembar.neg) tekan("neg");
+});
+render();
+</script>

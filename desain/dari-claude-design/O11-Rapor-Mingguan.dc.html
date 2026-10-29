@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Rapor mingguan</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+button { cursor: pointer; }
+</style>
+</helmet>
+<div style="width: 360px; height: 800px; box-sizing: border-box; background: #F5F7FA; font-family: 'Nunito', sans-serif; color: #2D3142; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="height: 56px; flex: none; display: flex; align-items: center; padding: 0 16px; background: #FFFFFF;">
+    <h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px;">Rapor</h1>
+  </div>
+
+  <div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 16px;">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <div style="display: flex; gap: 8px;">
+        <button type="button" aria-pressed="true" style="height: 36px; padding: 0 14px; border: none; border-radius: 999px; background: #D9F0E2; color: #1F7A4D; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 14px;">🐘 Aisyah</button>
+        <button type="button" aria-pressed="false" style="height: 36px; padding: 0 14px; border: 1px solid #E6E9F0; border-radius: 999px; background: #FFFFFF; color: #5B6072; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px;">🐯 Rafli</button>
+      </div>
+      <div style="font-size: 13px; color: #5B6072;">19–25 Okt</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+      <div style="background: #FFFFFF; border-radius: 16px; padding: 12px 10px; display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.05;">5</span>
+        <span style="font-size: 13px; line-height: 1.25;">hari latihan</span>
+      </div>
+      <div style="background: #FFFFFF; border-radius: 16px; padding: 12px 10px; display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.05;">3,4<span style="font-size: 14px; font-weight: 700;"> dtk</span></span>
+        <span style="font-size: 13px; line-height: 1.25;">per soal</span>
+        <span style="font-size: 12px; font-weight: 800; color: #1F7A4D;">↓ dari 5,1</span>
+      </div>
+      <div style="background: #FFFFFF; border-radius: 16px; padding: 12px 10px; display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 30px; line-height: 1.05;">96%</span>
+        <span style="font-size: 13px; line-height: 1.25;">benar</span>
+        <span style="font-size: 12px; font-weight: 800; color: #1F7A4D;">↑ naik</span>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <span style="font-weight: 700; font-size: 15px;">Kecepatan, 8 minggu</span>
+        <span style="font-size: 12px; color: #5B6072;">detik per soal</span>
+      </div>
+      <svg width="296" height="112" viewBox="0 0 296 112" role="img" aria-label="Grafik detik per soal 8 minggu: dari 6,0 turun ke 3,4">
+        <path d="M8 23 H288 M8 56 H288 M8 90 H288" stroke="#EEF0F4" stroke-width="1"/>
+        <path d="M8 22.9 L48 28 L88 25.4 L128 35.7 L168 38.3 L208 43.4 L248 46 L288 89.7" stroke="#3BB273" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="8" cy="22.9" r="3" fill="#3BB273"/>
+        <circle cx="48" cy="28" r="3" fill="#3BB273"/>
+        <circle cx="88" cy="25.4" r="3" fill="#3BB273"/>
+        <circle cx="128" cy="35.7" r="3" fill="#3BB273"/>
+        <circle cx="168" cy="38.3" r="3" fill="#3BB273"/>
+        <circle cx="208" cy="43.4" r="3" fill="#3BB273"/>
+        <circle cx="248" cy="46" r="3" fill="#3BB273"/>
+        <circle cx="288" cy="89.7" r="5" fill="#1F7A4D" stroke="#FFFFFF" stroke-width="2"/>
+        <text x="282" y="80" text-anchor="end" font-family="Nunito, sans-serif" font-size="12" font-weight="800" fill="#1F7A4D">3,4</text>
+        <text x="12" y="16" font-family="Nunito, sans-serif" font-size="11" fill="#5B6072">6,0</text>
+      </svg>
+      <div style="font-size: 12px; color: #5B6072;">Makin rendah, makin cepat.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-size: 12px; font-weight: 800; color: #1F7A4D;">KEMAJUAN</span>
+        <span style="font-size: 15px; line-height: 1.4;">[Satu kalimat kemajuan minggu ini]</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-size: 12px; font-weight: 800; color: #1F7A4D;">LANGKAH BERIKUTNYA</span>
+        <span style="font-size: 15px; line-height: 1.4;">[Satu langkah berikutnya]</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-size: 12px; font-weight: 800; color: #1F7A4D;">CARA MEMBANTU</span>
+        <span style="font-size: 15px; line-height: 1.4;">[Satu cara orang tua membantu]</span>
+      </div>
+    </div>
+
+    <button type="button" style="height: 48px; flex: none; border: none; border-radius: 14px; background: #3BB273; color: #2D3142; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="18" cy="5" r="2.5" stroke="#2D3142" stroke-width="2"/><circle cx="6" cy="12" r="2.5" stroke="#2D3142" stroke-width="2"/><circle cx="18" cy="19" r="2.5" stroke="#2D3142" stroke-width="2"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" stroke="#2D3142" stroke-width="2"/></svg>
+      Kirim ke WhatsApp
+    </button>
+  </div>
+
+  <nav aria-label="Menu orang tua" style="height: 64px; flex: none; display: flex; background: #FFFFFF; border-top: 1px solid #E6E9F0;">
+    <a href="O09-Kabar.dc.html" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke="#6B6F80" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span style="font-size: 12px; color: #5B6072;">Kabar</span>
+    </a>
+    <a href="O11-Rapor-Mingguan.dc.html" aria-current="page" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <span style="padding: 4px 16px; border-radius: 999px; background: #D9F0E2; display: flex;"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" fill="#1F7A4D"/><path d="M8.5 15v-3M12 15V9M15.5 15v-5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span style="font-size: 12px; color: #1F7A4D; font-weight: 800;">Rapor</span>
+    </a>
+    <a href="P08-Bimbingan.dc.html" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" stroke="#6B6F80" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#6B6F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size: 12px; color: #5B6072;">Bimbingan</span>
+    </a>
+    <a href="O12-Pengaturan-Waktu.dc.html" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="#6B6F80" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="7" r="2" stroke="#6B6F80" stroke-width="2"/><circle cx="10" cy="17" r="2" stroke="#6B6F80" stroke-width="2"/></svg>
+      <span style="font-size: 12px; color: #5B6072;">Atur</span>
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

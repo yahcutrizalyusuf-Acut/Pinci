@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Susun Kubus</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Andika:wght@400;700&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+button { cursor: pointer; }
+.pm-empuk { transition: transform 260ms cubic-bezier(.34,1.56,.64,1); }
+.pm-empuk:active { transform: scale(0.94); }
+@keyframes pm-jatuh { 0% { transform: translateY(-30px); opacity: 0.4; } 70% { transform: translateY(3px); opacity: 1; } 100% { transform: translateY(0); } }
+.pm-jatuh { animation: pm-jatuh 320ms cubic-bezier(.34,1.56,.64,1) 1; }
+@keyframes pm-mekar-a { 0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; } }
+@keyframes pm-mekar-b { 0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; } }
+.pm-mekar-a { animation: pm-mekar-a 450ms cubic-bezier(.2,.8,.3,1) 1 both; }
+.pm-mekar-b { animation: pm-mekar-b 450ms cubic-bezier(.2,.8,.3,1) 1 both; }
+@keyframes pm-terbang { 0% { transform: translate(-100px, 0); } 50% { transform: translate(180px, -18px); } 100% { transform: translate(470px, 0); } }
+.pm-terbang { animation: pm-terbang 2.6s linear 1 both; }
+@keyframes pm-lompat { 0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; } 12% { opacity: 1; } 50% { transform: translate(70px, -130px) rotate(5deg); } 88% { opacity: 1; } 100% { transform: translate(140px, 0) rotate(45deg); opacity: 0; } }
+.pm-lompat { animation: pm-lompat 1.6s cubic-bezier(.3,.6,.4,1) 1 both; }
+@keyframes pm-bersin { 0% { transform: scale(0.6); opacity: 0; } 15% { transform: scale(1); opacity: 1; } 30% { transform: translateX(-5px) scale(1.06); } 42% { transform: translateX(0) scale(1); } 85% { opacity: 1; } 100% { opacity: 0; } }
+.pm-bersin { animation: pm-bersin 2.4s ease-out 1 both; }
+</style>
+</helmet>
+<div data-root="1" style="width: 360px; height: 800px; box-sizing: border-box; background: #FFF6E5; font-family: 'Andika', sans-serif; color: #2D3142; display: flex; flex-direction: column; overflow: hidden; position: relative;">
+
+  <div style="flex: none; height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 16px; background: #F2DFC2;">
+    <a href="G01-Waktu-Main.dc.html" aria-label="Kembali ke peta" style="width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <span style="flex: 1; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px;">Susun Kubus</span>
+    <svg width="64" height="40" viewBox="0 0 72 44" role="img" aria-label="Sisa waktu main masih cukup">
+      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="3 5" fill="none" stroke-linecap="round"/>
+      <circle cx="46" cy="12" r="9" fill="#FFC93C" stroke="#F0A500" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 14px 16px 24px; gap: 14px;">
+
+    <div style="display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 20px; background: #FFFFFF; box-shadow: 0 2px 6px rgba(45,49,66,0.08);">
+      <div style="width: 116px; height: 92px; flex: none; border-radius: 12px; background: #FBF3E4; padding: 8px; box-sizing: border-box; display: flex; align-items: flex-end; justify-content: center; gap: 3px;">
+        <div style="width: 22px; height: 22px; background: #D9A46B; border: 2px solid #8A5A33; box-sizing: border-box; border-radius: 3px;"></div>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="width: 22px; height: 22px; background: #D9A46B; border: 2px solid #8A5A33; box-sizing: border-box; border-radius: 3px;"></div>
+          <div style="width: 22px; height: 22px; background: #D9A46B; border: 2px solid #8A5A33; box-sizing: border-box; border-radius: 3px;"></div>
+          <div style="width: 22px; height: 22px; background: #D9A46B; border: 2px solid #8A5A33; box-sizing: border-box; border-radius: 3px;"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="width: 22px; height: 22px; background: #D9A46B; border: 2px solid #8A5A33; box-sizing: border-box; border-radius: 3px;"></div>
+          <div style="width: 22px; height: 22px; background: #D9A46B; border: 2px solid #8A5A33; box-sizing: border-box; border-radius: 3px;"></div>
+        </div>
+        <div style="width: 22px; height: 22px; background: #D9A46B; border: 2px solid #8A5A33; box-sizing: border-box; border-radius: 3px;"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-size: 14px; font-weight: 700; color: #8A5A33;">Kartu tampak depan</span>
+        <span style="font-size: 18px; line-height: 1.3;">Susun kubus supaya sama seperti kartu.</span>
+      </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 0 8px;">
+        <sc-for list="{{ cols }}" as="col" hint-placeholder-count="4">
+          <button type="button" data-col="1" class="pm-empuk" onClick="{{ col.add }}" aria-label="{{ col.aria }}" style="height: 204px; border: none; background: transparent; padding: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px;">
+            <sc-for list="{{ col.slots }}" as="sl" hint-placeholder-count="3">
+              <sc-if value="{{ sl.cube }}" hint-placeholder-val="{{ false }}"><span class="pm-jatuh" style="height: 60px; border-radius: 8px; background: #D9A46B; border: 3px solid #8A5A33; box-sizing: border-box; box-shadow: inset -6px -6px 0 rgba(138,90,51,0.25);"></span></sc-if>
+              <sc-if value="{{ sl.extra }}" hint-placeholder-val="{{ false }}"><span class="pm-jatuh" style="height: 60px; border-radius: 8px; background: #EBCB9F; border: 3px dashed #8A5A33; box-sizing: border-box;"></span></sc-if>
+              <sc-if value="{{ sl.need }}" hint-placeholder-val="{{ false }}"><span style="height: 60px; border-radius: 8px; background: rgba(255,255,255,0.6); border: 3px dashed #B98B5A; box-sizing: border-box;"></span></sc-if>
+              <sc-if value="{{ sl.empty }}" hint-placeholder-val="{{ true }}"><span style="height: 60px;"></span></sc-if>
+            </sc-for>
+          </button>
+        </sc-for>
+      </div>
+      <div style="height: 28px; margin-top: 6px; border-radius: 10px; background: #A9733F; box-shadow: inset 0 -6px 0 #8A5A33;"></div>
+    </div>
+
+    <div style="min-height: 52px; padding: 12px 14px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; font-size: 17px; line-height: 1.35;">
+      <sc-if value="{{ matched }}" hint-placeholder-val="{{ false }}"><strong style="color: #1F7A4D;">Cocok!</strong> Persis seperti kartu.</sc-if>
+      <sc-if value="{{ notMatched }}" hint-placeholder-val="{{ true }}">Seret kubus ke kolom, atau ketuk kolomnya. Garis putus-putus = belum cocok.</sc-if>
+    </div>
+
+    <div style="display: flex; gap: 12px; align-items: stretch;">
+      <sc-if value="{{ notMatched }}" hint-placeholder-val="{{ true }}">
+        <button type="button" onPointerDown="{{ startDrag }}" aria-label="Kubus kayu, seret ke kolom" style="width: 112px; height: 80px; flex: none; padding: 0; border-radius: 18px; background: #F2DFC2; border: 2px dashed #C9A46A; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 8px; touch-action: none; cursor: grab;">
+          <span style="width: 52px; height: 52px; border-radius: 8px; background: #D9A46B; border: 3px solid #8A5A33; box-sizing: border-box; box-shadow: inset -5px -5px 0 rgba(138,90,51,0.25);"></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3" stroke="#8A5A33" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </sc-if>
+      <button type="button" class="pm-empuk" onClick="{{ undo }}" style="flex: 1; height: 80px; border: 3px solid #8A5A33; border-radius: 18px; background: #FFFFFF; color: #2D3142; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5L4 10l5 5" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 10h10a5 5 0 0 1 0 10h-3" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round"/></svg>
+        Urung
+      </button>
+      <sc-if value="{{ matched }}" hint-placeholder-val="{{ false }}">
+        <a href="G07-Akhir-Babak.dc.html" style="flex: 1; height: 80px; border-radius: 18px; background: #3BB273; color: #2D3142; text-decoration: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px;">Lanjut</a>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{ dragging }}" hint-placeholder-val="{{ false }}">
+    <span aria-hidden="true" style="position: absolute; left: {{ dragX }}px; top: {{ dragY }}px; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 8px; background: #D9A46B; border: 3px solid #8A5A33; box-sizing: border-box; box-shadow: 0 8px 16px rgba(45,49,66,0.25), inset -6px -6px 0 rgba(138,90,51,0.25); pointer-events: none; z-index: 7; transition: {{ dragTrans }};"></span>
+  </sc-if>
+
+  <sc-if value="{{ popA }}" hint-placeholder-val="{{ false }}"><span class="pm-mekar-a" aria-hidden="true" style="position: absolute; left: {{ popX }}px; top: {{ popY }}px; width: 120px; height: 120px; pointer-events: none; z-index: 6;"><svg width="120" height="120" viewBox="0 0 120 120"><ellipse cx="60" cy="18" rx="7" ry="12" fill="#FF9F1C"/><ellipse cx="96" cy="40" rx="7" ry="12" fill="#E85D5D" transform="rotate(60 96 40)"/><ellipse cx="96" cy="82" rx="7" ry="12" fill="#FFC93C" transform="rotate(120 96 82)"/><ellipse cx="60" cy="102" rx="7" ry="12" fill="#3BB273"/><ellipse cx="24" cy="82" rx="7" ry="12" fill="#8E6CCF" transform="rotate(60 24 82)"/><ellipse cx="24" cy="40" rx="7" ry="12" fill="#FF6B6B" transform="rotate(120 24 40)"/></svg></span></sc-if>
+  <sc-if value="{{ popB }}" hint-placeholder-val="{{ false }}"><span class="pm-mekar-b" aria-hidden="true" style="position: absolute; left: {{ popX }}px; top: {{ popY }}px; width: 120px; height: 120px; pointer-events: none; z-index: 6;"><svg width="120" height="120" viewBox="0 0 120 120"><ellipse cx="60" cy="18" rx="7" ry="12" fill="#FF9F1C"/><ellipse cx="96" cy="40" rx="7" ry="12" fill="#E85D5D" transform="rotate(60 96 40)"/><ellipse cx="96" cy="82" rx="7" ry="12" fill="#FFC93C" transform="rotate(120 96 82)"/><ellipse cx="60" cy="102" rx="7" ry="12" fill="#3BB273"/><ellipse cx="24" cy="82" rx="7" ry="12" fill="#8E6CCF" transform="rotate(60 24 82)"/><ellipse cx="24" cy="40" rx="7" ry="12" fill="#FF6B6B" transform="rotate(120 24 40)"/></svg></span></sc-if>
+
+  <sc-if value="{{ isRangkong }}" hint-placeholder-val="{{ false }}">
+    <div class="pm-terbang" aria-hidden="true" style="position: absolute; left: 0; top: 70px; pointer-events: none; z-index: 5;">
+      <svg width="88" height="52" viewBox="0 0 88 52"><path d="M4 30 L16 26 L16 34 Z" fill="#FFFFFF" stroke="#2D3142" stroke-width="2"/><ellipse cx="34" cy="30" rx="20" ry="11" fill="#2D3142"/><path d="M26 26 Q34 4 50 18 Q40 22 34 28 Z" fill="#2D3142"/><path d="M28 34 Q36 40 46 34" stroke="#FFFFFF" stroke-width="3" fill="none"/><circle cx="56" cy="24" r="9" fill="#2D3142"/><circle cx="58" cy="22" r="2" fill="#FFFFFF"/><path d="M63 22 Q78 20 86 30 Q74 30 63 28 Z" fill="#FFC93C" stroke="#C99A00" stroke-width="1.5"/><path d="M60 16 Q72 10 80 20 Q70 18 62 20 Z" fill="#FF9F1C"/></svg>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isIkan }}" hint-placeholder-val="{{ false }}">
+    <div class="pm-lompat" aria-hidden="true" style="position: absolute; left: 40px; bottom: 300px; pointer-events: none; z-index: 5;">
+      <svg width="52" height="30" viewBox="0 0 52 30"><path d="M40 15 L52 4 L52 26 Z" fill="#2A86C6"/><ellipse cx="22" cy="15" rx="20" ry="11" fill="#4EA8DE" stroke="#2A86C6" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="#2D3142"/><path d="M20 8 Q26 15 20 22" stroke="#FFFFFF" stroke-width="2" fill="none"/></svg>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isBersin }}" hint-placeholder-val="{{ false }}">
+    <div class="pm-bersin" aria-hidden="true" style="position: absolute; right: 12px; top: 200px; display: flex; align-items: flex-end; gap: 4px; pointer-events: none; z-index: 5;">
+      <span style="background: #FFFFFF; border-radius: 14px 14px 4px 14px; padding: 6px 10px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 18px; color: #2D3142; box-shadow: 0 2px 6px rgba(45,49,66,0.15);">Hatchi!</span>
+      <svg width="56" height="56" viewBox="0 0 120 120"><ellipse cx="34" cy="30" rx="15" ry="20" fill="#A0673A" stroke="#6B4423" stroke-width="4"/><ellipse cx="86" cy="30" rx="15" ry="20" fill="#A0673A" stroke="#6B4423" stroke-width="4"/><circle cx="60" cy="68" r="44" fill="#A0673A" stroke="#6B4423" stroke-width="4"/><ellipse cx="60" cy="86" rx="28" ry="20" fill="#FFF6E5"/><path d="M38 58 L50 64 L38 70 M82 58 L70 64 L82 70" stroke="#6B4423" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="60" cy="92" rx="7" ry="6" fill="#6B4423"/></svg>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { counts: [1, 1, 2, 0], history: [0, 1, 2, 2], drag: null, popN: 0, popX: 0, popY: 0, surprise: null };
+    this.onMove = this.onMove.bind(this);
+    this.onUp = this.onUp.bind(this);
+  }
+  componentDidMount() {
+    this.si = 0;
+    this.firstT = setTimeout(() => this.surprise(), 3000);
+    this.loopT = setInterval(() => this.surprise(), 15000);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.firstT);
+    clearInterval(this.loopT);
+    clearTimeout(this.hideT);
+    clearTimeout(this.backT);
+    window.removeEventListener('pointermove', this.onMove);
+    window.removeEventListener('pointerup', this.onUp);
+  }
+  surprise() {
+    const list = ['rangkong', 'bersin', 'ikan'];
+    const k = list[this.si % 3];
+    this.si += 1;
+    this.setState({ surprise: k });
+    clearTimeout(this.hideT);
+    this.hideT = setTimeout(() => this.setState({ surprise: null }), 2800);
+  }
+  local(clientX, clientY) {
+    const r = this.root.getBoundingClientRect();
+    const k = r.width / 360 || 1;
+    return { x: (clientX - r.left) / k, y: (clientY - r.top) / k, k: k, r: r };
+  }
+  popAt(x, y) {
+    this.setState({ popX: Math.round(x), popY: Math.round(y), popN: this.state.popN + 1 });
+  }
+  addTo(i) {
+    const s = this.state;
+    if (s.counts[i] >= 3) return false;
+    const counts = s.counts.slice();
+    counts[i] += 1;
+    this.setState({ counts: counts, history: s.history.concat([i]) });
+    return true;
+  }
+  startDrag(e) {
+    const t = e.currentTarget;
+    this.root = t.closest('[data-root]');
+    if (!this.root) return;
+    e.preventDefault();
+    const p = this.local(e.clientX, e.clientY);
+    this.start = { x: p.x, y: p.y };
+    this.setState({ drag: { x: p.x, y: p.y, back: false } });
+    window.addEventListener('pointermove', this.onMove);
+    window.addEventListener('pointerup', this.onUp);
+  }
+  onMove(e) {
+    if (!this.state.drag || this.state.drag.back) return;
+    const p = this.local(e.clientX, e.clientY);
+    this.setState({ drag: { x: p.x, y: p.y, back: false } });
+  }
+  onUp(e) {
+    window.removeEventListener('pointermove', this.onMove);
+    window.removeEventListener('pointerup', this.onUp);
+    const p = this.local(e.clientX, e.clientY);
+    const cols = this.root.querySelectorAll('[data-col]');
+    let best = -1;
+    let bestD = 1e9;
+    cols.forEach((el, i) => {
+      const r = el.getBoundingClientRect();
+      const cx = (r.left + r.width / 2 - p.r.left) / p.k;
+      const top = (r.top - p.r.top) / p.k;
+      const bottom = (r.bottom - p.r.top) / p.k;
+      const half = r.width / p.k;
+      const dx = Math.abs(p.x - cx);
+      if (dx < half && p.y > top - 60 && p.y < bottom + 60 && dx < bestD) {
+        best = i;
+        bestD = dx;
+      }
+    });
+    if (best >= 0 && this.addTo(best)) {
+      this.setState({ drag: null });
+      this.popAt(p.x, p.y);
+    } else {
+      this.setState({ drag: { x: this.start.x, y: this.start.y, back: true } });
+      clearTimeout(this.backT);
+      this.backT = setTimeout(() => this.setState({ drag: null }), 340);
+    }
+  }
+  renderVals() {
+    const s = this.state;
+    const target = [1, 3, 2, 1];
+    const matched = s.counts.every((c, i) => c === target[i]);
+    return {
+      matched: matched,
+      notMatched: !matched,
+      startDrag: (e) => this.startDrag(e),
+      dragging: !!s.drag,
+      dragX: s.drag ? Math.round(s.drag.x) : 0,
+      dragY: s.drag ? Math.round(s.drag.y) : 0,
+      dragTrans: s.drag && s.drag.back ? 'left 320ms cubic-bezier(.34,1.56,.64,1), top 320ms cubic-bezier(.34,1.56,.64,1)' : 'none',
+      popA: s.popN > 0 && s.popN % 2 === 1,
+      popB: s.popN > 0 && s.popN % 2 === 0,
+      popX: s.popX,
+      popY: s.popY,
+      isRangkong: s.surprise === 'rangkong',
+      isBersin: s.surprise === 'bersin',
+      isIkan: s.surprise === 'ikan',
+      undo: () => {
+        if (!s.history.length) return;
+        const last = s.history[s.history.length - 1];
+        const counts = s.counts.slice();
+        counts[last] = Math.max(0, counts[last] - 1);
+        this.setState({ counts: counts, history: s.history.slice(0, -1) });
+      },
+      cols: s.counts.map((c, i) => {
+        const slots = [];
+        for (let level = 2; level >= 0; level--) {
+          const has = level < c;
+          const want = level < target[i];
+          slots.push({ cube: has && want, extra: has && !want, need: !has && want, empty: !has && !want });
+        }
+        return {
+          slots: slots,
+          aria: 'Kolom ' + (i + 1) + ', ' + c + ' kubus',
+          add: (e) => {
+            const t = e && e.currentTarget;
+            this.root = t && t.closest ? t.closest('[data-root]') : this.root;
+            if (this.addTo(i) && this.root) {
+              const p = this.local(e.clientX, e.clientY);
+              this.popAt(p.x, p.y);
+            }
+          }
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

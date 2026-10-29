@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Pintar Main — Sistem Desain</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Andika&family=Nunito:wght@400;600;700&display=swap">
+<style>
+  body { margin: 0; background: #F5F7FA; }
+  a { color: #1F7A4D; } a:hover { color: #15502F; }
+  .pm-card { background: #FFFFFF; border-radius: 20px; box-shadow: 0 2px 10px rgba(45,49,66,0.08); }
+  .pm-swatch-label { font-family: 'Nunito', sans-serif; }
+</style>
+</helmet>
+
+<div style="width: 100%; max-width: 1440px; margin: 0 auto; box-sizing: border-box; padding: 56px 56px 120px; display: flex; flex-direction: column; gap: 64px; font-family: 'Nunito', sans-serif; color: #2D3142;">
+
+  <!-- ===================== HEADER ===================== -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+    <div style="width: 72px; height: 72px; border-radius: 20px; background: #3BB273; display: flex; align-items: center; justify-content: center; flex: none;">
+      <svg width="48" height="48" viewBox="0 0 120 120" role="img" aria-label="Ikon Pinci">
+        <ellipse cx="30" cy="30" rx="15" ry="20" fill="#FFF6E5" stroke="#FFFFFF" stroke-width="3"/>
+        <ellipse cx="90" cy="30" rx="15" ry="20" fill="#FFF6E5" stroke="#FFFFFF" stroke-width="3"/>
+        <circle cx="60" cy="68" r="46" fill="#FFF6E5" stroke="#FFFFFF" stroke-width="3"/>
+        <circle cx="46" cy="64" r="10" fill="#2D3142"/>
+        <circle cx="74" cy="64" r="10" fill="#2D3142"/>
+        <circle cx="48.5" cy="61.5" r="3" fill="#FFFFFF"/>
+        <circle cx="76.5" cy="61.5" r="3" fill="#FFFFFF"/>
+        <path d="M46 88 Q60 100 74 88" stroke="#2D3142" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 40px; color: #2D3142;">Pintar Main — Sistem Desain</h1>
+      <div style="font-size: 16px; color: #5B6072;">Tahap 1 · Disusun 28 Oktober 2026 · Maskot Pinci, Si Kancil Pintar</div>
+    </div>
+  </div>
+
+  <!-- ===================== WARNA ===================== -->
+  <div style="display: flex; flex-direction: column; gap: 28px;">
+    <h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #1F7A4D;">1. Warna</h2>
+
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="font-weight: 700; font-size: 18px;">Warna utama</div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px;">
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #3BB273;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Hijau Daun</div>
+            <div style="font-size: 13px; color: #5B6072;">#3BB273 · Primer</div>
+            <div style="font-size: 12px; color: #868C9E;">Tombol utama, tab aktif, Gudang Ilmu</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #1F7A4D;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Hijau Tua</div>
+            <div style="font-size: 13px; color: #5B6072;">#1F7A4D · Teks hijau</div>
+            <div style="font-size: 12px; color: #868C9E;">Judul hijau, tautan, tombol mengambang</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #FF9F1C;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Oranye Jeruk</div>
+            <div style="font-size: 13px; color: #5B6072;">#FF9F1C · Sekunder</div>
+            <div style="font-size: 12px; color: #868C9E;">Mode Dampingi, Waktu main, aksen</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #2D3142;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Biru Tinta</div>
+            <div style="font-size: 13px; color: #5B6072;">#2D3142 · Teks</div>
+            <div style="font-size: 12px; color: #868C9E;">Semua teks dan angka soal</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #A0673A;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Cokelat Kancil</div>
+            <div style="font-size: 13px; color: #5B6072;">#A0673A · Maskot</div>
+            <div style="font-size: 12px; color: #868C9E;">Tubuh Pinci saja</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #FFF6E5; border: 1px solid #ECE3D2;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Krem Lembut</div>
+            <div style="font-size: 13px; color: #5B6072;">#FFF6E5 · Latar anak</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #F5F7FA; border: 1px solid #E6E9F0;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Abu Terang</div>
+            <div style="font-size: 13px; color: #5B6072;">#F5F7FA · Latar orang tua</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #2E9E5B;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Hijau Segar</div>
+            <div style="font-size: 13px; color: #5B6072;">#2E9E5B · Benar</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #FF6B6B;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Koral Lembut</div>
+            <div style="font-size: 13px; color: #5B6072;">#FF6B6B · Perhatian</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="height: 88px; border-radius: 14px; background: #4EA8DE;"></div>
+          <div class="pm-swatch-label">
+            <div style="font-weight: 700; font-size: 14px;">Biru Langit</div>
+            <div style="font-size: 13px; color: #5B6072;">#4EA8DE · Info</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top: 8px; padding: 18px 20px; border-radius: 14px; background: #FFF0D9; display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
+        <div style="font-weight: 700; font-size: 14px; color: #2D3142; flex: 1 1 260px;">WAJIB: teks di atas tombol Hijau Daun dan Oranye Jeruk berwarna Biru Tinta #2D3142 — bukan putih (tidak terbaca).</div>
+        <button type="button" style="height: 56px; padding: 0 28px; border: none; border-radius: 16px; background: #3BB273; color: #2D3142; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 18px;">Lanjut</button>
+        <button type="button" style="height: 56px; padding: 0 28px; border: none; border-radius: 16px; background: #FF9F1C; color: #2D3142; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 18px;">Waktu main</button>
+      </div>
+    </div>
+
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="font-weight: 700; font-size: 18px;">Warna mata pelajaran</div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px;">
+
+        <div style="border-radius: 16px; background: #E6F0FF; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #3A86FF;"></div>
+          <div style="font-weight: 700; font-size: 14px;">Matematika</div>
+          <div style="font-size: 12px; color: #5B6072;">Biru Laut #3A86FF</div>
+        </div>
+
+        <div style="border-radius: 16px; background: #FDECEC; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #E85D5D;"></div>
+          <div style="font-weight: 700; font-size: 14px;">Bahasa Indonesia</div>
+          <div style="font-size: 12px; color: #5B6072;">Merah Bata #E85D5D</div>
+        </div>
+
+        <div style="border-radius: 16px; background: #F1ECFA; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #8E6CCF;"></div>
+          <div style="font-weight: 700; font-size: 14px;">Bahasa Inggris</div>
+          <div style="font-size: 12px; color: #5B6072;">Ungu Anggur #8E6CCF</div>
+        </div>
+
+        <div style="border-radius: 16px; background: #FFF0D9; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #FF9F1C;"></div>
+          <div style="font-weight: 700; font-size: 14px;">Mode Dampingi</div>
+          <div style="font-size: 12px; color: #5B6072;">Oranye Jeruk #FF9F1C</div>
+        </div>
+
+        <div style="border-radius: 16px; background: #E4F4EB; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #3BB273;"></div>
+          <div style="font-weight: 700; font-size: 14px;">Gudang Ilmu</div>
+          <div style="font-size: 12px; color: #5B6072;">Hijau Daun #3BB273</div>
+        </div>
+
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 14px; background: #E6F0FF;">
+        <div style="padding: 4px 10px; border-radius: 8px; background: #3A86FF; color: #FFFFFF; font-size: 11px; font-weight: 800; letter-spacing: 0.04em;">TKA</div>
+        <div style="font-size: 13px; color: #5B6072;">Siap TKA memakai warna mapel soalnya, ditambah lencana "TKA" di atas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HURUF ===================== -->
+  <div style="display: flex; flex-direction: column; gap: 28px;">
+    <h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #1F7A4D;">2. Huruf</h2>
+
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 13px; color: #868C9E; font-weight: 700;">BALOO 2 — Logo &amp; judul layar</div>
+        <div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #2D3142;">Beranda Belajar — 28sp (Kelas 1–2)</div>
+        <div style="font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 26px; color: #2D3142;">Beranda Belajar — 26sp (Kelas 3–4)</div>
+        <div style="font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 24px; color: #2D3142;">Beranda Belajar — 24sp (Kelas 5–6)</div>
+        <div style="font-family: 'Baloo 2', sans-serif; font-weight: 600; font-size: 22px; color: #2D3142;">Kabar — 22sp (Orang tua)</div>
+      </div>
+      <div style="height: 1px; background: #EEF0F4;"></div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 13px; color: #868C9E; font-weight: 700;">ANDIKA — Soal, bacaan, petunjuk</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 44px; color: #2D3142;">7 × 8 = ? — 44sp (soal, kelas 1–2)</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 40px; color: #2D3142;">7 × 8 = ? — 40sp (kelas 3–4)</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 36px; color: #2D3142;">7 × 8 = ? — 36sp (kelas 5–6)</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">Teks bacaan — 26sp (kelas 1–2)</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 22px; color: #2D3142;">Teks bacaan — 22sp (kelas 3–4)</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 20px; color: #2D3142;">Teks bacaan — 20sp (kelas 5–6)</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 20px; color: #5B6072;">Petunjuk dan label — 20sp / 18sp / 16sp</div>
+      </div>
+      <div style="height: 1px; background: #EEF0F4;"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="font-size: 13px; color: #868C9E; font-weight: 700;">NUNITO — Mode orang tua</div>
+        <div style="font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 16px; color: #2D3142;">Isi mode orang tua — Regular 16sp</div>
+        <div style="font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 17px; color: #2D3142;">Nama anak — SemiBold/Bold 17sp</div>
+        <div style="font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 13px; color: #5B6072;">19.40 — jam, 13sp</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== TOMBOL & KOMPONEN ===================== -->
+  <div style="display: flex; flex-direction: column; gap: 28px;">
+    <h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #1F7A4D;">3. Tombol &amp; komponen</h2>
+
+    <!-- Tombol utama -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-weight: 700; font-size: 18px;">Tombol utama (anak, ≥72dp)</div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <button type="button" style="width: 100%; height: 72px; border: none; border-radius: 16px; background: #3BB273; color: #2D3142; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 20px;">Mulai</button>
+          <div style="font-size: 12px; color: #868C9E;">biasa</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <button type="button" style="width: 92%; height: 69px; border: none; border-radius: 16px; background: #2E9E5B; color: #2D3142; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 20px; transform: scale(0.96);">Mulai</button>
+          <div style="font-size: 12px; color: #868C9E;">ditekan</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <button type="button" disabled style="width: 100%; height: 72px; border: none; border-radius: 16px; background: #D9DDE6; color: #6B7080; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 20px;">Mulai</button>
+          <div style="font-size: 12px; color: #868C9E;">nonaktif</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <button type="button" style="width: 100%; height: 72px; border: none; border-radius: 16px; background: #3BB273; color: #2D3142; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #2D3142; opacity: 0.9;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #2D3142; opacity: 0.6;"></span>
+            <span style="width: 9px; height: 9px; border-radius: 50%; background: #2D3142; opacity: 0.3;"></span>
+          </button>
+          <div style="font-size: 12px; color: #868C9E;">memuat</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol kedua -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-weight: 700; font-size: 18px;">Tombol kedua (garis tepi, tanpa isi)</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+        <button type="button" style="height: 56px; padding: 0 24px; border: 2px solid #3BB273; border-radius: 14px; background: transparent; color: #1F7A4D; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 18px;">Lihat lagi</button>
+        <button type="button" style="height: 56px; padding: 0 24px; border: 2px solid #D9DDE6; border-radius: 14px; background: transparent; color: #A6ABB8; font-family: 'Andika', sans-serif; font-weight: 700; font-size: 18px;">Nonaktif</button>
+      </div>
+    </div>
+
+    <!-- Papan angka -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-weight: 700; font-size: 18px;">Papan angka 3 × 4</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 84px); gap: 14px;">
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">1</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">2</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">3</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">4</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">5</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">6</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">7</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">8</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">9</div>
+        <div style="height: 72px; border-radius: 14px; background: #F5F7FA; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 20px; color: #5B6072;">⌫</div>
+        <div style="height: 72px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E6E9F0; display: flex; align-items: center; justify-content: center; font-family: 'Andika', sans-serif; font-size: 26px; color: #2D3142;">0</div>
+        <div style="height: 72px; border-radius: 14px; background: #3BB273; display: flex; align-items: center; justify-content: center; position: relative;">
+          <span style="font-size: 24px; color: #2D3142; font-weight: 700;">✓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kartu pilihan -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-weight: 700; font-size: 18px;">Kartu pilihan</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+        <div style="height: 64px; border-radius: 16px; background: #E6F0FF; display: flex; align-items: center; gap: 16px; padding: 0 20px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #3A86FF; flex: none;"></div>
+          <div style="font-family: 'Andika', sans-serif; font-size: 20px; color: #2D3142;">Penjumlahan</div>
+        </div>
+        <div style="height: 64px; border-radius: 16px; background: #FDECEC; display: flex; align-items: center; gap: 16px; padding: 0 20px; border: 3px solid #E85D5D;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #E85D5D; flex: none;"></div>
+          <div style="font-family: 'Andika', sans-serif; font-size: 20px; color: #2D3142; font-weight: 700;">Membaca (terpilih)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab bawah -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 22px;">
+      <div style="font-weight: 700; font-size: 18px;">Tab bawah</div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 13px; color: #868C9E;">Mode anak</div>
+        <div style="display: flex; height: 72px; border-radius: 20px; background: #FFF6E5; border: 1px solid #F1E6CF; overflow: hidden;">
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <div style="padding: 6px 18px; border-radius: 999px; background: #D9F0E2;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l9-7 9 7" stroke="#1F7A4D" stroke-width="2" stroke-linecap="round"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" stroke="#1F7A4D" stroke-width="2" stroke-linecap="round" fill="#1F7A4D"/></svg>
+            </div>
+            <div style="font-family: 'Andika', sans-serif; font-size: 13px; color: #1F7A4D; font-weight: 700;">Belajar</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10l8-6 8 6v10" stroke="#8A8060" stroke-width="2" stroke-linecap="round"/></svg>
+            <div style="font-family: 'Andika', sans-serif; font-size: 13px; color: #8A8060;">Gudang Ilmu</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#8A8060" stroke-width="2"/><path d="M10 9l6 3-6 3V9z" fill="#8A8060"/></svg>
+            <div style="font-family: 'Andika', sans-serif; font-size: 13px; color: #8A8060;">Main</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-4 4V16H4V5z" stroke="#8A8060" stroke-width="2" stroke-linejoin="round"/></svg>
+            <div style="font-family: 'Andika', sans-serif; font-size: 13px; color: #8A8060;">Pesan</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 13px; color: #868C9E;">Mode orang tua</div>
+        <div style="display: flex; height: 64px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E6E9F0; overflow: hidden;">
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <div style="padding: 5px 16px; border-radius: 999px; background: #D9F0E2;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-4 4V16H4V5z" fill="#1F7A4D"/></svg>
+            </div>
+            <div style="font-family: 'Nunito', sans-serif; font-size: 12px; color: #1F7A4D; font-weight: 700;">Kabar</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2" stroke="#9AA0B2" stroke-width="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke="#9AA0B2" stroke-width="2" stroke-linecap="round"/></svg>
+            <div style="font-family: 'Nunito', sans-serif; font-size: 12px; color: #9AA0B2;">Rapor</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="#9AA0B2" stroke-width="2"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" stroke="#9AA0B2" stroke-width="2" stroke-linecap="round"/></svg>
+            <div style="font-family: 'Nunito', sans-serif; font-size: 12px; color: #9AA0B2;">Bimbingan</div>
+          </div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="#9AA0B2" stroke-width="2"/><path d="M12 3v3M12 18v3M4.2 7.8l2.5 1.5M17.3 14.7l2.5 1.5M4.2 16.2l2.5-1.5M17.3 9.3l2.5-1.5" stroke="#9AA0B2" stroke-width="2" stroke-linecap="round"/></svg>
+            <div style="font-family: 'Nunito', sans-serif; font-size: 12px; color: #9AA0B2;">Atur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stiker & tombol mengambang -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+        <div style="width: 92px; height: 92px; border-radius: 50%; background: #E4F4EB; display: flex; align-items: center; justify-content: center; font-size: 34px;">🏅</div>
+        <div style="font-family: 'Andika', sans-serif; font-size: 14px; text-align: center; color: #2D3142;">Aku lulus<br>level!</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #1F7A4D; display: flex; align-items: center; justify-content: center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-4 4V16H4V5z" fill="#FFFFFF"/></svg>
+        </div>
+        <div style="font-size: 12px; color: #868C9E;">Tombol mengambang</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== KOMPONEN LAIN ===================== -->
+  <div style="display: flex; flex-direction: column; gap: 28px;">
+    <h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #1F7A4D;">4. Komponen lain</h2>
+
+    <!-- Kartu anak -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-weight: 700; font-size: 18px;">Kartu anak</div>
+      <div style="display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: 16px; background: #F5F7FA;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #E6F0FF; display: flex; align-items: center; justify-content: center; font-size: 28px; flex: none;">🐘</div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+          <div style="font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 17px;">Aisyah · Kelas 4</div>
+          <div style="font-family: 'Nunito', sans-serif; font-size: 14px; color: #5B6072;">2 lembar hari ini · rekor baru di ×7</div>
+        </div>
+        <button type="button" style="height: 40px; padding: 0 16px; border: none; border-radius: 12px; background: #3BB273; color: #2D3142; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px;">Lihat</button>
+        <button type="button" style="height: 40px; padding: 0 16px; border: 1px solid #D9DDE6; border-radius: 12px; background: transparent; color: #5B6072; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px;">Kirim pesan</button>
+      </div>
+    </div>
+
+    <!-- Gelembung pesan -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-weight: 700; font-size: 18px;">Gelembung pesan &amp; kartu hasil</div>
+      <div style="display: flex; flex-direction: column; gap: 10px; max-width: 520px;">
+        <div style="align-self: flex-start; background: #FFFFFF; border: 1px solid #E6E9F0; border-radius: 18px 18px 18px 4px; padding: 14px 18px; display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 16px;">🔊</span>
+          <span style="font-family: 'Andika', sans-serif; font-size: 16px; color: #2D3142;">Dari Ayah: Ayah bangga kamu tidak menyerah di ×8</span>
+        </div>
+        <div style="align-self: flex-end; background: #E4F4EB; border-radius: 18px 18px 4px 18px; padding: 14px 18px;">
+          <span style="font-family: 'Andika', sans-serif; font-size: 16px; color: #2D3142;">Terima kasih! 😊</span>
+        </div>
+        <div style="align-self: flex-end; background: #FFFFFF; border: 2px solid #3BB273; border-radius: 18px; padding: 16px 20px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 16px; color: #1F7A4D;">Lembar selesai!</div>
+          <div style="font-family: 'Nunito', sans-serif; font-size: 14px; color: #5B6072;">19 dari 20 benar · 1 menit 12 detik</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress & petunjuk -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="font-weight: 700; font-size: 18px;">Batang kemajuan &amp; kotak petunjuk</div>
+      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 480px;">
+        <div style="font-family: 'Nunito', sans-serif; font-size: 13px; color: #5B6072;">7 / 20</div>
+        <div style="height: 14px; border-radius: 999px; background: #E6E9F0; overflow: hidden;">
+          <div style="width: 35%; height: 100%; border-radius: 999px; background: #3BB273;"></div>
+        </div>
+      </div>
+      <div style="max-width: 480px; display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; border-radius: 16px; background: #E8F4FC;">
+        <span style="font-size: 18px;">🔊</span>
+        <div style="font-family: 'Andika', sans-serif; font-size: 16px; color: #2D3142;">Coba genapkan dulu ke 10, baru tambahkan sisanya.</div>
+      </div>
+    </div>
+
+    <!-- Lencana & tanda bimbingan -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="font-weight: 700; font-size: 18px;">Lencana &amp; tanda bimbingan</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+        <div style="padding: 6px 14px; border-radius: 999px; background: #E6E9F0; color: #5B6072; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px;">Segera</div>
+        <div style="padding: 6px 14px; border-radius: 999px; background: #FF9F1C; color: #2D3142; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px;">Baru</div>
+        <div style="padding: 6px 14px; border-radius: 999px; background: #3A86FF; color: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px;">TKA</div>
+        <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 50%; background: #2E9E5B; display: inline-block;"></span><span style="font-size: 13px; color: #5B6072;">Lancar</span></div>
+        <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 50%; background: #F4C542; display: inline-block;"></span><span style="font-size: 13px; color: #5B6072;">Perlu bimbingan orang tua</span></div>
+        <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 50%; background: #FF6B6B; display: inline-block;"></span><span style="font-size: 13px; color: #5B6072;">Perlu bimbingan guru</span></div>
+      </div>
+    </div>
+
+    <!-- Pita offline & awan -->
+    <div class="pm-card" style="padding: 32px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+      <div style="padding: 10px 20px; border-radius: 999px; background: #2D3142; color: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 13px;">Tanpa internet — data sampai 19.40</div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 17a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 18 17H6z" fill="#CBD2E0"/></svg>
+        <div style="font-size: 13px; color: #868C9E;">Ikon awan kecil (mode anak)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PINCI ===================== -->
+  <div style="display: flex; flex-direction: column; gap: 28px;">
+    <h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #1F7A4D;">5. Pinci, Si Kancil Pintar</h2>
+
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="font-weight: 700; font-size: 18px;">Lima ekspresi</div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px;">
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="104" height="104" viewBox="0 0 120 120" role="img" aria-label="Pinci senang">
+            <ellipse cx="30" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="90" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="30" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <ellipse cx="90" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <circle cx="60" cy="68" r="46" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <circle cx="44" cy="46" r="4" fill="#FFFFFF" opacity="0.6"/>
+            <circle cx="78" cy="42" r="3" fill="#FFFFFF" opacity="0.6"/>
+            <ellipse cx="60" cy="86" rx="30" ry="22" fill="#FFF6E5"/>
+            <circle cx="46" cy="64" r="11" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="74" cy="64" r="11" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="48" cy="66" r="5" fill="#2D3142"/>
+            <circle cx="76" cy="66" r="5" fill="#2D3142"/>
+            <ellipse cx="60" cy="82" rx="5" ry="4" fill="#6B4423"/>
+            <path d="M48 92 Q60 102 72 92" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div style="font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;">Senang</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="104" height="104" viewBox="0 0 120 120" role="img" aria-label="Pinci semangat">
+            <ellipse cx="30" cy="26" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="90" cy="26" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="30" cy="28" rx="8" ry="12" fill="#FFF6E5"/>
+            <ellipse cx="90" cy="28" rx="8" ry="12" fill="#FFF6E5"/>
+            <circle cx="60" cy="68" r="46" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="60" cy="86" rx="30" ry="22" fill="#FFF6E5"/>
+            <path d="M38 52 L48 58" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+            <path d="M82 52 L72 58" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="46" cy="64" r="12" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="74" cy="64" r="12" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="48" cy="64" r="6" fill="#2D3142"/>
+            <circle cx="76" cy="64" r="6" fill="#2D3142"/>
+            <path d="M44 88 Q60 110 76 88 Q60 96 44 88 Z" fill="#6B4423"/>
+          </svg>
+          <div style="font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;">Semangat</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="104" height="104" viewBox="0 0 120 120" role="img" aria-label="Pinci berpikir">
+            <ellipse cx="30" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="90" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="30" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <ellipse cx="90" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <circle cx="60" cy="68" r="46" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="60" cy="86" rx="30" ry="22" fill="#FFF6E5"/>
+            <path d="M68 50 Q78 46 86 52" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="46" cy="64" r="10" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="74" cy="64" r="10" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="50" cy="66" r="5" fill="#2D3142"/>
+            <circle cx="78" cy="66" r="5" fill="#2D3142"/>
+            <ellipse cx="60" cy="82" rx="5" ry="4" fill="#6B4423"/>
+            <circle cx="61" cy="94" r="3" fill="#6B4423"/>
+            <circle cx="90" cy="40" r="4" fill="#CBD2E0"/>
+            <circle cx="98" cy="30" r="3" fill="#CBD2E0"/>
+          </svg>
+          <div style="font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;">Berpikir</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="104" height="104" viewBox="0 0 120 120" role="img" aria-label="Pinci empati">
+            <ellipse cx="30" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="90" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="30" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <ellipse cx="90" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <circle cx="60" cy="68" r="46" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="60" cy="86" rx="30" ry="22" fill="#FFF6E5"/>
+            <path d="M40 58 Q46 52 52 58" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M68 58 Q74 52 80 58" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M40 64 A10 8 0 0 1 52 64" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <path d="M68 64 A10 8 0 0 1 80 64" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <ellipse cx="60" cy="82" rx="5" ry="4" fill="#6B4423"/>
+            <path d="M50 92 Q60 98 70 92" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div style="font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;">Empati</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="104" height="104" viewBox="0 0 120 120" role="img" aria-label="Pinci merayakan">
+            <ellipse cx="30" cy="24" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="90" cy="24" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="30" cy="26" rx="8" ry="12" fill="#FFF6E5"/>
+            <ellipse cx="90" cy="26" rx="8" ry="12" fill="#FFF6E5"/>
+            <circle cx="60" cy="68" r="46" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="60" cy="86" rx="30" ry="22" fill="#FFF6E5"/>
+            <path d="M40 54 L48 48" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+            <path d="M80 54 L72 48" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+            <path d="M40 60 Q46 50 52 60" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <path d="M68 60 Q74 50 80 60" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <path d="M44 86 Q60 112 76 86 Q60 100 44 86 Z" fill="#6B4423"/>
+            <path d="M18 20 l4 10 l-10 -2 z" fill="#F4C542"/>
+            <path d="M102 18 l-4 10 l10 -2 z" fill="#F4C542"/>
+          </svg>
+          <div style="font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;">Merayakan</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pm-card" style="padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="font-weight: 700; font-size: 18px;">Tiga ukuran (contoh ekspresi Senang)</div>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 40px;">
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="180" height="200" viewBox="0 0 160 200" role="img" aria-label="Pinci ukuran penuh">
+            <ellipse cx="80" cy="150" rx="46" ry="38" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <path d="M40 170 Q30 150 44 138" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M120 170 Q130 150 116 138" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="96" y="128" width="26" height="34" rx="8" fill="#FF9F1C" stroke="#D97F10" stroke-width="2"/>
+            <path d="M58 118 Q80 134 102 118" stroke="#3BB273" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <ellipse cx="50" cy="38" rx="17" ry="24" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="110" cy="38" rx="17" ry="24" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="50" cy="40" rx="9" ry="13" fill="#FFF6E5"/>
+            <ellipse cx="110" cy="40" rx="9" ry="13" fill="#FFF6E5"/>
+            <circle cx="80" cy="80" r="48" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="80" cy="98" rx="32" ry="24" fill="#FFF6E5"/>
+            <circle cx="65" cy="76" r="11" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="95" cy="76" r="11" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="67" cy="78" r="5" fill="#2D3142"/>
+            <circle cx="97" cy="78" r="5" fill="#2D3142"/>
+            <ellipse cx="80" cy="94" rx="5" ry="4" fill="#6B4423"/>
+            <path d="M67 104 Q80 114 93 104" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size: 13px; color: #5B6072;">Penuh — beranda, layar akhir</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="112" height="112" viewBox="0 0 120 120" role="img" aria-label="Pinci ukuran sedang">
+            <ellipse cx="30" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="90" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="30" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <ellipse cx="90" cy="30" rx="8" ry="12" fill="#FFF6E5"/>
+            <circle cx="60" cy="68" r="46" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="60" cy="86" rx="30" ry="22" fill="#FFF6E5"/>
+            <circle cx="46" cy="64" r="11" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="74" cy="64" r="11" fill="#FFFFFF" stroke="#6B4423" stroke-width="2"/>
+            <circle cx="48" cy="66" r="5" fill="#2D3142"/>
+            <circle cx="76" cy="66" r="5" fill="#2D3142"/>
+            <ellipse cx="60" cy="82" rx="5" ry="4" fill="#6B4423"/>
+            <path d="M48 92 Q60 102 72 92" stroke="#6B4423" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size: 13px; color: #5B6072;">Sedang — jurus, ajakan</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <svg width="56" height="56" viewBox="0 0 120 120" role="img" aria-label="Pinci ukuran kecil">
+            <ellipse cx="34" cy="30" rx="15" ry="20" fill="#A0673A" stroke="#6B4423" stroke-width="4"/>
+            <ellipse cx="86" cy="30" rx="15" ry="20" fill="#A0673A" stroke="#6B4423" stroke-width="4"/>
+            <circle cx="60" cy="68" r="44" fill="#A0673A" stroke="#6B4423" stroke-width="4"/>
+            <circle cx="46" cy="64" r="9" fill="#FFFFFF"/>
+            <circle cx="74" cy="64" r="9" fill="#FFFFFF"/>
+            <circle cx="48" cy="66" r="4.5" fill="#2D3142"/>
+            <circle cx="76" cy="66" r="4.5" fill="#2D3142"/>
+          </svg>
+          <div style="font-size: 13px; color: #5B6072;">Kecil &amp; diam — pojok layar soal</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== LOGO & IKON ===================== -->
+  <div style="display: flex; flex-direction: column; gap: 28px;">
+    <h2 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #1F7A4D;">6. Logo &amp; ikon aplikasi</h2>
+
+    <div class="pm-card" style="padding: 48px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+
+      <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <svg width="40" height="40" viewBox="0 0 120 120" role="img" aria-hidden="true">
+            <ellipse cx="30" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="90" cy="28" rx="16" ry="22" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <circle cx="60" cy="68" r="46" fill="#A0673A" stroke="#6B4423" stroke-width="3"/>
+            <ellipse cx="60" cy="86" rx="30" ry="22" fill="#FFF6E5"/>
+            <circle cx="46" cy="64" r="10" fill="#FFFFFF"/>
+            <circle cx="74" cy="64" r="10" fill="#FFFFFF"/>
+            <circle cx="48" cy="66" r="4.5" fill="#2D3142"/>
+            <circle cx="76" cy="66" r="4.5" fill="#2D3142"/>
+          </svg>
+          <div style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 36px;"><span style="color: #1F7A4D;">Pintar</span> <span style="color: #FF9F1C;">Main</span></div>
+        </div>
+        <div style="font-size: 13px; color: #868C9E;">Logo — "Pintar" Hijau Tua, "Main" Oranye, Baloo 2 ExtraBold</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; align-items: center;">
+        <div style="width: 96px; height: 96px; border-radius: 24px; background: #3BB273; display: flex; align-items: center; justify-content: center;">
+          <svg width="60" height="60" viewBox="0 0 120 120" role="img" aria-label="Ikon aplikasi Pintar Main">
+            <ellipse cx="30" cy="28" rx="16" ry="22" fill="#FFF6E5" stroke="#FFFFFF" stroke-width="3"/>
+            <ellipse cx="90" cy="28" rx="16" ry="22" fill="#FFF6E5" stroke="#FFFFFF" stroke-width="3"/>
+            <circle cx="60" cy="68" r="46" fill="#FFF6E5" stroke="#FFFFFF" stroke-width="3"/>
+            <circle cx="46" cy="64" r="10" fill="#2D3142"/>
+            <circle cx="74" cy="64" r="10" fill="#2D3142"/>
+            <circle cx="48.5" cy="61.5" r="3" fill="#FFFFFF"/>
+            <circle cx="76.5" cy="61.5" r="3" fill="#FFFFFF"/>
+            <path d="M46 88 Q60 100 74 88" stroke="#2D3142" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div style="font-size: 13px; color: #868C9E; text-align: center;">Ikon aplikasi — kepala Pinci tersenyum di atas Hijau Daun, tanpa teks</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

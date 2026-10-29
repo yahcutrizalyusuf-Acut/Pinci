@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Pengaturan waktu</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+button { cursor: pointer; }
+input[type=range] { accent-color: #1F7A4D; }
+input[type=radio] { accent-color: #1F7A4D; }
+</style>
+</helmet>
+<div style="width: 360px; height: 800px; box-sizing: border-box; background: #F5F7FA; font-family: 'Nunito', sans-serif; color: #2D3142; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="height: 56px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 12px 0 4px; background: #FFFFFF;">
+    <a href="O09-Kabar.dc.html" aria-label="Kembali" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 22px;">Pengaturan waktu</h1>
+  </div>
+
+  <div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 16px;">
+
+    <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #FFFFFF; border-radius: 16px;">
+      <span style="width: 40px; height: 40px; border-radius: 50%; background: #E6F0FF; display: flex; align-items: center; justify-content: center; font-size: 22px;">🐘</span>
+      <span style="font-weight: 700; font-size: 17px;">Aisyah · Kelas 4</span>
+    </div>
+
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="font-weight: 700; font-size: 16px;">Batas belajar per hari</div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <button type="button" onClick="{{ studyDown }}" aria-label="Kurangi 5 menit" style="width: 44px; height: 44px; border: 1px solid #D9DDE6; border-radius: 50%; background: #FFFFFF; font-size: 22px; color: #2D3142; font-family: 'Nunito', sans-serif;">−</button>
+        <div style="display: flex; align-items: baseline; gap: 6px;"><span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 32px; line-height: 1;">{{ study }}</span><span style="font-size: 15px;">menit</span></div>
+        <button type="button" onClick="{{ studyUp }}" aria-label="Tambah 5 menit" style="width: 44px; height: 44px; border: 1px solid #D9DDE6; border-radius: 50%; background: #FFFFFF; font-size: 22px; color: #2D3142; font-family: 'Nunito', sans-serif;">+</button>
+      </div>
+      <div style="font-size: 13px; color: #5B6072;">Saran untuk kelas 4: 40 menit.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <label for="waktu-game" style="font-weight: 700; font-size: 16px;">Waktu game per hari</label>
+        <span style="font-weight: 800; font-size: 16px; color: #1F7A4D;">{{ game }} menit</span>
+      </div>
+      <input id="waktu-game" type="range" min="0" max="60" step="5" value="{{ game }}" onChange="{{ onGame }}" style="width: 100%; height: 32px;">
+      <div style="display: flex; justify-content: space-between; font-size: 12px; color: #5B6072;"><span>0</span><span>Bawaan 30</span><span>60</span></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 4px;">
+      <div style="font-weight: 700; font-size: 16px; padding-bottom: 4px;">Kapan game terbuka?</div>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px;">
+        <input type="radio" name="game-buka" checked="{{ afterOn }}" onChange="{{ pickAfter }}" style="width: 20px; height: 20px; margin: 0;">
+        Game setelah latihan hari ini
+      </label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px;">
+        <input type="radio" name="game-buka" checked="{{ alwaysOn }}" onChange="{{ pickAlways }}" style="width: 20px; height: 20px; margin: 0;">
+        Selalu terbuka
+      </label>
+    </div>
+
+    <div style="background: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-weight: 700; font-size: 16px;">Jam tenang</span>
+        <span style="font-size: 14px; color: #5B6072;">Mulai pukul 21.00</span>
+      </div>
+      <button type="button" role="switch" aria-checked="{{ quietAria }}" aria-label="Jam tenang" onClick="{{ toggleQuiet }}" style="width: 56px; height: 32px; padding: 0; border: none; background: transparent;">
+        <sc-if value="{{ quiet }}" hint-placeholder-val="{{ true }}">
+          <span style="display: flex; justify-content: flex-end; align-items: center; width: 56px; height: 32px; box-sizing: border-box; padding: 3px; border-radius: 999px; background: #1F7A4D;"><span style="width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF;"></span></span>
+        </sc-if>
+        <sc-if value="{{ quietOff }}" hint-placeholder-val="{{ false }}">
+          <span style="display: flex; justify-content: flex-start; align-items: center; width: 56px; height: 32px; box-sizing: border-box; padding: 3px; border-radius: 999px; background: #C4C9D4;"><span style="width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF;"></span></span>
+        </sc-if>
+      </button>
+    </div>
+
+    <div style="flex: 1;"></div>
+    <button type="button" style="height: 48px; flex: none; border: none; border-radius: 14px; background: #3BB273; color: #2D3142; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 16px;">Simpan</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { study: 40, game: 30, mode: 'after', quiet: true };
+  }
+  renderVals() {
+    const s = this.state;
+    return {
+      study: s.study,
+      studyDown: () => this.setState({ study: Math.max(10, s.study - 5) }),
+      studyUp: () => this.setState({ study: Math.min(90, s.study + 5) }),
+      game: s.game,
+      onGame: (e) => this.setState({ game: Number(e.target.value) }),
+      afterOn: s.mode === 'after',
+      alwaysOn: s.mode === 'always',
+      pickAfter: () => this.setState({ mode: 'after' }),
+      pickAlways: () => this.setState({ mode: 'always' }),
+      quiet: s.quiet,
+      quietOff: !s.quiet,
+      quietAria: s.quiet ? 'true' : 'false',
+      toggleQuiet: () => this.setState({ quiet: !s.quiet })
+    };
+  }
+}
+</script>
+</body>
+</html>

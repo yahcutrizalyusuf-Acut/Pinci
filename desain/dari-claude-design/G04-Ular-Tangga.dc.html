@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Ular Tangga Lurus 1–100</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Andika:wght@400;700&display=swap">
+<style>
+body { margin: 0; }
+a { color: #1F7A4D; } a:hover { color: #15502F; }
+button { cursor: pointer; }
+.pm-empuk { transition: transform 280ms cubic-bezier(.34,1.56,.64,1); }
+.pm-empuk:active { transform: scale(0.9) rotate(-8deg); }
+@keyframes pm-loncat { 0% { transform: scale(0.5); } 100% { transform: scale(1); } }
+.pm-loncat { animation: pm-loncat 320ms cubic-bezier(.34,1.56,.64,1) 1; }
+@keyframes pm-mekar-a { 0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; } }
+@keyframes pm-mekar-b { 0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; } }
+.pm-mekar-a { animation: pm-mekar-a 450ms cubic-bezier(.2,.8,.3,1) 1 both; }
+.pm-mekar-b { animation: pm-mekar-b 450ms cubic-bezier(.2,.8,.3,1) 1 both; }
+@keyframes pm-terbang { 0% { transform: translate(-100px, 0); } 50% { transform: translate(180px, -18px); } 100% { transform: translate(470px, 0); } }
+.pm-terbang { animation: pm-terbang 2.6s linear 1 both; }
+@keyframes pm-lompat { 0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; } 12% { opacity: 1; } 50% { transform: translate(70px, -130px) rotate(5deg); } 88% { opacity: 1; } 100% { transform: translate(140px, 0) rotate(45deg); opacity: 0; } }
+.pm-lompat { animation: pm-lompat 1.6s cubic-bezier(.3,.6,.4,1) 1 both; }
+@keyframes pm-bersin { 0% { transform: scale(0.6); opacity: 0; } 15% { transform: scale(1); opacity: 1; } 30% { transform: translateX(-5px) scale(1.06); } 42% { transform: translateX(0) scale(1); } 85% { opacity: 1; } 100% { opacity: 0; } }
+.pm-bersin { animation: pm-bersin 2.4s ease-out 1 both; }
+</style>
+</helmet>
+<div data-root="1" style="width: 360px; height: 800px; box-sizing: border-box; background: #CDEBD8; font-family: 'Andika', sans-serif; color: #2D3142; display: flex; flex-direction: column; overflow: hidden; position: relative;">
+
+  <div style="flex: none; height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 16px;">
+    <a href="G01-Waktu-Main.dc.html" aria-label="Kembali ke peta" style="width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="#2D3142" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <span style="flex: 1; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px;">Ular Tangga Lurus</span>
+    <svg width="64" height="40" viewBox="0 0 72 44" role="img" aria-label="Sisa waktu main masih cukup">
+      <path d="M6 40 A30 30 0 0 1 66 40" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="3 5" fill="none" stroke-linecap="round"/>
+      <circle cx="36" cy="10" r="9" fill="#FFC93C" stroke="#F0A500" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div style="flex: none; padding: 0 16px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="position: relative; width: 328px; height: 328px; border-radius: 16px; overflow: hidden; background: #FFFFFF; box-shadow: 0 3px 0 #8FC5A2;">
+      <div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); width: 328px; height: 328px;">
+        <sc-for list="{{ cells }}" as="c" hint-placeholder-count="100">
+          <sc-if value="{{ c.alt }}" hint-placeholder-val="{{ false }}">
+            <div style="position: relative; background: #F1F9F3; display: flex; align-items: flex-start; justify-content: flex-start;">
+              <span style="font-size: 10px; color: #4B6B57; padding: 1px 0 0 2px; line-height: 1;">{{ c.n }}</span>
+              <sc-if value="{{ c.hasKid }}" hint-placeholder-val="{{ false }}"><span class="pm-loncat" style="position: absolute; left: 3px; bottom: 1px; width: 18px; height: 18px; border-radius: 50%; background: #E6F0FF; border: 2px solid #3A86FF; box-sizing: border-box; font-size: 10px; display: flex; align-items: center; justify-content: center;">🐘</span></sc-if>
+              <sc-if value="{{ c.hasPinci }}" hint-placeholder-val="{{ false }}"><span class="pm-loncat" style="position: absolute; right: 2px; bottom: 1px; width: 16px; height: 16px; border-radius: 50%; background: #A0673A; border: 2px solid #6B4423; box-sizing: border-box;"></span></sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ c.plain }}" hint-placeholder-val="{{ true }}">
+            <div style="position: relative; background: #DDF1E4; display: flex; align-items: flex-start; justify-content: flex-start;">
+              <span style="font-size: 10px; color: #4B6B57; padding: 1px 0 0 2px; line-height: 1;">{{ c.n }}</span>
+              <sc-if value="{{ c.hasKid }}" hint-placeholder-val="{{ false }}"><span class="pm-loncat" style="position: absolute; left: 3px; bottom: 1px; width: 18px; height: 18px; border-radius: 50%; background: #E6F0FF; border: 2px solid #3A86FF; box-sizing: border-box; font-size: 10px; display: flex; align-items: center; justify-content: center;">🐘</span></sc-if>
+              <sc-if value="{{ c.hasPinci }}" hint-placeholder-val="{{ false }}"><span class="pm-loncat" style="position: absolute; right: 2px; bottom: 1px; width: 16px; height: 16px; border-radius: 50%; background: #A0673A; border: 2px solid #6B4423; box-sizing: border-box;"></span></sc-if>
+            </div>
+          </sc-if>
+        </sc-for>
+      </div>
+      <svg width="328" height="328" viewBox="0 0 328 328" aria-hidden="true" style="position: absolute; left: 0; top: 0; pointer-events: none;">
+        <path d="M82 16 C 110 40, 30 50, 49 82" stroke="#3BB273" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M213 49 C 250 100, 150 140, 180 197" stroke="#3BB273" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M148 164 C 190 210, 90 230, 115 280" stroke="#3BB273" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path d="M49 213 C 80 250, 0 270, 16 312" stroke="#3BB273" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <ellipse cx="68" cy="42" rx="6" ry="3" fill="#2E9E5B" transform="rotate(-30 68 42)"/>
+        <ellipse cx="210" cy="120" rx="6" ry="3" fill="#2E9E5B" transform="rotate(30 210 120)"/>
+        <ellipse cx="140" cy="222" rx="6" ry="3" fill="#2E9E5B" transform="rotate(-30 140 222)"/>
+        <ellipse cx="44" cy="262" rx="6" ry="3" fill="#2E9E5B" transform="rotate(30 44 262)"/>
+        <circle cx="49" cy="82" r="4" fill="#FF9F1C"/><circle cx="180" cy="197" r="4" fill="#FF9F1C"/><circle cx="115" cy="280" r="4" fill="#FF9F1C"/><circle cx="16" cy="312" r="4" fill="#FF9F1C"/>
+      </svg>
+    </div>
+
+    <div style="min-height: 48px; padding: 10px 14px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; font-size: 17px; line-height: 1.35; display: flex; align-items: center;">{{ message }}</div>
+  </div>
+
+  <div style="flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 0 16px;">
+    <sc-if value="{{ notWon }}" hint-placeholder-val="{{ true }}">
+      <button type="button" class="pm-empuk" onClick="{{ roll }}" aria-label="Lempar dadu" style="width: 112px; height: 112px; border: 4px solid #2D3142; border-radius: 24px; background: #FFFFFF; padding: 14px; box-sizing: border-box; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; box-shadow: 0 5px 0 #2D3142;">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="9">
+          <span style="display: flex; align-items: center; justify-content: center;">
+            <sc-if value="{{ d.on }}" hint-placeholder-val="{{ false }}"><span style="width: 18px; height: 18px; border-radius: 50%; background: #2D3142;"></span></sc-if>
+          </span>
+        </sc-for>
+      </button>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.1;">Ketuk dadu</span>
+        <span style="font-size: 16px; color: #2E6B4A;">Giliran: {{ turnName }}</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ won }}" hint-placeholder-val="{{ false }}">
+      <a href="G07-Akhir-Babak.dc.html" style="flex: 1; height: 72px; border-radius: 18px; background: #3BB273; color: #2D3142; text-decoration: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px;">Sampai di 100! Lanjut</a>
+    </sc-if>
+  </div>
+
+  <div style="flex: none; display: flex; justify-content: center; gap: 20px; padding: 0 16px 24px; font-size: 15px;">
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 22px; height: 22px; border-radius: 50%; background: #E6F0FF; border: 2px solid #3A86FF; box-sizing: border-box; font-size: 12px; display: flex; align-items: center; justify-content: center;">🐘</span>Aisyah · {{ kid }}</span>
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 20px; height: 20px; border-radius: 50%; background: #A0673A; border: 2px solid #6B4423; box-sizing: border-box;"></span>Pinci · {{ pinci }}</span>
+  </div>
+
+  <sc-if value="{{ popA }}" hint-placeholder-val="{{ false }}"><span class="pm-mekar-a" aria-hidden="true" style="position: absolute; left: {{ popX }}px; top: {{ popY }}px; width: 120px; height: 120px; pointer-events: none; z-index: 6;"><svg width="120" height="120" viewBox="0 0 120 120"><ellipse cx="60" cy="18" rx="7" ry="12" fill="#FF9F1C"/><ellipse cx="96" cy="40" rx="7" ry="12" fill="#E85D5D" transform="rotate(60 96 40)"/><ellipse cx="96" cy="82" rx="7" ry="12" fill="#FFC93C" transform="rotate(120 96 82)"/><ellipse cx="60" cy="102" rx="7" ry="12" fill="#3BB273"/><ellipse cx="24" cy="82" rx="7" ry="12" fill="#8E6CCF" transform="rotate(60 24 82)"/><ellipse cx="24" cy="40" rx="7" ry="12" fill="#FF6B6B" transform="rotate(120 24 40)"/></svg></span></sc-if>
+  <sc-if value="{{ popB }}" hint-placeholder-val="{{ false }}"><span class="pm-mekar-b" aria-hidden="true" style="position: absolute; left: {{ popX }}px; top: {{ popY }}px; width: 120px; height: 120px; pointer-events: none; z-index: 6;"><svg width="120" height="120" viewBox="0 0 120 120"><ellipse cx="60" cy="18" rx="7" ry="12" fill="#FF9F1C"/><ellipse cx="96" cy="40" rx="7" ry="12" fill="#E85D5D" transform="rotate(60 96 40)"/><ellipse cx="96" cy="82" rx="7" ry="12" fill="#FFC93C" transform="rotate(120 96 82)"/><ellipse cx="60" cy="102" rx="7" ry="12" fill="#3BB273"/><ellipse cx="24" cy="82" rx="7" ry="12" fill="#8E6CCF" transform="rotate(60 24 82)"/><ellipse cx="24" cy="40" rx="7" ry="12" fill="#FF6B6B" transform="rotate(120 24 40)"/></svg></span></sc-if>
+
+  <sc-if value="{{ isRangkong }}" hint-placeholder-val="{{ false }}">
+    <div class="pm-terbang" aria-hidden="true" style="position: absolute; left: 0; top: 70px; pointer-events: none; z-index: 5;">
+      <svg width="88" height="52" viewBox="0 0 88 52"><path d="M4 30 L16 26 L16 34 Z" fill="#FFFFFF" stroke="#2D3142" stroke-width="2"/><ellipse cx="34" cy="30" rx="20" ry="11" fill="#2D3142"/><path d="M26 26 Q34 4 50 18 Q40 22 34 28 Z" fill="#2D3142"/><path d="M28 34 Q36 40 46 34" stroke="#FFFFFF" stroke-width="3" fill="none"/><circle cx="56" cy="24" r="9" fill="#2D3142"/><circle cx="58" cy="22" r="2" fill="#FFFFFF"/><path d="M63 22 Q78 20 86 30 Q74 30 63 28 Z" fill="#FFC93C" stroke="#C99A00" stroke-width="1.5"/><path d="M60 16 Q72 10 80 20 Q70 18 62 20 Z" fill="#FF9F1C"/></svg>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isIkan }}" hint-placeholder-val="{{ false }}">
+    <div class="pm-lompat" aria-hidden="true" style="position: absolute; left: 40px; bottom: 170px; pointer-events: none; z-index: 5;">
+      <svg width="52" height="30" viewBox="0 0 52 30"><path d="M40 15 L52 4 L52 26 Z" fill="#2A86C6"/><ellipse cx="22" cy="15" rx="20" ry="11" fill="#4EA8DE" stroke="#2A86C6" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="#2D3142"/><path d="M20 8 Q26 15 20 22" stroke="#FFFFFF" stroke-width="2" fill="none"/></svg>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isBersin }}" hint-placeholder-val="{{ false }}">
+    <div class="pm-bersin" aria-hidden="true" style="position: absolute; right: 12px; bottom: 120px; display: flex; align-items: flex-end; gap: 4px; pointer-events: none; z-index: 5;">
+      <span style="background: #FFFFFF; border-radius: 14px 14px 4px 14px; padding: 6px 10px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 18px; color: #2D3142; box-shadow: 0 2px 6px rgba(45,49,66,0.15);">Hatchi!</span>
+      <svg width="56" height="56" viewBox="0 0 120 120"><ellipse cx="34" cy="30" rx="15" ry="20" fill="#A0673A" stroke="#6B4423" stroke-width="4"/><ellipse cx="86" cy="30" rx="15" ry="20" fill="#A0673A" stroke="#6B4423" stroke-width="4"/><circle cx="60" cy="68" r="44" fill="#A0673A" stroke="#6B4423" stroke-width="4"/><ellipse cx="60" cy="86" rx="28" ry="20" fill="#FFF6E5"/><path d="M38 58 L50 64 L38 70 M82 58 L70 64 L82 70" stroke="#6B4423" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="60" cy="92" rx="7" ry="6" fill="#6B4423"/></svg>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":360,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { kid: 1, pinci: 1, turn: 'kid', face: 5, msg: 'Sulur hijau itu jalan pintas. Ayo mulai!' };
+  }
+  componentDidMount() {
+    this.si = 0;
+    this.firstT = setTimeout(() => this.surprise(), 3000);
+    this.loopT = setInterval(() => this.surprise(), 15000);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.firstT);
+    clearInterval(this.loopT);
+    clearTimeout(this.hideT);
+  }
+  surprise() {
+    const list = ['rangkong', 'bersin', 'ikan'];
+    const k = list[this.si % 3];
+    this.si += 1;
+    this.setState({ surprise: k });
+    clearTimeout(this.hideT);
+    this.hideT = setTimeout(() => this.setState({ surprise: null }), 2800);
+  }
+  pop(e) {
+    const t = e && e.currentTarget;
+    const root = t && t.closest ? t.closest('[data-root]') : null;
+    if (!root || !e.clientX) return;
+    const r = root.getBoundingClientRect();
+    const k = r.width / 360 || 1;
+    this.setState({ popX: Math.round((e.clientX - r.left) / k), popY: Math.round((e.clientY - r.top) / k), popN: (this.state.popN || 0) + 1 });
+  }
+  roll() {
+    const s = this.state;
+    const vines = { 3: 22, 17: 56, 45: 84, 62: 91 };
+    const face = 1 + Math.floor(Math.random() * 6);
+    const who = s.turn;
+    let pos = Math.min(100, s[who] + face);
+    const name = who === 'kid' ? 'Aisyah' : 'Pinci';
+    let msg = name + ' maju ' + face + ' ke ' + pos + '.';
+    if (vines[pos]) {
+      msg = name + ' naik sulur dari ' + pos + ' ke ' + vines[pos] + '!';
+      pos = vines[pos];
+    }
+    const next = {};
+    next[who] = pos;
+    this.setState(Object.assign(next, { face: face, msg: msg, turn: who === 'kid' ? 'pinci' : 'kid' }));
+  }
+  renderVals() {
+    const s = this.state;
+    const faces = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
+    const on = faces[s.face];
+    const cells = [];
+    for (let n = 1; n <= 100; n++) {
+      const row = Math.floor((n - 1) / 10);
+      const col = (n - 1) % 10;
+      const alt = (row + col) % 2 === 0;
+      cells.push({ n: n, alt: alt, plain: !alt, hasKid: s.kid === n, hasPinci: s.pinci === n });
+    }
+    const won = s.kid === 100 || s.pinci === 100;
+    return {
+      cells: cells,
+      popA: (s.popN || 0) > 0 && s.popN % 2 === 1,
+      popB: (s.popN || 0) > 0 && s.popN % 2 === 0,
+      popX: s.popX || 0,
+      popY: s.popY || 0,
+      isRangkong: s.surprise === 'rangkong',
+      isBersin: s.surprise === 'bersin',
+      isIkan: s.surprise === 'ikan',
+      dots: [0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => ({ on: on.indexOf(i) >= 0 })),
+      roll: (e) => { this.pop(e); this.roll(); },
+      message: s.msg,
+      turnName: s.turn === 'kid' ? 'Aisyah' : 'Pinci',
+      kid: s.kid,
+      pinci: s.pinci,
+      won: won,
+      notWon: !won
+    };
+  }
+}
+</script>
+</body>
+</html>
