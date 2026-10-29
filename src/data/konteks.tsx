@@ -7,7 +7,8 @@ import { kiniMs } from './alat';
 import { buatGudang } from './buat-gudang';
 import type { Anak, Keluarga } from './jenis';
 import { Repositori } from './repositori';
-import { buatPengirim } from './sinkron';
+import { buatPengirim, opsiSupabase } from './sinkron';
+import { segarkanSesi, type Sesimasuk } from './supabase';
 
 interface NilaiKonteks {
   repo: Repositori;
@@ -31,7 +32,24 @@ const Konteks = createContext<NilaiKonteks | null>(null);
 const LAMA_ORTU_MS = 15 * 60 * 1000;
 
 export function PenyediaData({ children, repoUji }: { children: ReactNode; repoUji?: Repositori }) {
-  const repo = useMemo(() => repoUji ?? new Repositori(buatGudang(), buatPengirim()), [repoUji]);
+  const repo = useMemo(() => {
+    if (repoUji) return repoUji;
+    const pengirim = buatPengirim(
+      async () => {
+        const sesi = await r.nilai<Sesimasuk>('sesi_masuk');
+        if (!sesi) return null;
+        if (sesi.berakhir - kiniMs() > 60_000) return sesi.tokenAkses;
+        const o = opsiSupabase();
+        const baru = o ? await segarkanSesi(o, sesi.tokenSegar).catch(() => null) : null;
+        if (!baru) return null;
+        await r.aturNilai('sesi_masuk', baru);
+        return baru.tokenAkses;
+      },
+      async () => (await r.keluarga())?.id ?? null,
+    );
+    const r: Repositori = new Repositori(buatGudang(), pengirim);
+    return r;
+  }, [repoUji]);
   const [siap, setSiap] = useState(false);
   const [keluarga, setKeluarga] = useState<Keluarga | null>(null);
   const [daftarAnak, setDaftarAnak] = useState<Anak[]>([]);

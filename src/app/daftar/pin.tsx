@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { useData } from '@/data/konteks';
+import { opsiSupabase } from '@/data/sinkron';
+import { daftarkanKeluarga, type Sesimasuk } from '@/data/supabase';
 import { huruf, warna } from '@/desain/token';
 import { KepalaLayar, TeksOrtu } from '@/komponen/dasar';
 import { Layar } from '@/komponen/Layar';
@@ -36,7 +38,10 @@ export default function BuatPin() {
           setTimeout(() => setPin2(''), 600);
           return;
         }
-        await repo.buatKeluarga(p, sapaan);
+        const kel = await repo.buatKeluarga(p, sapaan);
+        const sesi = await repo.nilai<Sesimasuk>('sesi_masuk');
+        const o = opsiSupabase();
+        if (sesi && o) await daftarkanKeluarga(o, sesi, kel).catch(() => false);
         bukaOrtu();
         router.replace('/daftar/anak');
       }

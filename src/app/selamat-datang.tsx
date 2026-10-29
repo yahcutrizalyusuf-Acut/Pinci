@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
+import { modeData } from '@/data/sinkron';
 import { Tombol } from '@/komponen/dasar';
 import { Layar } from '@/komponen/Layar';
 import { Pinci } from '@/komponen/Pinci';
@@ -45,7 +46,7 @@ export default function SelamatDatang() {
       <View style={{ flex: 1 }} />
       <View style={{ gap: 12, paddingHorizontal: 16, paddingBottom: 24 }}>
         <Tombol label="Ini HP anak" besar onPress={() => router.push({ pathname: '/daftar/pin', params: { dari: 'anak' } })} />
-        <Tombol label="Saya orang tua" varian="garis" besar ikon="orang" onPress={() => router.push('/daftar/pin')} />
+        <Tombol label="Saya orang tua" varian="garis" besar ikon="orang" onPress={() => router.push(modeData() === 'supabase' ? '/masuk' : '/daftar/pin')} />
       </View>
     </Layar>
   );
