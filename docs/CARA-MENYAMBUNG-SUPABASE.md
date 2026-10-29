@@ -1,5 +1,13 @@
 # Cara Menyambung Supabase
 
+> **Status 29 Okt 2026: sudah tersambung.**
+>
+> - Proyek: `pintar-main` di organisasi Pintar Main, region Southeast Asia (Singapore), alamat `https://nammubdjdjznpyodroel.supabase.co`.
+> - Skema awal dan uji RLS sudah dijalankan, dan uji RLS lulus.
+> - Masuk lewat email memakai kode 6 angka yang berlaku 10 menit, dikirim lewat SMTP Brevo. Uji kirim sudah sampai ke kotak masuk.
+> - Uji di HP 30 Okt: orang tua berhasil masuk dengan kode 6 angka dan membuat profil anak.
+> - Variabel GitHub sudah diisi: `EXPO_PUBLIC_DATA_MODE=supabase`, URL, dan anon key. APK dari proses Bangun APK sekarang memakai Supabase.
+
 Saat ini aplikasi berjalan **lokal**: semua data tersimpan di HP, tidak dikirim ke mana pun. Kalau nanti ingin orang tua melihat hasil anak dari HP lain, sambungkan ke Supabase dengan langkah di bawah. Kodenya sudah siap. Acut hanya perlu membuat proyek, mengisi dua kunci, dan mengubah satu saklar.
 
 ## Yang perlu disiapkan
@@ -19,7 +27,8 @@ Saat ini aplikasi berjalan **lokal**: semua data tersimpan di HP, tidak dikirim 
 3. **Nyalakan masuk lewat email.**
    - Buka **Authentication → Providers → Email**, nyalakan.
    - Panjang kode: **6**. Masa berlaku: **600 detik** (10 menit).
-   - Buka **Authentication → Email Templates → Magic Link** dan pastikan isinya memakai `{{ .Token }}` (kode 6 angka), bukan tautan.
+   - Buka **Authentication → Email Templates**. Template **Magic Link**, **Confirm signup**, **Invite user**, dan **Reauthentication** harus memakai `{{ .Token }}` (kode 6 angka), bukan tautan. Pendaftar baru menerima *Confirm signup*; kalau template itu masih bawaan, orang tua menerima tautan ke `localhost` dan tidak bisa masuk.
+   - Buka **Authentication → URL Configuration**, lalu ganti Site URL menjadi `pintarmain://`.
    - Buka **Project Settings → Auth → SMTP**, isi data pengirim email (Brevo).
 4. **Ambil dua kunci.** Buka **Project Settings → API**, lalu salin:
    - **Project URL**, misalnya `https://abcd.supabase.co`
