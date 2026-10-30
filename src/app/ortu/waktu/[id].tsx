@@ -8,6 +8,7 @@ import { useData } from '@/data/konteks';
 import { HEWAN, type PengaturanWaktu } from '@/data/jenis';
 import { batasBelajarBawaan, gameBawaan } from '@/data/repositori';
 import { huruf, warna } from '@/desain/token';
+import { kunciTkaAwal, paketLengkap, tkaTerbuka } from '@/fitur/konfig';
 import { FormAnak } from '@/komponen/FormAnak';
 import { Geser } from '@/komponen/Geser';
 import { KepalaLayar, Tombol } from '@/komponen/dasar';
@@ -47,8 +48,11 @@ export default function PengaturanWaktuLayar() {
   const anak = daftarAnak.find((a) => a.id === id);
   const [p, setP] = useState<PengaturanWaktu | null>(null);
   const [ubahProfil, setUbahProfil] = useState(false);
+  const [tkaAwal, setTkaAwal] = useState(false);
   useEffect(() => {
-    if (anak) repo.pengaturan(anak.id).then(setP);
+    if (!anak) return;
+    repo.pengaturan(anak.id).then(setP);
+    repo.nilai<boolean>(kunciTkaAwal(anak.id)).then((v) => setTkaAwal(v === true));
   }, [repo, anak]);
   if (!anak || !p) return null;
   const batas = batasBelajarBawaan(anak.kelas);
@@ -134,6 +138,28 @@ export default function PengaturanWaktuLayar() {
             </View>
           ) : null}
         </Kotak>
+        {paketLengkap(anak.kelas) && !tkaTerbuka() ? (
+          <Kotak>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 17 }}>Buka TKA sekarang</Text>
+                <Text style={{ fontFamily: huruf.ortu, fontSize: 14, color: warna.teksKedua }}>
+                  Untuk uji coba sebelum TKA dibuka untuk semua anak pada 4 Januari 2027. Hanya untuk {anak.nama}. Langsung tersimpan.
+                </Text>
+              </View>
+              <Switch
+                accessibilityLabel="Buka TKA sekarang"
+                value={tkaAwal}
+                onValueChange={(v) => {
+                  setTkaAwal(v);
+                  void repo.aturNilai(kunciTkaAwal(anak.id), v, anak.id);
+                }}
+                trackColor={{ true: warna.hijauTua, false: warna.abuGaris }}
+                thumbColor={warna.putih}
+              />
+            </View>
+          </Kotak>
+        ) : null}
         <Kotak>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={{ flex: 1 }}>

@@ -4,7 +4,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { useData, useMuat } from '@/data/konteks';
 import { huruf, warna, warnaMapel } from '@/desain/token';
-import { tkaTerbuka, TKA_BUKA } from '@/fitur/konfig';
+import { tkaTerbukaUntuk, TKA_BUKA } from '@/fitur/konfig';
 import { miniMingguIni, persenTopik, rencanaMinggu, statusTopik, MAPEL_TKA } from '@/fitur/tka';
 import { paketTka } from '@/isi/tka/paket';
 import { GelembungPinci, KepalaLayar } from '@/komponen/dasar';
@@ -22,12 +22,19 @@ export default function SiapTka() {
       const kemajuan = await r.kemajuanTopik(anak.id, MAPEL_TKA);
       const sesi = await r.daftarSesi(anak.id);
       const sesiTka = sesi.filter((s) => ['tka', 'simulasi', 'mini_tryout'].includes(s.jenis));
-      return { kemajuan, rencana: rencanaMinggu(paketTka, kemajuan, sesiTka, new Date()), miniSelesai: miniMingguIni(sesi, new Date()), simSelesai: new Set(sesi.filter((s) => s.jenis === 'simulasi').map((s) => s.rujukan)) };
+      return { buka: await tkaTerbukaUntuk(r, anak.id), kemajuan, rencana: rencanaMinggu(paketTka, kemajuan, sesiTka, new Date()), miniSelesai: miniMingguIni(sesi, new Date()), simSelesai: new Set(sesi.filter((s) => s.jenis === 'simulasi').map((s) => s.rujukan)) };
     },
     null,
     [anak.id],
   );
-  if (!tkaTerbuka()) {
+  if (!data) {
+    return (
+      <Layar>
+        <KepalaLayar judul="Siap TKA" />
+      </Layar>
+    );
+  }
+  if (!data.buka) {
     const t = new Date(`${TKA_BUKA}T00:00:00`);
     return (
       <Layar>
