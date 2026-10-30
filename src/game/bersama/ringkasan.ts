@@ -1,6 +1,6 @@
 import type { Kelas, Tingkat } from './jenis';
 
-export type NamaGame = 'pasar' | 'ular_tangga' | 'susun_kubus' | 'tebak_kata';
+export type NamaGame = 'pasar' | 'ular_tangga' | 'susun_kubus' | 'tebak_kata' | 'kebun' | 'lompat_batu' | 'pasangan' | 'perahu';
 
 /**
  * Data untuk layar Akhir babak (G07). Tanpa skor, tanpa hitungan salah, tanpa warna merah:
@@ -10,6 +10,8 @@ export interface RingkasanBabak {
   game: NamaGame;
   kelas: Kelas;
   tingkat: Tingkat;
+  /** level (1–5) untuk game berjenjang */
+  level?: number;
   /** Judul besar, mis. "Hore, selesai!". */
   judul: string;
   /** Kalimat Pinci yang hangat. */
