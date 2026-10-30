@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports -- jest.mock butuh require di dalam pabriknya */
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import type { ComponentType } from 'react';
 
