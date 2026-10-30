@@ -51,7 +51,8 @@
     "impor-tka": "tsx scripts/impor-tka.ts",
     "bunyi": "node scripts/buat-bunyi.mjs",
     "cakupan": "jest scripts src/mesin/lancar src/isi/tka src/game --coverage --collectCoverageFrom='src/mesin/lancar/**/*.ts' --collectCoverageFrom='src/isi/tka/**/*.ts' --collectCoverageFrom='src/game/**/logika.ts' --collectCoverageFrom='src/game/bersama/*.ts' --collectCoverageFrom='scripts/impor-tka.ts' --collectCoverageFrom='!**/__tests__/**' --collectCoverageFrom='!**/jenis.ts' --collectCoverageFrom='!**/index.ts'",
-    "tangkap-layar": "node scripts/tangkap-layar.cjs"
+    "tangkap-layar": "node scripts/tangkap-layar.cjs",
+    "suara": "tsx scripts/buat-suara.ts"
   },
   "private": true,
   "jest": {

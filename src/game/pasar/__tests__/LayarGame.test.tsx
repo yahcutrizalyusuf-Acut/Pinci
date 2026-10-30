@@ -7,6 +7,7 @@ import LayarGame from '../LayarGame';
 import { buatBabak, langkah, pecahUang, pesananSekarang, type KeadaanPasar } from '../logika';
 
 // Tiruan reanimated sederhana: animasi langsung ke nilai akhir (mock bawaan butuh modul asli worklets).
+jest.mock('expo-audio', () => ({ createAudioPlayer: jest.fn(() => ({ seekTo: jest.fn(), play: jest.fn(), remove: jest.fn(), addListener: jest.fn() })) }));
 jest.mock('react-native-reanimated', () => {
   const { View } = require('react-native');
   const akhir = (...a: unknown[]) => a[a.length - 1];
