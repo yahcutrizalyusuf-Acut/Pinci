@@ -27,10 +27,10 @@ test('kunci soal dihitung benar untuk semua kelas dan level (dicek ulang dari te
         const s = buatSoalHitung(acak, kelas, level as Level, 4);
         expect(s.jawaban).toBe(hitung(s.bentuk));
         expect(dariTeks(s.teks)).toBe(s.jawaban);
-        expect(Number.isInteger(s.jawaban) && s.jawaban >= 0).toBe(true);
+        expect(Number.isInteger(s.jawaban) && s.jawaban >= 1).toBe(true);
         expect(s.pilihan).toContain(s.jawaban);
         expect(new Set(s.pilihan).size).toBe(4);
-        expect(s.pilihan.every((p) => Number.isInteger(p) && p >= 0)).toBe(true);
+        expect(s.pilihan.every((p) => Number.isInteger(p) && p >= 1)).toBe(true);
       }
     }
   }

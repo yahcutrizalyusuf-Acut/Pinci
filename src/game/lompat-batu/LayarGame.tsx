@@ -74,7 +74,7 @@ export default function LayarGame({ kelas, level, benih, sisaDetikAwal, totalDet
   const total = keadaan.soal.length;
   return (
     <BingkaiGame
-      judul={`Lompat Batu · Level ${keadaan.level}`}
+      judul="Lompat Batu"
       sisaDetik={sisaDetikAwal - lewat}
       totalDetik={totalDetik}
       onKeluar={onKeluar}
@@ -88,6 +88,9 @@ export default function LayarGame({ kelas, level, benih, sisaDetikAwal, totalDet
         {/* Seberang sungai */}
         <View style={{ backgroundColor: '#9ED98F', paddingVertical: 10, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <Text style={{ fontFamily: huruf.judulTebal, fontSize: 18, color: warna.hijauTua }}>Seberang 🌴</Text>
+          <View style={{ backgroundColor: warna.putih, borderRadius: 14, paddingHorizontal: 10, paddingVertical: 2 }}>
+            <Text style={{ fontFamily: huruf.judulTebal, fontSize: 15, color: warna.oranyeTua }}>Level {keadaan.level}</Text>
+          </View>
           <View style={{ flexDirection: 'row', gap: 4 }} accessibilityLabel={`Batu ${keadaan.indeks} dari ${total}`}>
             {Array.from({ length: total }, (_, i) => (
               <View key={i} style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: i < keadaan.indeks ? warna.hijauTua : '#FFFFFF', opacity: i < keadaan.indeks ? 1 : 0.7 }} />

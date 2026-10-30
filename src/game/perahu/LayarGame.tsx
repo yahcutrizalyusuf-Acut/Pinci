@@ -64,7 +64,7 @@ export default function LayarGame({ kelas, level, benih, sisaDetikAwal, totalDet
   const selesai = keadaan.fase === 'selesai';
   return (
     <BingkaiGame
-      judul={`Balap Perahu · Level ${keadaan.level}`}
+      judul="Balap Perahu"
       sisaDetik={sisaDetikAwal - lewat}
       totalDetik={totalDetik}
       onKeluar={onKeluar}
@@ -75,6 +75,9 @@ export default function LayarGame({ kelas, level, benih, sisaDetikAwal, totalDet
       latarAtas="#BFE6F5"
     >
       <View style={{ flex: 1, backgroundColor: '#BFE6F5', paddingBottom: 20, gap: 12 }}>
+        <View style={{ alignSelf: 'center', backgroundColor: warna.putih, borderRadius: 14, paddingHorizontal: 12, paddingVertical: 3, marginTop: 6 }}>
+          <Text style={{ fontFamily: huruf.judulTebal, fontSize: 15, color: warna.oranyeTua }}>Level {keadaan.level}</Text>
+        </View>
         <View style={{ marginHorizontal: 16, backgroundColor: '#4EA8DE', borderRadius: 20, paddingHorizontal: 8, paddingVertical: 6 }} onLayout={(e: LayoutChangeEvent) => setLebar(e.nativeEvent.layout.width - 16)}>
           <View style={{ position: 'absolute', right: 10, top: 6, bottom: 6, width: 8, backgroundColor: '#FFFFFF', borderRadius: 4 }} accessibilityLabel="Garis akhir" />
           <Lajur posisi={posisiTeman(keadaan)} lebar={lebar}>

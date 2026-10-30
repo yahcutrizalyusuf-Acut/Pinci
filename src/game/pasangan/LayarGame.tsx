@@ -83,7 +83,7 @@ export default function LayarGame({ kelas, level, benih, sisaDetikAwal, totalDet
   const jumlahPasangan = keadaan.kartu.length / 2;
   return (
     <BingkaiGame
-      judul={`Pasangkan Kartu · Level ${keadaan.level}`}
+      judul="Pasangkan Kartu"
       sisaDetik={sisaDetikAwal - lewat}
       totalDetik={totalDetik}
       onKeluar={onKeluar}
@@ -94,6 +94,9 @@ export default function LayarGame({ kelas, level, benih, sisaDetikAwal, totalDet
       latarAtas="#FFF0D9"
     >
       <View style={{ flex: 1, backgroundColor: '#FFF0D9', paddingHorizontal: 12, paddingBottom: 20, gap: 12 }}>
+        <View style={{ alignSelf: 'center', backgroundColor: warna.putih, borderRadius: 14, paddingHorizontal: 12, paddingVertical: 3, marginTop: 6 }}>
+          <Text style={{ fontFamily: huruf.judulTebal, fontSize: 15, color: warna.oranyeTua }}>Level {keadaan.level}</Text>
+        </View>
         <View style={{ backgroundColor: warna.putih, borderRadius: 18, padding: 12, alignItems: 'center' }}>
           <Text style={{ fontFamily: huruf.anak, fontSize: 16, color: warna.teks, textAlign: 'center' }}>
             {selesai

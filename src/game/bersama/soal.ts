@@ -156,7 +156,7 @@ function bentukUntuk(acak: PembangkitAcak, kelas: Kelas, level: Level): BentukSo
   return { op: 'campuran', a: r(5, 40), b: r(3, 12), c: r(3, 12) };
 }
 
-/** Pilihan pengecoh yang dekat dan masuk akal (tidak negatif, tidak kembar). */
+/** Pilihan pengecoh yang dekat dan masuk akal (paling kecil 1, tidak kembar). */
 export function buatPilihan(acak: PembangkitAcak, s: BentukSoal, jawaban: number, n: number): number[] {
   const calon = [jawaban + 1, jawaban - 1, jawaban + 2, jawaban - 2, jawaban + 10, jawaban - 10, jawaban + s.b, jawaban - s.b];
   if (s.op === 'kali' || s.op === 'campuran') calon.push(s.a + s.b, (s.a + s.b) * (s.c ?? 1));
@@ -165,7 +165,7 @@ export function buatPilihan(acak: PembangkitAcak, s: BentukSoal, jawaban: number
   const pengecoh: number[] = [];
   for (const c of acak.acakUrutan(calon)) {
     if (pengecoh.length >= n - 1) break;
-    if (Number.isInteger(c) && c >= 0 && c !== jawaban && !pengecoh.includes(c)) pengecoh.push(c);
+    if (Number.isInteger(c) && c >= 1 && c !== jawaban && !pengecoh.includes(c)) pengecoh.push(c);
   }
   let tambah = 3;
   while (pengecoh.length < n - 1) {
