@@ -87,6 +87,12 @@ export class Repositori {
     return semua.filter((n) => n.id.startsWith(awalan)).map((n) => JSON.parse(n.isi) as T);
   }
 
+  /** Semua nilai (milik siapa pun) yang kuncinya diawali `awalan`, sebagai [kunci, isi]. */
+  async nilaiAwalan<T>(awalan: string): Promise<[string, T][]> {
+    const semua = await this.gudang.cari('nilai');
+    return semua.filter((n) => n.id.startsWith(awalan)).map((n) => [n.id, JSON.parse(n.isi) as T]);
+  }
+
   // ---------- antrean ----------
 
   private async antrekan<T extends NamaTabel>(tabel: T, baris: PetaTabel[T]) {
