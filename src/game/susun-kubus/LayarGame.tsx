@@ -170,8 +170,8 @@ export default function LayarGame({ kelas, tingkat, benih, sisaDetikAwal, totalD
   const sisaDetik = sisaDetikAwal - lewatDetik;
   const cocokAtauSelesai = keadaan.fase !== 'menyusun';
   const ajakan = seret
-    ? 'Ketuk petak, atau seret kubus ke petak. Garis putus-putus = belum cocok.'
-    : 'Ketuk petak untuk menaruh kubus. Garis putus-putus = belum cocok.';
+    ? 'Ketuk kubus putus-putus untuk menaruh kubus di sana. Boleh juga menyeret kubus.'
+    : 'Ketuk kubus putus-putus untuk menaruh kubus di sana.';
 
   return (
     <BingkaiGame

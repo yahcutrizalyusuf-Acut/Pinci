@@ -199,7 +199,7 @@ const DA: readonly JenisKartu[] = ['depan', 'atas'];
 const DSA: readonly JenisKartu[] = ['depan', 'samping', 'atas'];
 const DS: readonly JenisKartu[] = ['depan', 'samping'];
 
-/** Urutan teka-teki per babak, dari mudah ke sulit. */
+/** Urutan teka-teki per babak, dari mudah ke sulit. Santai hanya memakai kartu tampak depan; Seru memakai kartu lain. */
 export function jenjangUntuk(kelas: Kelas, tingkat: Tingkat): readonly JenjangTekaTeki[] {
   const kelompok = kelompokKelas(kelas);
   const seru = tingkat === 'seru';
@@ -219,11 +219,11 @@ export function jenjangUntuk(kelas: Kelas, tingkat: Tingkat): readonly JenjangTe
   if (kelompok === 'tengah') {
     return seru
       ? [j(2, 2, 3, 4, 7, DSA), j(2, 3, 3, 5, 8, DSA), j(2, 3, 3, 6, 9, DSA), j(3, 3, 2, 6, 9, DSA), j(3, 3, 3, 7, 10, DSA)]
-      : [j(1, 4, 3, 5, 7, D), j(1, 5, 3, 6, 9, D), j(2, 2, 2, 3, 5, DA), j(2, 3, 2, 4, 6, DA), j(2, 3, 3, 5, 8, DA), j(2, 3, 3, 5, 8, DSA)];
+      : [j(1, 3, 2, 3, 5, D), j(1, 4, 3, 5, 7, D), j(1, 5, 3, 6, 9, D), j(2, 3, 2, 4, 6, D), j(2, 3, 3, 5, 8, D), j(2, 4, 3, 6, 9, D)];
   }
   return seru
     ? [j(2, 3, 3, 6, 9, DSA), j(3, 3, 2, 6, 9, DSA), j(3, 3, 3, 7, 11, DSA), j(3, 3, 3, 8, 12, DSA), j(3, 3, 3, 6, 10, DS)]
-    : [j(2, 3, 2, 4, 7, DSA), j(2, 3, 3, 5, 8, DSA), j(3, 3, 2, 6, 9, DSA), j(3, 3, 3, 7, 10, DSA), j(3, 3, 3, 7, 11, DSA)];
+    : [j(1, 4, 3, 5, 7, D), j(1, 5, 3, 6, 9, D), j(2, 3, 3, 5, 8, D), j(2, 4, 3, 6, 10, D), j(3, 3, 3, 7, 10, D)];
 }
 
 function tandaTarget(t: KartuTarget): string {

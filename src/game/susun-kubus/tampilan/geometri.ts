@@ -112,7 +112,7 @@ export function keTeksTitik(titik: readonly Titik[]): string {
   return titik.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
 }
 
-function dalamPoligon([px, py]: Titik, poli: readonly Titik[]): boolean {
+export function dalamPoligon([px, py]: Titik, poli: readonly Titik[]): boolean {
   let dalam = false;
   for (let i = 0, j = poli.length - 1; i < poli.length; j = i++) {
     const [xi, yi] = poli[i];
@@ -152,6 +152,37 @@ export function petakTerdekat(g: Geometri, petak: Petak, [px, py]: Titik, radius
         jarakTerbaik = d;
         terbaik = [b, k];
       }
+    }
+  }
+  return terbaik;
+}
+
+/** Kubus bayangan (garis putus-putus) yang menunjukkan tinggi yang masih kurang. */
+export interface TandaKubus {
+  kunci: string;
+  b: number;
+  k: number;
+  z: number;
+  arah: 'depan' | 'kanan';
+}
+
+/**
+ * Bayangan yang diketuk: titik di dalam sisi bayangan, atau paling dekat dengan pusatnya
+ * (dalam jarak `toleransi`). Mengembalikan petak tempat kubus ditaruh, atau null.
+ */
+export function bayanganDiTitik(g: Geometri, tanda: readonly TandaKubus[], titik: Titik, toleransi = g.s * 0.7): [number, number] | null {
+  let terbaik: [number, number] | null = null;
+  let jarakTerbaik = Infinity;
+  for (const t of tanda) {
+    const sisi = sisiKubus(g, t.b, t.k, t.z);
+    const poligon = t.arah === 'kanan' ? sisi.kanan : sisi.depan;
+    const cx = poligon.reduce((n, p) => n + p[0], 0) / poligon.length;
+    const cy = poligon.reduce((n, p) => n + p[1], 0) / poligon.length;
+    const d = Math.hypot(titik[0] - cx, titik[1] - cy);
+    const kena = dalamPoligon(titik, poligon) || d <= toleransi;
+    if (kena && d < jarakTerbaik) {
+      jarakTerbaik = d;
+      terbaik = [t.b, t.k];
     }
   }
   return terbaik;

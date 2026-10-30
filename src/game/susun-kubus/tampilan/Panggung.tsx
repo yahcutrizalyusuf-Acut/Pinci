@@ -8,7 +8,7 @@ import Animated, { Easing, useAnimatedStyle, useSharedValue, withSequence, withT
 import Svg, { G, Polygon, Rect } from 'react-native-svg';
 
 import type { BelumCocok, KartuTarget, Petak } from '../logika';
-import { keTeksTitik, petakDiTitik, ubinPetak, urutanGambar, type Geometri } from './geometri';
+import { bayanganDiTitik, keTeksTitik, petakDiTitik, ubinPetak, urutanGambar, type Geometri, type TandaKubus } from './geometri';
 import { GambarKubus, KAYU, KubusPerlu } from './Kubus';
 
 export interface PenandaKubus {
@@ -89,18 +89,9 @@ function Papan({ g, belumCocok }: { g: Geometri; belumCocok: BelumCocok }) {
   );
 }
 
-interface PropsTanda {
-  g: Geometri;
-  petak: Petak;
-  target: KartuTarget;
-  belumCocok: BelumCocok;
-  /** batas tinggi tiap petak (dari logika `batasTinggi`) */
-  batas: readonly (readonly number[])[];
-}
-
-/** Kubus bayangan bergaris putus-putus: tinggi yang masih kurang menurut kartu depan dan samping. */
-function TandaBelumCocok({ g, petak, target, belumCocok, batas }: PropsTanda) {
-  const tanda: { kunci: string; b: number; k: number; z: number; arah: 'depan' | 'kanan' }[] = [];
+/** Daftar kubus bayangan: tinggi yang masih kurang menurut kartu depan dan samping. */
+export function daftarTanda(g: Geometri, petak: Petak, target: KartuTarget, belumCocok: BelumCocok, batas: readonly (readonly number[])[]): TandaKubus[] {
+  const tanda: TandaKubus[] = [];
   for (const k of belumCocok.kolomDepan) {
     const ingin = target.depan[k] ?? 0;
     const sekarang = Math.max(0, ...petak.map((barisP) => barisP[k] ?? 0));
@@ -118,6 +109,11 @@ function TandaBelumCocok({ g, petak, target, belumCocok, batas }: PropsTanda) {
       for (let z = sekarang; z < ingin; z++) tanda.push({ kunci: `s${b}-${z}`, b, k, z, arah: 'kanan' });
     }
   }
+  return tanda;
+}
+
+/** Kubus bayangan bergaris putus-putus; mengetuknya menaruh kubus di tempat itu. */
+function TandaBelumCocok({ g, tanda }: { g: Geometri; tanda: readonly TandaKubus[] }) {
   return (
     <G>
       {tanda.map((t) => (
@@ -163,10 +159,13 @@ export function Panggung({ g, petak, target, belumCocok, batas, jatuh, pantul, b
     };
   });
 
+  const tanda = g ? daftarTanda(g, petak, target, belumCocok, batas) : [];
   const total = petak.reduce((n, barisP) => n + barisP.reduce((m, x) => m + x, 0), 0);
   const tekan = (e: GestureResponderEvent) => {
     if (!g || !bisaDiketuk) return;
-    const sel = petakDiTitik(g, petak, [e.nativeEvent.locationX, e.nativeEvent.locationY]);
+    const titik = [e.nativeEvent.locationX, e.nativeEvent.locationY] as const;
+    // Bayangan putus-putus lebih dulu: anak cukup mengetuk tempat yang ditunjuk.
+    const sel = bayanganDiTitik(g, tanda, titik) ?? petakDiTitik(g, petak, titik);
     if (sel) onKetuk(sel[0], sel[1]);
   };
 
@@ -207,7 +206,7 @@ export function Panggung({ g, petak, target, belumCocok, batas, jatuh, pantul, b
         ) : null}
         <View pointerEvents="none" style={StyleSheet.absoluteFill}>
           <Svg width="100%" height="100%">
-            <TandaBelumCocok g={g} petak={petak} target={target} belumCocok={belumCocok} batas={batas} />
+            <TandaBelumCocok g={g} tanda={tanda} />
           </Svg>
         </View>
         {adaPantul ? (
@@ -226,7 +225,7 @@ export function Panggung({ g, petak, target, belumCocok, batas, jatuh, pantul, b
       testID="panggung-kubus"
       accessibilityRole="button"
       accessibilityLabel={`Petak kayu, ada ${total} kubus`}
-      accessibilityHint="Ketuk petak untuk menaruh kubus"
+      accessibilityHint="Ketuk kubus putus-putus atau petak untuk menaruh kubus"
       onLayout={onLayout}
       onPress={tekan}
       style={{ flex: 1 }}
