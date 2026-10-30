@@ -1,4 +1,4 @@
-/** G01 Waktu main: peta Gampong 4 tempat. Terbuka setelah inti harian (bawaan) atau selalu (pilihan orang tua). */
+/** G01 Waktu main: peta Gampong 4 tempat, ditambah 4 tempat baru yang berjenjang (level 1–5). Terbuka setelah inti harian (bawaan) atau selalu (pilihan orang tua). */
 import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -91,10 +91,20 @@ export default function WaktuMain() {
               <Pinci ukuran={96} />
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              {TEMPAT.slice(2).map((t) => (
+              {TEMPAT.slice(2, 4).map((t) => (
                 <KartuTempat key={t.game} t={t} boleh={boleh} onPress={() => router.push(`/game/${t.rute}`)} />
               ))}
             </View>
+            <View style={{ marginTop: 20, marginBottom: 8, backgroundColor: warna.putih, borderRadius: 18, paddingVertical: 8, paddingHorizontal: 14, alignSelf: 'center' }}>
+              <Text style={{ fontFamily: huruf.judulTebal, fontSize: 18, color: warna.hijauTua }}>Tempat baru · naik level 1 sampai 5</Text>
+            </View>
+            {[TEMPAT.slice(4, 6), TEMPAT.slice(6, 8)].map((baris, i) => (
+              <View key={i} style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 }}>
+                {baris.map((t) => (
+                  <KartuTempat key={t.game} t={t} boleh={boleh} onPress={() => router.push(`/game/${t.rute}`)} />
+                ))}
+              </View>
+            ))}
             <View style={{ marginTop: 16, backgroundColor: warna.putih, borderRadius: 20, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Text style={{ fontSize: 22 }}>👆</Text>
               <Text style={{ flex: 1, fontFamily: huruf.anak, fontSize: 17, color: warna.teks }}>Ketuk satu tempat untuk bermain.</Text>

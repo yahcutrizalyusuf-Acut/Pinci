@@ -16,6 +16,7 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 | 9 Supabase | Tersambung (29 Okt) | Proyek `pintar-main` (Singapura), SMTP Brevo, variabel GitHub `supabase`. Lihat `docs/CARA-MENYAMBUNG-SUPABASE.md` |
 | 10 Uji menyeluruh | Selesai | `docs/BANDING-DESAIN.md`, `docs/LAPORAN-PEMERIKSAAN.md` |
 | 11 APK | Selesai | Bangun APK hijau, artifact `pintar-main-apk`. Expo Go dilewati (belum ada `EXPO_TOKEN`) |
+| 12 Game tambahan | Selesai (30 Okt) | Susun Kubus dipermudah; 4 game baru berjenjang level 1–5 |
 
 ## Berikutnya
 

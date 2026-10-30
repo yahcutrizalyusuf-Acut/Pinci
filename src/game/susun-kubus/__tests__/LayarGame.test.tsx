@@ -87,7 +87,7 @@ describe('LayarGame Susun Kubus', () => {
     await render(<LayarGame {...propsContoh()} />);
     expect(screen.getByText('Susun Kubus')).toBeTruthy();
     expect(screen.getByText('Kartu tampak depan')).toBeTruthy();
-    expect(screen.getByText('Ketuk petak untuk menaruh kubus. Garis putus-putus = belum cocok.')).toBeTruthy();
+    expect(screen.getByText('Ketuk kubus putus-putus untuk menaruh kubus di sana.')).toBeTruthy();
     // kelas 1–2 hanya ketuk: tidak ada rak seret
     expect(screen.queryByLabelText('Kubus kayu, seret ke petak')).toBeNull();
 
