@@ -38,3 +38,4 @@ Keputusan yang diambil sendiri selama pembangunan, beserta alasannya. Rancangan 
 | 32 | Expo Go/EAS Update dilewati; caranya ditulis di `docs/CARA-MEMBUAT-APK.md` | `EXPO_TOKEN` tidak tersedia |
 | 33 | "Level", "game", dan "Mini try out" tetap dipakai di layar; "Skor" diganti "Hasil" | Dikukuhkan Acut 29 Okt (`keputusan.md` bagian K no. 3) |
 | 34 | Jam tenang boleh dimatikan orang tua (bawaan tetap 21.00) | Dikukuhkan Acut 29 Okt (`keputusan.md` bagian K no. 2) |
+| 35 | Suara Inggris memakai rekaman yang dibundel di aplikasi (`assets/suara/en`), dibuat dengan Kokoro-82M (Apache-2.0); expo-speech tetap dipakai untuk Bahasa Indonesia dan untuk teks Inggris yang belum punya rekaman | Banyak HP orang tua tidak punya data suara Inggris yang baik, dan mengatur mesin suara terlalu rumit bagi mereka. Isi Inggris terbatas (±560 ucapan), jadi rekaman bawaan cukup kecil. Berkas bisa ditimpa rekaman guru tanpa mengubah kode |

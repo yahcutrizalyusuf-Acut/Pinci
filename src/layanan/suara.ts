@@ -1,8 +1,13 @@
 /**
- * Suara Pinci lewat mesin suara HP (expo-speech) untuk Bahasa Indonesia dan Inggris.
- * Tanpa rekaman suara anak.
+ * Suara Pinci untuk Bahasa Indonesia dan Inggris. Tanpa rekaman suara anak.
+ * Inggris: rekaman bawaan aplikasi (assets/suara/en) lebih dulu, supaya pengucapan bagus di semua HP
+ * tanpa pengaturan apa pun. Teks yang belum punya rekaman memakai mesin suara HP (expo-speech).
  */
+import { createAudioPlayer, type AudioPlayer } from 'expo-audio';
 import * as Speech from 'expo-speech';
+
+import { kunciUcapan } from '../isi/suara/kunci';
+import { PETA_SUARA_EN } from '../isi/suara/peta-en';
 
 export type BahasaSuara = 'id-ID' | 'en-US';
 
@@ -29,6 +34,35 @@ async function pilihSuara(bahasa: BahasaSuara): Promise<string | null> {
   return hasil;
 }
 
+let pemutarRekaman: AudioPlayer | null = null;
+
+function hentikanRekaman() {
+  try {
+    pemutarRekaman?.remove();
+  } catch {
+    // abaikan
+  }
+  pemutarRekaman = null;
+}
+
+/** Putar rekaman bawaan bila ada. Mengembalikan false bila tidak ada rekaman untuk teks ini. */
+function putarRekaman(teks: string, selesai?: () => void): boolean {
+  const sumber = PETA_SUARA_EN[kunciUcapan(teks)];
+  if (sumber === undefined) return false;
+  try {
+    const p = createAudioPlayer(sumber);
+    pemutarRekaman = p;
+    p.addListener('playbackStatusUpdate', (st) => {
+      if (st.didJustFinish) selesai?.();
+    });
+    p.play();
+    return true;
+  } catch {
+    hentikanRekaman();
+    return false;
+  }
+}
+
 export function ucapkan(teks: string, bahasa: BahasaSuara = 'id-ID', opsi: { pelan?: boolean; selesai?: () => void } = {}) {
   const bersih = teks.replace(/[*_#]/g, '').replace(/\{(\d+)\/(\d+)\}/g, '$1 per $2').trim();
   if (!bersih) return;
@@ -37,6 +71,8 @@ export function ucapkan(teks: string, bahasa: BahasaSuara = 'id-ID', opsi: { pel
   } catch {
     // abaikan
   }
+  hentikanRekaman();
+  if (bahasa === 'en-US' && !opsi.pelan && putarRekaman(bersih, opsi.selesai)) return;
   void pilihSuara(bahasa).then((suara) => {
     try {
       Speech.speak(bersih, {
@@ -53,6 +89,7 @@ export function ucapkan(teks: string, bahasa: BahasaSuara = 'id-ID', opsi: { pel
 }
 
 export function hentikanSuara() {
+  hentikanRekaman();
   try {
     Speech.stop();
   } catch {

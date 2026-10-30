@@ -4,6 +4,12 @@ const voices = [
   { identifier: 'en-us-enhanced', name: 'US+', language: 'en-US', quality: 'Enhanced' },
 ];
 
+const mockPutar = jest.fn();
+jest.mock('expo-audio', () => ({
+  createAudioPlayer: jest.fn(() => ({ play: mockPutar, remove: jest.fn(), addListener: jest.fn() })),
+}));
+jest.mock('../../isi/suara/peta-en', () => ({ PETA_SUARA_EN: { '10bc2abf': 7 } /* kunciUcapan('apple') */ }));
+
 jest.mock('expo-speech', () => ({
   speak: jest.fn(),
   stop: jest.fn(),
@@ -50,4 +56,14 @@ test('daftar suara gagal dibaca: tetap bicara', async () => {
   ucapkan('Halo', 'id-ID');
   await tunggu();
   expect(Speech.speak).toHaveBeenCalledTimes(1);
+});
+
+test('kata yang punya rekaman bawaan diputar dari rekaman, bukan mesin suara HP', async () => {
+  const { Speech, ucapkan } = muat();
+  Speech.getAvailableVoicesAsync.mockResolvedValue(voices);
+  mockPutar.mockClear();
+  ucapkan('Apple', 'en-US');
+  await tunggu();
+  expect(mockPutar).toHaveBeenCalledTimes(1);
+  expect(Speech.speak).not.toHaveBeenCalled();
 });
