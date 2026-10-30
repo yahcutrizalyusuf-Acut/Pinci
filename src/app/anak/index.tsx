@@ -7,7 +7,7 @@ import { useData, useMuat } from '@/data/konteks';
 import { modeData } from '@/data/sinkron';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { hariIni } from '@/fitur/hari-ini';
-import { paketLengkap, tkaTerbuka } from '@/fitur/konfig';
+import { paketLengkap } from '@/fitur/konfig';
 import { infoLancarAnak } from '@/fitur/lancar';
 import { GelembungPinci, Logo, TombolSuara } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
@@ -104,7 +104,7 @@ export default function BerandaBelajar() {
           {lengkap ? (
             <KartuMapel
               judul="Siap TKA"
-              sub={tkaTerbuka() ? 'Matematika dan Bahasa Indonesia' : 'Dibuka 4 Januari'}
+              sub={data?.h.syarat.tkaTerbuka ? 'Matematika dan Bahasa Indonesia' : 'Dibuka 4 Januari'}
               ikon="rapor"
               utama={warnaMapel.mat.utama}
               muda="#EAF2FF"

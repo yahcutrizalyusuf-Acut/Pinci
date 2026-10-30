@@ -3,7 +3,7 @@ import { tanggalLokal } from '../data/alat';
 import type { Anak, Sesi } from '../data/jenis';
 import type { Repositori } from '../data/repositori';
 import { intiSelesai, sisaInti, type SyaratInti } from '../layanan/penjaga-waktu';
-import { tkaTerbuka } from './konfig';
+import { tkaTerbukaUntuk } from './konfig';
 
 export interface HariIni {
   syarat: SyaratInti;
@@ -24,7 +24,7 @@ export async function hariIni(repo: Repositori, anak: Anak, sekarang = new Date(
     lancarHariIni: sendiri.filter((s) => s.jenis === 'lancar').length,
     bacaHariIni: sendiri.filter((s) => s.jenis === 'baca').length,
     tkaHariIni: sendiri.filter((s) => s.jenis === 'tka' || s.jenis === 'simulasi' || s.jenis === 'mini_tryout').length,
-    tkaTerbuka: tkaTerbuka(sekarang),
+    tkaTerbuka: await tkaTerbukaUntuk(repo, anak.id, sekarang),
   };
   return { syarat, inti: intiSelesai(syarat), sisa: sisaInti(syarat), sesi: semua };
 }
