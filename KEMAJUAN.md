@@ -18,13 +18,15 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 | 11 APK | Selesai | Bangun APK hijau, artifact `pintar-main-apk`. Expo Go dilewati (belum ada `EXPO_TOKEN`) |
 | 12 Game tambahan | Selesai (30 Okt) | Susun Kubus dipermudah; 4 game baru berjenjang level 1–5 |
 | 13 Hubungkan HP anak | Selesai (31 Okt), perlu pasang SQL | Kode 6 angka, sinkron dua arah, HP anak tanpa PIN. Pasang `20261030000000_hubungkan_hp_anak.sql` dan nyalakan Allow anonymous sign-ins. Lihat `docs/CARA-MENYAMBUNG-SUPABASE.md` |
+| 14 Model usaha baru | Rancangan (31 Okt), menunggu persetujuan Acut | Kelas dengan pengawas, peran web, mitra les, pembayaran bertahap, pemasaran. `docs/rancangan/08-model-usaha/` |
 
 ## Berikutnya
 
 1. Keputusan Acut 29 Okt sudah diterapkan (`docs/rancangan/keputusan.md` bagian K).
 2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
 3. Pasang SQL hubungkan HP anak di Supabase, lalu uji dua HP sungguhan (orang tua dan anak).
-4. Lanjut ke kelas 1–5.
+4. Acut memeriksa `docs/rancangan/08-model-usaha/`. Setelah disetujui, bangun urutan di bagian 10 berkas 01.
+5. Lanjut ke kelas 1–5.
 
 **Perintah untuk melanjutkan:** "Lanjutkan pembangunan dari KEMAJUAN.md."
 

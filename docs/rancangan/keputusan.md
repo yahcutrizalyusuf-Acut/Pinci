@@ -308,3 +308,20 @@ Pemeriksa menemukan tenggat ahli hukum dan diskusi berbayar ditulis berbeda-beda
 | 1 | Latar keagamaan di bahan TKA (meunasah, mengaji, salat, Ramadan, dan lainnya) | **Dipakai apa adanya** sebagai latar budaya; tidak ditandai dan tidak disaring. Syarat: setiap kata yang berhubungan dengan agama di isi baru **ditanyakan dulu ke Acut** sebelum ditulis |
 | 2 | Jam tenang 21.00 | Bawaan tetap 21.00; **orang tua boleh mematikannya** |
 | 3 | Istilah "Level", "game", "Mini try out" di layar | **Dibiarkan** |
+
+## L. Model usaha baru: belajar mandiri dengan pengawas (Acut, 31 Okt 2026)
+
+Dasar: `08-model-usaha/01-model-usaha-dan-pengawas.md` dan `08-model-usaha/02-pemasaran-dan-penjualan.md` (rincian masih usulan).
+
+| # | Keputusan | Menggantikan |
+|---|---|---|
+| 1 | Semua anak belajar **dengan pengawas**, paling sedikit secara daring. Harga Rp50–70 ribu per bulan | Arah besar A4 dan A5 (gratis, dibayar dengan masukan); waktu berbayar di `01-produk/09` |
+| 2 | Kelas 1–8 anak, kelas sekolah boleh campur. Untuk sementara Acut yang menjadi pengawas | B11 no. 0 (belum punya guru les sendiri) |
+| 3 | Pengawas memantau Senin, Rabu, Jumat: lihat kemajuan, catatan ke orang tua, dan tugas ke anak. Tanpa video dan tanpa obrolan dengan anak | — |
+| 4 | Pengawas bekerja di aplikasi dan di web | "Tidak ada akun guru" (20 Okt); "Akun pengajar penuh ditunda" (28 Okt) |
+| 5 | Peran web: super admin, admin, mitra les, pengawas, dengan hak berbeda. Pengawas kita lulusan D3/S1 jurusan apa saja | — |
+| 6 | Jalur tatap muka: opsi A (tempat sendiri, di bawah harga Kumon, pelan-pelan) dan opsi B (mitra les kecil, Rp70 ribu per murid per bulan, dengan brosur yang bisa diunduh) | — |
+| 7 | Sasaran pertama: kelas 5–6, fokus Siap TKA | — |
+| 8 | Masa coba 14 hari gratis | — |
+| 9 | Pembayaran bertahap: mulai di luar aplikasi (QRIS dengan cek manual, potongan Google 0%), lalu langganan Google Play ditambahkan kalau perlu | `02-rancangan/08` (Google Play sebagai jalur utama) |
+| 10 | Promosi tidak bergantung pada Acut menjangkau orang satu per satu. Penjualan lewat halaman penjelasan, media sosial, iklan, dan mitra les. Keberhasilan melibatkan dua pihak: sistem dengan pengawas, dan orang tua | — |
