@@ -21,6 +21,7 @@ jobs:
       EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
       EXPO_PUBLIC_TKA_BUKA: ${{ vars.EXPO_PUBLIC_TKA_BUKA || '2027-01-04' }}
       EXPO_PUBLIC_FITUR_GURU: ${{ vars.EXPO_PUBLIC_FITUR_GURU }}
+      EXPO_PUBLIC_HALAMAN_URL: ${{ vars.EXPO_PUBLIC_HALAMAN_URL }}
       EXPO_NO_TELEMETRY: '1'
     steps:
       - uses: actions/checkout@v4

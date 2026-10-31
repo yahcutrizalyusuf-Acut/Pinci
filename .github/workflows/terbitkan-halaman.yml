@@ -1,0 +1,42 @@
+name: Terbitkan halaman penjelasan
+
+# Menerbitkan folder halaman/ (halaman penjelasan, halaman mitra, brosur) ke GitHub Pages.
+# Sekali saja: Settings → Pages → Source: GitHub Actions. Isi variabel repo EXPO_PUBLIC_SUPABASE_URL,
+# EXPO_PUBLIC_SUPABASE_ANON_KEY (sudah ada), dan boleh WA_ADMIN (format 628…).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['halaman/**']
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: halaman
+  cancel-in-progress: true
+
+jobs:
+  terbit:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.terbit.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Isi pengaturan halaman
+        env:
+          URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+          KUNCI: ${{ vars.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+          WA: ${{ vars.WA_ADMIN }}
+        run: |
+          sed -i "s|supabaseUrl: ''|supabaseUrl: '${URL}'|; s|kunciAnon: ''|kunciAnon: '${KUNCI}'|; s|waAdmin: ''|waAdmin: '${WA}'|" halaman/config.js
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: halaman
+      - id: terbit
+        uses: actions/deploy-pages@v4

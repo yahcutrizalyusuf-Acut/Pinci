@@ -1,0 +1,53 @@
+/* Halaman penjelasan Pintar Main. Tanpa pustaka luar, tanpa pelacak. Huruf disajikan sendiri (lisensi OFL). */
+@font-face { font-family: Baloo; src: url(huruf/Baloo2_700Bold.ttf); font-weight: 700; font-display: swap; }
+@font-face { font-family: Nunito; src: url(huruf/Nunito_400Regular.ttf); font-weight: 400; font-display: swap; }
+@font-face { font-family: Nunito; src: url(huruf/Nunito_700Bold.ttf); font-weight: 700; font-display: swap; }
+:root { --teks: #2D3142; --redup: #5B6072; --coklat: #6B4423; --krem: #FFF6E5; --hijau: #1F7A4D; --hijau2: #3BB273; --oranye: #FF9F1C; --garis: #E6E9F0; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Nunito, system-ui, sans-serif; color: var(--teks); background: #fff; font-size: 17px; line-height: 1.55; }
+h1, h2, h3 { font-family: Baloo, Nunito, sans-serif; line-height: 1.15; margin: 0 0 12px; }
+h1 { font-size: 34px; color: var(--coklat); }
+h2 { font-size: 27px; color: var(--coklat); }
+h3 { font-size: 20px; color: var(--hijau); }
+p { margin: 0 0 12px; }
+a { color: var(--hijau); }
+.bungkus { max-width: 960px; margin: 0 auto; padding: 0 18px; }
+.atas { position: sticky; top: 0; background: rgba(255,255,255,.95); border-bottom: 1px solid var(--garis); z-index: 5; }
+.atas .bungkus { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+.logo { font-family: Baloo, sans-serif; font-size: 23px; color: var(--hijau); text-decoration: none; }
+.logo span { color: var(--oranye); }
+.tombol { display: inline-block; background: var(--hijau2); color: #fff; font-weight: 700; text-decoration: none; border: 0; border-radius: 16px; padding: 14px 22px; font-size: 17px; cursor: pointer; font-family: inherit; }
+a.tombol, a.tombol:visited { color: #fff; }
+a.tombol.garis, a.tombol.garis:visited { color: var(--hijau); }
+.tombol.kecil { padding: 9px 14px; font-size: 15px; border-radius: 12px; }
+.tombol.garis { background: #fff; color: var(--hijau); border: 2px solid var(--hijau2); }
+.pembuka { background: var(--krem); padding: 36px 0 30px; }
+.pembuka .bungkus { display: grid; gap: 22px; align-items: center; }
+@media (min-width: 760px) { .pembuka .bungkus { grid-template-columns: 1.3fr 1fr; } h1 { font-size: 44px; } }
+.sub { font-size: 19px; color: var(--redup); }
+.bagian { padding: 34px 0; }
+.bagian.krem { background: var(--krem); }
+.kisi { display: grid; gap: 14px; }
+@media (min-width: 760px) { .kisi.tiga { grid-template-columns: repeat(3, 1fr); } .kisi.dua { grid-template-columns: repeat(2, 1fr); } }
+.kartu { background: #fff; border: 1px solid var(--garis); border-radius: 18px; padding: 18px; }
+.krem .kartu { border-color: #F1E6CF; }
+.angka { display: inline-flex; width: 34px; height: 34px; border-radius: 50%; background: var(--oranye); color: #fff; font-weight: 700; align-items: center; justify-content: center; margin-bottom: 8px; }
+.catatan { background: #fff; border-left: 5px solid var(--oranye); border-radius: 10px; padding: 14px 16px; }
+.contoh-hp { background: #fff; border-radius: 22px; border: 1px solid var(--garis); padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.contoh-hp .label { font-size: 13px; font-weight: 700; color: var(--hijau); letter-spacing: .3px; }
+.harga { font-family: Baloo, sans-serif; font-size: 30px; color: var(--teks); }
+.harga small { font-family: Nunito, sans-serif; font-size: 15px; color: var(--redup); }
+.pilihan-paket .kartu.utama { border: 2px solid var(--hijau2); }
+ul.centang { list-style: none; padding: 0; margin: 0 0 12px; }
+ul.centang li { padding-left: 28px; position: relative; margin-bottom: 6px; }
+ul.centang li::before { content: '✓'; position: absolute; left: 4px; color: var(--hijau2); font-weight: 700; }
+details { background: #fff; border: 1px solid var(--garis); border-radius: 14px; padding: 12px 16px; margin-bottom: 10px; }
+summary { font-weight: 700; cursor: pointer; }
+form label { display: block; font-weight: 700; font-size: 15px; margin: 12px 0 4px; }
+form input, form select { width: 100%; height: 50px; border: 1px solid var(--garis); border-radius: 12px; padding: 0 12px; font-size: 17px; font-family: inherit; background: #fff; }
+.kecil { font-size: 14px; color: var(--redup); }
+.pesan-ok { background: #E4F4EB; color: var(--hijau); border-radius: 12px; padding: 14px; font-weight: 700; display: none; }
+.pesan-galat { color: #C0392B; font-weight: 700; display: none; }
+footer { background: #2D3142; color: #D9DDE6; padding: 26px 0; font-size: 15px; }
+footer a { color: #fff; }

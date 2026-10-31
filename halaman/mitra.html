@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mitra Les Pintar Main</title>
+<meta name="description" content="Les Anda punya aplikasi latihan dan laporan orang tua tanpa biaya membangun sendiri. Coba 1 kelas gratis selama 1 bulan.">
+<link rel="stylesheet" href="gaya.css">
+</head>
+<body>
+<header class="atas">
+  <div class="bungkus">
+    <a class="logo" href="index.html">Pintar <span>Main</span></a>
+    <a class="tombol kecil" href="#daftar">Daftar mitra</a>
+  </div>
+</header>
+
+<section class="pembuka">
+  <div class="bungkus">
+    <div>
+      <h1>Les Anda punya aplikasi latihan sendiri.</h1>
+      <p class="sub">Murid berlatih 15 menit sehari di rumah. Guru les memantau dari HP atau laptop. Orang tua menerima laporan. Anda tidak perlu membangun apa pun.</p>
+      <p><a class="tombol" href="#daftar">Coba 1 kelas gratis selama 1 bulan</a></p>
+    </div>
+    <div class="contoh-hp">
+      <p class="label">CONTOH HITUNGAN</p>
+      <p>Biaya les sekarang <b>Rp150.000</b> per bulan.<br>Tambah Pintar Main <b><span data-harga="mitra">Rp70.000</span></b> per murid aktif.<br>Biaya baru <b>Rp220.000</b> per bulan.</p>
+      <p class="kecil">Anda bebas menentukan harga ke orang tua. Contoh di atas hanya gambaran.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bagian">
+  <div class="bungkus">
+    <h2>Yang didapat les Anda</h2>
+    <div class="kisi dua">
+      <div class="kartu"><h3>Akun mitra dan akun guru</h3><p>Buat kelas sendiri, undang guru les, dan lihat kemajuan murid.</p></div>
+      <div class="kartu"><h3>Papan kelas</h3><p>Penanda murid yang belum latihan, topik yang lemah, dan murid yang perlu dipuji.</p></div>
+      <div class="kartu"><h3>Laporan untuk orang tua</h3><p>Guru menulis catatan mingguan yang langsung sampai ke HP orang tua.</p></div>
+      <div class="kartu"><h3>Brosur dengan nama les Anda</h3><p>Brosur siap cetak untuk dibagikan ke orang tua murid.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bagian krem">
+  <div class="bungkus">
+    <h2>Aturan kerja sama</h2>
+    <ul class="centang">
+      <li>Tagihan <span data-harga="mitra">Rp70.000</span> per murid aktif per bulan. Murid aktif = latihan minimal 1 hari di bulan itu. Murid yang tidak memakai tidak ditagih.</li>
+      <li>Tagihan dikirim tanggal 1, dibayar paling lambat tanggal 10 lewat QRIS atau transfer.</li>
+      <li>Perjanjian tertulis: perlindungan data anak, larangan menjual ulang akun, berhenti dengan pemberitahuan 30 hari.</li>
+      <li>Coba 1 bulan gratis untuk 1 kelas.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="bagian" id="daftar">
+  <div class="bungkus">
+    <h2>Daftar minat mitra</h2>
+    <div class="kartu" style="max-width:560px">
+      <form data-jenis="mitra">
+        <label for="nama_les">Nama les</label>
+        <input id="nama_les" name="nama_les" required maxlength="60" placeholder="Contoh: Les Cahaya">
+        <label for="nama_ortu">Nama pemilik</label>
+        <input id="nama_ortu" name="nama_ortu" required maxlength="40">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required maxlength="120">
+        <label for="wa">Nomor WhatsApp</label>
+        <input id="wa" name="wa" inputmode="tel" maxlength="20" placeholder="08…">
+        <p class="pesan-galat"></p>
+        <button class="tombol" type="submit" style="margin-top:14px">Kirim</button>
+      </form>
+      <p class="pesan-ok">Terima kasih! Kami akan menghubungi Anda untuk perkenalan singkat.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="bungkus">
+    <p><b>Pintar Main</b> · Belajar dulu, main kemudian! · Banda Aceh</p>
+    <p class="kecil" style="color:#D9DDE6">Halaman ini tidak memakai kuki atau pelacak.</p>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="formulir.js"></script>
+</body>
+</html>
