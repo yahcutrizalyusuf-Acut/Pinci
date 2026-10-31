@@ -3,7 +3,7 @@ const path = require('node:path');
 const { chromium } = require('playwright');
 
 (async () => {
-  const dir = path.join(__dirname, '..', 'docs', 'rancangan', '08-model-usaha');
+  const dir = path.join(process.cwd(), 'docs', 'rancangan', '08-model-usaha');
   const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto('file://' + path.join(dir, 'cetak-biru.html'));
