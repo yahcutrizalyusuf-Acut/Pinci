@@ -1,8 +1,8 @@
 {
   "id": "gudang-k4",
-  "versi": "0.1.0",
+  "versi": "0.2.0",
   "kelas": 4,
-  "dibuat": "2026-10-31",
+  "dibuat": "2026-11-01",
   "sumber": "Ditulis sendiri mengikuti capaian pembelajaran kelas 4 (belum diperiksa guru).",
   "mapel": [
     {
@@ -512,7 +512,113 @@
           "urutan": 5,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat4-bilangan-besar",
+            "penjelasan": [
+              {
+                "teks": "Bilangan empat angka punya ribuan, ratusan, puluhan, dan satuan."
+              },
+              {
+                "teks": "Pada 3.472, angka 3 bernilai 3.000 dan angka 4 bernilai 400."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Nilai angka 5 pada 5.218 adalah ....",
+                "langkah": [
+                  "5 di tempat ribuan.",
+                  "5 ribuan = 5.000."
+                ],
+                "jawaban": "5.000"
+              },
+              {
+                "soal": "4.000 + 300 + 60 + 2 = ?",
+                "langkah": [
+                  "Gabungkan sesuai tempatnya."
+                ],
+                "jawaban": "4.362"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat4-bilangan-besar-s1",
+                "hitung": "700",
+                "pertanyaan": "Nilai angka 7 pada 2.745 adalah ...",
+                "bentuk": "isian",
+                "kunci": "700",
+                "petunjuk": [
+                  "7 di tempat kedua dari kiri.",
+                  "Itu tempat ratusan.",
+                  "7 ratusan = 700."
+                ],
+                "pembahasan": "Angka 7 di tempat ratusan, bernilai 700.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-bilangan-besar-s2",
+                "hitung": "6000 + 500 + 30 + 9",
+                "pertanyaan": "6.000 + 500 + 30 + 9 = ...",
+                "bentuk": "isian",
+                "kunci": "6.539",
+                "petunjuk": [
+                  "Gabungkan saja.",
+                  "6 ribuan, 5 ratusan, 3 puluhan, 9 satuan.",
+                  "Tulis 6.539."
+                ],
+                "pembahasan": "6.000 + 500 + 30 + 9 = 6.539.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-bilangan-besar-s3",
+                "pertanyaan": "Urutan dari yang terkecil adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "3.098; 3.809; 3.890",
+                  "3.890; 3.809; 3.098",
+                  "3.809; 3.098; 3.890"
+                ],
+                "kunci": "3.098; 3.809; 3.890",
+                "petunjuk": [
+                  "Ribuan semuanya 3.",
+                  "Bandingkan ratusan: 0, 8, 8.",
+                  "Untuk 3.809 dan 3.890 bandingkan puluhan."
+                ],
+                "pembahasan": "3.098 < 3.809 < 3.890.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-bilangan-besar-s4",
+                "hitung": "2450 + 1375",
+                "pertanyaan": "Berapa hasil 2.450 + 1.375?",
+                "bentuk": "isian",
+                "kunci": "3.825",
+                "petunjuk": [
+                  "Jumlahkan dari satuan.",
+                  "Satuan 0 + 5 = 5, puluhan 5 + 7 = 12 (simpan 1).",
+                  "Ratusan 4 + 3 + 1 = 8, ribuan 2 + 1 = 3."
+                ],
+                "pembahasan": "2.450 + 1.375 = 3.825.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-bilangan-besar-s5",
+                "hitung": "5000 - 2350",
+                "pertanyaan": "Sebuah desa punya 5.000 bibit pohon. Sebanyak 2.350 sudah ditanam. Berapa bibit yang belum ditanam?",
+                "bentuk": "isian",
+                "kunci": "2.650",
+                "petunjuk": [
+                  "Belum ditanam = semua − sudah ditanam.",
+                  "5.000 − 2.350.",
+                  "Hasilnya 2.650."
+                ],
+                "pembahasan": "5.000 − 2.350 = 2.650 bibit.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K4-mat"
+          }
         },
         {
           "id": "mat4-desimal",
@@ -523,7 +629,118 @@
             "mat4-pecahan-senilai"
           ],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat4-desimal",
+            "penjelasan": [
+              {
+                "teks": "Pecahan per sepuluh bisa ditulis desimal. 3/10 ditulis 0,3.",
+                "gambar": {
+                  "jenis": "petak",
+                  "baris": 1,
+                  "kolom": 10,
+                  "terisi": 3
+                }
+              },
+              {
+                "teks": "Pecahan per seratus memakai dua angka di belakang koma. 25/100 ditulis 0,25."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Tulis 7/10 sebagai desimal.",
+                "langkah": [
+                  "Per sepuluh: satu angka di belakang koma."
+                ],
+                "jawaban": "0,7"
+              },
+              {
+                "soal": "Tulis 0,45 sebagai pecahan.",
+                "langkah": [
+                  "Dua angka di belakang koma: per seratus."
+                ],
+                "jawaban": "45/100"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat4-desimal-s1",
+                "hitung": "9/10",
+                "pertanyaan": "Tulis 9/10 sebagai desimal.",
+                "bentuk": "isian",
+                "kunci": "0,9",
+                "petunjuk": [
+                  "Per sepuluh.",
+                  "Satu angka di belakang koma.",
+                  "9 per sepuluh = 0,9."
+                ],
+                "pembahasan": "9/10 = 0,9.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-desimal-s2",
+                "hitung": "0.6",
+                "pertanyaan": "Tulis 0,6 sebagai pecahan per sepuluh. (tulis pecahannya)",
+                "bentuk": "isian",
+                "kunci": "6/10",
+                "petunjuk": [
+                  "0,6 artinya 6 per sepuluh.",
+                  "Angka bawah 10.",
+                  "Angka atas 6."
+                ],
+                "pembahasan": "0,6 = 6/10.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-desimal-s3",
+                "hitung": "maks(0.5, 0.35)",
+                "pertanyaan": "Mana yang lebih besar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "0,5",
+                  "0,35"
+                ],
+                "kunci": "0,5",
+                "petunjuk": [
+                  "Samakan banyak angka di belakang koma.",
+                  "0,5 = 0,50.",
+                  "Bandingkan 50 dan 35."
+                ],
+                "pembahasan": "0,50 lebih besar dari 0,35.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-desimal-s4",
+                "hitung": "0.4 + 0.3",
+                "pertanyaan": "Berapa hasil 0,4 + 0,3?",
+                "bentuk": "isian",
+                "kunci": "0,7",
+                "petunjuk": [
+                  "Jumlahkan seperti biasa.",
+                  "4 per sepuluh + 3 per sepuluh.",
+                  "7 per sepuluh."
+                ],
+                "pembahasan": "0,4 + 0,3 = 0,7.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-desimal-s5",
+                "hitung": "1 - 0.25",
+                "pertanyaan": "Pita 1 meter dipotong 0,25 meter. Berapa meter sisanya?",
+                "bentuk": "isian",
+                "kunci": "0,75",
+                "petunjuk": [
+                  "1 meter = 1,00 meter.",
+                  "1,00 − 0,25.",
+                  "Hasilnya 0,75."
+                ],
+                "pembahasan": "1 − 0,25 = 0,75 meter.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K4-mat"
+          }
         },
         {
           "id": "mat4-sudut",
@@ -532,7 +749,120 @@
           "urutan": 7,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat4-sudut",
+            "penjelasan": [
+              {
+                "teks": "Sudut siku-siku seperti pojok buku. Besarnya 90 derajat."
+              },
+              {
+                "teks": "Sudut lancip lebih kecil dari siku-siku. Sudut tumpul lebih besar dari siku-siku."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Sudut 45 derajat termasuk sudut ....",
+                "langkah": [
+                  "45 lebih kecil dari 90."
+                ],
+                "jawaban": "lancip"
+              },
+              {
+                "soal": "Sudut 120 derajat termasuk sudut ....",
+                "langkah": [
+                  "120 lebih besar dari 90."
+                ],
+                "jawaban": "tumpul"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat4-sudut-s1",
+                "pertanyaan": "Pojok papan tulis membentuk sudut ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "lancip",
+                  "siku-siku",
+                  "tumpul"
+                ],
+                "kunci": "siku-siku",
+                "petunjuk": [
+                  "Pojok papan tulis seperti pojok buku.",
+                  "Pojok buku besarnya 90 derajat.",
+                  "90 derajat adalah siku-siku."
+                ],
+                "pembahasan": "Pojok papan tulis siku-siku.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-sudut-s2",
+                "pertanyaan": "Sudut 30 derajat termasuk sudut ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "lancip",
+                  "siku-siku",
+                  "tumpul"
+                ],
+                "kunci": "lancip",
+                "petunjuk": [
+                  "Bandingkan dengan 90.",
+                  "30 lebih kecil dari 90.",
+                  "Lebih kecil dari siku-siku disebut lancip."
+                ],
+                "pembahasan": "30 derajat < 90 derajat, jadi lancip.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-sudut-s3",
+                "pertanyaan": "Sudut 150 derajat termasuk sudut ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "lancip",
+                  "siku-siku",
+                  "tumpul"
+                ],
+                "kunci": "tumpul",
+                "petunjuk": [
+                  "Bandingkan dengan 90.",
+                  "150 lebih besar dari 90.",
+                  "Lebih besar dari siku-siku disebut tumpul."
+                ],
+                "pembahasan": "150 derajat > 90 derajat, jadi tumpul.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-sudut-s4",
+                "hitung": "90 + 90",
+                "pertanyaan": "Dua sudut siku-siku digabung. Berapa derajat besarnya?",
+                "bentuk": "isian",
+                "kunci": "180",
+                "petunjuk": [
+                  "Satu siku-siku 90 derajat.",
+                  "90 + 90.",
+                  "90 + 90 = 180."
+                ],
+                "pembahasan": "90 + 90 = 180 derajat (garis lurus).",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-sudut-s5",
+                "hitung": "90",
+                "pertanyaan": "Jarum jam menunjuk pukul 3 tepat. Berapa derajat sudut antara jarum pendek dan panjang?",
+                "bentuk": "isian",
+                "kunci": "90",
+                "petunjuk": [
+                  "Jarum panjang di 12, pendek di 3.",
+                  "Bentuknya seperti pojok buku.",
+                  "Itu siku-siku."
+                ],
+                "pembahasan": "Pukul 3 tepat membentuk sudut siku-siku, 90 derajat.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K4-mat"
+          }
         },
         {
           "id": "mat4-diagram-batang",
@@ -541,7 +871,182 @@
           "urutan": 8,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat4-diagram-batang",
+            "penjelasan": [
+              {
+                "teks": "Diagram batang menunjukkan data dengan batang. Makin tinggi batang, makin banyak datanya.",
+                "gambar": {
+                  "jenis": "batang",
+                  "nilai": [
+                    4,
+                    7,
+                    5
+                  ],
+                  "label": [
+                    "Sen",
+                    "Sel",
+                    "Rab"
+                  ]
+                }
+              },
+              {
+                "teks": "Baca angka di garis tegak untuk tahu tinggi batang."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Senin 4, Selasa 7, Rabu 5. Hari apa paling banyak?",
+                "langkah": [
+                  "Cari batang paling tinggi.",
+                  "Selasa 7."
+                ],
+                "jawaban": "Selasa"
+              },
+              {
+                "soal": "Berapa selisih Selasa dan Senin?",
+                "langkah": [
+                  "7 − 4 = 3."
+                ],
+                "jawaban": "3"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat4-diagram-batang-s1",
+                "gambar": {
+                  "jenis": "batang",
+                  "nilai": [
+                    4,
+                    7,
+                    5
+                  ],
+                  "label": [
+                    "Sen",
+                    "Sel",
+                    "Rab"
+                  ]
+                },
+                "hitung": "4 + 7 + 5",
+                "pertanyaan": "Diagram: Senin 4, Selasa 7, Rabu 5 anak. Berapa anak semuanya?",
+                "bentuk": "isian",
+                "kunci": "16",
+                "petunjuk": [
+                  "Jumlahkan semua batang.",
+                  "4 + 7 + 5.",
+                  "4 + 7 = 11, 11 + 5 = 16."
+                ],
+                "pembahasan": "4 + 7 + 5 = 16 anak.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-diagram-batang-s2",
+                "gambar": {
+                  "jenis": "batang",
+                  "nilai": [
+                    6,
+                    3,
+                    8
+                  ],
+                  "label": [
+                    "Jeruk",
+                    "Apel",
+                    "Pisang"
+                  ]
+                },
+                "pertanyaan": "Buah kesukaan: jeruk 6, apel 3, pisang 8. Buah mana paling disukai?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Jeruk",
+                  "Apel",
+                  "Pisang"
+                ],
+                "kunci": "Pisang",
+                "petunjuk": [
+                  "Cari angka terbesar.",
+                  "8 paling besar.",
+                  "Itu pisang."
+                ],
+                "pembahasan": "Pisang 8, paling banyak.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat4-diagram-batang-s3",
+                "gambar": {
+                  "jenis": "batang",
+                  "nilai": [
+                    6,
+                    3,
+                    8
+                  ],
+                  "label": [
+                    "Jeruk",
+                    "Apel",
+                    "Pisang"
+                  ]
+                },
+                "hitung": "8 - 3",
+                "pertanyaan": "Buah kesukaan: jeruk 6, apel 3, pisang 8. Berapa selisih pisang dan apel?",
+                "bentuk": "isian",
+                "kunci": "5",
+                "petunjuk": [
+                  "Selisih artinya dikurangi.",
+                  "8 − 3.",
+                  "8 − 3 = 5."
+                ],
+                "pembahasan": "8 − 3 = 5.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-diagram-batang-s4",
+                "gambar": {
+                  "jenis": "batang",
+                  "nilai": [
+                    12,
+                    9,
+                    15
+                  ],
+                  "label": [
+                    "4A",
+                    "4B",
+                    "4C"
+                  ]
+                },
+                "hitung": "12 + 9 + 15",
+                "pertanyaan": "Sampah plastik terkumpul: Kelas 4A 12 kg, 4B 9 kg, 4C 15 kg. Berapa kg semuanya?",
+                "bentuk": "isian",
+                "kunci": "36",
+                "petunjuk": [
+                  "Jumlahkan ketiga kelas.",
+                  "12 + 9 = 21.",
+                  "21 + 15 = ?"
+                ],
+                "pembahasan": "12 + 9 + 15 = 36 kg.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat4-diagram-batang-s5",
+                "pertanyaan": "Kelas 4A 12 kg, 4B 9 kg, 4C 15 kg. Pernyataan yang benar adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "4B paling banyak",
+                  "4C 3 kg lebih banyak dari 4A",
+                  "4A dan 4B sama"
+                ],
+                "kunci": "4C 3 kg lebih banyak dari 4A",
+                "petunjuk": [
+                  "Periksa pernyataan satu per satu.",
+                  "15 − 12 = 3.",
+                  "Jadi 4C 3 kg lebih banyak dari 4A."
+                ],
+                "pembahasan": "4C (15) − 4A (12) = 3 kg.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K4-mat"
+          }
         }
       ]
     },
@@ -820,7 +1325,128 @@
           "urutan": 3,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi4-kalimat-saran",
+            "penjelasan": [
+              {
+                "teks": "Kalimat saran memberi usul. Biasanya memakai kata sebaiknya atau lebih baik."
+              },
+              {
+                "teks": "Kalimat ajakan mengajak orang lain. Biasanya memakai kata ayo atau mari."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "\"Sebaiknya kamu tidur lebih awal.\" Kalimat apa ini?",
+                "langkah": [
+                  "Ada kata sebaiknya."
+                ],
+                "jawaban": "kalimat saran"
+              },
+              {
+                "soal": "\"Mari kita bersihkan kelas!\" Kalimat apa ini?",
+                "langkah": [
+                  "Ada kata mari."
+                ],
+                "jawaban": "kalimat ajakan"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi4-kalimat-saran-s1",
+                "pertanyaan": "\"Ayo kita tanam pohon di halaman!\" termasuk kalimat ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "saran",
+                  "ajakan",
+                  "berita"
+                ],
+                "kunci": "ajakan",
+                "petunjuk": [
+                  "Ada kata ayo.",
+                  "Ayo dipakai untuk mengajak.",
+                  "Itu kalimat ajakan."
+                ],
+                "pembahasan": "Kata ayo menunjukkan kalimat ajakan.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi4-kalimat-saran-s2",
+                "pertanyaan": "\"Sebaiknya kamu membawa payung.\" termasuk kalimat ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "saran",
+                  "tanya",
+                  "ajakan"
+                ],
+                "kunci": "saran",
+                "petunjuk": [
+                  "Ada kata sebaiknya.",
+                  "Sebaiknya memberi usul.",
+                  "Itu kalimat saran."
+                ],
+                "pembahasan": "Kata sebaiknya menunjukkan kalimat saran.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi4-kalimat-saran-s3",
+                "pertanyaan": "Saran yang tepat untuk teman yang sering terlambat adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Kamu memang pemalas.",
+                  "Sebaiknya kamu bangun lebih pagi.",
+                  "Aku tidak peduli."
+                ],
+                "kunci": "Sebaiknya kamu bangun lebih pagi.",
+                "petunjuk": [
+                  "Saran harus sopan dan membantu.",
+                  "Mengejek bukan saran.",
+                  "Pilih yang memakai sebaiknya."
+                ],
+                "pembahasan": "\"Sebaiknya kamu bangun lebih pagi\" sopan dan membantu.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi4-kalimat-saran-s4",
+                "pertanyaan": "Kalimat ajakan menjaga kebersihan sungai adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Sungai itu kotor.",
+                  "Mari jaga sungai kita dari sampah!",
+                  "Siapa yang membuang sampah?"
+                ],
+                "kunci": "Mari jaga sungai kita dari sampah!",
+                "petunjuk": [
+                  "Ajakan memakai mari atau ayo.",
+                  "Kalimat pertama berita, ketiga pertanyaan.",
+                  "Pilih yang memakai mari."
+                ],
+                "pembahasan": "\"Mari jaga sungai kita dari sampah!\" adalah ajakan.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi4-kalimat-saran-s5",
+                "pertanyaan": "Poster hemat air yang paling tepat adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Air itu cair.",
+                  "Ayo tutup keran setelah dipakai!",
+                  "Keran rumahku warnanya perak."
+                ],
+                "kunci": "Ayo tutup keran setelah dipakai!",
+                "petunjuk": [
+                  "Poster biasanya mengajak.",
+                  "Pilih kalimat yang mengajak berhemat.",
+                  "Ayo tutup keran."
+                ],
+                "pembahasan": "Poster hemat air mengajak menutup keran.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K4-bi"
+          }
         },
         {
           "id": "bi4-puisi",
@@ -829,7 +1455,131 @@
           "urutan": 4,
           "prasyarat": [],
           "bersamaOrtu": true,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi4-puisi",
+            "penjelasan": [
+              {
+                "teks": "Puisi disusun dalam larik dan bait. Larik adalah baris, bait adalah kumpulan larik."
+              },
+              {
+                "teks": "Pilihan kata dalam puisi menunjukkan perasaan penulis, misalnya senang, sedih, atau kagum."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Puisi dengan 3 kelompok baris punya berapa bait?",
+                "langkah": [
+                  "Satu kelompok baris adalah satu bait."
+                ],
+                "jawaban": "3 bait"
+              },
+              {
+                "soal": "\"Pelangi indah di langit biru, hatiku riang melihatmu.\" Perasaan penulis adalah ....",
+                "langkah": [
+                  "Ada kata riang."
+                ],
+                "jawaban": "senang"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi4-puisi-s1",
+                "pertanyaan": "Baris dalam puisi disebut ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "bait",
+                  "larik",
+                  "judul"
+                ],
+                "kunci": "larik",
+                "petunjuk": [
+                  "Ada dua istilah: larik dan bait.",
+                  "Bait adalah kumpulan baris.",
+                  "Satu baris disebut larik."
+                ],
+                "pembahasan": "Satu baris dalam puisi disebut larik.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi4-puisi-s2",
+                "bacaan": "Ibu, kasihmu sepanjang masa,\ntak pernah lelah menjaga kami.",
+                "pertanyaan": "\"Ibu, kasihmu sepanjang masa, tak pernah lelah menjaga kami.\" Perasaan penulis kepada ibu adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "marah",
+                  "sayang",
+                  "takut"
+                ],
+                "kunci": "sayang",
+                "petunjuk": [
+                  "Perhatikan kata kasihmu dan menjaga.",
+                  "Penulis berterima kasih kepada ibu.",
+                  "Itu perasaan sayang."
+                ],
+                "pembahasan": "Kata kasih dan menjaga menunjukkan rasa sayang.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi4-puisi-s3",
+                "bacaan": "Daun gugur satu per satu,\npohon sendiri tanpa teman.",
+                "pertanyaan": "\"Daun gugur satu per satu, pohon sendiri tanpa teman.\" Suasana puisi ini adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "gembira",
+                  "sepi dan sedih",
+                  "ramai"
+                ],
+                "kunci": "sepi dan sedih",
+                "petunjuk": [
+                  "Perhatikan kata gugur dan sendiri.",
+                  "Sendiri tanpa teman terasa sepi.",
+                  "Suasananya sepi dan sedih."
+                ],
+                "pembahasan": "Kata sendiri tanpa teman menimbulkan suasana sepi.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi4-puisi-s4",
+                "hitung": "2 * 4",
+                "pertanyaan": "Puisi dengan 4 larik dalam setiap bait, dan ada 2 bait. Berapa larik semuanya?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "4",
+                  "6",
+                  "8"
+                ],
+                "kunci": "8",
+                "petunjuk": [
+                  "Satu bait 4 larik.",
+                  "Ada 2 bait.",
+                  "4 + 4 = 8."
+                ],
+                "pembahasan": "2 bait × 4 larik = 8 larik.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi4-puisi-s5",
+                "pertanyaan": "\"Ombak berlari mengejar pantai.\" Kata berlari di sini artinya ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "ombak punya kaki",
+                  "ombak bergerak cepat ke pantai",
+                  "ombak berhenti"
+                ],
+                "kunci": "ombak bergerak cepat ke pantai",
+                "petunjuk": [
+                  "Ombak tidak punya kaki.",
+                  "Penulis membandingkan ombak dengan orang berlari.",
+                  "Artinya ombak bergerak cepat."
+                ],
+                "pembahasan": "Ombak \"berlari\" artinya bergerak cepat menuju pantai.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K4-bi"
+          }
         }
       ]
     }

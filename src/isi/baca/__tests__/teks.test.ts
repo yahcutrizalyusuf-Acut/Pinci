@@ -4,8 +4,8 @@ import { TEKS_BACA, ambilTeksBaca, teksBacaKelas } from '../paket';
 describe.each([2, 3, 4, 5])('teks Baca Ulang kelas %i', (kelas) => {
   const daftar = TEKS_BACA[kelas];
 
-  test('tahap 1: minimal 6 teks, id unik dan urut', () => {
-    expect(daftar.length).toBeGreaterThanOrEqual(6);
+  test('tahap 2: minimal 12 teks, id unik dan urut', () => {
+    expect(daftar.length).toBeGreaterThanOrEqual(12);
     daftar.forEach((t, i) => expect(t.id).toBe(`K${kelas}-T${String(i + 1).padStart(2, '0')}`));
   });
 

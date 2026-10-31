@@ -22,8 +22,8 @@ describe.each([2, 3, 4, 5])('paket gudang-k%i', (kelas) => {
     expect(paket).toEqual(bangunPaketKelas(SUMBER_KELAS.find((s) => s.kelas === kelas)!));
   });
 
-  test('tahap 1: minimal 4 kartu Matematika dan 2 kartu Bahasa Indonesia', () => {
-    for (const [kode, min] of [['mat', 4], ['bi', 2]] as const) {
+  test('tahap 2: minimal 8 kartu Matematika dan 4 kartu Bahasa Indonesia', () => {
+    for (const [kode, min] of [['mat', 8], ['bi', 4]] as const) {
       expect(paket.mapel.find((m) => m.kode === kode)!.topik.filter((t) => t.kartu).length).toBeGreaterThanOrEqual(min);
     }
   });

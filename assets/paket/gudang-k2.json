@@ -1,8 +1,8 @@
 {
   "id": "gudang-k2",
-  "versi": "0.1.0",
+  "versi": "0.2.0",
   "kelas": 2,
-  "dibuat": "2026-10-31",
+  "dibuat": "2026-11-01",
   "sumber": "Ditulis sendiri mengikuti capaian pembelajaran kelas 2 (belum diperiksa guru).",
   "mapel": [
     {
@@ -514,7 +514,120 @@
             "mat2-kali-ulang"
           ],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-bagi-rata",
+            "penjelasan": [
+              {
+                "teks": "Membagi rata artinya setiap orang mendapat sama banyak.",
+                "gambar": {
+                  "jenis": "emoji",
+                  "isi": "🍬🍬🍬🍬🍬🍬"
+                }
+              },
+              {
+                "teks": "6 permen dibagi rata untuk 2 anak. Setiap anak mendapat 3 permen."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "8 kue dibagi rata untuk 2 anak. Berapa kue tiap anak?",
+                "langkah": [
+                  "Bagikan satu per satu bergantian.",
+                  "Setiap anak mendapat 4 kue."
+                ],
+                "jawaban": "4"
+              },
+              {
+                "soal": "9 jeruk dibagi rata ke 3 piring. Berapa jeruk tiap piring?",
+                "langkah": [
+                  "Taruh satu-satu di tiap piring sampai habis.",
+                  "Tiap piring berisi 3 jeruk."
+                ],
+                "jawaban": "3"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-bagi-rata-s1",
+                "hitung": "4 / 2",
+                "pertanyaan": "4 kelereng dibagi rata untuk 2 anak. Berapa kelereng tiap anak?",
+                "bentuk": "isian",
+                "kunci": "2",
+                "petunjuk": [
+                  "Bagikan bergantian satu-satu.",
+                  "Anak pertama 1, anak kedua 1, lalu ulangi.",
+                  "Tiap anak mendapat 2."
+                ],
+                "pembahasan": "4 dibagi 2 = 2 kelereng.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-bagi-rata-s2",
+                "hitung": "10 / 2",
+                "pertanyaan": "10 pensil dibagi rata ke 2 kotak. Berapa pensil tiap kotak?",
+                "bentuk": "isian",
+                "kunci": "5",
+                "petunjuk": [
+                  "Bagi menjadi 2 kelompok sama banyak.",
+                  "5 + 5 = 10.",
+                  "Jadi tiap kotak 5."
+                ],
+                "pembahasan": "10 dibagi 2 = 5 pensil.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-bagi-rata-s3",
+                "hitung": "12 / 3",
+                "pertanyaan": "12 telur dibagi rata ke 3 keranjang. Berapa telur tiap keranjang?",
+                "bentuk": "isian",
+                "kunci": "4",
+                "petunjuk": [
+                  "Cari bilangan yang ditambah 3 kali menjadi 12.",
+                  "4 + 4 + 4 = 12.",
+                  "Jadi tiap keranjang 4."
+                ],
+                "pembahasan": "12 dibagi 3 = 4 telur.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-bagi-rata-s4",
+                "hitung": "15 / 5",
+                "pertanyaan": "15 buku dibagi rata untuk 5 anak. Berapa buku tiap anak?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "3",
+                  "5",
+                  "10",
+                  "20"
+                ],
+                "kunci": "3",
+                "petunjuk": [
+                  "5 anak, buku harus sama banyak.",
+                  "3 + 3 + 3 + 3 + 3 = 15.",
+                  "Jadi tiap anak 3 buku."
+                ],
+                "pembahasan": "15 dibagi 5 = 3 buku.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-bagi-rata-s5",
+                "hitung": "(20 - 4) / 4",
+                "pertanyaan": "Ibu punya 20 kue. Ibu menyimpan 4 kue. Sisanya dibagi rata untuk 4 anak. Berapa kue tiap anak?",
+                "bentuk": "isian",
+                "kunci": "4",
+                "petunjuk": [
+                  "Kurangi dulu kue yang disimpan.",
+                  "20 − 4 = 16.",
+                  "16 dibagi rata untuk 4 anak."
+                ],
+                "pembahasan": "20 − 4 = 16. 16 dibagi 4 = 4 kue.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
         },
         {
           "id": "mat2-panjang",
@@ -523,7 +636,113 @@
           "urutan": 6,
           "prasyarat": [],
           "bersamaOrtu": true,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-panjang",
+            "penjelasan": [
+              {
+                "teks": "Panjang benda diukur dengan penggaris. Satuannya sentimeter, ditulis cm."
+              },
+              {
+                "teks": "Mulai mengukur dari angka 0 di penggaris, bukan dari ujung penggaris."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Pensil dari angka 0 sampai angka 12. Berapa panjangnya?",
+                "langkah": [
+                  "Ujung pensil di 0.",
+                  "Ujung lainnya di 12."
+                ],
+                "jawaban": "12 cm"
+              },
+              {
+                "soal": "Pita A 8 cm, pita B 5 cm. Mana yang lebih panjang?",
+                "langkah": [
+                  "Bandingkan 8 dan 5.",
+                  "8 lebih besar dari 5."
+                ],
+                "jawaban": "Pita A"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-panjang-s1",
+                "hitung": "4 - 0",
+                "pertanyaan": "Penghapus dari angka 0 sampai angka 4. Berapa cm panjangnya?",
+                "bentuk": "isian",
+                "kunci": "4",
+                "petunjuk": [
+                  "Lihat angka di ujung penghapus.",
+                  "Ujung pertama di 0.",
+                  "Ujung kedua di 4."
+                ],
+                "pembahasan": "Dari 0 sampai 4 artinya 4 cm.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-panjang-s2",
+                "pertanyaan": "Mana yang lebih panjang?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Tali 15 cm",
+                  "Tali 9 cm"
+                ],
+                "kunci": "Tali 15 cm",
+                "petunjuk": [
+                  "Bandingkan angkanya.",
+                  "15 lebih besar dari 9.",
+                  "Yang angkanya lebih besar lebih panjang."
+                ],
+                "pembahasan": "15 cm lebih panjang dari 9 cm.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-panjang-s3",
+                "hitung": "9 - 2",
+                "pertanyaan": "Krayon dari angka 2 sampai angka 9. Berapa cm panjangnya?",
+                "bentuk": "isian",
+                "kunci": "7",
+                "petunjuk": [
+                  "Ujung krayon tidak di 0.",
+                  "Hitung dari 2 sampai 9.",
+                  "9 − 2 = ?"
+                ],
+                "pembahasan": "9 − 2 = 7 cm.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-panjang-s4",
+                "hitung": "10 + 6",
+                "pertanyaan": "Dua pita disambung. Panjangnya 10 cm dan 6 cm. Berapa cm panjang semuanya?",
+                "bentuk": "isian",
+                "kunci": "16",
+                "petunjuk": [
+                  "Disambung artinya dijumlah.",
+                  "10 + 6.",
+                  "10 + 6 = 16."
+                ],
+                "pembahasan": "10 + 6 = 16 cm.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-panjang-s5",
+                "hitung": "20 - 8",
+                "pertanyaan": "Lidi 20 cm dipatahkan. Satu bagian 8 cm. Berapa cm bagian yang lain?",
+                "bentuk": "isian",
+                "kunci": "12",
+                "petunjuk": [
+                  "Panjang semua dikurangi bagian yang diketahui.",
+                  "20 − 8.",
+                  "20 − 8 = 12."
+                ],
+                "pembahasan": "20 − 8 = 12 cm.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
         },
         {
           "id": "mat2-jam",
@@ -532,7 +751,119 @@
           "urutan": 7,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-jam",
+            "penjelasan": [
+              {
+                "teks": "Jam punya dua jarum. Jarum pendek menunjuk jam, jarum panjang menunjuk menit."
+              },
+              {
+                "teks": "Kalau jarum panjang di angka 12, artinya tepat. Jarum pendek di 7 berarti pukul 7 tepat."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Jarum pendek di 3, jarum panjang di 12. Pukul berapa?",
+                "langkah": [
+                  "Jarum panjang di 12 artinya tepat.",
+                  "Jarum pendek di 3."
+                ],
+                "jawaban": "Pukul 3"
+              },
+              {
+                "soal": "Jarum panjang di 6. Artinya ....",
+                "langkah": [
+                  "Angka 6 ada di tengah bawah.",
+                  "Itu berarti setengah."
+                ],
+                "jawaban": "lewat setengah jam"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-jam-s1",
+                "hitung": "9",
+                "pertanyaan": "Jarum pendek di 9, jarum panjang di 12. Pukul berapa? (tulis angkanya)",
+                "bentuk": "isian",
+                "kunci": "9",
+                "petunjuk": [
+                  "Jarum panjang di 12 artinya tepat.",
+                  "Lihat jarum pendek.",
+                  "Jarum pendek di 9."
+                ],
+                "pembahasan": "Pukul 9 tepat.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-jam-s2",
+                "hitung": "6",
+                "pertanyaan": "Pukul 6 pagi, jarum pendek menunjuk angka ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "12",
+                  "6",
+                  "3"
+                ],
+                "kunci": "6",
+                "petunjuk": [
+                  "Jarum pendek menunjuk jam.",
+                  "Jamnya 6.",
+                  "Jarum pendek di angka 6."
+                ],
+                "pembahasan": "Pukul 6, jarum pendek di angka 6.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-jam-s3",
+                "pertanyaan": "Kegiatan mana yang biasanya pada pagi hari?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Tidur malam",
+                  "Berangkat sekolah",
+                  "Melihat bintang"
+                ],
+                "kunci": "Berangkat sekolah",
+                "petunjuk": [
+                  "Pikirkan kapan kamu ke sekolah.",
+                  "Sekolah dimulai pagi.",
+                  "Tidur malam dan bintang ada di malam hari."
+                ],
+                "pembahasan": "Berangkat sekolah biasanya pagi hari.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-jam-s4",
+                "hitung": "6 + 1",
+                "pertanyaan": "Nanda bangun pukul 6. Satu jam kemudian ia berangkat. Pukul berapa ia berangkat? (tulis angkanya)",
+                "bentuk": "isian",
+                "kunci": "7",
+                "petunjuk": [
+                  "Satu jam kemudian artinya ditambah 1.",
+                  "6 + 1.",
+                  "6 + 1 = 7."
+                ],
+                "pembahasan": "6 + 1 = pukul 7.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-jam-s5",
+                "hitung": "5 - 3",
+                "pertanyaan": "Faris bermain dari pukul 3 sampai pukul 5 sore. Berapa jam ia bermain?",
+                "bentuk": "isian",
+                "kunci": "2",
+                "petunjuk": [
+                  "Hitung dari 3 ke 5.",
+                  "3 ke 4 satu jam, 4 ke 5 satu jam.",
+                  "1 + 1 = 2."
+                ],
+                "pembahasan": "Dari pukul 3 sampai 5 adalah 2 jam.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
         },
         {
           "id": "mat2-bangun-datar",
@@ -541,7 +872,117 @@
           "urutan": 8,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-bangun-datar",
+            "penjelasan": [
+              {
+                "teks": "Segitiga punya 3 sisi dan 3 sudut. Segi empat punya 4 sisi dan 4 sudut."
+              },
+              {
+                "teks": "Lingkaran tidak punya sudut. Bentuknya bulat seperti roda."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Berapa sisi segitiga?",
+                "langkah": [
+                  "Segi tiga artinya tiga sisi."
+                ],
+                "jawaban": "3"
+              },
+              {
+                "soal": "Benda apa yang berbentuk lingkaran?",
+                "langkah": [
+                  "Cari benda yang bulat.",
+                  "Roda sepeda bulat."
+                ],
+                "jawaban": "Roda"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-bangun-datar-s1",
+                "hitung": "4",
+                "pertanyaan": "Berapa sisi segi empat?",
+                "bentuk": "isian",
+                "kunci": "4",
+                "petunjuk": [
+                  "Segi empat artinya empat sisi.",
+                  "Hitung sisi papan tulis.",
+                  "Ada 4."
+                ],
+                "pembahasan": "Segi empat punya 4 sisi.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-bangun-datar-s2",
+                "pertanyaan": "Bentuk mana yang tidak punya sudut?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Segitiga",
+                  "Persegi",
+                  "Lingkaran"
+                ],
+                "kunci": "Lingkaran",
+                "petunjuk": [
+                  "Sudut adalah pojok.",
+                  "Segitiga dan persegi punya pojok.",
+                  "Lingkaran bulat tanpa pojok."
+                ],
+                "pembahasan": "Lingkaran tidak punya sudut.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-bangun-datar-s3",
+                "pertanyaan": "Bentuk permukaan buku tulis adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Lingkaran",
+                  "Segi empat",
+                  "Segitiga"
+                ],
+                "kunci": "Segi empat",
+                "petunjuk": [
+                  "Hitung pojok buku.",
+                  "Buku punya 4 pojok.",
+                  "Bangun dengan 4 sisi adalah segi empat."
+                ],
+                "pembahasan": "Buku tulis berbentuk segi empat.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-bangun-datar-s4",
+                "hitung": "2 * 3",
+                "pertanyaan": "Ada 2 segitiga. Berapa semua sisinya?",
+                "bentuk": "isian",
+                "kunci": "6",
+                "petunjuk": [
+                  "Satu segitiga punya 3 sisi.",
+                  "Ada 2 segitiga: 3 + 3.",
+                  "3 + 3 = 6."
+                ],
+                "pembahasan": "3 + 3 = 6 sisi.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-bangun-datar-s5",
+                "hitung": "3 + 2 * 4",
+                "pertanyaan": "Ada 1 segitiga dan 2 segi empat. Berapa semua sudutnya?",
+                "bentuk": "isian",
+                "kunci": "11",
+                "petunjuk": [
+                  "Segitiga 3 sudut, segi empat 4 sudut.",
+                  "3 + 4 + 4.",
+                  "3 + 8 = 11."
+                ],
+                "pembahasan": "3 + 4 + 4 = 11 sudut.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
         }
       ]
     },
@@ -824,7 +1265,124 @@
             "bi2-huruf-kapital"
           ],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi2-tanda-baca",
+            "penjelasan": [
+              {
+                "teks": "Kalimat berita diakhiri tanda titik. Contoh: Adik tidur."
+              },
+              {
+                "teks": "Kalimat tanya diakhiri tanda tanya. Contoh: Di mana bukuku?"
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "\"Kakak membaca buku ...\" Tanda apa yang tepat?",
+                "langkah": [
+                  "Kalimat ini memberi kabar."
+                ],
+                "jawaban": "titik (.)"
+              },
+              {
+                "soal": "\"Siapa namamu ...\" Tanda apa yang tepat?",
+                "langkah": [
+                  "Kalimat ini bertanya."
+                ],
+                "jawaban": "tanda tanya (?)"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi2-tanda-baca-s1",
+                "pertanyaan": "\"Ayah pergi ke kebun ...\" Tanda yang tepat adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  ".",
+                  "?"
+                ],
+                "kunci": ".",
+                "petunjuk": [
+                  "Apakah kalimat ini bertanya?",
+                  "Kalimat ini memberi kabar.",
+                  "Kalimat berita memakai titik."
+                ],
+                "pembahasan": "Kalimat berita diakhiri titik.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-tanda-baca-s2",
+                "pertanyaan": "\"Apa warna kucingmu ...\" Tanda yang tepat adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  ".",
+                  "?"
+                ],
+                "kunci": "?",
+                "petunjuk": [
+                  "Ada kata apa.",
+                  "Kalimat ini bertanya.",
+                  "Kalimat tanya memakai tanda tanya."
+                ],
+                "pembahasan": "Kalimat tanya diakhiri tanda tanya.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-tanda-baca-s3",
+                "pertanyaan": "Kalimat mana yang benar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Kapan kamu datang.",
+                  "Kapan kamu datang?"
+                ],
+                "kunci": "Kapan kamu datang?",
+                "petunjuk": [
+                  "Kapan adalah kata tanya.",
+                  "Kalimat tanya memakai tanda tanya.",
+                  "Pilih yang berakhir dengan ?"
+                ],
+                "pembahasan": "\"Kapan kamu datang?\" benar.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-tanda-baca-s4",
+                "pertanyaan": "Kalimat mana yang benar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Ibu memasak nasi.",
+                  "Ibu memasak nasi?"
+                ],
+                "kunci": "Ibu memasak nasi.",
+                "petunjuk": [
+                  "Kalimat ini memberi kabar.",
+                  "Kalimat berita memakai titik.",
+                  "Pilih yang berakhir dengan titik."
+                ],
+                "pembahasan": "\"Ibu memasak nasi.\" benar.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-tanda-baca-s5",
+                "pertanyaan": "Kalimat tanya yang benar adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "di mana sepatuku?",
+                  "Di mana sepatuku?",
+                  "Di mana sepatuku."
+                ],
+                "kunci": "Di mana sepatuku?",
+                "petunjuk": [
+                  "Periksa huruf awal dan tanda akhir.",
+                  "Awal kalimat huruf kapital.",
+                  "Kalimat tanya diakhiri tanda tanya."
+                ],
+                "pembahasan": "Huruf awal kapital dan diakhiri tanda tanya.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-bi"
+          }
         },
         {
           "id": "bi2-urutan-cerita",
@@ -833,7 +1391,128 @@
           "urutan": 4,
           "prasyarat": [],
           "bersamaOrtu": true,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi2-urutan-cerita",
+            "penjelasan": [
+              {
+                "teks": "Cerita punya urutan. Kata mula-mula, lalu, dan akhirnya membantu kita tahu urutannya."
+              },
+              {
+                "teks": "Mula-mula untuk awal, lalu untuk tengah, dan akhirnya untuk penutup."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Urutkan: makan, mencuci tangan, mencuci piring.",
+                "langkah": [
+                  "Sebelum makan, cuci tangan.",
+                  "Sesudah makan, cuci piring."
+                ],
+                "jawaban": "mencuci tangan, makan, mencuci piring"
+              },
+              {
+                "soal": "Kata untuk bagian akhir cerita adalah ....",
+                "langkah": [
+                  "Bagian penutup memakai kata akhirnya."
+                ],
+                "jawaban": "akhirnya"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi2-urutan-cerita-s1",
+                "pertanyaan": "Kata untuk awal cerita adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "akhirnya",
+                  "mula-mula",
+                  "lalu"
+                ],
+                "kunci": "mula-mula",
+                "petunjuk": [
+                  "Awal artinya permulaan.",
+                  "Akhirnya untuk penutup.",
+                  "Mula-mula untuk awal."
+                ],
+                "pembahasan": "Mula-mula dipakai di awal cerita.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-urutan-cerita-s2",
+                "pertanyaan": "Yang dilakukan lebih dulu adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "memakai sepatu",
+                  "memakai kaus kaki"
+                ],
+                "kunci": "memakai kaus kaki",
+                "petunjuk": [
+                  "Bayangkan saat bersiap ke sekolah.",
+                  "Kaus kaki dipakai sebelum sepatu.",
+                  "Sepatu menutupi kaus kaki."
+                ],
+                "pembahasan": "Kaus kaki dipakai lebih dulu, lalu sepatu.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-urutan-cerita-s3",
+                "pertanyaan": "\"Mula-mula Ikram menanam biji. Lalu ia menyiram. ....\" Kalimat akhir yang cocok adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Akhirnya biji tumbuh menjadi tunas.",
+                  "Mula-mula ia bangun tidur.",
+                  "Lalu ia membeli biji."
+                ],
+                "kunci": "Akhirnya biji tumbuh menjadi tunas.",
+                "petunjuk": [
+                  "Kalimat akhir memakai kata akhirnya.",
+                  "Setelah ditanam dan disiram, biji tumbuh.",
+                  "Pilih kalimat dengan akhirnya."
+                ],
+                "pembahasan": "Penutup cerita: \"Akhirnya biji tumbuh menjadi tunas.\"",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-urutan-cerita-s4",
+                "pertanyaan": "Urutan yang benar saat mandi adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "handuk, sabun, air",
+                  "air, sabun, handuk",
+                  "sabun, handuk, air"
+                ],
+                "kunci": "air, sabun, handuk",
+                "petunjuk": [
+                  "Apa yang dipakai pertama?",
+                  "Badan dibasahi air, lalu disabun.",
+                  "Terakhir dikeringkan dengan handuk."
+                ],
+                "pembahasan": "Air dulu, lalu sabun, terakhir handuk.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-urutan-cerita-s5",
+                "pertanyaan": "\"Lalu Mira memasukkan buku ke tas.\" Kata lalu menunjukkan bagian ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "awal",
+                  "tengah",
+                  "akhir"
+                ],
+                "kunci": "tengah",
+                "petunjuk": [
+                  "Mula-mula untuk awal, akhirnya untuk akhir.",
+                  "Lalu ada di antara keduanya.",
+                  "Itu bagian tengah."
+                ],
+                "pembahasan": "Kata lalu dipakai di bagian tengah cerita.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-bi"
+          }
         }
       ]
     }

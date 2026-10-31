@@ -1,8 +1,8 @@
 {
   "id": "gudang-k3",
-  "versi": "0.1.0",
+  "versi": "0.2.0",
   "kelas": 3,
-  "dibuat": "2026-10-31",
+  "dibuat": "2026-11-01",
   "sumber": "Ditulis sendiri mengikuti capaian pembelajaran kelas 3 (belum diperiksa guru).",
   "mapel": [
     {
@@ -511,7 +511,116 @@
           "urutan": 5,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-ribuan",
+            "penjelasan": [
+              {
+                "teks": "Bilangan tiga angka punya ratusan, puluhan, dan satuan."
+              },
+              {
+                "teks": "Pada 456, angka 4 bernilai 400, angka 5 bernilai 50, dan angka 6 bernilai 6."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Nilai angka 7 pada 372 adalah ....",
+                "langkah": [
+                  "7 ada di tempat puluhan.",
+                  "7 puluhan = 70."
+                ],
+                "jawaban": "70"
+              },
+              {
+                "soal": "300 + 20 + 5 = ?",
+                "langkah": [
+                  "Gabungkan ratusan, puluhan, satuan.",
+                  "3 ratusan, 2 puluhan, 5 satuan."
+                ],
+                "jawaban": "325"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-ribuan-s1",
+                "hitung": "800",
+                "pertanyaan": "Nilai angka 8 pada 815 adalah ...",
+                "bentuk": "isian",
+                "kunci": "800",
+                "petunjuk": [
+                  "8 ada di tempat paling kiri.",
+                  "Tempat paling kiri adalah ratusan.",
+                  "8 ratusan = 800."
+                ],
+                "pembahasan": "8 ratusan bernilai 800.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-ribuan-s2",
+                "hitung": "500 + 40 + 3",
+                "pertanyaan": "500 + 40 + 3 = ...",
+                "bentuk": "isian",
+                "kunci": "543",
+                "petunjuk": [
+                  "Gabungkan saja.",
+                  "5 ratusan, 4 puluhan, 3 satuan.",
+                  "Tulis 5, 4, 3 berurutan."
+                ],
+                "pembahasan": "500 + 40 + 3 = 543.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-ribuan-s3",
+                "hitung": "maks(489, 498, 849, 894)",
+                "pertanyaan": "Bilangan mana yang paling besar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "489",
+                  "498",
+                  "849",
+                  "894"
+                ],
+                "kunci": "894",
+                "petunjuk": [
+                  "Bandingkan ratusan dulu.",
+                  "849 dan 894 punya 8 ratusan.",
+                  "Bandingkan puluhan: 9 lebih besar dari 4."
+                ],
+                "pembahasan": "894 paling besar.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-ribuan-s4",
+                "hitung": "250 + 130",
+                "pertanyaan": "Berapa hasil 250 + 130?",
+                "bentuk": "isian",
+                "kunci": "380",
+                "petunjuk": [
+                  "Ratusan: 2 + 1.",
+                  "Puluhan: 5 + 3.",
+                  "Satuan 0 + 0."
+                ],
+                "pembahasan": "250 + 130 = 380.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-ribuan-s5",
+                "hitung": "625 - 210",
+                "pertanyaan": "Sekolah punya 625 buku. Sebanyak 210 buku dipinjam. Berapa buku yang masih di perpustakaan?",
+                "bentuk": "isian",
+                "kunci": "415",
+                "petunjuk": [
+                  "Dipinjam artinya dikurangi.",
+                  "625 − 210.",
+                  "Ratusan 6 − 2, puluhan 2 − 1, satuan 5 − 0."
+                ],
+                "pembahasan": "625 − 210 = 415 buku.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
         },
         {
           "id": "mat3-keliling",
@@ -522,7 +631,114 @@
             "mat3-panjang"
           ],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-keliling",
+            "penjelasan": [
+              {
+                "teks": "Keliling adalah jumlah panjang semua sisi bangun."
+              },
+              {
+                "teks": "Bayangkan semut berjalan mengelilingi pinggir bangun sampai kembali ke awal."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Segitiga bersisi 3 cm, 4 cm, dan 5 cm. Berapa kelilingnya?",
+                "langkah": [
+                  "Jumlahkan semua sisi.",
+                  "3 + 4 + 5 = 12."
+                ],
+                "jawaban": "12 cm"
+              },
+              {
+                "soal": "Persegi sisinya 5 cm. Berapa kelilingnya?",
+                "langkah": [
+                  "Persegi punya 4 sisi sama panjang.",
+                  "5 + 5 + 5 + 5 = 20."
+                ],
+                "jawaban": "20 cm"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-keliling-s1",
+                "hitung": "6 + 6 + 6",
+                "pertanyaan": "Segitiga bersisi 6 cm, 6 cm, dan 6 cm. Berapa cm kelilingnya?",
+                "bentuk": "isian",
+                "kunci": "18",
+                "petunjuk": [
+                  "Jumlahkan ketiga sisi.",
+                  "6 + 6 + 6.",
+                  "6 + 6 + 6 = 18."
+                ],
+                "pembahasan": "6 + 6 + 6 = 18 cm.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-keliling-s2",
+                "hitung": "4 * 4",
+                "pertanyaan": "Persegi sisinya 4 cm. Berapa cm kelilingnya?",
+                "bentuk": "isian",
+                "kunci": "16",
+                "petunjuk": [
+                  "Persegi punya 4 sisi sama panjang.",
+                  "4 + 4 + 4 + 4.",
+                  "Atau 4 × 4."
+                ],
+                "pembahasan": "4 × 4 = 16 cm.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-keliling-s3",
+                "hitung": "7 + 3 + 7 + 3",
+                "pertanyaan": "Persegi panjang panjangnya 7 cm dan lebarnya 3 cm. Berapa cm kelilingnya?",
+                "bentuk": "isian",
+                "kunci": "20",
+                "petunjuk": [
+                  "Ada 2 sisi panjang dan 2 sisi lebar.",
+                  "7 + 3 + 7 + 3.",
+                  "10 + 10 = 20."
+                ],
+                "pembahasan": "7 + 3 + 7 + 3 = 20 cm.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-keliling-s4",
+                "pertanyaan": "Pak Harun memasang pagar di pinggir kebun. Yang ia hitung adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "keliling",
+                  "berat",
+                  "jumlah pohon"
+                ],
+                "kunci": "keliling",
+                "petunjuk": [
+                  "Pagar dipasang di pinggir.",
+                  "Panjang semua pinggir adalah keliling.",
+                  "Pilih keliling."
+                ],
+                "pembahasan": "Pagar mengelilingi kebun, jadi yang dihitung keliling.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-keliling-s5",
+                "hitung": "2 * (10 + 6 + 10 + 6)",
+                "pertanyaan": "Taman berbentuk persegi panjang 10 m × 6 m. Laila berlari mengelilinginya 2 kali. Berapa meter jarak larinya?",
+                "bentuk": "isian",
+                "kunci": "64",
+                "petunjuk": [
+                  "Hitung keliling dulu.",
+                  "Keliling = 10 + 6 + 10 + 6 = 32 m.",
+                  "2 kali: 32 + 32."
+                ],
+                "pembahasan": "Keliling 32 m. Dua kali: 64 m.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
         },
         {
           "id": "mat3-piktogram",
@@ -531,7 +747,127 @@
           "urutan": 7,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-piktogram",
+            "penjelasan": [
+              {
+                "teks": "Piktogram adalah data yang ditulis dengan gambar."
+              },
+              {
+                "teks": "Baca kunci gambar dulu. Kalau satu gambar berarti 2, maka 3 gambar berarti 6."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Kunci: satu 🍎 = 2 buah. Ada 4 🍎. Berapa buah?",
+                "langkah": [
+                  "Satu gambar 2 buah.",
+                  "4 gambar = 2 + 2 + 2 + 2."
+                ],
+                "jawaban": "8"
+              },
+              {
+                "soal": "Senin 3 🍎, Selasa 5 🍎. Hari apa paling banyak?",
+                "langkah": [
+                  "Bandingkan banyak gambar.",
+                  "5 lebih banyak dari 3."
+                ],
+                "jawaban": "Selasa"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-piktogram-s1",
+                "gambar": {
+                  "jenis": "emoji",
+                  "isi": "⭐⭐⭐⭐⭐⭐"
+                },
+                "hitung": "6 * 1",
+                "pertanyaan": "Kunci: satu ⭐ = 1 anak. Ada 6 ⭐. Berapa anak?",
+                "bentuk": "isian",
+                "kunci": "6",
+                "petunjuk": [
+                  "Satu gambar berarti 1 anak.",
+                  "Hitung gambarnya.",
+                  "Ada 6 gambar."
+                ],
+                "pembahasan": "6 gambar × 1 = 6 anak.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-piktogram-s2",
+                "gambar": {
+                  "jenis": "emoji",
+                  "isi": "📘📘📘📘📘"
+                },
+                "hitung": "5 * 2",
+                "pertanyaan": "Kunci: satu 📘 = 2 buku. Ada 5 📘. Berapa buku?",
+                "bentuk": "isian",
+                "kunci": "10",
+                "petunjuk": [
+                  "Satu gambar berarti 2 buku.",
+                  "5 gambar: 2 + 2 + 2 + 2 + 2.",
+                  "Atau 5 × 2."
+                ],
+                "pembahasan": "5 × 2 = 10 buku.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-piktogram-s3",
+                "gambar": {
+                  "jenis": "emoji",
+                  "isi": "🐟🐟🐟"
+                },
+                "hitung": "3 * 5",
+                "pertanyaan": "Kunci: satu 🐟 = 5 ikan. Ada 3 🐟. Berapa ikan?",
+                "bentuk": "isian",
+                "kunci": "15",
+                "petunjuk": [
+                  "Satu gambar 5 ikan.",
+                  "3 gambar: 5 + 5 + 5.",
+                  "5 + 5 + 5 = 15."
+                ],
+                "pembahasan": "3 × 5 = 15 ikan.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-piktogram-s4",
+                "hitung": "(4 - 2) * 10",
+                "pertanyaan": "Kunci satu 🍌 = 10 pisang. Kebun A 4 🍌, kebun B 2 🍌. Selisih pisangnya ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "2",
+                  "20",
+                  "60"
+                ],
+                "kunci": "20",
+                "petunjuk": [
+                  "Selisih gambar dulu: 4 − 2.",
+                  "Selisih 2 gambar.",
+                  "2 gambar = 2 × 10."
+                ],
+                "pembahasan": "Selisih 2 gambar = 20 pisang.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-piktogram-s5",
+                "hitung": "(3 + 5) * 4",
+                "pertanyaan": "Kunci satu 🚲 = 4 siswa. Kelas A 3 🚲, kelas B 5 🚲. Berapa siswa bersepeda dari kedua kelas?",
+                "bentuk": "isian",
+                "kunci": "32",
+                "petunjuk": [
+                  "Jumlahkan gambar dulu.",
+                  "3 + 5 = 8 gambar.",
+                  "8 × 4 = ?"
+                ],
+                "pembahasan": "8 gambar × 4 = 32 siswa.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
         },
         {
           "id": "mat3-berat",
@@ -540,7 +876,118 @@
           "urutan": 8,
           "prasyarat": [],
           "bersamaOrtu": true,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-berat",
+            "penjelasan": [
+              {
+                "teks": "Berat benda diukur dengan timbangan. Satuannya kilogram (kg) dan gram (g)."
+              },
+              {
+                "teks": "1 kilogram sama dengan 1.000 gram."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "2 kg = ... g",
+                "langkah": [
+                  "1 kg = 1.000 g.",
+                  "2 × 1.000 = 2.000."
+                ],
+                "jawaban": "2.000"
+              },
+              {
+                "soal": "Mana lebih berat, 1 kg kapas atau 1 kg besi?",
+                "langkah": [
+                  "Keduanya 1 kg.",
+                  "Beratnya sama."
+                ],
+                "jawaban": "Sama berat"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-berat-s1",
+                "hitung": "3 * 1000",
+                "pertanyaan": "3 kg = ... g",
+                "bentuk": "isian",
+                "kunci": "3.000",
+                "petunjuk": [
+                  "1 kg = 1.000 g.",
+                  "3 × 1.000.",
+                  "3 × 1.000 = 3.000."
+                ],
+                "pembahasan": "3 kg = 3.000 g.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-berat-s2",
+                "pertanyaan": "Satuan yang tepat untuk berat sekarung beras adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "gram",
+                  "kilogram",
+                  "sentimeter"
+                ],
+                "kunci": "kilogram",
+                "petunjuk": [
+                  "Sekarung beras berat.",
+                  "Gram untuk benda ringan.",
+                  "Sentimeter untuk panjang."
+                ],
+                "pembahasan": "Beras sekarung diukur dengan kilogram.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-berat-s3",
+                "hitung": "2 + 3",
+                "pertanyaan": "Ibu membeli 2 kg gula dan 3 kg beras. Berapa kg semuanya?",
+                "bentuk": "isian",
+                "kunci": "5",
+                "petunjuk": [
+                  "Jumlahkan beratnya.",
+                  "2 + 3.",
+                  "2 + 3 = 5."
+                ],
+                "pembahasan": "2 + 3 = 5 kg.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-berat-s4",
+                "hitung": "1000 - 400",
+                "pertanyaan": "Tepung 1 kg dipakai 400 g. Berapa gram sisanya?",
+                "bentuk": "isian",
+                "kunci": "600",
+                "petunjuk": [
+                  "Ubah 1 kg menjadi gram.",
+                  "1 kg = 1.000 g.",
+                  "1.000 − 400 = ?"
+                ],
+                "pembahasan": "1.000 − 400 = 600 g.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-berat-s5",
+                "pertanyaan": "Mana yang paling berat?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "900 g",
+                  "1 kg",
+                  "750 g"
+                ],
+                "kunci": "1 kg",
+                "petunjuk": [
+                  "Ubah 1 kg ke gram.",
+                  "1 kg = 1.000 g.",
+                  "Bandingkan 900, 1.000, dan 750."
+                ],
+                "pembahasan": "1 kg = 1.000 g, paling berat.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
         }
       ]
     },
@@ -819,7 +1266,128 @@
           "urutan": 3,
           "prasyarat": [],
           "bersamaOrtu": false,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi3-kata-tanya",
+            "penjelasan": [
+              {
+                "teks": "Apa untuk benda, siapa untuk orang, dan di mana untuk tempat."
+              },
+              {
+                "teks": "Kapan untuk waktu, mengapa untuk alasan, dan bagaimana untuk cara."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "\"... nama adikmu?\" Kata tanya yang tepat adalah ....",
+                "langkah": [
+                  "Yang ditanyakan nama orang."
+                ],
+                "jawaban": "Siapa"
+              },
+              {
+                "soal": "\"... kamu terlambat?\" jika menanyakan alasan.",
+                "langkah": [
+                  "Alasan memakai mengapa."
+                ],
+                "jawaban": "Mengapa"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi3-kata-tanya-s1",
+                "pertanyaan": "\"... kamu tinggal?\" Kata tanya yang tepat adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Kapan",
+                  "Di mana",
+                  "Siapa"
+                ],
+                "kunci": "Di mana",
+                "petunjuk": [
+                  "Yang ditanyakan tempat tinggal.",
+                  "Tempat memakai di mana.",
+                  "Pilih di mana."
+                ],
+                "pembahasan": "Tempat ditanyakan dengan di mana.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-kata-tanya-s2",
+                "pertanyaan": "\"... kamu berangkat sekolah?\" untuk menanyakan waktu.",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Kapan",
+                  "Apa",
+                  "Bagaimana"
+                ],
+                "kunci": "Kapan",
+                "petunjuk": [
+                  "Yang ditanyakan waktu.",
+                  "Waktu memakai kapan.",
+                  "Pilih kapan."
+                ],
+                "pembahasan": "Waktu ditanyakan dengan kapan.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-kata-tanya-s3",
+                "pertanyaan": "\"... cara membuat layang-layang?\"",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Siapa",
+                  "Bagaimana",
+                  "Di mana"
+                ],
+                "kunci": "Bagaimana",
+                "petunjuk": [
+                  "Yang ditanyakan cara.",
+                  "Cara memakai bagaimana.",
+                  "Pilih bagaimana."
+                ],
+                "pembahasan": "Cara ditanyakan dengan bagaimana.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-kata-tanya-s4",
+                "pertanyaan": "\"Rani menangis karena jatuh.\" Pertanyaan yang jawabannya \"karena jatuh\" adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Siapa yang menangis?",
+                  "Mengapa Rani menangis?",
+                  "Di mana Rani menangis?"
+                ],
+                "kunci": "Mengapa Rani menangis?",
+                "petunjuk": [
+                  "Karena menunjukkan alasan.",
+                  "Alasan ditanyakan dengan mengapa.",
+                  "Pilih pertanyaan dengan mengapa."
+                ],
+                "pembahasan": "Jawaban \"karena jatuh\" menjawab pertanyaan mengapa.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-kata-tanya-s5",
+                "pertanyaan": "\"Pak Harun memperbaiki sepeda di bengkel.\" Pertanyaan yang jawabannya \"di bengkel\" adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Siapa memperbaiki sepeda?",
+                  "Apa yang diperbaiki?",
+                  "Di mana Pak Harun memperbaiki sepeda?"
+                ],
+                "kunci": "Di mana Pak Harun memperbaiki sepeda?",
+                "petunjuk": [
+                  "Di bengkel adalah tempat.",
+                  "Tempat ditanyakan dengan di mana.",
+                  "Pilih pertanyaan dengan di mana."
+                ],
+                "pembahasan": "\"Di bengkel\" menjawab pertanyaan di mana.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-bi"
+          }
         },
         {
           "id": "bi3-dongeng",
@@ -828,7 +1396,130 @@
           "urutan": 4,
           "prasyarat": [],
           "bersamaOrtu": true,
-          "segera": true
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi3-dongeng",
+            "penjelasan": [
+              {
+                "teks": "Tokoh dongeng punya sifat. Sifat terlihat dari perbuatan dan ucapannya."
+              },
+              {
+                "teks": "Tokoh yang suka menolong bersifat baik hati. Tokoh yang suka mengejek bersifat sombong."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Kancil membantu kura-kura menyeberang sungai. Sifat kancil adalah ....",
+                "langkah": [
+                  "Membantu artinya menolong.",
+                  "Suka menolong berarti baik hati."
+                ],
+                "jawaban": "baik hati"
+              },
+              {
+                "soal": "Gajah berkata, \"Aku paling kuat, kalian semua lemah!\" Sifat gajah adalah ....",
+                "langkah": [
+                  "Ia merasa paling hebat.",
+                  "Merasa paling hebat berarti sombong."
+                ],
+                "jawaban": "sombong"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi3-dongeng-s1",
+                "pertanyaan": "Semut berbagi makanan dengan belalang yang lapar. Sifat semut adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "pelit",
+                  "suka berbagi",
+                  "pemalas"
+                ],
+                "kunci": "suka berbagi",
+                "petunjuk": [
+                  "Lihat perbuatan semut.",
+                  "Ia memberi makanan.",
+                  "Memberi berarti suka berbagi."
+                ],
+                "pembahasan": "Semut suka berbagi.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-dongeng-s2",
+                "pertanyaan": "Kura-kura terus berjalan walau lambat sampai garis akhir. Sifat kura-kura adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "pantang menyerah",
+                  "penakut",
+                  "sombong"
+                ],
+                "kunci": "pantang menyerah",
+                "petunjuk": [
+                  "Ia terus berjalan.",
+                  "Tidak berhenti walau lambat.",
+                  "Itu sifat pantang menyerah."
+                ],
+                "pembahasan": "Kura-kura pantang menyerah.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-dongeng-s3",
+                "pertanyaan": "Kelinci tidur di tengah lomba karena merasa pasti menang. Sifat kelinci adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "rajin",
+                  "sombong",
+                  "jujur"
+                ],
+                "kunci": "sombong",
+                "petunjuk": [
+                  "Ia merasa pasti menang.",
+                  "Merasa paling hebat.",
+                  "Itu sifat sombong."
+                ],
+                "pembahasan": "Kelinci sombong karena meremehkan lawan.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-dongeng-s4",
+                "pertanyaan": "Burung bangau mengembalikan dompet yang ia temukan. Sifat bangau adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "jujur",
+                  "malas",
+                  "pemarah"
+                ],
+                "kunci": "jujur",
+                "petunjuk": [
+                  "Ia mengembalikan barang milik orang lain.",
+                  "Tidak mengambilnya.",
+                  "Itu sifat jujur."
+                ],
+                "pembahasan": "Mengembalikan barang temuan adalah sifat jujur.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-dongeng-s5",
+                "pertanyaan": "Pesan dongeng kelinci dan kura-kura adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Jangan sombong, terus berusaha.",
+                  "Tidur siang itu penting.",
+                  "Berlari harus cepat."
+                ],
+                "kunci": "Jangan sombong, terus berusaha.",
+                "petunjuk": [
+                  "Siapa yang menang?",
+                  "Kura-kura menang karena terus berusaha.",
+                  "Kelinci kalah karena sombong."
+                ],
+                "pembahasan": "Pesannya: jangan sombong dan teruslah berusaha.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-bi"
+          }
         }
       ]
     }

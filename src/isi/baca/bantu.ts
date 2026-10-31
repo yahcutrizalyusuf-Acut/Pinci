@@ -12,7 +12,7 @@ import type { ButirPG, Teks } from '../tka/jenis';
 export const KPM_KELAS: Record<number, number> = { 2: 30, 3: 40, 4: 45, 5: 50 };
 
 /** Rentang panjang teks per kelas (jumlah kata). Bacaan dingin ± 1–1,5 menit; kelas 6 (bahan TKA) ± 3 menit. */
-export const PANJANG_KELAS: Record<number, [number, number]> = { 2: [20, 45], 3: [40, 70], 4: [55, 95], 5: [70, 120] };
+export const PANJANG_KELAS: Record<number, [number, number]> = { 2: [20, 45], 3: [40, 70], 4: [45, 95], 5: [50, 120] };
 
 export interface PertanyaanMentah {
   tanya: string;

@@ -2,9 +2,15 @@ import type { Teks } from '../tka/jenis';
 import { paketTka } from '../tka/paket';
 import { TEKS_K2, TEKS_K3 } from './teks-k2-k3';
 import { TEKS_K4, TEKS_K5 } from './teks-k4-k5';
+import { T2_TEKS_K2, T2_TEKS_K3, T2_TEKS_K4, T2_TEKS_K5 } from './teks-tahap2';
 
 /** Teks Baca Ulang per kelas. Kelas 6 memakai teks bahan TKA (T01–T36). */
-export const TEKS_BACA: Record<number, Teks[]> = { 2: TEKS_K2, 3: TEKS_K3, 4: TEKS_K4, 5: TEKS_K5 };
+export const TEKS_BACA: Record<number, Teks[]> = {
+  2: [...TEKS_K2, ...T2_TEKS_K2],
+  3: [...TEKS_K3, ...T2_TEKS_K3],
+  4: [...TEKS_K4, ...T2_TEKS_K4],
+  5: [...TEKS_K5, ...T2_TEKS_K5],
+};
 
 export function teksBacaKelas(kelas: number): Teks[] {
   if (kelas === 6) return paketTka.teks;

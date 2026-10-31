@@ -19,7 +19,7 @@ fs.mkdirSync(keluar, { recursive: true });
 
 const b: string[] = [];
 b.push(`<h1>Periksa Isi Kelas 2–5</h1>
-<p class="kecil">Tahap 1, dibuat ${new Date().toISOString().slice(0, 10)}. Semua isi berstatus <b>belum diperiksa</b>.</p>
+<p class="kecil">Tahap 1 dan 2, dibuat ${new Date().toISOString().slice(0, 10)}. Semua isi berstatus <b>belum diperiksa</b>.</p>
 <div class="kotak"><p><b>Cara memeriksa:</b> baca tiap teks dan soal. Kalau ada yang salah, kurang jelas, atau tidak cocok untuk kelasnya, catat nomornya (misalnya <b>K3-T02 soal 1</b> atau <b>mat4-pembulatan-s3</b>) lalu kirim ke Claude.</p>
 <p>Kunci Matematika sudah dihitung ulang oleh kode. Yang perlu dilihat: bahasa, kesesuaian kelas, pilihan jawaban, dan kata yang berhubungan dengan agama.</p></div>`);
 
