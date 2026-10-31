@@ -50,7 +50,7 @@ function konfirmasi(judul: string, pesan: string, ya: () => void) {
 
 export default function Atur() {
   const router = useRouter();
-  const { repo, daftarAnak, kunciOrtu } = useData();
+  const { repo, daftarAnak, kunciOrtu, server } = useData();
   const [disalin, setDisalin] = useState('');
   const antre = useMuat(async (r) => (await r.antreanBelumTerkirim()).length, 0);
   return (
@@ -64,6 +64,7 @@ export default function Atur() {
             <Baris key={a.id} judul={`${HEWAN[a.hewan].emoji}  ${a.nama} · Kelas ${a.kelas}`} sub="Pengaturan waktu, profil" onPress={() => router.push(`/ortu/waktu/${a.id}`)} />
           ))}
           <Baris judul="Tambah anak" onPress={() => router.push('/daftar/anak')} />
+          {server ? <Baris judul="Hubungkan HP anak" sub="Kode 6 angka, supaya anak belajar di HP-nya sendiri" onPress={() => router.push('/ortu/hubungkan')} /> : null}
         </Kelompok>
         <Kelompok judul="BANTUAN">
           <Baris judul="Mode Dampingi" sub="Latihan bersama anak" onPress={() => router.push('/dampingi')} />

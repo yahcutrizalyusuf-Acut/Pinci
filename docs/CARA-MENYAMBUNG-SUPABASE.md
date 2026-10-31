@@ -52,7 +52,42 @@ Saat ini aplikasi berjalan **lokal**: semua data tersimpan di HP, tidak dikirim 
 
 Ubah `EXPO_PUBLIC_DATA_MODE` menjadi `lokal`, lalu bangun ulang APK. Data yang sudah ada di HP tetap ada.
 
+## Menghubungkan HP anak dengan HP orang tua
+
+Supaya anak belajar di HP-nya sendiri dan hasilnya terlihat di HP orang tua (rapor, pesan, pengaturan waktu).
+
+### Pemasangan sekali saja (Acut)
+
+1. Buka **SQL Editor** di Supabase, tempel dan jalankan isi `supabase/migrations/20261030000000_hubungkan_hp_anak.sql`.
+2. Jalankan juga `supabase/migrations/20261030000100_uji_hubungkan.sql`. Hasilnya harus selesai tanpa tulisan **GAGAL**. Berkas ini hanya menguji lalu membatalkan perubahannya sendiri, jadi data tidak berubah.
+3. Buka **Authentication → Sign In / Providers**, lalu nyalakan **Allow anonymous sign-ins**. HP anak masuk tanpa email lewat cara ini. Bila tidak dinyalakan, HP anak menampilkan "Belum tersambung".
+4. Bangun ulang APK (tab Actions → Bangun APK) dan pasang di kedua HP.
+
+### Cara memakai
+
+1. **HP orang tua:** gembok, PIN, tab **Atur**, **Hubungkan HP anak**. Pilih anak, lalu **Buat kode**. Muncul kode 6 angka yang berlaku 10 menit.
+2. **HP anak:** pasang Pintar Main, ketuk **Ini HP anak**, lalu ketik kode. HP anak butuh internet saat menghubungkan.
+3. Selesai. Sesudah itu:
+   - hasil latihan anak muncul di HP orang tua (Kabar, Rapor, ruang anak),
+   - pesan dan stiker saling terkirim,
+   - pengaturan waktu dari HP orang tua berlaku di HP anak,
+   - tiap menit, dan saat aplikasi dibuka kembali, kedua HP saling bertukar data. Tanpa internet, semuanya tetap disimpan dulu lalu terkirim kemudian.
+4. Di **Hubungkan HP anak** orang tua melihat HP yang terhubung, kapan terakhir sinkron, dan bisa **Putuskan** kapan saja. HP yang diputus tetap bisa dipakai belajar, tetapi tidak lagi terhubung.
+
+### Aturan keamanan
+
+- Kode 6 angka hanya berlaku 10 menit dan sekali pakai. Salah 5 kali, HP itu ditunda 10 menit.
+- HP anak hanya bisa membaca dan menulis data anak yang dipilih orang tua. Tidak bisa membuat atau mengubah profil dan pengaturan, tidak bisa mengirim pesan teks bebas (hanya stiker), dan tidak punya mode orang tua.
+- Akun orang tua tidak bisa dipakai sebagai HP anak.
+
+### Kalau ada dua HP yang mengubah hal yang sama
+
+- Hasil latihan (sesi dan jawaban) hanya ditambah, tidak pernah berubah.
+- Perubahan di HP ini yang belum terkirim tidak ditimpa data dari server.
+- Waktu pemakaian hari itu: angka terbesar dari kedua HP dipakai.
+- Profil, pengaturan waktu, dan pesan: yang terakhir dikirim ke server dipakai.
+
 ## Yang belum dibuat (menyusul)
 
-- Menghubungkan HP anak lewat kode keluarga atau QR (perlu fungsi server pembuat token perangkat).
-- Orang tua kedua, link rapor lewat WhatsApp, dan panel pengelola.
+- Orang tua kedua dan link rapor lewat WhatsApp, serta panel pengelola.
+- Menghapus anak di satu HP belum ikut terhapus di HP lain.

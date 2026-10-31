@@ -7,7 +7,7 @@
  * - Setiap baris yang perlu dikirim masuk antrean; pengirim mencoba lagi dengan jeda 1-2-5-15 menit.
  * - Sesi dan jawaban hanya ditambah, tidak pernah diubah.
  */
-import { buatId, sekarangIso, sha256, tanggalLokal } from './alat';
+import { buatId, kiniMs, sekarangIso, sha256, tanggalLokal } from './alat';
 import type { Gudang } from './gudang';
 import {
   TABEL_SINKRON,
@@ -28,11 +28,61 @@ import {
 export interface PengirimSinkron {
   /** kirim sekumpulan baris; kembalikan id antrean yang diterima server */
   kirim(item: { antrean: ItemAntrean; baris: object }[]): Promise<string[]>;
+  /** tarik baris yang berubah sejak `sejak` (null = dari awal), satu halaman; melempar galat bila gagal */
+  tarik?(tabel: NamaTabel, opsi: { sejak: string | null; offset: number; batas: number }): Promise<{ baris: object[]; kursorMaks: string | null }>;
+  /** jawaban milik sesi-sesi ini (sesi baru ditarik bersama jawabannya) */
+  jawabanUntuk?(sesiIds: string[]): Promise<object[]>;
+  /** HP anak: laporkan waktu sinkron dan sisa antrean ke HP orang tua */
+  catatSinkron?(sisaAntrean: number): Promise<void>;
+  /** HP anak: sudah diputus oleh orang tua? */
+  perangkatDiputus?(): Promise<boolean>;
 }
 
 export type StatusSimpan = 'tersimpan' | 'terkirim';
 
 const JEDA_MENIT = [1, 2, 5, 15];
+
+/** Tabel yang ditarik dari server, urut: sesi terakhir karena ikut menarik jawabannya. */
+const TABEL_TARIK: NamaTabel[] = ['anak', 'pengaturan_waktu', 'pesan', 'kemajuan_topik', 'pemakaian', 'sesi'];
+/** Kursor mundur 5 menit tiap tarik: baris yang baru terkirim dengan jam lebih awal tetap tertangkap. Aman karena penggabungan idempoten. */
+const TUMPANG_TARIK_MS = 5 * 60_000;
+const HALAMAN_TARIK = 500;
+
+function urutkanKunci(x: unknown): unknown {
+  if (Array.isArray(x)) return x.map(urutkanKunci);
+  if (x && typeof x === 'object') {
+    return Object.fromEntries(
+      Object.entries(x as Record<string, unknown>)
+        .filter(([, v]) => v !== undefined)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([k, v]) => [k, urutkanKunci(v)]),
+    );
+  }
+  return x;
+}
+
+/** Dua baris sama isinya (tidak peka urutan kunci dan kolom kosong). */
+export function samaIsi(a: object, b: object): boolean {
+  return JSON.stringify(urutkanKunci(a)) === JSON.stringify(urutkanKunci(b));
+}
+
+/**
+ * Gabungkan catatan pemakaian satu hari dari dua HP: angka terbesar menang, tanda selesai bila salah satu selesai.
+ * Hasilnya sama di kedua HP, berapa kali pun digabung.
+ */
+export function gabungPemakaian(a: Pemakaian, b: Pemakaian): Pemakaian {
+  const terlambat = (x?: string, y?: string) => (!x ? y : !y ? x : Date.parse(x) >= Date.parse(y) ? x : y);
+  return {
+    id: a.id,
+    anak_id: a.anak_id,
+    tanggal: a.tanggal,
+    belajarDetik: Math.max(a.belajarDetik, b.belajarDetik),
+    mainDetik: Math.max(a.mainDetik, b.mainDetik),
+    blokDetik: Math.max(a.blokDetik, b.blokDetik),
+    istirahatSampai: terlambat(a.istirahatSampai, b.istirahatSampai),
+    intiSelesai: a.intiSelesai || b.intiSelesai,
+  };
+}
 
 export function batasBelajarBawaan(kelas: number) {
   return Math.min(10 * kelas, 60);
@@ -99,6 +149,31 @@ export class Repositori {
     if (!TABEL_SINKRON.includes(tabel)) return;
     const item: ItemAntrean = { id: buatId(), tabel, barisId: baris.id, dibuat: sekarangIso(), coba: 0 };
     await this.gudang.pasang('antrean', { ...item, ...{ tabel } });
+    this.jadwalkanKirim();
+  }
+
+  private kirimOtomatis = false;
+  private tundaKirim: ReturnType<typeof setTimeout> | null = null;
+
+  /**
+   * Aplikasi menyalakan ini: setiap ada yang disimpan, kirim dan tarik sekitar 1,5 detik kemudian
+   * (banyak simpanan beruntun jadi satu kali), tidak menunggu putaran sinkron tiap menit.
+   * Mati secara bawaan supaya uji tetap bisa mengatur sendiri kapan mengirim.
+   */
+  aturKirimOtomatis(nyala: boolean) {
+    this.kirimOtomatis = nyala;
+    if (!nyala && this.tundaKirim) {
+      clearTimeout(this.tundaKirim);
+      this.tundaKirim = null;
+    }
+  }
+
+  private jadwalkanKirim() {
+    if (!this.kirimOtomatis || !this.pengirim || this.tundaKirim) return;
+    this.tundaKirim = setTimeout(() => {
+      this.tundaKirim = null;
+      this.sinkronDuaArah().catch(() => undefined);
+    }, 1500);
   }
 
   private async simpan<T extends NamaTabel>(tabel: T, baris: PetaTabel[T]) {
@@ -157,6 +232,121 @@ export class Repositori {
     }
     this.ubah();
     return { terkirim: terima.size, sisa: (await this.antreanBelumTerkirim()).length };
+  }
+
+  /** Kirim lalu tarik. Aman dipanggil kapan saja: yang gagal dicoba lagi pada putaran berikutnya. */
+  async sinkronDuaArah(): Promise<{ terkirim: number; sisa: number; ditarik: number }> {
+    // HP anak yang diputus orang tua berhenti sinkron; aplikasi tetap bisa dipakai di HP ini.
+    if (await this.hpDiputus()) return { terkirim: 0, sisa: (await this.antreanBelumTerkirim()).length, ditarik: 0 };
+    const kirim = await this.sinkron().catch(() => ({ terkirim: 0, sisa: 0 }));
+    const ditarik = await this.tarik().catch(() => 0);
+    await this.laporHp(kirim.sisa);
+    return { ...kirim, ditarik };
+  }
+
+  private terakhirLapor = 0;
+
+  /** HP anak: tiap 5 menit laporkan sinkron ke HP orang tua dan periksa apakah HP ini diputus. */
+  private async laporHp(sisa: number) {
+    const p = this.pengirim;
+    if (!p?.catatSinkron || kiniMs() - this.terakhirLapor < 5 * 60_000) return;
+    this.terakhirLapor = kiniMs();
+    try {
+      if (await p.perangkatDiputus?.()) {
+        await this.gudang.pasang('nilai', { id: 'hp_diputus', isi: JSON.stringify(true) });
+        this.ubah();
+        return;
+      }
+      await p.catatSinkron(sisa);
+    } catch {
+      // dicoba lagi 5 menit kemudian
+    }
+  }
+
+  /**
+   * Tarik baris yang berubah di server, lalu gabungkan ke HP ini. Aturan penggabungan:
+   * - sesi dan jawaban hanya ditambah (tidak pernah diubah);
+   * - baris yang masih menunggu dikirim dari HP ini TIDAK ditimpa (HP ini menang, nanti terkirim);
+   * - pemakaian: angka terbesar menang; kemajuan topik: yang `terakhir`-nya lebih baru menang;
+   * - anak, pengaturan waktu, pesan: server menang.
+   * Mengembalikan jumlah baris yang berubah di HP ini.
+   */
+  async tarik(): Promise<number> {
+    const p = this.pengirim;
+    if (!p?.tarik) return 0;
+    const belumKirim = await this.antreanBelumTerkirim();
+    let berubah = 0;
+    for (const tabel of TABEL_TARIK) {
+      const kunciKursor = `tarik:${tabel}`;
+      const kursor = await this.nilai<string>(kunciKursor);
+      const sejak = kursor ? new Date(Date.parse(kursor) - TUMPANG_TARIK_MS).toISOString() : null;
+      const antre = new Set(belumKirim.filter((a) => a.tabel === tabel).map((a) => a.barisId));
+      let maks = kursor;
+      try {
+        for (let offset = 0; ; offset += HALAMAN_TARIK) {
+          const h = await p.tarik(tabel, { sejak, offset, batas: HALAMAN_TARIK });
+          berubah += await this.gabung(tabel, h.baris, antre);
+          if (h.kursorMaks && (!maks || Date.parse(h.kursorMaks) > Date.parse(maks))) maks = h.kursorMaks;
+          if (h.baris.length < HALAMAN_TARIK) break;
+        }
+        // Kursor maju hanya bila seluruh tabel berhasil ditarik; kalau gagal, putaran berikut mengulang dari kursor lama.
+        if (maks && maks !== kursor) await this.gudang.pasang('nilai', { id: kunciKursor, isi: JSON.stringify(maks) });
+      } catch {
+        // tabel ini dicoba lagi pada putaran berikutnya
+      }
+    }
+    if (berubah > 0) this.ubah();
+    return berubah;
+  }
+
+  private async gabung(tabel: NamaTabel, baris: object[], antre: Set<string>): Promise<number> {
+    let berubah = 0;
+    if (tabel === 'sesi') {
+      const baru: Sesi[] = [];
+      for (const b of baris as Sesi[]) if (!(await this.gudang.ambil('sesi', b.id))) baru.push(b);
+      if (baru.length === 0) return 0;
+      // Jawaban dipasang lebih dulu: kalau gagal, sesinya belum ada di HP ini sehingga putaran berikut mengulang.
+      const jawaban = (await this.pengirim?.jawabanUntuk?.(baru.map((s) => s.id))) ?? [];
+      await this.gudang.pasangBanyak('jawaban', jawaban as Jawaban[]);
+      await this.gudang.pasangBanyak('sesi', baru);
+      return baru.length;
+    }
+    for (const b of baris as ({ id: string } & object)[]) {
+      const t = tabel as 'anak' | 'pengaturan_waktu' | 'pesan' | 'kemajuan_topik' | 'pemakaian';
+      const lokal = (await this.gudang.ambil(t, b.id)) as object | null;
+      if (t === 'pemakaian') {
+        const server = b as Pemakaian;
+        const gabungan = lokal ? gabungPemakaian(lokal as Pemakaian, server) : server;
+        if (lokal && samaIsi(lokal, gabungan)) {
+          // HP ini sudah lebih besar atau sama; kalau lebih besar dari server, kirim ke server.
+          if (!samaIsi(server, gabungan) && !antre.has(b.id)) await this.antrekan('pemakaian', gabungan);
+          continue;
+        }
+        await this.gudang.pasang('pemakaian', gabungan);
+        if (!samaIsi(server, gabungan) && !antre.has(b.id)) await this.antrekan('pemakaian', gabungan);
+        berubah++;
+        continue;
+      }
+      if (antre.has(b.id)) continue; // HP ini punya perubahan yang belum terkirim
+      if (lokal && samaIsi(lokal, b)) continue;
+      if (t === 'kemajuan_topik' && lokal && Date.parse((lokal as KemajuanTopik).terakhir) > Date.parse((b as KemajuanTopik).terakhir)) continue;
+      await this.gudang.pasang(t, b as never);
+      berubah++;
+    }
+    return berubah;
+  }
+
+  /** HP anak: pasang keluarga dari server (tanpa PIN) setelah kode hubung dipakai. */
+  async pasangKeluargaHpAnak(keluargaId: string, sapaanOrtu: string): Promise<Keluarga> {
+    const kel: Keluarga = { id: keluargaId, dibuat: sekarangIso(), pinHash: '', garam: '', sapaanOrtu, modeData: 'supabase', hp: 'anak' };
+    await this.gudang.pasang('keluarga', kel);
+    this.ubah();
+    return kel;
+  }
+
+  /** HP anak: orang tua sudah memutus HP ini? (dicatat saat sinkron) */
+  async hpDiputus(): Promise<boolean> {
+    return (await this.nilai<boolean>('hp_diputus')) === true;
   }
 
   // ---------- keluarga dan PIN ----------
@@ -398,10 +588,16 @@ export class Repositori {
   async tandaiDibaca(anakId: string, dari: Pesan['dari']) {
     const daftar = await this.daftarPesan(anakId);
     const waktu = sekarangIso();
+    let berubah = false;
     for (const p of daftar) {
-      if (p.dari === dari && !p.dibaca) await this.simpan('pesan', { ...p, dibaca: waktu });
+      if (p.dari === dari && !p.dibaca) {
+        await this.simpan('pesan', { ...p, dibaca: waktu });
+        berubah = true;
+      }
     }
-    this.ubah();
+    // Hanya memberi tahu layar bila ada yang berubah. Layar memanggil ini saat memuat; tanpa syarat ini
+    // pemuatan memicu pemberitahuan, yang memicu pemuatan lagi, tanpa henti.
+    if (berubah) this.ubah();
   }
 
   // ---------- hapus semua ----------

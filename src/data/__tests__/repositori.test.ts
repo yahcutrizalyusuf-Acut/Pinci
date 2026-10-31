@@ -119,3 +119,20 @@ test('pesan dua arah dan tanda dibaca', async () => {
   expect(p.find((x) => x.dari === 'orang_tua')?.dibaca).toBeTruthy();
   expect(p.find((x) => x.dari === 'anak')?.dibaca).toBeFalsy();
 });
+
+test('tandai dibaca tidak memberi tahu layar bila tidak ada pesan baru (mencegah putaran pemuatan tanpa henti)', async () => {
+  const r = await siap(null);
+  const a = await r.tambahAnak({ nama: 'Rani', kelas: 6, hewan: 'kucing' });
+  await r.kirimPesan({ anak_id: a.id, dari: 'anak', jenis: 'stiker', isi: 'rekor' });
+  let dipanggil = 0;
+  const lepas = r.dengar(() => {
+    dipanggil++;
+  });
+  await r.tandaiDibaca(a.id, 'anak');
+  expect(dipanggil).toBe(1);
+  expect((await r.daftarPesan(a.id))[0].dibaca).toBeTruthy();
+  await r.tandaiDibaca(a.id, 'anak');
+  await r.tandaiDibaca(a.id, 'orang_tua');
+  expect(dipanggil).toBe(1);
+  lepas();
+});

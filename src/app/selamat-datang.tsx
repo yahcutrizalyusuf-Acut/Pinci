@@ -45,7 +45,11 @@ export default function SelamatDatang() {
       </View>
       <View style={{ flex: 1 }} />
       <View style={{ gap: 12, paddingHorizontal: 16, paddingBottom: 24 }}>
-        <Tombol label="Ini HP anak" besar onPress={() => router.push({ pathname: '/daftar/pin', params: { dari: 'anak' } })} />
+        <Tombol
+          label="Ini HP anak"
+          besar
+          onPress={() => router.push(modeData() === 'supabase' ? '/hubungkan' : { pathname: '/daftar/pin', params: { dari: 'anak' } })}
+        />
         <Tombol label="Saya orang tua" varian="garis" besar ikon="orang" onPress={() => router.push(modeData() === 'supabase' ? '/masuk' : '/daftar/pin')} />
       </View>
     </Layar>
