@@ -11,17 +11,23 @@ import { buatId, kiniMs, sekarangIso, sha256, tanggalLokal } from './alat';
 import type { Gudang } from './gudang';
 import {
   TABEL_SINKRON,
+  type AnggotaKelas,
   type Anak,
+  type CatatanPemakaian,
+  type CatatanPengawas,
+  type CatatanTeknis,
   type ItemAntrean,
   type Jawaban,
   type Keluarga,
   type KemajuanTopik,
   type NamaTabel,
   type Pemakaian,
+  type Masukan,
   type PengaturanWaktu,
   type Pesan,
   type PetaTabel,
   type Sesi,
+  type Tugas,
 } from './jenis';
 
 /** Pengirim ke server. Mode lokal tidak punya pengirim. */
@@ -36,6 +42,8 @@ export interface PengirimSinkron {
   catatSinkron?(sisaAntrean: number): Promise<void>;
   /** HP anak: sudah diputus oleh orang tua? */
   perangkatDiputus?(): Promise<boolean>;
+  /** keanggotaan kelas pengawas yang aktif untuk anak-anak di HP ini (selalu daftar lengkap) */
+  kelasKeluarga?(): Promise<AnggotaKelas[]>;
 }
 
 export type StatusSimpan = 'tersimpan' | 'terkirim';
@@ -43,7 +51,28 @@ export type StatusSimpan = 'tersimpan' | 'terkirim';
 const JEDA_MENIT = [1, 2, 5, 15];
 
 /** Tabel yang ditarik dari server, urut: sesi terakhir karena ikut menarik jawabannya. */
-const TABEL_TARIK: NamaTabel[] = ['anak', 'pengaturan_waktu', 'pesan', 'kemajuan_topik', 'pemakaian', 'sesi'];
+const TABEL_TARIK: NamaTabel[] = ['anak', 'pengaturan_waktu', 'pesan', 'kemajuan_topik', 'pemakaian', 'catatan_pengawas', 'tugas', 'sesi'];
+
+/** Jenis sesi yang menyelesaikan tugas pengawas berjenis tertentu. */
+const SESI_UNTUK_TUGAS: Record<Tugas['jenis'], Sesi['jenis'][]> = {
+  lancar: ['lancar'],
+  baca: ['baca'],
+  tka: ['tka', 'mini_tryout', 'simulasi'],
+  inggris: ['inggris'],
+  kartu: ['kartu'],
+  game: ['game'],
+};
+
+/** Sesi ini menyelesaikan tugas ini? Jenis harus cocok; kalau tugas menyebut rujukan (topik, teks, level), rujukan juga harus cocok. */
+export function sesiMenyelesaikan(tugas: Tugas, sesi: Sesi): boolean {
+  if (tugas.selesai || tugas.dibatalkan || tugas.anak_id !== sesi.anak_id) return false;
+  if (!SESI_UNTUK_TUGAS[tugas.jenis].includes(sesi.jenis)) return false;
+  if (Date.parse(sesi.selesai) < Date.parse(tugas.dibuat)) return false;
+  if (!tugas.rujukan) return true;
+  // Latihan rumah TKA memakai rujukan "<topik>-rumah"; game memakai "<game>:L<level>".
+  const r = sesi.rujukan ?? '';
+  return r === tugas.rujukan || r.startsWith(`${tugas.rujukan}-`) || r.startsWith(`${tugas.rujukan}:`) || (sesi.level !== undefined && String(sesi.level) === tugas.rujukan);
+}
 /** Kursor mundur 5 menit tiap tarik: baris yang baru terkirim dengan jam lebih awal tetap tertangkap. Aman karena penggabungan idempoten. */
 const TUMPANG_TARIK_MS = 5 * 60_000;
 const HALAMAN_TARIK = 500;
@@ -239,7 +268,7 @@ export class Repositori {
     // HP anak yang diputus orang tua berhenti sinkron; aplikasi tetap bisa dipakai di HP ini.
     if (await this.hpDiputus()) return { terkirim: 0, sisa: (await this.antreanBelumTerkirim()).length, ditarik: 0 };
     const kirim = await this.sinkron().catch(() => ({ terkirim: 0, sisa: 0 }));
-    const ditarik = await this.tarik().catch(() => 0);
+    const ditarik = (await this.tarik().catch(() => 0)) + (await this.tarikKelas().catch(() => 0));
     await this.laporHp(kirim.sisa);
     return { ...kirim, ditarik };
   }
@@ -311,6 +340,21 @@ export class Repositori {
       await this.gudang.pasangBanyak('sesi', baru);
       return baru.length;
     }
+    if (tabel === 'catatan_pengawas' || tabel === 'tugas') {
+      // Tanda "dibaca"/"selesai" hanya maju: kalau HP ini sudah menandai tetapi server belum, tanda HP dipertahankan dan dikirim ulang.
+      const kolom = tabel === 'tugas' ? 'selesai' : 'dibaca';
+      for (const b of baris as (CatatanPengawas | Tugas)[]) {
+        const lokal = (await this.gudang.ambil(tabel, b.id)) as (CatatanPengawas | Tugas) | null;
+        const tandaLokal = (lokal as Record<string, unknown> | null)?.[kolom];
+        const tandaServer = (b as unknown as Record<string, unknown>)[kolom];
+        const gabungan = { ...b, ...(tandaLokal && !tandaServer ? { [kolom]: tandaLokal } : {}) } as CatatanPengawas & Tugas;
+        if (lokal && samaIsi(lokal, gabungan)) continue;
+        await this.gudang.pasang(tabel, gabungan);
+        if (tandaLokal && !tandaServer && !antre.has(b.id)) await this.antrekan(tabel, gabungan);
+        berubah++;
+      }
+      return berubah;
+    }
     for (const b of baris as ({ id: string } & object)[]) {
       const t = tabel as 'anak' | 'pengaturan_waktu' | 'pesan' | 'kemajuan_topik' | 'pemakaian';
       const lokal = (await this.gudang.ambil(t, b.id)) as object | null;
@@ -334,6 +378,162 @@ export class Repositori {
       berubah++;
     }
     return berubah;
+  }
+
+  /**
+   * Tarik daftar kelas anak-anak di HP ini. Server selalu mengirim daftar lengkap yang aktif,
+   * jadi keanggotaan yang tidak ada lagi (anak keluar kelas) dihapus dari HP.
+   */
+  async tarikKelas(): Promise<number> {
+    const p = this.pengirim;
+    if (!p?.kelasKeluarga) return 0;
+    const server = await p.kelasKeluarga();
+    const lokal = await this.gudang.cari('anggota_kelas');
+    const ada = new Set(server.map((a) => a.id));
+    let berubah = 0;
+    for (const a of lokal) {
+      if (!ada.has(a.id)) {
+        await this.gudang.hapus('anggota_kelas', a.id);
+        berubah++;
+      }
+    }
+    for (const a of server) {
+      // Persetujuan catatan pemakaian ikut disalin (HP anak tidak punya layar persetujuan sendiri).
+      if (a.setujuPemakaian !== undefined && (await this.nilai<boolean>(`catatan_pemakaian:${a.anak_id}`)) !== a.setujuPemakaian) {
+        await this.gudang.pasang('nilai', { id: `catatan_pemakaian:${a.anak_id}`, anak_id: a.anak_id, isi: JSON.stringify(a.setujuPemakaian) });
+      }
+      const l = lokal.find((x) => x.id === a.id);
+      if (l && samaIsi(l, a)) continue;
+      await this.gudang.pasang('anggota_kelas', a);
+      berubah++;
+    }
+    if (berubah > 0) this.ubah();
+    return berubah;
+  }
+
+  /** Simpan satu keanggotaan kelas yang baru saja dibuat di server (supaya layar langsung berubah). */
+  async pasangAnggotaKelas(a: AnggotaKelas) {
+    for (const lama of await this.gudang.cari('anggota_kelas', { anak_id: a.anak_id })) {
+      if (lama.id !== a.id) await this.gudang.hapus('anggota_kelas', lama.id);
+    }
+    await this.gudang.pasang('anggota_kelas', a);
+    this.ubah();
+  }
+
+  async hapusAnggotaKelas(anakId: string) {
+    for (const a of await this.gudang.cari('anggota_kelas', { anak_id: anakId })) await this.gudang.hapus('anggota_kelas', a.id);
+    this.ubah();
+  }
+
+  /** Kelas aktif seorang anak, atau null. */
+  async kelasAnak(anakId: string): Promise<AnggotaKelas | null> {
+    const a = await this.gudang.cari('anggota_kelas', { anak_id: anakId });
+    return a[0] ?? null;
+  }
+
+  async daftarKelasAnak(): Promise<AnggotaKelas[]> {
+    return this.gudang.cari('anggota_kelas');
+  }
+
+  /** Catatan pengawas, terbaru dulu. Tanpa anakId = semua anak. */
+  async catatanPengawas(anakId?: string): Promise<CatatanPengawas[]> {
+    const c = await this.gudang.cari('catatan_pengawas', anakId ? { anak_id: anakId } : undefined);
+    return c.sort((a, b) => b.waktu.localeCompare(a.waktu));
+  }
+
+  async tandaiCatatanDibaca(anakId?: string) {
+    const waktu = sekarangIso();
+    let berubah = false;
+    for (const c of await this.catatanPengawas(anakId)) {
+      if (!c.dibaca) {
+        await this.simpan('catatan_pengawas', { ...c, dibaca: waktu });
+        berubah = true;
+      }
+    }
+    // Sama seperti pesan: hanya beri tahu layar bila ada yang berubah, supaya tidak memuat tanpa henti.
+    if (berubah) this.ubah();
+  }
+
+  /** Tugas pengawas yang belum selesai, terlama dulu. */
+  async tugasTerbuka(anakId: string): Promise<Tugas[]> {
+    const t = await this.gudang.cari('tugas', { anak_id: anakId });
+    return t.filter((x) => !x.selesai && !x.dibatalkan).sort((a, b) => a.dibuat.localeCompare(b.dibuat));
+  }
+
+  async semuaTugas(anakId: string): Promise<Tugas[]> {
+    const t = await this.gudang.cari('tugas', { anak_id: anakId });
+    return t.filter((x) => !x.dibatalkan).sort((a, b) => b.dibuat.localeCompare(a.dibuat));
+  }
+
+  /** Tandai tugas yang cocok dengan sesi ini sebagai selesai. */
+  private async cocokkanTugas(sesi: Sesi) {
+    for (const t of await this.tugasTerbuka(sesi.anak_id)) {
+      if (sesiMenyelesaikan(t, sesi)) await this.simpan('tugas', { ...t, selesai: sesi.selesai });
+    }
+  }
+
+  // ---------- masukan dan catatan (hanya dikirim ke server) ----------
+
+  /** Orang tua mengirim masukan (masalah, saran, atau pujian). Tersimpan dulu, terkirim saat ada sinyal. */
+  async kirimMasukan(jenis: Masukan['jenis'], isi: string, versiAplikasi?: string): Promise<Masukan> {
+    const kel = await this.keluarga();
+    if (!kel) throw new Error('Keluarga belum dibuat');
+    const m: Masukan = { id: buatId(), keluarga_id: kel.id, jenis, isi: isi.trim().slice(0, 1000), waktu: sekarangIso(), ...(versiAplikasi ? { versiAplikasi } : {}) };
+    await this.simpan('masukan', m);
+    this.ubah();
+    return m;
+  }
+
+  async daftarMasukan(): Promise<Masukan[]> {
+    const m = await this.gudang.cari('masukan');
+    return m.sort((a, b) => b.waktu.localeCompare(a.waktu));
+  }
+
+  /** Jawaban pertanyaan pilihan untuk orang tua (dicatat di HP dan dikirim). */
+  async jawabPertanyaan(kode: string, jawaban: string) {
+    const kel = await this.keluarga();
+    await this.aturNilai(`masukan:${kode}`, jawaban);
+    if (!kel) return;
+    await this.simpan('jawaban_pertanyaan', { id: buatId(), keluarga_id: kel.id, kode, jawaban, waktu: sekarangIso() });
+  }
+
+  /** Catatan pemakaian hanya dibuat bila orang tua menyetujuinya untuk anak ini. */
+  async catatPemakaian(anakId: string, kejadian: CatatanPemakaian['kejadian'], layar: string, detik?: number): Promise<boolean> {
+    if (!this.pengirim || (await this.nilai<boolean>(`catatan_pemakaian:${anakId}`)) !== true) return false;
+    const kel = await this.keluarga();
+    if (!kel) return false;
+    const c: CatatanPemakaian = { id: buatId(), keluarga_id: kel.id, anak_id: anakId, kejadian, layar: layar.slice(0, 40), waktu: sekarangIso() };
+    if (detik !== undefined) c.detik = Math.max(0, Math.min(86_400, Math.round(detik)));
+    await this.simpan('catatan_pemakaian', c);
+    return true;
+  }
+
+  /** "Aplikasi dibuka" dicatat paling banyak sekali sehari per anak. */
+  async bukaAplikasi(anakId: string) {
+    const kunci = `buka:${anakId}`;
+    const hari = tanggalLokal();
+    if ((await this.nilai<string>(kunci)) === hari) return;
+    // Tanda hari hanya dipasang bila benar-benar tercatat (persetujuan bisa datang belakangan hari itu).
+    if (await this.catatPemakaian(anakId, 'buka_aplikasi', 'beranda')) await this.gudang.pasang('nilai', { id: kunci, anak_id: anakId, isi: JSON.stringify(hari) });
+  }
+
+  private teknisTerakhir = new Map<string, number>();
+
+  /** Catatan masalah teknis (tanpa data pribadi). Pesan yang sama paling banyak sekali per 10 menit. */
+  async catatTeknis(pesan: string, tempat?: string, versiAplikasi?: string, perangkat?: string) {
+    if (!this.pengirim) return;
+    const ringkas = pesan.replace(/\s+/g, ' ').trim().slice(0, 500);
+    if (!ringkas) return;
+    const lalu = this.teknisTerakhir.get(ringkas) ?? 0;
+    if (kiniMs() - lalu < 10 * 60_000) return;
+    this.teknisTerakhir.set(ringkas, kiniMs());
+    const kel = await this.keluarga();
+    const c: CatatanTeknis = { id: buatId(), pesan: ringkas, waktu: sekarangIso() };
+    if (kel) c.keluarga_id = kel.id;
+    if (tempat) c.tempat = tempat.slice(0, 80);
+    if (versiAplikasi) c.versiAplikasi = versiAplikasi.slice(0, 40);
+    if (perangkat) c.perangkat = perangkat.slice(0, 60);
+    await this.simpan('catatan_teknis', c);
   }
 
   /** HP anak: pasang keluarga dari server (tanpa PIN) setelah kode hubung dipakai. */
@@ -499,6 +699,8 @@ export class Repositori {
     await this.gudang.pasang('sesi', s);
     for (const j of daftar) await this.antrekan('jawaban', j);
     await this.antrekan('sesi', s);
+    await this.cocokkanTugas(s);
+    await this.catatPemakaian(s.anak_id, 'selesai', s.jenis, s.durasiDetik);
     this.ubah();
     return s;
   }

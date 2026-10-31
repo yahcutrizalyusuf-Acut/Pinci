@@ -7,7 +7,9 @@ import { useData, useMuat } from '@/data/konteks';
 import { modeData } from '@/data/sinkron';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { hariIni } from '@/fitur/hari-ini';
-import { paketLengkap } from '@/fitur/konfig';
+import { adaBacaGudang, paketLengkap } from '@/fitur/konfig';
+import { useAkses } from '@/fitur/akses';
+import { ruteTugas } from '@/fitur/kelas';
 import { infoLancarAnak } from '@/fitur/lancar';
 import { GelembungPinci, Logo, TombolSuara } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
@@ -24,12 +26,15 @@ export default function BerandaBelajar() {
       const antre = (await repo.antreanBelumTerkirim()).length;
       const h = await hariIni(repo, anak);
       const lancar = await infoLancarAnak(repo, anak);
-      return { terakhir, antre, h, lancar, diputus: await repo.hpDiputus() };
+      const tugas = await repo.tugasTerbuka(anak.id);
+      return { terakhir, antre, h, lancar, diputus: await repo.hpDiputus(), tugas };
     },
     null,
     [anak.id],
   );
   const lengkap = paketLengkap(anak.kelas);
+  const baca = adaBacaGudang(anak.kelas);
+  const akses = useAkses();
   const sapaan = keluarga?.sapaanOrtu ?? 'Ayah';
   const sudah = (j: string) => (data?.h.sesi ?? []).some((s) => s.jenis === j);
 
@@ -89,6 +94,27 @@ export default function BerandaBelajar() {
           </Pressable>
         ) : null}
 
+        {data && data.tugas.length > 0 ? (
+          <View style={{ padding: 14, borderRadius: 20, backgroundColor: warna.putih, borderWidth: 2, borderColor: warna.oranye, gap: 8 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <TombolSuara teks={`Tugas dari Kak Pengawas. ${data.tugas.map((t) => t.judul).join('. ')}`} />
+              <Text style={{ flex: 1, fontFamily: huruf.anakTebal, fontSize: 16, color: warna.oranyeTua }}>Tugas dari Kak Pengawas</Text>
+            </View>
+            {data.tugas.slice(0, 3).map((t) => (
+              <Pressable
+                key={t.id}
+                accessibilityRole="button"
+                accessibilityLabel={`Kerjakan tugas: ${t.judul}`}
+                onPress={() => router.push(ruteTugas(t.jenis, t.rujukan) as never)}
+                style={({ pressed }) => ({ padding: 12, borderRadius: 14, backgroundColor: pressed ? warna.kremGaris : warna.oranyeMuda, gap: 2 })}
+              >
+                <Text style={{ fontFamily: huruf.anakTebal, fontSize: 16, color: warna.teks }}>{t.judul}</Text>
+                {t.pesan ? <Text style={{ fontFamily: huruf.anak, fontSize: 15, color: warna.teks }}>{t.pesan}</Text> : null}
+              </Pressable>
+            ))}
+          </View>
+        ) : null}
+
         <View style={{ gap: 12 }}>
           <KartuMapel
             judul="Lancar Matematika"
@@ -98,7 +124,7 @@ export default function BerandaBelajar() {
             selesai={sudah('lancar')}
             onPress={() => router.push(data?.lancar.perluPenempatan ? '/lancar/penempatan' : data?.lancar.perluJurus ? '/lancar/jurus' : '/lancar/lembar')}
           />
-          {lengkap ? (
+          {baca ? (
             <KartuMapel
               judul="Baca Ulang"
               sub="Baca, dengar, baca lagi"
@@ -117,6 +143,7 @@ export default function BerandaBelajar() {
               muda="#EAF2FF"
               teks={warnaMapel.mat.teks}
               lencana="TKA"
+              terkunci={!akses.tka}
               selesai={sudah('tka') || sudah('mini_tryout') || sudah('simulasi')}
               onPress={() => router.push('/tka')}
             />
@@ -126,10 +153,11 @@ export default function BerandaBelajar() {
             sub={anak.tingkatInggris ? `Tingkat ${anak.tingkatInggris}` : 'Pilih tingkatmu'}
             ikon="inggris"
             {...warnaMapel.ing}
+            terkunci={!akses.inggris}
             selesai={sudah('inggris')}
             onPress={() => router.push(anak.tingkatInggris ? '/inggris' : '/inggris/tingkat')}
           />
-          {!lengkap ? (
+          {!baca ? (
             <View style={{ padding: 16, borderRadius: 20, backgroundColor: warna.putih, borderWidth: 1, borderColor: warna.kremGaris, flexDirection: 'row', gap: 12, alignItems: 'center' }}>
               <Text style={{ fontSize: 28 }}>📦</Text>
               <Text style={{ flex: 1, fontFamily: huruf.anak, fontSize: 16, color: warna.teksKedua }}>

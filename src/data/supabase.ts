@@ -7,7 +7,7 @@
  * - Masuk orang tua: email + kode 6 angka (02-akun-keluarga.md).
  * Skema dan RLS: supabase/migrations/.
  */
-import type { NamaTabel } from './jenis';
+import type { AnggotaKelas, NamaTabel, PaketKelas, StatusLangganan } from './jenis';
 import type { PengirimSinkron } from './repositori';
 
 export interface OpsiSupabase {
@@ -33,7 +33,16 @@ const KOLOM: Partial<Record<NamaTabel, string[]>> = {
   pesan: ['id', 'keluarga_id', 'anak_id', 'dari', 'jenis', 'isi', 'waktu', 'dibaca'],
   pengaturan_waktu: ['id', 'keluarga_id', 'anak_id', 'belajar_menit', 'game_menit', 'game_setelah_inti', 'jam_tenang', 'jam_bangun', 'bunyi'],
   pemakaian: ['id', 'keluarga_id', 'anak_id', 'tanggal', 'belajar_detik', 'main_detik', 'blok_detik', 'istirahat_sampai', 'inti_selesai'],
+  masukan: ['id', 'keluarga_id', 'orang_tua_id', 'jenis', 'isi', 'versi_aplikasi', 'waktu'],
+  jawaban_pertanyaan: ['id', 'keluarga_id', 'kode', 'jawaban', 'waktu'],
+  catatan_pemakaian: ['id', 'keluarga_id', 'anak_id', 'kejadian', 'layar', 'detik', 'waktu'],
+  catatan_teknis: ['id', 'keluarga_id', 'pesan', 'tempat', 'versi_aplikasi', 'perangkat', 'waktu'],
 };
+
+/** Tabel catatan yang dibuang bila server menolaknya (misalnya persetujuan sudah dicabut), supaya tidak dicoba tanpa henti. */
+const BUANG_BILA_DITOLAK = new Set<NamaTabel>(['catatan_pemakaian', 'catatan_teknis', 'jawaban_pertanyaan', 'masukan']);
+/** Tabel yang hanya dikirim HP orang tua. */
+const HANYA_ORTU = new Set<NamaTabel>(['masukan', 'jawaban_pertanyaan']);
 
 /** Kolom lokal (camelCase) per tabel yang ditarik dari server. Kolom server lain (keluarga_id, diubah, …) dibuang. */
 const KUNCI_LOKAL: Partial<Record<NamaTabel, string[]>> = {
@@ -44,6 +53,8 @@ const KUNCI_LOKAL: Partial<Record<NamaTabel, string[]>> = {
   pesan: ['id', 'keluarga_id', 'anak_id', 'dari', 'jenis', 'isi', 'waktu', 'dibaca'],
   pengaturan_waktu: ['id', 'anak_id', 'belajarMenit', 'gameMenit', 'gameSetelahInti', 'jamTenang', 'jamBangun', 'bunyi'],
   pemakaian: ['id', 'anak_id', 'tanggal', 'belajarDetik', 'mainDetik', 'blokDetik', 'istirahatSampai', 'intiSelesai'],
+  catatan_pengawas: ['id', 'keluarga_id', 'anak_id', 'kelasId', 'isi', 'waktu', 'dibaca'],
+  tugas: ['id', 'keluarga_id', 'anak_id', 'kelasId', 'jenis', 'rujukan', 'judul', 'pesan', 'dibuat', 'tenggat', 'selesai', 'dibatalkan'],
 };
 
 /** Kolom berisi waktu: dirapikan ke ISO supaya urutan teks sama dengan urutan waktu. */
@@ -53,6 +64,17 @@ const KOLOM_WAKTU: Partial<Record<NamaTabel, string[]>> = {
   pesan: ['waktu', 'dibaca'],
   pemakaian: ['istirahatSampai'],
   kemajuan_topik: ['terakhir'],
+  catatan_pengawas: ['waktu', 'dibaca'],
+  tugas: ['dibuat', 'selesai'],
+};
+
+/**
+ * Tabel yang ditulis pengawas di server. HP keluarga tidak pernah mengirim barisnya, hanya tanda
+ * "sudah dibaca" (catatan) dan "selesai" (tugas) lewat fungsi khusus di server.
+ */
+const TANDA_LEWAT_FUNGSI: Partial<Record<NamaTabel, { fungsi: string; kolom: 'dibaca' | 'selesai' }>> = {
+  catatan_pengawas: { fungsi: 'tandai_catatan_dibaca', kolom: 'dibaca' },
+  tugas: { fungsi: 'tandai_tugas_selesai', kolom: 'selesai' },
 };
 
 /** Ubah baris server (snake_case) menjadi baris lokal. Kolom kosong (null) dibuang. */
@@ -71,7 +93,7 @@ export function keLokal(tabel: NamaTabel, baris: Record<string, unknown>): Recor
 }
 
 /** Tabel yang barisnya tidak pernah berubah: kiriman ulang diabaikan. */
-const HANYA_TAMBAH = new Set<NamaTabel>(['sesi', 'jawaban']);
+const HANYA_TAMBAH = new Set<NamaTabel>(['sesi', 'jawaban', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis']);
 
 export function keSnake(nama: string): string {
   return nama.replace(/[A-Z]/g, (h) => `_${h.toLowerCase()}`);
@@ -95,7 +117,21 @@ function kolomKursor(tabel: NamaTabel): string {
   return tabel === 'sesi' ? 'diterima_server' : 'diubah';
 }
 
-const URUTAN_KIRIM: NamaTabel[] = ['anak', 'pengaturan_waktu', 'sesi', 'jawaban', 'kemajuan_topik', 'pesan', 'pemakaian'];
+const URUTAN_KIRIM: NamaTabel[] = [
+  'anak',
+  'pengaturan_waktu',
+  'sesi',
+  'jawaban',
+  'kemajuan_topik',
+  'pesan',
+  'pemakaian',
+  'catatan_pengawas',
+  'tugas',
+  'masukan',
+  'jawaban_pertanyaan',
+  'catatan_pemakaian',
+  'catatan_teknis',
+];
 
 export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
   const f = opsi.fetchFn ?? fetch;
@@ -105,10 +141,19 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
       if (!token) return [];
       const keluargaId = (await opsi.ambilKeluargaId?.()) ?? null;
       const hpAnak = (await opsi.ambilPeran?.()) === 'anak';
+      const penggunaId = (await opsi.ambilPenggunaId?.()) ?? null;
       const perTabel = new Map<NamaTabel, { idAntrean: string; baris: Record<string, unknown> }[]>();
       for (const i of item) {
+        const tanda = TANDA_LEWAT_FUNGSI[i.antrean.tabel];
+        if (tanda) {
+          const d = perTabel.get(i.antrean.tabel) ?? [];
+          d.push({ idAntrean: i.antrean.id, baris: i.baris as Record<string, unknown> });
+          perTabel.set(i.antrean.tabel, d);
+          continue;
+        }
         const b = barisServer(i.antrean.tabel, i.baris, keluargaId);
         if (!b) continue;
+        if (i.antrean.tabel === 'masukan') b.orang_tua_id = penggunaId;
         const d = perTabel.get(i.antrean.tabel) ?? [];
         d.push({ idAntrean: i.antrean.id, baris: b });
         perTabel.set(i.antrean.tabel, d);
@@ -118,7 +163,37 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
       for (const tabel of URUTAN_KIRIM) {
         let daftar = perTabel.get(tabel);
         if (!daftar?.length) continue;
+        const tanda = TANDA_LEWAT_FUNGSI[tabel];
+        if (tanda) {
+          // Kelompokkan per waktu tanda supaya waktu yang tercatat di server sama dengan di HP.
+          const perWaktu = new Map<string, typeof daftar>();
+          for (const d of daftar) {
+            const w = d.baris[tanda.kolom];
+            if (typeof w !== 'string') {
+              diterima.push(d.idAntrean); // tidak ada yang perlu dikirim
+              continue;
+            }
+            perWaktu.set(w, [...(perWaktu.get(w) ?? []), d]);
+          }
+          for (const [waktu, kelompok] of perWaktu) {
+            try {
+              const res = await f(`${opsi.url}/rest/v1/rpc/${tanda.fungsi}`, {
+                method: 'POST',
+                headers: kepala(opsi, token),
+                body: JSON.stringify({ p_ids: kelompok.map((d) => d.baris.id), p_waktu: waktu }),
+              });
+              if (res.ok) diterima.push(...kelompok.map((d) => d.idAntrean));
+            } catch {
+              // dicoba lagi nanti
+            }
+          }
+          continue;
+        }
         if (hpAnak && (tabel === 'anak' || tabel === 'pengaturan_waktu')) continue; // HP anak hanya membaca profil dan pengaturan
+        if (hpAnak && HANYA_ORTU.has(tabel)) {
+          diterima.push(...daftar.map((d) => d.idAntrean));
+          continue;
+        }
         if (hpAnak && tabel === 'pesan') {
           // HP anak hanya mengirim stiknya sendiri; pesan orang tua hanya boleh ditandai dibaca (fungsi khusus di server).
           const dariOrtu = daftar.filter((d) => d.baris.dari === 'orang_tua');
@@ -154,6 +229,7 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
             body: JSON.stringify(daftar.map((d) => d.baris)),
           });
           if (res.ok) diterima.push(...daftar.map((d) => d.idAntrean));
+          else if (BUANG_BILA_DITOLAK.has(tabel) && res.status >= 400 && res.status < 500) diterima.push(...daftar.map((d) => d.idAntrean));
           else if (tabel === 'sesi') break; // jawaban butuh sesinya; coba lagi nanti
         } catch {
           if (tabel === 'sesi') break;
@@ -167,7 +243,9 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
       const token = (await opsi.ambilToken?.()) ?? null;
       if (!token) throw new Error('belum masuk');
       const kolom = kolomKursor(tabel);
-      const saring = sejak ? `&${kolom}=gte.${encodeURIComponent(sejak)}` : '';
+      // Saring keluarga: akun yang juga staf (pengawas) bisa membaca anak lain lewat aturan server; HP keluarga hanya menyimpan keluarganya.
+      const keluargaId = (await opsi.ambilKeluargaId?.()) ?? null;
+      const saring = (sejak ? `&${kolom}=gte.${encodeURIComponent(sejak)}` : '') + (keluargaId ? `&keluarga_id=eq.${encodeURIComponent(keluargaId)}` : '');
       const res = await f(`${opsi.url}/rest/v1/${tabel}?select=*${saring}&order=${kolom}.asc,id.asc&limit=${batas}&offset=${offset}`, { headers: kepala(opsi, token) });
       if (!res.ok) throw new Error(`tarik ${tabel} gagal`);
       const data = (await res.json()) as Record<string, unknown>[];
@@ -180,6 +258,39 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
         if (typeof w === 'string' && (kursorMaks === null || Date.parse(w) > Date.parse(kursorMaks))) kursorMaks = w;
       }
       return { baris, kursorMaks: kursorMaks === null ? null : new Date(kursorMaks).toISOString() };
+    },
+
+    async kelasKeluarga() {
+      const token = (await opsi.ambilToken?.()) ?? null;
+      if (!token) throw new Error('belum masuk');
+      const res = await f(`${opsi.url}/rest/v1/rpc/kelas_keluarga`, { method: 'POST', headers: kepala(opsi, token), body: '{}' });
+      if (!res.ok) throw new Error('tarik kelas gagal');
+      const data = (await res.json()) as {
+        anggota_id: string;
+        anak_id: string;
+        kelas_id: string;
+        kelas_nama: string;
+        pengawas_nama: string | null;
+        paket: PaketKelas;
+        masuk: string;
+        coba_sampai: string;
+        berlaku_sampai?: string | null;
+        status?: StatusLangganan;
+        setuju_pemakaian?: boolean;
+      }[];
+      return data.map((d) => ({
+        id: d.anggota_id,
+        anak_id: d.anak_id,
+        kelasId: d.kelas_id,
+        kelasNama: d.kelas_nama,
+        ...(d.pengawas_nama ? { pengawasNama: d.pengawas_nama } : {}),
+        paket: d.paket,
+        masuk: new Date(d.masuk).toISOString(),
+        cobaSampai: new Date(d.coba_sampai).toISOString(),
+        ...(d.berlaku_sampai ? { berlakuSampai: new Date(d.berlaku_sampai).toISOString() } : {}),
+        ...(d.status ? { status: d.status } : {}),
+        ...(d.setuju_pemakaian !== undefined ? { setujuPemakaian: d.setuju_pemakaian === true } : {}),
+      }));
     },
 
     async jawabanUntuk(sesiIds) {
@@ -366,6 +477,113 @@ export async function putuskanPerangkat(opsi: OpsiSupabase, id: string): Promise
       method: 'PATCH',
       headers: { ...kepala(opsi, token), Prefer: 'return=minimal' },
       body: JSON.stringify({ diputus: true }),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+// ---------- kelas dengan pengawas (orang tua) ----------
+
+export type AlasanGabung =
+  | 'kode_salah'
+  | 'penuh'
+  | 'sudah_di_kelas_lain'
+  | 'paket_tidak_cocok'
+  | 'anak_tidak_valid'
+  | 'terlalu_sering'
+  | 'belum_masuk'
+  | 'jaringan';
+
+export type HasilGabung = { ok: true; anggota: AnggotaKelas } | { ok: false; alasan: AlasanGabung };
+
+/** Orang tua: masukkan anak ke kelas pengawas dengan kode kelas. Persetujuan dicatat di server. */
+export async function gabungKelas(
+  opsi: OpsiSupabase,
+  data: { kode: string; anakId: string; paket: PaketKelas; versiTeks: string; setujuPemakaian: boolean },
+): Promise<HasilGabung> {
+  const f = opsi.fetchFn ?? fetch;
+  const token = (await opsi.ambilToken?.()) ?? null;
+  if (!token) return { ok: false, alasan: 'belum_masuk' };
+  try {
+    const res = await f(`${opsi.url}/rest/v1/rpc/gabung_kelas`, {
+      method: 'POST',
+      headers: kepala(opsi, token),
+      body: JSON.stringify({ p_kode: data.kode, p_anak_id: data.anakId, p_paket: data.paket, p_versi_teks: data.versiTeks, p_setuju_pemakaian: data.setujuPemakaian }),
+    });
+    if (res.status === 401 || res.status === 403) return { ok: false, alasan: 'belum_masuk' };
+    if (!res.ok) return { ok: false, alasan: 'jaringan' };
+    const d = (await res.json()) as {
+      ok: boolean;
+      alasan?: string;
+      anggota_id?: string;
+      kelas_id?: string;
+      kelas_nama?: string;
+      pengawas_nama?: string | null;
+      paket?: PaketKelas;
+      coba_sampai?: string;
+    };
+    if (d.ok && d.anggota_id && d.kelas_id) {
+      return {
+        ok: true,
+        anggota: {
+          id: d.anggota_id,
+          anak_id: data.anakId,
+          kelasId: d.kelas_id,
+          kelasNama: d.kelas_nama ?? '',
+          ...(d.pengawas_nama ? { pengawasNama: d.pengawas_nama } : {}),
+          paket: d.paket ?? data.paket,
+          masuk: new Date().toISOString(),
+          cobaSampai: new Date(d.coba_sampai ?? Date.now()).toISOString(),
+        },
+      };
+    }
+    const dikenal: AlasanGabung[] = ['kode_salah', 'penuh', 'sudah_di_kelas_lain', 'paket_tidak_cocok', 'anak_tidak_valid', 'terlalu_sering'];
+    if (d.alasan === 'bukan_orang_tua') return { ok: false, alasan: 'belum_masuk' };
+    return { ok: false, alasan: dikenal.includes(d.alasan as AlasanGabung) ? (d.alasan as AlasanGabung) : 'kode_salah' };
+  } catch {
+    return { ok: false, alasan: 'jaringan' };
+  }
+}
+
+/** Orang tua: keluarkan anak dari kelasnya. Riwayat belajar di HP tidak dihapus. */
+export async function keluarKelas(opsi: OpsiSupabase, anakId: string): Promise<boolean> {
+  const f = opsi.fetchFn ?? fetch;
+  const token = (await opsi.ambilToken?.()) ?? null;
+  if (!token) return false;
+  try {
+    const res = await f(`${opsi.url}/rest/v1/rpc/keluar_kelas`, { method: 'POST', headers: kepala(opsi, token), body: JSON.stringify({ p_anak_id: anakId }) });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+/** Orang tua: ganti paket anak di kelasnya sekarang. */
+export async function gantiPaket(opsi: OpsiSupabase, anakId: string, paket: PaketKelas): Promise<boolean> {
+  const f = opsi.fetchFn ?? fetch;
+  const token = (await opsi.ambilToken?.()) ?? null;
+  if (!token) return false;
+  try {
+    const res = await f(`${opsi.url}/rest/v1/rpc/ganti_paket`, { method: 'POST', headers: kepala(opsi, token), body: JSON.stringify({ p_anak_id: anakId, p_paket: paket }) });
+    if (!res.ok) return false;
+    return ((await res.json()) as { ok: boolean }).ok === true;
+  } catch {
+    return false;
+  }
+}
+
+/** Orang tua: nyalakan atau matikan catatan pemakaian untuk satu anak. */
+export async function aturPersetujuanPemakaian(opsi: OpsiSupabase, anakId: string, setuju: boolean, versiTeks: string): Promise<boolean> {
+  const f = opsi.fetchFn ?? fetch;
+  const token = (await opsi.ambilToken?.()) ?? null;
+  if (!token) return false;
+  try {
+    const res = await f(`${opsi.url}/rest/v1/rpc/atur_persetujuan_pemakaian`, {
+      method: 'POST',
+      headers: kepala(opsi, token),
+      body: JSON.stringify({ p_anak_id: anakId, p_setuju: setuju, p_versi_teks: versiTeks }),
     });
     return res.ok;
   } catch {

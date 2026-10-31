@@ -152,6 +152,97 @@ export interface KemajuanTopik {
   alasan?: string;
 }
 
+// ---------- kelas dengan pengawas (08-model-usaha/01) ----------
+
+export type PaketKelas = 'dasar' | 'lengkap' | 'siap_tka';
+
+/** coba (14 hari), aktif (sudah bayar), tenggang (7 hari setelah lewat), berhenti, mitra (dibayar les mitra). */
+export type StatusLangganan = 'coba' | 'aktif' | 'tenggang' | 'berhenti' | 'mitra';
+
+/** Keanggotaan aktif seorang anak di kelas pengawas. Ditarik dari server (kelas_keluarga). */
+export interface AnggotaKelas {
+  id: string;
+  anak_id: string;
+  kelasId: string;
+  kelasNama: string;
+  pengawasNama?: string;
+  paket: PaketKelas;
+  masuk: string;
+  cobaSampai: string;
+  berlakuSampai?: string;
+  status?: StatusLangganan;
+  /** orang tua menyetujui catatan pemakaian untuk anak ini */
+  setujuPemakaian?: boolean;
+}
+
+// ---------- masukan dan catatan (hanya dikirim, tidak ditarik) ----------
+
+export interface Masukan {
+  id: string;
+  keluarga_id: string;
+  jenis: 'masalah' | 'saran' | 'pujian';
+  isi: string;
+  versiAplikasi?: string;
+  waktu: string;
+}
+
+export interface JawabanPertanyaan {
+  id: string;
+  keluarga_id: string;
+  kode: string;
+  jawaban: string;
+  waktu: string;
+}
+
+export interface CatatanPemakaian {
+  id: string;
+  keluarga_id: string;
+  anak_id: string;
+  kejadian: 'buka_aplikasi' | 'selesai' | 'berhenti';
+  layar: string;
+  detik?: number;
+  waktu: string;
+}
+
+export interface CatatanTeknis {
+  id: string;
+  keluarga_id?: string;
+  pesan: string;
+  tempat?: string;
+  versiAplikasi?: string;
+  perangkat?: string;
+  waktu: string;
+}
+
+/** Catatan pengawas untuk orang tua (bukan untuk anak). */
+export interface CatatanPengawas {
+  id: string;
+  keluarga_id: string;
+  anak_id: string;
+  kelasId: string;
+  isi: string;
+  waktu: string;
+  dibaca?: string;
+}
+
+export type JenisTugas = 'lancar' | 'baca' | 'tka' | 'inggris' | 'kartu' | 'game';
+
+/** Tugas dari pengawas untuk anak. Selesai otomatis saat anak mengerjakan latihan yang cocok. */
+export interface Tugas {
+  id: string;
+  keluarga_id: string;
+  anak_id: string;
+  kelasId: string;
+  jenis: JenisTugas;
+  rujukan?: string;
+  judul: string;
+  pesan?: string;
+  dibuat: string;
+  tenggat?: string;
+  selesai?: string;
+  dibatalkan?: boolean;
+}
+
 export interface ItemAntrean {
   id: string;
   tabel: NamaTabel;
@@ -177,6 +268,13 @@ export type NamaTabel =
   | 'pengaturan_waktu'
   | 'pemakaian'
   | 'kemajuan_topik'
+  | 'anggota_kelas'
+  | 'catatan_pengawas'
+  | 'tugas'
+  | 'masukan'
+  | 'jawaban_pertanyaan'
+  | 'catatan_pemakaian'
+  | 'catatan_teknis'
   | 'antrean'
   | 'nilai';
 
@@ -189,9 +287,16 @@ export interface PetaTabel {
   pengaturan_waktu: PengaturanWaktu;
   pemakaian: Pemakaian;
   kemajuan_topik: KemajuanTopik;
+  anggota_kelas: AnggotaKelas;
+  catatan_pengawas: CatatanPengawas;
+  tugas: Tugas;
+  masukan: Masukan;
+  jawaban_pertanyaan: JawabanPertanyaan;
+  catatan_pemakaian: CatatanPemakaian;
+  catatan_teknis: CatatanTeknis;
   antrean: ItemAntrean;
   nilai: Nilai;
 }
 
 /** Tabel yang dikirim ke server lewat antrean sinkron. */
-export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik'];
+export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik', 'catatan_pengawas', 'tugas', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis'];

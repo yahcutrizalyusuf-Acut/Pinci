@@ -27,7 +27,12 @@ export async function tkaTerbukaUntuk(repo: Repositori, anakId: string, sekarang
 
 export const FITUR_GURU = process.env.EXPO_PUBLIC_FITUR_GURU === 'nyala';
 
-/** Paket lengkap baru tersedia untuk kelas 6 (cakupan pembangunan ini). */
+/** Persiapan TKA hanya untuk kelas 6. */
 export function paketLengkap(kelas: number) {
   return kelas === 6;
+}
+
+/** Baca Ulang dan Gudang Ilmu tersedia untuk kelas 2–6 (kelas 2–5 mulai 31 Okt 2026, isi ditambah tiap minggu). */
+export function adaBacaGudang(kelas: number) {
+  return kelas >= 2 && kelas <= 6;
 }

@@ -64,13 +64,16 @@ export default function Atur() {
             <Baris key={a.id} judul={`${HEWAN[a.hewan].emoji}  ${a.nama} · Kelas ${a.kelas}`} sub="Pengaturan waktu, profil" onPress={() => router.push(`/ortu/waktu/${a.id}`)} />
           ))}
           <Baris judul="Tambah anak" onPress={() => router.push('/daftar/anak')} />
+          {server ? <Baris judul="Kelas dan pengawas" sub="Masukkan kode kelas, lihat masa coba" onPress={() => router.push('/ortu/kelas')} /> : null}
           {server ? <Baris judul="Hubungkan HP anak" sub="Kode 6 angka, supaya anak belajar di HP-nya sendiri" onPress={() => router.push('/ortu/hubungkan')} /> : null}
         </Kelompok>
         <Kelompok judul="BANTUAN">
           <Baris judul="Mode Dampingi" sub="Latihan bersama anak" onPress={() => router.push('/dampingi')} />
+          <Baris judul="Kirim masukan" sub="Masalah, saran, atau pujian untuk tim Pintar Main" onPress={() => router.push('/ortu/masukan')} />
           <Baris judul="Periksa isi TKA" sub="Untuk orang tua dan guru, sebelum TKA dibuka untuk anak" onPress={() => router.push('/ortu/periksa-tka')} />
           <Baris judul="Ganti PIN orang tua" onPress={() => router.push('/ortu/ganti-pin')} />
           {FITUR_GURU ? <Baris judul="Kelola guru" onPress={() => router.push('/ortu/guru')} /> : null}
+          {server ? <Baris judul="Masuk sebagai pengawas atau admin" sub="Untuk staf Pintar Main dan les mitra" onPress={() => router.push('/staf')} /> : null}
           <Baris judul="Catatan pengembang" sub="Ringkasan pemakaian, bisa disalin" onPress={() => router.push('/ortu/catatan')} />
         </Kelompok>
         <Kelompok judul="DATA">

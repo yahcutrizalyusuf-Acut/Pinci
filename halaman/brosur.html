@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brosur Pintar Main</title>
+<link rel="stylesheet" href="gaya.css">
+<style>
+  @page { size: A5; margin: 0; }
+  .isian { background: var(--krem); padding: 16px 0; }
+  .isian label { display: block; font-weight: 700; font-size: 15px; margin: 8px 0 4px; }
+  .isian input { width: 100%; height: 46px; border: 1px solid var(--garis); border-radius: 10px; padding: 0 12px; font-size: 16px; font-family: inherit; }
+  .lembar { width: 148mm; min-height: 210mm; margin: 16px auto; background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,.12); padding: 12mm 11mm; display: flex; flex-direction: column; gap: 4mm; }
+  .lembar h1 { font-size: 26pt; margin: 0; }
+  .lembar h2 { font-size: 14pt; color: var(--hijau); margin: 2mm 0 1mm; }
+  .lembar p, .lembar li { font-size: 10.5pt; margin: 0; }
+  .les { background: var(--hijau); color: #fff; border-radius: 4mm; padding: 4mm 5mm; }
+  .les b { font-size: 15pt; font-family: Baloo, sans-serif; display: block; }
+  .langkah { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .langkah div { background: var(--krem); border-radius: 3mm; padding: 3mm; font-size: 9.5pt; }
+  .langkah span { display: inline-flex; width: 7mm; height: 7mm; border-radius: 50%; background: var(--oranye); color: #fff; font-weight: 700; align-items: center; justify-content: center; margin-bottom: 1mm; }
+  @media print { .isian, .atas { display: none; } body { background: #fff; } .lembar { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+<section class="isian">
+  <div class="bungkus">
+    <h2>Brosur untuk orang tua</h2>
+    <p class="kecil">Isi nama les dan kontak, lalu tekan Simpan PDF. Di HP: pilih "Simpan sebagai PDF" pada jendela cetak.</p>
+    <label for="les">Nama les</label><input id="les" maxlength="60" placeholder="Contoh: Les Cahaya">
+    <label for="kontak">Kontak (WhatsApp atau alamat)</label><input id="kontak" maxlength="80" placeholder="Contoh: WA 0812 3456 7890 · Jl. Merdeka 10">
+    <label for="biaya">Biaya per bulan (boleh kosong)</label><input id="biaya" maxlength="40" placeholder="Contoh: Rp220.000 per bulan">
+    <p style="margin-top:12px"><button class="tombol" type="button" onclick="window.print()">Simpan PDF</button></p>
+  </div>
+</section>
+
+<article class="lembar">
+  <div style="display:flex;align-items:center;gap:4mm">
+    <svg width="56" height="56" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#FFF6E5" stroke="#A0673A" stroke-width="3"/><ellipse cx="50" cy="58" rx="24" ry="22" fill="#A0673A"/><path d="M30 40 L24 14 L40 32 Z M70 40 L76 14 L60 32 Z" fill="#6B4423"/><circle cx="41" cy="52" r="4" fill="#2D3142"/><circle cx="59" cy="52" r="4" fill="#2D3142"/><ellipse cx="50" cy="66" rx="9" ry="6" fill="#FFF6E5"/><circle cx="50" cy="63" r="2.5" fill="#2D3142"/></svg>
+    <div><p class="logo" style="font-size:18pt">Pintar <span>Main</span></p><p class="kecil">Belajar dulu, main kemudian!</p></div>
+  </div>
+  <h1>Latihan 15 menit sehari di rumah, dipantau guru les.</h1>
+  <p>Untuk anak SD kelas 2–6. Matematika, membaca, Bahasa Inggris, dan persiapan TKA kelas 6, dalam bentuk latihan singkat dan game tanpa kalah.</p>
+  <div class="langkah">
+    <div><span>1</span><br>Anak latihan 15 menit sehari di HP.</div>
+    <div><span>2</span><br>Guru les memantau Senin, Rabu, Jumat.</div>
+    <div><span>3</span><br>Ayah dan Bunda menerima catatan mingguan.</div>
+  </div>
+  <h2>Yang Ayah dan Bunda dapat</h2>
+  <ul class="centang">
+    <li>Tahu topik yang masih lemah.</li>
+    <li>Catatan dari guru les setiap minggu.</li>
+    <li>Tanpa iklan dan tanpa pelacak. Batas waktu layar otomatis.</li>
+    <li>Data anak hanya nama panggilan dan kelas.</li>
+  </ul>
+  <div class="les">
+    <b id="cetak-les">Nama les Anda</b>
+    <span id="cetak-kontak">Kontak les</span><br>
+    <span id="cetak-biaya"></span>
+  </div>
+  <p class="kecil">Keberhasilan butuh dua pihak: guru memantau, Ayah dan Bunda mendukung di rumah.</p>
+</article>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var isi = { les: q.get('les') || '', kontak: q.get('kontak') || '', biaya: q.get('biaya') || '' };
+    ['les', 'kontak', 'biaya'].forEach(function (k) {
+      var masuk = document.getElementById(k);
+      var keluar = document.getElementById('cetak-' + k);
+      var bawaan = keluar.textContent;
+      masuk.value = isi[k];
+      var tulis = function () { keluar.textContent = masuk.value || (k === 'biaya' ? '' : bawaan); };
+      masuk.addEventListener('input', tulis);
+      tulis();
+    });
+  })();
+</script>
+</body>
+</html>

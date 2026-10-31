@@ -1,7 +1,7 @@
 import type { StatusPeriksa } from '../jenis';
 
 /**
- * Paket Gudang Ilmu kelas 6 (assets/paket/gudang-k6.json).
+ * Paket Gudang Ilmu per kelas (assets/paket/gudang-k2.json … gudang-k6.json).
  * Rancangan: docs/rancangan/01-produk/10-gudang-ilmu-bimbingan-dan-waktu.md bagian 2 dan 3.
  * Desain: desain/dari-claude-design/B01-Gudang-Ilmu.dc.html dan B02-Kartu-Ilmu.dc.html.
  *
@@ -114,9 +114,10 @@ export interface MapelGudang {
 }
 
 export interface PaketGudang {
-  id: 'gudang-k6';
+  /** "gudang-k2" … "gudang-k6" */
+  id: string;
   versi: string;
-  kelas: 6;
+  kelas: number;
   dibuat: string;
   sumber: string;
   mapel: MapelGudang[];

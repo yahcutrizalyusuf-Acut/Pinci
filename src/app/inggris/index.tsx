@@ -9,8 +9,10 @@ import { PAKET_INGGRIS } from '@/isi/inggris/paket';
 import { KepalaLayar } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
 import { Layar } from '@/komponen/Layar';
+import { useAkses } from '@/fitur/akses';
+import { LayarTerkunci } from '@/komponen/LayarTerkunci';
 
-export default function DaftarUnit() {
+function DaftarUnit() {
   const router = useRouter();
   const { anakAktif } = useData();
   const anak = anakAktif!;
@@ -67,4 +69,9 @@ export default function DaftarUnit() {
       </ScrollView>
     </Layar>
   );
+}
+
+export default function DaftarUnitTerjaga() {
+  const akses = useAkses();
+  return akses.inggris ? <DaftarUnit /> : <LayarTerkunci judul="Bahasa Inggris" />;
 }

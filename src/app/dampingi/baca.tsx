@@ -3,14 +3,16 @@ import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, Text } from 'react-native';
 
 import { huruf, warna } from '@/desain/token';
-import { paketTka } from '@/isi/tka/paket';
+import { useData } from '@/data/konteks';
+import { teksBacaKelas } from '@/isi/baca/paket';
 
 export default function PilihTeksDengar() {
   const router = useRouter();
+  const { anakAktif } = useData();
   return (
     <ScrollView contentContainerStyle={{ padding: 16, gap: 10 }}>
       <Text style={{ fontFamily: huruf.ortu, fontSize: 15, color: warna.teksKedua }}>Pilih teks yang belum pernah dibaca anak supaya hasilnya menunjukkan kemampuan sebenarnya.</Text>
-      {paketTka.teks.map((t) => (
+      {teksBacaKelas(anakAktif?.kelas ?? 6).map((t) => (
         <Pressable key={t.id} accessibilityRole="button" onPress={() => router.push({ pathname: '/baca/[id]', params: { id: t.id, mode: 'dampingi' } })} style={{ padding: 14, borderRadius: 16, backgroundColor: warna.putih }}>
           <Text style={{ fontFamily: huruf.anakTebal, fontSize: 16, color: warna.teks }}>
             {t.id} · {t.judul}

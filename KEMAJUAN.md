@@ -18,13 +18,21 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 | 11 APK | Selesai | Bangun APK hijau, artifact `pintar-main-apk`. Expo Go dilewati (belum ada `EXPO_TOKEN`) |
 | 12 Game tambahan | Selesai (30 Okt) | Susun Kubus dipermudah; 4 game baru berjenjang level 1–5 |
 | 13 Hubungkan HP anak | Selesai (31 Okt), perlu pasang SQL | Kode 6 angka, sinkron dua arah, HP anak tanpa PIN. Pasang `20261030000000_hubungkan_hp_anak.sql` dan nyalakan Allow anonymous sign-ins. Lihat `docs/CARA-MENYAMBUNG-SUPABASE.md` |
+| 14 Model usaha baru | Rancangan (31 Okt), menunggu persetujuan Acut | Kelas dengan pengawas, peran web, mitra les, pembayaran bertahap, pemasaran. `docs/rancangan/08-model-usaha/` |
+| 15 Minggu 1: kelas dan pengawas | Selesai (31 Okt), perlu pasang SQL | Kode kelas, persetujuan, paket, catatan pengawas di Kabar, tugas di beranda anak, halaman staf `/staf` (papan kelas, kelola kelas dan staf). Pasang `20261101000000_kelas_pengawas.sql` dan undang super admin. Lihat `docs/CARA-MENYAMBUNG-SUPABASE.md` |
+| 16 Isi kelas 2–5 tahap 1 | Selesai (31 Okt), perlu diperiksa | 24 teks Baca Ulang dan 24 kartu Gudang Ilmu. Lembar periksa: `docs/periksa-isi/Periksa-Isi-Kelas-2-5.pdf` |
+| 17 Langganan dan masukan | Selesai (31 Okt), perlu pasang SQL | Kunci paket, status langganan, catat pembayaran QRIS, harga, tagihan mitra, Kirim masukan, pertanyaan mingguan, catatan pemakaian (dengan izin) dan teknis, pendaftar, laporan mingguan. Pasang `20261102000000_langganan_masukan.sql` |
+| 18 Halaman penjelasan dan brosur | Selesai (31 Okt), perlu diterbitkan | Folder `halaman/` dan alur "Terbitkan halaman penjelasan". Lihat `docs/CARA-MENYAMBUNG-SUPABASE.md` |
+| 19 Isi kelas 2–5 tahap 2 | Selesai (31 Okt), perlu diperiksa | 12 teks dan 12 kartu per kelas. Lembar periksa: `docs/periksa-isi/Periksa-Isi-Kelas-2-5.pdf` (91 halaman) |
 
 ## Berikutnya
 
 1. Keputusan Acut 29 Okt sudah diterapkan (`docs/rancangan/keputusan.md` bagian K).
 2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
 3. Pasang SQL hubungkan HP anak di Supabase, lalu uji dua HP sungguhan (orang tua dan anak).
-4. Lanjut ke kelas 1–5.
+4. Semua yang bisa dibangun sebelum 4 Januari sudah selesai (rancangan 08 bagian 10a). Tersisa pekerjaan Acut: pasang SQL (kelas, lalu langganan), undang super admin, periksa isi kelas 2–5, terbitkan halaman penjelasan, siapkan QRIS, uji tertutup Google Play, uji keluarga.
+5. Setelah uji keluarga: hitung ulang harga, perbaiki isi dari catatan Acut/guru, lalu langganan Google Play bila syaratnya terpenuhi.
+6. Kelas 1 menyusul setelah kelas 2–6 berjalan.
 
 **Perintah untuk melanjutkan:** "Lanjutkan pembangunan dari KEMAJUAN.md."
 

@@ -6,6 +6,9 @@ import {
   buatPengirimSupabase,
   daftarkanKeluarga,
   daftarPerangkat,
+  gabungKelas,
+  gantiPaket,
+  keluarKelas,
   keLokal,
   keSnake,
   masukAnonim,
@@ -232,4 +235,102 @@ test('masuk anonim, tukar kode, buat kode, daftar dan putuskan perangkat', async
 test('masuk anonim gagal (fitur belum dinyalakan di Supabase) mengembalikan null', async () => {
   const { f } = fetchTiruan(() => ({ ok: false, status: 422 }));
   expect(await masukAnonim({ url: 'https://x', kunciAnon: 'anon', fetchFn: f })).toBeNull();
+});
+
+test('tanda dibaca (catatan) dan selesai (tugas) dikirim lewat fungsi server, dikelompokkan per waktu', async () => {
+  const { f, panggilan } = fetchTiruan(() => ({ ok: true, json: 1 }));
+  const p = buatPengirimSupabase({ url: 'https://x.supabase.co', kunciAnon: 'anon', fetchFn: f, ambilToken: async () => 'tok', ambilKeluargaId: async () => 'kel' });
+  const item = (tabel: 'tugas' | 'catatan_pengawas', id: string, baris: object) => ({ antrean: { id: `q-${id}`, tabel, barisId: id, dibuat: '', coba: 0 }, baris: { id, ...baris } });
+  const diterima = await p.kirim([
+    item('tugas', 't1', { selesai: '2026-11-02T08:00:00.000Z' }),
+    item('tugas', 't2', { selesai: '2026-11-02T08:00:00.000Z' }),
+    item('tugas', 't3', { selesai: '2026-11-03T08:00:00.000Z' }),
+    item('tugas', 't4', {}),
+    item('catatan_pengawas', 'c1', { dibaca: '2026-11-02T09:00:00.000Z', isi: 'jangan dikirim' }),
+  ]);
+  expect(diterima.sort()).toEqual(['q-c1', 'q-t1', 'q-t2', 'q-t3', 'q-t4']);
+  const rpc = panggilan.map((x) => ({ fungsi: x.url.split('/rpc/')[1], isi: JSON.parse(x.init.body as string) }));
+  expect(rpc).toEqual([
+    { fungsi: 'tandai_catatan_dibaca', isi: { p_ids: ['c1'], p_waktu: '2026-11-02T09:00:00.000Z' } },
+    { fungsi: 'tandai_tugas_selesai', isi: { p_ids: ['t1', 't2'], p_waktu: '2026-11-02T08:00:00.000Z' } },
+    { fungsi: 'tandai_tugas_selesai', isi: { p_ids: ['t3'], p_waktu: '2026-11-03T08:00:00.000Z' } },
+  ]);
+  // Tidak pernah menulis langsung ke tabel tugas/catatan (hanya pengawas yang boleh).
+  expect(panggilan.some((x) => /\/rest\/v1\/(tugas|catatan_pengawas)\?/.test(x.url))).toBe(false);
+});
+
+test('tarik disaring keluarga HP ini (akun yang juga staf tidak menarik anak keluarga lain)', async () => {
+  const { f, panggilan } = fetchTiruan(() => ({ ok: true, json: [] }));
+  const p = buatPengirimSupabase({ url: 'https://x.supabase.co', kunciAnon: 'anon', fetchFn: f, ambilToken: async () => 'tok', ambilKeluargaId: async () => 'kel-1' });
+  await p.tarik!('sesi', { sejak: null, offset: 0, batas: 500 });
+  await p.tarik!('tugas', { sejak: '2026-11-02T00:00:00.000Z', offset: 0, batas: 500 });
+  expect(panggilan[0].url).toContain('&keluarga_id=eq.kel-1');
+  expect(panggilan[1].url).toContain('diubah=gte.');
+  expect(panggilan[1].url).toContain('&keluarga_id=eq.kel-1');
+});
+
+test('baris tugas dan catatan server menjadi baris lokal', () => {
+  expect(keLokal('tugas', { id: 't', keluarga_id: 'k', anak_id: 'a', kelas_id: 'kl', staf_id: 's', jenis: 'tka', rujukan: null, judul: 'J', pesan: null, dibuat: '2026-11-02 01:00:00+00', selesai: null, dibatalkan: false, diubah: 'x' })).toEqual({
+    id: 't',
+    keluarga_id: 'k',
+    anak_id: 'a',
+    kelasId: 'kl',
+    jenis: 'tka',
+    judul: 'J',
+    dibuat: '2026-11-02T01:00:00.000Z',
+    dibatalkan: false,
+  });
+  expect(keLokal('catatan_pengawas', { id: 'c', keluarga_id: 'k', anak_id: 'a', kelas_id: 'kl', isi: 'I', waktu: '2026-11-02T01:00:00Z', dibaca: null })).toMatchObject({ kelasId: 'kl', isi: 'I' });
+});
+
+test('kelas keluarga, gabung kelas, ganti paket, keluar kelas', async () => {
+  const jawaban: Record<string, { ok: boolean; status?: number; json?: unknown }> = {
+    kelas_keluarga: { ok: true, json: [{ anggota_id: 'ag', anak_id: 'a', kelas_id: 'k', kelas_nama: 'Kancil', pengawas_nama: null, paket: 'dasar', masuk: '2026-11-02 01:00:00+00', coba_sampai: '2026-11-16 01:00:00+00' }] },
+    gabung_kelas: { ok: true, json: { ok: true, anggota_id: 'ag', kelas_id: 'k', kelas_nama: 'Kancil', pengawas_nama: 'Kak Nisa', paket: 'lengkap', coba_sampai: '2026-11-16T01:00:00Z' } },
+    ganti_paket: { ok: true, json: { ok: true } },
+    keluar_kelas: { ok: true, json: 1 },
+  };
+  const { f, panggilan } = fetchTiruan((x) => jawaban[x.url.split('/rpc/')[1]] ?? { ok: false });
+  const opsi = { url: 'https://x.supabase.co', kunciAnon: 'anon', fetchFn: f, ambilToken: async () => 'tok' };
+  const k = await buatPengirimSupabase(opsi).kelasKeluarga!();
+  expect(k).toEqual([{ id: 'ag', anak_id: 'a', kelasId: 'k', kelasNama: 'Kancil', paket: 'dasar', masuk: '2026-11-02T01:00:00.000Z', cobaSampai: '2026-11-16T01:00:00.000Z' }]);
+  const g = await gabungKelas(opsi, { kode: 'knc4r7', anakId: 'a', paket: 'lengkap', versiTeks: 'kelas-v1', setujuPemakaian: true });
+  expect(g).toMatchObject({ ok: true, anggota: { kelasNama: 'Kancil', pengawasNama: 'Kak Nisa', paket: 'lengkap', cobaSampai: '2026-11-16T01:00:00.000Z' } });
+  expect(JSON.parse(panggilan[1].init.body as string)).toEqual({ p_kode: 'knc4r7', p_anak_id: 'a', p_paket: 'lengkap', p_versi_teks: 'kelas-v1', p_setuju_pemakaian: true });
+  expect(await gantiPaket(opsi, 'a', 'dasar')).toBe(true);
+  expect(await keluarKelas(opsi, 'a')).toBe(true);
+
+  jawaban.gabung_kelas = { ok: true, json: { ok: false, alasan: 'penuh' } };
+  expect(await gabungKelas(opsi, { kode: 'X', anakId: 'a', paket: 'dasar', versiTeks: 'v', setujuPemakaian: false })).toEqual({ ok: false, alasan: 'penuh' });
+  jawaban.gabung_kelas = { ok: false, status: 500 };
+  expect(await gabungKelas(opsi, { kode: 'X', anakId: 'a', paket: 'dasar', versiTeks: 'v', setujuPemakaian: false })).toEqual({ ok: false, alasan: 'jaringan' });
+  expect(await gabungKelas({ ...opsi, ambilToken: async () => null }, { kode: 'X', anakId: 'a', paket: 'dasar', versiTeks: 'v', setujuPemakaian: false })).toEqual({ ok: false, alasan: 'belum_masuk' });
+});
+
+test('kelas keluarga membawa status langganan dan persetujuan pemakaian', async () => {
+  const { f } = fetchTiruan(() => ({
+    ok: true,
+    json: [{ anggota_id: 'ag', anak_id: 'a', kelas_id: 'k', kelas_nama: 'K', pengawas_nama: 'N', paket: 'lengkap', masuk: '2026-11-02T01:00:00Z', coba_sampai: '2026-11-16T01:00:00Z', berlaku_sampai: '2026-12-16T01:00:00Z', status: 'aktif', setuju_pemakaian: true }],
+  }));
+  const k = await buatPengirimSupabase({ url: 'https://x.supabase.co', kunciAnon: 'anon', fetchFn: f, ambilToken: async () => 'tok' }).kelasKeluarga!();
+  expect(k[0]).toMatchObject({ status: 'aktif', berlakuSampai: '2026-12-16T01:00:00.000Z', setujuPemakaian: true });
+});
+
+test('masukan membawa id orang tua; catatan yang ditolak server dibuang, bukan dicoba tanpa henti; HP anak tidak mengirim masukan', async () => {
+  const { f, panggilan } = fetchTiruan((p) => (p.url.includes('/catatan_pemakaian') ? { ok: false, status: 403 } : { ok: true }));
+  const item = (tabel: 'masukan' | 'catatan_pemakaian', id: string, baris: object) => ({ antrean: { id: `q-${id}`, tabel, barisId: id, dibuat: '', coba: 0 }, baris: { id, ...baris } });
+  const ortu = buatPengirimSupabase({ url: 'https://x.supabase.co', kunciAnon: 'anon', fetchFn: f, ambilToken: async () => 'tok', ambilKeluargaId: async () => 'kel', ambilPenggunaId: async () => 'u-1' });
+  const diterima = await ortu.kirim([
+    item('masukan', 'm1', { keluarga_id: 'kel', jenis: 'saran', isi: 'Bagus', versiAplikasi: '0.2.0', waktu: '2026-11-02T00:00:00Z' }),
+    item('catatan_pemakaian', 'c1', { keluarga_id: 'kel', anak_id: 'a', kejadian: 'selesai', layar: 'lancar', waktu: '2026-11-02T00:00:00Z' }),
+  ]);
+  expect(diterima.sort()).toEqual(['q-c1', 'q-m1']);
+  const isi = JSON.parse(panggilan.find((p) => p.url.includes('/masukan'))!.init.body as string);
+  expect(isi[0]).toMatchObject({ orang_tua_id: 'u-1', versi_aplikasi: '0.2.0', jenis: 'saran' });
+  expect((panggilan.find((p) => p.url.includes('/masukan'))!.init.headers as Record<string, string>).Prefer).toContain('ignore-duplicates');
+
+  const { f: f2, panggilan: p2 } = fetchTiruan(() => ({ ok: true }));
+  const anak = buatPengirimSupabase({ url: 'https://x.supabase.co', kunciAnon: 'anon', fetchFn: f2, ambilToken: async () => 'tok', ambilKeluargaId: async () => 'kel', ambilPeran: async () => 'anak' });
+  expect(await anak.kirim([item('masukan', 'm2', { keluarga_id: 'kel', jenis: 'saran', isi: 'x', waktu: '' })])).toEqual(['q-m2']);
+  expect(p2).toHaveLength(0);
 });

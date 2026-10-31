@@ -1,5 +1,7 @@
 # Pembayaran (Disiapkan, Belum Dibangun)
 
+> **31 Okt 2026:** urutan jalur diubah. Tahap awal bayar di luar aplikasi (QRIS), Google Play menyusul. Lihat `08-model-usaha/01-model-usaha-dan-pengawas.md` bagian 6.
+
 **Ringkas:** (1) Selama masa gratis, pembayaran **tidak dibangun**. Yang disiapkan hanya tabel hak akses dan saklar fitur, supaya saat berbayar dibuka tidak ada perombakan. (2) Jalur utama nanti adalah **langganan Google Play** (potongan 15% untuk langganan berulang). Jalur kedua adalah **QRIS lewat halaman web** untuk orang tua (biaya ± 0,7%), kalau aturan Google Play di Indonesia mengizinkan. Mahkamah Agung sudah menguatkan putusan KPPU (Maret 2026) yang mewajibkan Google membuka pembayaran alternatif, tetapi pelaksanaannya belum terkonfirmasi. (3) Harga, bentuk, dan waktu berbayar menunggu **diskusi khusus** (keputusan Acut 19 Okt). Pajak dan badan usaha penerima uang masuk daftar pertanyaan ahli hukum dan konsultan pajak.
 
 Tahap 3, butir 8. Disusun 19 Oktober 2026.

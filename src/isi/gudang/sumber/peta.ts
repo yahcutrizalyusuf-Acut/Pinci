@@ -10,7 +10,7 @@ import { KARTU_MAT_UKUR } from './mat-ukur';
  * Topik tanpa kartu otomatis `segera: true`.
  */
 
-interface TopikMentah {
+export interface TopikMentah {
   id: string;
   judul: string;
   ringkas: string;
@@ -156,7 +156,7 @@ const PETA_BI: TopikMentah[] = [
   { id: 'bi6-puisi', judul: 'Puisi dan perasaan', ringkas: 'Perasaan dari pilihan kata.', prasyarat: ['bi6-arti-kata'], bersamaOrtu: true },
 ];
 
-function susunMapel(kode: KodeMapel, peta: TopikMentah[], kartu: KartuMentah[]): MapelGudang {
+export function susunMapel(kode: KodeMapel, peta: TopikMentah[], kartu: KartuMentah[]): MapelGudang {
   const kartuPer = new Map<string, KartuMentah>();
   for (const k of kartu) {
     if (kartuPer.has(k.topik)) throw new Error(`Kartu ganda untuk ${k.topik}`);
@@ -194,5 +194,27 @@ export function bangunPaketGudang(): PaketGudang {
       susunMapel('mat', PETA_MAT, [...KARTU_MAT_BILANGAN, ...KARTU_MAT_UKUR, ...KARTU_MAT_DATA]),
       susunMapel('bi', PETA_BI, KARTU_BI),
     ],
+  };
+}
+
+/** Isi Gudang Ilmu satu kelas (kelas 2–5): peta topik dan kartunya. */
+export interface SumberKelas {
+  kelas: number;
+  versi: string;
+  dibuat: string;
+  petaMat: TopikMentah[];
+  petaBi: TopikMentah[];
+  kartuMat: KartuMentah[];
+  kartuBi: KartuMentah[];
+}
+
+export function bangunPaketKelas(s: SumberKelas): PaketGudang {
+  return {
+    id: `gudang-k${s.kelas}`,
+    versi: s.versi,
+    kelas: s.kelas,
+    dibuat: s.dibuat,
+    sumber: `Ditulis sendiri mengikuti capaian pembelajaran kelas ${s.kelas} (belum diperiksa guru).`,
+    mapel: [susunMapel('mat', s.petaMat, s.kartuMat), susunMapel('bi', s.petaBi, s.kartuBi)],
   };
 }
