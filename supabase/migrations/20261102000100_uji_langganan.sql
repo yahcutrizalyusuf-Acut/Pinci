@@ -1,3 +1,4 @@
+-- Tanggal bulan uji memakai hari_ini_wib() (bukan current_date) karena data uji dicatat dengan jam WIB.
 -- Uji wajib untuk langganan, masukan, catatan pemakaian, pendaftar, laporan, dan tagihan mitra
 -- (20261102000000_langganan_masukan.sql). Selesai tanpa pesan "GAGAL" = lulus. Semua dibatalkan di akhir (rollback).
 begin;
@@ -170,20 +171,20 @@ begin;
     perform atur_harga('mitra', 75000);
     if (daftar_harga() ->> 'mitra')::int <> 75000 then raise exception 'GAGAL: harga tidak berubah'; end if;
     if (laporan_mingguan() ->> 'uang_minggu_ini')::int <> 210000 then raise exception 'GAGAL: uang minggu ini super admin'; end if;
-    d := tagihan_mitra(current_date);
+    d := tagihan_mitra(hari_ini_wib());
     if jsonb_array_length(d) <> 1 or (d -> 0 ->> 'murid_aktif')::int <> 1 or (d -> 0 ->> 'total')::int <> 75000 then raise exception 'GAGAL: tagihan mitra: %', d; end if;
-    if (tagihan_mitra((current_date - interval '2 months')::date) -> 0 ->> 'murid_aktif')::int <> 0 then raise exception 'GAGAL: murid tanpa latihan bulan itu ikut ditagih'; end if;
+    if (tagihan_mitra((hari_ini_wib() - interval '2 months')::date) -> 0 ->> 'murid_aktif')::int <> 0 then raise exception 'GAGAL: murid tanpa latihan bulan itu ikut ditagih'; end if;
   end $$;
 
   -- ---------- 5. mitra hanya melihat tagihannya; pengawas tidak melihat uang ----------
   set local request.jwt.claims = '{"sub": "00000000-0000-0000-0000-0000000000f1", "role": "authenticated"}';
   do $$ begin
-    if jsonb_array_length(tagihan_mitra(current_date)) <> 1 then raise exception 'GAGAL: mitra tidak melihat tagihannya'; end if;
+    if jsonb_array_length(tagihan_mitra(hari_ini_wib())) <> 1 then raise exception 'GAGAL: mitra tidak melihat tagihannya'; end if;
     if jsonb_array_length(daftar_langganan()) <> 0 then raise exception 'GAGAL: mitra melihat langganan keluarga'; end if;
   end $$;
   set local request.jwt.claims = '{"sub": "00000000-0000-0000-0000-0000000000e1", "role": "authenticated"}';
   do $$ begin
-    if jsonb_array_length(tagihan_mitra(current_date)) <> 0 then raise exception 'GAGAL: pengawas melihat tagihan'; end if;
+    if jsonb_array_length(tagihan_mitra(hari_ini_wib())) <> 0 then raise exception 'GAGAL: pengawas melihat tagihan'; end if;
     if jsonb_array_length(daftar_langganan()) <> 0 then raise exception 'GAGAL: pengawas melihat langganan'; end if;
     if (status_anak_kelas('40000000-0000-0000-0000-000000000001') ->> '20000000-0000-0000-0000-0000000000a1') <> 'aktif' then raise exception 'GAGAL: status di papan pengawas'; end if;
     begin
