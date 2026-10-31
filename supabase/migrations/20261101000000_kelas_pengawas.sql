@@ -354,10 +354,12 @@ create or replace function kode_kelas_acak() returns text
 as $$
 declare
   huruf constant text := 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
-  b bytea := gen_random_bytes(6);
+  -- gen_random_uuid() bawaan Postgres. Jangan pakai gen_random_bytes: di Supabase pgcrypto ada di skema
+  -- "extensions", yang tidak ada di search_path, sehingga fungsi itu "tidak ditemukan".
+  h text := replace(gen_random_uuid()::text, '-', '');
   v text := '';
 begin
-  for i in 0..5 loop v := v || substr(huruf, (get_byte(b, i) % 31) + 1, 1); end loop;
+  for i in 0..5 loop v := v || substr(huruf, (('x' || substr(h, i * 2 + 1, 2))::bit(8)::int % 31) + 1, 1); end loop;
   return v;
 end $$;
 
