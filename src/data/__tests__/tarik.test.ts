@@ -213,3 +213,36 @@ test('tanpa pengirim (mode lokal) tarik tidak melakukan apa pun', async () => {
   expect(await lokal.tarik()).toBe(0);
   expect(await lokal.sinkronDuaArah()).toEqual({ terkirim: 0, sisa: 0, ditarik: 0 });
 });
+
+test('kirim otomatis: pesan langsung dikirim sekitar 1,5 detik kemudian, banyak simpanan jadi satu kali', async () => {
+  jest.useFakeTimers();
+  try {
+    const server = new ServerTiruan();
+    const dasar = server.pengirim('ortu');
+    let jumlahKirim = 0;
+    const r = await buat({
+      ...dasar,
+      kirim: async (item) => {
+        jumlahKirim++;
+        return dasar.kirim(item);
+      },
+    });
+    await r.buatKeluarga('1234');
+    const a = await r.tambahAnak({ nama: 'Rani', kelas: 6, hewan: 'kucing' });
+    // dimatikan secara bawaan: tidak ada pengiriman sendiri
+    await jest.advanceTimersByTimeAsync(5000);
+    expect(jumlahKirim).toBe(0);
+    r.aturKirimOtomatis(true);
+    await r.kirimPesan({ anak_id: a.id, dari: 'orang_tua', jenis: 'teks', isi: 'Hai' });
+    await r.kirimPesan({ anak_id: a.id, dari: 'orang_tua', jenis: 'teks', isi: 'Hai lagi' });
+    await jest.advanceTimersByTimeAsync(1000);
+    expect(jumlahKirim).toBe(0);
+    await jest.advanceTimersByTimeAsync(1000);
+    expect(jumlahKirim).toBe(1);
+    expect([...(server.tabel.get('pesan')?.values() ?? [])]).toHaveLength(2);
+    expect(await r.antreanBelumTerkirim()).toHaveLength(0);
+    r.aturKirimOtomatis(false);
+  } finally {
+    jest.useRealTimers();
+  }
+});

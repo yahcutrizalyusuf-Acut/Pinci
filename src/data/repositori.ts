@@ -149,6 +149,31 @@ export class Repositori {
     if (!TABEL_SINKRON.includes(tabel)) return;
     const item: ItemAntrean = { id: buatId(), tabel, barisId: baris.id, dibuat: sekarangIso(), coba: 0 };
     await this.gudang.pasang('antrean', { ...item, ...{ tabel } });
+    this.jadwalkanKirim();
+  }
+
+  private kirimOtomatis = false;
+  private tundaKirim: ReturnType<typeof setTimeout> | null = null;
+
+  /**
+   * Aplikasi menyalakan ini: setiap ada yang disimpan, kirim dan tarik sekitar 1,5 detik kemudian
+   * (banyak simpanan beruntun jadi satu kali), tidak menunggu putaran sinkron tiap menit.
+   * Mati secara bawaan supaya uji tetap bisa mengatur sendiri kapan mengirim.
+   */
+  aturKirimOtomatis(nyala: boolean) {
+    this.kirimOtomatis = nyala;
+    if (!nyala && this.tundaKirim) {
+      clearTimeout(this.tundaKirim);
+      this.tundaKirim = null;
+    }
+  }
+
+  private jadwalkanKirim() {
+    if (!this.kirimOtomatis || !this.pengirim || this.tundaKirim) return;
+    this.tundaKirim = setTimeout(() => {
+      this.tundaKirim = null;
+      this.sinkronDuaArah().catch(() => undefined);
+    }, 1500);
   }
 
   private async simpan<T extends NamaTabel>(tabel: T, baris: PetaTabel[T]) {
@@ -563,10 +588,16 @@ export class Repositori {
   async tandaiDibaca(anakId: string, dari: Pesan['dari']) {
     const daftar = await this.daftarPesan(anakId);
     const waktu = sekarangIso();
+    let berubah = false;
     for (const p of daftar) {
-      if (p.dari === dari && !p.dibaca) await this.simpan('pesan', { ...p, dibaca: waktu });
+      if (p.dari === dari && !p.dibaca) {
+        await this.simpan('pesan', { ...p, dibaca: waktu });
+        berubah = true;
+      }
     }
-    this.ubah();
+    // Hanya memberi tahu layar bila ada yang berubah. Layar memanggil ini saat memuat; tanpa syarat ini
+    // pemuatan memicu pemberitahuan, yang memicu pemuatan lagi, tanpa henti.
+    if (berubah) this.ubah();
   }
 
   // ---------- hapus semua ----------

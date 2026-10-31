@@ -64,7 +64,8 @@
       "/node_modules/",
       "/arsip-flutter/",
       "/bahan/",
-      "/dist/"
+      "/dist/",
+      "/dist-uji/"
     ]
   }
 }

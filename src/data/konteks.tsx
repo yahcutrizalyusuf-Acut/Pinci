@@ -74,6 +74,7 @@ export function PenyediaData({ children, repoUji }: { children: ReactNode; repoU
     let batal = false;
     (async () => {
       await repo.siapkan();
+      repo.aturKirimOtomatis(true);
       const aktif = await repo.nilai<string>('anak_aktif');
       if (batal) return;
       setAnakAktifId(aktif);
@@ -96,6 +97,7 @@ export function PenyediaData({ children, repoUji }: { children: ReactNode; repoU
     return () => {
       batal = true;
       lepas();
+      repo.aturKirimOtomatis(false);
       langgan.remove();
       if (timer.current) clearInterval(timer.current);
     };

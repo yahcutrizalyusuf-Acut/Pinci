@@ -37,11 +37,6 @@ async function telepon(peramban) {
 (async () => {
   const peramban = await chromium.launch();
   const ortu = await telepon(peramban);
-  const hitungan = new Map();
-  ortu.p.on('request', (r) => {
-    const k = r.method() + ' ' + new URL(r.url()).pathname.replace(/^\/rest\/v1\//, '');
-    hitungan.set(k, (hitungan.get(k) || 0) + 1);
-  });
   const anak = await telepon(peramban);
   const t = (ms = 700) => new Promise((r) => setTimeout(r, ms));
   const foto = async (hp, nama) => {
@@ -161,12 +156,7 @@ async function telepon(peramban) {
   // ---------- orang tua mengirim pesan → anak menerima ----------
   await ortu.p.getByLabel(/^Rani,/).first().click();
   await t(1200);
-  await foto(ortu, '8b-ortu-ruang-anak');
-  const kotak = ortu.p.getByLabel('Tulis pesan untuk anak').last();
-  await kotak.click();
-  await ortu.p.keyboard.type('Ayah bangga sama kamu', { delay: 20 });
-  await t(300);
-  console.log('  isi kotak:', JSON.stringify(await kotak.inputValue()));
+  await ortu.p.getByLabel('Tulis pesan untuk anak').last().fill('Ayah bangga sama kamu', { timeout: 8000 });
   await ortu.p.getByLabel('Kirim', { exact: true }).last().click();
   await t(1500);
   await anak.p.goto(D + '/anak');
