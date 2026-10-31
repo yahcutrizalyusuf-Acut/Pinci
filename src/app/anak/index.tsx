@@ -24,7 +24,7 @@ export default function BerandaBelajar() {
       const antre = (await repo.antreanBelumTerkirim()).length;
       const h = await hariIni(repo, anak);
       const lancar = await infoLancarAnak(repo, anak);
-      return { terakhir, antre, h, lancar };
+      return { terakhir, antre, h, lancar, diputus: await repo.hpDiputus() };
     },
     null,
     [anak.id],
@@ -67,6 +67,13 @@ export default function BerandaBelajar() {
           judul={`Halo, ${anak.nama}!`}
           teks={data?.h.inti ? 'Inti hari ini sudah selesai. Pintar itu seru!' : 'Yuk, kita cari tahu hari ini.'}
         />
+
+        {data?.diputus ? (
+          <View style={{ padding: 14, borderRadius: 16, backgroundColor: warna.oranyeMuda, gap: 4 }}>
+            <Text style={{ fontFamily: huruf.anakTebal, fontSize: 16, color: warna.teks }}>HP ini tidak lagi terhubung</Text>
+            <Text style={{ fontFamily: huruf.anak, fontSize: 15, color: warna.teks }}>Kamu tetap bisa belajar di sini. Minta {sapaan} menghubungkan HP ini lagi.</Text>
+          </View>
+        ) : null}
 
         {data?.terakhir ? (
           <Pressable

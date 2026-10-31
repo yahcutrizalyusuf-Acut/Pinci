@@ -16,8 +16,22 @@ export function opsiSupabase(): Pick<OpsiSupabase, 'url' | 'kunciAnon'> | null {
   return url && kunciAnon ? { url, kunciAnon } : null;
 }
 
-export function buatPengirim(ambilToken: () => Promise<string | null>, ambilKeluargaId: () => Promise<string | null>): PengirimSinkron | null {
+/** Penyedia identitas untuk berbicara dengan server (token, keluarga, peran HP). */
+export interface PenyediaServer {
+  ambilToken: () => Promise<string | null>;
+  ambilKeluargaId: () => Promise<string | null>;
+  ambilPeran: () => Promise<'ortu' | 'anak'>;
+  ambilPenggunaId: () => Promise<string | null>;
+}
+
+/** Pengaturan lengkap untuk berbicara dengan server; null bila mode lokal. */
+export function opsiServer(p: PenyediaServer): OpsiSupabase | null {
   const o = opsiSupabase();
   if (process.env.EXPO_PUBLIC_DATA_MODE !== 'supabase' || !o) return null;
-  return buatPengirimSupabase({ ...o, ambilToken, ambilKeluargaId });
+  return { ...o, ...p };
+}
+
+export function buatPengirim(p: PenyediaServer): PengirimSinkron | null {
+  const o = opsiServer(p);
+  return o ? buatPengirimSupabase(o) : null;
 }

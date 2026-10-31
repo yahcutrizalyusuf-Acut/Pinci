@@ -2,13 +2,14 @@
  * Konteks aplikasi: repositori data, anak yang sedang aktif, dan kunci mode orang tua.
  */
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { AppState } from 'react-native';
 
 import { kiniMs } from './alat';
 import { buatGudang } from './buat-gudang';
 import type { Anak, Keluarga } from './jenis';
 import { Repositori } from './repositori';
-import { buatPengirim, opsiSupabase } from './sinkron';
-import { segarkanSesi, type Sesimasuk } from './supabase';
+import { opsiServer, opsiSupabase } from './sinkron';
+import { buatPengirimSupabase, segarkanSesi, type OpsiSupabase, type Sesimasuk } from './supabase';
 
 interface NilaiKonteks {
   repo: Repositori;
@@ -21,6 +22,8 @@ interface NilaiKonteks {
   ortuTerbuka: boolean;
   bukaOrtu: () => void;
   kunciOrtu: () => void;
+  /** pengaturan bicara dengan server (token, keluarga, peran); null bila mode lokal */
+  server: OpsiSupabase | null;
   /** naik setiap data berubah — dipakai layar untuk memuat ulang */
   versi: number;
   segarkan: () => Promise<void>;
@@ -32,10 +35,10 @@ const Konteks = createContext<NilaiKonteks | null>(null);
 const LAMA_ORTU_MS = 15 * 60 * 1000;
 
 export function PenyediaData({ children, repoUji }: { children: ReactNode; repoUji?: Repositori }) {
-  const repo = useMemo(() => {
-    if (repoUji) return repoUji;
-    const pengirim = buatPengirim(
-      async () => {
+  const { repo, server } = useMemo(() => {
+    if (repoUji) return { repo: repoUji, server: null };
+    const server = opsiServer({
+      ambilToken: async () => {
         const sesi = await r.nilai<Sesimasuk>('sesi_masuk');
         if (!sesi) return null;
         if (sesi.berakhir - kiniMs() > 60_000) return sesi.tokenAkses;
@@ -45,10 +48,12 @@ export function PenyediaData({ children, repoUji }: { children: ReactNode; repoU
         await r.aturNilai('sesi_masuk', baru);
         return baru.tokenAkses;
       },
-      async () => (await r.keluarga())?.id ?? null,
-    );
-    const r: Repositori = new Repositori(buatGudang(), pengirim);
-    return r;
+      ambilKeluargaId: async () => (await r.keluarga())?.id ?? null,
+      ambilPeran: async () => ((await r.keluarga())?.hp === 'anak' ? 'anak' : 'ortu'),
+      ambilPenggunaId: async () => (await r.nilai<Sesimasuk>('sesi_masuk'))?.penggunaId ?? null,
+    });
+    const r: Repositori = new Repositori(buatGudang(), server ? buatPengirimSupabase(server) : null);
+    return { repo: r, server };
   }, [repoUji]);
   const [siap, setSiap] = useState(false);
   const [keluarga, setKeluarga] = useState<Keluarga | null>(null);
@@ -74,19 +79,24 @@ export function PenyediaData({ children, repoUji }: { children: ReactNode; repoU
       setAnakAktifId(aktif);
       await segarkan();
       setSiap(true);
-      repo.sinkron().catch(() => undefined);
+      repo.sinkronDuaArah().catch(() => undefined);
     })();
     const lepas = repo.dengar(() => {
       segarkan().catch(() => undefined);
     });
-    // Coba kirim antrean tiap 15 menit selama aplikasi terbuka.
+    // Kirim antrean dan tarik data baru tiap menit selama aplikasi terbuka (yang gagal dicoba lagi dengan jeda sendiri).
     timer.current = setInterval(() => {
-      repo.sinkron().catch(() => undefined);
+      repo.sinkronDuaArah().catch(() => undefined);
       setDetak(kiniMs());
     }, 60_000);
+    // Saat aplikasi dibuka kembali, langsung sinkron supaya pesan dan hasil terbaru tampil.
+    const langgan = AppState.addEventListener('change', (status) => {
+      if (status === 'active') repo.sinkronDuaArah().catch(() => undefined);
+    });
     return () => {
       batal = true;
       lepas();
+      langgan.remove();
       if (timer.current) clearInterval(timer.current);
     };
   }, [repo, segarkan]);
@@ -113,6 +123,7 @@ export function PenyediaData({ children, repoUji }: { children: ReactNode; repoU
       setOrtuSampai(kini + LAMA_ORTU_MS);
     },
     kunciOrtu: () => setOrtuSampai(0),
+    server,
     versi,
     segarkan,
   };

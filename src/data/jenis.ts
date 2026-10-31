@@ -26,6 +26,8 @@ export interface Keluarga {
   /** penanda nama panggilan orang tua untuk pesan, mis. "Ayah" atau "Bunda" */
   sapaanOrtu: string;
   modeData: 'lokal' | 'supabase';
+  /** 'anak' = HP anak yang dihubungkan dengan kode (tanpa PIN; pengaturan lewat HP orang tua). Kosong = HP orang tua. */
+  hp?: 'ortu' | 'anak';
 }
 
 export interface Anak {
