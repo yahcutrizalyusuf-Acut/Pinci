@@ -1,0 +1,836 @@
+{
+  "id": "gudang-k3",
+  "versi": "0.1.0",
+  "kelas": 3,
+  "dibuat": "2026-10-31",
+  "sumber": "Ditulis sendiri mengikuti capaian pembelajaran kelas 3 (belum diperiksa guru).",
+  "mapel": [
+    {
+      "kode": "mat",
+      "topik": [
+        {
+          "id": "mat3-kali-bagi",
+          "judul": "Perkalian dan pembagian",
+          "ringkas": "Bagi adalah kebalikan kali.",
+          "urutan": 1,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-kali-bagi",
+            "penjelasan": [
+              {
+                "teks": "Pembagian adalah membagi sama banyak. 12 : 3 artinya 12 dibagi menjadi 3 kelompok sama besar.",
+                "gambar": {
+                  "jenis": "petak",
+                  "baris": 3,
+                  "kolom": 4,
+                  "terisi": 12
+                }
+              },
+              {
+                "teks": "Pembagian adalah kebalikan perkalian. Karena 3 × 4 = 12, maka 12 : 3 = 4."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "7 × 8 = ?",
+                "langkah": [
+                  "Ingat: 7 × 8 = 56.",
+                  "Periksa: 56 : 8 = 7."
+                ],
+                "jawaban": "56"
+              },
+              {
+                "soal": "Ada 24 jeruk dibagi rata ke 4 keranjang. Berapa jeruk tiap keranjang?",
+                "langkah": [
+                  "Kalimat baginya 24 : 4.",
+                  "4 × 6 = 24, jadi 24 : 4 = 6."
+                ],
+                "jawaban": "6"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-kali-bagi-s1",
+                "hitung": "6 * 7",
+                "pertanyaan": "Berapa hasil 6 × 7?",
+                "bentuk": "isian",
+                "kunci": "42",
+                "petunjuk": [
+                  "6 × 7 artinya 7 ditambah 6 kali.",
+                  "6 × 7 sama dengan 7 × 6.",
+                  "Loncat tujuh: 7, 14, 21, 28, 35, 42."
+                ],
+                "pembahasan": "6 × 7 = 42.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-kali-bagi-s2",
+                "hitung": "35 / 5",
+                "pertanyaan": "Berapa hasil 35 : 5?",
+                "bentuk": "isian",
+                "kunci": "7",
+                "petunjuk": [
+                  "Cari bilangan yang dikali 5 hasilnya 35.",
+                  "5 × 7 = 35.",
+                  "Jadi 35 : 5 = ..."
+                ],
+                "pembahasan": "5 × 7 = 35, jadi 35 : 5 = 7.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-kali-bagi-s3",
+                "pertanyaan": "Kalimat mana yang benar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "9 × 6 = 56",
+                  "9 × 6 = 54",
+                  "9 × 6 = 45",
+                  "9 × 6 = 63"
+                ],
+                "kunci": "9 × 6 = 54",
+                "petunjuk": [
+                  "Hitung 9 × 6 dulu.",
+                  "9 × 6 = 10 × 6 − 6.",
+                  "60 − 6 = 54."
+                ],
+                "pembahasan": "9 × 6 = 54.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-kali-bagi-s4",
+                "hitung": "48 / 6",
+                "pertanyaan": "Ibu membuat 48 kue timphan. Kue dimasukkan ke 6 kotak sama banyak. Berapa kue tiap kotak?",
+                "bentuk": "isian",
+                "kunci": "8",
+                "petunjuk": [
+                  "Kata \"sama banyak\" artinya dibagi.",
+                  "48 : 6.",
+                  "6 × 8 = 48."
+                ],
+                "pembahasan": "48 : 6 = 8 kue tiap kotak.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-kali-bagi-s5",
+                "hitung": "3 * 9 / 3",
+                "pertanyaan": "Faris membeli 3 bungkus kelereng. Tiap bungkus berisi 9 kelereng. Kelereng itu dibagi rata kepada 3 temannya. Berapa kelereng yang didapat setiap teman?",
+                "bentuk": "isian",
+                "kunci": "9",
+                "petunjuk": [
+                  "Hitung dulu semua kelereng: 3 × 9.",
+                  "3 × 9 = 27, lalu dibagi 3.",
+                  "27 : 3 = ?"
+                ],
+                "pembahasan": "3 × 9 = 27 kelereng. 27 : 3 = 9 kelereng untuk setiap teman.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
+        },
+        {
+          "id": "mat3-pecahan-sederhana",
+          "judul": "Pecahan sederhana",
+          "ringkas": "Setengah, sepertiga, dan seperempat.",
+          "urutan": 2,
+          "prasyarat": [
+            "mat3-kali-bagi"
+          ],
+          "bersamaOrtu": true,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-pecahan-sederhana",
+            "penjelasan": [
+              {
+                "teks": "Pecahan menunjukkan bagian dari satu benda utuh. Satu kue dibagi 4 sama besar, satu bagian adalah 1/4.",
+                "gambar": {
+                  "jenis": "pecahan",
+                  "a": 1,
+                  "b": 4
+                }
+              },
+              {
+                "teks": "Angka bawah adalah banyak bagian. Angka atas adalah bagian yang diambil."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Pita dibagi 2 sama panjang. Satu bagian adalah ....",
+                "langkah": [
+                  "Dibagi 2, jadi angka bawah 2.",
+                  "Diambil 1, jadi angka atas 1."
+                ],
+                "jawaban": "1/2"
+              },
+              {
+                "soal": "Mana lebih besar, 1/2 atau 1/4?",
+                "langkah": [
+                  "Kue dibagi 2 potongannya besar.",
+                  "Kue dibagi 4 potongannya lebih kecil."
+                ],
+                "jawaban": "1/2"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-pecahan-sederhana-s1",
+                "gambar": {
+                  "jenis": "pecahan",
+                  "a": 1,
+                  "b": 3
+                },
+                "pertanyaan": "Gambar menunjukkan pecahan ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "1/3",
+                  "1/2",
+                  "1/4"
+                ],
+                "kunci": "1/3",
+                "petunjuk": [
+                  "Hitung semua bagian.",
+                  "Ada 3 bagian, 1 diwarnai.",
+                  "Angka bawah 3, angka atas 1."
+                ],
+                "pembahasan": "Ada 3 bagian sama besar dan 1 diwarnai, jadi 1/3.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-pecahan-sederhana-s2",
+                "gambar": {
+                  "jenis": "pecahan",
+                  "a": 3,
+                  "b": 4
+                },
+                "pertanyaan": "Gambar menunjukkan pecahan ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "2/4",
+                  "3/4",
+                  "1/4"
+                ],
+                "kunci": "3/4",
+                "petunjuk": [
+                  "Hitung semua bagian dan bagian yang diwarnai.",
+                  "Ada 4 bagian, 3 diwarnai.",
+                  "Angka bawah 4, angka atas 3."
+                ],
+                "pembahasan": "Ada 4 bagian dan 3 diwarnai, jadi 3/4.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-pecahan-sederhana-s3",
+                "hitung": "maks(1/3, 1/6)",
+                "pertanyaan": "Mana yang lebih besar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "1/3",
+                  "1/6"
+                ],
+                "kunci": "1/3",
+                "petunjuk": [
+                  "Bayangkan satu kue yang sama.",
+                  "Dibagi 3 potongannya lebih besar daripada dibagi 6.",
+                  "Makin besar angka bawah, makin kecil potongannya."
+                ],
+                "pembahasan": "1/3 lebih besar dari 1/6, karena dibagi 3 potongannya lebih besar.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-pecahan-sederhana-s4",
+                "hitung": "3/8",
+                "pertanyaan": "Sebuah semangka dipotong 8 sama besar. Laila makan 3 potong. Pecahan bagian yang dimakan Laila adalah ...",
+                "bentuk": "isian",
+                "kunci": "3/8",
+                "petunjuk": [
+                  "Semangka dibagi menjadi berapa bagian?",
+                  "Angka bawah 8.",
+                  "Laila makan 3 bagian, jadi angka atas 3."
+                ],
+                "pembahasan": "Semangka dibagi 8 bagian, dimakan 3 bagian. Jadi 3/8.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-pecahan-sederhana-s5",
+                "hitung": "10 / 2",
+                "pertanyaan": "Setengah dari 10 jambu adalah berapa jambu?",
+                "bentuk": "isian",
+                "kunci": "5",
+                "petunjuk": [
+                  "Setengah artinya dibagi 2 sama banyak.",
+                  "10 : 2.",
+                  "10 : 2 = 5."
+                ],
+                "pembahasan": "Setengah dari 10 = 10 : 2 = 5 jambu.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
+        },
+        {
+          "id": "mat3-panjang",
+          "judul": "Sentimeter dan meter",
+          "ringkas": "1 meter = 100 sentimeter.",
+          "urutan": 3,
+          "prasyarat": [],
+          "bersamaOrtu": true,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-panjang",
+            "penjelasan": [
+              {
+                "teks": "Panjang pensil diukur dengan sentimeter, ditulis cm. Panjang kelas diukur dengan meter, ditulis m."
+              },
+              {
+                "teks": "1 meter sama dengan 100 sentimeter."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "2 m = ... cm",
+                "langkah": [
+                  "1 m = 100 cm.",
+                  "2 m = 2 × 100 = 200 cm."
+                ],
+                "jawaban": "200"
+              },
+              {
+                "soal": "Tali 1 m dipotong 35 cm. Sisanya berapa cm?",
+                "langkah": [
+                  "1 m = 100 cm.",
+                  "100 − 35 = 65."
+                ],
+                "jawaban": "65"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-panjang-s1",
+                "hitung": "3 * 100",
+                "pertanyaan": "3 m = ... cm",
+                "bentuk": "isian",
+                "kunci": "300",
+                "petunjuk": [
+                  "1 m = 100 cm.",
+                  "3 m artinya 3 kali 100 cm.",
+                  "3 × 100 = ?"
+                ],
+                "pembahasan": "3 × 100 = 300 cm.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-panjang-s2",
+                "pertanyaan": "Satuan yang tepat untuk mengukur panjang penghapus adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "meter",
+                  "sentimeter",
+                  "kilogram"
+                ],
+                "kunci": "sentimeter",
+                "petunjuk": [
+                  "Penghapus itu kecil.",
+                  "Meter dipakai untuk benda panjang seperti kelas.",
+                  "Kilogram untuk berat, bukan panjang."
+                ],
+                "pembahasan": "Penghapus kecil, jadi diukur dengan sentimeter.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-panjang-s3",
+                "hitung": "45 + 38",
+                "pertanyaan": "Pita merah 45 cm. Pita biru 38 cm. Berapa panjang kedua pita jika disambung?",
+                "bentuk": "isian",
+                "kunci": "83",
+                "petunjuk": [
+                  "Disambung artinya dijumlahkan.",
+                  "45 + 38.",
+                  "Satuan 5 + 8 = 13, simpan 1."
+                ],
+                "pembahasan": "45 + 38 = 83 cm.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-panjang-s4",
+                "hitung": "100 + 25",
+                "pertanyaan": "Tinggi Putri 1 m 25 cm. Tinggi Putri adalah ... cm",
+                "bentuk": "isian",
+                "kunci": "125",
+                "petunjuk": [
+                  "Ubah 1 m ke cm dulu.",
+                  "1 m = 100 cm.",
+                  "100 + 25 = ?"
+                ],
+                "pembahasan": "1 m = 100 cm. 100 + 25 = 125 cm.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-panjang-s5",
+                "hitung": "2 * 100 - 4 * 30",
+                "pertanyaan": "Ayah punya tali 2 m. Ayah memotong 4 potong, masing-masing 30 cm. Berapa cm sisa tali?",
+                "bentuk": "isian",
+                "kunci": "80",
+                "petunjuk": [
+                  "Ubah 2 m ke cm: 200 cm.",
+                  "Yang dipotong: 4 × 30 = 120 cm.",
+                  "200 − 120 = ?"
+                ],
+                "pembahasan": "2 m = 200 cm. 4 × 30 = 120 cm. 200 − 120 = 80 cm.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
+        },
+        {
+          "id": "mat3-jam",
+          "judul": "Jam dan menit",
+          "ringkas": "1 jam = 60 menit.",
+          "urutan": 4,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat3-jam",
+            "penjelasan": [
+              {
+                "teks": "Jarum pendek menunjukkan jam. Jarum panjang menunjukkan menit."
+              },
+              {
+                "teks": "1 jam sama dengan 60 menit. Setengah jam sama dengan 30 menit."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Pukul 07.00 ditambah 2 jam menjadi pukul berapa?",
+                "langkah": [
+                  "7 + 2 = 9.",
+                  "Jadi pukul 09.00."
+                ],
+                "jawaban": "09.00"
+              },
+              {
+                "soal": "Berapa menit dalam 2 jam?",
+                "langkah": [
+                  "1 jam = 60 menit.",
+                  "2 × 60 = 120."
+                ],
+                "jawaban": "120 menit"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat3-jam-s1",
+                "hitung": "60 / 2",
+                "pertanyaan": "Berapa menit dalam setengah jam?",
+                "bentuk": "isian",
+                "kunci": "30",
+                "petunjuk": [
+                  "1 jam = 60 menit.",
+                  "Setengah artinya dibagi 2.",
+                  "60 : 2 = ?"
+                ],
+                "pembahasan": "60 : 2 = 30 menit.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-jam-s2",
+                "hitung": "3 * 60",
+                "pertanyaan": "Berapa menit dalam 3 jam?",
+                "bentuk": "isian",
+                "kunci": "180",
+                "petunjuk": [
+                  "1 jam = 60 menit.",
+                  "3 jam = 3 × 60.",
+                  "3 × 60 = ?"
+                ],
+                "pembahasan": "3 × 60 = 180 menit.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat3-jam-s3",
+                "pertanyaan": "Zaki berangkat pukul 06.30. Ia sampai di sekolah 30 menit kemudian. Pukul berapa ia sampai?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "06.60",
+                  "07.00",
+                  "07.30"
+                ],
+                "kunci": "07.00",
+                "petunjuk": [
+                  "30 menit lagi dari 06.30.",
+                  "06.30 + 30 menit = 06.60?",
+                  "60 menit = 1 jam, jadi menjadi pukul 07.00."
+                ],
+                "pembahasan": "06.30 ditambah 30 menit adalah pukul 07.00. Tidak ada pukul 06.60.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-jam-s4",
+                "hitung": "60 + 30",
+                "pertanyaan": "Nanda belajar dari pukul 15.00 sampai pukul 16.30. Berapa menit Nanda belajar?",
+                "bentuk": "isian",
+                "kunci": "90",
+                "petunjuk": [
+                  "Dari 15.00 ke 16.00 berapa menit?",
+                  "15.00 ke 16.00 = 60 menit. 16.00 ke 16.30 = 30 menit.",
+                  "60 + 30 = ?"
+                ],
+                "pembahasan": "60 menit + 30 menit = 90 menit.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat3-jam-s5",
+                "hitung": "45 - 30",
+                "pertanyaan": "Kue dipanggang 45 menit. Ibu mulai memanggang pukul 10.30. Kue matang berapa menit setelah pukul 11.00?",
+                "bentuk": "isian",
+                "kunci": "15",
+                "petunjuk": [
+                  "Dari 10.30 ke 11.00 ada 30 menit.",
+                  "Masih kurang 45 − 30 = 15 menit.",
+                  "11.00 ditambah 15 menit."
+                ],
+                "pembahasan": "10.30 + 30 menit = 11.00. Sisa 45 − 30 = 15 menit, jadi kue matang pukul 11.15.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-mat"
+          }
+        },
+        {
+          "id": "mat3-ribuan",
+          "judul": "Bilangan sampai 1.000",
+          "ringkas": "Ratusan, puluhan, dan satuan.",
+          "urutan": 5,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat3-keliling",
+          "judul": "Keliling bangun",
+          "ringkas": "Jumlah panjang semua sisi.",
+          "urutan": 6,
+          "prasyarat": [
+            "mat3-panjang"
+          ],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat3-piktogram",
+          "judul": "Piktogram",
+          "ringkas": "Data dengan gambar.",
+          "urutan": 7,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat3-berat",
+          "judul": "Berat benda",
+          "ringkas": "Kilogram dan gram.",
+          "urutan": 8,
+          "prasyarat": [],
+          "bersamaOrtu": true,
+          "segera": true
+        }
+      ]
+    },
+    {
+      "kode": "bi",
+      "topik": [
+        {
+          "id": "bi3-tanda-baca",
+          "judul": "Titik, tanda tanya, dan tanda seru",
+          "ringkas": "Tanda di akhir kalimat.",
+          "urutan": 1,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi3-tanda-baca",
+            "penjelasan": [
+              {
+                "teks": "Tanda titik (.) dipakai di akhir kalimat berita. Tanda tanya (?) dipakai di akhir kalimat tanya."
+              },
+              {
+                "teks": "Tanda seru (!) dipakai di akhir kalimat perintah atau seruan."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Tanda yang tepat: \"Siapa namamu ...\"",
+                "langkah": [
+                  "Kalimat ini bertanya.",
+                  "Kalimat tanya diakhiri tanda tanya."
+                ],
+                "jawaban": "?"
+              },
+              {
+                "soal": "Tanda yang tepat: \"Tolong tutup pintu ...\"",
+                "langkah": [
+                  "Kalimat ini menyuruh.",
+                  "Kalimat perintah diakhiri tanda seru."
+                ],
+                "jawaban": "!"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi3-tanda-baca-s1",
+                "pertanyaan": "Tanda yang tepat: \"Ayah membaca koran ...\"",
+                "bentuk": "pg",
+                "pilihan": [
+                  ".",
+                  "?",
+                  "!"
+                ],
+                "kunci": ".",
+                "petunjuk": [
+                  "Apakah kalimat ini bertanya?",
+                  "Kalimat ini memberi kabar.",
+                  "Kalimat berita diakhiri titik."
+                ],
+                "pembahasan": "Kalimat berita diakhiri tanda titik.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-tanda-baca-s2",
+                "pertanyaan": "Tanda yang tepat: \"Kapan kamu pulang ...\"",
+                "bentuk": "pg",
+                "pilihan": [
+                  ".",
+                  "?",
+                  "!"
+                ],
+                "kunci": "?",
+                "petunjuk": [
+                  "Ada kata kapan.",
+                  "Kapan adalah kata tanya.",
+                  "Kalimat tanya diakhiri tanda tanya."
+                ],
+                "pembahasan": "Kalimat tanya diakhiri tanda tanya.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-tanda-baca-s3",
+                "pertanyaan": "Tanda yang tepat: \"Ayo, buang sampah pada tempatnya ...\"",
+                "bentuk": "pg",
+                "pilihan": [
+                  ".",
+                  "?",
+                  "!"
+                ],
+                "kunci": "!",
+                "petunjuk": [
+                  "Kalimat ini mengajak atau menyuruh.",
+                  "Ada kata ayo.",
+                  "Kalimat ajakan diakhiri tanda seru."
+                ],
+                "pembahasan": "Kalimat ajakan atau perintah diakhiri tanda seru.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-tanda-baca-s4",
+                "pertanyaan": "Kalimat mana yang tanda bacanya benar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Di mana rumahmu.",
+                  "Di mana rumahmu?",
+                  "Di mana rumahmu!"
+                ],
+                "kunci": "Di mana rumahmu?",
+                "petunjuk": [
+                  "Ada kata \"di mana\".",
+                  "Kalimat ini bertanya.",
+                  "Kalimat tanya diakhiri tanda tanya."
+                ],
+                "pembahasan": "\"Di mana rumahmu?\" adalah kalimat tanya.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-tanda-baca-s5",
+                "pertanyaan": "Kalimat mana yang tanda bacanya salah?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Wah, indah sekali pantai ini!",
+                  "Mira suka menggambar.",
+                  "Apakah kamu sudah makan."
+                ],
+                "kunci": "Apakah kamu sudah makan.",
+                "petunjuk": [
+                  "Periksa satu per satu.",
+                  "Kalimat ketiga diawali kata apakah.",
+                  "Kalimat tanya seharusnya diakhiri tanda tanya."
+                ],
+                "pembahasan": "\"Apakah kamu sudah makan\" adalah kalimat tanya, seharusnya diakhiri tanda tanya.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-bi"
+          }
+        },
+        {
+          "id": "bi3-gagasan-utama",
+          "judul": "Gagasan utama paragraf",
+          "ringkas": "Hal yang paling banyak dibicarakan.",
+          "urutan": 2,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi3-gagasan-utama",
+            "penjelasan": [
+              {
+                "teks": "Gagasan utama adalah hal yang paling banyak dibicarakan dalam paragraf."
+              },
+              {
+                "teks": "Gagasan utama sering ada di kalimat pertama. Kalimat lain menjelaskannya."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "\"Kucing Nanda sangat lucu. Bulunya putih bersih. Matanya bulat. Ia suka bermain bola benang.\" Gagasan utamanya adalah ....",
+                "langkah": [
+                  "Kalimat pertama: kucing Nanda lucu.",
+                  "Kalimat lain menjelaskan kucing itu."
+                ],
+                "jawaban": "Kucing Nanda yang lucu"
+              },
+              {
+                "soal": "\"Pasar pagi selalu ramai. Banyak orang membeli sayur. Pedagang ikan berteriak menawarkan dagangan.\" Gagasan utamanya adalah ....",
+                "langkah": [
+                  "Kalimat pertama: pasar pagi ramai.",
+                  "Kalimat lain menjelaskan keramaian itu."
+                ],
+                "jawaban": "Pasar pagi yang ramai"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi3-gagasan-utama-s1",
+                "bacaan": "Sepeda Faris baru. Warnanya biru. Bannya besar. Faris memakainya ke sekolah.",
+                "pertanyaan": "\"Sepeda Faris baru. Warnanya biru. Bannya besar. Faris memakainya ke sekolah.\" Gagasan utamanya adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "warna biru",
+                  "sepeda baru Faris",
+                  "ban besar"
+                ],
+                "kunci": "sepeda baru Faris",
+                "petunjuk": [
+                  "Hal apa yang dibicarakan semua kalimat?",
+                  "Warna dan ban adalah bagian dari sepeda.",
+                  "Semua kalimat membicarakan sepeda Faris."
+                ],
+                "pembahasan": "Semua kalimat menjelaskan sepeda baru Faris.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-gagasan-utama-s2",
+                "pertanyaan": "\"Kebun kakek luas. Ada pohon mangga dan rambutan. Ada juga kolam ikan.\" Gagasan utamanya adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "kolam ikan",
+                  "pohon mangga",
+                  "kebun kakek yang luas"
+                ],
+                "kunci": "kebun kakek yang luas",
+                "petunjuk": [
+                  "Cari kalimat yang dijelaskan kalimat lain.",
+                  "Pohon dan kolam ada di dalam kebun.",
+                  "Kalimat pertama membicarakan kebun."
+                ],
+                "pembahasan": "Kalimat pertama \"Kebun kakek luas\" dijelaskan oleh kalimat lain.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi3-gagasan-utama-s3",
+                "pertanyaan": "Kalimat mana yang paling cocok menjadi gagasan utama?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Rambutnya panjang.",
+                  "Adikku bernama Cut Mira.",
+                  "Ia suka menyanyi."
+                ],
+                "kunci": "Adikku bernama Cut Mira.",
+                "petunjuk": [
+                  "Gagasan utama bersifat umum.",
+                  "Rambut dan menyanyi menjelaskan adik.",
+                  "Kalimat tentang adik adalah yang umum."
+                ],
+                "pembahasan": "Kalimat lain menjelaskan adik, jadi \"Adikku bernama Cut Mira\" adalah gagasan utama.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-gagasan-utama-s4",
+                "pertanyaan": "\"Hujan turun deras sejak pagi. Jalan di depan rumah tergenang. Anak-anak memakai jas hujan.\" Kalimat utamanya ada di kalimat ke ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "kunci": "1",
+                "petunjuk": [
+                  "Kalimat utama berisi gagasan utama.",
+                  "Genangan dan jas hujan terjadi karena hujan.",
+                  "Hujan disebut di kalimat pertama."
+                ],
+                "pembahasan": "Kalimat pertama tentang hujan deras. Kalimat lain akibatnya.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi3-gagasan-utama-s5",
+                "pertanyaan": "\"Burung rangkong punya paruh besar. Di atas paruhnya ada tanduk. Bulunya hitam dan putih. Burung ini tinggal di hutan.\" Judul yang paling cocok adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Hutan yang Lebat",
+                  "Burung Rangkong",
+                  "Paruh yang Besar"
+                ],
+                "kunci": "Burung Rangkong",
+                "petunjuk": [
+                  "Judul memuat gagasan utama.",
+                  "Paruh dan bulu adalah bagian burung.",
+                  "Semua kalimat membicarakan burung rangkong."
+                ],
+                "pembahasan": "Semua kalimat menjelaskan burung rangkong, jadi judulnya \"Burung Rangkong\".",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K3-bi"
+          }
+        },
+        {
+          "id": "bi3-kata-tanya",
+          "judul": "Kata tanya",
+          "ringkas": "Apa, siapa, di mana, kapan, mengapa, bagaimana.",
+          "urutan": 3,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "bi3-dongeng",
+          "judul": "Tokoh dongeng",
+          "ringkas": "Sifat tokoh dari perbuatannya.",
+          "urutan": 4,
+          "prasyarat": [],
+          "bersamaOrtu": true,
+          "segera": true
+        }
+      ]
+    }
+  ]
+}

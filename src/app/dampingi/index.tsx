@@ -5,7 +5,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useData, useMuat } from '@/data/konteks';
 import { HEWAN } from '@/data/jenis';
 import { huruf, warna } from '@/desain/token';
-import { paketLengkap, tkaTerbukaUntuk } from '@/fitur/konfig';
+import { adaBacaGudang, paketLengkap, tkaTerbukaUntuk } from '@/fitur/konfig';
 import { namaTopik } from '@/fitur/nama-topik';
 
 function Kegiatan({ emoji, judul, sub, onPress, nonaktif }: { emoji: string; judul: string; sub: string; onPress: () => void; nonaktif?: boolean }) {
@@ -74,7 +74,7 @@ export default function MenuDampingi() {
       </Text>
       <Kegiatan emoji="💪" judul={`Tantang ${sapaan}`} sub="Bergantian menjawab 10 soal Lancar" onPress={() => router.push('/dampingi/tantang')} />
       <Kegiatan emoji="🧮" judul="Lembar didampingi" sub="Soal Lancar + kalimat untuk diucapkan orang tua" onPress={() => router.push('/dampingi/lancar')} />
-      <Kegiatan emoji="👂" judul="Dengar Bacaan" sub="Anak membaca nyaring, orang tua menandai kata yang tersandung" nonaktif={!k6} onPress={() => router.push('/dampingi/baca')} />
+      <Kegiatan emoji="👂" judul="Dengar Bacaan" sub="Anak membaca nyaring, orang tua menandai kata yang tersandung" nonaktif={!adaBacaGudang(anakAktif.kelas)} onPress={() => router.push('/dampingi/baca')} />
       <Kegiatan emoji="📘" judul="TKA bersama" sub="Pilih topik di peta Siap TKA, kunci tampil untuk orang tua" nonaktif={!k6 || !tkaBuka} onPress={() => router.push('/dampingi/tka')} />
       <Kegiatan emoji="⏱️" judul="Pengawas simulasi" sub="Orang tua mengawasi simulasi 75 menit tanpa membantu" nonaktif={!k6 || !tkaBuka} onPress={() => router.push('/dampingi/pengawas')} />
     </ScrollView>

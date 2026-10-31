@@ -8,8 +8,7 @@ import Svg, { Path } from 'react-native-svg';
 import { useData, useMuat } from '@/data/konteks';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { petaKemajuan } from '@/fitur/gudang';
-import { paketLengkap } from '@/fitur/konfig';
-import { paketGudang } from '@/isi/gudang/paket';
+import { paketGudangKelas } from '@/isi/gudang/paket';
 import { petaTopik, type TopikPeta } from '@/isi/gudang/pemuat';
 import { GelembungPinci } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
@@ -74,7 +73,8 @@ export default function GudangIlmu() {
   const sudahGulir = useRef(false);
   const kemajuan = useMuat(async (r) => petaKemajuan(await r.kemajuanTopik(anak.id, 'gudang')), {}, [anak.id]);
 
-  if (!paketLengkap(anak.kelas)) {
+  const paket = paketGudangKelas(anak.kelas);
+  if (!paket) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: warna.kremLembut, padding: 16 }} edges={['top', 'left', 'right']}>
         <Text style={{ fontFamily: huruf.judul, fontSize: 28, color: warna.teks, marginBottom: 24 }}>Gudang Ilmu</Text>
@@ -82,7 +82,7 @@ export default function GudangIlmu() {
       </SafeAreaView>
     );
   }
-  const peta = petaTopik(paketGudang, kemajuan).find((p) => p.kode === mapel)!;
+  const peta = petaTopik(paket, kemajuan).find((p) => p.kode === mapel)!;
   // Jalan dari bawah ke atas: topik pertama di bawah, seperti desain B01.
   const urut = peta.topik;
   const tinggi = urut.length * JARAK + 120;

@@ -3,11 +3,11 @@ import { Redirect } from 'expo-router';
 
 import { useData, useMuat } from '@/data/konteks';
 import { teksBerikut } from '@/fitur/baca';
-import { paketTka } from '@/isi/tka/paket';
+import { teksBacaKelas } from '@/isi/baca/paket';
 
 export default function BacaUlang() {
   const { anakAktif } = useData();
-  const t = useMuat(async (r) => teksBerikut(paketTka.teks, await r.daftarSesi(anakAktif!.id, 'baca')), null, [anakAktif?.id]);
+  const t = useMuat(async (r) => teksBerikut(teksBacaKelas(anakAktif!.kelas), await r.daftarSesi(anakAktif!.id, 'baca')), null, [anakAktif?.id]);
   if (!t) return null;
   return <Redirect href={`/baca/${t.id}`} />;
 }

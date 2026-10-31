@@ -1,0 +1,827 @@
+{
+  "id": "gudang-k5",
+  "versi": "0.1.0",
+  "kelas": 5,
+  "dibuat": "2026-10-31",
+  "sumber": "Ditulis sendiri mengikuti capaian pembelajaran kelas 5 (belum diperiksa guru).",
+  "mapel": [
+    {
+      "kode": "mat",
+      "topik": [
+        {
+          "id": "mat5-kpk-fpb",
+          "judul": "KPK dan FPB",
+          "ringkas": "Bertemu lagi pakai KPK, membagi rata pakai FPB.",
+          "urutan": 1,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat5-kpk-fpb",
+            "penjelasan": [
+              {
+                "teks": "KPK adalah kelipatan persekutuan terkecil. Pakai KPK untuk soal \"bertemu lagi\" atau \"bersama lagi\"."
+              },
+              {
+                "teks": "FPB adalah faktor persekutuan terbesar. Pakai FPB untuk soal \"dibagi rata sebanyak-banyaknya\"."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "KPK dari 4 dan 6 adalah ....",
+                "langkah": [
+                  "Kelipatan 4: 4, 8, 12, 16.",
+                  "Kelipatan 6: 6, 12, 18.",
+                  "Yang sama paling kecil: 12."
+                ],
+                "jawaban": "12"
+              },
+              {
+                "soal": "FPB dari 12 dan 18 adalah ....",
+                "langkah": [
+                  "Faktor 12: 1, 2, 3, 4, 6, 12.",
+                  "Faktor 18: 1, 2, 3, 6, 9, 18.",
+                  "Yang sama paling besar: 6."
+                ],
+                "jawaban": "6"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat5-kpk-fpb-s1",
+                "hitung": "kpk(3, 5)",
+                "pertanyaan": "Berapa KPK dari 3 dan 5?",
+                "bentuk": "isian",
+                "kunci": "15",
+                "petunjuk": [
+                  "Tulis kelipatan 3 dan kelipatan 5.",
+                  "Kelipatan 3: 3, 6, 9, 12, 15. Kelipatan 5: 5, 10, 15.",
+                  "Cari yang sama paling kecil."
+                ],
+                "pembahasan": "Kelipatan yang sama paling kecil adalah 15.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-kpk-fpb-s2",
+                "hitung": "fpb(16, 24)",
+                "pertanyaan": "Berapa FPB dari 16 dan 24?",
+                "bentuk": "isian",
+                "kunci": "8",
+                "petunjuk": [
+                  "Tulis faktor 16 dan faktor 24.",
+                  "Faktor 16: 1, 2, 4, 8, 16. Faktor 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+                  "Cari yang sama paling besar."
+                ],
+                "pembahasan": "Faktor yang sama paling besar adalah 8.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-kpk-fpb-s3",
+                "hitung": "kpk(3, 4)",
+                "pertanyaan": "Andi berenang setiap 3 hari. Bima berenang setiap 4 hari. Hari ini mereka berenang bersama. Berapa hari lagi mereka berenang bersama lagi?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "7 hari",
+                  "12 hari",
+                  "1 hari",
+                  "24 hari"
+                ],
+                "kunci": "12 hari",
+                "petunjuk": [
+                  "\"Bersama lagi\" artinya pakai KPK.",
+                  "Kelipatan 3: 3, 6, 9, 12. Kelipatan 4: 4, 8, 12.",
+                  "KPK dari 3 dan 4."
+                ],
+                "pembahasan": "KPK dari 3 dan 4 adalah 12. Jadi 12 hari lagi.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-kpk-fpb-s4",
+                "hitung": "fpb(20, 30)",
+                "pertanyaan": "Ada 20 jeruk dan 30 salak. Buah dibagi ke beberapa kantong. Isi tiap kantong harus sama. Paling banyak berapa kantong?",
+                "bentuk": "isian",
+                "kunci": "10",
+                "petunjuk": [
+                  "\"Paling banyak kantong dengan isi sama\" artinya FPB.",
+                  "Faktor 20: 1, 2, 4, 5, 10, 20. Faktor 30: 1, 2, 3, 5, 6, 10, 15, 30.",
+                  "Cari faktor sama yang paling besar."
+                ],
+                "pembahasan": "FPB dari 20 dan 30 adalah 10. Jadi 10 kantong, tiap kantong 2 jeruk dan 3 salak.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-kpk-fpb-s5",
+                "hitung": "kpk(15, 20)",
+                "pertanyaan": "Bus A berangkat setiap 15 menit. Bus B setiap 20 menit. Keduanya berangkat bersama pukul 07.00. Berapa menit kemudian keduanya berangkat bersama lagi?",
+                "bentuk": "isian",
+                "kunci": "60",
+                "petunjuk": [
+                  "\"Bersama lagi\" artinya KPK.",
+                  "Kelipatan 15: 15, 30, 45, 60. Kelipatan 20: 20, 40, 60.",
+                  "KPK dari 15 dan 20."
+                ],
+                "pembahasan": "KPK dari 15 dan 20 adalah 60. Jadi 60 menit kemudian, pukul 08.00.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K5-mat"
+          }
+        },
+        {
+          "id": "mat5-tambah-kurang-pecahan",
+          "judul": "Tambah dan kurang pecahan",
+          "ringkas": "Samakan penyebut dulu.",
+          "urutan": 2,
+          "prasyarat": [
+            "mat5-kpk-fpb"
+          ],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat5-tambah-kurang-pecahan",
+            "penjelasan": [
+              {
+                "teks": "Pecahan berpenyebut sama: tambahkan atau kurangkan pembilangnya saja. 2/7 + 3/7 = 5/7."
+              },
+              {
+                "teks": "Penyebut berbeda: samakan dulu dengan KPK penyebut. Lalu hitung pembilangnya."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "1/2 + 1/3 = ?",
+                "langkah": [
+                  "KPK dari 2 dan 3 adalah 6.",
+                  "1/2 = 3/6 dan 1/3 = 2/6.",
+                  "3/6 + 2/6 = 5/6."
+                ],
+                "jawaban": "5/6"
+              },
+              {
+                "soal": "3/4 − 1/2 = ?",
+                "langkah": [
+                  "KPK dari 4 dan 2 adalah 4.",
+                  "1/2 = 2/4.",
+                  "3/4 − 2/4 = 1/4."
+                ],
+                "jawaban": "1/4"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat5-tambah-kurang-pecahan-s1",
+                "hitung": "2/9 + 5/9",
+                "pertanyaan": "Berapa hasil 2/9 + 5/9?",
+                "bentuk": "isian",
+                "kunci": "7/9",
+                "petunjuk": [
+                  "Penyebutnya sudah sama.",
+                  "Tambahkan pembilangnya saja.",
+                  "2 + 5 = 7."
+                ],
+                "pembahasan": "2/9 + 5/9 = 7/9.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-tambah-kurang-pecahan-s2",
+                "hitung": "5/6 - 1/6",
+                "pertanyaan": "Berapa hasil 5/6 − 1/6? Tulis dalam bentuk paling sederhana.",
+                "bentuk": "isian",
+                "kunci": "2/3",
+                "petunjuk": [
+                  "Penyebut sama. Kurangkan pembilangnya.",
+                  "5 − 1 = 4, jadi 4/6.",
+                  "Sederhanakan 4/6: bagi atas dan bawah dengan 2."
+                ],
+                "pembahasan": "5/6 − 1/6 = 4/6 = 2/3.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-tambah-kurang-pecahan-s3",
+                "hitung": "1/4 + 2/3",
+                "pertanyaan": "Berapa hasil 1/4 + 2/3?",
+                "bentuk": "isian",
+                "kunci": "11/12",
+                "petunjuk": [
+                  "Samakan penyebut. KPK dari 4 dan 3?",
+                  "KPK = 12. 1/4 = 3/12, 2/3 = 8/12.",
+                  "3/12 + 8/12 = ?"
+                ],
+                "pembahasan": "1/4 + 2/3 = 3/12 + 8/12 = 11/12.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-tambah-kurang-pecahan-s4",
+                "hitung": "3/4 - 1/3",
+                "pertanyaan": "Ibu punya 3/4 kg gula. Ibu memakai 1/3 kg untuk membuat kue. Berapa kg sisa gula?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "2/1 kg",
+                  "5/12 kg",
+                  "2/7 kg",
+                  "1/2 kg"
+                ],
+                "kunci": "5/12 kg",
+                "petunjuk": [
+                  "Sisa artinya dikurangi: 3/4 − 1/3.",
+                  "KPK 4 dan 3 = 12. 3/4 = 9/12, 1/3 = 4/12.",
+                  "9/12 − 4/12 = ?"
+                ],
+                "pembahasan": "3/4 − 1/3 = 9/12 − 4/12 = 5/12 kg. Jawaban 2/1 muncul kalau atas dikurangi atas dan bawah dikurangi bawah.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-tambah-kurang-pecahan-s5",
+                "hitung": "1 - (1/3 + 1/4)",
+                "pertanyaan": "Laila membaca 1/3 buku pada hari Senin dan 1/4 buku pada hari Selasa. Berapa bagian buku yang belum dibaca?",
+                "bentuk": "isian",
+                "kunci": "5/12",
+                "petunjuk": [
+                  "Hitung dulu yang sudah dibaca: 1/3 + 1/4.",
+                  "1/3 + 1/4 = 4/12 + 3/12 = 7/12.",
+                  "Satu buku utuh = 12/12. 12/12 − 7/12 = ?"
+                ],
+                "pembahasan": "Sudah dibaca 7/12. Belum dibaca 1 − 7/12 = 5/12.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K5-mat"
+          }
+        },
+        {
+          "id": "mat5-desimal-persen",
+          "judul": "Desimal dan persen",
+          "ringkas": "Persen artinya per seratus.",
+          "urutan": 3,
+          "prasyarat": [
+            "mat5-tambah-kurang-pecahan"
+          ],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat5-desimal-persen",
+            "penjelasan": [
+              {
+                "teks": "Desimal satu angka di belakang koma artinya per sepuluh. 0,3 = 3/10."
+              },
+              {
+                "teks": "Persen artinya per seratus. 25% = 25/100 = 1/4.",
+                "gambar": {
+                  "jenis": "petak",
+                  "baris": 10,
+                  "kolom": 10,
+                  "terisi": 25
+                }
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Ubah 3/5 menjadi persen.",
+                "langkah": [
+                  "Ubah penyebut menjadi 100: 5 × 20 = 100.",
+                  "Pembilang: 3 × 20 = 60.",
+                  "60/100 = 60%."
+                ],
+                "jawaban": "60%"
+              },
+              {
+                "soal": "Berapa 50% dari 40?",
+                "langkah": [
+                  "50% = 1/2.",
+                  "Setengah dari 40 adalah 20."
+                ],
+                "jawaban": "20"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat5-desimal-persen-s1",
+                "hitung": "7/10",
+                "pertanyaan": "Tulis 7/10 dalam bentuk desimal.",
+                "bentuk": "isian",
+                "kunci": "0,7",
+                "petunjuk": [
+                  "Per sepuluh: satu angka di belakang koma.",
+                  "7 per sepuluh.",
+                  "Tulis 0 koma 7."
+                ],
+                "pembahasan": "7/10 = 0,7.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-desimal-persen-s2",
+                "hitung": "1/4 * 100",
+                "pertanyaan": "Tulis 1/4 dalam bentuk persen. (tulis angkanya saja)",
+                "bentuk": "isian",
+                "kunci": "25",
+                "petunjuk": [
+                  "Ubah penyebut menjadi 100.",
+                  "4 × 25 = 100, jadi pembilang 1 × 25.",
+                  "25/100 = 25%."
+                ],
+                "pembahasan": "1/4 = 25/100 = 25%.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-desimal-persen-s3",
+                "hitung": "10/100 * 80",
+                "pertanyaan": "Berapa 10% dari 80?",
+                "bentuk": "isian",
+                "kunci": "8",
+                "petunjuk": [
+                  "10% = 1/10.",
+                  "80 dibagi 10.",
+                  "80 : 10 = ?"
+                ],
+                "pembahasan": "10% dari 80 = 80 : 10 = 8.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-desimal-persen-s4",
+                "pertanyaan": "Mana yang paling besar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "0,5",
+                  "40%",
+                  "3/10"
+                ],
+                "kunci": "0,5",
+                "petunjuk": [
+                  "Ubah semua ke bentuk yang sama, misalnya persen.",
+                  "0,5 = 50%, 3/10 = 30%.",
+                  "Bandingkan 50%, 40%, dan 30%."
+                ],
+                "pembahasan": "0,5 = 50%, lebih besar dari 40% dan 30%.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-desimal-persen-s5",
+                "hitung": "80000 - 25/100 * 80000",
+                "pertanyaan": "Harga tas Rp80.000. Toko memberi potongan 25%. Berapa rupiah harga tas setelah dipotong? (tulis angkanya saja)",
+                "bentuk": "isian",
+                "kunci": "60.000",
+                "petunjuk": [
+                  "Hitung potongannya dulu: 25% dari 80.000.",
+                  "25% = 1/4. 80.000 : 4 = 20.000.",
+                  "80.000 − 20.000 = ?"
+                ],
+                "pembahasan": "Potongan 25% × 80.000 = 20.000. Harga baru 80.000 − 20.000 = 60.000.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K5-mat"
+          }
+        },
+        {
+          "id": "mat5-volume",
+          "judul": "Volume kubus dan balok",
+          "ringkas": "Panjang × lebar × tinggi.",
+          "urutan": 4,
+          "prasyarat": [],
+          "bersamaOrtu": true,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat5-volume",
+            "penjelasan": [
+              {
+                "teks": "Volume adalah banyak kubus satuan yang mengisi bangun."
+              },
+              {
+                "teks": "Volume balok = panjang × lebar × tinggi. Volume kubus = sisi × sisi × sisi."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Balok 5 cm × 3 cm × 2 cm. Berapa volumenya?",
+                "langkah": [
+                  "5 × 3 = 15.",
+                  "15 × 2 = 30."
+                ],
+                "jawaban": "30 cm³"
+              },
+              {
+                "soal": "Kubus sisinya 4 cm. Berapa volumenya?",
+                "langkah": [
+                  "4 × 4 = 16.",
+                  "16 × 4 = 64."
+                ],
+                "jawaban": "64 cm³"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat5-volume-s1",
+                "hitung": "3 * 3 * 3",
+                "pertanyaan": "Kubus sisinya 3 cm. Berapa cm³ volumenya?",
+                "bentuk": "isian",
+                "kunci": "27",
+                "petunjuk": [
+                  "Volume kubus = sisi × sisi × sisi.",
+                  "3 × 3 = 9.",
+                  "9 × 3 = ?"
+                ],
+                "pembahasan": "3 × 3 × 3 = 27 cm³.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-volume-s2",
+                "hitung": "6 * 4 * 5",
+                "pertanyaan": "Balok panjang 6 cm, lebar 4 cm, tinggi 5 cm. Berapa cm³ volumenya?",
+                "bentuk": "isian",
+                "kunci": "120",
+                "petunjuk": [
+                  "Volume balok = p × l × t.",
+                  "6 × 4 = 24.",
+                  "24 × 5 = ?"
+                ],
+                "pembahasan": "6 × 4 × 5 = 120 cm³.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat5-volume-s3",
+                "hitung": "5 * 2 * 3",
+                "pertanyaan": "Sebuah kotak diisi kubus kecil. Panjangnya 5 kubus, lebarnya 2 kubus, tingginya 3 kubus. Berapa kubus kecil semuanya?",
+                "bentuk": "isian",
+                "kunci": "30",
+                "petunjuk": [
+                  "Satu lapis: 5 × 2 kubus.",
+                  "Satu lapis 10 kubus. Ada 3 lapis.",
+                  "10 × 3 = ?"
+                ],
+                "pembahasan": "5 × 2 = 10 kubus per lapis. 3 lapis: 10 × 3 = 30 kubus.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-volume-s4",
+                "hitung": "(4 * 4 * 4) / (2 * 2 * 2)",
+                "pertanyaan": "Kubus A sisinya 2 cm. Kubus B sisinya 4 cm. Volume B berapa kali volume A?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "2 kali",
+                  "4 kali",
+                  "8 kali",
+                  "16 kali"
+                ],
+                "kunci": "8 kali",
+                "petunjuk": [
+                  "Hitung volume masing-masing.",
+                  "A: 2 × 2 × 2 = 8. B: 4 × 4 × 4 = 64.",
+                  "64 : 8 = ?"
+                ],
+                "pembahasan": "Volume A = 8 cm³, volume B = 64 cm³. 64 : 8 = 8 kali.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat5-volume-s5",
+                "hitung": "50 * 30 * 40 / 1000",
+                "pertanyaan": "Akuarium berbentuk balok 50 cm × 30 cm × 40 cm. Akuarium diisi air sampai penuh. Berapa liter air di dalamnya? (1 liter = 1.000 cm³)",
+                "bentuk": "isian",
+                "kunci": "60",
+                "petunjuk": [
+                  "Hitung volume dalam cm³ dulu.",
+                  "50 × 30 × 40 = 60.000 cm³.",
+                  "60.000 : 1.000 = ?"
+                ],
+                "pembahasan": "Volume = 50 × 30 × 40 = 60.000 cm³ = 60 liter.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K5-mat"
+          }
+        },
+        {
+          "id": "mat5-kali-pecahan",
+          "judul": "Perkalian pecahan",
+          "ringkas": "Atas kali atas, bawah kali bawah.",
+          "urutan": 5,
+          "prasyarat": [
+            "mat5-tambah-kurang-pecahan"
+          ],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat5-kecepatan",
+          "judul": "Kecepatan",
+          "ringkas": "Jarak dibagi waktu.",
+          "urutan": 6,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat5-sudut-segitiga",
+          "judul": "Sudut segitiga",
+          "ringkas": "Jumlah sudut segitiga 180°.",
+          "urutan": 7,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat5-rata-rata",
+          "judul": "Rata-rata data",
+          "ringkas": "Jumlah data dibagi banyak data.",
+          "urutan": 8,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        }
+      ]
+    },
+    {
+      "kode": "bi",
+      "topik": [
+        {
+          "id": "bi5-informasi-penting",
+          "judul": "Informasi penting",
+          "ringkas": "Siapa, apa, di mana, kapan, mengapa, bagaimana.",
+          "urutan": 1,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi5-informasi-penting",
+            "penjelasan": [
+              {
+                "teks": "Informasi penting menjawab pertanyaan siapa, apa, di mana, kapan, mengapa, dan bagaimana."
+              },
+              {
+                "teks": "Baca pertanyaan dulu. Lalu cari kalimat di teks yang memuat jawabannya."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "\"Pada hari Sabtu, siswa kelas 5 menanam bakau di pantai Ulee Lheue.\" Di mana siswa menanam bakau?",
+                "langkah": [
+                  "Kata \"di\" menunjukkan tempat.",
+                  "Tempatnya pantai Ulee Lheue."
+                ],
+                "jawaban": "Di pantai Ulee Lheue"
+              },
+              {
+                "soal": "\"Mereka menanam bakau agar pantai tidak terkikis ombak.\" Mengapa mereka menanam bakau?",
+                "langkah": [
+                  "Kata \"agar\" menunjukkan alasan.",
+                  "Alasannya supaya pantai tidak terkikis."
+                ],
+                "jawaban": "Agar pantai tidak terkikis ombak"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi5-informasi-penting-s1",
+                "bacaan": "Hari Minggu pagi, lomba layang-layang diadakan di lapangan desa. Anak-anak desa ikut bersama. Mereka senang karena angin bertiup kencang.",
+                "pertanyaan": "Kapan lomba layang-layang diadakan?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Hari Minggu pagi",
+                  "Di lapangan desa",
+                  "Anak-anak desa",
+                  "Karena angin kencang"
+                ],
+                "kunci": "Hari Minggu pagi",
+                "petunjuk": [
+                  "Kapan menanyakan waktu.",
+                  "Cari keterangan waktu di bacaan.",
+                  "Hari Minggu pagi adalah waktu."
+                ],
+                "pembahasan": "Kapan menanyakan waktu. Jawabannya hari Minggu pagi.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi5-informasi-penting-s2",
+                "bacaan": "Hari Minggu pagi, lomba layang-layang diadakan di lapangan desa. Anak-anak desa ikut bersama. Mereka senang karena angin bertiup kencang.",
+                "pertanyaan": "Di mana lomba diadakan?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Hari Minggu pagi",
+                  "Di lapangan desa",
+                  "Anak-anak desa"
+                ],
+                "kunci": "Di lapangan desa",
+                "petunjuk": [
+                  "Di mana menanyakan tempat.",
+                  "Cari kata \"di\" yang diikuti tempat.",
+                  "Lapangan desa adalah tempat."
+                ],
+                "pembahasan": "Di mana menanyakan tempat: lapangan desa.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi5-informasi-penting-s3",
+                "bacaan": "Hari Minggu pagi, lomba layang-layang diadakan di lapangan desa. Anak-anak desa ikut bersama. Mereka senang karena angin bertiup kencang.",
+                "pertanyaan": "Mengapa anak-anak senang?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Karena hari Minggu",
+                  "Karena angin bertiup kencang",
+                  "Karena di lapangan"
+                ],
+                "kunci": "Karena angin bertiup kencang",
+                "petunjuk": [
+                  "Mengapa menanyakan alasan.",
+                  "Cari kata \"karena\".",
+                  "Lihat kalimat terakhir."
+                ],
+                "pembahasan": "Kalimat terakhir: mereka senang karena angin bertiup kencang.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi5-informasi-penting-s4",
+                "bacaan": "Kak Dara membuat sirup jeruk. Mula-mula ia memeras lima buah jeruk. Lalu air jeruk dicampur dengan dua gelas air. Terakhir ia menambahkan dua sendok gula.",
+                "pertanyaan": "Bagaimana cara membuat sirup jeruk menurut bacaan?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Membeli di toko",
+                  "Memeras jeruk, lalu dicampur air dan gula",
+                  "Menanam pohon jeruk"
+                ],
+                "kunci": "Memeras jeruk, lalu dicampur air dan gula",
+                "petunjuk": [
+                  "Bagaimana menanyakan cara.",
+                  "Cari langkah-langkah di bacaan.",
+                  "Langkahnya: peras, campur air, tambah gula."
+                ],
+                "pembahasan": "Bacaan menyebut langkah: peras jeruk, campur air, tambahkan gula.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi5-informasi-penting-s5",
+                "bacaan": "Kak Dara membuat sirup jeruk. Mula-mula ia memeras lima buah jeruk. Lalu air jeruk dicampur dengan dua gelas air. Terakhir ia menambahkan dua sendok gula.",
+                "pertanyaan": "Informasi mana yang TIDAK ada dalam bacaan?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Kak Dara membuat sirup",
+                  "Ada lima buah jeruk",
+                  "Harga jeruk di pasar",
+                  "Ditambah dua sendok gula"
+                ],
+                "kunci": "Harga jeruk di pasar",
+                "petunjuk": [
+                  "Periksa pilihan satu per satu dengan bacaan.",
+                  "Sirup, lima jeruk, dan gula disebut.",
+                  "Harga jeruk tidak disebut sama sekali."
+                ],
+                "pembahasan": "Bacaan tidak menyebut harga jeruk.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K5-bi"
+          }
+        },
+        {
+          "id": "bi5-fakta-opini",
+          "judul": "Fakta dan opini",
+          "ringkas": "Bisa dibuktikan atau hanya pendapat?",
+          "urutan": 2,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi5-fakta-opini",
+            "penjelasan": [
+              {
+                "teks": "Fakta adalah hal yang benar-benar terjadi dan bisa dibuktikan."
+              },
+              {
+                "teks": "Opini adalah pendapat seseorang. Opini sering memakai kata menurut saya, paling, indah, atau enak."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "\"Banda Aceh adalah ibu kota Provinsi Aceh.\" Fakta atau opini?",
+                "langkah": [
+                  "Bisa dibuktikan dari peta dan buku."
+                ],
+                "jawaban": "Fakta"
+              },
+              {
+                "soal": "\"Mi Aceh adalah makanan paling enak.\" Fakta atau opini?",
+                "langkah": [
+                  "Enak menurut setiap orang bisa berbeda."
+                ],
+                "jawaban": "Opini"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi5-fakta-opini-s1",
+                "pertanyaan": "\"Satu minggu ada tujuh hari.\" Kalimat ini adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "fakta",
+                  "opini"
+                ],
+                "kunci": "fakta",
+                "petunjuk": [
+                  "Apakah bisa dibuktikan?",
+                  "Lihat kalender.",
+                  "Semua orang setuju ada tujuh hari."
+                ],
+                "pembahasan": "Bisa dibuktikan dengan kalender, jadi fakta.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi5-fakta-opini-s2",
+                "pertanyaan": "\"Menurut saya, pelajaran menggambar paling seru.\" Kalimat ini adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "fakta",
+                  "opini"
+                ],
+                "kunci": "opini",
+                "petunjuk": [
+                  "Ada kata \"menurut saya\".",
+                  "Itu pendapat satu orang.",
+                  "Orang lain bisa berbeda pendapat."
+                ],
+                "pembahasan": "Kata \"menurut saya\" dan \"paling seru\" menunjukkan pendapat, jadi opini.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi5-fakta-opini-s3",
+                "pertanyaan": "Kalimat yang merupakan fakta adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Pantai itu sangat indah.",
+                  "Gajah adalah hewan yang menyusui.",
+                  "Kue ini enak sekali."
+                ],
+                "kunci": "Gajah adalah hewan yang menyusui.",
+                "petunjuk": [
+                  "Fakta bisa dibuktikan.",
+                  "Indah dan enak tergantung pendapat orang.",
+                  "Gajah menyusui anaknya, bisa dibuktikan."
+                ],
+                "pembahasan": "Gajah hewan menyusui bisa dibuktikan, jadi fakta.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi5-fakta-opini-s4",
+                "pertanyaan": "Kalimat yang merupakan opini adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Air mendidih pada suhu 100 derajat.",
+                  "Sekolah kami punya 12 kelas.",
+                  "Seragam baru itu terlihat bagus."
+                ],
+                "kunci": "Seragam baru itu terlihat bagus.",
+                "petunjuk": [
+                  "Cari kalimat yang berisi pendapat.",
+                  "Suhu dan jumlah kelas bisa diukur.",
+                  "Bagus tergantung selera."
+                ],
+                "pembahasan": "\"Terlihat bagus\" adalah pendapat, jadi opini.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi5-fakta-opini-s5",
+                "pertanyaan": "\"(1) Pasar ikan Lampulo buka sejak pukul lima pagi. (2) Ikan di sana paling segar. (3) Nelayan membawa ikan dari laut.\" Kalimat opini ada di nomor ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "kunci": "2",
+                "petunjuk": [
+                  "Periksa kalimat satu per satu.",
+                  "Kalimat 1 dan 3 bisa dibuktikan dengan melihat langsung.",
+                  "Kata \"paling segar\" adalah pendapat."
+                ],
+                "pembahasan": "Kalimat 2 memakai \"paling segar\", itu pendapat. Jadi opini.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K5-bi"
+          }
+        },
+        {
+          "id": "bi5-kalimat-efektif",
+          "judul": "Kalimat efektif",
+          "ringkas": "Kalimat yang jelas dan tidak berlebihan.",
+          "urutan": 3,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "bi5-iklan",
+          "judul": "Iklan dan poster",
+          "ringkas": "Ajakan, gambar, dan tujuan.",
+          "urutan": 4,
+          "prasyarat": [],
+          "bersamaOrtu": true,
+          "segera": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,841 @@
+{
+  "id": "gudang-k2",
+  "versi": "0.1.0",
+  "kelas": 2,
+  "dibuat": "2026-10-31",
+  "sumber": "Ditulis sendiri mengikuti capaian pembelajaran kelas 2 (belum diperiksa guru).",
+  "mapel": [
+    {
+      "kode": "mat",
+      "topik": [
+        {
+          "id": "mat2-nilai-tempat",
+          "judul": "Puluhan dan satuan",
+          "ringkas": "45 artinya 4 puluhan dan 5 satuan.",
+          "urutan": 1,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-nilai-tempat",
+            "penjelasan": [
+              {
+                "teks": "Bilangan dua angka punya puluhan dan satuan. Angka kiri adalah puluhan.",
+                "gambar": {
+                  "jenis": "petak",
+                  "baris": 3,
+                  "kolom": 10,
+                  "terisi": 23
+                }
+              },
+              {
+                "teks": "Angka kanan adalah satuan. 23 artinya 2 puluhan dan 3 satuan."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Berapa puluhan pada bilangan 47?",
+                "langkah": [
+                  "Angka kiri adalah 4.",
+                  "Jadi ada 4 puluhan."
+                ],
+                "jawaban": "4"
+              },
+              {
+                "soal": "3 puluhan dan 6 satuan adalah bilangan berapa?",
+                "langkah": [
+                  "3 puluhan = 30.",
+                  "30 + 6 = 36."
+                ],
+                "jawaban": "36"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-nilai-tempat-s1",
+                "hitung": "58 - 50",
+                "pertanyaan": "Berapa satuan pada bilangan 58?",
+                "bentuk": "isian",
+                "kunci": "8",
+                "petunjuk": [
+                  "Satuan ada di sebelah kanan.",
+                  "Lihat angka paling kanan pada 58.",
+                  "Angka paling kanan adalah 8."
+                ],
+                "pembahasan": "Angka kanan 58 adalah 8, jadi ada 8 satuan.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-nilai-tempat-s2",
+                "hitung": "5 * 10 + 2",
+                "pertanyaan": "5 puluhan dan 2 satuan adalah bilangan berapa?",
+                "bentuk": "isian",
+                "kunci": "52",
+                "petunjuk": [
+                  "1 puluhan sama dengan 10.",
+                  "5 puluhan = 50.",
+                  "Tambahkan 2 satuan ke 50."
+                ],
+                "pembahasan": "5 puluhan = 50. 50 + 2 = 52.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-nilai-tempat-s3",
+                "pertanyaan": "Bilangan manakah yang punya 7 puluhan?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "17",
+                  "70",
+                  "107",
+                  "7"
+                ],
+                "kunci": "70",
+                "petunjuk": [
+                  "Puluhan ada di angka kiri bilangan dua angka.",
+                  "Cari bilangan dua angka yang angka kirinya 7.",
+                  "70 = 7 puluhan dan 0 satuan."
+                ],
+                "pembahasan": "70 punya 7 puluhan. Pada 17, angka 7 adalah satuan.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-nilai-tempat-s4",
+                "hitung": "4 * 10 + 9",
+                "pertanyaan": "Nanda punya 4 ikat lidi. Satu ikat berisi 10 lidi. Ia juga punya 9 lidi lepas. Berapa semua lidinya?",
+                "bentuk": "isian",
+                "kunci": "49",
+                "petunjuk": [
+                  "Satu ikat = 1 puluhan.",
+                  "4 ikat = 40 lidi.",
+                  "40 + 9 = ?"
+                ],
+                "pembahasan": "4 ikat = 40 lidi. 40 + 9 = 49 lidi.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-nilai-tempat-s5",
+                "hitung": "maks(61, 59)",
+                "pertanyaan": "Mana yang lebih besar, 61 atau 59?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "61",
+                  "59"
+                ],
+                "kunci": "61",
+                "petunjuk": [
+                  "Bandingkan puluhannya dulu.",
+                  "61 punya 6 puluhan, 59 punya 5 puluhan.",
+                  "6 puluhan lebih banyak dari 5 puluhan."
+                ],
+                "pembahasan": "61 punya 6 puluhan, lebih banyak dari 5 puluhan pada 59. Jadi 61 lebih besar.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
+        },
+        {
+          "id": "mat2-tambah-100",
+          "judul": "Penjumlahan sampai 100",
+          "ringkas": "Satuan dulu, lalu puluhan.",
+          "urutan": 2,
+          "prasyarat": [
+            "mat2-nilai-tempat"
+          ],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-tambah-100",
+            "penjelasan": [
+              {
+                "teks": "Jumlahkan satuan dengan satuan, lalu puluhan dengan puluhan."
+              },
+              {
+                "teks": "Kalau satuan lebih dari 9, simpan 1 puluhan. Tambahkan ke puluhan."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "34 + 25 = ?",
+                "langkah": [
+                  "Satuan: 4 + 5 = 9.",
+                  "Puluhan: 3 + 2 = 5.",
+                  "Hasilnya 59."
+                ],
+                "jawaban": "59"
+              },
+              {
+                "soal": "27 + 18 = ?",
+                "langkah": [
+                  "Satuan: 7 + 8 = 15. Tulis 5, simpan 1.",
+                  "Puluhan: 2 + 1 + 1 = 4.",
+                  "Hasilnya 45."
+                ],
+                "jawaban": "45"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-tambah-100-s1",
+                "hitung": "42 + 15",
+                "pertanyaan": "Berapa hasil 42 + 15?",
+                "bentuk": "isian",
+                "kunci": "57",
+                "petunjuk": [
+                  "Satuan dulu: 2 + 5.",
+                  "2 + 5 = 7. Puluhan: 4 + 1.",
+                  "4 + 1 = 5. Jadi 5 puluhan dan 7 satuan."
+                ],
+                "pembahasan": "Satuan 2 + 5 = 7, puluhan 4 + 1 = 5. Hasilnya 57.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-tambah-100-s2",
+                "hitung": "30 + 40",
+                "pertanyaan": "Berapa hasil 30 + 40?",
+                "bentuk": "isian",
+                "kunci": "70",
+                "petunjuk": [
+                  "30 adalah 3 puluhan, 40 adalah 4 puluhan.",
+                  "3 puluhan + 4 puluhan = 7 puluhan.",
+                  "7 puluhan = 70."
+                ],
+                "pembahasan": "3 puluhan + 4 puluhan = 7 puluhan = 70.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-tambah-100-s3",
+                "hitung": "36 + 27",
+                "pertanyaan": "Berapa hasil 36 + 27?",
+                "bentuk": "isian",
+                "kunci": "63",
+                "petunjuk": [
+                  "Satuan: 6 + 7 lebih dari 9.",
+                  "6 + 7 = 13. Tulis 3, simpan 1.",
+                  "Puluhan: 3 + 2 + 1 = 6."
+                ],
+                "pembahasan": "6 + 7 = 13, tulis 3 simpan 1. 3 + 2 + 1 = 6. Hasilnya 63.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-tambah-100-s4",
+                "hitung": "45 + 38",
+                "pertanyaan": "Mira memetik 45 jambu. Adiknya memetik 38 jambu. Berapa jambu mereka semuanya?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "73",
+                  "83",
+                  "713",
+                  "7"
+                ],
+                "kunci": "83",
+                "petunjuk": [
+                  "Kata \"semuanya\" artinya dijumlahkan.",
+                  "Satuan: 5 + 8 = 13. Tulis 3, simpan 1.",
+                  "Puluhan: 4 + 3 + 1 = 8."
+                ],
+                "pembahasan": "45 + 38 = 83. Jawaban 73 muncul kalau lupa menyimpan 1 puluhan.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-tambah-100-s5",
+                "hitung": "28 + 19 + 30",
+                "pertanyaan": "Di kebun ada 28 pohon pisang, 19 pohon pepaya, dan 30 pohon kelapa. Berapa semua pohon?",
+                "bentuk": "isian",
+                "kunci": "77",
+                "petunjuk": [
+                  "Jumlahkan dua bilangan dulu, lalu tambah yang ketiga.",
+                  "28 + 19 = 47.",
+                  "47 + 30 = ?"
+                ],
+                "pembahasan": "28 + 19 = 47, lalu 47 + 30 = 77 pohon.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
+        },
+        {
+          "id": "mat2-kurang-100",
+          "judul": "Pengurangan sampai 100",
+          "ringkas": "Kalau satuan kurang, pinjam satu puluhan.",
+          "urutan": 3,
+          "prasyarat": [
+            "mat2-tambah-100"
+          ],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-kurang-100",
+            "penjelasan": [
+              {
+                "teks": "Kurangkan satuan dengan satuan, lalu puluhan dengan puluhan."
+              },
+              {
+                "teks": "Kalau satuan atas lebih kecil, pinjam 1 puluhan. 1 puluhan sama dengan 10 satuan."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "68 − 25 = ?",
+                "langkah": [
+                  "Satuan: 8 − 5 = 3.",
+                  "Puluhan: 6 − 2 = 4.",
+                  "Hasilnya 43."
+                ],
+                "jawaban": "43"
+              },
+              {
+                "soal": "52 − 17 = ?",
+                "langkah": [
+                  "Satuan 2 lebih kecil dari 7. Pinjam 1 puluhan, jadi 12.",
+                  "12 − 7 = 5.",
+                  "Puluhan tinggal 4. 4 − 1 = 3. Hasilnya 35."
+                ],
+                "jawaban": "35"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-kurang-100-s1",
+                "hitung": "79 - 34",
+                "pertanyaan": "Berapa hasil 79 − 34?",
+                "bentuk": "isian",
+                "kunci": "45",
+                "petunjuk": [
+                  "Satuan dulu: 9 − 4.",
+                  "9 − 4 = 5. Puluhan: 7 − 3.",
+                  "7 − 3 = 4."
+                ],
+                "pembahasan": "9 − 4 = 5 dan 7 − 3 = 4. Hasilnya 45.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-kurang-100-s2",
+                "hitung": "90 - 50",
+                "pertanyaan": "Berapa hasil 90 − 50?",
+                "bentuk": "isian",
+                "kunci": "40",
+                "petunjuk": [
+                  "90 adalah 9 puluhan, 50 adalah 5 puluhan.",
+                  "9 puluhan − 5 puluhan = 4 puluhan.",
+                  "4 puluhan = 40."
+                ],
+                "pembahasan": "9 puluhan − 5 puluhan = 4 puluhan = 40.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-kurang-100-s3",
+                "hitung": "63 - 28",
+                "pertanyaan": "Berapa hasil 63 − 28?",
+                "bentuk": "isian",
+                "kunci": "35",
+                "petunjuk": [
+                  "Satuan 3 lebih kecil dari 8. Pinjam 1 puluhan.",
+                  "13 − 8 = 5.",
+                  "Puluhan tinggal 5. 5 − 2 = 3."
+                ],
+                "pembahasan": "Pinjam: 13 − 8 = 5. Puluhan 5 − 2 = 3. Hasilnya 35.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-kurang-100-s4",
+                "hitung": "50 - 16",
+                "pertanyaan": "Ikram punya 50 kelereng. Ia memberi 16 kelereng kepada temannya. Berapa sisa kelerengnya?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "34",
+                  "46",
+                  "66",
+                  "44"
+                ],
+                "kunci": "34",
+                "petunjuk": [
+                  "Kata \"memberi\" dan \"sisa\" artinya dikurangi.",
+                  "Satuan 0 lebih kecil dari 6. Pinjam: 10 − 6 = 4.",
+                  "Puluhan tinggal 4. 4 − 1 = 3."
+                ],
+                "pembahasan": "50 − 16 = 34. Jawaban 46 muncul kalau satuan dikurangi terbalik (6 − 0).",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-kurang-100-s5",
+                "hitung": "42 - 15 + 9",
+                "pertanyaan": "Dalam bus ada 42 orang. Di halte, 15 orang turun dan 9 orang naik. Berapa orang di dalam bus sekarang?",
+                "bentuk": "isian",
+                "kunci": "36",
+                "petunjuk": [
+                  "Kurangi dulu yang turun, lalu tambah yang naik.",
+                  "42 − 15 = 27.",
+                  "27 + 9 = ?"
+                ],
+                "pembahasan": "42 − 15 = 27, lalu 27 + 9 = 36 orang.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
+        },
+        {
+          "id": "mat2-kali-ulang",
+          "judul": "Perkalian sebagai tambah berulang",
+          "ringkas": "3 × 4 artinya 4 + 4 + 4.",
+          "urutan": 4,
+          "prasyarat": [
+            "mat2-tambah-100"
+          ],
+          "bersamaOrtu": true,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-mat2-kali-ulang",
+            "penjelasan": [
+              {
+                "teks": "Perkalian adalah tambah berulang. 3 × 4 artinya 4 ditambah 3 kali.",
+                "gambar": {
+                  "jenis": "petak",
+                  "baris": 3,
+                  "kolom": 4,
+                  "terisi": 12
+                }
+              },
+              {
+                "teks": "4 + 4 + 4 = 12. Jadi 3 × 4 = 12."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "2 × 5 = ?",
+                "langkah": [
+                  "2 × 5 artinya 5 + 5.",
+                  "5 + 5 = 10."
+                ],
+                "jawaban": "10"
+              },
+              {
+                "soal": "Ada 4 piring. Tiap piring berisi 3 kue. Berapa semua kue?",
+                "langkah": [
+                  "4 piring berisi 3 kue: 3 + 3 + 3 + 3.",
+                  "Kalimat kalinya 4 × 3.",
+                  "4 × 3 = 12."
+                ],
+                "jawaban": "12"
+              }
+            ],
+            "soal": [
+              {
+                "id": "mat2-kali-ulang-s1",
+                "hitung": "3 * 2",
+                "pertanyaan": "Berapa hasil 3 × 2?",
+                "bentuk": "isian",
+                "kunci": "6",
+                "petunjuk": [
+                  "3 × 2 artinya 2 ditambah 3 kali.",
+                  "2 + 2 + 2.",
+                  "2 + 2 + 2 = 6."
+                ],
+                "pembahasan": "3 × 2 = 2 + 2 + 2 = 6.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-kali-ulang-s2",
+                "pertanyaan": "Penjumlahan mana yang sama dengan 4 × 5?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "4 + 5",
+                  "5 + 5 + 5 + 5",
+                  "4 + 4 + 4",
+                  "5 + 4 + 5"
+                ],
+                "kunci": "5 + 5 + 5 + 5",
+                "petunjuk": [
+                  "4 × 5 artinya 5 ditambah berapa kali?",
+                  "5 ditambah 4 kali.",
+                  "Cari pilihan dengan empat angka 5."
+                ],
+                "pembahasan": "4 × 5 artinya 5 + 5 + 5 + 5 = 20.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "mat2-kali-ulang-s3",
+                "hitung": "5 * 2",
+                "pertanyaan": "Ada 5 kandang. Tiap kandang berisi 2 ayam. Berapa semua ayam?",
+                "bentuk": "isian",
+                "kunci": "10",
+                "petunjuk": [
+                  "Tiap kandang 2 ayam, ada 5 kandang.",
+                  "2 + 2 + 2 + 2 + 2.",
+                  "Atau 5 × 2."
+                ],
+                "pembahasan": "5 × 2 = 2 + 2 + 2 + 2 + 2 = 10 ayam.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-kali-ulang-s4",
+                "hitung": "6 * 3",
+                "pertanyaan": "Berapa hasil 6 × 3?",
+                "bentuk": "isian",
+                "kunci": "18",
+                "petunjuk": [
+                  "6 × 3 artinya 3 ditambah 6 kali.",
+                  "3 + 3 + 3 + 3 + 3 + 3.",
+                  "Hitung sambil loncat tiga: 3, 6, 9, 12, 15, 18."
+                ],
+                "pembahasan": "6 × 3 = 18.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "mat2-kali-ulang-s5",
+                "hitung": "4 * 5 - 3",
+                "pertanyaan": "Dara membeli 4 bungkus permen. Tiap bungkus berisi 5 permen. Ia memberi 3 permen kepada adik. Berapa permen Dara sekarang?",
+                "bentuk": "isian",
+                "kunci": "17",
+                "petunjuk": [
+                  "Hitung dulu semua permen, lalu kurangi yang diberikan.",
+                  "4 × 5 = 20 permen.",
+                  "20 − 3 = ?"
+                ],
+                "pembahasan": "4 × 5 = 20, lalu 20 − 3 = 17 permen.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-mat"
+          }
+        },
+        {
+          "id": "mat2-bagi-rata",
+          "judul": "Membagi rata",
+          "ringkas": "Bagikan sama banyak.",
+          "urutan": 5,
+          "prasyarat": [
+            "mat2-kali-ulang"
+          ],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat2-panjang",
+          "judul": "Mengukur panjang",
+          "ringkas": "Penggaris dan satuan sentimeter.",
+          "urutan": 6,
+          "prasyarat": [],
+          "bersamaOrtu": true,
+          "segera": true
+        },
+        {
+          "id": "mat2-jam",
+          "judul": "Membaca jam",
+          "ringkas": "Jarum pendek untuk jam, jarum panjang untuk menit.",
+          "urutan": 7,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "mat2-bangun-datar",
+          "judul": "Bangun datar",
+          "ringkas": "Segi tiga, segi empat, dan lingkaran.",
+          "urutan": 8,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": true
+        }
+      ]
+    },
+    {
+      "kode": "bi",
+      "topik": [
+        {
+          "id": "bi2-huruf-kapital",
+          "judul": "Huruf kapital",
+          "ringkas": "Awal kalimat dan nama orang memakai huruf besar.",
+          "urutan": 1,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi2-huruf-kapital",
+            "penjelasan": [
+              {
+                "teks": "Huruf kapital adalah huruf besar. Huruf kapital dipakai di awal kalimat."
+              },
+              {
+                "teks": "Nama orang, nama kota, dan nama hari juga memakai huruf kapital."
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Perbaiki kalimat: \"adik bermain di halaman.\"",
+                "langkah": [
+                  "Kalimat harus diawali huruf kapital.",
+                  "Huruf a diganti A."
+                ],
+                "jawaban": "Adik bermain di halaman."
+              },
+              {
+                "soal": "Perbaiki: \"Kami pergi ke banda aceh.\"",
+                "langkah": [
+                  "Banda Aceh adalah nama kota.",
+                  "Huruf awal tiap kata nama kota memakai huruf kapital."
+                ],
+                "jawaban": "Kami pergi ke Banda Aceh."
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi2-huruf-kapital-s1",
+                "pertanyaan": "Kalimat mana yang benar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "ibu memasak sayur.",
+                  "Ibu memasak sayur.",
+                  "ibu Memasak sayur."
+                ],
+                "kunci": "Ibu memasak sayur.",
+                "petunjuk": [
+                  "Lihat huruf pertama kalimat.",
+                  "Awal kalimat memakai huruf kapital.",
+                  "Cari kalimat yang diawali huruf I besar."
+                ],
+                "pembahasan": "Awal kalimat memakai huruf kapital: \"Ibu memasak sayur.\"",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-huruf-kapital-s2",
+                "pertanyaan": "Kata mana yang harus ditulis dengan huruf kapital?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "meja",
+                  "nanda",
+                  "buku",
+                  "pensil"
+                ],
+                "kunci": "nanda",
+                "petunjuk": [
+                  "Cari nama orang.",
+                  "Meja, buku, dan pensil adalah nama benda biasa.",
+                  "Nanda adalah nama orang."
+                ],
+                "pembahasan": "Nanda adalah nama orang, jadi ditulis Nanda.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-huruf-kapital-s3",
+                "pertanyaan": "Nama hari yang benar adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "senin",
+                  "Senin",
+                  "sENIN"
+                ],
+                "kunci": "Senin",
+                "petunjuk": [
+                  "Nama hari diawali huruf kapital.",
+                  "Hanya huruf pertama yang besar.",
+                  "Huruf lainnya kecil."
+                ],
+                "pembahasan": "Nama hari ditulis Senin: huruf pertama kapital, lainnya kecil.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-huruf-kapital-s4",
+                "pertanyaan": "Kalimat mana yang benar?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Kakek tinggal di Sabang.",
+                  "kakek tinggal di Sabang.",
+                  "Kakek tinggal di sabang."
+                ],
+                "kunci": "Kakek tinggal di Sabang.",
+                "petunjuk": [
+                  "Periksa awal kalimat dan nama tempat.",
+                  "Kakek di awal kalimat harus kapital.",
+                  "Sabang adalah nama kota, juga kapital."
+                ],
+                "pembahasan": "Awal kalimat dan nama kota memakai huruf kapital: \"Kakek tinggal di Sabang.\"",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-huruf-kapital-s5",
+                "pertanyaan": "Kata mana yang salah tulis dalam kalimat ini: \"Hari minggu Faris bermain bola.\"",
+                "bentuk": "pg",
+                "pilihan": [
+                  "Hari",
+                  "minggu",
+                  "Faris",
+                  "bola"
+                ],
+                "kunci": "minggu",
+                "petunjuk": [
+                  "Ada nama hari di kalimat itu.",
+                  "Nama hari harus diawali huruf kapital.",
+                  "Kata minggu ditulis dengan m kecil."
+                ],
+                "pembahasan": "\"minggu\" adalah nama hari, harus ditulis Minggu.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-bi"
+          }
+        },
+        {
+          "id": "bi2-kata-sifat",
+          "judul": "Kata sifat",
+          "ringkas": "Kata yang menjelaskan keadaan benda.",
+          "urutan": 2,
+          "prasyarat": [],
+          "bersamaOrtu": false,
+          "segera": false,
+          "kartu": {
+            "id": "kartu-bi2-kata-sifat",
+            "penjelasan": [
+              {
+                "teks": "Kata sifat menjelaskan keadaan benda. Contohnya besar, kecil, manis, dan bersih."
+              },
+              {
+                "teks": "Kata sifat menjawab pertanyaan: seperti apa?"
+              }
+            ],
+            "contohJadi": [
+              {
+                "soal": "Kata sifat pada \"Gajah itu besar.\" adalah ....",
+                "langkah": [
+                  "Gajah itu seperti apa?",
+                  "Gajah itu besar."
+                ],
+                "jawaban": "besar"
+              },
+              {
+                "soal": "Lawan kata panas adalah ....",
+                "langkah": [
+                  "Panas adalah kata sifat.",
+                  "Lawannya adalah keadaan yang tidak panas."
+                ],
+                "jawaban": "dingin"
+              }
+            ],
+            "soal": [
+              {
+                "id": "bi2-kata-sifat-s1",
+                "pertanyaan": "Kata sifat pada kalimat \"Mangga itu manis.\" adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "mangga",
+                  "itu",
+                  "manis"
+                ],
+                "kunci": "manis",
+                "petunjuk": [
+                  "Mangga itu seperti apa?",
+                  "Cari kata yang menjelaskan rasa.",
+                  "Rasanya manis."
+                ],
+                "pembahasan": "Manis menjelaskan rasa mangga, jadi manis adalah kata sifat.",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-kata-sifat-s2",
+                "pertanyaan": "Mana yang termasuk kata sifat?",
+                "bentuk": "pg",
+                "pilihan": [
+                  "berlari",
+                  "tinggi",
+                  "sepatu"
+                ],
+                "kunci": "tinggi",
+                "petunjuk": [
+                  "Kata sifat menjelaskan keadaan.",
+                  "Berlari adalah kegiatan, sepatu adalah benda.",
+                  "Tinggi menjelaskan keadaan."
+                ],
+                "pembahasan": "Tinggi menjelaskan keadaan, misalnya \"pohon itu tinggi\".",
+                "tingkat": "mudah"
+              },
+              {
+                "id": "bi2-kata-sifat-s3",
+                "pertanyaan": "Lawan kata bersih adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "rapi",
+                  "kotor",
+                  "baru"
+                ],
+                "kunci": "kotor",
+                "petunjuk": [
+                  "Bersih artinya tidak ada debu atau sampah.",
+                  "Lawannya penuh debu atau sampah.",
+                  "Kata itu adalah kotor."
+                ],
+                "pembahasan": "Lawan kata bersih adalah kotor.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-kata-sifat-s4",
+                "pertanyaan": "Kata yang tepat untuk \"Batu itu sangat ....\" adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "keras",
+                  "lembut",
+                  "cair"
+                ],
+                "kunci": "keras",
+                "petunjuk": [
+                  "Bayangkan saat memegang batu.",
+                  "Batu tidak bisa ditekan dengan jari.",
+                  "Batu itu keras."
+                ],
+                "pembahasan": "Batu tidak bisa ditekan, jadi batu itu keras.",
+                "tingkat": "sedang"
+              },
+              {
+                "id": "bi2-kata-sifat-s5",
+                "pertanyaan": "\"Rumah Zaki baru dicat. Warnanya hijau terang.\" Kata sifat pada kalimat kedua adalah ....",
+                "bentuk": "pg",
+                "pilihan": [
+                  "warnanya",
+                  "hijau",
+                  "terang",
+                  "hijau dan terang"
+                ],
+                "kunci": "hijau dan terang",
+                "petunjuk": [
+                  "Cari kata yang menjelaskan warna.",
+                  "Hijau menjelaskan warna, terang juga.",
+                  "Ada dua kata sifat."
+                ],
+                "pembahasan": "Hijau dan terang sama-sama menjelaskan warna rumah.",
+                "tingkat": "sulit"
+              }
+            ],
+            "status": "belum_diperiksa",
+            "sumber": "K2-bi"
+          }
+        },
+        {
+          "id": "bi2-tanda-baca",
+          "judul": "Titik dan tanda tanya",
+          "ringkas": "Akhir kalimat berita dan kalimat tanya.",
+          "urutan": 3,
+          "prasyarat": [
+            "bi2-huruf-kapital"
+          ],
+          "bersamaOrtu": false,
+          "segera": true
+        },
+        {
+          "id": "bi2-urutan-cerita",
+          "judul": "Urutan cerita",
+          "ringkas": "Mula-mula, lalu, akhirnya.",
+          "urutan": 4,
+          "prasyarat": [],
+          "bersamaOrtu": true,
+          "segera": true
+        }
+      ]
+    }
+  ]
+}

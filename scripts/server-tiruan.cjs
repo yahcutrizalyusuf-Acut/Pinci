@@ -315,7 +315,7 @@ function rpc(nama, uid, badan) {
   }
   if (nama === 'keluar_kelas') {
     let n = 0;
-    for (const a of anggotaAktif()) if (a.anak_id === badan.p_anak_id && a.keluarga_id === peran?.keluarga) (a.keluar = new Date(kini).toISOString()), n++;
+    for (const a of anggotaAktif()) if (a.anak_id === badan.p_anak_id && a.keluarga_id === peran?.keluarga) { a.keluar = new Date(kini).toISOString(); n++; }
     return { status: 200, isi: n };
   }
   if (nama === 'kelas_keluarga') {

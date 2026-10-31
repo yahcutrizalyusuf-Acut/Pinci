@@ -8,7 +8,7 @@ import { useData } from '@/data/konteks';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { cocokIsian, MAPEL_GUDANG } from '@/fitur/gudang';
 import { cekBelajar, ruteHalangan, useHitungWaktu } from '@/fitur/waktu';
-import { paketGudang } from '@/isi/gudang/paket';
+import { paketGudangTopik } from '@/isi/gudang/paket';
 import { ambilKartu } from '@/isi/gudang/pemuat';
 import { mainkanBunyi } from '@/layanan/bunyi';
 import { GambarIlmu } from '@/komponen/GambarIlmu';
@@ -24,7 +24,7 @@ export default function KartuIlmuLayar() {
   const dampingi = mode === 'dampingi';
   const router = useRouter();
   const { repo, anakAktif, keluarga } = useData();
-  const ambil = ambilKartu(paketGudang, id);
+  const ambil = ambilKartu(paketGudangTopik(id), id);
   const [tahap, setTahap] = useState<Tahap>('kenali');
   const [bagianKe, setBagianKe] = useState(0);
   const [contohKe, setContohKe] = useState(0);

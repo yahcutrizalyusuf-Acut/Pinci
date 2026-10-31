@@ -7,7 +7,7 @@ import { useData, useMuat } from '@/data/konteks';
 import { modeData } from '@/data/sinkron';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { hariIni } from '@/fitur/hari-ini';
-import { paketLengkap } from '@/fitur/konfig';
+import { adaBacaGudang, paketLengkap } from '@/fitur/konfig';
 import { ruteTugas } from '@/fitur/kelas';
 import { infoLancarAnak } from '@/fitur/lancar';
 import { GelembungPinci, Logo, TombolSuara } from '@/komponen/dasar';
@@ -32,6 +32,7 @@ export default function BerandaBelajar() {
     [anak.id],
   );
   const lengkap = paketLengkap(anak.kelas);
+  const baca = adaBacaGudang(anak.kelas);
   const sapaan = keluarga?.sapaanOrtu ?? 'Ayah';
   const sudah = (j: string) => (data?.h.sesi ?? []).some((s) => s.jenis === j);
 
@@ -121,7 +122,7 @@ export default function BerandaBelajar() {
             selesai={sudah('lancar')}
             onPress={() => router.push(data?.lancar.perluPenempatan ? '/lancar/penempatan' : data?.lancar.perluJurus ? '/lancar/jurus' : '/lancar/lembar')}
           />
-          {lengkap ? (
+          {baca ? (
             <KartuMapel
               judul="Baca Ulang"
               sub="Baca, dengar, baca lagi"
@@ -152,7 +153,7 @@ export default function BerandaBelajar() {
             selesai={sudah('inggris')}
             onPress={() => router.push(anak.tingkatInggris ? '/inggris' : '/inggris/tingkat')}
           />
-          {!lengkap ? (
+          {!baca ? (
             <View style={{ padding: 16, borderRadius: 20, backgroundColor: warna.putih, borderWidth: 1, borderColor: warna.kremGaris, flexDirection: 'row', gap: 12, alignItems: 'center' }}>
               <Text style={{ fontSize: 28 }}>📦</Text>
               <Text style={{ flex: 1, fontFamily: huruf.anak, fontSize: 16, color: warna.teksKedua }}>
