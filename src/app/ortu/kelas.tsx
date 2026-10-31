@@ -9,7 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useData, useMuat } from '@/data/konteks';
 import { HEWAN, type Anak, type PaketKelas } from '@/data/jenis';
-import { gabungKelas, gantiPaket, keluarKelas, type Sesimasuk } from '@/data/supabase';
+import { aturPersetujuanPemakaian, gabungKelas, gantiPaket, keluarKelas, type Sesimasuk } from '@/data/supabase';
 import { huruf, warna } from '@/desain/token';
 import {
   PAKET,
@@ -20,7 +20,7 @@ import {
   paketUntukKelas,
   pesanGabung,
   rapikanKodeKelas,
-  sisaHariCoba,
+  teksStatus,
   teksPersetujuan,
 } from '@/fitur/kelas';
 import { KepalaLayar, TeksOrtu, Tombol } from '@/komponen/dasar';
@@ -126,6 +126,16 @@ export default function KelasPengawas() {
     await repo.tarikKelas().catch(() => undefined);
   };
 
+  const ubahPemakaian = async (anakId: string, setuju: boolean) => {
+    setPesan('');
+    const ok = await aturPersetujuanPemakaian(server, anakId, setuju, VERSI_PERSETUJUAN);
+    if (!ok) {
+      setPesan('Belum tersimpan. Periksa internet, lalu coba lagi.');
+      return;
+    }
+    await repo.tarikKelas().catch(() => undefined);
+  };
+
   const keluar = async (anakId: string) => {
     setYakinKeluar(null);
     setMemuat(true);
@@ -219,7 +229,6 @@ export default function KelasPengawas() {
       </TeksOrtu>
       {daftarAnak.map((a) => {
         const k = kelas.find((x) => x.anak_id === a.id);
-        const sisa = k ? sisaHariCoba(k.cobaSampai) : 0;
         return (
           <Kotak key={a.id}>
             <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 17, color: warna.teks }}>
@@ -232,8 +241,14 @@ export default function KelasPengawas() {
                   {k.pengawasNama ? ` · Pengawas ${k.pengawasNama}` : ''}
                 </TeksOrtu>
                 <TeksOrtu style={{ color: warna.teksKedua }}>
-                  Paket {PAKET[k.paket].nama} · {sisa > 0 ? `Masa coba tinggal ${sisa} hari` : 'Masa coba sudah selesai'}
+                  Paket {PAKET[k.paket].nama} · {teksStatus(k)}
                 </TeksOrtu>
+                {k.status !== 'mitra' && k.status !== 'aktif' ? <TeksOrtu style={{ color: warna.teksKedua, fontSize: 14 }}>Biaya dan cara bayar dikirim ke email Anda.</TeksOrtu> : null}
+                <Centang
+                  nyala={k.setujuPemakaian === true}
+                  label="Kirim catatan pemakaian aplikasi untuk memperbaiki Pintar Main (boleh dimatikan kapan saja)"
+                  onPress={() => ubahPemakaian(a.id, !(k.setujuPemakaian === true))}
+                />
                 {yakinKeluar === a.id ? (
                   <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
                     <Text style={{ fontFamily: huruf.ortu, fontSize: 14, flex: 1, color: warna.teks }}>Pantauan pengawas berhenti. Riwayat belajar tidak dihapus. Yakin?</Text>

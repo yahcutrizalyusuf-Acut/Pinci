@@ -1,5 +1,6 @@
 import type { AnakPapan } from '../../data/staf';
-import { contohCatatan, formatKodeKelas, paketUntukKelas, penandaAnak, pesanGabung, rapikanKodeKelas, ruteTugas, sisaHariCoba, teksPersetujuan, urutkanPapan } from '../kelas';
+import { pertanyaanMingguIni } from '../pertanyaan';
+import { contohCatatan, formatKodeKelas, paketUntukKelas, penandaAnak, pesanGabung, rapikanKodeKelas, ruteTugas, sisaHariCoba, teksPersetujuan, teksStatus, urutkanPapan } from '../kelas';
 import { hariPantau, hariWib, lamaHari } from '../staf';
 
 const KINI = new Date('2026-11-04T03:00:00Z'); // Rabu 10.00 WIB
@@ -91,4 +92,23 @@ test('hari pantau Senin, Rabu, Jumat menurut WIB', () => {
   expect(lamaHari('2026-11-03T10:00:00Z', KINI)).toBe('kemarin');
   expect(lamaHari('2026-11-01T10:00:00Z', KINI)).toBe('3 hari lalu');
   expect(lamaHari(null, KINI)).toBe('belum pernah');
+});
+
+test('status langganan untuk orang tua tanpa harga', () => {
+  const dasar = { cobaSampai: '2026-11-16T00:00:00Z' };
+  expect(teksStatus({ ...dasar, status: 'coba' }, KINI)).toBe('Masa coba tinggal 12 hari');
+  expect(teksStatus({ ...dasar, status: 'aktif', berlakuSampai: '2026-12-16T00:00:00Z' }, KINI)).toContain('Aktif sampai 16 Desember 2026');
+  expect(teksStatus({ ...dasar, status: 'tenggang' }, KINI)).toContain('23 November 2026');
+  expect(teksStatus({ ...dasar, status: 'berhenti' }, KINI)).toContain('Latihan inti tetap');
+  expect(teksStatus({ ...dasar, status: 'mitra' }, KINI)).toBe('Lewat les mitra');
+  for (const s of ['coba', 'aktif', 'tenggang', 'berhenti', 'mitra'] as const) expect(teksStatus({ ...dasar, status: s }, KINI)).not.toMatch(/Rp/);
+});
+
+test('pertanyaan mingguan berganti tiap Senin WIB', () => {
+  const senin = pertanyaanMingguIni(new Date('2026-11-02T00:00:00Z')); // Senin 07.00 WIB
+  const minggu = pertanyaanMingguIni(new Date('2026-11-08T16:00:00Z')); // Minggu 23.00 WIB
+  const seninDepan = pertanyaanMingguIni(new Date('2026-11-08T18:00:00Z')); // Senin 01.00 WIB
+  expect(senin.kodeJawab).toBe(minggu.kodeJawab);
+  expect(seninDepan.kodeJawab).not.toBe(senin.kodeJawab);
+  expect(seninDepan.kode).not.toBe(senin.kode);
 });

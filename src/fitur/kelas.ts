@@ -2,7 +2,7 @@
  * Kelas dengan pengawas: teks, paket, dan penanda papan kelas (08-model-usaha/01).
  * Semua teks buatan sendiri; status isi: belum_diperiksa.
  */
-import type { JenisTugas, PaketKelas } from '../data/jenis';
+import type { AnggotaKelas, JenisTugas, PaketKelas, StatusLangganan } from '../data/jenis';
 import type { AlasanGabung } from '../data/supabase';
 import type { AnakPapan } from '../data/staf';
 import { namaTopik } from './nama-topik';
@@ -67,6 +67,34 @@ export function rapikanKodeKelas(kode: string): string {
 export function formatKodeKelas(kode: string): string {
   const k = rapikanKodeKelas(kode);
   return k.length === 6 ? `${k.slice(0, 3)} ${k.slice(3)}` : k;
+}
+
+export const NAMA_STATUS: Record<StatusLangganan, string> = {
+  coba: 'Masa coba',
+  aktif: 'Aktif',
+  tenggang: 'Masa tenggang',
+  berhenti: 'Berhenti',
+  mitra: 'Les mitra',
+};
+
+const tanggal = (iso: string) => new Date(iso).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+/** Status langganan dalam kalimat sederhana untuk orang tua. Tanpa harga. */
+export function teksStatus(a: Pick<AnggotaKelas, 'status' | 'cobaSampai' | 'berlakuSampai'>, sekarang = new Date()): string {
+  const status = a.status ?? (Date.parse(a.cobaSampai) > sekarang.getTime() ? 'coba' : 'tenggang');
+  const akhir = a.berlakuSampai && Date.parse(a.berlakuSampai) > Date.parse(a.cobaSampai) ? a.berlakuSampai : a.cobaSampai;
+  switch (status) {
+    case 'coba':
+      return `Masa coba tinggal ${sisaHariCoba(a.cobaSampai, sekarang)} hari`;
+    case 'aktif':
+      return `Aktif sampai ${tanggal(akhir)}`;
+    case 'tenggang':
+      return `Masa tenggang: pantauan berjalan sampai ${tanggal(new Date(Date.parse(akhir) + 7 * 86_400_000).toISOString())}`;
+    case 'berhenti':
+      return 'Pantauan berhenti. Latihan inti tetap bisa dipakai.';
+    default:
+      return 'Lewat les mitra';
+  }
 }
 
 /** Sisa hari masa coba (0 = sudah habis). */

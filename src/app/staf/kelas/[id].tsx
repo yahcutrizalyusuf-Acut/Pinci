@@ -10,7 +10,7 @@ import { useData } from '@/data/konteks';
 import { HEWAN, type HewanProfil } from '@/data/jenis';
 import { catatPantauan, opsiStaf, papanKelas, type PapanKelas } from '@/data/staf';
 import { huruf, warna } from '@/desain/token';
-import { NAMA_PENANDA, PAKET, formatKodeKelas, penandaAnak, sisaHariCoba, urutkanPapan } from '@/fitur/kelas';
+import { NAMA_PENANDA, NAMA_STATUS, PAKET, formatKodeKelas, penandaAnak, sisaHariCoba, urutkanPapan } from '@/fitur/kelas';
 import { namaTopik } from '@/fitur/nama-topik';
 import { hariPantau, lamaHari } from '@/fitur/staf';
 import { Tombol } from '@/komponen/dasar';
@@ -110,8 +110,9 @@ export default function PapanKelasLayar() {
                   </JudulKotak>
                   <TeksStaf redup>
                     Paket {PAKET[a.paket].nama}
-                    {sisa > 0 ? ` · Masa coba ${sisa} hari lagi` : ''}
+                    {a.status ? ` · ${NAMA_STATUS[a.status]}` : sisa > 0 ? ` · Masa coba ${sisa} hari lagi` : ''}
                   </TeksStaf>
+                  {a.status === 'berhenti' ? <TeksStaf redup>Langganan berhenti: pantauan tidak perlu dilakukan.</TeksStaf> : null}
                 </View>
               </View>
               {penanda.length ? (

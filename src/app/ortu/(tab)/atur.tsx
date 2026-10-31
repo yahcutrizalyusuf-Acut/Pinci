@@ -69,6 +69,7 @@ export default function Atur() {
         </Kelompok>
         <Kelompok judul="BANTUAN">
           <Baris judul="Mode Dampingi" sub="Latihan bersama anak" onPress={() => router.push('/dampingi')} />
+          <Baris judul="Kirim masukan" sub="Masalah, saran, atau pujian untuk tim Pintar Main" onPress={() => router.push('/ortu/masukan')} />
           <Baris judul="Periksa isi TKA" sub="Untuk orang tua dan guru, sebelum TKA dibuka untuk anak" onPress={() => router.push('/ortu/periksa-tka')} />
           <Baris judul="Ganti PIN orang tua" onPress={() => router.push('/ortu/ganti-pin')} />
           {FITUR_GURU ? <Baris judul="Kelola guru" onPress={() => router.push('/ortu/guru')} /> : null}

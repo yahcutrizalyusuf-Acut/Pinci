@@ -195,3 +195,39 @@ describe('sesiMenyelesaikan', () => {
     expect(sesiMenyelesaikan({ ...t, dibatalkan: true }, s({ rujukan: 'M03' }))).toBe(false);
   });
 });
+
+describe('masukan dan catatan', () => {
+  test('catatan pemakaian hanya dibuat bila orang tua setuju; aplikasi dibuka dicatat sekali sehari', async () => {
+    const { server, repo, rani } = await siapkan();
+    await repo.simpanSesi(sesi(rani.id, { jenis: 'lancar', rujukan: undefined }), []);
+    await repo.bukaAplikasi(rani.id);
+    expect(await repo.antreanBelumTerkirim().then((a) => a.filter((x) => x.tabel === 'catatan_pemakaian'))).toHaveLength(0);
+
+    server.kelas = [{ id: 'ag1', anak_id: rani.id, kelasId: 'k1', kelasNama: 'Kancil', paket: 'dasar', masuk: '2026-11-02T01:00:00.000Z', cobaSampai: '2026-11-16T01:00:00.000Z', setujuPemakaian: true }];
+    await repo.tarikKelas();
+    await repo.simpanSesi(sesi(rani.id, { jenis: 'lancar', rujukan: undefined, durasiDetik: 200 }), []);
+    await repo.bukaAplikasi(rani.id);
+    await repo.bukaAplikasi(rani.id);
+    const catatan = (await repo.antreanBelumTerkirim()).filter((x) => x.tabel === 'catatan_pemakaian');
+    expect(catatan).toHaveLength(2);
+
+    // Persetujuan dicabut di server → HP berhenti mencatat.
+    server.kelas = [{ ...server.kelas[0], setujuPemakaian: false }];
+    await repo.tarikKelas();
+    await repo.simpanSesi(sesi(rani.id, { jenis: 'lancar', rujukan: undefined }), []);
+    expect((await repo.antreanBelumTerkirim()).filter((x) => x.tabel === 'catatan_pemakaian')).toHaveLength(2);
+  });
+
+  test('masukan dan jawaban pertanyaan tersimpan lalu terkirim; catatan teknis yang sama tidak berulang', async () => {
+    const { server, repo } = await siapkan();
+    await repo.kirimMasukan('saran', '  Tambah soal cerita  ', '0.2.0');
+    await repo.jawabPertanyaan('O01-m1', 'Pas');
+    expect(await repo.nilai('masukan:O01-m1')).toBe('Pas');
+    await repo.catatTeknis('TypeError: x');
+    await repo.catatTeknis('TypeError: x');
+    await repo.sinkron();
+    expect([...(server.tabel.get('masukan')?.values() ?? [])].map((x) => x.baris.isi)).toEqual(['Tambah soal cerita']);
+    expect(server.tabel.get('jawaban_pertanyaan')?.size).toBe(1);
+    expect(server.tabel.get('catatan_teknis')?.size).toBe(1);
+  });
+});

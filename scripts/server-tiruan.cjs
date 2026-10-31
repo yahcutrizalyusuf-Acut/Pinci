@@ -35,7 +35,22 @@ const tabelDari = (nama) => {
   if (!tabel.has(nama)) tabel.set(nama, new Map());
   return tabel.get(nama);
 };
-const TABEL = ['anak', 'sesi', 'jawaban', 'kemajuan_topik', 'pesan', 'pengaturan_waktu', 'pemakaian', 'catatan_pengawas', 'tugas'];
+const TABEL = ['anak', 'sesi', 'jawaban', 'kemajuan_topik', 'pesan', 'pengaturan_waktu', 'pemakaian', 'catatan_pengawas', 'tugas', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis'];
+const harga = { dasar: 50000, lengkap: 60000, siap_tka: 70000, mitra: 70000 };
+const pembayaran = []; // { anak_id, bulan, jumlah, cara, waktu }
+let pendaftar = []; // baris pendaftar dari halaman penjelasan
+const setujuPakai = new Map(); // anak_id -> boolean
+
+function statusAnggota(a) {
+  const k = kelas.get(a.kelas_id);
+  const kini = Date.now();
+  if (k && k.mitra_id) return 'mitra';
+  if (a.berlaku_sampai && Date.parse(a.berlaku_sampai) > kini) return 'aktif';
+  if (Date.parse(a.coba_sampai) > kini) return 'coba';
+  const akhir = Math.max(Date.parse(a.coba_sampai), a.berlaku_sampai ? Date.parse(a.berlaku_sampai) : 0);
+  return akhir + 7 * 86_400_000 > kini ? 'tenggang' : 'berhenti';
+}
+const bolehUang = (uid) => ['super_admin', 'admin'].includes(stafAktif(uid)?.peran);
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 const hariWib = (ms = Date.now()) => new Date(ms + 7 * 3_600_000).toISOString().slice(0, 10);
 
@@ -93,6 +108,7 @@ function terlihat(peran, nama, baris) {
 }
 
 function bolehTulis(peran, nama, baris, ada) {
+  if (nama === 'catatan_pemakaian' && setujuPakai.get(baris.anak_id) !== true) return false;
   if (peran.jenis === 'ortu') return baris.keluarga_id === peran.keluarga;
   if (peran.jenis !== 'anak') return false;
   if (!peran.anak.includes(baris.anak_id) || baris.keluarga_id !== peran.keluarga) return false;
@@ -305,6 +321,7 @@ function rpc(nama, uid, badan) {
       anggota.push(a);
     }
     a.paket = badan.p_paket;
+    setujuPakai.set(an.id, !!badan.p_setuju_pemakaian);
     return { status: 200, isi: { ok: true, anggota_id: a.id, kelas_id: k.id, kelas_nama: k.nama, pengawas_nama: staf.get(k.pengawas_id)?.nama ?? null, paket: a.paket, coba_sampai: a.coba_sampai } };
   }
   if (nama === 'ganti_paket') {
@@ -322,7 +339,82 @@ function rpc(nama, uid, badan) {
     const milik = anggotaAktif().filter((a) => (peran?.jenis === 'ortu' && a.keluarga_id === peran.keluarga) || (peran?.jenis === 'anak' && peran.anak.includes(a.anak_id)));
     return {
       status: 200,
-      isi: milik.map((a) => ({ anggota_id: a.id, anak_id: a.anak_id, kelas_id: a.kelas_id, kelas_nama: kelas.get(a.kelas_id).nama, pengawas_nama: staf.get(kelas.get(a.kelas_id).pengawas_id)?.nama ?? null, paket: a.paket, masuk: a.masuk, coba_sampai: a.coba_sampai })),
+      isi: milik.map((a) => ({ anggota_id: a.id, anak_id: a.anak_id, kelas_id: a.kelas_id, kelas_nama: kelas.get(a.kelas_id).nama, pengawas_nama: staf.get(kelas.get(a.kelas_id).pengawas_id)?.nama ?? null, paket: a.paket, masuk: a.masuk, coba_sampai: a.coba_sampai, berlaku_sampai: a.berlaku_sampai ?? null, status: statusAnggota(a), setuju_pemakaian: setujuPakai.get(a.anak_id) === true })),
+    };
+  }
+  if (nama === 'status_anak_kelas') {
+    if (!kelasSaya(uid).some((k) => k.id === badan.p_kelas_id)) return { status: 200, isi: {} };
+    return { status: 200, isi: Object.fromEntries(anggotaAktif().filter((a) => a.kelas_id === badan.p_kelas_id).map((a) => [a.anak_id, statusAnggota(a)])) };
+  }
+  if (nama === 'atur_persetujuan_pemakaian') {
+    const an = tabelDari('anak').get(badan.p_anak_id);
+    if (!an || an.keluarga_id !== peran?.keluarga) return { status: 403, isi: { message: 'anak_tidak_valid' } };
+    setujuPakai.set(an.id, !!badan.p_setuju);
+    return { status: 204 };
+  }
+  if (nama === 'daftar_langganan') {
+    if (!bolehUang(uid)) return { status: 200, isi: [] };
+    const k = kelasSaya(uid).filter((x) => !x.mitra_id).map((x) => x.id);
+    return {
+      status: 200,
+      isi: anggotaAktif()
+        .filter((a) => k.includes(a.kelas_id))
+        .map((a) => {
+          const an = tabelDari('anak').get(a.anak_id) || {};
+          const ortu = [...orangTua.entries()].find(([, kel]) => kel === a.keluarga_id);
+          return { anak_id: a.anak_id, anak_nama: an.nama, kelas: an.kelas, kelas_nama: kelas.get(a.kelas_id).nama, paket: a.paket, coba_sampai: a.coba_sampai, berlaku_sampai: a.berlaku_sampai ?? null, status: statusAnggota(a), email_ortu: ortu ? emailDari.get(ortu[0]) ?? null : null, sapaan: keluarga.get(a.keluarga_id)?.sapaan_ortu ?? null };
+        }),
+    };
+  }
+  if (nama === 'aktifkan_langganan') {
+    if (!bolehUang(uid)) return { status: 403, isi: { message: 'tidak_boleh' } };
+    const a = anggotaAktif().find((x) => x.anak_id === badan.p_anak_id);
+    if (!a) return { status: 400, isi: { message: 'tidak_di_kelas' } };
+    const dasar = Math.max(kini, Date.parse(a.coba_sampai), a.berlaku_sampai ? Date.parse(a.berlaku_sampai) : 0);
+    const d = new Date(dasar);
+    d.setMonth(d.getMonth() + badan.p_bulan);
+    a.berlaku_sampai = d.toISOString();
+    pembayaran.push({ anak_id: a.anak_id, bulan: badan.p_bulan, jumlah: badan.p_jumlah, cara: badan.p_cara, waktu: kini });
+    return { status: 200, isi: { berlaku_sampai: a.berlaku_sampai } };
+  }
+  if (nama === 'daftar_harga') return { status: 200, isi: stafAktif(uid)?.peran === 'super_admin' ? harga : {} };
+  if (nama === 'atur_harga') {
+    if (stafAktif(uid)?.peran !== 'super_admin') return { status: 403, isi: { message: 'tidak_boleh' } };
+    harga[badan.p_paket] = badan.p_harga;
+    return { status: 204 };
+  }
+  if (nama === 'tagihan_mitra') {
+    const s = stafAktif(uid);
+    const boleh = [...mitra.values()].filter((m) => s?.peran === 'super_admin' || (s?.peran === 'mitra' && s.mitra_id === m.id));
+    return { status: 200, isi: boleh.map((m) => ({ mitra_id: m.id, nama: m.nama, murid_aktif: 0, tarif: harga.mitra, total: 0 })) };
+  }
+  if (nama === 'daftar_minat') {
+    pendaftar.unshift({ id: uuid(), jenis: badan.p_jenis, nama_ortu: badan.p_nama_ortu, email: String(badan.p_email || '').toLowerCase(), wa: badan.p_wa, kelas_anak: badan.p_kelas_anak, nama_anak: badan.p_nama_anak, nama_les: badan.p_nama_les, sumber: badan.p_sumber, status: 'baru', catatan: null, waktu: new Date(kini).toISOString() });
+    return { status: 200, isi: { ok: true } };
+  }
+  if (nama === 'daftar_pendaftar') return { status: 200, isi: bolehUang(uid) ? pendaftar : [] };
+  if (nama === 'ubah_pendaftar') {
+    const p = pendaftar.find((x) => x.id === badan.p_id);
+    if (p && bolehUang(uid)) Object.assign(p, { status: badan.p_status, catatan: badan.p_catatan });
+    return { status: 204 };
+  }
+  if (nama === 'daftar_masukan') {
+    if (!bolehUang(uid)) return { status: 200, isi: null };
+    const m = [...tabelDari('masukan').values()].map((x) => ({ id: x.id, jenis: x.jenis, isi: x.isi, waktu: x.waktu, versi: x.versi_aplikasi ?? null, dibaca: !!x.dibaca, sapaan: keluarga.get(x.keluarga_id)?.sapaan_ortu ?? null }));
+    const teknis = [...tabelDari('catatan_teknis').values()].map((x) => ({ pesan: x.pesan, jumlah: 1, terakhir: x.waktu }));
+    return { status: 200, isi: { masukan: m, teknis } };
+  }
+  if (nama === 'tandai_masukan_dibaca') {
+    for (const id of badan.p_ids || []) if (tabelDari('masukan').get(id)) tabelDari('masukan').get(id).dibaca = true;
+    return { status: 204 };
+  }
+  if (nama === 'laporan_mingguan') {
+    if (!bolehUang(uid)) return { status: 403, isi: { message: 'tidak_boleh' } };
+    const status = {};
+    for (const a of anggotaAktif()) status[statusAnggota(a)] = (status[statusAnggota(a)] || 0) + 1;
+    return {
+      status: 200,
+      isi: { sejak: new Date(kini - 7 * 86_400_000).toISOString(), keluarga_aktif: new Set([...tabelDari('sesi').values()].map((x) => x.keluarga_id)).size, anak_aktif: new Set([...tabelDari('sesi').values()].map((x) => x.anak_id)).size, rata_hari_latihan: null, status, anak_berhenti_latihan: 0, keluar_kelas: 0, masuk_kelas: anggotaAktif().length, pendaftar_baru: pendaftar.length, pendaftar_per_sumber: {}, masukan_baru: tabelDari('masukan').size, masalah_teknis: tabelDari('catatan_teknis').size, kelas_tanpa_pantauan: [], pantauan_minggu_ini: pantauan.size, uang_minggu_ini: stafAktif(uid).peran === 'super_admin' ? pembayaran.reduce((n, x) => n + x.jumlah, 0) : null, bayar_minggu_ini: pembayaran.length },
     };
   }
   if (nama === 'tandai_catatan_dibaca' || nama === 'tandai_tugas_selesai') {

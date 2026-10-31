@@ -8,27 +8,24 @@ import { useData, useMuat } from '@/data/konteks';
 import { HEWAN } from '@/data/jenis';
 import { huruf, warna } from '@/desain/token';
 import { kabarAnak } from '@/fitur/kabar';
+import { pertanyaanMingguIni } from '@/fitur/pertanyaan';
 import { PESAN_SIAP } from '@/fitur/pesan';
 import { tipsHariIni } from '@/fitur/tips';
 import { Logo, TeksOrtu, Tombol } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
 
-const PERTANYAAN = {
-  kode: 'O01',
-  teks: 'Bagaimana lama latihan anak minggu ini?',
-  pilihan: ['Terlalu singkat', 'Pas', 'Terlalu lama'],
-};
 
 export default function Kabar() {
   const router = useRouter();
   const { repo, daftarAnak, keluarga, kunciOrtu } = useData();
   const [kirimUntuk, setKirimUntuk] = useState<string | null>(null);
   const [pilihSemangat, setPilihSemangat] = useState(false);
+  const PERTANYAAN = pertanyaanMingguIni();
   const data = useMuat(
     async (r) => {
       const kabar = await Promise.all(daftarAnak.map((a) => kabarAnak(r, a)));
-      const dijawab = await r.nilai<string>(`masukan:${PERTANYAAN.kode}`);
-      const nanti = await r.nilai<string>(`masukan_nanti:${PERTANYAAN.kode}`);
+      const dijawab = await r.nilai<string>(`masukan:${PERTANYAAN.kodeJawab}`);
+      const nanti = await r.nilai<string>(`masukan_nanti:${PERTANYAAN.kodeJawab}`);
       const antre = (await r.antreanBelumTerkirim()).length;
       const catatan = (await r.catatanPengawas()).slice(0, 3);
       const kelas = await r.daftarKelasAnak();
@@ -127,7 +124,7 @@ export default function Kabar() {
                 <Pressable
                   key={p}
                   accessibilityRole="button"
-                  onPress={() => repo.aturNilai(`masukan:${PERTANYAAN.kode}`, p)}
+                  onPress={() => repo.jawabPertanyaan(PERTANYAAN.kodeJawab, p)}
                   style={{ paddingHorizontal: 14, height: 40, borderRadius: 20, justifyContent: 'center', borderWidth: 1, borderColor: warna.hijauDaun }}
                 >
                   <Text style={{ fontFamily: huruf.ortuSedang, color: warna.hijauTua }}>{p}</Text>
@@ -135,7 +132,7 @@ export default function Kabar() {
               ))}
               <Pressable
                 accessibilityRole="button"
-                onPress={() => repo.aturNilai(`masukan_nanti:${PERTANYAAN.kode}`, new Date().toDateString())}
+                onPress={() => repo.aturNilai(`masukan_nanti:${PERTANYAAN.kodeJawab}`, new Date().toDateString())}
                 style={{ paddingHorizontal: 14, height: 40, borderRadius: 20, justifyContent: 'center', borderWidth: 1, borderColor: warna.abuGaris }}
               >
                 <Text style={{ fontFamily: huruf.ortuSedang, color: warna.teksKedua }}>Nanti</Text>

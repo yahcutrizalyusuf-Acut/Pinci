@@ -10,10 +10,12 @@ import { paketTka } from '@/isi/tka/paket';
 import { GelembungPinci, KepalaLayar } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
 import { Layar } from '@/komponen/Layar';
+import { useAkses } from '@/fitur/akses';
+import { LayarTerkunci } from '@/komponen/LayarTerkunci';
 
 const WARNA_STATUS = { belum: { latar: warna.putih, garis: warna.kremBatang }, latihan: { latar: '#FFF6D6', garis: '#F4C542' }, kuasai: { latar: warna.hijauMuda, garis: warna.hijauDaun } };
 
-export default function SiapTka() {
+function SiapTka() {
   const router = useRouter();
   const { anakAktif } = useData();
   const anak = anakAktif!;
@@ -173,4 +175,9 @@ export default function SiapTka() {
       </ScrollView>
     </Layar>
   );
+}
+
+export default function SiapTkaTerjaga() {
+  const akses = useAkses();
+  return akses.tka ? <SiapTka /> : <LayarTerkunci judul="Siap TKA" />;
 }

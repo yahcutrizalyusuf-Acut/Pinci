@@ -5,7 +5,7 @@
  * Hak akses dijaga aturan baris di server (supabase/migrations/20261101000000_kelas_pengawas.sql).
  */
 import { buatId, kiniMs, sekarangIso } from './alat';
-import type { JenisTugas, PaketKelas } from './jenis';
+import type { JenisTugas, PaketKelas, StatusLangganan } from './jenis';
 import type { Repositori } from './repositori';
 import { opsiSupabase } from './sinkron';
 import { segarkanSesi, type OpsiSupabase, type Sesimasuk } from './supabase';
@@ -206,6 +206,7 @@ export interface AnakPapan {
   topikLemah: TopikLemah[];
   catatanTerakhir: string | null;
   tugasTerbuka: number;
+  status?: StatusLangganan;
 }
 
 export interface PapanKelas {
@@ -236,6 +237,8 @@ export async function papanKelas(opsi: OpsiSupabase, kelasId: string): Promise<P
       tugas_terbuka: number;
     }[];
   }>(opsi, 'papan_kelas', { p_kelas_id: kelasId });
+  // Status langganan tiap anak (fungsi tambahan; papan tetap tampil bila belum terpasang).
+  const status = await rpc<Record<string, StatusLangganan>>(opsi, 'status_anak_kelas', { p_kelas_id: kelasId }).catch(() => ({}) as Record<string, StatusLangganan>);
   return {
     kelas: { id: d.kelas.id, nama: d.kelas.nama, kode: d.kelas.kode, kapasitas: d.kelas.kapasitas, aktif: d.kelas.aktif, pengawasId: d.kelas.pengawas_id },
     hariIni: d.hari_ini,
@@ -254,6 +257,7 @@ export async function papanKelas(opsi: OpsiSupabase, kelasId: string): Promise<P
       topikLemah: a.topik_lemah ?? [],
       catatanTerakhir: a.catatan_terakhir,
       tugasTerbuka: a.tugas_terbuka,
+      ...(status[a.anak_id] ? { status: status[a.anak_id] } : {}),
     })),
   };
 }
@@ -340,4 +344,131 @@ export async function beriTugas(opsi: OpsiSupabase, data: { kelasId: string; ana
 
 export async function batalkanTugas(opsi: OpsiSupabase, tugasId: string) {
   await minta(opsi, `/rest/v1/tugas?id=eq.${encodeURIComponent(tugasId)}`, { method: 'PATCH', prefer: 'return=minimal', body: { dibatalkan: true } });
+}
+
+// ---------- langganan dan uang (super admin dan admin) ----------
+
+export interface Langganan {
+  anakId: string;
+  anakNama: string;
+  kelas: number;
+  kelasNama: string;
+  paket: PaketKelas;
+  cobaSampai: string;
+  berlakuSampai: string | null;
+  status: StatusLangganan;
+  emailOrtu: string | null;
+  sapaan: string | null;
+}
+
+export async function daftarLangganan(opsi: OpsiSupabase): Promise<Langganan[]> {
+  const d = await rpc<
+    { anak_id: string; anak_nama: string; kelas: number; kelas_nama: string; paket: PaketKelas; coba_sampai: string; berlaku_sampai: string | null; status: StatusLangganan; email_ortu: string | null; sapaan: string | null }[]
+  >(opsi, 'daftar_langganan');
+  return d.map((x) => ({
+    anakId: x.anak_id,
+    anakNama: x.anak_nama,
+    kelas: x.kelas,
+    kelasNama: x.kelas_nama,
+    paket: x.paket,
+    cobaSampai: x.coba_sampai,
+    berlakuSampai: x.berlaku_sampai,
+    status: x.status,
+    emailOrtu: x.email_ortu,
+    sapaan: x.sapaan,
+  }));
+}
+
+export type CaraBayar = 'qris' | 'transfer' | 'tunai' | 'play';
+
+export async function aktifkanLangganan(opsi: OpsiSupabase, data: { anakId: string; bulan: number; jumlah: number; cara: CaraBayar; catatan?: string }): Promise<string> {
+  const d = await rpc<{ berlaku_sampai: string }>(opsi, 'aktifkan_langganan', { p_anak_id: data.anakId, p_bulan: data.bulan, p_jumlah: data.jumlah, p_cara: data.cara, p_catatan: data.catatan ?? null });
+  return d.berlaku_sampai;
+}
+
+export type HargaPaket = Partial<Record<PaketKelas | 'mitra', number>>;
+
+export async function daftarHarga(opsi: OpsiSupabase): Promise<HargaPaket> {
+  return rpc<HargaPaket>(opsi, 'daftar_harga');
+}
+
+export async function aturHarga(opsi: OpsiSupabase, paket: PaketKelas | 'mitra', harga: number) {
+  await rpc(opsi, 'atur_harga', { p_paket: paket, p_harga: harga });
+}
+
+export interface TagihanMitra {
+  mitraId: string;
+  nama: string;
+  muridAktif: number;
+  tarif: number;
+  total: number;
+}
+
+/** Tagihan les mitra untuk bulan `bulan` (YYYY-MM-01). */
+export async function tagihanMitra(opsi: OpsiSupabase, bulan: string): Promise<TagihanMitra[]> {
+  const d = await rpc<{ mitra_id: string; nama: string; murid_aktif: number; tarif: number; total: number }[]>(opsi, 'tagihan_mitra', { p_bulan: bulan });
+  return d.map((x) => ({ mitraId: x.mitra_id, nama: x.nama, muridAktif: x.murid_aktif, tarif: x.tarif, total: x.total }));
+}
+
+// ---------- pendaftar, masukan, laporan ----------
+
+export type StatusPendaftar = 'baru' | 'dihubungi' | 'masuk_kelas' | 'batal';
+
+export interface Pendaftar {
+  id: string;
+  jenis: 'keluarga' | 'mitra';
+  nama_ortu: string;
+  email: string;
+  wa: string | null;
+  kelas_anak: number | null;
+  nama_anak: string | null;
+  nama_les: string | null;
+  sumber: string | null;
+  status: StatusPendaftar;
+  catatan: string | null;
+  waktu: string;
+}
+
+export async function daftarPendaftar(opsi: OpsiSupabase): Promise<Pendaftar[]> {
+  return rpc<Pendaftar[]>(opsi, 'daftar_pendaftar');
+}
+
+export async function ubahPendaftar(opsi: OpsiSupabase, id: string, status: StatusPendaftar, catatan: string) {
+  await rpc(opsi, 'ubah_pendaftar', { p_id: id, p_status: status, p_catatan: catatan });
+}
+
+export interface MasukanStaf {
+  masukan: { id: string; jenis: 'masalah' | 'saran' | 'pujian'; isi: string; waktu: string; versi: string | null; dibaca: boolean; sapaan: string | null }[];
+  teknis: { pesan: string; jumlah: number; terakhir: string }[];
+}
+
+export async function daftarMasukanStaf(opsi: OpsiSupabase): Promise<MasukanStaf> {
+  return (await rpc<MasukanStaf | null>(opsi, 'daftar_masukan')) ?? { masukan: [], teknis: [] };
+}
+
+export async function tandaiMasukanDibaca(opsi: OpsiSupabase, ids: string[]) {
+  await rpc(opsi, 'tandai_masukan_dibaca', { p_ids: ids });
+}
+
+export interface LaporanMingguan {
+  sejak: string;
+  keluarga_aktif: number;
+  anak_aktif: number;
+  rata_hari_latihan: number | null;
+  status: Partial<Record<StatusLangganan, number>>;
+  anak_berhenti_latihan: number;
+  keluar_kelas: number;
+  masuk_kelas: number;
+  pendaftar_baru: number;
+  pendaftar_per_sumber: Record<string, number>;
+  masukan_baru: number;
+  masalah_teknis: number;
+  kelas_tanpa_pantauan: string[];
+  pantauan_minggu_ini: number;
+  uang_minggu_ini: number | null;
+  bayar_minggu_ini: number;
+}
+
+export async function laporanMingguan(opsi: OpsiSupabase): Promise<LaporanMingguan> {
+  return rpc<LaporanMingguan>(opsi, 'laporan_mingguan');
 }

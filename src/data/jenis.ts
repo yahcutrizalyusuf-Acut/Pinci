@@ -156,6 +156,9 @@ export interface KemajuanTopik {
 
 export type PaketKelas = 'dasar' | 'lengkap' | 'siap_tka';
 
+/** coba (14 hari), aktif (sudah bayar), tenggang (7 hari setelah lewat), berhenti, mitra (dibayar les mitra). */
+export type StatusLangganan = 'coba' | 'aktif' | 'tenggang' | 'berhenti' | 'mitra';
+
 /** Keanggotaan aktif seorang anak di kelas pengawas. Ditarik dari server (kelas_keluarga). */
 export interface AnggotaKelas {
   id: string;
@@ -166,6 +169,49 @@ export interface AnggotaKelas {
   paket: PaketKelas;
   masuk: string;
   cobaSampai: string;
+  berlakuSampai?: string;
+  status?: StatusLangganan;
+  /** orang tua menyetujui catatan pemakaian untuk anak ini */
+  setujuPemakaian?: boolean;
+}
+
+// ---------- masukan dan catatan (hanya dikirim, tidak ditarik) ----------
+
+export interface Masukan {
+  id: string;
+  keluarga_id: string;
+  jenis: 'masalah' | 'saran' | 'pujian';
+  isi: string;
+  versiAplikasi?: string;
+  waktu: string;
+}
+
+export interface JawabanPertanyaan {
+  id: string;
+  keluarga_id: string;
+  kode: string;
+  jawaban: string;
+  waktu: string;
+}
+
+export interface CatatanPemakaian {
+  id: string;
+  keluarga_id: string;
+  anak_id: string;
+  kejadian: 'buka_aplikasi' | 'selesai' | 'berhenti';
+  layar: string;
+  detik?: number;
+  waktu: string;
+}
+
+export interface CatatanTeknis {
+  id: string;
+  keluarga_id?: string;
+  pesan: string;
+  tempat?: string;
+  versiAplikasi?: string;
+  perangkat?: string;
+  waktu: string;
 }
 
 /** Catatan pengawas untuk orang tua (bukan untuk anak). */
@@ -225,6 +271,10 @@ export type NamaTabel =
   | 'anggota_kelas'
   | 'catatan_pengawas'
   | 'tugas'
+  | 'masukan'
+  | 'jawaban_pertanyaan'
+  | 'catatan_pemakaian'
+  | 'catatan_teknis'
   | 'antrean'
   | 'nilai';
 
@@ -240,9 +290,13 @@ export interface PetaTabel {
   anggota_kelas: AnggotaKelas;
   catatan_pengawas: CatatanPengawas;
   tugas: Tugas;
+  masukan: Masukan;
+  jawaban_pertanyaan: JawabanPertanyaan;
+  catatan_pemakaian: CatatanPemakaian;
+  catatan_teknis: CatatanTeknis;
   antrean: ItemAntrean;
   nilai: Nilai;
 }
 
 /** Tabel yang dikirim ke server lewat antrean sinkron. */
-export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik', 'catatan_pengawas', 'tugas'];
+export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik', 'catatan_pengawas', 'tugas', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis'];

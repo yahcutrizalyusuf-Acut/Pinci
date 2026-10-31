@@ -14,6 +14,7 @@ export function KartuMapel({
   onPress,
   lencana,
   selesai,
+  terkunci,
 }: {
   judul: string;
   sub: string;
@@ -24,13 +25,18 @@ export function KartuMapel({
   onPress: () => void;
   lencana?: string;
   selesai?: boolean;
+  /** bagian di luar paket: tampil redup dengan gembok, tanpa ajakan membeli */
+  terkunci?: boolean;
 }) {
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${judul}. ${sub}`}
+      accessibilityLabel={`${judul}. ${terkunci ? 'Terkunci' : sub}`}
+      accessibilityState={{ disabled: !!terkunci }}
+      disabled={terkunci}
       onPress={onPress}
       style={({ pressed }) => ({
+        opacity: terkunci ? 0.55 : 1,
         minHeight: 96,
         borderRadius: 24,
         backgroundColor: muda,
@@ -52,8 +58,9 @@ export function KartuMapel({
           </View>
         ) : null}
         <Text style={{ fontFamily: huruf.judulTebal, fontSize: 21, lineHeight: 25, color: warna.teks }}>{judul}</Text>
-        <Text style={{ fontFamily: huruf.anak, fontSize: 15, color: teks }}>{sub}</Text>
+        <Text style={{ fontFamily: huruf.anak, fontSize: 15, color: teks }}>{terkunci ? 'Belum dibuka untukmu' : sub}</Text>
       </View>
+      {terkunci ? <Ikon nama="gembok" ukuran={22} warna={warna.teksKedua} /> : null}
       {selesai ? (
         <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: warna.hijauDaun, alignItems: 'center', justifyContent: 'center' }} accessibilityLabel="Sudah hari ini">
           <Ikon nama="centang" ukuran={18} />

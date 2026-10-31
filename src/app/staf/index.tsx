@@ -4,7 +4,7 @@
  */
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Linking, Pressable, Text, View } from 'react-native';
 
 import { useData } from '@/data/konteks';
 import { opsiSupabase } from '@/data/sinkron';
@@ -71,6 +71,23 @@ export default function PintuStaf() {
     setKelas(null);
   };
   const bolehKelola = profil.peran !== 'pengawas';
+  const urusUang = profil.peran === 'super_admin' || profil.peran === 'admin';
+  const halaman = process.env.EXPO_PUBLIC_HALAMAN_URL;
+  const menu: { judul: string; sub: string; buka: () => void }[] = [
+    ...(urusUang
+      ? [
+          { judul: 'Langganan', sub: 'Masa coba, catat pembayaran QRIS, aktifkan', buka: () => router.push('/staf/langganan') },
+          { judul: 'Pendaftar', sub: 'Dari halaman penjelasan: hubungi dan kirim kode kelas', buka: () => router.push('/staf/pendaftar') },
+          { judul: 'Laporan mingguan', sub: 'Keluarga aktif, langganan, pantauan, masukan, masalah teknis', buka: () => router.push('/staf/laporan') },
+        ]
+      : []),
+    ...(profil.peran === 'super_admin' || profil.peran === 'mitra'
+      ? [{ judul: profil.peran === 'mitra' ? 'Tagihan les' : 'Harga dan tagihan', sub: profil.peran === 'mitra' ? 'Murid aktif dan tagihan bulanan' : 'Harga paket dan tagihan les mitra', buka: () => router.push('/staf/uang') }]
+      : []),
+    ...(halaman && (profil.peran === 'super_admin' || profil.peran === 'mitra')
+      ? [{ judul: 'Brosur untuk orang tua', sub: 'Buka brosur, isi nama les, lalu simpan sebagai PDF', buka: () => Linking.openURL(`${halaman.replace(/\/$/, '')}/brosur.html`) }]
+      : []),
+  ];
   const pantau = hariPantau();
 
   return (
@@ -117,6 +134,17 @@ export default function PintuStaf() {
         <Tombol label="Muat ulang" ortu varian="garis" onPress={muatKelas} style={{ flex: 1 }} />
         {bolehKelola ? <Tombol label="Kelola kelas dan staf" ortu onPress={() => router.push('/staf/kelola')} style={{ flex: 1 }} /> : null}
       </View>
+      {menu.length ? (
+        <KotakStaf>
+          <JudulKotak>Pengelolaan</JudulKotak>
+          {menu.map((m) => (
+            <Pressable key={m.judul} accessibilityRole="button" onPress={m.buka} style={{ paddingVertical: 10, borderTopWidth: 1, borderTopColor: warna.abuGaris }}>
+              <TeksStaf tebal>{m.judul}</TeksStaf>
+              <TeksStaf redup>{m.sub}</TeksStaf>
+            </Pressable>
+          ))}
+        </KotakStaf>
+      ) : null}
     </LatarStaf>
   );
 }

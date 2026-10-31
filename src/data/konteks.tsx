@@ -8,6 +8,7 @@ import { kiniMs } from './alat';
 import { buatGudang } from './buat-gudang';
 import type { Anak, Keluarga } from './jenis';
 import { Repositori } from './repositori';
+import { pasangPenangkapGalat } from '../layanan/galat';
 import { opsiServer, opsiSupabase } from './sinkron';
 import { buatPengirimSupabase, segarkanSesi, type OpsiSupabase, type Sesimasuk } from './supabase';
 
@@ -75,6 +76,7 @@ export function PenyediaData({ children, repoUji }: { children: ReactNode; repoU
     (async () => {
       await repo.siapkan();
       repo.aturKirimOtomatis(true);
+      if (!repoUji) pasangPenangkapGalat(repo);
       const aktif = await repo.nilai<string>('anak_aktif');
       if (batal) return;
       setAnakAktifId(aktif);
@@ -101,7 +103,14 @@ export function PenyediaData({ children, repoUji }: { children: ReactNode; repoU
       langgan.remove();
       if (timer.current) clearInterval(timer.current);
     };
+    // repoUji tetap selama komponen hidup
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [repo, segarkan]);
+
+  // "Aplikasi dibuka" dicatat sekali sehari per anak, hanya bila orang tua setuju (di dalam repositori).
+  useEffect(() => {
+    if (siap && anakAktifId) repo.bukaAplikasi(anakAktifId).catch(() => undefined);
+  }, [repo, siap, anakAktifId]);
 
   const pilihAnak = useCallback(
     (id: string | null) => {

@@ -187,6 +187,70 @@ async function layar(peramban, lebar = 360, tinggi = 800) {
   await tunggu(staf, 'sudah dibaca orang tua');
   cek(true, 'staf: tanda dibaca dari orang tua sampai');
 
+  // ---------- paket: Siap TKA membuka TKA; ganti ke Dasar menguncinya ----------
+  cek((await ortu.p.getByLabel(/^Siap TKA\. Terkunci/).count()) === 0, 'anak: paket Siap TKA membuka kartu TKA');
+  await ortu.p.goto(D + '/ortu/pin');
+  await t(2000);
+  for (const d of '1234') await ketuk(ortu, d);
+  await t(1200);
+  await ortu.p.getByRole('tab', { name: 'Atur' }).click();
+  await t(800);
+  await teks(ortu, 'Kelas dan pengawas');
+  await tunggu(ortu, 'Ganti paket');
+  await teks(ortu, 'Ganti paket');
+  await teks(ortu, 'Dasar');
+  await teks(ortu, 'Simpan paket');
+  await tunggu(ortu, 'Paket Dasar');
+  cek(true, 'orang tua: paket diganti ke Dasar');
+  await foto(ortu, '13-ortu-paket-dasar');
+
+  // ---------- Kirim masukan ----------
+  await ortu.p.goBack();
+  await t(1200);
+  await teks(ortu, 'Kirim masukan');
+  await ortu.p.getByLabel('Isi masukan').fill('Anak saya suka game Kebun Pinci.');
+  await teks(ortu, 'Pujian');
+  await ketuk(ortu, 'Kirim');
+  await tunggu(ortu, 'Masukan tersimpan');
+  await t(2500); // terkirim otomatis
+  await foto(ortu, '14-ortu-masukan');
+
+  await ortu.p.goto(D + '/profil');
+  await t(2000);
+  await ortu.p.getByText('Rani', { exact: true }).first().click();
+  await tunggu(ortu, 'Halo, Rani!');
+  await t(1500);
+  cek((await ortu.p.getByLabel(/^Siap TKA\. Terkunci/).count()) === 1 && (await ortu.p.getByLabel(/^Bahasa Inggris\. Terkunci/).count()) === 1, 'anak: paket Dasar mengunci TKA dan Bahasa Inggris, tanpa ajakan membeli');
+  cek((await ortu.p.getByText(/beli|bayar|Rp/i).count()) === 0, 'anak: tidak ada kata beli/bayar/harga di beranda anak');
+  await foto(ortu, '15-anak-terkunci');
+
+  // ---------- staf: catat pembayaran, laporan, masukan ----------
+  await staf.p.goto(D + '/staf');
+  await tunggu(staf, 'Pengelolaan');
+  await teks(staf, 'Langganan');
+  await staf.p.getByLabel('Catat pembayaran Rani').waitFor({ timeout: 15000 });
+  cek(await ada(staf, 'ibu@contoh.id'), 'staf: email orang tua tampil untuk mengirim cara bayar');
+  await staf.p.getByLabel('Catat pembayaran Rani').click();
+  await staf.p.getByLabel('Jumlah yang diterima (Rp)').fill('50000');
+  await ketuk(staf, 'Aktifkan');
+  await tunggu(staf, 'Langganan Rani aktif sampai');
+  cek(true, 'staf: pembayaran dicatat, langganan aktif');
+  await foto(staf, '16-staf-langganan');
+  await staf.p.goto(D + '/staf/laporan');
+  await tunggu(staf, 'Anak saya suka game Kebun Pinci.');
+  cek(true, 'staf: masukan orang tua tampil di laporan mingguan');
+  await foto(staf, '17-staf-laporan', true);
+
+  await ortu.p.goto(D + '/ortu/pin');
+  await t(2500);
+  for (const d of '1234') await ketuk(ortu, d);
+  await t(1200);
+  await ortu.p.getByRole('tab', { name: 'Atur' }).click();
+  await t(800);
+  await teks(ortu, 'Kelas dan pengawas');
+  await tunggu(ortu, 'Aktif sampai');
+  cek(true, 'orang tua: status langganan menjadi Aktif');
+
   // tampilan laptop papan kelas
   const laptop = await layar(peramban, 1100, 760);
   await laptop.p.goto(D + '/staf');

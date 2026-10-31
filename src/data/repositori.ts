@@ -13,13 +13,16 @@ import {
   TABEL_SINKRON,
   type AnggotaKelas,
   type Anak,
+  type CatatanPemakaian,
   type CatatanPengawas,
+  type CatatanTeknis,
   type ItemAntrean,
   type Jawaban,
   type Keluarga,
   type KemajuanTopik,
   type NamaTabel,
   type Pemakaian,
+  type Masukan,
   type PengaturanWaktu,
   type Pesan,
   type PetaTabel,
@@ -395,6 +398,10 @@ export class Repositori {
       }
     }
     for (const a of server) {
+      // Persetujuan catatan pemakaian ikut disalin (HP anak tidak punya layar persetujuan sendiri).
+      if (a.setujuPemakaian !== undefined && (await this.nilai<boolean>(`catatan_pemakaian:${a.anak_id}`)) !== a.setujuPemakaian) {
+        await this.gudang.pasang('nilai', { id: `catatan_pemakaian:${a.anak_id}`, anak_id: a.anak_id, isi: JSON.stringify(a.setujuPemakaian) });
+      }
       const l = lokal.find((x) => x.id === a.id);
       if (l && samaIsi(l, a)) continue;
       await this.gudang.pasang('anggota_kelas', a);
@@ -463,6 +470,70 @@ export class Repositori {
     for (const t of await this.tugasTerbuka(sesi.anak_id)) {
       if (sesiMenyelesaikan(t, sesi)) await this.simpan('tugas', { ...t, selesai: sesi.selesai });
     }
+  }
+
+  // ---------- masukan dan catatan (hanya dikirim ke server) ----------
+
+  /** Orang tua mengirim masukan (masalah, saran, atau pujian). Tersimpan dulu, terkirim saat ada sinyal. */
+  async kirimMasukan(jenis: Masukan['jenis'], isi: string, versiAplikasi?: string): Promise<Masukan> {
+    const kel = await this.keluarga();
+    if (!kel) throw new Error('Keluarga belum dibuat');
+    const m: Masukan = { id: buatId(), keluarga_id: kel.id, jenis, isi: isi.trim().slice(0, 1000), waktu: sekarangIso(), ...(versiAplikasi ? { versiAplikasi } : {}) };
+    await this.simpan('masukan', m);
+    this.ubah();
+    return m;
+  }
+
+  async daftarMasukan(): Promise<Masukan[]> {
+    const m = await this.gudang.cari('masukan');
+    return m.sort((a, b) => b.waktu.localeCompare(a.waktu));
+  }
+
+  /** Jawaban pertanyaan pilihan untuk orang tua (dicatat di HP dan dikirim). */
+  async jawabPertanyaan(kode: string, jawaban: string) {
+    const kel = await this.keluarga();
+    await this.aturNilai(`masukan:${kode}`, jawaban);
+    if (!kel) return;
+    await this.simpan('jawaban_pertanyaan', { id: buatId(), keluarga_id: kel.id, kode, jawaban, waktu: sekarangIso() });
+  }
+
+  /** Catatan pemakaian hanya dibuat bila orang tua menyetujuinya untuk anak ini. */
+  async catatPemakaian(anakId: string, kejadian: CatatanPemakaian['kejadian'], layar: string, detik?: number): Promise<boolean> {
+    if (!this.pengirim || (await this.nilai<boolean>(`catatan_pemakaian:${anakId}`)) !== true) return false;
+    const kel = await this.keluarga();
+    if (!kel) return false;
+    const c: CatatanPemakaian = { id: buatId(), keluarga_id: kel.id, anak_id: anakId, kejadian, layar: layar.slice(0, 40), waktu: sekarangIso() };
+    if (detik !== undefined) c.detik = Math.max(0, Math.min(86_400, Math.round(detik)));
+    await this.simpan('catatan_pemakaian', c);
+    return true;
+  }
+
+  /** "Aplikasi dibuka" dicatat paling banyak sekali sehari per anak. */
+  async bukaAplikasi(anakId: string) {
+    const kunci = `buka:${anakId}`;
+    const hari = tanggalLokal();
+    if ((await this.nilai<string>(kunci)) === hari) return;
+    // Tanda hari hanya dipasang bila benar-benar tercatat (persetujuan bisa datang belakangan hari itu).
+    if (await this.catatPemakaian(anakId, 'buka_aplikasi', 'beranda')) await this.gudang.pasang('nilai', { id: kunci, anak_id: anakId, isi: JSON.stringify(hari) });
+  }
+
+  private teknisTerakhir = new Map<string, number>();
+
+  /** Catatan masalah teknis (tanpa data pribadi). Pesan yang sama paling banyak sekali per 10 menit. */
+  async catatTeknis(pesan: string, tempat?: string, versiAplikasi?: string, perangkat?: string) {
+    if (!this.pengirim) return;
+    const ringkas = pesan.replace(/\s+/g, ' ').trim().slice(0, 500);
+    if (!ringkas) return;
+    const lalu = this.teknisTerakhir.get(ringkas) ?? 0;
+    if (kiniMs() - lalu < 10 * 60_000) return;
+    this.teknisTerakhir.set(ringkas, kiniMs());
+    const kel = await this.keluarga();
+    const c: CatatanTeknis = { id: buatId(), pesan: ringkas, waktu: sekarangIso() };
+    if (kel) c.keluarga_id = kel.id;
+    if (tempat) c.tempat = tempat.slice(0, 80);
+    if (versiAplikasi) c.versiAplikasi = versiAplikasi.slice(0, 40);
+    if (perangkat) c.perangkat = perangkat.slice(0, 60);
+    await this.simpan('catatan_teknis', c);
   }
 
   /** HP anak: pasang keluarga dari server (tanpa PIN) setelah kode hubung dipakai. */
@@ -629,6 +700,7 @@ export class Repositori {
     for (const j of daftar) await this.antrekan('jawaban', j);
     await this.antrekan('sesi', s);
     await this.cocokkanTugas(s);
+    await this.catatPemakaian(s.anak_id, 'selesai', s.jenis, s.durasiDetik);
     this.ubah();
     return s;
   }

@@ -8,6 +8,7 @@ import { modeData } from '@/data/sinkron';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { hariIni } from '@/fitur/hari-ini';
 import { adaBacaGudang, paketLengkap } from '@/fitur/konfig';
+import { useAkses } from '@/fitur/akses';
 import { ruteTugas } from '@/fitur/kelas';
 import { infoLancarAnak } from '@/fitur/lancar';
 import { GelembungPinci, Logo, TombolSuara } from '@/komponen/dasar';
@@ -33,6 +34,7 @@ export default function BerandaBelajar() {
   );
   const lengkap = paketLengkap(anak.kelas);
   const baca = adaBacaGudang(anak.kelas);
+  const akses = useAkses();
   const sapaan = keluarga?.sapaanOrtu ?? 'Ayah';
   const sudah = (j: string) => (data?.h.sesi ?? []).some((s) => s.jenis === j);
 
@@ -141,6 +143,7 @@ export default function BerandaBelajar() {
               muda="#EAF2FF"
               teks={warnaMapel.mat.teks}
               lencana="TKA"
+              terkunci={!akses.tka}
               selesai={sudah('tka') || sudah('mini_tryout') || sudah('simulasi')}
               onPress={() => router.push('/tka')}
             />
@@ -150,6 +153,7 @@ export default function BerandaBelajar() {
             sub={anak.tingkatInggris ? `Tingkat ${anak.tingkatInggris}` : 'Pilih tingkatmu'}
             ikon="inggris"
             {...warnaMapel.ing}
+            terkunci={!akses.inggris}
             selesai={sudah('inggris')}
             onPress={() => router.push(anak.tingkatInggris ? '/inggris' : '/inggris/tingkat')}
           />
