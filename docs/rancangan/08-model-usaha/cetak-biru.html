@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Cetak Biru Pintar Main</title>
+<style>
+@font-face { font-family: Nunito; src: url(../../../node_modules/@expo-google-fonts/nunito/400Regular/Nunito_400Regular.ttf); font-weight: 400; }
+@font-face { font-family: Nunito; src: url(../../../node_modules/@expo-google-fonts/nunito/700Bold/Nunito_700Bold.ttf); font-weight: 700; }
+@font-face { font-family: Baloo; src: url(../../../node_modules/@expo-google-fonts/baloo-2/700Bold/Baloo2_700Bold.ttf); font-weight: 700; }
+@page { size: 110mm 196mm; margin: 9mm 7mm 10mm; }
+:root { --teks: #2D3142; --redup: #5B6072; --coklat: #6B4423; --krem: #FFF6E5; --hijau: #1F7A4D; --hijau2: #3BB273; --oranye: #FF9F1C; --garis: #E6E9F0; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: Nunito, sans-serif; font-size: 10pt; line-height: 1.45; color: var(--teks); margin: 0; }
+h1, h2, h3 { font-family: Baloo, Nunito, sans-serif; line-height: 1.15; margin: 0; }
+h2 { font-size: 17pt; color: var(--coklat); margin: 0 0 3mm; break-before: page; }
+h2 .no { display: inline-block; background: var(--oranye); color: #fff; border-radius: 6px; padding: 0 2mm; margin-right: 1.5mm; }
+h3 { font-size: 12pt; color: var(--hijau); margin: 4mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2mm; }
+ul, ol { margin: 0 0 2mm; padding-left: 5mm; }
+li { margin-bottom: 0.8mm; }
+b { color: var(--coklat); }
+table { width: 100%; border-collapse: collapse; margin: 1mm 0 3mm; font-size: 8.8pt; line-height: 1.35; break-inside: auto; }
+tr { break-inside: avoid; }
+th { background: var(--coklat); color: #fff; text-align: left; padding: 1.3mm 1.6mm; font-weight: 700; }
+td { padding: 1.3mm 1.6mm; border-bottom: 1px solid var(--garis); vertical-align: top; }
+tr:nth-child(even) td { background: #FBFAF7; }
+.kotak { background: var(--krem); border-left: 4px solid var(--oranye); border-radius: 4px; padding: 2.5mm 3mm; margin: 2mm 0 3mm; break-inside: avoid; }
+.kotak.hijau { background: #EAF6EF; border-color: var(--hijau2); }
+.kotak.merah { background: #FDEEEE; border-color: #D9534F; }
+.kotak p:last-child, .kotak ul:last-child { margin-bottom: 0; }
+.kecil { font-size: 8.5pt; color: var(--redup); }
+.tag { display: inline-block; font-size: 7.5pt; font-weight: 700; padding: 0 1.5mm; border-radius: 3px; color: #fff; }
+.ada { background: var(--hijau2); } .buat { background: var(--oranye); } .nanti { background: #868C9E; }
+.alur { list-style: none; padding: 0; counter-reset: l; }
+.alur li { counter-increment: l; position: relative; padding: 1.5mm 0 1.5mm 8mm; border-bottom: 1px dashed var(--garis); }
+.alur li::before { content: counter(l); position: absolute; left: 0; top: 1.4mm; width: 5.5mm; height: 5.5mm; border-radius: 50%; background: var(--hijau); color: #fff; font-weight: 700; font-size: 8pt; text-align: center; line-height: 5.5mm; }
+.sampul { height: 176mm; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.sampul h1 { font-size: 30pt; color: var(--coklat); }
+.sampul .sub { font-size: 12pt; color: var(--hijau); font-weight: 700; margin: 2mm 0 8mm; }
+.sampul .slogan { font-family: Baloo; font-size: 14pt; color: var(--oranye); }
+.daftar { columns: 1; }
+.daftar li { margin-bottom: 0.5mm; }
+blockquote { margin: 2mm 0; padding: 2.5mm 3mm; border: 1px solid var(--garis); border-radius: 4px; font-size: 9pt; background: #fff; break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<section class="sampul">
+  <svg width="90" height="90" viewBox="0 0 100 100" style="margin:0 auto 4mm" aria-hidden="true">
+    <circle cx="50" cy="50" r="48" fill="#FFF6E5" stroke="#A0673A" stroke-width="3"/>
+    <ellipse cx="50" cy="58" rx="24" ry="22" fill="#A0673A"/>
+    <path d="M30 40 L24 14 L40 32 Z M70 40 L76 14 L60 32 Z" fill="#6B4423"/>
+    <circle cx="41" cy="52" r="4" fill="#2D3142"/><circle cx="59" cy="52" r="4" fill="#2D3142"/>
+    <ellipse cx="50" cy="66" rx="9" ry="6" fill="#FFF6E5"/><circle cx="50" cy="63" r="2.5" fill="#2D3142"/>
+  </svg>
+  <h1>Cetak Biru<br>Pintar Main</h1>
+  <div class="sub">Rancangan sistem lengkap<br>Belajar mandiri dengan pengawas</div>
+  <div class="slogan">Belajar dulu, main kemudian!</div>
+  <p class="kecil" style="margin-top:10mm">Versi 31 Oktober 2026 · Status: usulan untuk disetujui Acut<br>Pemilik: Acut, Banda Aceh</p>
+</section>
+
+<h2>Isi</h2>
+<ol class="daftar">
+  <li>Ringkasan satu halaman</li>
+  <li>Produk dan janji</li>
+  <li>Isi pelajaran kelas 2–6</li>
+  <li>Pengalaman anak</li>
+  <li>Mode orang tua</li>
+  <li>Kelas dan pengawas</li>
+  <li>Peran dan hak akses</li>
+  <li>Tiga jalur penjualan</li>
+  <li>Paket dan harga</li>
+  <li>Alur keluarga: dari iklan sampai bayar</li>
+  <li>Pembayaran dan aturan Google Play</li>
+  <li>Teknologi dan data</li>
+  <li>Data anak dan keamanan</li>
+  <li>Pemantauan dan masukan</li>
+  <li>Teks persetujuan orang tua</li>
+  <li>Hitungan uang</li>
+  <li>Pemasaran dan penjualan</li>
+  <li>Jadwal menuju 4 Januari 2027</li>
+  <li>Yang disiapkan Acut</li>
+  <li>Risiko dan penangkalnya</li>
+  <li>Aturan yang tidak boleh dilanggar</li>
+  <li>Keputusan yang masih terbuka</li>
+</ol>
+<p class="kecil">Tanda: <span class="tag ada">ADA</span> sudah dibangun · <span class="tag buat">DIBUAT</span> dibangun sebelum 4 Jan · <span class="tag nanti">NANTI</span> menyusul setelah dibuka.</p>
+
+<!-- 1 -->
+<h2><span class="no">1</span>Ringkasan</h2>
+<div class="kotak">
+<p><b>Pintar Main</b> adalah aplikasi Android belajar untuk anak <b>SD kelas 2–6</b>, dengan maskot <b>Pinci, Si Kancil Pintar</b>.</p>
+<p>Setiap anak belajar <b>dengan pengawas</b>, paling sedikit secara daring. Pengawas memantau <b>Senin, Rabu, Jumat</b>, menulis catatan untuk orang tua, dan memberi tugas ke anak.</p>
+</div>
+<ul>
+  <li><b>Kelas kecil:</b> 1–8 anak, kelas sekolah boleh campur.</li>
+  <li><b>Harga:</b> menurut paket isi. Contoh Rp60 ribu per bulan, dihitung ulang nanti dan boleh di atas Rp70 ribu.</li>
+  <li><b>Coba dulu:</b> 14 hari gratis.</li>
+  <li><b>Bayar:</b> mulai di luar aplikasi (QRIS, dicek admin). Google Play menyusul.</li>
+  <li><b>Tiga jalur:</b> daring langsung, mitra les kecil (Rp70 ribu per murid), tatap muka sendiri (nanti).</li>
+  <li><b>Web pengelola:</b> super admin, admin, mitra les, pengawas.</li>
+  <li><b>Jualan:</b> halaman penjelasan, media sosial, iklan kecil terukur, dan mitra les. Tidak bergantung pada Acut menjangkau orang satu per satu.</li>
+  <li><b>Dibuka:</b> 4 Januari 2027.</li>
+</ul>
+<div class="kotak hijau"><p><b>Kunci berhasil ada dua pihak:</b> sistem dengan pengawas, dan dukungan orang tua di rumah.</p></div>
+
+<!-- 2 -->
+<h2><span class="no">2</span>Produk dan janji</h2>
+<h3>Untuk siapa</h3>
+<ul>
+  <li><b>Anak SD kelas 2–6</b> yang perlu latihan rutin dan terukur.</li>
+  <li><b>Orang tua</b> yang ingin tahu kemajuan anak tanpa harus mengajar sendiri.</li>
+  <li><b>Les kecil</b> yang ingin punya aplikasi latihan dan laporan untuk orang tua murid.</li>
+</ul>
+<h3>Yang kita janjikan</h3>
+<ul>
+  <li>Latihan <b>15 menit sehari</b> yang terasa seperti main.</li>
+  <li>Tahu <b>topik mana yang masih lemah</b>.</li>
+  <li><b>Ada orang yang memantau</b> 3 kali seminggu.</li>
+  <li><b>Aman:</b> tanpa iklan, tanpa pelacak, data anak minim, waktu layar dibatasi.</li>
+</ul>
+<h3>Yang tidak kita janjikan</h3>
+<ul>
+  <li>"Nilai pasti naik."</li>
+  <li>"Lebih baik dari Kumon" (sebelum diukur).</li>
+  <li>Guru privat, video, atau obrolan dengan anak.</li>
+</ul>
+<h3>Slogan</h3>
+<table>
+<tr><th>Di mana</th><th>Slogan</th></tr>
+<tr><td>Layar anak</td><td><b>Pintar itu seru!</b></td></tr>
+<tr><td>Orang tua, iklan, Play Store</td><td><b>Belajar dulu, main kemudian!</b></td></tr>
+</table>
+
+<!-- 3 -->
+<h2><span class="no">3</span>Isi pelajaran kelas 2–6</h2>
+<table>
+<tr><th>Bagian</th><th>Kelas 2–5</th><th>Kelas 6</th></tr>
+<tr><td>Lancar Matematika</td><td><span class="tag ada">ADA</span></td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Game berjenjang (soal sesuai kelas)</td><td><span class="tag ada">ADA</span></td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Bahasa Inggris tingkat 3–6</td><td><span class="tag ada">ADA</span> boleh dibuka semua kelas</td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Baca Ulang</td><td><span class="tag buat">DIBUAT</span> ± 12 teks per kelas, lalu ditambah tiap minggu</td><td><span class="tag ada">ADA</span> 36 teks</td></tr>
+<tr><td>Gudang Ilmu</td><td><span class="tag buat">DIBUAT</span> ± 12 kartu per kelas, lalu ditambah tiap minggu</td><td><span class="tag ada">ADA</span> 41 kartu</td></tr>
+<tr><td>Persiapan TKA</td><td>—</td><td><span class="tag ada">ADA</span> 36 topik, 5 simulasi, mini try out</td></tr>
+</table>
+<h3>Aturan isi</h3>
+<ul>
+  <li>Isi buatan sendiri berstatus <b>belum diperiksa</b> sampai guru memeriksanya.</li>
+  <li>Untuk sementara <b>Acut memeriksa dulu</b>. Status tetap "belum diperiksa guru".</li>
+  <li>Kunci jawaban Matematika <b>dihitung oleh kode</b>, tidak cukup ditulis tangan.</li>
+  <li>Bahan TKA milik Acut dipakai apa adanya.</li>
+  <li><b>Kata yang berhubungan dengan agama ditanyakan dulu ke Acut</b> sebelum ditulis.</li>
+  <li>Bahasa di layar: Indonesia baku sederhana, kalimat pendek.</li>
+</ul>
+
+<!-- 4 -->
+<h2><span class="no">4</span>Pengalaman anak</h2>
+<h3>Satu hari belajar</h3>
+<ol class="alur">
+  <li>Anak membuka aplikasi. Pinci menyapa dengan nama panggilan.</li>
+  <li>Beranda menunjukkan <b>inti harian</b>: Lancar Matematika dan Baca Ulang.</li>
+  <li>Kalau ada, muncul <b>"Tugas dari Kak Pengawas"</b>. <span class="tag buat">DIBUAT</span></li>
+  <li>Setelah inti harian selesai, <b>waktu main</b> terbuka (orang tua bisa memilih "selalu terbuka").</li>
+  <li>Setiap 15 menit muncul <b>layar istirahat</b>. Kalau batas harian habis, aplikasi berhenti dengan ramah.</li>
+</ol>
+<h3>Game tanpa kalah</h3>
+<ul>
+  <li>Tanpa nyawa, tanpa "game over", tanpa skor merah, tanpa hitung mundur.</li>
+  <li>Jawaban belum tepat: benda memantul kembali. Setelah 2 kali, Pinci memberi petunjuk.</li>
+  <li>Game: Pasar Gampong, Ular Tangga Lurus, Susun Kubus, Tebak Kata, Kebun Pinci, Lompat Batu, Pasangkan Kartu, Balap Perahu (level 1–5).</li>
+</ul>
+<h3>Bintang dan kejutan</h3>
+<ul>
+  <li><b>Bintang hanya tanda selesai</b>, tidak bisa ditukar.</li>
+  <li>Aksesori Pinci muncul sebagai <b>kejutan acak</b>, bukan hadiah poin.</li>
+</ul>
+<h3>Batas waktu</h3>
+<table>
+<tr><th>Hal</th><th>Batas</th></tr>
+<tr><td>Belajar</td><td>≤ 10 menit × kelas per hari, blok ≤ 15 menit</td></tr>
+<tr><td>Game</td><td>Kelas 2: 20 menit. Kelas 3–6: 30 menit. Orang tua bisa atur 0–60 menit</td></tr>
+<tr><td>Jam tenang</td><td>Mulai 21.00 (orang tua boleh mematikan)</td></tr>
+</table>
+
+<!-- 5 -->
+<h2><span class="no">5</span>Mode orang tua</h2>
+<p>Satu aplikasi untuk anak dan orang tua. Mode orang tua <b>dikunci PIN</b>.</p>
+<table>
+<tr><th>Bagian</th><th>Isi</th><th></th></tr>
+<tr><td>Kabar</td><td>Ringkasan hari ini dan minggu ini</td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Rapor</td><td>Kemajuan per topik, rapor TKA dengan penyebab salah</td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Atur</td><td>Waktu belajar dan main, jam tenang, saklar TKA</td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Mode Dampingi</td><td>Belajar bersama anak (Tantang Ayah, dll.)</td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Hubungkan HP anak</td><td>Kode 6 angka, data tersambung dua arah</td><td><span class="tag ada">ADA</span></td></tr>
+<tr><td>Kode kelas</td><td>Masuk ke kelas pengawas</td><td><span class="tag buat">DIBUAT</span></td></tr>
+<tr><td>Catatan pengawas</td><td>Catatan mingguan dari pengawas</td><td><span class="tag buat">DIBUAT</span></td></tr>
+<tr><td>Kirim masukan</td><td>Masalah, saran, atau pujian</td><td><span class="tag buat">DIBUAT</span></td></tr>
+<tr><td>Persetujuan</td><td>Persetujuan ikut kelas dan catatan pemakaian</td><td><span class="tag buat">DIBUAT</span></td></tr>
+</table>
+<div class="kotak"><p><b>Dua HP:</b> HP orang tua memakai email. HP anak tersambung lewat kode 6 angka, <b>tanpa PIN dan tanpa mode orang tua</b>, supaya anak tidak bisa mengubah batas waktu.</p></div>
+
+<!-- 6 -->
+<h2><span class="no">6</span>Kelas dan pengawas</h2>
+<h3>Aturan kelas</h3>
+<ul>
+  <li><b>1–8 anak</b> per kelas. Dibuka walau baru 1 anak.</li>
+  <li>Kelas sekolah <b>boleh campur</b>. Latihan tetap sesuai kelas masing-masing.</li>
+  <li><b>Satu pengawas tetap</b>. Admin bisa mengganti, dan orang tua diberi tahu.</li>
+  <li>Masuk lewat <b>kode kelas</b> di mode orang tua, atau ditambah admin dari web.</li>
+  <li>Orang tua bisa <b>keluar kapan saja</b>. Riwayat anak tidak dihapus.</li>
+</ul>
+<h3>Tugas pengawas (Senin, Rabu, Jumat · ± 25 menit per kelas)</h3>
+<ol class="alur">
+  <li>Buka <b>papan kelas</b>. Sistem menandai: anak yang belum latihan 2 hari, topik dengan ketepatan di bawah 70%, dan anak yang sedang lancar (perlu dipuji).</li>
+  <li>Tulis <b>catatan untuk orang tua</b> yang perlu. Ada contoh kalimat, tetapi pengawas menyesuaikannya.</li>
+  <li>Beri atau perbarui <b>tugas</b> untuk anak.</li>
+  <li>Tekan <b>"Pantauan selesai"</b>. Tercatat supaya jadwal bisa dicek.</li>
+</ol>
+<table>
+<tr><th>Kalau anak tidak latihan</th><th>Tindakan</th></tr>
+<tr><td>1 minggu</td><td>Pengawas kirim catatan khusus ke orang tua</td></tr>
+<tr><td>2 minggu</td><td>Admin ikut menanyakan</td></tr>
+</table>
+<h3>Yang didapat keluarga</h3>
+<ul>
+  <li>Minimal <b>1 catatan per minggu</b> per anak: yang baik, yang perlu dibantu, satu saran.</li>
+  <li><b>Laporan bulanan</b> yang bisa dibagikan ke WhatsApp (nama panggilan dan hewan profil saja).</li>
+</ul>
+<h3>Syarat pengawas kita</h3>
+<ul>
+  <li>Lulusan <b>D3 atau S1</b> jurusan apa saja.</li>
+  <li>Lolos tes singkat Matematika dan Bahasa Indonesia kelas 6.</li>
+  <li>Membaca panduan pengawas dan menandatangani <b>perjanjian kerahasiaan</b>.</li>
+</ul>
+
+<!-- 7 -->
+<h2><span class="no">7</span>Peran dan hak akses</h2>
+<table>
+<tr><th>Peran</th><th>Siapa</th><th>Boleh</th></tr>
+<tr><td><b>Super admin</b></td><td>Acut</td><td>Semuanya: harga, uang, tagihan mitra, tambah admin dan mitra, semua laporan</td></tr>
+<tr><td><b>Admin</b></td><td>Staf pengelola</td><td>Kelola kelas dan pengawas, aktifkan langganan (cek QRIS), lihat laporan. <b>Tidak</b> boleh melihat uang dan harga</td></tr>
+<tr><td><b>Mitra les</b></td><td>Pemilik les</td><td>Kelola kelas dan guru lesnya sendiri, lihat tagihannya, laporan lesnya</td></tr>
+<tr><td><b>Pengawas</b></td><td>Pengawas kita atau guru les</td><td>Lihat kemajuan, catatan ke orang tua, tugas ke anak, <b>hanya kelasnya sendiri</b></td></tr>
+</table>
+<h3>Keamanan akun</h3>
+<ul>
+  <li>Semua akun web masuk dengan <b>email + kode sekali pakai</b>.</li>
+  <li>Hak dijaga <b>di server</b> (aturan per baris), bukan hanya disembunyikan di layar.</li>
+  <li>Tindakan penting masuk <b>catatan kegiatan</b>: aktifkan langganan, ubah harga, hapus pengawas, lihat data di luar kelas sendiri.</li>
+</ul>
+<h3>Tempat kerja</h3>
+<ul>
+  <li><b>Web</b> (laptop dan HP): semua peran.</li>
+  <li><b>Aplikasi</b>: pengawas bisa melihat papan kelas dan menulis catatan.</li>
+</ul>
+
+<!-- 8 -->
+<h2><span class="no">8</span>Tiga jalur penjualan</h2>
+<h3>A. Daring langsung <span class="tag buat">DIBUAT</span></h3>
+<p>Keluarga mendaftar, mencoba 14 hari, lalu membayar. Pengawasnya pengawas kita (Acut untuk sementara).</p>
+<h3>B. Mitra les kecil <span class="tag buat">DIBUAT</span></h3>
+<table>
+<tr><th>Hal</th><th>Isi</th></tr>
+<tr><td>Untuk</td><td>Les kecil (± 10–60 murid)</td></tr>
+<tr><td>Didapat mitra</td><td>Akun mitra dan guru, kelas, laporan orang tua, <b>brosur yang bisa diunduh</b> dengan nama les</td></tr>
+<tr><td>Harga</td><td><b>Rp70 ribu per murid aktif per bulan</b>. Contoh: les Rp150 ribu menjadi Rp220 ribu</td></tr>
+<tr><td>Murid aktif</td><td>Latihan minimal 1 hari di bulan itu</td></tr>
+<tr><td>Pengawas</td><td>Guru les mitra (kita tidak membayar honor)</td></tr>
+<tr><td>Tagihan</td><td>Tanggal 1, dibayar paling lambat tanggal 10. Awalnya manual, otomatis <span class="tag nanti">NANTI</span></td></tr>
+<tr><td>Coba</td><td>1 bulan gratis untuk 1 kelas</td></tr>
+<tr><td>Perjanjian</td><td>Tertulis: harga, perlindungan data anak, larangan menjual ulang akun, berhenti dengan pemberitahuan 30 hari</td></tr>
+</table>
+<h3>C. Tatap muka sendiri <span class="tag nanti">NANTI</span></h3>
+<p>Dibuka pelan-pelan setelah A dan B berjalan. Harga di bawah Kumon. Dirancang terpisah.</p>
+
+<!-- 9 -->
+<h2><span class="no">9</span>Paket dan harga</h2>
+<p>Wali murid memilih paket menurut isi pelajaran. <b>Semua paket memakai pengawas.</b></p>
+<table>
+<tr><th>Paket</th><th>Kelas</th><th>Isi</th></tr>
+<tr><td><b>Dasar</b></td><td>2–6</td><td>Lancar Matematika, Baca Ulang, game, pengawas</td></tr>
+<tr><td><b>Lengkap</b></td><td>2–6</td><td>Dasar + Bahasa Inggris + Gudang Ilmu</td></tr>
+<tr><td><b>Siap TKA</b></td><td>6</td><td>Lengkap + Persiapan TKA (simulasi, mini try out, rapor penyebab)</td></tr>
+</table>
+<div class="kotak">
+<ul>
+  <li>Harga contoh <b>Rp60 ribu</b>. <b>Dihitung ulang</b> setelah uji keluarga.</li>
+  <li>Boleh <b>di atas Rp70 ribu</b> kalau manfaatnya sesuai.</li>
+  <li>Super admin bisa mengubah harga dari web <b>tanpa</b> membangun ulang aplikasi.</li>
+  <li>Bagian di luar paket terlihat terkunci untuk anak, <b>tanpa ajakan membeli</b> di layar anak.</li>
+</ul>
+</div>
+<h3>Usulan tambahan (diputuskan nanti)</h3>
+<ul>
+  <li>Potongan untuk anak kedua dalam satu keluarga.</li>
+  <li>Ajak teman: potongan 1 bulan untuk kedua keluarga.</li>
+</ul>
+
+<!-- 10 -->
+<h2><span class="no">10</span>Alur keluarga: dari iklan sampai bayar</h2>
+<ol class="alur">
+  <li>Orang tua melihat <b>konten atau iklan</b>, lalu membuka <b>halaman penjelasan</b>.</li>
+  <li>Mengisi <b>formulir singkat</b>: nama panggilan orang tua, email, WhatsApp orang tua, kelas dan nama panggilan anak.</li>
+  <li>Admin menempatkan anak di kelas dan mengirim <b>kode kelas</b> lewat email atau WhatsApp.</li>
+  <li>Orang tua memasang aplikasi, memasukkan kode kelas, membaca <b>persetujuan</b>, lalu menekan "Setuju".</li>
+  <li><b>14 hari gratis</b> dimulai.</li>
+  <li>Hari ke-10: orang tua menerima <b>laporan singkat dan cara bayar</b> lewat email dan WhatsApp.</li>
+  <li>Orang tua bayar dengan <b>QRIS di halaman web</b>. Admin mencocokkan, lalu menekan "Aktifkan".</li>
+  <li>Belum bayar setelah hari ke-14: <b>masa tenggang 7 hari</b>. Lalu pantauan berhenti. Latihan inti tetap bisa dibuka, riwayat tidak dihapus.</li>
+</ol>
+
+<!-- 11 -->
+<h2><span class="no">11</span>Pembayaran dan aturan Google Play</h2>
+<h3>Aturan Google Play (dicek 31 Okt 2026)</h3>
+<table>
+<tr><th>Fakta</th><th>Akibat untuk kita</th></tr>
+<tr><td>Aplikasi boleh "hanya dipakai": layanan dibayar di luar, asal tidak ada pembelian di dalam aplikasi</td><td>Tahap awal: <b>tanpa tombol beli, tanpa harga, tanpa tautan bayar</b> di aplikasi</td></tr>
+<tr><td>Pengecualian hanya untuk layanan langsung 1 lawan 1 yang tidak bisa diputar ulang</td><td>Pengawasan kelas kita <b>tidak termasuk</b>. Kalau bayar di aplikasi, wajib lewat Google</td></tr>
+<tr><td>Langganan lewat Google dipotong 15%. Di Indonesia ada jalur pilihan dengan potongan 11%</td><td>Rp60 ribu menjadi ± Rp51 ribu bersih</td></tr>
+</table>
+<p class="kecil">Sumber: Play Console Help (Payments policy, user choice billing). Halaman resmi belum terbaca langsung, jadi dicek ulang di Play Console sebelum dibuka.</p>
+<h3>Tahapan</h3>
+<table>
+<tr><th>Tahap</th><th>Cara</th><th>Kapan</th></tr>
+<tr><td>1</td><td><b>QRIS usaha Acut</b>, dicek admin, tombol "Aktifkan" di web. Potongan ± 0–0,3%</td><td>Sejak dibuka</td></tr>
+<tr><td>2</td><td><b>Langganan Google Play</b> di mode orang tua (di balik PIN)</td><td>Kalau &gt; 30% orang tua batal bayar karena repot, atau &gt; 50 keluarga membayar</td></tr>
+<tr><td>3</td><td>Gerbang bayar otomatis (Midtrans/Xendit), ± 0,7%</td><td>Kalau cek manual &gt; 2 jam per minggu</td></tr>
+</table>
+<div class="kotak"><p>Mitra les <b>selalu ditagih di luar aplikasi</b>. Pembayaran apa pun hanya di mode orang tua, <b>tidak pernah</b> di mode anak.</p></div>
+
+<!-- 12 -->
+<h2><span class="no">12</span>Teknologi dan data</h2>
+<table>
+<tr><th>Bagian</th><th>Pilihan</th></tr>
+<tr><td>Aplikasi</td><td>Expo + React Native + TypeScript (Android)</td></tr>
+<tr><td>Web pengelola</td><td>Kode yang sama, dibangun sebagai web <span class="tag buat">DIBUAT</span></td></tr>
+<tr><td>Server</td><td>Supabase, <b>Singapura</b> (proyek <i>pintar-main</i>)</td></tr>
+<tr><td>Email kode masuk</td><td>Brevo</td></tr>
+<tr><td>Suara</td><td>Suara HP untuk Bahasa Indonesia. Rekaman Inggris dibawa di aplikasi (suara perempuan)</td></tr>
+<tr><td>Halaman penjelasan</td><td>Web statis tanpa pelacak <span class="tag buat">DIBUAT</span></td></tr>
+</table>
+<h3>Tahan putus sinyal</h3>
+<ul>
+  <li>Semua isi pelajaran <b>dibawa di dalam aplikasi</b>.</li>
+  <li>Hasil latihan disimpan di HP dulu, lalu <b>dikirim saat ada sinyal</b> (antrean coba ulang).</li>
+  <li>Data tersambung <b>dua arah</b> antara HP orang tua, HP anak, dan server. Perubahan kecil dikirim ± 1,5 detik setelah disimpan, dan diperiksa setiap 60 detik.</li>
+</ul>
+<h3>Tabel baru di server <span class="tag buat">DIBUAT</span></h3>
+<p class="kecil">kelas · anggota_kelas · staf (peran) · mitra · paket · langganan · tagihan_mitra · catatan_pengawas · tugas · persetujuan · masukan · catatan_teknis · catatan_pemakaian · catatan_kegiatan</p>
+
+<!-- 13 -->
+<h2><span class="no">13</span>Data anak dan keamanan</h2>
+<table>
+<tr><th>Disimpan</th><th>Tidak pernah disimpan</th></tr>
+<tr><td>Nama panggilan anak<br>Kelas<br>Hewan profil<br>Hasil latihan</td><td>Foto, rekaman suara anak<br>Lokasi<br>Nomor HP anak<br>ID iklan</td></tr>
+</table>
+<ul>
+  <li><b>Tanpa iklan</b>, tanpa analytics atau pelacak pihak ketiga (Kebijakan Keluarga Google Play).</li>
+  <li>Setiap pustaka <b>diperiksa</b> sebelum dipasang.</li>
+  <li>Izin kamera, mikrofon, lokasi, dan kontak <b>diblokir</b>.</li>
+  <li>Pengawas hanya melihat <b>kelasnya sendiri</b>. Mitra hanya melihat <b>lesnya sendiri</b>.</li>
+  <li>Data orang tua yang disimpan: nama panggilan, email, nomor WhatsApp orang tua (untuk catatan dan tagihan).</li>
+  <li>Keluar kelas tidak menghapus riwayat anak di HP.</li>
+</ul>
+
+<!-- 14 -->
+<h2><span class="no">14</span>Pemantauan dan masukan</h2>
+<table>
+<tr><th>Bagian</th><th>Isi</th><th>Menyala</th></tr>
+<tr><td>Catatan pemakaian</td><td>Layar yang dibuka, lama latihan, selesai atau berhenti</td><td>Hanya kalau orang tua setuju</td></tr>
+<tr><td>Catatan masalah teknis</td><td>Galat aplikasi, sinkron gagal, versi, jenis HP</td><td>Bawaan (tanpa data pribadi)</td></tr>
+<tr><td>Kirim masukan</td><td>Masalah, saran, pujian dari orang tua</td><td>Selalu ada</td></tr>
+<tr><td>Pertanyaan mingguan</td><td>1–2 pilihan untuk orang tua, tidak wajib</td><td>Selalu ada</td></tr>
+<tr><td>Laporan mingguan</td><td>Keluarga aktif, hari latihan, yang berhenti, masalah teknis, masukan baru</td><td>Untuk super admin</td></tr>
+</table>
+<div class="kotak hijau"><p>Semua data masuk ke <b>server kita sendiri</b>. Orang tua bisa mematikan catatan pemakaian kapan saja <b>tanpa kehilangan layanan</b>.</p></div>
+
+<!-- 15 -->
+<h2><span class="no">15</span>Teks persetujuan orang tua</h2>
+<p class="kecil">Usulan versi 1. Diperiksa ahli hukum sebelum dibuka ke umum.</p>
+<blockquote>
+<p><b>Sebelum mulai</b></p>
+<p>Anak Anda akan belajar di kelas <b>[nama kelas]</b> dengan pengawas <b>[nama pengawas]</b>.</p>
+<p>Pengawas bisa melihat nama panggilan, kelas, dan hasil latihan anak Anda. Pengawas memantau setiap Senin, Rabu, dan Jumat, lalu mengirim catatan kepada Anda dan memberi tugas latihan kepada anak. Pengawas tidak bisa mengobrol dengan anak.</p>
+<p>Kami tidak menyimpan foto, suara, lokasi, atau nomor HP anak. Kami tidak memasang iklan atau pelacak.</p>
+<p>Masa coba 14 hari, gratis. Biaya dan cara bayar dikirim ke email Anda. Anda bisa berhenti kapan saja.</p>
+<p>☐ Saya setuju anak saya ikut kelas ini.<br>☐ Boleh kirim catatan pemakaian untuk memperbaiki Pintar Main (boleh tidak dicentang).</p>
+<p><b>[ Setuju dan mulai ]</b></p>
+</blockquote>
+<ul>
+  <li>Harga <b>tidak</b> ditulis di aplikasi selama tahap 1 (aturan Google Play).</li>
+  <li>Setiap persetujuan disimpan bersama <b>nomor versi teks dan waktunya</b>.</li>
+</ul>
+
+<!-- 16 -->
+<h2><span class="no">16</span>Hitungan uang</h2>
+<div class="kotak merah"><p>Semua angka <b>contoh</b> dengan harga Rp60 ribu. <b>Dihitung ulang</b> setelah uji keluarga.</p></div>
+<h3>Satu kelas daring (8 anak, QRIS)</h3>
+<table>
+<tr><th>Pos</th><th>Per bulan</th></tr>
+<tr><td>Pendapatan 8 × Rp60.000</td><td>Rp480.000</td></tr>
+<tr><td>Honor pengawas (Rp20.000 per anak aktif)</td><td>− Rp160.000</td></tr>
+<tr><td>Server, domain, email</td><td>− ± Rp20.000</td></tr>
+<tr><td>Pajak UMKM 0,5% (dicek konsultan)</td><td>− Rp2.400</td></tr>
+<tr><td><b>Sisa</b></td><td><b>± Rp297.600</b></td></tr>
+</table>
+<h3>Satu les mitra (30 murid aktif)</h3>
+<table>
+<tr><th>Pos</th><th>Per bulan</th></tr>
+<tr><td>Tagihan 30 × Rp70.000</td><td>Rp2.100.000</td></tr>
+<tr><td>Server</td><td>− ± Rp75.000</td></tr>
+<tr><td><b>Sisa</b></td><td><b>± Rp2.000.000</b></td></tr>
+</table>
+<h3>Pengawas</h3>
+<ul>
+  <li>± 75 menit per kelas per minggu.</li>
+  <li>Satu pengawas paruh waktu: <b>5 kelas</b> (± 40 anak, ± 6–7 jam per minggu), honor ± Rp800 ribu.</li>
+</ul>
+<h3>Titik impas</h3>
+<p>Biaya tetap ± <b>Rp1 juta per bulan</b> tertutup oleh <b>4 kelas daring penuh</b> atau <b>15 murid mitra</b>. Anggaran iklan dihitung terpisah.</p>
+
+<!-- 17 -->
+<h2><span class="no">17</span>Pemasaran dan penjualan</h2>
+<div class="kotak"><p><b>Mesin penjualan:</b> konten dan iklan → halaman penjelasan → 14 hari gratis → bayar. Ditambah mitra les yang menjual ke murid mereka sendiri.</p></div>
+<h3>Siapa yang kita sasar</h3>
+<table>
+<tr><th>Persona</th><th>Cemas karena</th><th>Membayar karena</th></tr>
+<tr><td><b>Bunda Anak SD</b> (utama, kelas 2–5)</td><td>Anak belum lancar, malas belajar, main HP terus</td><td>Belajar terasa main, ada yang memantau</td></tr>
+<tr><td><b>Bunda Cemas TKA</b> (kelas 6, Jan–Mar)</td><td>Tidak tahu anak siap TKA atau tidak</td><td>Tahu topik lemah, ada pengawas</td></tr>
+<tr><td><b>Ayah Sibuk</b></td><td>Jarang sempat mendampingi</td><td>Laporan singkat yang bisa dibaca</td></tr>
+<tr><td><b>Pemilik Les Kecil</b></td><td>Murid pindah ke bimbel besar</td><td>Punya aplikasi tanpa membangun, tambah pendapatan</td></tr>
+</table>
+<h3>Pesan utama</h3>
+<div class="kotak hijau"><p>"Belajar 15 menit sehari di rumah, seru dan terukur, dipantau pengawas 3 kali seminggu. Coba 14 hari gratis."</p></div>
+
+<h3>Kenapa memilih kita</h3>
+<table>
+<tr><th>Dibanding</th><th>Kalimat pembeda</th></tr>
+<tr><td>Les tatap muka</td><td>Rutin seperti les, tetapi di rumah dan jauh lebih murah</td></tr>
+<tr><td>Aplikasi video</td><td>Bukan menonton. Anak berlatih, dan ada yang melihat hasilnya</td></tr>
+<tr><td>Belajar dengan buku</td><td>Tahu persis topik yang perlu diulang</td></tr>
+</table>
+<p class="kecil">Nama pesaing tidak disebut di iklan.</p>
+
+<h3>Klaim</h3>
+<table>
+<tr><th>Boleh</th><th>Tidak boleh</th></tr>
+<tr><td>Tahu topik yang lemah dalam 1 minggu</td><td>Nilai pasti naik</td></tr>
+<tr><td>Dipantau pengawas 3 kali seminggu</td><td>Guru privat</td></tr>
+<tr><td>Tanpa iklan, tanpa pelacak</td><td>Lebih baik dari Kumon</td></tr>
+<tr><td>Angka hasil uji keluarga (setelah diukur, dengan izin)</td><td>Testimoni karangan</td></tr>
+</table>
+
+<h3>Angka yang dijaga (target awal)</h3>
+<table>
+<tr><th>Tahap</th><th>Target</th></tr>
+<tr><td>Iklan → klik</td><td>≥ 1%</td></tr>
+<tr><td>Halaman → daftar</td><td>≥ 8%</td></tr>
+<tr><td>Daftar → aktif (latihan ≥ 3 hari)</td><td>≥ 60%</td></tr>
+<tr><td><b>Aktif → bayar</b> (angka utama)</td><td><b>≥ 40%</b></td></tr>
+<tr><td>Masih bayar bulan ke-3</td><td>≥ 70%</td></tr>
+<tr><td>Biaya iklan per keluarga yang membayar</td><td>≤ satu bulan harga</td></tr>
+</table>
+<p class="kecil">Contoh: Rp500 ribu iklan → 500 klik → 40 daftar → 24 aktif → ± 10 keluarga membayar.</p>
+
+<h3>Halaman penjelasan (urutan)</h3>
+<ol>
+  <li>Judul + tombol <b>Coba 14 hari gratis</b></li>
+  <li>Tiga kecemasan orang tua</li>
+  <li>Cara kerja: 3 langkah bergambar</li>
+  <li>Contoh catatan pengawas dan rapor (data contoh)</li>
+  <li><b>Peran orang tua</b>: cukup 5 menit sehari</li>
+  <li>Isi pelajaran dan paket</li>
+  <li>Aman untuk anak</li>
+  <li>Harga yang jelas, berhenti kapan saja</li>
+  <li>Pertanyaan umum</li>
+  <li>Untuk pemilik les + brosur</li>
+  <li>Formulir daftar</li>
+</ol>
+<p class="kecil">Tanpa pelacak pihak ketiga. Asal pendaftar diukur dengan kode di tautan, misalnya <i>?dari=fb-1</i>.</p>
+
+<h3>Media sosial setiap minggu</h3>
+<table>
+<tr><th>Hari</th><th>Kiriman</th></tr>
+<tr><td>Senin</td><td>Soal minggu ini + pembahasan (per kelas bergiliran)</td></tr>
+<tr><td>Rabu</td><td>Tips orang tua, 30–60 detik</td></tr>
+<tr><td>Jumat</td><td>Cara kerja Pintar Main (rekaman layar)</td></tr>
+<tr><td>Sabtu</td><td>Cerita atau angka hasil (anonim, dengan izin)</td></tr>
+</table>
+<ul>
+  <li>Akun: Facebook, Instagram, TikTok, Saluran WhatsApp.</li>
+  <li>Dibuat sekaligus untuk 4 minggu (± 3 jam sebulan), dibantu Claude.</li>
+  <li><b>Pinci menjadi wajah akun.</b> Wajah dan suara anak tidak dipakai.</li>
+</ul>
+
+<h3>Iklan berbayar (Facebook dan Instagram)</h3>
+<table>
+<tr><th>Hal</th><th>Isi</th></tr>
+<tr><td>Sasaran</td><td>Orang dewasa 28–45 tahun, Banda Aceh + Aceh Besar, minat pendidikan dan parenting</td></tr>
+<tr><td>Awal</td><td>Rp50 ribu per hari × 10 hari, 3 iklan berbeda</td></tr>
+<tr><td>Hari ke-5</td><td>Matikan iklan terburuk</td></tr>
+<tr><td>Berhenti</td><td>Iklan yang memakan Rp150 ribu tanpa pendaftar dimatikan</td></tr>
+<tr><td>Waktu terbaik</td><td>Januari–Maret dan Juli</td></tr>
+</table>
+<p class="kecil">Iklan tidak pernah ditujukan kepada anak. Usulan: tanpa piksel Meta.</p>
+
+<h3>Menjual ke les mitra</h3>
+<ol class="alur">
+  <li>Cari les SD di Google Maps dan Facebook. Iklan kecil khusus pemilik les.</li>
+  <li>Halaman mitra dengan contoh hitungan dan formulir minat.</li>
+  <li>Uji 1 kelas gratis selama 1 bulan.</li>
+  <li>Brosur PDF dengan nama dan nomor les.</li>
+  <li>Perjanjian ditandatangani sebelum tagihan pertama.</li>
+  <li>Panduan guru dan satu sesi perkenalan daring.</li>
+</ol>
+<p>Target awal: <b>3 les × 20 murid</b> dalam 3 bulan setelah dibuka.</p>
+
+<!-- 18 -->
+<h2><span class="no">18</span>Jadwal menuju 4 Januari 2027</h2>
+<table>
+<tr><th>Minggu</th><th>Pekerjaan</th></tr>
+<tr><td><b>1–2</b><br>1–15 Nov</td><td>Kelas dan pengawas di server dan aplikasi. Isi kelas 2–5 tahap 1</td></tr>
+<tr><td><b>3–4</b><br>16–29 Nov</td><td>Web pengelola, persetujuan, Kirim masukan, catatan pemakaian. Isi tahap 2. <b>Uji tertutup Google Play dimulai</b></td></tr>
+<tr><td><b>5–7</b><br>30 Nov–20 Des</td><td>Uji keluarga, Acut sebagai pengawas. Perbaikan. Acut memeriksa isi. Halaman penjelasan, brosur, QRIS</td></tr>
+<tr><td><b>8–9</b><br>21 Des–3 Jan</td><td>Ajukan rilis Play Store. Konten media sosial dan iklan siap</td></tr>
+<tr><td><b>4 Jan</b></td><td><b>Dibuka.</b> 14 hari gratis. Iklan pertama</td></tr>
+</table>
+<h3>Menyusul setelah dibuka</h3>
+<ul>
+  <li>Tagihan mitra otomatis (mitra pertama ditagih manual).</li>
+  <li>Langganan Google Play.</li>
+  <li>Tambahan teks dan kartu kelas 2–5 setiap minggu.</li>
+  <li>Tatap muka sendiri.</li>
+</ul>
+<h3>Setelah dibuka</h3>
+<table>
+<tr><th>Waktu</th><th>Kegiatan</th></tr>
+<tr><td>Jan–Mar 2027</td><td>Puncak jualan. Dekati 3 les mitra pertama</td></tr>
+<tr><td>Apr 2027</td><td>TKA. Tawarkan lanjutan untuk kelas 6</td></tr>
+<tr><td>Jul 2027</td><td>Tahun ajaran baru: jualan kedua</td></tr>
+</table>
+
+<!-- 19 -->
+<h2><span class="no">19</span>Yang disiapkan Acut</h2>
+<p>Hal-hal ini tidak bisa dikerjakan Claude.</p>
+<table>
+<tr><th>Hal</th><th>Paling lambat</th></tr>
+<tr><td><b>Cek jenis akun Play Console.</b> Akun pribadi baru mungkin wajib uji tertutup ≥ 12 penguji selama 14 hari. Keluarga uji baru 8–9</td><td>15 Nov</td></tr>
+<tr><td>Cari <b>3–4 penguji tambahan</b> kalau perlu</td><td>20 Nov</td></tr>
+<tr><td><b>QRIS usaha</b> atas nama Acut aktif</td><td>30 Nov</td></tr>
+<tr><td><b>Memeriksa isi</b> baru, ± 2–3 jam per minggu</td><td>Mulai pertengahan Nov</td></tr>
+<tr><td>Teks persetujuan dibaca <b>ahli hukum</b></td><td>15 Des</td></tr>
+<tr><td>Cek ulang aturan pembayaran dan formulir Families di Play Console</td><td>15 Des</td></tr>
+<tr><td>Uji dua HP sungguhan (orang tua dan anak)</td><td>Secepatnya</td></tr>
+<tr><td>Siapkan akun Facebook, Instagram, TikTok</td><td>20 Des</td></tr>
+<tr><td>Anggaran iklan awal ± Rp500 ribu</td><td>4 Jan</td></tr>
+</table>
+
+<!-- 20 -->
+<h2><span class="no">20</span>Risiko dan penangkalnya</h2>
+<table>
+<tr><th>Risiko</th><th>Penangkal</th></tr>
+<tr><td>Orang tua tidak bayar setelah masa coba</td><td>Laporan hari ke-10 yang jelas, catatan pengawas yang terasa pribadi, angka "jadi bayar" dipantau tiap minggu</td></tr>
+<tr><td>Pengawas tidak menepati jadwal</td><td>Tanda "Pantauan selesai" tercatat dan muncul di laporan mingguan</td></tr>
+<tr><td>Mitra menjual ulang akun atau tidak bayar</td><td>Perjanjian tertulis. Kelas dibekukan setelah tanggal 20 (latihan inti tetap jalan)</td></tr>
+<tr><td>Aturan Google Play ditafsirkan berbeda</td><td>Tahap 1 tanpa harga dan tautan bayar di aplikasi. Dicek ulang sebelum dibuka</td></tr>
+<tr><td>Data anak terlihat orang yang tidak berhak</td><td>Aturan per baris di server, catatan kegiatan, perjanjian kerahasiaan</td></tr>
+<tr><td>Isi kelas 2–5 baru diperiksa Acut</td><td>Status tetap belum diperiksa. Kunci dihitung kode. Guru dicari</td></tr>
+<tr><td>Anak kelas 6 berhenti setelah TKA</td><td>Kelas 2–5 dibuka sejak awal. Kelas 6 ditawari lanjutan</td></tr>
+<tr><td>Uji tertutup Google Play memundurkan rilis</td><td>Uji tertutup dimulai paling lambat akhir November</td></tr>
+</table>
+
+<!-- 21 -->
+<h2><span class="no">21</span>Aturan yang tidak boleh dilanggar</h2>
+<ol>
+  <li>Tanpa iklan, tanpa analytics atau pelacak pihak ketiga.</li>
+  <li>Data anak seminim mungkin: nama panggilan, kelas, hewan profil.</li>
+  <li>Game tanpa kalah.</li>
+  <li>Bintang hanya tanda selesai. Aksesori Pinci kejutan acak.</li>
+  <li>Tidak pernah menulis "selesaikan latihan untuk dapat game".</li>
+  <li>Batas waktu belajar, game, dan jam tenang.</li>
+  <li>Uang Pasar Gampong bergaya sederhana, bukan tiruan Rupiah.</li>
+  <li>Layar anak memakai "Pintar itu seru!".</li>
+  <li>Tanpa isi keagamaan buatan sendiri. Kata yang berhubungan dengan agama ditanyakan ke Acut dulu.</li>
+  <li>Isi buatan sendiri berstatus belum diperiksa. Kunci Matematika dihitung kode.</li>
+  <li>Bahasa Indonesia sederhana, tanpa istilah Inggris (kecuali pelajaran Bahasa Inggris).</li>
+  <li><b>Baru:</b> tidak ada penawaran atau ajakan membeli di layar anak.</li>
+  <li><b>Baru:</b> pengawas tidak mengobrol dengan anak.</li>
+</ol>
+
+<!-- 22 -->
+<h2><span class="no">22</span>Keputusan yang masih terbuka</h2>
+<table>
+<tr><th>Hal</th><th>Kapan diputuskan</th></tr>
+<tr><td>Harga tiap paket (Dasar, Lengkap, Siap TKA)</td><td>Setelah uji keluarga, sebelum 20 Des</td></tr>
+<tr><td>Potongan anak kedua</td><td>Bersama harga</td></tr>
+<tr><td>Honor pengawas (usul Rp20 ribu per anak aktif)</td><td>Sebelum ada pengawas selain Acut</td></tr>
+<tr><td>Pasang piksel Meta di halaman web atau tidak (usul: tidak)</td><td>Sebelum iklan pertama</td></tr>
+<tr><td>Kelas 1 SD dan TK</td><td>Setelah kelas 2–6 berjalan</td></tr>
+<tr><td>Rancangan tatap muka sendiri</td><td>Setelah jalur daring dan mitra berjalan</td></tr>
+<tr><td>Guru pemeriksa isi</td><td>Secepatnya</td></tr>
+</table>
+<div class="kotak hijau">
+<p><b>Langkah berikutnya:</b> setelah Acut setuju, Claude mulai minggu 1, yaitu kelas dan pengawas di server dan aplikasi, sekaligus isi kelas 2–5 tahap 1.</p>
+</div>
+<p class="kecil">Rincian lengkap: <i>docs/rancangan/08-model-usaha/</i> dan <i>docs/rancangan/keputusan.md</i> bagian L.</p>
+
+</body>
+</html>
