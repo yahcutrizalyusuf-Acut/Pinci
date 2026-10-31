@@ -6,8 +6,6 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
-// @ts-expect-error Playwright sudah terpasang di mesin (bukan dependensi proyek), jadi tanpa berkas tipe.
-import { chromium } from 'playwright';
 
 import { TEKS_BACA } from '../src/isi/baca/paket';
 import { PAKET_GUDANG } from '../src/isi/gudang/paket';
@@ -73,6 +71,12 @@ const berkasHtml = path.join(keluar, 'periksa-isi-kelas-2-5.html');
 fs.writeFileSync(berkasHtml, html, 'utf8');
 
 (async () => {
+  // Playwright terpasang di mesin pengembang, bukan dependensi proyek: dimuat saat skrip dijalankan
+  // supaya pemeriksa kode di server (tanpa Playwright) tidak gagal.
+  const namaModul = 'playwright';
+  // require (bukan import) supaya Playwright yang terpasang global (NODE_PATH) ikut ditemukan.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { chromium } = require(namaModul) as { chromium: { launch: () => Promise<{ newPage: () => Promise<any>; close: () => Promise<void> }> } };
   const peramban = await chromium.launch();
   const hal = await peramban.newPage();
   await hal.goto('file://' + berkasHtml);
