@@ -325,3 +325,8 @@ Dasar: `08-model-usaha/01-model-usaha-dan-pengawas.md` dan `08-model-usaha/02-pe
 | 8 | Masa coba 14 hari gratis | — |
 | 9 | Pembayaran bertahap: mulai di luar aplikasi (QRIS dengan cek manual, potongan Google 0%), lalu langganan Google Play ditambahkan kalau perlu | `02-rancangan/08` (Google Play sebagai jalur utama) |
 | 10 | Promosi tidak bergantung pada Acut menjangkau orang satu per satu. Penjualan lewat halaman penjelasan, media sosial, iklan, dan mitra les. Keberhasilan melibatkan dua pihak: sistem dengan pengawas, dan orang tua | — |
+| 11 | Harga contoh Rp60 ribu **dihitung ulang nanti**. Kalau manfaatnya sesuai, harga boleh **di atas Rp70 ribu** | Batas Rp50–70 ribu di no. 1 |
+| 12 | Harga bervariasi **menurut paket isi pelajaran** yang dipilih wali murid (contoh: Dasar, Lengkap, Siap TKA). Semua paket dengan pengawas | — |
+| 13 | Dibuka untuk **kelas 2–6 SD** (bukan hanya kelas 5–6). Alasannya: les kecil banyak mengajar anak SD, dan bahan untuk kelas kecil lebih mudah dan menyenangkan | No. 7 (kelas 5–6, fokus Siap TKA) |
+| 14 | Baca Ulang dan Gudang Ilmu kelas 2–5 dibuka **ramping** (± 12 teks dan 12 kartu per kelas), lalu ditambah setiap minggu | — |
+| 15 | Isi baru diperiksa **Acut sendiri dulu**. Statusnya tetap `belum_diperiksa` sampai guru memeriksa | — |

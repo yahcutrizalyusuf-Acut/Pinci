@@ -3,8 +3,8 @@
 **Ringkas:**
 
 1. Penjualan **tidak bergantung pada Acut menjangkau orang satu per satu**. Mesin penjualannya adalah: **konten dan iklan → halaman penjelasan → 14 hari gratis → bayar**, ditambah **mitra les** yang menjual ke murid mereka sendiri.
-2. Sasaran pertama: **ibu dengan anak kelas 5–6 yang cemas menghadapi TKA**, di Banda Aceh dan Aceh Besar dulu, lalu seluruh Aceh dan Sumatra.
-3. Pesan utama: **"Latihan TKA 15 menit sehari di rumah, dipantau pengawas 3 kali seminggu. Rp60 ribu sebulan. Coba 14 hari gratis."**
+2. Sasaran: **orang tua anak kelas 2–6 SD** dan **les kecil** yang mengajar anak SD, di Banda Aceh dan Aceh Besar dulu, lalu seluruh Aceh dan Sumatra. Orang tua kelas 6 yang cemas menghadapi TKA menjadi sasaran khusus Januari–Maret.
+3. Pesan utama: **"Belajar 15 menit sehari di rumah, seru dan terukur, dipantau pengawas 3 kali seminggu. Coba 14 hari gratis."** Untuk kelas 6 ditambah pesan Siap TKA.
 4. Semua klaim harus jujur: tanpa "nilai pasti naik" dan tanpa "lebih baik dari Kumon" sebelum ada buktinya.
 5. Setiap minggu ada 4 kiriman di media sosial, iklan berbayar kecil yang diukur, dan satu angka yang dijaga: **berapa keluarga yang jadi membayar setelah masa coba**.
 
@@ -16,7 +16,8 @@ Status: **usulan untuk disetujui Acut** (31 Okt 2026). Angka target **[ASUMSI]**
 
 | Persona | Gambaran | Yang dicemaskan | Yang membuatnya membayar | Tempat ditemui |
 |---|---|---|---|---|
-| **Bunda Cemas TKA** (utama) | Ibu 30–45 tahun, anak kelas 5–6, bekerja atau mengurus rumah | "Anak saya siap TKA tidak? Les mahal dan jauh" | Tahu kelemahan anak per topik, dan ada orang yang ikut memantau | Facebook (grup ibu, grup sekolah), Instagram, TikTok, WhatsApp grup kelas |
+| **Bunda Anak SD** (utama) | Ibu 28–42 tahun, anak kelas 2–5 | "Anak belum lancar berhitung dan membaca, malas belajar, main HP terus" | Belajar terasa seperti main, dan ada orang yang ikut memantau | Facebook, Instagram, TikTok, WhatsApp grup kelas |
+| **Bunda Cemas TKA** (Jan–Mar) | Ibu 30–45 tahun, anak kelas 5–6, bekerja atau mengurus rumah | "Anak saya siap TKA tidak? Les mahal dan jauh" | Tahu kelemahan anak per topik, dan ada orang yang ikut memantau | Facebook (grup ibu, grup sekolah), Instagram, TikTok, WhatsApp grup kelas |
 | **Ayah Sibuk** | Ayah yang membayar, jarang sempat mendampingi | "Anak main HP terus" | HP menjadi alat belajar terukur, dengan laporan singkat yang bisa dibaca | Facebook, WhatsApp |
 | **Pemilik Les Kecil** (mitra) | Guru yang membuka les di rumah atau ruko, 10–60 murid | "Murid pindah ke bimbel besar yang punya aplikasi" | Punya aplikasi dan laporan untuk orang tua tanpa membangun sendiri, dan ada tambahan pendapatan | Facebook, Instagram, grup guru, Google Maps |
 

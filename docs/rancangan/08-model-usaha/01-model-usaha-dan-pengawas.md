@@ -2,9 +2,9 @@
 
 **Ringkas:**
 
-1. Pintar Main tidak lagi gratis tanpa batas. Setiap anak belajar **dengan pengawas**, paling sedikit secara daring. Harganya **Rp50–70 ribu per bulan**, dengan **14 hari gratis** untuk mencoba.
+1. Pintar Main tidak lagi gratis tanpa batas. Setiap anak belajar **dengan pengawas**, paling sedikit secara daring. Harga contoh **Rp60 ribu per bulan** dihitung ulang nanti, dan boleh di atas Rp70 ribu kalau manfaatnya sesuai. Harga bervariasi **menurut paket isi** yang dipilih wali murid. Ada **14 hari gratis** untuk mencoba.
 2. Anak dikelompokkan dalam **kelas berisi 1–8 anak**. Kelas sekolahnya boleh campur. Pengawas memantau pada **Senin, Rabu, dan Jumat**: melihat kemajuan, menulis catatan untuk orang tua, dan memberi tugas ke anak. Tidak ada video dan tidak ada obrolan dengan anak.
-3. Sasaran pertama: **kelas 5–6, fokus Siap TKA**.
+3. Dibuka untuk **kelas 2–6 SD**. TKA tetap jadi paket khusus kelas 6, tetapi bukan satu-satunya jualan, karena les kecil banyak mengajar anak SD.
 4. Ada tiga jalur:
    - **Daring:** keluarga membayar langsung.
    - **Mitra les (opsi B):** les kecil memakai sistem kita. Kita menagih Rp70 ribu per murid per bulan, dan guru les sendiri yang menjadi pengawas.
@@ -43,6 +43,16 @@ Status: **usulan untuk disetujui Acut** (31 Okt 2026). Belum ada kode yang diban
 | Laporan bulanan | Ringkasan kemajuan yang bisa dibagikan ke WhatsApp (nama panggilan dan hewan profil saja) |
 
 **Yang tidak termasuk:** video, obrolan dengan anak, dan janji nilai pasti naik.
+
+### 2a. Paket menurut isi pelajaran (usulan, harga dihitung ulang)
+
+| Paket | Untuk | Isi | Harga |
+|---|---|---|---|
+| Dasar | Kelas 2–6 | Lancar Matematika, Baca Ulang, game, pengawas | Paling murah **[dihitung ulang]** |
+| Lengkap | Kelas 2–6 | Dasar + Bahasa Inggris + Gudang Ilmu | Menengah **[dihitung ulang]** |
+| Siap TKA | Kelas 6 | Lengkap + Persiapan TKA (simulasi, mini try out, rapor penyebab) | Paling tinggi, boleh di atas Rp70 ribu **[dihitung ulang]** |
+
+Semua paket memakai pengawas. Sistem menyimpan paket di tabel `langganan`, jadi harga bisa diubah super admin tanpa membangun ulang aplikasi. Bagian yang tidak termasuk paket tetap terlihat tetapi terkunci untuk anak, **tanpa** ajakan membeli di layar anak.
 
 ### Tugas pengawas per hari kerja (± 20–30 menit per kelas)
 
@@ -260,10 +270,20 @@ Catatan:
 | 6 | Uji keluarga dengan 8–9 anak sebagai kelas pertama, Acut sebagai pengawas | 3–4 minggu |
 | 7 | Langganan Google Play (tahap 2 pembayaran) | 2–3 hari, nanti |
 
-**Kekurangan isi:** sasaran kelas 5–6, tetapi Baca Ulang dan Gudang Ilmu baru tersedia untuk kelas 6. Lancar Matematika sudah kelas 1–6. Pilihannya:
+**Isi kelas 2–5 (diputuskan 31 Okt):** Lancar Matematika, game, dan Bahasa Inggris sudah ada. Baca Ulang dan Gudang Ilmu kelas 2–5 dibuka **ramping**: ± 12 teks dan 12 kartu per kelas (cukup ± 4 minggu), lalu ditambah setiap minggu. Isi baru diperiksa Acut dulu, dengan status tetap `belum_diperiksa` sampai guru memeriksa.
 
-- buka untuk kelas 6 dulu dan kelas 5 menyusul; atau
-- tambahkan Baca Ulang dan Gudang kelas 5 sebelum dibuka (± 1–2 minggu).
+### 10a. Jadwal menuju 4 Januari 2027
+
+| Minggu | Pekerjaan |
+|---|---|
+| 1–2 (1–15 Nov) | Kelas dan pengawas di server dan aplikasi. Isi kelas 2–5 tahap 1 |
+| 3–4 (16–29 Nov) | Web admin, persetujuan, Kirim masukan, catatan pemakaian. Isi tahap 2. Uji tertutup Google Play dimulai |
+| 5–7 (30 Nov–20 Des) | Uji keluarga, Acut sebagai pengawas. Perbaikan. Acut memeriksa isi. Halaman penjelasan, brosur, QRIS |
+| 8–9 (21 Des–3 Jan) | Ajukan rilis Play Store. Konten media sosial dan iklan disiapkan |
+
+Yang menyusul setelah dibuka: tagihan mitra otomatis (mitra pertama ditagih manual) dan langganan Google Play.
+
+**Syarat di luar kode:** QRIS usaha aktif sebelum Desember; teks persetujuan dibaca ahli hukum; jenis akun Play Console dicek. Akun pribadi baru wajib uji tertutup **≥ 12 penguji selama 14 hari** sebelum rilis umum **[dari ingatan, dicek ulang di Play Console]**, padahal keluarga uji baru 8–9.
 
 ---
 
@@ -276,4 +296,5 @@ Catatan:
 | Mitra les menjual ulang akun atau tidak membayar | Perjanjian tertulis. Akun kelas dibekukan setelah tanggal 20 kalau tagihan belum dibayar (anak tetap bisa latihan inti) |
 | Aturan Google Play ditafsirkan berbeda | Tahap 1 tanpa harga dan tautan bayar di aplikasi. Dicek ulang sebelum dibuka |
 | Data anak terlihat oleh orang yang tidak berhak | Aturan baris per peran, catatan kegiatan, dan perjanjian kerahasiaan |
-| Sasaran kelas 6 berhenti setelah TKA (April) | Tawarkan lanjutan Bahasa Inggris tingkat 5–6 dan kelas 5 sejak awal |
+| Anak kelas 6 berhenti setelah TKA (April) | Kelas 2–5 dibuka sejak awal, dan kelas 6 ditawari lanjutan Bahasa Inggris |
+| Isi kelas 2–5 baru diperiksa Acut, belum guru | Status `belum_diperiksa` tetap. Kunci Matematika dihitung kode. Guru dicari untuk pemeriksaan berikutnya |
