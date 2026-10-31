@@ -30,9 +30,11 @@ export default function Kabar() {
       const dijawab = await r.nilai<string>(`masukan:${PERTANYAAN.kode}`);
       const nanti = await r.nilai<string>(`masukan_nanti:${PERTANYAAN.kode}`);
       const antre = (await r.antreanBelumTerkirim()).length;
-      return { kabar, tampilTanya: !dijawab && nanti !== new Date().toDateString(), antre };
+      const catatan = (await r.catatanPengawas()).slice(0, 3);
+      const kelas = await r.daftarKelasAnak();
+      return { kabar, tampilTanya: !dijawab && nanti !== new Date().toDateString(), antre, catatan, kelas };
     },
-    { kabar: [], tampilTanya: false, antre: 0 },
+    { kabar: [], tampilTanya: false, antre: 0, catatan: [], kelas: [] },
     [daftarAnak.length],
   );
   const tips = tipsHariIni();
@@ -77,6 +79,30 @@ export default function Kabar() {
             </Pressable>
           ))}
         </View>
+
+        {data.catatan.length > 0 ? (
+          <View style={{ marginHorizontal: 16, padding: 16, borderRadius: 20, backgroundColor: warna.putih, gap: 10 }}>
+            <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 13, color: warna.hijauTua }}>CATATAN DARI PENGAWAS</Text>
+            {data.catatan.map((c) => {
+              const a = daftarAnak.find((x) => x.id === c.anak_id);
+              const pengawas = data.kelas.find((k) => k.anak_id === c.anak_id)?.pengawasNama;
+              return (
+                <View key={c.id} style={{ gap: 2, paddingBottom: 8, borderBottomWidth: 1, borderBottomColor: warna.abuGaris }}>
+                  <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 14, color: c.dibaca ? warna.teksKedua : warna.teks }}>
+                    {a ? `${a.nama} · ` : ''}
+                    {pengawas ?? 'Pengawas'} · {new Date(c.waktu).toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short' })}
+                  </Text>
+                  <TeksOrtu style={{ fontSize: 15, fontFamily: c.dibaca ? huruf.ortu : huruf.ortuSedang }}>{c.isi}</TeksOrtu>
+                </View>
+              );
+            })}
+            {data.catatan.some((c) => !c.dibaca) ? (
+              <Pressable accessibilityRole="button" onPress={() => repo.tandaiCatatanDibaca()} style={{ alignSelf: 'flex-start', paddingVertical: 4 }}>
+                <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 14, color: warna.hijauTua }}>Sudah saya baca</Text>
+              </Pressable>
+            ) : null}
+          </View>
+        ) : null}
 
         {data.antre > 0 ? (
           <View style={{ marginHorizontal: 16, padding: 12, borderRadius: 14, backgroundColor: warna.putih, flexDirection: 'row', gap: 10, alignItems: 'center' }}>

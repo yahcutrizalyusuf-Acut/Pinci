@@ -8,6 +8,7 @@ import { modeData } from '@/data/sinkron';
 import { huruf, warna, warnaMapel } from '@/desain/token';
 import { hariIni } from '@/fitur/hari-ini';
 import { paketLengkap } from '@/fitur/konfig';
+import { ruteTugas } from '@/fitur/kelas';
 import { infoLancarAnak } from '@/fitur/lancar';
 import { GelembungPinci, Logo, TombolSuara } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
@@ -24,7 +25,8 @@ export default function BerandaBelajar() {
       const antre = (await repo.antreanBelumTerkirim()).length;
       const h = await hariIni(repo, anak);
       const lancar = await infoLancarAnak(repo, anak);
-      return { terakhir, antre, h, lancar, diputus: await repo.hpDiputus() };
+      const tugas = await repo.tugasTerbuka(anak.id);
+      return { terakhir, antre, h, lancar, diputus: await repo.hpDiputus(), tugas };
     },
     null,
     [anak.id],
@@ -87,6 +89,27 @@ export default function BerandaBelajar() {
               <Text style={{ fontFamily: huruf.anak, fontSize: 16, lineHeight: 21, color: warna.teks }}>{data.terakhir.isi}</Text>
             </View>
           </Pressable>
+        ) : null}
+
+        {data && data.tugas.length > 0 ? (
+          <View style={{ padding: 14, borderRadius: 20, backgroundColor: warna.putih, borderWidth: 2, borderColor: warna.oranye, gap: 8 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <TombolSuara teks={`Tugas dari Kak Pengawas. ${data.tugas.map((t) => t.judul).join('. ')}`} />
+              <Text style={{ flex: 1, fontFamily: huruf.anakTebal, fontSize: 16, color: warna.oranyeTua }}>Tugas dari Kak Pengawas</Text>
+            </View>
+            {data.tugas.slice(0, 3).map((t) => (
+              <Pressable
+                key={t.id}
+                accessibilityRole="button"
+                accessibilityLabel={`Kerjakan tugas: ${t.judul}`}
+                onPress={() => router.push(ruteTugas(t.jenis, t.rujukan) as never)}
+                style={({ pressed }) => ({ padding: 12, borderRadius: 14, backgroundColor: pressed ? warna.kremGaris : warna.oranyeMuda, gap: 2 })}
+              >
+                <Text style={{ fontFamily: huruf.anakTebal, fontSize: 16, color: warna.teks }}>{t.judul}</Text>
+                {t.pesan ? <Text style={{ fontFamily: huruf.anak, fontSize: 15, color: warna.teks }}>{t.pesan}</Text> : null}
+              </Pressable>
+            ))}
+          </View>
         ) : null}
 
         <View style={{ gap: 12 }}>

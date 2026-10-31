@@ -551,6 +551,23 @@ begin
 end $$;
 grant execute on function keluar_kelas(uuid) to authenticated;
 
+-- Orang tua: ganti paket anak di kelasnya sekarang.
+create or replace function ganti_paket(p_anak_id uuid, p_paket text) returns jsonb
+  language plpgsql security definer set search_path = public
+as $$
+declare v_kelas int;
+begin
+  if keluarga_saya() is null then raise exception 'bukan_orang_tua' using errcode = '42501'; end if;
+  select kelas into v_kelas from anak where id = p_anak_id and keluarga_id = keluarga_saya();
+  if not found then return jsonb_build_object('ok', false, 'alasan', 'anak_tidak_valid'); end if;
+  if p_paket not in ('dasar', 'lengkap', 'siap_tka') then return jsonb_build_object('ok', false, 'alasan', 'paket_tidak_valid'); end if;
+  if p_paket = 'siap_tka' and v_kelas <> 6 then return jsonb_build_object('ok', false, 'alasan', 'paket_tidak_cocok'); end if;
+  update anggota_kelas set paket = p_paket where anak_id = p_anak_id and keluar is null;
+  if not found then return jsonb_build_object('ok', false, 'alasan', 'belum_di_kelas'); end if;
+  return jsonb_build_object('ok', true);
+end $$;
+grant execute on function ganti_paket(uuid, text) to authenticated;
+
 -- Kelas anak-anak di keluarga ini (orang tua) atau di HP ini (HP anak): nama kelas dan nama pengawas.
 create or replace function kelas_keluarga() returns jsonb
   language sql stable security definer set search_path = public

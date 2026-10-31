@@ -313,6 +313,17 @@ begin;
       if exists (select 1 from catatan_pengawas where isi = 'diubah ortu') then raise exception 'GAGAL: orang tua bisa mengubah catatan pengawas'; end if;
     exception when insufficient_privilege then null;
     end;
+    -- Dua pernyataan terpisah: satu pernyataan memakai satu potret data, jadi perubahan dari fungsi belum terlihat di dalamnya.
+    if not (ganti_paket('20000000-0000-0000-0000-0000000000a1', 'dasar') ->> 'ok')::boolean then raise exception 'GAGAL: ganti paket ditolak'; end if;
+    if (select paket from anggota_kelas where anak_id = '20000000-0000-0000-0000-0000000000a1' and keluar is null) <> 'dasar' then
+      raise exception 'GAGAL: paket tidak berubah';
+    end if;
+    if ganti_paket('20000000-0000-0000-0000-0000000000a2', 'siap_tka') ->> 'alasan' is distinct from 'paket_tidak_cocok' then
+      raise exception 'GAGAL: ganti paket Siap TKA untuk kelas 3 diterima';
+    end if;
+    if ganti_paket('20000000-0000-0000-0000-0000000000b1', 'dasar') ->> 'alasan' is distinct from 'anak_tidak_valid' then
+      raise exception 'GAGAL: ganti paket anak keluarga lain';
+    end if;
     -- Keluar lalu masuk lagi: masa coba tidak diulang.
     awal := (select coba_sampai from anggota_kelas where anak_id = '20000000-0000-0000-0000-0000000000a2' and keluar is null);
     if keluar_kelas('20000000-0000-0000-0000-0000000000a2') <> 1 then raise exception 'GAGAL: keluar kelas'; end if;

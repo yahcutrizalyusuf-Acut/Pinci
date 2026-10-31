@@ -152,6 +152,51 @@ export interface KemajuanTopik {
   alasan?: string;
 }
 
+// ---------- kelas dengan pengawas (08-model-usaha/01) ----------
+
+export type PaketKelas = 'dasar' | 'lengkap' | 'siap_tka';
+
+/** Keanggotaan aktif seorang anak di kelas pengawas. Ditarik dari server (kelas_keluarga). */
+export interface AnggotaKelas {
+  id: string;
+  anak_id: string;
+  kelasId: string;
+  kelasNama: string;
+  pengawasNama?: string;
+  paket: PaketKelas;
+  masuk: string;
+  cobaSampai: string;
+}
+
+/** Catatan pengawas untuk orang tua (bukan untuk anak). */
+export interface CatatanPengawas {
+  id: string;
+  keluarga_id: string;
+  anak_id: string;
+  kelasId: string;
+  isi: string;
+  waktu: string;
+  dibaca?: string;
+}
+
+export type JenisTugas = 'lancar' | 'baca' | 'tka' | 'inggris' | 'kartu' | 'game';
+
+/** Tugas dari pengawas untuk anak. Selesai otomatis saat anak mengerjakan latihan yang cocok. */
+export interface Tugas {
+  id: string;
+  keluarga_id: string;
+  anak_id: string;
+  kelasId: string;
+  jenis: JenisTugas;
+  rujukan?: string;
+  judul: string;
+  pesan?: string;
+  dibuat: string;
+  tenggat?: string;
+  selesai?: string;
+  dibatalkan?: boolean;
+}
+
 export interface ItemAntrean {
   id: string;
   tabel: NamaTabel;
@@ -177,6 +222,9 @@ export type NamaTabel =
   | 'pengaturan_waktu'
   | 'pemakaian'
   | 'kemajuan_topik'
+  | 'anggota_kelas'
+  | 'catatan_pengawas'
+  | 'tugas'
   | 'antrean'
   | 'nilai';
 
@@ -189,9 +237,12 @@ export interface PetaTabel {
   pengaturan_waktu: PengaturanWaktu;
   pemakaian: Pemakaian;
   kemajuan_topik: KemajuanTopik;
+  anggota_kelas: AnggotaKelas;
+  catatan_pengawas: CatatanPengawas;
+  tugas: Tugas;
   antrean: ItemAntrean;
   nilai: Nilai;
 }
 
 /** Tabel yang dikirim ke server lewat antrean sinkron. */
-export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik'];
+export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik', 'catatan_pengawas', 'tugas'];

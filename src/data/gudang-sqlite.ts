@@ -17,6 +17,9 @@ const SEMUA_TABEL: NamaTabel[] = [
   'pengaturan_waktu',
   'pemakaian',
   'kemajuan_topik',
+  'anggota_kelas',
+  'catatan_pengawas',
+  'tugas',
   'antrean',
   'nilai',
 ];
