@@ -108,7 +108,8 @@ export function urutkanPapan(anak: AnakPapan[], sekarang = new Date()): AnakPapa
 
 /** Contoh kalimat catatan. Pengawas memilih lalu menyesuaikan sendiri. */
 export function contohCatatan(a: Pick<AnakPapan, 'nama' | 'topikLemah' | 'hariLatihan7'>): string[] {
-  const contoh = [`${a.nama} latihan ${a.hariLatihan7} hari minggu ini. Terima kasih sudah mengingatkan di rumah.`];
+  const contoh: string[] = [];
+  if (a.hariLatihan7 > 0) contoh.push(`${a.nama} latihan ${a.hariLatihan7} hari dalam 7 hari terakhir. Terima kasih sudah mengingatkan di rumah.`);
   if (a.topikLemah[0]) contoh.push(`Topik ${namaTopik(a.topikLemah[0].mapel, a.topikLemah[0].topik)} masih perlu diulang. Saya beri tugas latihan topik ini.`);
   if (a.hariLatihan7 === 0) contoh.push(`${a.nama} belum latihan minggu ini. Bisa dibantu mengingatkan 15 menit sehari?`);
   contoh.push(`Saran minggu ini: tanyakan kepada ${a.nama} apa yang dipelajari hari ini.`);

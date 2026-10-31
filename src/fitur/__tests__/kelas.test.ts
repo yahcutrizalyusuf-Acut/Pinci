@@ -72,6 +72,8 @@ test('contoh catatan memakai nama topik yang mudah dibaca', () => {
   const c = contohCatatan({ nama: 'Rani', hariLatihan7: 0, topikLemah: [{ mapel: 'tka', topik: 'zzz', persen: 30 }] });
   expect(c.some((x) => x.includes('belum latihan minggu ini'))).toBe(true);
   expect(c.some((x) => x.includes('Topik zzz'))).toBe(true);
+  expect(c.some((x) => x.includes('Terima kasih'))).toBe(false);
+  expect(contohCatatan({ nama: 'Rani', hariLatihan7: 5, topikLemah: [] })[0]).toContain('5 hari dalam 7 hari terakhir');
 });
 
 test('rute tugas', () => {

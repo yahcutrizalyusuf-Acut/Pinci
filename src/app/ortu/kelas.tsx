@@ -149,14 +149,25 @@ export default function KelasPengawas() {
             <TeksOrtu style={{ color: warna.teksKedua }}>Kode 6 huruf dan angka dari admin Pintar Main atau dari tempat les Anda.</TeksOrtu>
             <TextInput
               value={formatKodeKelas(alur.kode)}
-              onChangeText={(t) => setAlur({ ...alur, kode: rapikanKodeKelas(t).slice(0, 6) })}
+              onChangeText={(t) => {
+                setPesan('');
+                setAlur({ ...alur, kode: rapikanKodeKelas(t).slice(0, 6) });
+              }}
               placeholder="ABC 234"
               autoCapitalize="characters"
               autoCorrect={false}
               accessibilityLabel="Kode kelas"
               style={{ height: 60, borderRadius: 14, borderWidth: 1, borderColor: warna.abuGaris, paddingHorizontal: 14, fontFamily: huruf.judulTebal, fontSize: 30, letterSpacing: 4, color: warna.teks, textAlign: 'center' }}
             />
-            <Tombol label="Lanjut" ortu nonaktif={alur.kode.length !== 6} onPress={() => setAlur({ ...alur, tahap: 'paket' })} />
+            <Tombol
+              label="Lanjut"
+              ortu
+              nonaktif={alur.kode.length !== 6}
+              onPress={() => {
+                setPesan('');
+                setAlur({ ...alur, tahap: 'paket' });
+              }}
+            />
           </Kotak>
         ) : null}
         {alur.tahap === 'paket' ? (
