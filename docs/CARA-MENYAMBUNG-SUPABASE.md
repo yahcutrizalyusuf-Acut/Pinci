@@ -87,7 +87,41 @@ Supaya anak belajar di HP-nya sendiri dan hasilnya terlihat di HP orang tua (rap
 - Waktu pemakaian hari itu: angka terbesar dari kedua HP dipakai.
 - Profil, pengaturan waktu, dan pesan: yang terakhir dikirim ke server dipakai.
 
+## Kelas dengan pengawas (staf, kelas, catatan, tugas)
+
+Rancangan: `docs/rancangan/08-model-usaha/`. Orang tua memasukkan **kode kelas**, pengawas memantau lewat **halaman staf**.
+
+### Pemasangan sekali saja (Acut)
+
+1. Supabase → **SQL Editor** → tempel isi `supabase/migrations/20261101000000_kelas_pengawas.sql` → **Run**.
+2. Tempel isi `supabase/migrations/20261101000100_uji_kelas.sql` → **Run**. Lulus kalau tidak ada pesan "GAGAL" (semua data uji dibatalkan otomatis).
+3. Jadikan email Acut super admin. Ganti alamat email di bawah, lalu **Run**:
+
+   ```sql
+   insert into undangan_staf (email, peran, nama) values ('emailacut@contoh.com', 'super_admin', 'Acut');
+   ```
+
+4. Bangun ulang APK (tab Actions → Bangun APK).
+
+### Cara memakai
+
+1. **Staf masuk:** di aplikasi, tab **Atur** → **Masuk sebagai pengawas atau admin**. Atau buka alamat web aplikasi + `/staf` di laptop. Masuk dengan email yang diundang dan kode 6 angka.
+2. **Buat kelas** (super admin, admin, mitra les): **Kelola kelas dan staf** → isi nama kelas, pilih pengawas → **Buat kelas**. Muncul **kode kelas** 6 huruf/angka untuk orang tua.
+3. **Undang staf:** di halaman yang sama, isi email dan nama panggilan. Staf itu lalu masuk sendiri dengan emailnya.
+4. **Orang tua:** tab **Atur** → **Kelas dan pengawas** → **Masukkan kode kelas** → pilih paket → setujui. Masa coba 14 hari dimulai.
+5. **Pengawas (Senin, Rabu, Jumat):** buka kelas → lihat penanda (belum latihan, topik lemah, perlu dipuji) → ketuk anak → tulis catatan untuk orang tua dan beri tugas → kembali → **Pantauan selesai**.
+6. Catatan muncul di **Kabar** orang tua. Tugas muncul di beranda anak sebagai **Tugas dari Kak Pengawas**, dan selesai otomatis saat anak mengerjakan latihan yang cocok.
+
+### Aturan keamanan
+
+- Pengawas hanya melihat anak di kelasnya sendiri. Mitra les hanya melihat kelas lesnya. Admin melihat kelas Pintar Main. Super admin melihat semuanya.
+- Pengawas tidak bisa mengirim apa pun ke HP anak selain tugas. Catatan hanya untuk orang tua.
+- Tindakan penting (membuat kelas, mengganti pengawas, menghentikan staf, admin membuka papan kelas orang lain) tercatat di tabel `catatan_kegiatan`.
+- Tebakan kode kelas dibatasi 5 kali salah per 10 menit.
+
 ## Yang belum dibuat (menyusul)
+
+- Paket (Dasar, Lengkap, Siap TKA) belum mengunci isi di HP anak. Langganan dan tombol "Aktifkan" pembayaran QRIS di web admin menyusul (minggu 3–4).
 
 - Orang tua kedua dan link rapor lewat WhatsApp, serta panel pengelola.
 - Menghapus anak di satu HP belum ikut terhapus di HP lain.
