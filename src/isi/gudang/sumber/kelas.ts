@@ -8,7 +8,7 @@ import { T2_K4, T2_K5 } from './tahap2-k4-k5';
 
 /** Gabungkan tahap 1 (k2.ts … k5.ts) dan tahap 2 (tahap2-*.ts). Versi naik setiap tahap. */
 function gabung(s: SumberKelas, t2: { mat: SumberKelas['kartuMat']; bi: SumberKelas['kartuBi'] }): SumberKelas {
-  return { ...s, versi: '0.2.0', dibuat: '2026-11-01', kartuMat: [...s.kartuMat, ...t2.mat], kartuBi: [...s.kartuBi, ...t2.bi] };
+  return { ...s, versi: '0.2.0', dibuat: '2026-10-31', kartuMat: [...s.kartuMat, ...t2.mat], kartuBi: [...s.kartuBi, ...t2.bi] };
 }
 
 /** Sumber Gudang Ilmu kelas 2–5 (kelas 6 memakai bangunPaketGudang di peta.ts). */
