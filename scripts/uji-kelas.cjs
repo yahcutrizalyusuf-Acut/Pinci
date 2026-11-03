@@ -120,7 +120,7 @@ async function layar(peramban, lebar = 360, tinggi = 800) {
   await teks(ortu, 'Kelas dan pengawas');
   await t(1200);
   await foto(ortu, '3-ortu-kelas-awal');
-  await teks(ortu, 'Masukkan kode kelas');
+  await teks(ortu, 'Sudah punya kode kelas');
   await ortu.p.getByLabel('Kode kelas').fill('zzz zzz');
   await teks(ortu, 'Lanjut');
   await teks(ortu, 'Lanjut');
@@ -220,7 +220,11 @@ async function layar(peramban, lebar = 360, tinggi = 800) {
   await ortu.p.getByText('Rani', { exact: true }).first().click();
   await tunggu(ortu, 'Halo, Rani!');
   await t(1500);
-  cek((await ortu.p.getByLabel(/^Siap TKA\. Terkunci/).count()) === 1 && (await ortu.p.getByLabel(/^Bahasa Inggris\. Terkunci/).count()) === 1, 'anak: paket Dasar mengunci TKA dan Bahasa Inggris, tanpa ajakan membeli');
+  // Sejak 3 Nov 2026: pelajaran yang tidak dipilih tidak dikunci, tetapi dicicipi dengan jatah Gratis.
+  cek(
+    (await ortu.p.getByLabel(/Terkunci/).count()) === 0 && (await ortu.p.getByText(/Rp\s?\d|beli|bayar|langganan/i).count()) === 0,
+    'anak: paket Dasar tidak mengunci TKA dan Bahasa Inggris (jatah Gratis), tanpa ajakan membeli',
+  );
   cek((await ortu.p.getByText(/beli|bayar|Rp/i).count()) === 0, 'anak: tidak ada kata beli/bayar/harga di beranda anak');
   await foto(ortu, '15-anak-terkunci');
 

@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cara Belajar yang Menyenangkan Lebih Cepat Berhasil</title>
+<!--
+  Sumber PDF riset Pintar Main. Dibuat menjadi dua PDF oleh scripts/buat-riset-pdf.cjs:
+  - kelas "hp"     → halaman 110 × 196 mm (dibaca di HP, dibuka dari aplikasi)
+  - kelas "laptop" → A4 (diunduh dari website)
+  Isi hanya menyebut temuan yang sudah benar-benar diterapkan di aplikasi, dengan sumber asli.
+-->
+<style>
+@font-face { font-family: Baloo; src: url(../huruf/Baloo2_700Bold.ttf); font-weight: 700; }
+@font-face { font-family: Nunito; src: url(../huruf/Nunito_400Regular.ttf); font-weight: 400; }
+@font-face { font-family: Nunito; src: url(../huruf/Nunito_700Bold.ttf); font-weight: 700; }
+:root { --teks: #2D3142; --redup: #5B6072; --coklat: #6B4423; --kancil: #A0673A; --krem: #FFF6E5; --hijau: #1F7A4D; --hijau2: #3BB273; --oranye: #FF9F1C; --biru: #3A86FF; --merah: #E85D5D; --ungu: #8E6CCF; --garis: #E6E9F0; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: Nunito, sans-serif; color: var(--teks); }
+h1, h2, h3 { font-family: Baloo, Nunito, sans-serif; margin: 0; line-height: 1.12; }
+p { margin: 0 0 2.2mm; }
+a { color: var(--hijau); text-decoration: none; }
+.hal { break-after: page; position: relative; }
+.hal:last-child { break-after: auto; }
+
+/* ---------- ukuran HP ---------- */
+body.hp { font-size: 9.4pt; line-height: 1.4; }
+body.hp .hal { min-height: 170mm; }
+body.hp h1 { font-size: 26pt; }
+body.hp h2 { font-size: 15pt; }
+body.hp h3 { font-size: 11.5pt; }
+body.hp .dua { display: block; }
+body.hp .grafik svg { width: 100%; height: auto; max-height: 40mm; }
+
+/* ---------- ukuran laptop (A4) ---------- */
+body.laptop { font-size: 13.5pt; line-height: 1.55; }
+body.laptop .hal { min-height: 255mm; }
+body.laptop h1 { font-size: 40pt; }
+body.laptop h2 { font-size: 28pt; }
+body.laptop h3 { font-size: 15pt; }
+body.laptop .dua { display: block; }
+body.laptop .dua > div:last-child { display: grid; grid-template-columns: 1.35fr 1fr; gap: 6mm; align-items: start; }
+body.laptop .dua > div:last-child .tips { margin-top: 3mm; }
+body.laptop .pustaka li { font-size: 0.74em; margin-bottom: 1.4mm; }
+body.laptop .grafik { text-align: center; }
+body.laptop .grafik svg { width: 100%; height: auto; max-height: 75mm; }
+
+/* ---------- sampul ---------- */
+.sampul { background: linear-gradient(160deg, #FFF6E5 0%, #FFE7C2 55%, #FFD79A 100%); border-radius: 6mm; padding: 10mm 8mm; display: flex; flex-direction: column; justify-content: space-between; }
+body.hp .sampul { min-height: 0; height: 175mm; padding: 8mm 7mm; }
+body.hp .sampul svg { max-height: 48mm; }
+body.laptop .sampul svg { max-height: 80mm; }
+body.laptop .sampul { min-height: 0; height: 262mm; padding: 20mm 18mm; }
+.sampul .label { display: inline-block; background: var(--hijau); color: #fff; font-weight: 700; border-radius: 99px; padding: 1.2mm 4mm; font-size: 0.8em; letter-spacing: 0.3px; }
+.sampul h1 { color: var(--coklat); margin: 0 0 4mm; }
+.sampul .kicker { font-family: Baloo, Nunito, sans-serif; color: var(--hijau); font-size: 1.35em; margin: 5mm 0 1mm; }
+.sampul .sub { font-size: 1.12em; color: var(--teks); }
+.sampul .angka { display: flex; gap: 3mm; flex-wrap: wrap; }
+.sampul .angka div { background: #fff; border-radius: 4mm; padding: 3mm 4mm; flex: 1; min-width: 26mm; }
+.sampul .angka b { display: block; font-family: Baloo; font-size: 1.9em; color: var(--hijau); line-height: 1; }
+.sampul .angka span { font-size: 0.82em; color: var(--redup); }
+.logo { font-family: Baloo; font-size: 1.5em; color: var(--hijau); }
+.logo span { color: var(--oranye); }
+
+/* ---------- isi ---------- */
+.kepala { display: flex; align-items: center; gap: 3mm; margin-bottom: 3mm; }
+.nomor { flex: none; width: 11mm; height: 11mm; border-radius: 50%; color: #fff; font-family: Baloo; font-size: 1.35em; display: flex; align-items: center; justify-content: center; }
+body.laptop .nomor { width: 15mm; height: 15mm; }
+.pita { font-size: 0.78em; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; }
+.temuan { background: #F7F9FC; border-radius: 4mm; padding: 3.5mm 4mm; margin: 3mm 0; }
+.temuan .angka-besar { font-family: Baloo; font-size: 2.2em; line-height: 1; }
+.terapan { background: #EAF6EF; border-left: 1.4mm solid var(--hijau2); border-radius: 3mm; padding: 3.5mm 4mm; margin: 3mm 0; }
+.terapan h3 { color: var(--hijau); margin-bottom: 1.5mm; }
+.terapan ul { margin: 0; padding-left: 4.5mm; }
+.terapan li { margin-bottom: 1mm; }
+.tips { background: var(--krem); border-radius: 3mm; padding: 3mm 4mm; margin: 3mm 0 0; }
+.tips b { color: #B86E00; }
+.sumber { font-size: 0.78em; color: var(--redup); margin-top: 2.5mm; }
+.grafik { margin: 2mm 0; }
+.jujur { font-size: 0.85em; color: var(--redup); font-style: italic; }
+.daftar-isi li { margin-bottom: 1.4mm; }
+.kotak-putih { background: #fff; border: 0.3mm solid var(--garis); border-radius: 4mm; padding: 4mm; margin: 3mm 0; }
+.dua > div { min-width: 0; }
+.pustaka li { margin-bottom: 2mm; font-size: 0.86em; }
+</style>
+</head>
+<body class="hp">
+
+<!-- ============ SAMPUL ============ -->
+<section class="hal sampul">
+  <div>
+    <div class="logo">Pintar <span>Main</span></div>
+    <p style="margin-top:6mm"><span class="label">PANDUAN UNTUK AYAH DAN BUNDA</span></p>
+    <p class="kicker">Penelitian telah membuktikan:</p>
+    <h1>Cara belajar yang menyenangkan lebih cepat berhasil</h1>
+    <p class="sub">12 temuan penelitian tentang cara anak belajar paling efektif, dan bagaimana semuanya kami terapkan di Pintar Main.</p>
+  </div>
+  <svg viewBox="0 0 320 170" style="width:100%;height:auto;max-height:46%;margin:4mm 0" aria-hidden="true">
+    <circle cx="160" cy="92" r="70" fill="#fff"/>
+    <ellipse cx="160" cy="104" rx="38" ry="35" fill="#A0673A"/>
+    <path d="M128 78 L118 36 L144 66 Z M192 78 L202 36 L176 66 Z" fill="#6B4423"/>
+    <circle cx="146" cy="98" r="6" fill="#2D3142"/><circle cx="174" cy="98" r="6" fill="#2D3142"/>
+    <circle cx="148" cy="96" r="2" fill="#fff"/><circle cx="176" cy="96" r="2" fill="#fff"/>
+    <ellipse cx="160" cy="118" rx="14" ry="10" fill="#FFF6E5"/><circle cx="160" cy="113" r="4" fill="#2D3142"/>
+    <path d="M152 124 Q160 130 168 124" stroke="#2D3142" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g font-family="Baloo" font-size="22" fill="#3A86FF"><text x="28" y="60">7×8</text></g>
+    <g font-family="Baloo" font-size="22" fill="#E85D5D"><text x="250" y="58">abc</text></g>
+    <g font-family="Baloo" font-size="20" fill="#8E6CCF"><text x="36" y="150">A–Z</text></g>
+    <g font-family="Baloo" font-size="22" fill="#3BB273"><text x="252" y="150">½</text></g>
+    <circle cx="80" cy="30" r="5" fill="#FF9F1C"/><circle cx="240" cy="100" r="4" fill="#FF9F1C"/><circle cx="96" cy="118" r="3.5" fill="#3BB273"/>
+  </svg>
+  <div class="angka">
+    <div><b>12</b><span>temuan penelitian</span></div>
+    <div><b>16</b><span>sumber ilmiah</span></div>
+    <div><b>15</b><span>menit sehari</span></div>
+  </div>
+  <p class="sub" style="margin-top:4mm;font-size:0.82em;color:#5B6072">Untuk mencerdaskan anak bangsa. Disusun Tim Ahli Pintar Main, Banda Aceh, November 2026.</p>
+</section>
+
+<!-- ============ PENGANTAR ============ -->
+<section class="hal">
+  <div class="pita" style="color:#B86E00">Kenapa panduan ini ada</div>
+  <h2 style="color:#6B4423;margin:2mm 0 3mm">Anak Indonesia bisa jauh lebih hebat</h2>
+  <p>Hasil tes internasional PISA 2022 menunjukkan anak Indonesia umur 15 tahun masih jauh tertinggal dalam matematika dan membaca. Jarak ini dimulai sejak SD, ketika dasar berhitung dan membaca belum lancar.</p>
+  <div class="grafik">
+    <svg viewBox="0 0 300 150" role="img" aria-label="Skor PISA 2022: matematika Indonesia 366, rata-rata OECD 472; membaca Indonesia 359, rata-rata OECD 476">
+      <g font-family="Nunito" font-size="10" fill="#5B6072">
+        <text x="40" y="142" text-anchor="middle">Matematika</text>
+        <text x="190" y="142" text-anchor="middle">Membaca</text>
+      </g>
+      <rect x="10" y="44" width="40" height="86" rx="4" fill="#FF9F1C"/><text x="30" y="38" text-anchor="middle" font-family="Baloo" font-size="13" fill="#2D3142">366</text>
+      <rect x="58" y="19" width="40" height="111" rx="4" fill="#D9DDE6"/><text x="78" y="13" text-anchor="middle" font-family="Baloo" font-size="13" fill="#2D3142">472</text>
+      <rect x="160" y="46" width="40" height="84" rx="4" fill="#FF9F1C"/><text x="180" y="40" text-anchor="middle" font-family="Baloo" font-size="13" fill="#2D3142">359</text>
+      <rect x="208" y="18" width="40" height="112" rx="4" fill="#D9DDE6"/><text x="228" y="12" text-anchor="middle" font-family="Baloo" font-size="13" fill="#2D3142">476</text>
+    </svg>
+    <p style="font-size:0.82em;color:#5B6072"><span style="color:#FF9F1C">■</span> Indonesia &nbsp; <span style="color:#9AA0B2">■</span> Rata-rata negara OECD. Skor rata-rata PISA 2022.</p>
+  </div>
+  <p>Kabar baiknya: <b>penelitian puluhan tahun sudah menemukan cara belajar yang membuat anak lebih cepat paham dan lebih lama ingat</b>. Cara-cara ini tidak mahal. Kuncinya latihan singkat yang rutin, umpan balik yang tepat, dan orang dewasa yang ikut memperhatikan.</p>
+  <div class="kotak-putih">
+    <h3 style="color:#1F7A4D;margin-bottom:1.5mm">Cara membaca panduan ini</h3>
+    <p style="margin:0">Setiap halaman berisi satu temuan: <b>apa kata penelitian</b>, <b>bagaimana kami menerapkannya</b> di Pintar Main, dan <b>satu tips</b> untuk Ayah dan Bunda di rumah. Sumber lengkap ada di halaman terakhir.</p>
+  </div>
+  <p class="sumber">Sumber: OECD, PISA 2022 Results, Country Note Indonesia.</p>
+</section>
+
+<!-- ============ DAFTAR ISI ============ -->
+<section class="hal">
+  <h2 style="color:#6B4423;margin-bottom:4mm">12 temuan di balik Pintar Main</h2>
+  <ol class="daftar-isi">
+    <li><b>Mengingat kembali</b> lebih melekat daripada membaca ulang</li>
+    <li><b>Sedikit tapi sering</b> lebih baik daripada banyak sekaligus</li>
+    <li><b>Soal dicampur</b> melatih anak memilih cara</li>
+    <li><b>Baca ulang dengan contoh suara</b> membuat lancar membaca</li>
+    <li><b>Umpan balik segera</b> mengarahkan ke jawaban yang benar</li>
+    <li><b>Contoh jadi</b> sebelum mencoba sendiri</li>
+    <li><b>Puji usahanya</b>, bukan kepintarannya</li>
+    <li><b>Permainan yang dirancang baik</b> membantu belajar</li>
+    <li><b>Waktu layar terbatas</b> dan banyak bergerak</li>
+    <li><b>Orang tua yang terlibat</b> memperkuat hasil belajar</li>
+    <li><b>Pendampingan rutin</b> oleh orang dewasa</li>
+    <li><b>Bisa memilih dan merasa mampu</b> membuat anak semangat</li>
+  </ol>
+  <div class="tips"><b>Janji kami:</b> kami hanya menulis temuan yang sudah benar-benar ada di aplikasi. Kami tidak menjanjikan nilai pasti naik. Yang kami janjikan adalah cara belajar yang didukung bukti, dilakukan dengan rutin dan diperhatikan.</div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#3A86FF">1</div><div><div class="pita" style="color:#3A86FF">Latihan mengingat</div><h2>Mengingat kembali lebih melekat daripada membaca ulang</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Dua kelompok mempelajari bacaan yang sama. Kelompok pertama membaca ulang berkali-kali. Kelompok kedua membaca sekali, lalu mencoba <b>mengingat kembali isinya</b> tanpa melihat. Seminggu kemudian:</p>
+        <div class="grafik">
+          <svg viewBox="0 0 260 120" role="img" aria-label="Seminggu kemudian: kelompok mengingat kembali 61 persen, kelompok membaca ulang 40 persen">
+            <text x="0" y="28" font-family="Nunito" font-size="10" fill="#2D3142">Mengingat kembali</text>
+            <rect x="0" y="34" width="195" height="20" rx="5" fill="#3A86FF"/><text x="200" y="49" font-family="Baloo" font-size="15" fill="#3A86FF">61%</text>
+            <text x="0" y="78" font-family="Nunito" font-size="10" fill="#2D3142">Membaca ulang</text>
+            <rect x="0" y="84" width="128" height="20" rx="5" fill="#D9DDE6"/><text x="133" y="99" font-family="Baloo" font-size="15" fill="#868C9E">40%</text>
+          </svg>
+        </div>
+        <p style="margin:0">Mencoba mengingat memang terasa lebih berat, tetapi justru itu yang membuat ingatan kuat.</p>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Setiap kartu Gudang Ilmu diakhiri 5–10 soal, bukan hanya bacaan.</li>
+          <li>Lancar Matematika memakai lembar latihan singkat yang menguji ingatan fakta hitung.</li>
+          <li>Mini try out mingguan untuk kelas 6 mengulang topik yang sudah dipelajari.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips untuk Ayah dan Bunda:</b> setelah anak belajar, minta ia menceritakan kembali satu hal yang baru ia pelajari, tanpa melihat buku.</div>
+    </div>
+  </div>
+  <p class="sumber">Roediger &amp; Karpicke (2006), <i>Psychological Science</i>. Angka dari percobaan pertama.</p>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#3BB273">2</div><div><div class="pita" style="color:#1F7A4D">Belajar berjeda</div><h2>Sedikit tapi sering lebih baik daripada banyak sekaligus</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Tinjauan atas <b>317 percobaan</b> menemukan: belajar yang dibagi menjadi beberapa sesi dengan jeda membuat ingatan bertahan lebih lama daripada belajar dalam satu waktu panjang.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 110" role="img" aria-label="Belajar sekaligus dibandingkan belajar berjeda sepanjang satu minggu">
+            <text x="0" y="16" font-family="Nunito" font-size="10" fill="#2D3142">Sekaligus</text>
+            <rect x="0" y="22" width="80" height="18" rx="4" fill="#D9DDE6"/><text x="86" y="35" font-family="Nunito" font-size="9" fill="#868C9E">2 jam, sekali</text>
+            <text x="0" y="62" font-family="Nunito" font-size="10" fill="#2D3142">Berjeda</text>
+            <g fill="#3BB273"><rect x="0" y="68" width="22" height="18" rx="4"/><rect x="38" y="68" width="22" height="18" rx="4"/><rect x="76" y="68" width="22" height="18" rx="4"/><rect x="114" y="68" width="22" height="18" rx="4"/><rect x="152" y="68" width="22" height="18" rx="4"/><rect x="190" y="68" width="22" height="18" rx="4"/><rect x="228" y="68" width="22" height="18" rx="4"/></g>
+            <g font-family="Nunito" font-size="8" fill="#5B6072"><text x="4" y="100">Sen</text><text x="42" y="100">Sel</text><text x="80" y="100">Rab</text><text x="118" y="100">Kam</text><text x="156" y="100">Jum</text><text x="194" y="100">Sab</text><text x="232" y="100">Min</text></g>
+          </svg>
+        </div>
+        <p style="margin:0">Jarak terbaik antarsesi makin panjang jika ingin ingat makin lama.</p>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Latihan inti hanya ± 15 menit sehari, setiap hari.</li>
+          <li>Metode LANCAR menyelipkan soal dari topik lama di tengah latihan baru.</li>
+          <li>Kata Bahasa Inggris yang pernah salah muncul lagi beberapa hari kemudian untuk diulang.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> lebih baik 15 menit setiap hari daripada 2 jam di hari Minggu. Pilih jam tetap, misalnya setelah mandi sore.</div>
+    </div>
+  </div>
+  <p class="sumber">Cepeda, Pashler, Vul, Wixted &amp; Rohrer (2006), <i>Psychological Bulletin</i>.</p>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#8E6CCF">3</div><div><div class="pita" style="color:#6A4BA8">Latihan campuran</div><h2>Soal dicampur melatih anak memilih cara</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Biasanya latihan di buku berisi soal yang sejenis semua. Ketika soal dari beberapa topik <b>dicampur</b>, anak harus memikirkan dulu cara mana yang tepat. Dalam penelitian matematika, siswa yang berlatih dengan soal campuran mendapat hasil jauh lebih baik saat dites seminggu kemudian.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 92" role="img" aria-label="Latihan sejenis AAAA BBBB dibandingkan latihan campuran ABAB">
+            <text x="0" y="14" font-family="Nunito" font-size="10" fill="#2D3142">Sejenis</text>
+            <g font-family="Baloo" font-size="12" fill="#fff">
+              <rect x="0" y="20" width="28" height="22" rx="5" fill="#3A86FF"/><text x="9" y="36">+</text>
+              <rect x="32" y="20" width="28" height="22" rx="5" fill="#3A86FF"/><text x="41" y="36">+</text>
+              <rect x="64" y="20" width="28" height="22" rx="5" fill="#3A86FF"/><text x="73" y="36">+</text>
+              <rect x="96" y="20" width="28" height="22" rx="5" fill="#E85D5D"/><text x="106" y="36">×</text>
+              <rect x="128" y="20" width="28" height="22" rx="5" fill="#E85D5D"/><text x="138" y="36">×</text>
+              <rect x="160" y="20" width="28" height="22" rx="5" fill="#E85D5D"/><text x="170" y="36">×</text>
+            </g>
+            <text x="0" y="62" font-family="Nunito" font-size="10" fill="#2D3142">Campuran</text>
+            <g font-family="Baloo" font-size="12" fill="#fff">
+              <rect x="0" y="68" width="28" height="22" rx="5" fill="#3A86FF"/><text x="9" y="84">+</text>
+              <rect x="32" y="68" width="28" height="22" rx="5" fill="#E85D5D"/><text x="42" y="84">×</text>
+              <rect x="64" y="68" width="28" height="22" rx="5" fill="#3BB273"/><text x="74" y="84">÷</text>
+              <rect x="96" y="68" width="28" height="22" rx="5" fill="#3A86FF"/><text x="105" y="84">+</text>
+              <rect x="128" y="68" width="28" height="22" rx="5" fill="#3BB273"/><text x="138" y="84">÷</text>
+              <rect x="160" y="68" width="28" height="22" rx="5" fill="#E85D5D"/><text x="170" y="84">×</text>
+            </g>
+          </svg>
+        </div>
+        <p class="jujur">Catatan jujur: tinjauan yang lebih baru menemukan manfaat soal campuran di matematika memang ada, tetapi ukurannya bergantung pada cara soal disusun.</p>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Lembar Lancar Matematika mencampur fakta baru dengan fakta yang sudah dikuasai.</li>
+          <li>Mini try out TKA berisi 6 soal campuran dari topik yang berbeda.</li>
+          <li>Soal game berganti jenis di setiap babak.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> saat menemani mengerjakan PR, tanyakan dulu "Ini soal tentang apa? Pakai cara apa?" sebelum anak mulai menghitung.</div>
+    </div>
+  </div>
+  <p class="sumber">Rohrer &amp; Taylor (2007), <i>Instructional Science</i>; Brunmair &amp; Richter (2019), <i>Psychological Bulletin</i>.</p>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#E85D5D">4</div><div><div class="pita" style="color:#B03C3C">Membaca lancar</div><h2>Baca ulang dengan contoh suara membuat lancar membaca</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Tinjauan penelitian pada anak usia sekolah menemukan bahwa <b>membaca teks yang sama beberapa kali</b> meningkatkan kelancaran sekaligus pemahaman. Hasilnya lebih baik lagi bila anak <b>mendengar contoh bacaan</b> lebih dulu.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 96" role="img" aria-label="Tiga langkah Baca Ulang: baca sendiri, dengar contoh, baca lagi">
+            <g font-family="Nunito" font-size="9.5" fill="#2D3142" text-anchor="middle">
+              <circle cx="40" cy="38" r="30" fill="#FDECEC"/><text x="40" y="34" font-family="Baloo" font-size="20" fill="#E85D5D">1</text><text x="40" y="50">Baca sendiri</text>
+              <circle cx="140" cy="38" r="30" fill="#FDECEC"/><text x="140" y="34" font-family="Baloo" font-size="20" fill="#E85D5D">2</text><text x="140" y="50">Dengar contoh</text>
+              <circle cx="240" cy="38" r="30" fill="#E85D5D"/><text x="240" y="34" font-family="Baloo" font-size="20" fill="#fff">3</text><text x="240" y="50" fill="#fff">Baca lagi</text>
+              <path d="M74 38 H104 M174 38 H204" stroke="#E85D5D" stroke-width="3" stroke-linecap="round"/>
+              <text x="140" y="90" fill="#5B6072">Kecepatan membaca dicatat setiap kali</text>
+            </g>
+          </svg>
+        </div>
+        <p style="margin:0">Rata-rata ukuran pengaruhnya <b>0,75</b> untuk kelancaran dan <b>0,73</b> untuk pemahaman, termasuk besar dalam penelitian pendidikan.</p>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Baca Ulang: anak membaca sendiri, mendengar contoh suara dengan kata yang disorot, lalu membaca lagi.</li>
+          <li>Jumlah kata per menit dicatat, sehingga kemajuan membaca terlihat dari minggu ke minggu.</li>
+          <li>Setiap teks diakhiri 2 pertanyaan pemahaman.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> minta anak membacakan satu paragraf dengan suara keras. Puji bagian yang sudah lancar, bukan kesalahannya.</div>
+    </div>
+  </div>
+  <p class="sumber">Therrien (2004), <i>Remedial and Special Education</i>; Stevens, Walker &amp; Vaughn (2017), <i>Journal of Learning Disabilities</i>.</p>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#FF9F1C">5</div><div><div class="pita" style="color:#B86E00">Umpan balik</div><h2>Umpan balik segera mengarahkan ke jawaban yang benar</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Tinjauan atas ratusan penelitian menempatkan <b>umpan balik</b> di antara hal yang paling berpengaruh pada belajar. Umpan balik yang menolong adalah yang <b>menjelaskan langkah berikutnya</b>, bukan sekadar "salah" atau hadiah.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 100" role="img" aria-label="Tiga tingkat petunjuk bertahap">
+            <g font-family="Nunito" font-size="9.5">
+              <rect x="0" y="6" width="270" height="24" rx="6" fill="#FFF0D9"/><text x="10" y="22" fill="#B86E00" font-weight="700">Petunjuk 1</text><text x="80" y="22" fill="#2D3142">arah berpikir</text>
+              <rect x="0" y="36" width="270" height="24" rx="6" fill="#FFE2B3"/><text x="10" y="52" fill="#B86E00" font-weight="700">Petunjuk 2</text><text x="80" y="52" fill="#2D3142">langkah pertama</text>
+              <rect x="0" y="66" width="270" height="24" rx="6" fill="#FF9F1C"/><text x="10" y="82" fill="#fff" font-weight="700">Petunjuk 3</text><text x="80" y="82" fill="#fff">hampir sampai jawaban</text>
+            </g>
+          </svg>
+        </div>
+        <p class="jujur">Catatan jujur: angka rata-rata pengaruh umpan balik (0,79) ditinjau ulang oleh peneliti lain dan hasilnya lebih kecil. Tetapi semua sepakat: umpan balik yang tepat sangat membantu.</p>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Setiap jawaban langsung tahu tepat atau belum.</li>
+          <li>Jawaban belum tepat? Ada petunjuk bertahap tiga tingkat, bukan langsung jawabannya.</li>
+          <li>Setiap soal punya pembahasan singkat.</li>
+          <li>Rapor TKA menunjukkan penyebab salah: salah baca soal, salah hitung, atau belum paham konsep.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> ganti "Salah!" dengan "Hampir. Coba lihat lagi angka yang ini."</div>
+    </div>
+  </div>
+  <p class="sumber">Hattie &amp; Timperley (2007), <i>Review of Educational Research</i>; Wisniewski, Zierer &amp; Hattie (2020), <i>Frontiers in Psychology</i>.</p>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#1F7A4D">6</div><div><div class="pita" style="color:#1F7A4D">Contoh jadi</div><h2>Lihat contoh jadi sebelum mencoba sendiri</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Untuk anak yang baru mengenal sebuah topik, <b>mempelajari contoh yang sudah dikerjakan langkah demi langkah</b> lebih efektif daripada langsung disuruh memecahkan soal sendiri. Otak anak tidak kewalahan, sehingga lebih mudah memahami polanya.</p>
+        <div class="kotak-putih">
+          <p style="margin:0 0 1mm"><b>Contoh: 27 + 18 = ?</b></p>
+          <p style="margin:0">① Satuan: 7 + 8 = 15. Tulis 5, simpan 1.<br>② Puluhan: 2 + 1 + 1 = 4.<br>③ Hasilnya <b style="color:#1F7A4D">45</b>.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Setiap kartu Gudang Ilmu: penjelasan bergambar dan bersuara, lalu <b>2 contoh jadi</b>, baru soal latihan.</li>
+          <li>Lancar Matematika mengenalkan "jurus" dengan contoh sebelum lembar latihan.</li>
+          <li>Soal disusun dari mudah ke sulit.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> saat anak bingung, kerjakan satu soal bersama sambil bersuara: "Pertama saya lihat... lalu..." Setelah itu biarkan ia mencoba soal berikutnya.</div>
+    </div>
+  </div>
+  <p class="sumber">Sweller &amp; Cooper (1985), <i>Cognition and Instruction</i>.</p>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#E85D5D">7</div><div><div class="pita" style="color:#B03C3C">Pujian yang tepat</div><h2>Puji usahanya, bukan kepintarannya</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Enam percobaan pada anak kelas 5 menemukan: anak yang dipuji <b>"kamu pintar"</b> cenderung memilih soal mudah dan cepat menyerah setelah gagal. Anak yang dipuji <b>"kamu sudah berusaha keras"</b> lebih tekun, lebih menikmati soal sulit, dan hasilnya lebih baik.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 92" role="img" aria-label="Perbandingan pujian kepintaran dan pujian usaha">
+            <g font-family="Nunito" font-size="10">
+              <rect x="0" y="4" width="132" height="84" rx="8" fill="#F5F7FA"/>
+              <text x="66" y="24" text-anchor="middle" font-family="Baloo" font-size="12" fill="#868C9E">"Kamu pintar!"</text>
+              <text x="66" y="44" text-anchor="middle" fill="#5B6072">pilih soal mudah</text>
+              <text x="66" y="60" text-anchor="middle" fill="#5B6072">cepat menyerah</text>
+              <rect x="142" y="4" width="132" height="84" rx="8" fill="#E4F4EB"/>
+              <text x="208" y="24" text-anchor="middle" font-family="Baloo" font-size="12" fill="#1F7A4D">"Kamu tekun!"</text>
+              <text x="208" y="44" text-anchor="middle" fill="#2D3142">mau soal menantang</text>
+              <text x="208" y="60" text-anchor="middle" fill="#2D3142">bertahan saat sulit</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Pinci memuji usaha dan kemajuan, misalnya "Kamu terus mencoba!".</li>
+          <li>Anak bersaing dengan <b>rekornya sendiri</b>, bukan dengan teman. Tidak ada peringkat.</li>
+          <li>Bintang hanya tanda selesai, bukan skor untuk dibandingkan.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> ganti "Anak Bunda memang pintar" dengan "Bunda lihat kamu terus mencoba sampai bisa."</div>
+    </div>
+  </div>
+  <p class="sumber">Mueller &amp; Dweck (1998), <i>Journal of Personality and Social Psychology</i>.</p>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#8E6CCF">8</div><div><div class="pita" style="color:#6A4BA8">Belajar sambil bermain</div><h2>Permainan yang dirancang baik membantu belajar</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Tinjauan atas puluhan penelitian menemukan bahwa permainan digital untuk belajar <b>meningkatkan hasil belajar</b> dibandingkan cara biasa (ukuran pengaruh 0,33). Yang penting: <b>rancangan permainannya</b>, bukan sekadar "pakai game".</p>
+        <div class="temuan" style="background:#F1ECFA;text-align:center">
+          <span class="angka-besar" style="color:#8E6CCF">+0,33</span>
+          <p style="margin:1mm 0 0;font-size:0.85em">ukuran pengaruh permainan dibanding kegiatan tanpa permainan</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>8 permainan berisi soal yang sesuai kelas anak, dengan level 1–5 yang terbuka bertahap.</li>
+          <li><b>Tanpa kalah:</b> tidak ada nyawa, "game over", atau hitung mundur. Jawaban belum tepat membuat benda memantul, lalu Pinci memberi petunjuk.</li>
+          <li>Waktu main dibatasi dan terbuka setelah latihan inti selesai.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> sesekali ikut bermain bersama anak di Mode Dampingi. Anak senang ditemani, dan Ayah Bunda tahu sampai mana kemampuannya.</div>
+    </div>
+  </div>
+  <p class="sumber">Clark, Tanner-Smith &amp; Killingsworth (2016), <i>Review of Educational Research</i>.</p>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#3BB273">9</div><div><div class="pita" style="color:#1F7A4D">Sehat dan bergerak</div><h2>Waktu layar terbatas dan banyak bergerak</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Organisasi Kesehatan Dunia (WHO) menganjurkan anak usia 5–17 tahun <b>aktif bergerak rata-rata 60 menit sehari</b> dan <b>membatasi waktu layar untuk hiburan</b>. Aplikasi belajar yang baik tidak boleh membuat anak terpaku di layar berjam-jam.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 70" role="img" aria-label="Blok belajar 15 menit diselingi istirahat">
+            <g font-family="Nunito" font-size="9">
+              <rect x="0" y="14" width="100" height="26" rx="6" fill="#3BB273"/><text x="50" y="31" text-anchor="middle" fill="#fff" font-weight="700">belajar ≤ 15 mnt</text>
+              <rect x="106" y="14" width="56" height="26" rx="6" fill="#E8F4FC"/><text x="134" y="31" text-anchor="middle" fill="#2A5DB0">istirahat</text>
+              <rect x="168" y="14" width="100" height="26" rx="6" fill="#3BB273"/><text x="218" y="31" text-anchor="middle" fill="#fff" font-weight="700">belajar ≤ 15 mnt</text>
+              <text x="0" y="60" fill="#5B6072">Batas harian otomatis · jam tenang mulai 21.00</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Belajar paling lama 10 menit × kelas per hari, dibagi blok ≤ 15 menit.</li>
+          <li>Setiap blok diakhiri <b>layar istirahat</b>: minum dan regangkan tangan serta kaki.</li>
+          <li>Waktu main 20–30 menit per hari, bisa diatur orang tua. Jam tenang mulai pukul 21.00.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> setelah latihan selesai, ajak anak bermain di luar rumah. Latihan singkat ditambah gerak badan adalah kombinasi terbaik.</div>
+    </div>
+  </div>
+  <p class="sumber">WHO (2020), <i>Guidelines on physical activity and sedentary behaviour</i>.</p>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#FF9F1C">10</div><div><div class="pita" style="color:#B86E00">Peran orang tua</div><h2>Orang tua yang terlibat memperkuat hasil belajar</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Rangkuman atas banyak tinjauan penelitian menemukan hubungan positif antara keterlibatan orang tua dan prestasi anak. Yang paling kuat bukan membantu mengerjakan PR, melainkan <b>harapan dan perhatian orang tua</b>: menanyakan, menyemangati, dan menunjukkan bahwa belajar itu penting.</p>
+        <div class="temuan" style="background:#FFF0D9;text-align:center">
+          <span class="angka-besar" style="color:#B86E00">5 menit</span>
+          <p style="margin:1mm 0 0;font-size:0.85em">sehari sudah cukup: mengingatkan, menyemangati, membaca catatan pengawas</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Kabar harian untuk orang tua: sudah latihan atau belum, dan apa yang dipelajari.</li>
+          <li>Rapor per topik menunjukkan bagian yang perlu dibantu.</li>
+          <li>Mode Dampingi untuk belajar dan bermain bersama anak.</li>
+          <li>Kirim semangat ke HP anak dengan satu ketukan.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> tanyakan setiap hari, "Apa yang paling seru tadi?" Pertanyaan sederhana ini menunjukkan bahwa Ayah Bunda peduli.</div>
+    </div>
+  </div>
+  <p class="sumber">Wilder (2014), <i>Educational Review</i>.</p>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#3A86FF">11</div><div><div class="pita" style="color:#2A5DB0">Pendampingan</div><h2>Pendampingan rutin oleh orang dewasa</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Tinjauan atas puluhan percobaan acak menemukan bahwa pendampingan belajar oleh orang dewasa memberi dampak yang besar. Dampaknya paling kuat bila dilakukan <b>minimal 3 kali seminggu</b> dan <b>di kelas-kelas awal</b>.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 70" role="img" aria-label="Pengawas memantau Senin, Rabu, dan Jumat">
+            <g font-family="Nunito" font-size="9" text-anchor="middle">
+              <rect x="0" y="10" width="34" height="40" rx="6" fill="#3A86FF"/><text x="17" y="34" fill="#fff" font-weight="700">Sen</text>
+              <rect x="40" y="10" width="34" height="40" rx="6" fill="#EAF2FF"/><text x="57" y="34" fill="#2A5DB0">Sel</text>
+              <rect x="80" y="10" width="34" height="40" rx="6" fill="#3A86FF"/><text x="97" y="34" fill="#fff" font-weight="700">Rab</text>
+              <rect x="120" y="10" width="34" height="40" rx="6" fill="#EAF2FF"/><text x="137" y="34" fill="#2A5DB0">Kam</text>
+              <rect x="160" y="10" width="34" height="40" rx="6" fill="#3A86FF"/><text x="177" y="34" fill="#fff" font-weight="700">Jum</text>
+              <text x="240" y="28" fill="#2D3142" font-weight="700">pengawas</text><text x="240" y="40" fill="#2D3142" font-weight="700">memantau</text>
+            </g>
+          </svg>
+        </div>
+        <p class="jujur">Catatan jujur: penelitian ini tentang les tatap muka. Pengawas Pintar Main memantau dan menindaklanjuti dari jauh, bukan les privat. Kami mengambil prinsipnya: rutin, kelompok kecil, dan ada orang dewasa yang memperhatikan.</p>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li>Kelas kecil 1–8 anak dengan satu pengawas tetap.</li>
+          <li>Pengawas memantau Senin, Rabu, dan Jumat: siapa yang belum latihan, topik yang lemah, siapa yang perlu dipuji.</li>
+          <li>Catatan mingguan untuk orang tua dan tugas latihan untuk anak.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> baca catatan pengawas bersama anak dan rayakan kemajuan kecilnya.</div>
+    </div>
+  </div>
+  <p class="sumber">Nickow, Oreopoulos &amp; Quan (2020), NBER Working Paper 27476.</p>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="hal">
+  <div class="kepala"><div class="nomor" style="background:#1F7A4D">12</div><div><div class="pita" style="color:#1F7A4D">Semangat dari dalam</div><h2>Bisa memilih dan merasa mampu membuat anak semangat</h2></div></div>
+  <div class="dua">
+    <div>
+      <div class="temuan">
+        <p>Teori motivasi yang banyak diteliti menyebutkan tiga kebutuhan dasar anak supaya semangat belajar datang dari dalam dirinya: <b>bisa memilih</b>, <b>merasa mampu</b>, dan <b>merasa dekat</b> dengan orang di sekitarnya.</p>
+        <div class="grafik">
+          <svg viewBox="0 0 280 110" role="img" aria-label="Tiga kebutuhan: bisa memilih, merasa mampu, merasa dekat">
+            <g font-family="Nunito" font-size="10" text-anchor="middle" font-weight="700">
+              <circle cx="100" cy="42" r="36" fill="#3A86FF" fill-opacity="0.75"/>
+              <circle cx="180" cy="42" r="36" fill="#3BB273" fill-opacity="0.75"/>
+              <circle cx="140" cy="72" r="36" fill="#FF9F1C" fill-opacity="0.75"/>
+              <text x="84" y="38" fill="#fff">bisa</text><text x="84" y="50" fill="#fff">memilih</text>
+              <text x="196" y="38" fill="#fff">merasa</text><text x="196" y="50" fill="#fff">mampu</text>
+              <text x="140" y="88" fill="#fff">merasa dekat</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="terapan">
+        <h3>Di Pintar Main</h3>
+        <ul>
+          <li><b>Bisa memilih:</b> anak memilih kegiatan dan topik di Gudang Ilmu.</li>
+          <li><b>Merasa mampu:</b> tes awal menempatkan anak di level yang pas, dan level naik saat ia sudah lancar.</li>
+          <li><b>Merasa dekat:</b> pesan dan stiker dengan orang tua, Mode Dampingi, dan Pinci si kancil yang menemani.</li>
+        </ul>
+      </div>
+      <div class="tips"><b>Tips:</b> biarkan anak memilih mau mulai dari mana hari ini. Rasa memiliki membuat ia lebih bersemangat.</div>
+    </div>
+  </div>
+  <p class="sumber">Ryan &amp; Deci (2000), <i>American Psychologist</i>.</p>
+</section>
+
+<!-- ============ PENUTUP ============ -->
+<section class="hal">
+  <h2 style="color:#6B4423;margin-bottom:3mm">Rangkuman: satu hari belajar di Pintar Main</h2>
+  <div class="kotak-putih">
+    <p><b>① Latihan inti ± 15 menit</b>: Lancar Matematika dan Baca Ulang, dengan contoh, petunjuk, dan umpan balik segera <span class="jujur">(temuan 1, 4, 5, 6)</span>.</p>
+    <p><b>② Soal lama diselipkan</b> supaya ingatan bertahan <span class="jujur">(temuan 2, 3)</span>.</p>
+    <p><b>③ Istirahat dan gerak badan</b> setiap 15 menit <span class="jujur">(temuan 9)</span>.</p>
+    <p><b>④ Waktu main</b> dengan permainan tanpa kalah yang berisi soal <span class="jujur">(temuan 8)</span>.</p>
+    <p><b>⑤ Pujian untuk usaha</b> dan rekor diri sendiri <span class="jujur">(temuan 7, 12)</span>.</p>
+    <p style="margin:0"><b>⑥ Pengawas dan orang tua</b> memperhatikan: Senin, Rabu, Jumat, dan 5 menit setiap hari <span class="jujur">(temuan 10, 11)</span>.</p>
+  </div>
+  <div class="tips"><b>Yang tidak kami janjikan:</b> nilai pasti naik, atau "lebih baik dari les lain". Setiap anak berbeda. Yang kami janjikan adalah cara belajar yang didukung penelitian, dilakukan rutin, dan diperhatikan oleh pengawas serta orang tua.</div>
+  <div class="terapan" style="margin-top:4mm">
+    <h3>Coba 14 hari gratis</h3>
+    <p style="margin:0">Pasang aplikasi Pintar Main atau daftar di halaman kami. Tanpa iklan, tanpa pelacak, dan berhenti kapan saja.</p>
+  </div>
+</section>
+
+<!-- ============ PUSTAKA ============ -->
+<section class="hal">
+  <h2 style="color:#6B4423;margin-bottom:3mm">Sumber penelitian</h2>
+  <ol class="pustaka">
+    <li>OECD (2023). <i>PISA 2022 Results (Volume I and II) – Country Notes: Indonesia</i>. <a href="https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/indonesia_c2e1ae0e-en.html">oecd.org</a></li>
+    <li>Roediger, H. L., &amp; Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. <i>Psychological Science, 17</i>(3), 249–255.</li>
+    <li>Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., &amp; Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. <i>Psychological Bulletin, 132</i>(3), 354–380.</li>
+    <li>Rohrer, D., &amp; Taylor, K. (2007). The shuffling of mathematics problems improves learning. <i>Instructional Science, 35</i>, 481–498.</li>
+    <li>Brunmair, M., &amp; Richter, T. (2019). Similarity matters: A meta-analysis of interleaved learning and its moderators. <i>Psychological Bulletin, 145</i>(11), 1029–1052.</li>
+    <li>Therrien, W. J. (2004). Fluency and comprehension gains as a result of repeated reading: A meta-analysis. <i>Remedial and Special Education, 25</i>(4), 252–261.</li>
+    <li>Stevens, E. A., Walker, M. A., &amp; Vaughn, S. (2017). The effects of reading fluency interventions on the reading fluency and reading comprehension performance of elementary students with learning disabilities. <i>Journal of Learning Disabilities, 50</i>(5), 576–590.</li>
+    <li>Hattie, J., &amp; Timperley, H. (2007). The power of feedback. <i>Review of Educational Research, 77</i>(1), 81–112.</li>
+    <li>Wisniewski, B., Zierer, K., &amp; Hattie, J. (2020). The power of feedback revisited: A meta-analysis of educational feedback research. <i>Frontiers in Psychology, 10</i>, 3087.</li>
+    <li>Sweller, J., &amp; Cooper, G. A. (1985). The use of worked examples as a substitute for problem solving in learning algebra. <i>Cognition and Instruction, 2</i>(1), 59–89.</li>
+    <li>Mueller, C. M., &amp; Dweck, C. S. (1998). Praise for intelligence can undermine children's motivation and performance. <i>Journal of Personality and Social Psychology, 75</i>(1), 33–52.</li>
+    <li>Clark, D. B., Tanner-Smith, E. E., &amp; Killingsworth, S. S. (2016). Digital games, design, and learning: A systematic review and meta-analysis. <i>Review of Educational Research, 86</i>(1), 79–122.</li>
+    <li>World Health Organization (2020). <i>WHO guidelines on physical activity and sedentary behaviour</i>. Geneva: WHO.</li>
+    <li>Wilder, S. (2014). Effects of parental involvement on academic achievement: A meta-synthesis. <i>Educational Review, 66</i>(3), 377–397.</li>
+    <li>Nickow, A., Oreopoulos, P., &amp; Quan, V. (2020). <i>The impressive effects of tutoring on PreK-12 learning: A systematic review and meta-analysis of the experimental evidence</i>. NBER Working Paper 27476.</li>
+    <li>Ryan, R. M., &amp; Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. <i>American Psychologist, 55</i>(1), 68–78.</li>
+  </ol>
+  <p class="sumber">Ukuran pengaruh (misalnya 0,33 atau 0,75) adalah cara peneliti mengukur seberapa besar suatu cara mengubah hasil belajar. Di penelitian pendidikan, 0,2 dianggap kecil, 0,5 sedang, dan 0,8 besar. Panduan ini ditulis untuk orang tua; untuk rincian lengkap, silakan baca sumber aslinya.</p>
+</section>
+
+</body>
+</html>

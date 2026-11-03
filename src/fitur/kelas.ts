@@ -30,7 +30,7 @@ export function teksPersetujuan(kelasNama: string | null, pengawasNama: string |
     `Anak Anda akan belajar di ${kelasNama ? `kelas ${kelasNama}` : 'kelas ini'}${pengawasNama ? ` dengan pengawas ${pengawasNama}` : ''}.`,
     'Pengawas bisa melihat nama panggilan, kelas, dan hasil latihan anak Anda. Pengawas memantau setiap Senin, Rabu, dan Jumat, lalu mengirim catatan kepada Anda dan memberi tugas latihan kepada anak. Pengawas tidak bisa mengobrol dengan anak.',
     'Kami tidak menyimpan foto, suara, lokasi, atau nomor HP anak. Kami tidak memasang iklan atau pelacak.',
-    'Masa coba 14 hari, gratis. Biaya dan cara bayar dikirim ke email Anda. Anda bisa berhenti kapan saja.',
+    'Masa coba 14 hari, gratis. Info lanjutan dikirim pengawas lewat WhatsApp atau email. Anda bisa berhenti kapan saja.',
   ];
 }
 

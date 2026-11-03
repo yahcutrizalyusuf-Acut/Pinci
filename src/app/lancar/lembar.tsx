@@ -10,8 +10,9 @@ import { titip } from '@/fitur/sementara';
 import { cekBelajar, ruteHalangan, useHitungWaktu } from '@/fitur/waktu';
 import { LembarSoal } from '@/komponen/LembarSoal';
 import type { LembarLancar } from '@/mesin/lancar';
+import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
-export default function LayarLembar() {
+function LayarLembarIsi() {
   const router = useRouter();
   const { mode } = useLocalSearchParams<{ mode?: string }>();
   const dampingi = mode === 'dampingi';
@@ -58,5 +59,13 @@ export default function LayarLembar() {
         router.replace('/lancar/akhir');
       }}
     />
+  );
+}
+
+export default function LayarLembar() {
+  return (
+    <PenjagaJatah bagian="lancar">
+      <LayarLembarIsi />
+    </PenjagaJatah>
   );
 }

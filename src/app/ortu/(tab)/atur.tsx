@@ -64,7 +64,7 @@ export default function Atur() {
             <Baris key={a.id} judul={`${HEWAN[a.hewan].emoji}  ${a.nama} · Kelas ${a.kelas}`} sub="Pengaturan waktu, profil" onPress={() => router.push(`/ortu/waktu/${a.id}`)} />
           ))}
           <Baris judul="Tambah anak" onPress={() => router.push('/daftar/anak')} />
-          {server ? <Baris judul="Kelas dan pengawas" sub="Masukkan kode kelas, lihat masa coba" onPress={() => router.push('/ortu/kelas')} /> : null}
+          {server ? <Baris judul="Kelas dan pengawas" sub="Coba 14 hari, kode kelas, masa coba" onPress={() => router.push('/ortu/kelas')} /> : null}
           {server ? <Baris judul="Hubungkan HP anak" sub="Kode 6 angka, supaya anak belajar di HP-nya sendiri" onPress={() => router.push('/ortu/hubungkan')} /> : null}
         </Kelompok>
         <Kelompok judul="BANTUAN">

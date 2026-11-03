@@ -14,7 +14,7 @@ export default function TambahAnak() {
     <Layar gulir latar={warna.abuTerang}>
       <KepalaLayar judul={daftarAnak.length ? 'Tambah anak' : 'Profil anak'} ortu />
       <TeksOrtu style={{ color: warna.teksKedua }}>
-        Anak kelas 6 mendapat paket lengkap. Anak kelas lain mendapat Lancar Matematika, Bahasa Inggris, dan game. Paket kelas lain sedang disiapkan.
+        Satu profil untuk satu anak. Kalau anak sudah punya profil, tidak perlu dibuat lagi.
       </TeksOrtu>
       <FormAnak
         label="Simpan profil"

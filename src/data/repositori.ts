@@ -44,6 +44,8 @@ export interface PengirimSinkron {
   perangkatDiputus?(): Promise<boolean>;
   /** keanggotaan kelas pengawas yang aktif untuk anak-anak di HP ini (selalu daftar lengkap) */
   kelasKeluarga?(): Promise<AnggotaKelas[]>;
+  /** orang tua: hapus profil anak di server (riwayatnya ikut terhapus); true bila berhasil atau sudah tidak ada */
+  hapusAnak?(anakId: string): Promise<boolean>;
 }
 
 export type StatusSimpan = 'tersimpan' | 'terkirim';
@@ -268,6 +270,7 @@ export class Repositori {
     // HP anak yang diputus orang tua berhenti sinkron; aplikasi tetap bisa dipakai di HP ini.
     if (await this.hpDiputus()) return { terkirim: 0, sisa: (await this.antreanBelumTerkirim()).length, ditarik: 0 };
     const kirim = await this.sinkron().catch(() => ({ terkirim: 0, sisa: 0 }));
+    await this.hapusAnakDiServer().catch(() => undefined);
     const ditarik = (await this.tarik().catch(() => 0)) + (await this.tarikKelas().catch(() => 0));
     await this.laporHp(kirim.sisa);
     return { ...kirim, ditarik };
@@ -330,6 +333,14 @@ export class Repositori {
 
   private async gabung(tabel: NamaTabel, baris: object[], antre: Set<string>): Promise<number> {
     let berubah = 0;
+    // Anak yang sudah dihapus di HP ini tidak dipasang lagi walau server belum sempat menghapusnya.
+    const dihapus = new Set((await this.nilai<string[]>('anak_dihapus')) ?? []);
+    if (dihapus.size > 0) {
+      baris = baris.filter((b) => {
+        const r = b as { id?: string; anak_id?: string };
+        return !(tabel === 'anak' ? dihapus.has(r.id ?? '') : dihapus.has(r.anak_id ?? ''));
+      });
+    }
     if (tabel === 'sesi') {
       const baru: Sesi[] = [];
       for (const b of baris as Sesi[]) if (!(await this.gudang.ambil('sesi', b.id))) baru.push(b);
@@ -556,10 +567,11 @@ export class Repositori {
     return k[0] ?? null;
   }
 
-  async buatKeluarga(pin: string, sapaanOrtu = 'Ayah'): Promise<Keluarga> {
+  /** `idPulih`: id keluarga yang sudah ada di server (HP baru atau pasang ulang), supaya data lama bisa ditarik kembali. */
+  async buatKeluarga(pin: string, sapaanOrtu = 'Ayah', idPulih?: string): Promise<Keluarga> {
     const garam = buatId();
     const kel: Keluarga = {
-      id: buatId(),
+      id: idPulih ?? buatId(),
       dibuat: sekarangIso(),
       pinHash: sha256(`${garam}:${pin}`),
       garam,
@@ -603,9 +615,18 @@ export class Repositori {
     return this.gudang.ambil('anak', id);
   }
 
+  /** Anak dengan nama (tanpa beda huruf besar kecil) dan kelas yang sama, bila sudah ada. */
+  async anakKembar(data: Pick<Anak, 'nama' | 'kelas'>): Promise<Anak | null> {
+    const nama = data.nama.trim().toLowerCase();
+    return (await this.daftarAnak()).find((a) => a.nama.trim().toLowerCase() === nama && a.kelas === data.kelas) ?? null;
+  }
+
   async tambahAnak(data: Pick<Anak, 'nama' | 'kelas' | 'hewan'>): Promise<Anak> {
     const kel = await this.keluarga();
     if (!kel) throw new Error('Keluarga belum dibuat');
+    // Mencegah profil kembar (misalnya tombol Simpan diketuk dua kali, atau mengulang pendaftaran).
+    const kembar = await this.anakKembar(data);
+    if (kembar) return kembar;
     const anak: Anak = {
       id: buatId(),
       keluarga_id: kel.id,
@@ -625,9 +646,36 @@ export class Repositori {
     this.ubah();
   }
 
+  /**
+   * Hapus profil anak beserta riwayatnya di HP ini, lalu di server. Kalau server belum terjangkau, id anak dicatat
+   * supaya tidak ditarik lagi dan penghapusan di server diulang saat sinkron berikutnya.
+   */
   async hapusAnak(id: string) {
+    for (const t of ['sesi', 'jawaban', 'kemajuan_topik', 'pesan', 'pemakaian', 'catatan_pengawas', 'tugas', 'anggota_kelas'] as const) {
+      for (const b of (await this.gudang.cari(t, { anak_id: id })) as { id: string }[]) await this.gudang.hapus(t, b.id);
+    }
+    await this.gudang.hapus('pengaturan_waktu', id);
     await this.gudang.hapus('anak', id);
+    const dihapus = new Set((await this.nilai<string[]>('anak_dihapus')) ?? []);
+    dihapus.add(id);
+    await this.gudang.pasang('nilai', { id: 'anak_dihapus', isi: JSON.stringify([...dihapus]) });
+    const tertunda = new Set((await this.nilai<string[]>('anak_dihapus_tertunda')) ?? []);
+    tertunda.add(id);
+    await this.gudang.pasang('nilai', { id: 'anak_dihapus_tertunda', isi: JSON.stringify([...tertunda]) });
     this.ubah();
+    await this.hapusAnakDiServer().catch(() => undefined);
+  }
+
+  /** Ulangi penghapusan anak di server yang belum berhasil. */
+  async hapusAnakDiServer() {
+    const p = this.pengirim;
+    if (!p?.hapusAnak) return;
+    const tertunda = (await this.nilai<string[]>('anak_dihapus_tertunda')) ?? [];
+    if (tertunda.length === 0) return;
+    const sisa: string[] = [];
+    for (const id of tertunda) if (!(await p.hapusAnak(id).catch(() => false))) sisa.push(id);
+    // Daftar 'anak_dihapus' tetap disimpan supaya baris lama yang masih ada di kursor tarik tidak muncul lagi.
+    await this.gudang.pasang('nilai', { id: 'anak_dihapus_tertunda', isi: JSON.stringify(sisa) });
   }
 
   // ---------- pengaturan waktu ----------

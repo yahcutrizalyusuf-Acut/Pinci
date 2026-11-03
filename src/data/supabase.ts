@@ -7,7 +7,7 @@
  * - Masuk orang tua: email + kode 6 angka (02-akun-keluarga.md).
  * Skema dan RLS: supabase/migrations/.
  */
-import type { AnggotaKelas, NamaTabel, PaketKelas, StatusLangganan } from './jenis';
+import type { AnggotaKelas, NamaTabel, PaketKelas, Pelajaran, StatusLangganan } from './jenis';
 import type { PengirimSinkron } from './repositori';
 
 export interface OpsiSupabase {
@@ -238,6 +238,14 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
       return diterima;
     },
 
+    async hapusAnak(anakId) {
+      const token = (await opsi.ambilToken?.()) ?? null;
+      if (!token) return false;
+      // Baris turunan (sesi, jawaban, pengaturan, dll.) ikut terhapus lewat "on delete cascade" di server.
+      const res = await f(`${opsi.url}/rest/v1/anak?id=eq.${encodeURIComponent(anakId)}`, { method: 'DELETE', headers: { ...kepala(opsi, token), Prefer: 'return=minimal' } });
+      return res.ok;
+    },
+
     async tarik(tabel, { sejak, offset, batas }) {
       if (!KUNCI_LOKAL[tabel]) return { baris: [], kursorMaks: null };
       const token = (await opsi.ambilToken?.()) ?? null;
@@ -272,6 +280,7 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
         kelas_nama: string;
         pengawas_nama: string | null;
         paket: PaketKelas;
+        pelajaran?: Pelajaran[] | null;
         masuk: string;
         coba_sampai: string;
         berlaku_sampai?: string | null;
@@ -285,6 +294,7 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
         kelasNama: d.kelas_nama,
         ...(d.pengawas_nama ? { pengawasNama: d.pengawas_nama } : {}),
         paket: d.paket,
+        ...(Array.isArray(d.pelajaran) ? { pelajaran: d.pelajaran } : {}),
         masuk: new Date(d.masuk).toISOString(),
         cobaSampai: new Date(d.coba_sampai).toISOString(),
         ...(d.berlaku_sampai ? { berlakuSampai: new Date(d.berlaku_sampai).toISOString() } : {}),
@@ -588,5 +598,64 @@ export async function aturPersetujuanPemakaian(opsi: OpsiSupabase, anakId: strin
     return res.ok;
   } catch {
     return false;
+  }
+}
+
+export interface DataDaftarCoba {
+  nama_ortu: string;
+  wa?: string;
+  email?: string;
+  nama_lengkap_anak: string;
+  kelas: number;
+  pelajaran: Pelajaran[];
+  tujuan?: string;
+  cara: 'online' | 'antre_tatap_muka';
+  kota?: string;
+  pengenalan?: Record<string, string>;
+  minta_telepon: boolean;
+  waktu_telepon?: string;
+  izin_kontak: boolean;
+  izin_pengembangan: boolean;
+  versi_teks: string;
+}
+
+export type HasilDaftarCoba =
+  | { ok: true; nomorAntrean?: number }
+  | { ok: false; alasan: 'isian_tidak_lengkap' | 'isian_tidak_valid' | 'belum_setuju' | 'kota_kosong' | 'terlalu_sering' | 'jaringan' };
+
+/**
+ * Daftar masa coba 14 hari dari mode orang tua. Server juga menghitung harga, tetapi aplikasi sengaja
+ * tidak membacanya: harga dan cara bayar disampaikan di luar aplikasi (aturan pembayaran Google Play).
+ */
+export async function daftarCoba(opsi: OpsiSupabase, data: DataDaftarCoba): Promise<HasilDaftarCoba> {
+  const f = opsi.fetchFn ?? fetch;
+  const token = (await opsi.ambilToken?.()) ?? null;
+  try {
+    const res = await f(`${opsi.url}/rest/v1/rpc/daftar_coba`, {
+      method: 'POST',
+      headers: kepala(opsi, token ?? undefined),
+      body: JSON.stringify({ p: { ...data, asal: 'aplikasi' } }),
+    });
+    if (!res.ok) return { ok: false, alasan: 'jaringan' };
+    const d = (await res.json()) as { ok: boolean; alasan?: string; nomor_antrean?: number | null };
+    if (d.ok) return d.nomor_antrean ? { ok: true, nomorAntrean: d.nomor_antrean } : { ok: true };
+    const dikenal = ['isian_tidak_lengkap', 'isian_tidak_valid', 'belum_setuju', 'kota_kosong', 'terlalu_sering'] as const;
+    const a = dikenal.find((x) => x === d.alasan);
+    return { ok: false, alasan: a ?? 'isian_tidak_valid' };
+  } catch {
+    return { ok: false, alasan: 'jaringan' };
+  }
+}
+
+/** Keluarga yang sudah terdaftar di server untuk akun ini (dipakai saat HP baru atau aplikasi dipasang ulang). */
+export async function keluargaDiServer(opsi: OpsiSupabase, sesi: Sesimasuk): Promise<{ id: string; sapaan: string } | null> {
+  const f = opsi.fetchFn ?? fetch;
+  try {
+    const res = await f(`${opsi.url}/rest/v1/keluarga?select=id,sapaan_ortu&limit=1`, { headers: kepala(opsi, sesi.tokenAkses) });
+    if (!res.ok) return null;
+    const d = (await res.json()) as { id: string; sapaan_ortu: string | null }[];
+    return d[0] ? { id: d[0].id, sapaan: d[0].sapaan_ortu ?? 'Ayah' } : null;
+  } catch {
+    return null;
   }
 }

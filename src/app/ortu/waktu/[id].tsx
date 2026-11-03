@@ -48,6 +48,7 @@ export default function PengaturanWaktuLayar() {
   const anak = daftarAnak.find((a) => a.id === id);
   const [p, setP] = useState<PengaturanWaktu | null>(null);
   const [ubahProfil, setUbahProfil] = useState(false);
+  const [yakinHapus, setYakinHapus] = useState(false);
   const [tkaAwal, setTkaAwal] = useState(false);
   useEffect(() => {
     if (!anak) return;
@@ -81,6 +82,33 @@ export default function PengaturanWaktuLayar() {
                 setUbahProfil(false);
               }}
             />
+            {yakinHapus ? (
+              <View style={{ gap: 8, padding: 12, borderRadius: 12, backgroundColor: '#FDECEC' }}>
+                <Text style={{ fontFamily: huruf.ortu, fontSize: 15, color: warna.teks }}>
+                  Profil {anak.nama} dan seluruh riwayat belajarnya akan dihapus dari HP ini dan dari server. Tidak bisa dibatalkan.
+                </Text>
+                <View style={{ flexDirection: 'row', gap: 12 }}>
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={`Ya, hapus profil ${anak.nama}`}
+                    onPress={async () => {
+                      await repo.hapusAnak(anak.id);
+                      router.replace('/profil');
+                    }}
+                    style={{ paddingVertical: 10, paddingHorizontal: 14, borderRadius: 10, backgroundColor: '#C0392B' }}
+                  >
+                    <Text style={{ fontFamily: huruf.ortuTebal, color: warna.putih }}>Ya, hapus</Text>
+                  </Pressable>
+                  <Pressable accessibilityRole="button" onPress={() => setYakinHapus(false)} style={{ paddingVertical: 10, paddingHorizontal: 14 }}>
+                    <Text style={{ fontFamily: huruf.ortuSedang, color: warna.teks }}>Batal</Text>
+                  </Pressable>
+                </View>
+              </View>
+            ) : (
+              <Pressable accessibilityRole="button" onPress={() => setYakinHapus(true)} style={{ paddingVertical: 8 }}>
+                <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 14, color: '#C0392B' }}>Hapus profil anak ini</Text>
+              </Pressable>
+            )}
           </Kotak>
         ) : null}
         <Kotak>

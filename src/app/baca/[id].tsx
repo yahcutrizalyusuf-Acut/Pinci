@@ -23,10 +23,11 @@ import { Pinci } from '@/komponen/Pinci';
 import { jawabanKosong, jawabanLengkap, PilihJawaban } from '@/komponen/tka/PilihJawaban';
 import { Stimulus } from '@/komponen/tka/Stimulus';
 import { TeksKaya } from '@/komponen/tka/TeksKaya';
+import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
 type Tahap = 'siap_dingin' | 'dingin' | 'dengar' | 'siap_panas' | 'panas' | 'soal' | 'hasil';
 
-export default function BacaTeks() {
+function BacaTeksIsi() {
   const { id, mode } = useLocalSearchParams<{ id: string; mode?: string }>();
   const dampingi = mode === 'dampingi';
   const router = useRouter();
@@ -339,5 +340,13 @@ export default function BacaTeks() {
         </Text>
       ) : null}
     </Layar>
+  );
+}
+
+export default function BacaTeks() {
+  return (
+    <PenjagaJatah bagian="baca">
+      <BacaTeksIsi />
+    </PenjagaJatah>
   );
 }
