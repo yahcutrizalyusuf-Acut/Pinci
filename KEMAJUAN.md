@@ -24,9 +24,15 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 | 17 Langganan dan masukan | Selesai (31 Okt), perlu pasang SQL | Kunci paket, status langganan, catat pembayaran QRIS, harga, tagihan mitra, Kirim masukan, pertanyaan mingguan, catatan pemakaian (dengan izin) dan teknis, pendaftar, laporan mingguan. Pasang `20261102000000_langganan_masukan.sql` |
 | 18 Halaman penjelasan dan brosur | Selesai (31 Okt), perlu diterbitkan | Folder `halaman/` dan alur "Terbitkan halaman penjelasan". Lihat `docs/CARA-MENYAMBUNG-SUPABASE.md` |
 | 19 Isi kelas 2–5 tahap 2 | Selesai (31 Okt), perlu diperiksa | 12 teks dan 12 kartu per kelas. Lembar periksa: `docs/periksa-isi/Periksa-Isi-Kelas-2-5.pdf` (91 halaman) |
+| 20 PDF riset cara belajar | Selesai (3 Nov) | 12 temuan, versi HP dan laptop di `halaman/unduh/`. Dibuat dengan `node scripts/buat-riset-pdf.cjs` |
+| 21 Gratis selamanya dan masa coba | Selesai (3 Nov), perlu pasang SQL | Jatah harian Gratis, pelajaran pilihan, harga per pelajaran dan promo, jalan bayar B. Rancangan `docs/rancangan/08-model-usaha/03-gratis-ke-berbayar.md`. Pasang `20261103000000_gratis_pendaftaran.sql` |
+| 22 Pendaftaran masa coba | Selesai (3 Nov), perlu pasang SQL | Online atau antre tatap muka, 8 pertanyaan pengenalan, telepon, izin. Halaman staf Pendaftar. Uji `scripts/uji-coba.cjs` |
+| 23 Perbaikan profil anak kembar | Selesai (3 Nov) | Profil kembar ditolak, tombol hapus profil anak, keluarga lama dipulihkan saat masuk ulang |
+| 24 Tim merah | Laporan (3 Nov) | Nilai 17/30, saran: uji 10 keluarga dan 2 les sebelum menambah fitur. https://claude.ai/artifact/EMxagKcTjHTJgJmMVfGwxY |
 
 ## Berikutnya
 
+0. Pasang `20261103000000_gratis_pendaftaran.sql` di Supabase. Website baru dan halaman sambutan ditunda sampai Acut memutuskan (saran tim merah: uji ke pembeli dulu).
 1. Keputusan Acut 29 Okt sudah diterapkan (`docs/rancangan/keputusan.md` bagian K).
 2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
 3. Pasang SQL hubungkan HP anak di Supabase, lalu uji dua HP sungguhan (orang tua dan anak).
