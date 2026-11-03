@@ -29,7 +29,7 @@ Orang tua **mudah mulai** (gratis selamanya, daftar 1 menit), **merasakan manfaa
 
 | | **Gratis selamanya** | **Coba 14 hari** | **Berlangganan** |
 |---|---|---|---|
-| Daftar | Nama panggilan, kelas, hewan. Tanpa email | + nomor WhatsApp atau email orang tua | Pilih pelajaran (kotak centang), bayar |
+| Daftar | Nama panggilan, kelas, hewan. Tanpa email | + data anak (nama panggilan, kelas, usia — lihat bagian 9), **pelajaran yang dipilih orang tua** (satu atau semua), tujuan orang tua, nomor WhatsApp atau email | Pelajaran pilihan masa coba langsung tercentang; tinggal bayar |
 | Lancar Matematika | 1 lembar per hari | Penuh | Penuh |
 | Baca Ulang | 1 teks per hari | Penuh | Penuh |
 | Game | 10 menit per hari | Sesuai batas kelas (20–30 menit) | Sesuai batas kelas |
@@ -39,6 +39,8 @@ Orang tua **mudah mulai** (gratis selamanya, daftar 1 menit), **merasakan manfaa
 | Kabar untuk orang tua | Ringkas: sudah latihan atau belum, kecepatan baca | Lengkap + rapor per topik | Lengkap + rapor per topik |
 | **Pengawas** | — | **Ya**: catatan minggu 1 dan 2, telepon pengenalan 10 menit jika diminta | **Ya**: Senin, Rabu, Jumat, catatan mingguan, tugas |
 
+**Pilihan pelajaran di masa coba (usulan Acut, 3 Nov 2026):** orang tua memilih pelajaran yang diinginkan, satu atau semua. Hanya pelajaran itu yang dibuka selama 14 hari, dan pengawas fokus ke sana. Manfaatnya: hasil lebih sesuai tujuan orang tua, pengawas tahu prioritas, dan saat masa coba selesai, kotak centang harga sudah terisi sesuai pilihan itu, sehingga orang tua tinggal membayar. Pelajaran yang tidak dipilih tetap bisa ditambah kapan saja.
+
 **Mengapa dibatasi per hari, bukan per isi:** batas harian sejalan dengan penelitian (temuan 2: sedikit tapi sering). Gratis tetap memberi kebiasaan belajar yang baik. Yang dirasakan orang tua bukan "aplikasinya pelit", tetapi "anak saya ingin lebih".
 
 **Di layar anak saat jatah harian habis:** "Latihan hari ini selesai! Hebat. Sampai besok, ya." Tanpa gembok, tanpa harga. Anak masih bisa membaca ulang kartu yang sudah dibuka.
@@ -47,7 +49,7 @@ Orang tua **mudah mulai** (gratis selamanya, daftar 1 menit), **merasakan manfaa
 
 | Hari | Saat | Yang dilihat orang tua (di mode orang tua, WhatsApp, atau email) |
 |---|---|---|
-| 0 | **Mulai mudah** | Unduh → pilih hewan → anak langsung latihan. Tidak ada formulir panjang. Tawaran coba 14 hari muncul **setelah** latihan pertama selesai: "Mau Rani ditemani pengawas 14 hari, gratis?" |
+| 0 | **Mulai mudah** | Unduh → pilih hewan → anak langsung latihan. Tidak ada formulir panjang. Tawaran coba 14 hari muncul **setelah** latihan pertama selesai: "Mau Rani ditemani pengawas 14 hari, gratis?" Orang tua lalu mengisi data anak, memilih pelajaran, dan menulis tujuannya (misalnya "lancar membaca" atau "siap TKA") |
 | 1–3 | **Manfaat pertama** | Kabar: "Rani membaca 42 kata per menit hari ini. Rata-rata kelas 3: 60–70." Angka anak sendiri, bukan janji |
 | 7 | **Sentuhan manusia** | Catatan pengawas pertama, dengan nama dan foto pengawas: "Rani cepat di perkalian 2–5, masih ragu di 7 dan 8. Minggu ini kita latih pelan-pelan." |
 | 12 | **Ringkasan masa coba** | "14 hari Rani: kecepatan baca 42 → 55 kata per menit, 9 lembar matematika, 3 topik dikuasai." Daftar jujur apa yang tetap ada (riwayat, latihan harian) dan apa yang berhenti (pengawas, Gudang Ilmu, Bahasa Inggris, rapor lengkap). Tombol: "Lanjutkan bersama pengawas" |
@@ -111,6 +113,7 @@ Usulan: mulai dengan link `wa.me` + aplikasi WhatsApp Business (gratis). Pesan o
 
 1. Jalan pembayaran di aplikasi: **A** (Google Play, usulan), B, atau C.
 2. Isi Gratis dan batas hariannya (bagian 4): setuju atau diubah.
+4. Data anak di masa coba: nama lengkap atau nama panggilan, dan perlu usia atau cukup kelas (CLAUDE.md aturan 2: data anak seminim mungkin).
 3. Bayar 6 bulan gratis 1 bulan, dan diskon anak kedua: ya atau tidak.
 
 ## 10. Yang dibangun setelah diputuskan
