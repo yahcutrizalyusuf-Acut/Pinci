@@ -42,7 +42,7 @@ const UKURAN = {
       displayHeaderFooter: true,
       headerTemplate: '<span></span>',
       footerTemplate:
-        '<div style="width:100%;font-size:7px;color:#868C9E;text-align:center;font-family:sans-serif">Pintar Main · Belajar yang Menyenangkan · <span class="pageNumber"></span>/<span class="totalPages"></span></div>',
+        '<div style="width:100%;font-size:7px;color:#868C9E;text-align:center;font-family:sans-serif">Pintar Main · Cara Belajar yang Menyenangkan · <span class="pageNumber"></span>/<span class="totalPages"></span></div>',
     });
     await hal.close();
     console.log('Tersimpan:', u.berkas);
