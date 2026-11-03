@@ -97,6 +97,23 @@ Hasil penelusuran (halaman kebijakan resmi Google tidak bisa dibuka dari sini, j
 
 **Usulan: A sekarang** (di aplikasi) + QRIS di website untuk yang mendaftar dari website, iklan, atau mitra. Dengan langganan Google Play, harga **boleh** tampil di aplikasi karena pembayarannya lewat Google. Pindah ke C nanti kalau jumlah pembayar sudah besar.
 
+
+### 7a. Hasil pemeriksaan di Play Console (3 Nov 2026, laporan Chrome)
+
+| Pertanyaan | Hasil |
+|---|---|
+| Tombol atau link di aplikasi ke website untuk membayar | **Tidak boleh** |
+| Aplikasi *consumption-only* (tidak menjual apa pun di dalam aplikasi) menulis "Kunjungi website kami untuk menambah pelajaran", **tanpa link** | **Boleh** (contoh resmi Google: "Go to our website to upgrade your subscription to Premium") |
+| Orang tua membayar di website, lalu isi berbayar terbuka di aplikasi dengan akun yang sama | **Boleh** |
+| Menawarkan langganan lewat email atau WhatsApp di luar aplikasi, harga boleh berbeda | **Boleh** |
+| Pengawas dikecualikan sebagai "layanan 1:1" | **Tidak**: paket berisi pelajaran digital, jadi dianggap digital |
+| *User choice billing* | Indonesia termasuk, tetapi **akun harus berjenis bisnis**. Akun sekarang: pribadi ("Buku Jeumpa"), belum memenuhi syarat |
+| Biaya langganan Google Play di Indonesia | 15% |
+| Profil pembayaran (merchant) | **Belum ada**. Tanpa ini tidak bisa menerima uang lewat Google Play |
+| Kebijakan Keluarga | Dilarang taktik yang menekan perasaan untuk mendorong pembelian. Harga di mode orang tua ber-PIN tidak dilarang tertulis |
+
+Kesimpulan baru: **jalan B (consumption-only) bisa dipakai saat peluncuran** tanpa potongan, tanpa profil pembayaran Google, dan tetap boleh menulis alamat website (tanpa link) di mode orang tua. Pengawas boleh menindaklanjuti lewat WhatsApp di luar aplikasi, dengan izin orang tua yang diberikan saat mendaftar masa coba. Jalan A atau C bisa ditambahkan nanti.
+
 ## 8. WhatsApp: perlu berlangganan API?
 
 **Tidak, untuk tahap awal.**
