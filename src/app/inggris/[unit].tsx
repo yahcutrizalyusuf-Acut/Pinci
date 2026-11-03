@@ -21,11 +21,12 @@ import { KepalaLayar, Tombol, TombolSuara } from '@/komponen/dasar';
 import { KartuGambar } from '@/komponen/KartuGambar';
 import { Layar } from '@/komponen/Layar';
 import { Pinci } from '@/komponen/Pinci';
+import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
 type Bagian = 'kenal' | 'pola' | 'dengar' | 'susun' | 'main' | 'hasil';
 const UNGU = warnaMapel.ing;
 
-export default function UnitInggris() {
+function UnitInggrisIsi() {
   const { unit: idUnit } = useLocalSearchParams<{ unit: string }>();
   const router = useRouter();
   const { repo, anakAktif } = useData();
@@ -325,5 +326,13 @@ export default function UnitInggris() {
       </View>
       {isi}
     </Layar>
+  );
+}
+
+export default function UnitInggris() {
+  return (
+    <PenjagaJatah bagian="inggris">
+      <UnitInggrisIsi />
+    </PenjagaJatah>
   );
 }

@@ -92,6 +92,8 @@ begin;
   begin
     h := atur_pelajaran('20000000-0000-0000-0000-0000000000a2', array['tka', 'inggris']);
     if h -> 'pelajaran' <> '["inggris"]' then raise exception 'GAGAL: TKA tidak dibuang untuk kelas 3: %', h; end if;
+    if (select x -> 'pelajaran' from jsonb_array_elements(kelas_keluarga()) x where x ->> 'anak_id' = '20000000-0000-0000-0000-0000000000a2') <> '["inggris"]' then
+      raise exception 'GAGAL: kelas_keluarga tanpa pelajaran'; end if;
     if (select paket from anggota_kelas where anak_id = '20000000-0000-0000-0000-0000000000a2') <> 'lengkap' then raise exception 'GAGAL: paket tidak disamakan'; end if;
     h := atur_pelajaran('20000000-0000-0000-0000-0000000000a1', array['tka']);
     if (select paket from anggota_kelas where anak_id = '20000000-0000-0000-0000-0000000000a1') <> 'siap_tka' then raise exception 'GAGAL: paket siap_tka'; end if;

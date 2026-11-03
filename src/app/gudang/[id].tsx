@@ -16,10 +16,11 @@ import { KepalaLayar, KotakPetunjuk, PapanAngka, Tombol, TombolSuara } from '@/k
 import { Layar } from '@/komponen/Layar';
 import { Pinci } from '@/komponen/Pinci';
 import { TeksKaya } from '@/komponen/tka/TeksKaya';
+import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
 type Tahap = 'kenali' | 'contoh' | 'latihan' | 'selesai';
 
-export default function KartuIlmuLayar() {
+function KartuIlmuLayarIsi() {
   const { id, mode } = useLocalSearchParams<{ id: string; mode?: string }>();
   const dampingi = mode === 'dampingi';
   const router = useRouter();
@@ -253,5 +254,13 @@ export default function KartuIlmuLayar() {
       ) : null}
       <ScrollView contentContainerStyle={{ gap: 12, paddingBottom: 8 }}>{isi}</ScrollView>
     </Layar>
+  );
+}
+
+export default function KartuIlmuLayar() {
+  return (
+    <PenjagaJatah bagian="gudang">
+      <KartuIlmuLayarIsi />
+    </PenjagaJatah>
   );
 }

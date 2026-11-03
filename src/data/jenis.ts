@@ -155,6 +155,8 @@ export interface KemajuanTopik {
 // ---------- kelas dengan pengawas (08-model-usaha/01) ----------
 
 export type PaketKelas = 'dasar' | 'lengkap' | 'siap_tka';
+/** Pelajaran pilihan orang tua di luar latihan inti (keputusan Acut 3 Nov 2026). */
+export type Pelajaran = 'inggris' | 'gudang' | 'tka';
 
 /** coba (14 hari), aktif (sudah bayar), tenggang (7 hari setelah lewat), berhenti, mitra (dibayar les mitra). */
 export type StatusLangganan = 'coba' | 'aktif' | 'tenggang' | 'berhenti' | 'mitra';
@@ -167,6 +169,8 @@ export interface AnggotaKelas {
   kelasNama: string;
   pengawasNama?: string;
   paket: PaketKelas;
+  /** pelajaran pilihan; kosong di data lama = disamakan dari paket */
+  pelajaran?: Pelajaran[];
   masuk: string;
   cobaSampai: string;
   berlakuSampai?: string;

@@ -7,7 +7,7 @@
  * - Masuk orang tua: email + kode 6 angka (02-akun-keluarga.md).
  * Skema dan RLS: supabase/migrations/.
  */
-import type { AnggotaKelas, NamaTabel, PaketKelas, StatusLangganan } from './jenis';
+import type { AnggotaKelas, NamaTabel, PaketKelas, Pelajaran, StatusLangganan } from './jenis';
 import type { PengirimSinkron } from './repositori';
 
 export interface OpsiSupabase {
@@ -272,6 +272,7 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
         kelas_nama: string;
         pengawas_nama: string | null;
         paket: PaketKelas;
+        pelajaran?: Pelajaran[] | null;
         masuk: string;
         coba_sampai: string;
         berlaku_sampai?: string | null;
@@ -285,6 +286,7 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
         kelasNama: d.kelas_nama,
         ...(d.pengawas_nama ? { pengawasNama: d.pengawas_nama } : {}),
         paket: d.paket,
+        ...(Array.isArray(d.pelajaran) ? { pelajaran: d.pelajaran } : {}),
         masuk: new Date(d.masuk).toISOString(),
         cobaSampai: new Date(d.coba_sampai).toISOString(),
         ...(d.berlaku_sampai ? { berlakuSampai: new Date(d.berlaku_sampai).toISOString() } : {}),

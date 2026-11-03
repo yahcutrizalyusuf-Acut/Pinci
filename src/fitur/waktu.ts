@@ -7,14 +7,23 @@ import { kiniMs } from '../data/alat';
 import type { Anak } from '../data/jenis';
 import type { Repositori } from '../data/repositori';
 import { useData } from '../data/konteks';
+import { aksesUntuk } from './akses';
+import { MENIT_GAME_GRATIS } from './jatah';
 import { statusBelajar, statusMain, tambahBelajar, tambahMain, type StatusBelajar, type StatusMain } from '../layanan/penjaga-waktu';
 
 export async function cekBelajar(repo: Repositori, anak: Anak, sekarang = new Date()): Promise<StatusBelajar> {
   return statusBelajar(await repo.pemakaian(anak.id), await repo.pengaturan(anak.id), sekarang);
 }
 
+/** Pengaturan main yang berlaku: paket Gratis membatasi game paling lama MENIT_GAME_GRATIS menit per hari. */
+export async function pengaturanMain(repo: Repositori, anak: Anak) {
+  const p = await repo.pengaturan(anak.id);
+  const akses = await aksesUntuk(repo, anak);
+  return akses.jatah.game ? { ...p, gameMenit: Math.min(p.gameMenit, MENIT_GAME_GRATIS) } : p;
+}
+
 export async function cekMain(repo: Repositori, anak: Anak, sekarang = new Date()): Promise<StatusMain> {
-  return statusMain(await repo.pemakaian(anak.id), await repo.pengaturan(anak.id), sekarang);
+  return statusMain(await repo.pemakaian(anak.id), await pengaturanMain(repo, anak), sekarang);
 }
 
 /** Rute yang harus dibuka bila belajar tidak boleh sekarang, atau null. */

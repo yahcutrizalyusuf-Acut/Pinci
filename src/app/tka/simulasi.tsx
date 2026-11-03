@@ -22,12 +22,13 @@ import { Layar } from '@/komponen/Layar';
 import { jawabanKosong, jawabanLengkap, PilihJawaban } from '@/komponen/tka/PilihJawaban';
 import { Stimulus } from '@/komponen/tka/Stimulus';
 import { TeksKaya } from '@/komponen/tka/TeksKaya';
+import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
 function panjangStimulus(b: Butir) {
   return (b.stimulus ?? []).reduce((n, s) => n + (s.jenis === 'teks' ? s.isi.length : 200), 0);
 }
 
-export default function Simulasi() {
+function SimulasiIsi() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const { repo, anakAktif } = useData();
@@ -258,5 +259,13 @@ export default function Simulasi() {
         </View>
       </Modal>
     </Layar>
+  );
+}
+
+export default function Simulasi() {
+  return (
+    <PenjagaJatah bagian="tka">
+      <SimulasiIsi />
+    </PenjagaJatah>
   );
 }

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { buatId, kiniMs, sekarangIso } from '@/data/alat';
 import { useData } from '@/data/konteks';
 import { titip } from '@/fitur/sementara';
-import { cekMain, useHitungWaktu } from '@/fitur/waktu';
+import { cekMain, pengaturanMain, useHitungWaktu } from '@/fitur/waktu';
 import type { Kelas, Tingkat } from '@/game/bersama/jenis';
 import { KEMAJUAN_AWAL, kunciKemajuan, rapikanLevel, setelahSelesai, type KemajuanLevel } from '@/game/bersama/level';
 import { bolehMulaiBabakBaru } from '@/game/bersama/waktu';
@@ -27,7 +27,7 @@ export default function PemutarGame() {
     if (!anakAktif || !game) return;
     (async () => {
       const s = await cekMain(repo, anakAktif);
-      const atur = await repo.pengaturan(anakAktif.id);
+      const atur = await pengaturanMain(repo, anakAktif);
       if (s.jenis !== 'boleh' || !bolehMulaiBabakBaru(s.sisaDetik)) {
         router.replace(s.jenis === 'jam_tenang' ? '/cukup?alasan=jam_tenang' : s.jenis === 'tunggu_inti' || s.jenis === 'mati' ? '/anak/main' : '/game/habis');
         return;

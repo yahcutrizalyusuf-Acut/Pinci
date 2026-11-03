@@ -8,7 +8,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const akar = path.join(__dirname, '..');
+const akar = path.resolve(path.dirname(require.resolve('./buat-riset-pdf.cjs')), '..');
 const sumber = path.join(akar, 'halaman', 'riset', 'sumber.html');
 const keluar = path.join(akar, 'halaman', 'unduh');
 fs.mkdirSync(keluar, { recursive: true });

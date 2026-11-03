@@ -21,8 +21,9 @@ import { Layar } from '@/komponen/Layar';
 import { jawabanKosong, jawabanLengkap, PilihJawaban } from '@/komponen/tka/PilihJawaban';
 import { Stimulus } from '@/komponen/tka/Stimulus';
 import { TeksKaya, teksBaca } from '@/komponen/tka/TeksKaya';
+import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
-export default function LatihanTka() {
+function LatihanTkaIsi() {
   const { topik: idTopik, rumah, mode } = useLocalSearchParams<{ topik: string; rumah?: string; mode?: string }>();
   const dampingi = mode === 'dampingi';
   const router = useRouter();
@@ -174,5 +175,13 @@ export default function LatihanTka() {
         ) : null}
       </ScrollView>
     </Layar>
+  );
+}
+
+export default function LatihanTka() {
+  return (
+    <PenjagaJatah bagian="tka">
+      <LatihanTkaIsi />
+    </PenjagaJatah>
   );
 }

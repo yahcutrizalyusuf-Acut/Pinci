@@ -220,3 +220,20 @@ as $$
         where boleh_uang() and cara = 'antre_tatap_muka' and status <> 'batal' group by 1) x
 $$;
 grant execute on function antrean_tatap_muka() to authenticated;
+
+-- ---------- kelas_keluarga ikut mengirim pelajaran pilihan ----------
+create or replace function kelas_keluarga() returns jsonb
+  language sql stable security definer set search_path = public
+as $$
+  select coalesce(jsonb_agg(jsonb_build_object(
+    'anggota_id', a.id, 'anak_id', a.anak_id, 'kelas_id', k.id, 'kelas_nama', k.nama,
+    'pengawas_nama', (select s.nama from staf s where s.id = k.pengawas_id),
+    'paket', a.paket, 'pelajaran', to_jsonb(a.pelajaran), 'masuk', a.masuk, 'coba_sampai', a.coba_sampai,
+    'berlaku_sampai', a.berlaku_sampai, 'status', status_anggota(a.coba_sampai, a.berlaku_sampai, k.mitra_id),
+    'setuju_pemakaian', pemakaian_disetujui(a.anak_id)
+  ) order by a.masuk), '[]')
+  from anggota_kelas a join kelas k on k.id = a.kelas_id
+  where a.keluar is null
+    and (a.keluarga_id = keluarga_saya() or a.anak_id = any (anak_perangkat()))
+$$;
+grant execute on function kelas_keluarga() to authenticated;
