@@ -11,7 +11,7 @@ import { IsianStaf, JudulKotak, KotakStaf, LatarStaf, Pil, PesanGalat, TeksStaf,
 /** Jawaban pengenalan dalam kalimat, untuk pengawas. */
 function teksPengenalan(j: Record<string, string>) {
   return PERTANYAAN_PENGENALAN.filter((q) => j[q.kode])
-    .map((q) => `${q.tanya.replace(/…$/, '')}: ${q.pilihan.find((p) => p.kode === j[q.kode])?.teks ?? j[q.kode]}`)
+    .map((q) => `${q.tanya.replace(/[…?]$/, '')}: ${q.pilihan.find((p) => p.kode === j[q.kode])?.teks ?? j[q.kode]}`)
     .join('\n');
 }
 
