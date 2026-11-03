@@ -15,13 +15,14 @@ const SAPAAN = ['Ayah', 'Bunda', 'Ibu', 'Bapak'];
 
 export default function BuatPin() {
   const router = useRouter();
-  const { dari } = useLocalSearchParams<{ dari?: string }>();
+  const { dari, pulih, sapaan: sapaanLama } = useLocalSearchParams<{ dari?: string; pulih?: string; sapaan?: string }>();
   const { repo, bukaOrtu } = useData();
   const [pin1, setPin1] = useState('');
   const [pin2, setPin2] = useState('');
   const [tahap, setTahap] = useState<1 | 2>(1);
   const [salah, setSalah] = useState(false);
-  const [sapaan, setSapaan] = useState('Ayah');
+  const [sapaan, setSapaan] = useState(sapaanLama && SAPAAN.includes(sapaanLama) ? sapaanLama : 'Ayah');
+  const [memulihkan, setMemulihkan] = useState(false);
 
   const tekan = async (a: string) => {
     setSalah(false);
@@ -38,11 +39,19 @@ export default function BuatPin() {
           setTimeout(() => setPin2(''), 600);
           return;
         }
-        const kel = await repo.buatKeluarga(p, sapaan);
+        const kel = await repo.buatKeluarga(p, sapaan, pulih || undefined);
         const sesi = await repo.nilai<Sesimasuk>('sesi_masuk');
         const o = opsiSupabase();
         if (sesi && o) await daftarkanKeluarga(o, sesi, kel).catch(() => false);
         bukaOrtu();
+        if (pulih) {
+          // Tarik profil anak dan riwayat lama dari server sebelum memutuskan perlu membuat profil baru.
+          setMemulihkan(true);
+          await repo.sinkronDuaArah().catch(() => undefined);
+          setMemulihkan(false);
+          router.replace((await repo.daftarAnak()).length > 0 ? '/profil' : '/daftar/anak');
+          return;
+        }
         router.replace('/daftar/anak');
       }
     }
@@ -63,6 +72,11 @@ export default function BuatPin() {
       <TeksOrtu style={{ color: warna.teksKedua }}>
         PIN ini mengunci mode orang tua, supaya anak tidak masuk ke pengaturan. Data keluarga disimpan di HP ini.
       </TeksOrtu>
+      {pulih ? (
+        <View style={{ backgroundColor: warna.hijauMuda, borderRadius: 14, padding: 12 }}>
+          <TeksOrtu>{memulihkan ? 'Mengambil profil anak dan riwayat belajar…' : 'Email ini sudah punya data keluarga. Setelah PIN dibuat, profil anak dan riwayat belajarnya dipulihkan.'}</TeksOrtu>
+        </View>
+      ) : null}
       {tahap === 1 ? (
         <View style={{ gap: 8 }}>
           <TeksOrtu style={{ fontFamily: huruf.ortuSedang }}>Anak memanggil Anda:</TeksOrtu>

@@ -238,6 +238,14 @@ export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {
       return diterima;
     },
 
+    async hapusAnak(anakId) {
+      const token = (await opsi.ambilToken?.()) ?? null;
+      if (!token) return false;
+      // Baris turunan (sesi, jawaban, pengaturan, dll.) ikut terhapus lewat "on delete cascade" di server.
+      const res = await f(`${opsi.url}/rest/v1/anak?id=eq.${encodeURIComponent(anakId)}`, { method: 'DELETE', headers: { ...kepala(opsi, token), Prefer: 'return=minimal' } });
+      return res.ok;
+    },
+
     async tarik(tabel, { sejak, offset, batas }) {
       if (!KUNCI_LOKAL[tabel]) return { baris: [], kursorMaks: null };
       const token = (await opsi.ambilToken?.()) ?? null;
@@ -636,5 +644,18 @@ export async function daftarCoba(opsi: OpsiSupabase, data: DataDaftarCoba): Prom
     return { ok: false, alasan: a ?? 'isian_tidak_valid' };
   } catch {
     return { ok: false, alasan: 'jaringan' };
+  }
+}
+
+/** Keluarga yang sudah terdaftar di server untuk akun ini (dipakai saat HP baru atau aplikasi dipasang ulang). */
+export async function keluargaDiServer(opsi: OpsiSupabase, sesi: Sesimasuk): Promise<{ id: string; sapaan: string } | null> {
+  const f = opsi.fetchFn ?? fetch;
+  try {
+    const res = await f(`${opsi.url}/rest/v1/keluarga?select=id,sapaan_ortu&limit=1`, { headers: kepala(opsi, sesi.tokenAkses) });
+    if (!res.ok) return null;
+    const d = (await res.json()) as { id: string; sapaan_ortu: string | null }[];
+    return d[0] ? { id: d[0].id, sapaan: d[0].sapaan_ortu ?? 'Ayah' } : null;
+  } catch {
+    return null;
   }
 }

@@ -5,7 +5,7 @@ import { TextInput, View } from 'react-native';
 
 import { useData } from '@/data/konteks';
 import { opsiSupabase } from '@/data/sinkron';
-import { daftarkanKeluarga, mintaKodeEmail, verifikasiKode } from '@/data/supabase';
+import { daftarkanKeluarga, keluargaDiServer, mintaKodeEmail, verifikasiKode } from '@/data/supabase';
 import { huruf, warna } from '@/desain/token';
 import { KepalaLayar, TeksOrtu, Tombol } from '@/komponen/dasar';
 import { Layar } from '@/komponen/Layar';
@@ -56,9 +56,17 @@ export default function Masuk() {
       return;
     }
     await repo.aturNilai('sesi_masuk', sesi);
-    if (keluarga) await daftarkanKeluarga(opsi, sesi, keluarga).catch(() => false);
+    if (keluarga) {
+      await daftarkanKeluarga(opsi, sesi, keluarga).catch(() => false);
+      setMemuat(false);
+      router.replace('/ortu');
+      return;
+    }
+    // HP baru atau aplikasi dipasang ulang: kalau email ini sudah punya keluarga, pulihkan keluarga itu
+    // (profil anak dan riwayatnya ditarik lagi), jangan buat keluarga dan profil anak baru.
+    const lama = await keluargaDiServer(opsi, sesi);
     setMemuat(false);
-    router.replace(keluarga ? '/ortu' : '/daftar/pin');
+    router.replace(lama ? { pathname: '/daftar/pin', params: { pulih: lama.id, sapaan: lama.sapaan } } : '/daftar/pin');
   };
   return (
     <Layar latar={warna.abuTerang} gulir>
