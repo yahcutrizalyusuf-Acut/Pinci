@@ -392,6 +392,20 @@ function rpc(nama, uid, badan) {
     pendaftar.unshift({ id: uuid(), jenis: badan.p_jenis, nama_ortu: badan.p_nama_ortu, email: String(badan.p_email || '').toLowerCase(), wa: badan.p_wa, kelas_anak: badan.p_kelas_anak, nama_anak: badan.p_nama_anak, nama_les: badan.p_nama_les, sumber: badan.p_sumber, status: 'baru', catatan: null, waktu: new Date(kini).toISOString() });
     return { status: 200, isi: { ok: true } };
   }
+  if (nama === 'daftar_coba') {
+    const d = badan.p || {};
+    if (!d.izin_kontak) return { status: 200, isi: { ok: false, alasan: 'belum_setuju' } };
+    if (!d.nama_ortu || !d.nama_lengkap_anak || !(d.wa || d.email)) return { status: 200, isi: { ok: false, alasan: 'isian_tidak_lengkap' } };
+    pendaftar.unshift({ id: uuid(), jenis: 'keluarga', nama_ortu: d.nama_ortu, email: d.email || null, wa: d.wa || null, kelas_anak: d.kelas, nama_anak: String(d.nama_lengkap_anak).split(' ')[0], nama_lengkap_anak: d.nama_lengkap_anak, nama_les: null, sumber: null, status: 'baru', catatan: null, waktu: new Date(kini).toISOString(), pelajaran: d.pelajaran || [], tujuan: d.tujuan || null, cara: d.cara || 'online', kota: d.kota || null, pengenalan: d.pengenalan || null, minta_telepon: !!d.minta_telepon, waktu_telepon: d.waktu_telepon || null, izin_pengembangan: !!d.izin_pengembangan, asal: d.asal === 'aplikasi' ? 'aplikasi' : 'web' });
+    const antre = d.cara === 'antre_tatap_muka' ? pendaftar.filter((x) => x.cara === 'antre_tatap_muka' && String(x.kota).toLowerCase() === String(d.kota).toLowerCase()).length : null;
+    return { status: 200, isi: { ok: true, harga: 50000, nomor_antrean: antre } };
+  }
+  if (nama === 'antrean_tatap_muka') {
+    if (!bolehUang(uid)) return { status: 200, isi: [] };
+    const n = {};
+    for (const x of pendaftar) if (x.cara === 'antre_tatap_muka' && x.status !== 'batal') n[x.kota] = (n[x.kota] || 0) + 1;
+    return { status: 200, isi: Object.entries(n).map(([kota, jumlah]) => ({ kota, jumlah })) };
+  }
   if (nama === 'daftar_pendaftar') return { status: 200, isi: bolehUang(uid) ? pendaftar : [] };
   if (nama === 'ubah_pendaftar') {
     const p = pendaftar.find((x) => x.id === badan.p_id);

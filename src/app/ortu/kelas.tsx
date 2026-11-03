@@ -25,6 +25,9 @@ import {
 } from '@/fitur/kelas';
 import { KepalaLayar, TeksOrtu, Tombol } from '@/komponen/dasar';
 
+/** Alamat website ditulis sebagai teks biasa, bukan link (aturan pembayaran Google Play untuk aplikasi tanpa pembelian). */
+const HALAMAN = (process.env.EXPO_PUBLIC_HALAMAN_URL ?? '').replace(/^https?:\/\//, '').replace(/\/$/, '');
+
 function Kotak({ children }: { children: React.ReactNode }) {
   return <View style={{ backgroundColor: warna.putih, borderRadius: 16, padding: 16, gap: 10 }}>{children}</View>;
 }
@@ -243,7 +246,11 @@ export default function KelasPengawas() {
                 <TeksOrtu style={{ color: warna.teksKedua }}>
                   Paket {PAKET[k.paket].nama} · {teksStatus(k)}
                 </TeksOrtu>
-                {k.status !== 'mitra' && k.status !== 'aktif' ? <TeksOrtu style={{ color: warna.teksKedua, fontSize: 14 }}>Biaya dan cara bayar dikirim ke email Anda.</TeksOrtu> : null}
+                {k.status !== 'mitra' && k.status !== 'aktif' ? (
+                  <TeksOrtu style={{ color: warna.teksKedua, fontSize: 14 }}>
+                    {HALAMAN ? `Untuk melanjutkan atau menambah pelajaran, kunjungi ${HALAMAN} atau tunggu pesan dari pengawas.` : 'Info lanjutan dikirim pengawas lewat WhatsApp atau email.'}
+                  </TeksOrtu>
+                ) : null}
                 <Centang
                   nyala={k.setujuPemakaian === true}
                   label="Kirim catatan pemakaian aplikasi untuk memperbaiki Pintar Main (boleh dimatikan kapan saja)"
@@ -273,7 +280,8 @@ export default function KelasPengawas() {
             ) : (
               <>
                 <TeksOrtu style={{ color: warna.teksKedua }}>Belum ikut kelas.</TeksOrtu>
-                <Tombol label="Masukkan kode kelas" ortu varian="garis" onPress={() => mulai(a)} />
+                <Tombol label="Coba 14 hari bersama pengawas" ortu onPress={() => router.push({ pathname: '/ortu/coba', params: { anak: a.id } })} />
+                <Tombol label="Sudah punya kode kelas" ortu varian="garis" onPress={() => mulai(a)} />
               </>
             )}
           </Kotak>

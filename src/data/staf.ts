@@ -418,7 +418,7 @@ export interface Pendaftar {
   id: string;
   jenis: 'keluarga' | 'mitra';
   nama_ortu: string;
-  email: string;
+  email: string | null;
   wa: string | null;
   kelas_anak: number | null;
   nama_anak: string | null;
@@ -427,6 +427,21 @@ export interface Pendaftar {
   status: StatusPendaftar;
   catatan: string | null;
   waktu: string;
+  // Pendaftaran masa coba (sejak 3 Nov 2026)
+  nama_lengkap_anak?: string | null;
+  pelajaran?: string[] | null;
+  tujuan?: string | null;
+  cara?: 'online' | 'antre_tatap_muka' | null;
+  kota?: string | null;
+  pengenalan?: Record<string, string> | null;
+  minta_telepon?: boolean;
+  waktu_telepon?: string | null;
+  izin_pengembangan?: boolean;
+  asal?: 'web' | 'aplikasi' | null;
+}
+
+export async function antreanTatapMuka(opsi: OpsiSupabase): Promise<{ kota: string; jumlah: number }[]> {
+  return (await rpc<{ kota: string; jumlah: number }[] | null>(opsi, 'antrean_tatap_muka')) ?? [];
 }
 
 export async function daftarPendaftar(opsi: OpsiSupabase): Promise<Pendaftar[]> {

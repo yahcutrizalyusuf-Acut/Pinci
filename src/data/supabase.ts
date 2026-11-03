@@ -592,3 +592,49 @@ export async function aturPersetujuanPemakaian(opsi: OpsiSupabase, anakId: strin
     return false;
   }
 }
+
+export interface DataDaftarCoba {
+  nama_ortu: string;
+  wa?: string;
+  email?: string;
+  nama_lengkap_anak: string;
+  kelas: number;
+  pelajaran: Pelajaran[];
+  tujuan?: string;
+  cara: 'online' | 'antre_tatap_muka';
+  kota?: string;
+  pengenalan?: Record<string, string>;
+  minta_telepon: boolean;
+  waktu_telepon?: string;
+  izin_kontak: boolean;
+  izin_pengembangan: boolean;
+  versi_teks: string;
+}
+
+export type HasilDaftarCoba =
+  | { ok: true; nomorAntrean?: number }
+  | { ok: false; alasan: 'isian_tidak_lengkap' | 'isian_tidak_valid' | 'belum_setuju' | 'kota_kosong' | 'terlalu_sering' | 'jaringan' };
+
+/**
+ * Daftar masa coba 14 hari dari mode orang tua. Server juga menghitung harga, tetapi aplikasi sengaja
+ * tidak membacanya: harga dan cara bayar disampaikan di luar aplikasi (aturan pembayaran Google Play).
+ */
+export async function daftarCoba(opsi: OpsiSupabase, data: DataDaftarCoba): Promise<HasilDaftarCoba> {
+  const f = opsi.fetchFn ?? fetch;
+  const token = (await opsi.ambilToken?.()) ?? null;
+  try {
+    const res = await f(`${opsi.url}/rest/v1/rpc/daftar_coba`, {
+      method: 'POST',
+      headers: kepala(opsi, token ?? undefined),
+      body: JSON.stringify({ p: { ...data, asal: 'aplikasi' } }),
+    });
+    if (!res.ok) return { ok: false, alasan: 'jaringan' };
+    const d = (await res.json()) as { ok: boolean; alasan?: string; nomor_antrean?: number | null };
+    if (d.ok) return d.nomor_antrean ? { ok: true, nomorAntrean: d.nomor_antrean } : { ok: true };
+    const dikenal = ['isian_tidak_lengkap', 'isian_tidak_valid', 'belum_setuju', 'kota_kosong', 'terlalu_sering'] as const;
+    const a = dikenal.find((x) => x === d.alasan);
+    return { ok: false, alasan: a ?? 'isian_tidak_valid' };
+  } catch {
+    return { ok: false, alasan: 'jaringan' };
+  }
+}
