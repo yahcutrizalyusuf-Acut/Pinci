@@ -37,7 +37,7 @@ const PESAN_GALAT: Record<string, string> = {
   isian_tidak_valid: 'Ada isian yang belum sesuai. Periksa lagi, lalu kirim ulang.',
   belum_setuju: 'Centang persetujuan dihubungi pengawas dulu.',
   kota_kosong: 'Tulis kota untuk antrean kelas tatap muka.',
-  terlalu_sering: 'Pendaftaran dari kontak ini sudah 3 kali hari ini. Coba lagi besok.',
+  terlalu_sering: 'Pendaftaran dari kontak ini sudah terlalu banyak hari ini. Coba lagi besok, atau isi email yang berbeda.',
   jaringan: 'Belum terkirim. Periksa internet, lalu coba lagi.',
 };
 
