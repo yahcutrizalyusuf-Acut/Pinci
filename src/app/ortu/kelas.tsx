@@ -23,6 +23,7 @@ import {
   teksStatus,
   teksPersetujuan,
 } from '@/fitur/kelas';
+import type { CatatanDaftarCoba } from '@/fitur/pengenalan';
 import { KepalaLayar, TeksOrtu, Tombol } from '@/komponen/dasar';
 
 /** Alamat website ditulis sebagai teks biasa, bukan link (aturan pembayaran Google Play untuk aplikasi tanpa pembelian). */
@@ -63,6 +64,7 @@ export default function KelasPengawas() {
   const [memuat, setMemuat] = useState(false);
   const [yakinKeluar, setYakinKeluar] = useState<string | null>(null);
   const kelas = useMuat(async (r) => r.daftarKelasAnak(), []);
+  const terdaftar = useMuat(async (r) => new Map((await r.nilaiAwalan<CatatanDaftarCoba>('daftar_coba:')).map(([k, v]) => [k.slice('daftar_coba:'.length), v])), new Map<string, CatatanDaftarCoba>());
 
   useEffect(() => {
     repo.nilai<Sesimasuk>('sesi_masuk').then((s) => setMasuk(!!s));
@@ -279,8 +281,19 @@ export default function KelasPengawas() {
               </>
             ) : (
               <>
-                <TeksOrtu style={{ color: warna.teksKedua }}>Belum ikut kelas.</TeksOrtu>
-                <Tombol label="Coba 14 hari bersama pengawas" ortu onPress={() => router.push({ pathname: '/ortu/coba', params: { anak: a.id } })} />
+                {terdaftar.get(a.id) ? (
+                  <TeksOrtu style={{ color: warna.teksKedua }}>
+                    Pendaftaran coba 14 hari terkirim {new Date(terdaftar.get(a.id)!.waktu).toLocaleDateString('id-ID', { day: 'numeric', month: 'long' })}. Pengawas akan mengirim kode kelas lewat WhatsApp atau email.
+                  </TeksOrtu>
+                ) : (
+                  <TeksOrtu style={{ color: warna.teksKedua }}>Belum ikut kelas.</TeksOrtu>
+                )}
+                <Tombol
+                  label={terdaftar.get(a.id) ? 'Lihat pendaftaran' : 'Coba 14 hari bersama pengawas'}
+                  ortu
+                  varian={terdaftar.get(a.id) ? 'garis' : 'utama'}
+                  onPress={() => router.push({ pathname: '/ortu/coba', params: { anak: a.id } })}
+                />
                 <Tombol label="Sudah punya kode kelas" ortu varian="garis" onPress={() => mulai(a)} />
               </>
             )}

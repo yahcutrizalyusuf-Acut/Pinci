@@ -132,6 +132,18 @@ const cek = (kondisi, pesan) => {
   cek(await ada(p, 'antrean kelas tatap muka Banda Aceh, nomor'), 'selesai: nomor antrean tatap muka tampil');
   await foto('8-selesai');
 
+  // Kembali ke Kelas dan pengawas: pendaftaran diingat, tidak muncul formulir kosong lagi.
+  await teks('Selesai');
+  await t(1000);
+  cek(await ada(p, 'Pendaftaran coba 14 hari terkirim'), 'kelas: pendaftaran yang terkirim diingat');
+  await teks('Lihat pendaftaran');
+  await t(1000);
+  cek((await ada(p, 'Pendaftaran sudah terkirim')) && (await ada(p, 'Rani Putri Aceh')), 'buka lagi: ringkasan pendaftaran, bukan formulir kosong');
+  await foto('8b-sudah-terkirim');
+  await teks('Ubah dan kirim ulang');
+  await t(600);
+  cek((await p.getByLabel('Nama lengkap anak').inputValue()) === 'Rani Putri Aceh', 'ubah: formulir terisi data sebelumnya');
+
   // Staf melihat pendaftar
   const staf = await buka();
   await staf.p.goto(D + '/staf');

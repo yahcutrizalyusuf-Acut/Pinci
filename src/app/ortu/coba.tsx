@@ -5,7 +5,7 @@
  * (aturan pembayaran Google Play, laporan Play Console 3 Nov 2026).
  */
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -22,12 +22,14 @@ import {
   VERSI_DAFTAR,
   WAKTU_TELEPON,
   emailSah,
+  kunciDaftarCoba,
+  type CatatanDaftarCoba,
   pelajaranUntukKelas,
   waSah,
 } from '@/fitur/pengenalan';
 import { KepalaLayar, TeksOrtu, Tombol } from '@/komponen/dasar';
 
-type Tahap = 'anak' | 'cara' | 'tatap_muka' | 'kontak' | 'kenali' | 'telepon' | 'izin' | 'selesai';
+type Tahap = 'memuat' | 'sudah' | 'anak' | 'cara' | 'tatap_muka' | 'kontak' | 'kenali' | 'telepon' | 'izin' | 'selesai';
 const URUTAN: Tahap[] = ['anak', 'cara', 'kontak', 'kenali', 'telepon', 'izin'];
 
 const PESAN_GALAT: Record<string, string> = {
@@ -84,9 +86,10 @@ function Isian({ label, nilai, ubah, contoh, jenis }: { label: string; nilai: st
 export default function DaftarCobaLayar() {
   const router = useRouter();
   const { anak: anakId } = useLocalSearchParams<{ anak?: string }>();
-  const { server, daftarAnak, keluarga } = useData();
+  const { repo, server, daftarAnak, keluarga } = useData();
   const anak = daftarAnak.find((a) => a.id === anakId) ?? daftarAnak[0];
-  const [tahap, setTahap] = useState<Tahap>('anak');
+  const [tahap, setTahap] = useState<Tahap>('memuat');
+  const [catatan, setCatatan] = useState<CatatanDaftarCoba | null>(null);
   const [d, setD] = useState({
     namaOrtu: keluarga?.sapaanOrtu && keluarga.sapaanOrtu !== 'Ayah' && keluarga.sapaanOrtu !== 'Bunda' ? keluarga.sapaanOrtu : '',
     namaAnak: '',
@@ -107,6 +110,28 @@ export default function DaftarCobaLayar() {
   const [antrean, setAntrean] = useState<number | null>(null);
   const ubah = (lain: Partial<typeof d>) => setD((x) => ({ ...x, ...lain }));
 
+  // Pendaftaran yang sudah terkirim ditampilkan lagi (bukan formulir kosong), dan bisa diubah lalu dikirim ulang.
+  useEffect(() => {
+    if (!anak) return;
+    let batal = false;
+    repo
+      .nilai<CatatanDaftarCoba>(kunciDaftarCoba(anak.id))
+      .then((c) => {
+        if (batal) return;
+        // Hanya saat layar baru dibuka; menyimpan pendaftaran tidak boleh memindahkan layar yang sedang berjalan.
+        if (c) {
+          setCatatan(c);
+          setD((x) => ({ ...x, ...c, izinKontak: false }));
+        }
+        setTahap((t) => (t === 'memuat' ? (c ? 'sudah' : 'anak') : t));
+      })
+      .catch(() => !batal && setTahap((t) => (t === 'memuat' ? 'anak' : t)));
+    return () => {
+      batal = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [repo, anak?.id]);
+
   if (!anak) return <Latar><TeksOrtu>Tambahkan profil anak lebih dulu.</TeksOrtu></Latar>;
   if (!server) return <Latar><TeksOrtu>Pendaftaran butuh sambungan ke server.</TeksOrtu></Latar>;
 
@@ -114,7 +139,8 @@ export default function DaftarCobaLayar() {
   const nomor = URUTAN.indexOf(tahap === 'tatap_muka' ? 'cara' : tahap) + 1;
   const kembali = () => {
     setPesan('');
-    if (tahap === 'anak' || tahap === 'selesai') return router.back();
+    if (tahap === 'anak' && catatan) return setTahap('sudah');
+    if (tahap === 'anak' || tahap === 'selesai' || tahap === 'sudah' || tahap === 'memuat') return router.back();
     if (tahap === 'tatap_muka') return setTahap('cara');
     setTahap(URUTAN[Math.max(0, URUTAN.indexOf(tahap) - 1)]);
   };
@@ -148,12 +174,48 @@ export default function DaftarCobaLayar() {
     const h = await daftarCoba(server, data);
     setMemuat(false);
     if (!h.ok) return setPesan(PESAN_GALAT[h.alasan] ?? PESAN_GALAT.isian_tidak_valid);
-    setAntrean(h.ok && h.nomorAntrean ? h.nomorAntrean : null);
+    const nomorAntrean = h.ok && h.nomorAntrean ? h.nomorAntrean : undefined;
+    const baru: CatatanDaftarCoba = {
+      waktu: new Date().toISOString(),
+      namaOrtu: d.namaOrtu.trim(),
+      namaAnak: d.namaAnak.trim(),
+      pelajaran: d.pelajaran,
+      tujuan: d.tujuan.trim(),
+      cara: d.cara,
+      kota: d.kota.trim(),
+      wa: d.wa.trim(),
+      email: d.email.trim(),
+      pengenalan: d.pengenalan,
+      mintaTelepon: d.mintaTelepon,
+      waktuTelepon: d.waktuTelepon,
+      izinPengembangan: d.izinPengembangan,
+      ...(nomorAntrean ? { nomorAntrean } : {}),
+    };
+    await repo.aturNilai(kunciDaftarCoba(anak.id), baru, anak.id);
+    setCatatan(baru);
+    setAntrean(nomorAntrean ?? null);
     setTahap('selesai');
   };
 
   return (
-    <Latar onKembali={kembali} langkah={tahap === 'selesai' ? undefined : `Langkah ${nomor} dari ${URUTAN.length}`}>
+    <Latar onKembali={kembali} langkah={tahap === 'selesai' || tahap === 'sudah' || tahap === 'memuat' ? undefined : `Langkah ${nomor} dari ${URUTAN.length}`}>
+      {tahap === 'sudah' && catatan ? (
+        <Kotak>
+          <TeksOrtu style={{ fontFamily: huruf.ortuTebal, fontSize: 18 }}>Pendaftaran sudah terkirim</TeksOrtu>
+          <TeksOrtu>
+            {catatan.namaAnak} · Kelas {anak.kelas} · dikirim {new Date(catatan.waktu).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </TeksOrtu>
+          <TeksOrtu style={{ color: warna.teksKedua }}>
+            Pelajaran tambahan: {catatan.pelajaran.length ? pilihan.filter((p) => catatan.pelajaran.includes(p.kode)).map((p) => p.judul).join(', ') : 'belum dipilih'}
+            {catatan.cara === 'antre_tatap_muka' ? ` · Antre tatap muka ${catatan.kota}${catatan.nomorAntrean ? `, nomor ${catatan.nomorAntrean}` : ''}` : ' · Kelas online'}
+          </TeksOrtu>
+          <TeksOrtu>
+            Pengawas akan menghubungi {catatan.wa ? `WhatsApp ${catatan.wa}` : catatan.email} untuk memberikan kode kelas. Setelah dapat kodenya, masukkan lewat tombol Sudah punya kode kelas.
+          </TeksOrtu>
+          <Tombol label="Kembali" ortu onPress={() => router.back()} />
+          <Tombol label="Ubah dan kirim ulang" ortu varian="garis" onPress={() => setTahap('anak')} />
+        </Kotak>
+      ) : null}
       {tahap === 'anak' ? (
         <>
           <Kotak>
