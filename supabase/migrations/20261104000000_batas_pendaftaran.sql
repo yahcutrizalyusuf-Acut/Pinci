@@ -1,8 +1,8 @@
--- Pintar Main — melonggarkan batas pendaftaran masa coba: 3 menjadi 15 per kontak per hari.
+-- Pintar Main — melonggarkan batas pendaftaran masa coba: 3 menjadi 5 per kontak per hari.
 -- Sebabnya: satu keluarga bisa punya beberapa anak dan mendaftar dengan nomor yang sama (laporan Acut 4 Nov 2026).
 -- Batas 300 per jam di seluruh server tetap ada untuk mencegah banjir pendaftaran.
 
--- Dipanggil website (tanpa masuk) dan mode orang tua di aplikasi. Dibatasi 15 kali per kontak per hari (satu keluarga bisa mendaftarkan beberapa anak), 300 per jam.
+-- Dipanggil website (tanpa masuk) dan mode orang tua di aplikasi. Dibatasi 5 kali per kontak per hari (satu keluarga bisa mendaftarkan beberapa anak), 300 per jam.
 create or replace function daftar_coba(p jsonb) returns jsonb
   language plpgsql security definer set search_path = public
 as $$
@@ -38,7 +38,7 @@ begin
   end if;
   v_pel := array(select x from unnest(v_pel) x where x <> 'tka' or v_kelas = 6);
   v_kontak := coalesce(v_email, v_wa);
-  if (select count(*) from pendaftar where coalesce(email, wa) = v_kontak and waktu > now() - interval '1 day') >= 15
+  if (select count(*) from pendaftar where coalesce(email, wa) = v_kontak and waktu > now() - interval '1 day') >= 5
      or (select count(*) from pendaftar where waktu > now() - interval '1 hour') >= 300 then
     return jsonb_build_object('ok', false, 'alasan', 'terlalu_sering');
   end if;
