@@ -142,3 +142,25 @@ export function waSah(wa: string): boolean {
 export function emailSah(email: string): boolean {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim());
 }
+
+/** Catatan di HP bahwa pendaftaran masa coba anak ini sudah terkirim (supaya formulir tidak kosong lagi). */
+export interface CatatanDaftarCoba {
+  waktu: string;
+  namaOrtu: string;
+  namaAnak: string;
+  pelajaran: Pelajaran[];
+  tujuan: string;
+  cara: 'online' | 'antre_tatap_muka';
+  kota: string;
+  wa: string;
+  email: string;
+  pengenalan: Record<string, string>;
+  mintaTelepon: boolean;
+  waktuTelepon: string;
+  izinPengembangan: boolean;
+  nomorAntrean?: number;
+}
+
+export function kunciDaftarCoba(anakId: string) {
+  return `daftar_coba:${anakId}`;
+}

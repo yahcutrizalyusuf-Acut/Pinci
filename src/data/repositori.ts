@@ -654,6 +654,7 @@ export class Repositori {
     for (const t of ['sesi', 'jawaban', 'kemajuan_topik', 'pesan', 'pemakaian', 'catatan_pengawas', 'tugas', 'anggota_kelas'] as const) {
       for (const b of (await this.gudang.cari(t, { anak_id: id })) as { id: string }[]) await this.gudang.hapus(t, b.id);
     }
+    for (const n of await this.gudang.cari('nilai', { anak_id: id })) await this.gudang.hapus('nilai', n.id);
     await this.gudang.hapus('pengaturan_waktu', id);
     await this.gudang.hapus('anak', id);
     const dihapus = new Set((await this.nilai<string[]>('anak_dihapus')) ?? []);
