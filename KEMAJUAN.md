@@ -52,7 +52,7 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 
 ## Berikutnya
 
-0. Pasang `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` di Supabase (urutan di `docs/CARA-MENYAMBUNG-SUPABASE.md`). Guru memeriksa `docs/NASKAH-KOMIK-UNTUK-GURU.md`. Acut menjawab pertanyaan di `LAPORAN-LANJUTAN-KOMIK.md`. Website baru dan halaman sambutan ditunda sampai Acut memutuskan (saran tim merah: uji ke pembeli dulu).
+0. Pasang `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` di Supabase (urutan di `docs/CARA-MENYAMBUNG-SUPABASE.md`). Guru memeriksa `docs/NASKAH-KOMIK-UNTUK-GURU.md`. Website baru dan halaman sambutan ditunda sampai Acut memutuskan (saran tim merah: uji ke pembeli dulu).
 1. Keputusan Acut 29 Okt sudah diterapkan (`docs/rancangan/keputusan.md` bagian K).
 2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
 3. Pasang SQL hubungkan HP anak di Supabase, lalu uji dua HP sungguhan (orang tua dan anak).

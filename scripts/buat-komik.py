@@ -280,7 +280,7 @@ KOMIK = [
         'pesanHariIni': {'inggris': 'Help your friends.', 'arti': 'Tolonglah temanmu.'},
         'kataTarget': ['ear', 'nose', 'eye', 'leg', 'foot', 'hand', 'arm'],
         'panel': [
-            panel('Lapangan bola sore hari menjelang pesta panen. Kak Fajar mengajak anak-anak bermain tebak tubuh.', 'lapangan',
+            panel('Lapangan bola sore hari menjelang kenduri panen. Kak Fajar mengajak anak-anak bermain tebak tubuh.', 'lapangan',
                   [tk('kak_fajar', 'menunjuk', 'kiri'), tk('nisa', 'gembira', 'kanan')],
                   [g('kak_fajar', 'Touch your ears! Touch your nose!', 'Sentuh telingamu! Sentuh hidungmu!'), g('nisa', 'This is my nose!', 'Ini hidungku!', 'kanan_atas', 'kanan')],
                   ['touch', 'ears', 'nose'], ['touch: ou dibaca a pendek, tach.']),
@@ -321,7 +321,7 @@ KOMIK = [
         'pesanHariIni': {'inggris': 'Take only what you can eat.', 'arti': 'Ambil makanan secukupnya saja.'},
         'kataTarget': ['rice', 'chicken', 'egg', 'tea', 'milk', 'juice', 'water'],
         'panel': [
-            panel('Kedai Nek Ijah menjelang pesta panen. Meja penuh nasi, ayam, dan telur. Nek Ijah tersenyum.', 'kedai',
+            panel('Kedai Nek Ijah menjelang kenduri. Meja penuh nasi, ayam, dan telur. Nek Ijah tersenyum.', 'kedai',
                   [tk('nek_ijah', 'gembira', 'kiri'), tk('bima', 'kaget', 'kanan')],
                   [g('nek_ijah', 'Rice, chicken, and egg! Yummy!', 'Nasi, ayam, dan telur! Lezat!')], ['rice', 'chicken', 'egg'], ['rice: r tidak bergetar; ice dibaca ais.']),
             panel('Bima menunjuk makanan dengan gembira; Nisa menolak teh dengan menggeleng.', 'kedai',
@@ -417,8 +417,8 @@ KOMIK = [
                   [g('dafi', 'Brush teeth, wash hands, eat breakfast!', 'Gosok gigi, cuci tangan, sarapan!')], ['brush teeth', 'wash hands', 'eat breakfast'], ['brush: sh dibaca sy panjang.']),
             panel('Fathan bangun dan malu. Ia berterima kasih; dada Robi menyala dan Robi berubah menjadi Super Robi bersayap cahaya.', 'rumah',
                   [tk('fathan', 'berdiri', 'kiri'), tk('robi', 'gembira', 'kanan', varian='super')],
-                  [g('fathan', 'Sorry, {robi}. Thank you!', 'Maaf, {robi}. Terima kasih!'), g('robi', 'Thank you is magic! Super {robi}!', 'Terima kasih itu ajaib! Super {robi}!', 'kanan_atas', 'kanan')],
-                  ['sorry', 'thank you'], ['magic: g dibaca j, ma-jik.']),
+                  [g('fathan', 'Sorry, {robi}. Thank you!', 'Maaf, {robi}. Terima kasih!'), g('robi', 'You are welcome! Super {robi}!', 'Sama-sama! Super {robi}!', 'kanan_atas', 'kanan')],
+                  ['sorry', 'thank you'], ['welcome: w dengan bibir membulat, wel-kam.']),
             panel('Super Robi mengusir kabut dengan perisai cahaya. Anak-anak berangkat sekolah dengan semangat.', 'jalan',
                   [tk('robi', 'gembira', 'kiri', varian='super'), tk('fathan', 'melambai', 'tengah'), tk('nisa', 'gembira', 'kanan')],
                   [g('fathan', "Let's go to school!", 'Ayo berangkat sekolah!'), g('robi', 'Study, study!', 'Belajar, belajar!', 'kanan_atas', 'kanan')],

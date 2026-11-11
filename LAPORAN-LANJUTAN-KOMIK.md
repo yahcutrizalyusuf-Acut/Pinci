@@ -52,14 +52,14 @@
 
 - **588 uji otomatis lulus.** Uji database juga lulus.
 - Aplikasi berjalan penuh **tanpa sinyal**.
-- Ada dua pemeriksa bebas, satu untuk naskah dan satu untuk privasi. Semua temuan penting sudah diperbaiki: kata *kenduri*, beberapa kalimat Inggris, sisa rekaman yang terputus, rekaman anak yang profilnya dihapus, dan pindah data antar-HP. Rinciannya ada di `docs/LAPORAN-PEMERIKSAAN-KOMIK.md`.
+- Ada dua pemeriksa bebas, satu untuk naskah dan satu untuk privasi. Semua temuan penting sudah diperbaiki: beberapa kalimat Inggris, pengecoh soal, sisa rekaman yang terputus, rekaman anak yang profilnya dihapus, dan pindah data antar-HP. Rinciannya ada di `docs/LAPORAN-PEMERIKSAAN-KOMIK.md`.
 - Semua naskah berstatus **belum diperiksa guru**. Daftarnya: `docs/DAFTAR-PERIKSA-GURU.md` bagian 6–8 dan `docs/NASKAH-KOMIK-UNTUK-GURU.md`.
 
-## 6. Perlu jawaban Acut
+## 6. Jawaban Acut (11 Nov 2026)
 
-1. **Kenduri:** sementara saya ganti dengan "pesta panen". Boleh kembali memakai kata *kenduri*?
-2. **Pesta ulang tahun** (komik T4-3, "Nisa's Birthday"): sebagian keluarga di Aceh tidak merayakannya. Tetap dipakai, atau diganti misalnya "hari pertama sekolah"?
-3. Kata ***magic*** (komik T4-4): bisa dipahami sebagai sihir. Diganti saja, misalnya *super light*?
+1. **Kenduri** boleh dipakai: kata ini dikembalikan ke adegan T4-1 dan T4-2.
+2. **Pesta ulang tahun** (T4-3) tetap dipakai.
+3. **Magic** (T4-4) diganti: Robi sekarang menjawab *"You are welcome! Super Robi!"* (Sama-sama!).
 
 Keputusan yang saya ambil sendiri ada di `KEPUTUSAN-PEMBANGUNAN.md` nomor 74–89. Contohnya: batas kenangan rekaman 5 untuk satu HP, dan hasil Ceritakan Lagi yang terkirim ke server hanya centang serta ada/tidaknya rekaman.
 
@@ -67,6 +67,6 @@ Keputusan yang saya ambil sendiri ada di `KEPUTUSAN-PEMBANGUNAN.md` nomor 74–8
 
 | Langkah | Siapa |
 |---|---|
-| Pasang 2 berkas SQL di Supabase (urutan di `docs/CARA-MENYAMBUNG-SUPABASE.md`) dan jawab 3 pertanyaan di atas | Acut |
+| Pasang 2 berkas SQL di Supabase (urutan di `docs/CARA-MENYAMBUNG-SUPABASE.md`) | Acut |
 | Guru Bahasa Inggris memeriksa 12 naskah komik. Guru Matematika memeriksa 28 soal cerita | Guru, lewat Acut |
 | Desainer menggambar 5 anak dan Robi untuk menggantikan gambar sementara | Desainer, paling lambat 11 Des 2026 |

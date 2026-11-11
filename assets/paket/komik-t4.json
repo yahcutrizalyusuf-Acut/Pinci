@@ -28,7 +28,7 @@
         {
           "id": "t4-u01-p1",
           "nomor": 1,
-          "adegan": "Lapangan bola sore hari menjelang pesta panen. {kak_fajar} mengajak anak-anak bermain tebak tubuh.",
+          "adegan": "Lapangan bola sore hari menjelang kenduri panen. {kak_fajar} mengajak anak-anak bermain tebak tubuh.",
           "latar": "lapangan",
           "tokoh": [
             {
@@ -353,7 +353,7 @@
         {
           "id": "t4-u02-p1",
           "nomor": 1,
-          "adegan": "Kedai {nek_ijah} menjelang pesta panen. Meja penuh nasi, ayam, dan telur. {nek_ijah} tersenyum.",
+          "adegan": "Kedai {nek_ijah} menjelang kenduri. Meja penuh nasi, ayam, dan telur. {nek_ijah} tersenyum.",
           "latar": "kedai",
           "tokoh": [
             {
@@ -1176,8 +1176,8 @@
             {
               "id": "t4-u04-p5-g2",
               "tokoh": "robi",
-              "teks": "Thank you is magic! Super {robi}!",
-              "arti": "Terima kasih itu ajaib! Super {robi}!",
+              "teks": "You are welcome! Super {robi}!",
+              "arti": "Sama-sama! Super {robi}!",
               "posisi": "kanan_atas",
               "ekor": "kanan"
             }
@@ -1187,7 +1187,7 @@
             "thank you"
           ],
           "tipsBunyi": [
-            "magic: g dibaca j, ma-jik."
+            "welcome: w dengan bibir membulat, wel-kam."
           ]
         },
         {

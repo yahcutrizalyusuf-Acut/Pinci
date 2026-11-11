@@ -185,7 +185,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 
 | Panel | Adegan | Tokoh | Gelembung Inggris | Arti | Tips bunyi |
 |---|---|---|---|---|---|
-| 1 | Lapangan bola sore hari menjelang pesta panen. Kak Fajar mengajak anak-anak bermain tebak tubuh. | Kak Fajar | Touch your ears! Touch your nose! | Sentuh telingamu! Sentuh hidungmu! | touch: ou dibaca a pendek, tach. |
+| 1 | Lapangan bola sore hari menjelang kenduri panen. Kak Fajar mengajak anak-anak bermain tebak tubuh. | Kak Fajar | Touch your ears! Touch your nose! | Sentuh telingamu! Sentuh hidungmu! | touch: ou dibaca a pendek, tach. |
 |  |  | Nisa | This is my nose! | Ini hidungku! |  |
 | 2 | Bima menunjuk matanya dan telinganya sambil bercanda; teman-teman tertawa. | Bima | I have two eyes and big ears! | Aku punya dua mata dan telinga besar! | eyes dibaca ais, bunyi z kecil di akhir. |
 | 3 | Malam turun. Kabut kelabu datang perlahan ke jalan gampong; Mister Kabut menggerutu lucu. | Mister Kabut | Hmm… don't help, don't help! | Hmm… jangan menolong, jangan menolong! | help: huruf p di akhir tetap diucapkan. |
@@ -215,7 +215,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 
 | Panel | Adegan | Tokoh | Gelembung Inggris | Arti | Tips bunyi |
 |---|---|---|---|---|---|
-| 1 | Kedai Nek Ijah menjelang pesta panen. Meja penuh nasi, ayam, dan telur. Nek Ijah tersenyum. | Nek Ijah | Rice, chicken, and egg! Yummy! | Nasi, ayam, dan telur! Lezat! | rice: r tidak bergetar; ice dibaca ais. |
+| 1 | Kedai Nek Ijah menjelang kenduri. Meja penuh nasi, ayam, dan telur. Nek Ijah tersenyum. | Nek Ijah | Rice, chicken, and egg! Yummy! | Nasi, ayam, dan telur! Lezat! | rice: r tidak bergetar; ice dibaca ais. |
 | 2 | Bima menunjuk makanan dengan gembira; Nisa menolak teh dengan menggeleng. | Bima | I like rice! I like chicken! | Aku suka nasi! Aku suka ayam! | chicken: ch dibaca seperti c Indonesia. |
 |  |  | Nisa | I don't like tea. | Aku tidak suka teh. |  |
 | 3 | Kabut kelabu masuk lewat jendela kedai. Mister Kabut berbisik pada Bima. | Mister Kabut | Hmm… more rice, more! | Hmm… nasi lagi, lagi! | more: o panjang, lalu r dibunyikan lembut, mor. |
@@ -279,8 +279,8 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 |  |  | Fathan | No, no… sleep! | Tidak, tidak… mau tidur! |  |
 | 3 | Nisa sudah bangun, menunjuk jam dinding: jam enam pagi. | Nisa | I wake up at six! | Aku bangun jam enam! | six: huruf x dibaca ks. |
 | 4 | Dafi dan Nisa bersiap: menggosok gigi, mencuci tangan, lalu sarapan. | Dafi | Brush teeth, wash hands, eat breakfast! | Gosok gigi, cuci tangan, sarapan! | brush: sh dibaca sy panjang. |
-| 5 | Fathan bangun dan malu. Ia berterima kasih; dada Robi menyala dan Robi berubah menjadi Super Robi bersayap cahaya. | Fathan | Sorry, Robi. Thank you! | Maaf, Robi. Terima kasih! | magic: g dibaca j, ma-jik. |
-|  |  | Robi | Thank you is magic! Super Robi! | Terima kasih itu ajaib! Super Robi! |  |
+| 5 | Fathan bangun dan malu. Ia berterima kasih; dada Robi menyala dan Robi berubah menjadi Super Robi bersayap cahaya. | Fathan | Sorry, Robi. Thank you! | Maaf, Robi. Terima kasih! | welcome: w dengan bibir membulat, wel-kam. |
+|  |  | Robi | You are welcome! Super Robi! | Sama-sama! Super Robi! |  |
 | 6 | Super Robi mengusir kabut dengan perisai cahaya. Anak-anak berangkat sekolah dengan semangat. | Fathan | Let's go to school! | Ayo berangkat sekolah! | school: oo panjang, skuul. |
 |  |  | Robi | Study, study! | Belajar, belajar! |  |
 

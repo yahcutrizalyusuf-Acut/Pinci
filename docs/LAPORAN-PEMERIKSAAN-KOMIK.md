@@ -8,12 +8,12 @@ Yang sudah benar: semua berstatus `belum_diperiksa`, batas panel dan kata dipatu
 
 | Temuan | Tingkat | Tindakan |
 |---|---|---|
-| Kata *kenduri* di adegan t4-u01 dan t4-u02 (di Aceh biasanya disertai doa, aturan 9) | Penting | **Diganti "pesta panen".** Kalau Acut ingin memakai *kenduri*, tinggal dikembalikan |
+| Kata *kenduri* di adegan t4-u01 dan t4-u02 (di Aceh biasanya disertai doa, aturan 9) | Penting | Sempat diganti "pesta panen"; **Acut memutuskan *kenduri* boleh dipakai** (11 Nov), jadi dikembalikan |
 | Pengecoh "sofa" (t4-u06) dan "milk" (t4-u02) di soal Lengkapi bisa juga benar | Penting/sedang | **Diganti** dengan kata yang jelas tidak cocok |
 | Bahasa Inggris kurang wajar: *no help* → *don't help*; *It is me* → *It was me*; Robi *I love my family too* → *I love your family too*; *Please, please!* dan *No… I sleep* diganti kalimat yang sesuai arti | Sedang | **Diperbaiki** |
 | Tips bunyi gaya Britania (r tidak dibunyikan) untuk *more*, *party*, *are you*, padahal suara contoh en-US | Sedang | **Diperbaiki** ke gaya Amerika (r dibunyikan lembut) |
 | "Lima sahabat" padahal yang tampil empat tokoh (t3-u02) | Kecil | **Diperbaiki** |
-| Tema pesta ulang tahun (t4-u03) dan kata *magic* (t4-u04) | Pertanyaan | **Ditanyakan ke Acut** (lihat LAPORAN-LANJUTAN-KOMIK.md) |
+| Tema pesta ulang tahun (t4-u03) dan kata *magic* (t4-u04) | Pertanyaan | **Keputusan Acut (11 Nov):** ulang tahun tetap; *magic* diganti *You are welcome!* |
 | Mister Kabut berbisik di jendela saat anak tidur terasa seram; kesalahan anak selalu "karena dibisiki kabut" | Sedang | **Belum diubah.** Dicatat untuk guru dan desainer saat menggambar panel asli; usulan: Mister Kabut tampil lucu dan siang hari, dan anak mengakui kesalahannya sendiri |
 | Arti kecil (*foot*, *evening*, *at night*), kata baru > 2 di beberapa komik | Kecil | Dibiarkan untuk pemeriksaan guru (daftar di laporan lengkap) |
 
