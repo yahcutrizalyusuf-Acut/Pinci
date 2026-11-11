@@ -73,6 +73,11 @@ export interface UnitInggris {
   /** kosong untuk tingkat 3 */
   susun: SoalSusun[];
   permainan: PermainanKata[];
+  /**
+   * Kata yang diperkenalkan komik unit ini di luar 8–10 kosakata inti (ditambah 11 Nov 2026). Tampil di Kenal Kata
+   * dan dihitung sebagai kata unit oleh pemeriksa komik; tanpa rekaman bawaan (memakai mesin suara HP).
+   */
+  kataKomik?: Kosakata[];
   /** Bunyi Hari Ini (phonics), ditambah 11 Nov 2026 */
   bunyiHariIni?: BunyiHariIni;
   /** gerakan untuk kata kerja dan perintah (TPR), ditambah 11 Nov 2026 */

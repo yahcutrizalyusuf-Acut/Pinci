@@ -61,7 +61,7 @@ export function buatKamus(paketSemua: PaketInggris[], tingkat: number): Map<stri
   const kamus = new Map<string, Kosakata>();
   for (const p of paketSemua) {
     if (p.tingkat > tingkat) continue;
-    for (const u of p.unit) for (const k of u.kosakata) if (!kamus.has(k.kata.toLowerCase())) kamus.set(k.kata.toLowerCase(), k);
+    for (const u of p.unit) for (const k of [...u.kosakata, ...(u.kataKomik ?? [])]) if (!kamus.has(k.kata.toLowerCase())) kamus.set(k.kata.toLowerCase(), k);
   }
   return kamus;
 }

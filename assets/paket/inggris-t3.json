@@ -177,6 +177,94 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "kataKomik": [
+        {
+          "id": "t3-u01-kk01",
+          "kata": "hi",
+          "arti": "hai",
+          "emoji": "👋",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk02",
+          "kata": "I am",
+          "arti": "aku, saya",
+          "emoji": "🙋",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk03",
+          "kata": "how are you",
+          "arti": "apa kabar",
+          "emoji": "🙂",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk04",
+          "kata": "fine",
+          "arti": "baik",
+          "emoji": "👍",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk05",
+          "kata": "please",
+          "arti": "tolong, silakan",
+          "emoji": "🤝",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk06",
+          "kata": "thank you",
+          "arti": "terima kasih",
+          "emoji": "💐",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk07",
+          "kata": "sorry",
+          "arti": "maaf",
+          "emoji": "😔",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk08",
+          "kata": "goodbye",
+          "arti": "sampai jumpa",
+          "emoji": "🚶",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk09",
+          "kata": "robot",
+          "arti": "robot",
+          "emoji": "🤖",
+          "status": "belum_diperiksa"
+        },
+        {
+          "id": "t3-u01-kk10",
+          "kata": "help",
+          "arti": "bantu, tolong",
+          "emoji": "🆘",
+          "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 1,
+        "bunyi": "huruf e bisu di akhir",
+        "kata": [
+          "fine"
+        ],
+        "tips": "Huruf e di akhir kata diam dan membuat huruf vokal sebelumnya \"menyebut namanya\": cake dibaca keik, fine dibaca fain.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t3-u01-k01",
+          "jenis": "lambai",
+          "petunjuk": "Lambaikan tangan!"
+        }
       ]
     },
     {
@@ -359,7 +447,17 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 3,
+        "bunyi": "bunyi th",
+        "kata": [
+          "three"
+        ],
+        "tips": "Ujung lidah keluar sedikit di antara gigi: thank, three, this, mother.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u03",
@@ -535,7 +633,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 5,
+        "bunyi": "ee dan ea",
+        "kata": [
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen"
+        ],
+        "tips": "Dibaca \"i\" panjang: see, tree, eat.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u04",
@@ -717,7 +828,17 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 2,
+        "bunyi": "a pendek",
+        "kata": [
+          "black"
+        ],
+        "tips": "Mulut terbuka lebar seperti mau bilang \"e\" sambil tersenyum: cat, bag, apple.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u05",
@@ -885,7 +1006,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 3,
+        "bunyi": "bunyi th",
+        "kata": [
+          "father",
+          "mother",
+          "brother",
+          "grandfather"
+        ],
+        "tips": "Ujung lidah keluar sedikit di antara gigi: thank, three, this, mother.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u06",
@@ -1066,6 +1200,22 @@
             "t3-u06-k10"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 4,
+        "bunyi": "bunyi sh dan ch",
+        "kata": [
+          "chair"
+        ],
+        "tips": "sh dibaca \"sy\" panjang; ch dibaca seperti \"c\" Indonesia: fish, shoe, chair, lunch.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t3-u06-k08",
+          "jenis": "duduk",
+          "petunjuk": "Duduk di kursi!"
         }
       ]
     },
@@ -1249,7 +1399,18 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 2,
+        "bunyi": "a pendek",
+        "kata": [
+          "cat",
+          "rabbit"
+        ],
+        "tips": "Mulut terbuka lebar seperti mau bilang \"e\" sambil tersenyum: cat, bag, apple.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u08",
@@ -1431,6 +1592,22 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 5,
+        "bunyi": "ee dan ea",
+        "kata": [
+          "pineapple"
+        ],
+        "tips": "Dibaca \"i\" panjang: see, tree, eat.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t3-u08-k05",
+          "jenis": "minum",
+          "petunjuk": "Pura-pura minum!"
+        }
       ]
     },
     {
@@ -1606,7 +1783,17 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 1,
+        "bunyi": "huruf e bisu di akhir",
+        "kata": [
+          "kite"
+        ],
+        "tips": "Huruf e di akhir kata diam dan membuat huruf vokal sebelumnya \"menyebut namanya\": cake dibaca keik, fine dibaca fain.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u10",
@@ -1774,7 +1961,18 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 2,
+        "bunyi": "a pendek",
+        "kata": [
+          "circle",
+          "square"
+        ],
+        "tips": "Mulut terbuka lebar seperti mau bilang \"e\" sambil tersenyum: cat, bag, apple.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u11",
@@ -1956,7 +2154,18 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 4,
+        "bunyi": "bunyi sh dan ch",
+        "kata": [
+          "shirt",
+          "shoes"
+        ],
+        "tips": "sh dibaca \"sy\" panjang; ch dibaca seperti \"c\" Indonesia: fish, shoe, chair, lunch.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t3-u12",
@@ -2137,6 +2346,52 @@
             "t3-u12-k10"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 1,
+        "bunyi": "huruf e bisu di akhir",
+        "kata": [
+          "write"
+        ],
+        "tips": "Huruf e di akhir kata diam dan membuat huruf vokal sebelumnya \"menyebut namanya\": cake dibaca keik, fine dibaca fain.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t3-u12-k01",
+          "jenis": "berdiri",
+          "petunjuk": "Berdiri tegak!"
+        },
+        {
+          "kata": "t3-u12-k02",
+          "jenis": "duduk",
+          "petunjuk": "Duduk!"
+        },
+        {
+          "kata": "t3-u12-k05",
+          "jenis": "tulis",
+          "petunjuk": "Pura-pura menulis!"
+        },
+        {
+          "kata": "t3-u12-k06",
+          "jenis": "baca",
+          "petunjuk": "Pura-pura membaca!"
+        },
+        {
+          "kata": "t3-u12-k07",
+          "jenis": "tulis",
+          "petunjuk": "Pura-pura menggambar!"
+        },
+        {
+          "kata": "t3-u12-k08",
+          "jenis": "tepuk",
+          "petunjuk": "Tepuk tanganmu!"
+        },
+        {
+          "kata": "t3-u12-k09",
+          "jenis": "tepuk",
+          "petunjuk": "Tepuk tangan!"
         }
       ]
     }

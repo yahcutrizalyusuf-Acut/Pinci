@@ -54,7 +54,7 @@ export function daftarKataSampai(paketSemua: PaketInggris[], unitId: string): Se
   for (const p of paketSemua) {
     for (const u of p.unit) {
       if (p.tingkat < tingkat || (p.tingkat === tingkat && u.nomor <= nomor)) {
-        for (const k of u.kosakata) for (const w of pecahKata(k.kata)) kata.add(w);
+        for (const k of [...u.kosakata, ...(u.kataKomik ?? [])]) for (const w of pecahKata(k.kata)) kata.add(w);
         for (const pl of u.pola) for (const w of pecahKata(pl.kalimat)) kata.add(w);
       }
     }
@@ -125,11 +125,12 @@ export function periksaSatuKomik(k: Komik, unit: UnitInggris | undefined, paketS
   for (const t of tokoh.tokoh) {
     if (t.peran === 'narator') continue;
     const pola = new RegExp(`\\b${t.nama.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-    for (const teks of [...semua, ...semuaArti, k.judul]) if (pola.test(teks.replace(/\{[a-z_]+\}/g, ' '))) m.push(`${awal} nama "${t.nama}" ditulis langsung; pakai {${t.id}}`);
+    const naskah = [...k.panel.map((p) => p.adegan), ...k.naskahOrangTua.langkah, k.naskahOrangTua.renungan, k.naskahOrangTua.pancingan, k.perbuatanBaik, k.pesanAkhlak];
+    for (const teks of [...semua, ...semuaArti, k.judul, ...naskah]) if (pola.test(teks.replace(/\{[a-z_]+\}/g, ' '))) m.push(`${awal} nama "${t.nama}" ditulis langsung; pakai {${t.id}}`);
   }
 
   // kata target: harus kosakata unit dan muncul di komik
-  const kosakata = new Set(unit.kosakata.map((x) => x.kata.toLowerCase()));
+  const kosakata = new Set([...unit.kosakata, ...(unit.kataKomik ?? [])].map((x) => x.kata.toLowerCase()));
   const teksKecil = ` ${semua.map((t) => pecahKata(t).join(' ')).join(' | ')} `;
   if (k.kataTarget.length < 4 || k.kataTarget.length > 8) m.push(`${awal} kata target ${k.kataTarget.length}, harus 4–8`);
   for (const kt of k.kataTarget) {

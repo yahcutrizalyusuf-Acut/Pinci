@@ -146,7 +146,7 @@ function UnitInggrisIsi() {
             <Text style={{ flex: 1, fontFamily: huruf.anakTebal, fontSize: 18, color: warna.teks }}>{gerak.gerakan.petunjuk}</Text>
           </View>
         ) : null}
-        {unit.kosakata.map((k) => (
+        {[...unit.kosakata, ...(unit.kataKomik ?? [])].map((k) => (
           <Pressable key={k.id} accessibilityRole="button" accessibilityLabel={`${k.kata}, ${k.arti}`} onPress={() => ucapkan(k.kata, 'en-US')} style={{ flexDirection: 'row', alignItems: 'center', gap: 16, padding: 12, borderRadius: 24, backgroundColor: warna.putih }}>
             <View style={{ width: 72, height: 72, borderRadius: 18, backgroundColor: UNGU.muda, alignItems: 'center', justifyContent: 'center' }}>
               <Text style={{ fontSize: 42 }}>{k.emoji}</Text>

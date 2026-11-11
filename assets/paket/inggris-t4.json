@@ -179,6 +179,64 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "hand",
+          "leg",
+          "foot"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t4-u01-k01",
+          "jenis": "sentuh",
+          "petunjuk": "Sentuh matamu pelan-pelan!"
+        },
+        {
+          "kata": "t4-u01-k02",
+          "jenis": "sentuh",
+          "petunjuk": "Sentuh telingamu!"
+        },
+        {
+          "kata": "t4-u01-k03",
+          "jenis": "sentuh",
+          "petunjuk": "Sentuh hidungmu!"
+        },
+        {
+          "kata": "t4-u01-k04",
+          "jenis": "sentuh",
+          "petunjuk": "Sentuh mulutmu!"
+        },
+        {
+          "kata": "t4-u01-k05",
+          "jenis": "tepuk",
+          "petunjuk": "Tepuk tanganmu!"
+        },
+        {
+          "kata": "t4-u01-k06",
+          "jenis": "putar",
+          "petunjuk": "Putar lenganmu!"
+        },
+        {
+          "kata": "t4-u01-k07",
+          "jenis": "lompat",
+          "petunjuk": "Angkat kakimu!"
+        },
+        {
+          "kata": "t4-u01-k08",
+          "jenis": "lompat",
+          "petunjuk": "Hentakkan kakimu!"
+        },
+        {
+          "kata": "t4-u01-k10",
+          "jenis": "sentuh",
+          "petunjuk": "Sentuh rambutmu!"
+        }
       ]
     },
     {
@@ -356,6 +414,57 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 4,
+        "bunyi": "bunyi sh dan ch",
+        "kata": [
+          "chicken"
+        ],
+        "tips": "sh dibaca \"sy\" panjang; ch dibaca seperti \"c\" Indonesia: fish, shoe, chair, lunch.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t4-u02-k01",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan!"
+        },
+        {
+          "kata": "t4-u02-k02",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan roti!"
+        },
+        {
+          "kata": "t4-u02-k05",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan mi!"
+        },
+        {
+          "kata": "t4-u02-k06",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan kue!"
+        },
+        {
+          "kata": "t4-u02-k07",
+          "jenis": "minum",
+          "petunjuk": "Pura-pura minum!"
+        },
+        {
+          "kata": "t4-u02-k08",
+          "jenis": "minum",
+          "petunjuk": "Pura-pura minum!"
+        },
+        {
+          "kata": "t4-u02-k09",
+          "jenis": "minum",
+          "petunjuk": "Pura-pura minum!"
+        },
+        {
+          "kata": "t4-u02-k10",
+          "jenis": "minum",
+          "petunjuk": "Pura-pura minum!"
+        }
       ]
     },
     {
@@ -519,7 +628,17 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 3,
+        "bunyi": "bunyi th",
+        "kata": [
+          "birthday"
+        ],
+        "tips": "Ujung lidah keluar sedikit di antara gigi: thank, three, this, mother.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t4-u04",
@@ -688,6 +807,62 @@
             "t4-u04-k09"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 6,
+        "bunyi": "bunyi oo",
+        "kata": [
+          "go to school"
+        ],
+        "tips": "Bibir maju membulat: book, school, food.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t4-u04-k01",
+          "jenis": "berdiri",
+          "petunjuk": "Bangun dan regangkan badan!"
+        },
+        {
+          "kata": "t4-u04-k02",
+          "jenis": "sikat",
+          "petunjuk": "Pura-pura menggosok gigi!"
+        },
+        {
+          "kata": "t4-u04-k03",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura mandi!"
+        },
+        {
+          "kata": "t4-u04-k04",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan!"
+        },
+        {
+          "kata": "t4-u04-k05",
+          "jenis": "lari",
+          "petunjuk": "Jalan di tempat!"
+        },
+        {
+          "kata": "t4-u04-k06",
+          "jenis": "baca",
+          "petunjuk": "Pura-pura membaca buku!"
+        },
+        {
+          "kata": "t4-u04-k07",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura mencuci tangan!"
+        },
+        {
+          "kata": "t4-u04-k08",
+          "jenis": "duduk",
+          "petunjuk": "Duduk manis seperti menonton!"
+        },
+        {
+          "kata": "t4-u04-k09",
+          "jenis": "tidur",
+          "petunjuk": "Pura-pura tidur!"
         }
       ]
     },
@@ -858,6 +1033,39 @@
             "t4-u05-k09"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 2,
+        "bunyi": "a pendek",
+        "kata": [
+          "happy",
+          "sad",
+          "angry"
+        ],
+        "tips": "Mulut terbuka lebar seperti mau bilang \"e\" sambil tersenyum: cat, bag, apple.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t4-u05-k01",
+          "jenis": "lompat",
+          "petunjuk": "Tersenyum lebar dan melompat!"
+        },
+        {
+          "kata": "t4-u05-k04",
+          "jenis": "buka",
+          "petunjuk": "Buka mata lebar-lebar!"
+        },
+        {
+          "kata": "t4-u05-k05",
+          "jenis": "tidur",
+          "petunjuk": "Pura-pura tidur!"
+        },
+        {
+          "kata": "t4-u05-k09",
+          "jenis": "lompat",
+          "petunjuk": "Melompat dengan semangat!"
         }
       ]
     },
@@ -1036,6 +1244,37 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 12,
+        "bunyi": "bunyi w",
+        "kata": [
+          "window"
+        ],
+        "tips": "Bibir membulat dulu, seperti \"u\" cepat: water, window.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t4-u06-k02",
+          "jenis": "buka",
+          "petunjuk": "Pura-pura membuka pintu!"
+        },
+        {
+          "kata": "t4-u06-k03",
+          "jenis": "buka",
+          "petunjuk": "Pura-pura membuka jendela!"
+        },
+        {
+          "kata": "t4-u06-k05",
+          "jenis": "duduk",
+          "petunjuk": "Duduk di sofa!"
+        },
+        {
+          "kata": "t4-u06-k07",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura mandi di bawah pancuran!"
+        }
       ]
     },
     {
@@ -1213,7 +1452,19 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "boat",
+          "ship",
+          "truck"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t4-u08",
@@ -1390,7 +1641,18 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 4,
+        "bunyi": "bunyi sh dan ch",
+        "kata": [
+          "chili pepper",
+          "mushroom"
+        ],
+        "tips": "sh dibaca \"sy\" panjang; ch dibaca seperti \"c\" Indonesia: fish, shoe, chair, lunch.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t4-u09",
@@ -1559,6 +1821,23 @@
             "t4-u09-k08"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 8,
+        "bunyi": "akhiran -s",
+        "kata": [
+          "tennis",
+          "table tennis"
+        ],
+        "tips": "Bunyi \"s\" atau \"z\" kecil di akhir tetap diucapkan: cats, dogs, likes.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t4-u09-k07",
+          "jenis": "putar",
+          "petunjuk": "Pura-pura berenang!"
         }
       ]
     },
@@ -1730,7 +2009,19 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 4,
+        "bunyi": "bunyi sh dan ch",
+        "kata": [
+          "school",
+          "teacher",
+          "lunch"
+        ],
+        "tips": "sh dibaca \"sy\" panjang; ch dibaca seperti \"c\" Indonesia: fish, shoe, chair, lunch.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t4-u11",
@@ -1900,7 +2191,19 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 5,
+        "bunyi": "ee dan ea",
+        "kata": [
+          "tree",
+          "leaf",
+          "ice cream"
+        ],
+        "tips": "Dibaca \"i\" panjang: see, tree, eat.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t4-u12",
@@ -2070,7 +2373,17 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 1,
+        "bunyi": "huruf e bisu di akhir",
+        "kata": [
+          "kite"
+        ],
+        "tips": "Huruf e di akhir kata diam dan membuat huruf vokal sebelumnya \"menyebut namanya\": cake dibaca keik, fine dibaca fain.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     }
   ]
 }
