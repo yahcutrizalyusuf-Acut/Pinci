@@ -36,3 +36,13 @@ export function paketLengkap(kelas: number) {
 export function adaBacaGudang(kelas: number) {
   return kelas >= 2 && kelas <= 6;
 }
+
+/**
+ * Saklar fitur lanjutan komik (PROMPT-LANJUTAN-KOMIK), bawaan MATI:
+ * - EXPO_PUBLIC_FITUR_PEMANASAN: 3 soal lama di awal kartu ilmu (topik dikuasai 1, 7, 21 hari lalu).
+ * - EXPO_PUBLIC_FITUR_TES_PAHAM: tes paham 8 soal cerita dan gambar tiap 8 minggu.
+ * - FITUR_MAIN_PERAN: Main Peran K32 (belum dibangun di tahap ini).
+ */
+export const FITUR_PEMANASAN = process.env.EXPO_PUBLIC_FITUR_PEMANASAN === 'nyala';
+export const FITUR_TES_PAHAM = process.env.EXPO_PUBLIC_FITUR_TES_PAHAM === 'nyala';
+export const FITUR_MAIN_PERAN = false;
