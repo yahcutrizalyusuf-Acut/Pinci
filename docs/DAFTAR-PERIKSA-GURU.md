@@ -109,34 +109,34 @@ Buatan sendiri (disusun dari modul TKA). Tiap kartu: penjelasan, contoh jadi, da
 
 | ✓ | Kartu | Judul | Soal | Catatan |
 |---|---|---|---|---|
-| ☐ | mat6-urutan-hitung | Operasi hitung campuran | 6 | |
-| ☐ | mat6-faktor-kelipatan | Faktor dan kelipatan | 6 | |
-| ☐ | mat6-kpk-fpb | KPK dan FPB | 6 | |
-| ☐ | mat6-pecahan-senilai | Pecahan senilai | 6 | |
-| ☐ | mat6-banding-pecahan | Membandingkan pecahan | 6 | |
-| ☐ | mat6-pecahan-desimal | Pecahan dan desimal | 6 | |
-| ☐ | mat6-persen | Persen | 6 | |
-| ☐ | mat6-tambah-kurang-pecahan | Tambah dan kurang pecahan | 6 | |
-| ☐ | mat6-kali-pecahan | Perkalian pecahan | 6 | |
-| ☐ | mat6-bagi-pecahan | Pembagian pecahan | 6 | |
-| ☐ | mat6-hitung-campuran-bentuk | Hitung pecahan, desimal, dan persen | 6 | |
-| ☐ | mat6-satuan-panjang-berat | Satuan panjang dan berat | 6 | |
-| ☐ | mat6-satuan-volume | Satuan volume dan liter | 6 | |
-| ☐ | mat6-lama-waktu | Lama waktu | 6 | |
-| ☐ | mat6-kecepatan | Kecepatan, jarak, dan waktu | 6 | |
-| ☐ | mat6-keliling-luas | Keliling dan luas | 6 | |
-| ☐ | mat6-luas-segitiga-segi4 | Luas segitiga, jajargenjang, dan trapesium | 6 | |
-| ☐ | mat6-sudut | Sudut | 6 | |
-| ☐ | mat6-kekongruenan | Kekongruenan | 6 | |
-| ☐ | mat6-pembulatan | Pembulatan dan penaksiran | 6 | |
-| ☐ | mat6-volume-kubus-balok | Volume kubus dan balok | 6 | |
-| ☐ | mat6-luas-permukaan | Luas permukaan | 6 | |
-| ☐ | mat6-tampak-kubus | Susunan kubus dan tampak | 6 | |
-| ☐ | mat6-rasio | Rasio dan perbandingan | 6 | |
-| ☐ | mat6-senilai-berbalik | Perbandingan senilai dan berbalik nilai | 6 | |
-| ☐ | mat6-skala | Skala peta | 6 | |
-| ☐ | mat6-diagram | Piktogram, diagram batang, dan tabel | 6 | |
-| ☐ | mat6-rata-rata | Rata-rata | 6 | |
+| ☐ | mat6-urutan-hitung | Operasi hitung campuran | 7 | |
+| ☐ | mat6-faktor-kelipatan | Faktor dan kelipatan | 7 | |
+| ☐ | mat6-kpk-fpb | KPK dan FPB | 7 | |
+| ☐ | mat6-pecahan-senilai | Pecahan senilai | 7 | |
+| ☐ | mat6-banding-pecahan | Membandingkan pecahan | 7 | |
+| ☐ | mat6-pecahan-desimal | Pecahan dan desimal | 7 | |
+| ☐ | mat6-persen | Persen | 7 | |
+| ☐ | mat6-tambah-kurang-pecahan | Tambah dan kurang pecahan | 7 | |
+| ☐ | mat6-kali-pecahan | Perkalian pecahan | 7 | |
+| ☐ | mat6-bagi-pecahan | Pembagian pecahan | 7 | |
+| ☐ | mat6-hitung-campuran-bentuk | Hitung pecahan, desimal, dan persen | 7 | |
+| ☐ | mat6-satuan-panjang-berat | Satuan panjang dan berat | 7 | |
+| ☐ | mat6-satuan-volume | Satuan volume dan liter | 7 | |
+| ☐ | mat6-lama-waktu | Lama waktu | 7 | |
+| ☐ | mat6-kecepatan | Kecepatan, jarak, dan waktu | 7 | |
+| ☐ | mat6-keliling-luas | Keliling dan luas | 7 | |
+| ☐ | mat6-luas-segitiga-segi4 | Luas segitiga, jajargenjang, dan trapesium | 7 | |
+| ☐ | mat6-sudut | Sudut | 7 | |
+| ☐ | mat6-kekongruenan | Kekongruenan | 7 | |
+| ☐ | mat6-pembulatan | Pembulatan dan penaksiran | 7 | |
+| ☐ | mat6-volume-kubus-balok | Volume kubus dan balok | 7 | |
+| ☐ | mat6-luas-permukaan | Luas permukaan | 7 | |
+| ☐ | mat6-tampak-kubus | Susunan kubus dan tampak | 7 | |
+| ☐ | mat6-rasio | Rasio dan perbandingan | 7 | |
+| ☐ | mat6-senilai-berbalik | Perbandingan senilai dan berbalik nilai | 7 | |
+| ☐ | mat6-skala | Skala peta | 7 | |
+| ☐ | mat6-diagram | Piktogram, diagram batang, dan tabel | 7 | |
+| ☐ | mat6-rata-rata | Rata-rata | 7 | |
 
 ### Bahasa Indonesia: 13 kartu
 
@@ -223,3 +223,63 @@ Buatan sendiri. Periksa kosakata, arti, pola kalimat, soal dengar, dan susun kal
 - ☐ Kalimat untuk anak saat jawaban belum tepat (`src/fitur/teks-anak.ts`)
 - ☐ Kalimat Mode Dampingi untuk orang tua (`src/fitur/dampingi.ts`)
 - ☐ Kata-kata game: Pasar Gampong, Ular Tangga Lurus, Susun Kubus, Tebak Kata (`src/game/*/`)
+
+## 6. Cerita Komik Bahasa Inggris (`komik-t3.json`, `komik-t4.json`)
+
+Naskah lengkap per panel untuk guru: `docs/NASKAH-KOMIK-UNTUK-GURU.md`. Periksa Bahasa Inggris, arti, tips bunyi, Cek Paham, dan pesan akhlak (tidak menggurui). Nama tokoh diganti di satu tempat: `assets/paket/tokoh.json`.
+
+| ✓ | Komik | Judul | Panel | Gelembung | Cek Paham | Status | Catatan |
+|---|---|---|---|---|---|---|---|
+| ☐ | t3-u01-komik | Hello, Robi! | 5 | 7 | 3 | belum_diperiksa | |
+| ☐ | t3-u02-komik | One, Two, Three! | 5 | 9 | 3 | belum_diperiksa | |
+| ☐ | t3-u03-komik | Count to Twenty | 5 | 8 | 3 | belum_diperiksa | |
+| ☐ | t3-u04-komik | Lina's Colors | 5 | 8 | 3 | belum_diperiksa | |
+| ☐ | t3-u05-komik | Meet My Family | 5 | 10 | 3 | belum_diperiksa | |
+| ☐ | t3-u06-komik | My Red Pencil | 5 | 8 | 3 | belum_diperiksa | |
+| ☐ | t4-u01-komik | Touch Your Nose! | 6 | 10 | 4 | belum_diperiksa | |
+| ☐ | t4-u02-komik | Yummy Food | 6 | 9 | 4 | belum_diperiksa | |
+| ☐ | t4-u03-komik | Nisa's Birthday | 6 | 10 | 4 | belum_diperiksa | |
+| ☐ | t4-u04-komik | Super Robi! | 6 | 9 | 4 | belum_diperiksa | |
+| ☐ | t4-u05-komik | How Do You Feel? | 6 | 9 | 4 | belum_diperiksa | |
+| ☐ | t4-u06-komik | Light in the House | 6 | 8 | 4 | belum_diperiksa | |
+
+## 7. Bunyi Hari Ini, tips bunyi, dan Tebak Gerak
+
+- ☐ **Bunyi Hari Ini** di 48 unit (tabel di akhir `docs/NASKAH-KOMIK-UNTUK-GURU.md`). Status: belum diperiksa.
+- ☐ **Tips bunyi per panel** (1–2 per panel, dipakai di Dengar Bedanya). Status: belum diperiksa.
+- ☐ **Perintah Tebak Gerak** (20 perintah dasar, `src/isi/inggris/perintahGerak.ts`). Status: belum diperiksa.
+
+## 8. Soal cerita dan "Coba dengan benda" kartu Matematika kelas 6 (`gudang-k6.json`)
+
+Satu soal cerita berlatar Aceh atau sehari-hari per kartu. Kuncinya dihitung kode. Periksa bahasa, kewajaran cerita, dan model batang.
+
+| ✓ | Soal | Pertanyaan | Kunci | Benda | Status | Catatan |
+|---|---|---|---|---|---|---|
+| ☐ | mat6-urutan-hitung-s7 | Di kedai, Fathan membeli 3 kue timphan seharga Rp2.000 per buah dan segelas teh Rp3.000. Berapa rupiah yang ia bayar? | 9.000 | uang | belum_diperiksa | |
+| ☐ | mat6-faktor-kelipatan-s7 | Labi-labi berangkat dari terminal setiap 15 menit, mulai pukul 07.00. Berapa kali labi-labi berangkat dari pukul 07.00 sampai pukul 08.00? | 5 | lompat | belum_diperiksa | |
+| ☐ | mat6-kpk-fpb-s7 | Nek Ijah punya 24 pisang dan 36 jeruk. Semua dimasukkan ke kantong dengan isi sama, tanpa sisa, dan kantongnya sebanyak mungkin. Berapa kantong yang dibutuhkan? | 12 | lompat | belum_diperiksa | |
+| ☐ | mat6-pecahan-senilai-s7 | Bima memotong kue bhoi menjadi 12 potong sama besar dan memakan 3 potong. Tulis bagian kue yang dimakan dalam pecahan paling sederhana. | 1/4 | potongan | belum_diperiksa | |
+| ☐ | mat6-banding-pecahan-s7 | Lina menanam cabai di 2/3 kebunnya. Dafi menanam cabai di 3/4 kebun yang sama besar. Berapa selisih bagian kebun yang ditanami? | 1/12 | potongan | belum_diperiksa | |
+| ☐ | mat6-pecahan-desimal-s7 | Panjang tali layang-layang Fathan 3/4 meter. Tulis panjang tali itu dalam bentuk desimal. | 0,75 | potongan | belum_diperiksa | |
+| ☐ | mat6-persen-s7 | Harga sandal di Pasar Aceh Rp40.000. Ada potongan harga 25%. Berapa rupiah potongannya? | 10.000 | potongan | belum_diperiksa | |
+| ☐ | mat6-tambah-kurang-pecahan-s7 | Ayah mengecat 1/3 pagar pada pagi hari dan 1/2 pagar pada sore hari. Berapa bagian pagar yang sudah dicat? | 5/6 | potongan | belum_diperiksa | |
+| ☐ | mat6-kali-pecahan-s7 | Panen padi Pak Hasan 60 karung. Sebanyak 2/3 dijual ke kilang padi. Berapa karung yang dijual? | 40 | potongan | belum_diperiksa | |
+| ☐ | mat6-bagi-pecahan-s7 | Kak Fajar punya 6 liter air tebu. Air itu dituang ke botol yang masing-masing berisi 3/4 liter. Berapa botol yang terisi penuh? | 8 | lompat | belum_diperiksa | |
+| ☐ | mat6-hitung-campuran-bentuk-s7 | Uang Nisa Rp50.000. Ia memakai 20% untuk membeli buku dan 1/2 untuk membeli tas. Berapa rupiah sisa uangnya? | 15.000 | uang | belum_diperiksa | |
+| ☐ | mat6-satuan-panjang-berat-s7 | Jarak rumah Dafi ke Pantai Ulee Lheue 2,5 km. Berapa meter jaraknya? | 2.500 | lompat | belum_diperiksa | |
+| ☐ | mat6-satuan-volume-s7 | Ibu membeli 3 botol minyak goreng. Isi setiap botol 1,5 liter. Berapa mililiter isi semuanya? | 4.500 | potongan | belum_diperiksa | |
+| ☐ | mat6-lama-waktu-s7 | Labi-labi berangkat dari Lambaro pukul 07.45 dan tiba di Peunayong pukul 08.20. Berapa menit perjalanannya? | 35 | lompat | belum_diperiksa | |
+| ☐ | mat6-kecepatan-s7 | Bus dari Banda Aceh ke Sigli melaju rata-rata 40 km per jam selama 3 jam. Berapa km jarak yang ditempuh? | 120 | lompat | belum_diperiksa | |
+| ☐ | mat6-keliling-luas-s7 | Sawah Pak Hasan berbentuk persegi panjang, panjangnya 25 m dan lebarnya 12 m. Berapa meter persegi luasnya? | 300 | - | belum_diperiksa | |
+| ☐ | mat6-luas-segitiga-segi4-s7 | Layang-layang Bima berbentuk segitiga dengan alas 40 cm dan tinggi 30 cm. Berapa cm persegi luasnya? | 600 | - | belum_diperiksa | |
+| ☐ | mat6-sudut-s7 | Jam dinding di kelas menunjukkan pukul 03.00. Berapa derajat sudut antara jarum pendek dan jarum panjang? | 90 | - | belum_diperiksa | |
+| ☐ | mat6-kekongruenan-s7 | Dua ubin lantai di rumah Lina kongruen. Panjang sisi ubin pertama 30 cm. Berapa cm panjang sisi ubin kedua yang bersesuaian? | 30 | - | belum_diperiksa | |
+| ☐ | mat6-pembulatan-s7 | Pengunjung Pantai Lampuuk pada hari Minggu ada 1.468 orang. Bulatkan ke ratusan terdekat. | 1.500 | blok | belum_diperiksa | |
+| ☐ | mat6-volume-kubus-balok-s7 | Bak air di rumah berbentuk balok dengan panjang 80 cm, lebar 50 cm, dan tinggi 60 cm. Berapa liter isinya kalau penuh? (1 liter = 1.000 cm kubik) | 240 | - | belum_diperiksa | |
+| ☐ | mat6-luas-permukaan-s7 | Kotak kado berbentuk kubus dengan sisi 20 cm akan dibungkus kertas. Berapa cm persegi kertas paling sedikit yang dibutuhkan? | 2.400 | - | belum_diperiksa | |
+| ☐ | mat6-tampak-kubus-s7 | Lina menyusun kubus kecil menjadi balok: panjang 3 kubus, lebar 2 kubus, dan tinggi 2 kubus. Berapa kubus kecil yang dipakai? | 12 | - | belum_diperiksa | |
+| ☐ | mat6-rasio-s7 | Perbandingan kelereng Fathan dan Dafi 3 : 5. Jumlah kelereng mereka 40. Berapa kelereng Dafi? | 25 | potongan | belum_diperiksa | |
+| ☐ | mat6-senilai-berbalik-s7 | Untuk memanen sawah, 4 orang membutuhkan 6 hari. Kalau dikerjakan 8 orang dengan kecepatan yang sama, berapa hari yang dibutuhkan? | 3 | uang | belum_diperiksa | |
+| ☐ | mat6-skala-s7 | Pada peta berskala 1 : 500.000, jarak Banda Aceh ke Sigli 22 cm. Berapa km jarak sebenarnya? | 110 | lompat | belum_diperiksa | |
+| ☐ | mat6-diagram-s7 | Panen cabai Lina: Senin 30 kg, Selasa 45 kg, Rabu 25 kg. Berapa kg selisih panen terbanyak dan tersedikit? | 20 | - | belum_diperiksa | |
+| ☐ | mat6-rata-rata-s7 | Nilai ulangan Nisa minggu ini 80, 75, dan 85. Berapa rata-rata nilainya? | 80 | blok | belum_diperiksa | |

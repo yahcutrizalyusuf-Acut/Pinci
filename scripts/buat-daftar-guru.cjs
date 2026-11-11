@@ -82,5 +82,35 @@ b.push('- ☐ Kalimat untuk anak saat jawaban belum tepat (`src/fitur/teks-anak.
 b.push('- ☐ Kalimat Mode Dampingi untuk orang tua (`src/fitur/dampingi.ts`)');
 b.push('- ☐ Kata-kata game: Pasar Gampong, Ular Tangga Lurus, Susun Kubus, Tebak Kata (`src/game/*/`)', '');
 
+// Lanjutan komik (11 Nov 2026)
+b.push('## 6. Cerita Komik Bahasa Inggris (`komik-t3.json`, `komik-t4.json`)', '');
+b.push('Naskah lengkap per panel untuk guru: `docs/NASKAH-KOMIK-UNTUK-GURU.md`. Periksa Bahasa Inggris, arti, tips bunyi, Cek Paham, dan pesan akhlak (tidak menggurui). Nama tokoh diganti di satu tempat: `assets/paket/tokoh.json`.', '');
+b.push('| ✓ | Komik | Judul | Panel | Gelembung | Cek Paham | Status | Catatan |', '|---|---|---|---|---|---|---|---|');
+const namaTokoh = Object.fromEntries(baca('tokoh.json').tokoh.map((t) => [t.id, t.nama]));
+const isiNama = (t) => t.replace(/\{([a-z_]+)\}/g, (_, id) => namaTokoh[id] ?? id);
+for (const n of [3, 4]) {
+  for (const k of baca(`komik-t${n}.json`).komik) {
+    const gel = k.panel.reduce((a, p) => a + p.gelembung.length, 0);
+    b.push(`| ☐ | ${k.id} | ${isiNama(k.judul)} | ${k.panel.length} | ${gel} | ${k.cekPaham.length} | ${k.status} | |`);
+  }
+}
+b.push('', '## 7. Bunyi Hari Ini, tips bunyi, dan Tebak Gerak', '');
+let bunyi = 0;
+for (const n of [3, 4, 5, 6]) bunyi += baca(`inggris-t${n}.json`).unit.filter((u) => u.bunyiHariIni).length;
+b.push(`- ☐ **Bunyi Hari Ini** di ${bunyi} unit (tabel di akhir \`docs/NASKAH-KOMIK-UNTUK-GURU.md\`). Status: belum diperiksa.`);
+b.push('- ☐ **Tips bunyi per panel** (1–2 per panel, dipakai di Dengar Bedanya). Status: belum diperiksa.');
+b.push('- ☐ **Perintah Tebak Gerak** (20 perintah dasar, `src/isi/inggris/perintahGerak.ts`). Status: belum diperiksa.', '');
+b.push('## 8. Soal cerita dan "Coba dengan benda" kartu Matematika kelas 6 (`gudang-k6.json`)', '');
+b.push('Satu soal cerita berlatar Aceh atau sehari-hari per kartu. Kuncinya dihitung kode. Periksa bahasa, kewajaran cerita, dan model batang.', '');
+b.push('| ✓ | Soal | Pertanyaan | Kunci | Benda | Status | Catatan |', '|---|---|---|---|---|---|---|');
+for (const m of baca('gudang-k6.json').mapel) {
+  for (const t of m.topik) {
+    const s = t.kartu?.soal.find((x) => x.cerita);
+    if (!s) continue;
+    b.push(`| ☐ | ${s.id} | ${s.pertanyaan.replace(/\|/g, '/')} | ${s.kunci} | ${t.kartu.cobaBenda ? t.kartu.cobaBenda.benda.jenis : '-'} | ${s.status} | |`);
+  }
+}
+b.push('');
+
 fs.writeFileSync(path.join(akar, 'docs/DAFTAR-PERIKSA-GURU.md'), b.join('\n'));
 console.log('docs/DAFTAR-PERIKSA-GURU.md ditulis.');
