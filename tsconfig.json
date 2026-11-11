@@ -29,6 +29,7 @@
     "desain",
     "docs",
     "dist",
-    "supabase"
+    "supabase",
+    ".claude"
   ]
 }

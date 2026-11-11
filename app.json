@@ -15,9 +15,10 @@
         "backgroundColor": "#3BB273",
         "foregroundImage": "./assets/gambar/ikon-depan.png"
       },
-      "permissions": [],
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
       "blockedPermissions": [
-        "android.permission.RECORD_AUDIO",
         "android.permission.CAMERA",
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.ACCESS_COARSE_LOCATION",
@@ -28,7 +29,8 @@
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.VIBRATE"
       ],
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "allowBackup": false
     },
     "web": {
       "output": "single",
@@ -48,12 +50,13 @@
       [
         "expo-audio",
         {
-          "microphonePermission": false,
-          "recordAudioAndroid": false,
+          "microphonePermission": "Pintar Main memakai mikrofon hanya saat anak menekan tombol rekam. Rekaman disimpan di HP ini saja.",
+          "recordAudioAndroid": true,
           "enableBackgroundPlayback": false,
           "enableBackgroundRecording": false
         }
-      ]
+      ],
+      "./plugins/tanpa-cadangan.js"
     ],
     "experiments": {
       "typedRoutes": false,

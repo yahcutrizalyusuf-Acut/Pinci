@@ -30,3 +30,12 @@ test('kalimat untuk anak tanpa harga dan tanpa ajakan membeli', () => {
     expect(`${t.judul} ${t.teks}`).not.toMatch(/rp|bayar|beli|langganan|harga|ayah|bunda/i);
   }
 });
+
+test('Bahasa Inggris: Sesi B dan Cek Dengar tidak memakai jatah harian', () => {
+  const pagi = new Date(2026, 10, 4, 7, 0).toISOString();
+  const a = { jenis: 'inggris' as never, mulai: pagi, tambahan: { sesi: 'a' } };
+  const b = { jenis: 'inggris' as never, mulai: pagi, tambahan: { sesi: 'b' } };
+  const cek = { jenis: 'inggris' as never, mulai: pagi, tambahan: { cekDengar: true } };
+  expect(jatahTerpakai('inggris', [b, cek], kini)).toBe(0);
+  expect(jatahTerpakai('inggris', [a, b, cek], kini)).toBe(1);
+});

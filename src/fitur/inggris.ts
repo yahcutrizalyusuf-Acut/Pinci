@@ -100,7 +100,7 @@ export function soalDengarSesi(unit: UnitInggris, paket: PaketInggris, antreJatu
 
 export function cariKata(paket: PaketInggris, id: string): Kosakata | undefined {
   for (const u of paket.unit) {
-    const k = u.kosakata.find((x) => x.id === id);
+    const k = u.kosakata.find((x) => x.id === id) ?? u.kataKomik?.find((x) => x.id === id);
     if (k) return k;
   }
   return undefined;

@@ -88,6 +88,40 @@ export function ucapkan(teks: string, bahasa: BahasaSuara = 'id-ID', opsi: { pel
   });
 }
 
+/**
+ * Suara tokoh komik: mesin suara HP dengan nada dan kecepatan per tokoh (tokoh.json), tanpa rekaman bawaan.
+ * `batas` dipanggil dengan posisi huruf kata yang sedang diucapkan bila HP mendukung onBoundary.
+ */
+export function ucapkanTokoh(
+  teks: string,
+  suara: { bahasa: string; nada: number; kecepatan: number },
+  opsi: { selesai?: () => void; batas?: (hurufKe: number) => void } = {},
+) {
+  const bersih = teks.trim();
+  if (!bersih) return;
+  try {
+    Speech.stop();
+  } catch {
+    // abaikan
+  }
+  hentikanRekaman();
+  const bahasa: BahasaSuara = 'en-US';
+  void pilihSuara(bahasa).then((v) => {
+    try {
+      Speech.speak(bersih, {
+        language: suara.bahasa || bahasa,
+        ...(v ? { voice: v } : {}),
+        rate: suara.kecepatan,
+        pitch: suara.nada,
+        onDone: opsi.selesai,
+        ...(opsi.batas ? { onBoundary: (e: { charIndex?: number }) => typeof e?.charIndex === 'number' && opsi.batas?.(e.charIndex) } : {}),
+      });
+    } catch {
+      opsi.selesai?.();
+    }
+  });
+}
+
 export function hentikanSuara() {
   hentikanRekaman();
   try {

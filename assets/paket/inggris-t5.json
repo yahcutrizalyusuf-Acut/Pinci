@@ -192,6 +192,23 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 7,
+        "bunyi": "v lawan f",
+        "kata": [
+          "seven o'clock",
+          "evening"
+        ],
+        "tips": "Untuk v, gigi atas menyentuh bibir bawah sambil bersuara: very, five.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t5-u01-k02",
+          "jenis": "duduk",
+          "petunjuk": "Duduk manis seperti menonton!"
+        }
       ]
     },
     {
@@ -388,6 +405,60 @@
             "t5-u02-k10"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "eat",
+          "drink",
+          "walk",
+          "sleep"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t5-u02-k01",
+          "jenis": "berdiri",
+          "petunjuk": "Bangun dan regangkan badan!"
+        },
+        {
+          "kata": "t5-u02-k02",
+          "jenis": "sikat",
+          "petunjuk": "Pura-pura menggosok gigi!"
+        },
+        {
+          "kata": "t5-u02-k03",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura mandi!"
+        },
+        {
+          "kata": "t5-u02-k06",
+          "jenis": "lari",
+          "petunjuk": "Jalan di tempat!"
+        },
+        {
+          "kata": "t5-u02-k07",
+          "jenis": "lari",
+          "petunjuk": "Lari di tempat!"
+        },
+        {
+          "kata": "t5-u02-k08",
+          "jenis": "tulis",
+          "petunjuk": "Pura-pura menulis!"
+        },
+        {
+          "kata": "t5-u02-k09",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura mencuci tangan!"
+        },
+        {
+          "kata": "t5-u02-k10",
+          "jenis": "tidur",
+          "petunjuk": "Pura-pura tidur!"
         }
       ]
     },
@@ -586,6 +657,25 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "teacher",
+          "firefighter",
+          "mechanic",
+          "astronaut"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t5-u03-k04",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura memasak!"
+        }
       ]
     },
     {
@@ -782,7 +872,18 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "bank",
+          "park"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t5-u05",
@@ -979,7 +1080,19 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "airplane",
+          "bicycle",
+          "motorcycle"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t5-u06",
@@ -1175,6 +1288,30 @@
             "t5-u06-k10"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "wallet",
+          "basket",
+          "receipt",
+          "bread"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t5-u06-k07",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan roti!"
+        },
+        {
+          "kata": "t5-u06-k08",
+          "jenis": "minum",
+          "petunjuk": "Pura-pura minum!"
         }
       ]
     },
@@ -1373,7 +1510,18 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 10,
+        "bunyi": "r Inggris",
+        "kata": [
+          "rainy",
+          "rainbow"
+        ],
+        "tips": "Lidah tidak bergetar, sedikit ditarik ke belakang: red, rice.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t5-u08",
@@ -1570,7 +1718,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 5,
+        "bunyi": "ee dan ea",
+        "kata": [
+          "beach",
+          "sea",
+          "tree",
+          "leaf"
+        ],
+        "tips": "Dibaca \"i\" panjang: see, tree, eat.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t5-u09",
@@ -1767,6 +1928,45 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "reading",
+          "painting",
+          "singing",
+          "dancing"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t5-u09-k01",
+          "jenis": "baca",
+          "petunjuk": "Pura-pura membaca!"
+        },
+        {
+          "kata": "t5-u09-k03",
+          "jenis": "angguk",
+          "petunjuk": "Bernyanyi sambil mengangguk!"
+        },
+        {
+          "kata": "t5-u09-k05",
+          "jenis": "putar",
+          "petunjuk": "Pura-pura berenang!"
+        },
+        {
+          "kata": "t5-u09-k06",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura memasak!"
+        },
+        {
+          "kata": "t5-u09-k10",
+          "jenis": "lompat",
+          "petunjuk": "Pura-pura bermain bola!"
+        }
       ]
     },
     {
@@ -1957,7 +2157,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "trumpet",
+          "saxophone",
+          "maracas",
+          "accordion"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t5-u11",
@@ -2154,7 +2367,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 8,
+        "bunyi": "akhiran -s",
+        "kata": [
+          "pants",
+          "dress",
+          "socks",
+          "shoes"
+        ],
+        "tips": "Bunyi \"s\" atau \"z\" kecil di akhir tetap diucapkan: cats, dogs, likes.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t5-u12",
@@ -2343,6 +2569,34 @@
             "t5-u12-k09"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "shout",
+          "help",
+          "wait"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t5-u12-k01",
+          "jenis": "tepuk",
+          "petunjuk": "Tepuk tanganmu!"
+        },
+        {
+          "kata": "t5-u12-k04",
+          "jenis": "lari",
+          "petunjuk": "Lari di tempat!"
+        },
+        {
+          "kata": "t5-u12-k07",
+          "jenis": "duduk",
+          "petunjuk": "Duduk!"
         }
       ]
     }

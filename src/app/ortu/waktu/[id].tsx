@@ -12,6 +12,7 @@ import { kunciTkaAwal, paketLengkap, tkaTerbuka } from '@/fitur/konfig';
 import { FormAnak } from '@/komponen/FormAnak';
 import { Geser } from '@/komponen/Geser';
 import { KepalaLayar, Tombol } from '@/komponen/dasar';
+import { gudangRekaman } from '@/layanan/rekaman';
 
 function Kotak({ children }: { children: React.ReactNode }) {
   return <View style={{ backgroundColor: warna.putih, borderRadius: 20, padding: 16, gap: 12 }}>{children}</View>;
@@ -93,6 +94,7 @@ export default function PengaturanWaktuLayar() {
                     accessibilityLabel={`Ya, hapus profil ${anak.nama}`}
                     onPress={async () => {
                       await repo.hapusAnak(anak.id);
+                      await gudangRekaman().hapusAnak(anak.id);
                       router.replace('/profil');
                     }}
                     style={{ paddingVertical: 10, paddingHorizontal: 14, borderRadius: 10, backgroundColor: '#C0392B' }}

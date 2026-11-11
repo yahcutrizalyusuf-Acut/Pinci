@@ -29,10 +29,30 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 | 22 Pendaftaran masa coba | Selesai (3 Nov), perlu pasang SQL | Online atau antre tatap muka, 8 pertanyaan pengenalan, telepon, izin. Halaman staf Pendaftar. Uji `scripts/uji-coba.cjs` |
 | 23 Perbaikan profil anak kembar | Selesai (3 Nov) | Profil kembar ditolak, tombol hapus profil anak, keluarga lama dipulihkan saat masuk ulang |
 | 24 Tim merah | Laporan (3 Nov) | Nilai 17/30, saran: uji 10 keluarga dan 2 les sebelum menambah fitur. https://claude.ai/artifact/EMxagKcTjHTJgJmMVfGwxY |
+| 25 Lanjutan Komik | Selesai (11 Nov), perlu pasang SQL dan diperiksa guru | 12 Cerita Komik (tingkat 3–4), unit Inggris Sesi A/B, Cek Dengar, Ceritakan Lagi, Dengar Bedanya + Izin 8 (rekaman hanya di HP), Tebak Gerak, rapor Inggris, Matematika benda → gambar → angka. Laporan: `LAPORAN-LANJUTAN-KOMIK.md`. Pasang `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` |
+
+## Lanjutan Komik (Tahap 25, 11 Nov 2026)
+
+| Sub-tahap | Status | Hasil |
+|---|---|---|
+| 25.0 Rencana | Selesai | `docs/RENCANA-LANJUTAN-KOMIK.md` |
+| 25.1 Bentuk data, tokoh, pemeriksa naskah | Selesai | `assets/paket/tokoh.json`, `src/isi/inggris/komik.ts`, `npx tsx scripts/periksa-komik.ts` |
+| 25.2 12 naskah | Selesai, belum diperiksa guru | `assets/paket/komik-t3.json`, `komik-t4.json`, `docs/NASKAH-KOMIK-UNTUK-GURU.md` (sumber: `scripts/buat-komik.py`) |
+| 25.3 Gambar sementara | Selesai | 9 tokoh × 6 pose, 8 latar; pratinjau `/pratinjau/komik` |
+| 25.4 Unit Inggris baru | Selesai | Sesi A/B, Bunyi Hari Ini, gerakan, Cek Dengar tiap 4 unit |
+| 25.5 Cerita Komik + Cek Paham | Selesai | K30, K31 |
+| 25.6 Dampingi | Selesai | Ceritakan Lagi, Dengar Bedanya, Izin 8, perekam, Tebak Gerak, rapor; tabel `cerita_ulang` |
+| 25.7 Matematika benda | Selesai | 5 benda, 20 kartu "Coba dengan benda", 28 soal cerita Aceh, pancingan orang tua |
+| 25.8 Pemeriksaan | Selesai | `docs/LAPORAN-PEMERIKSAAN-KOMIK.md`, tangkapan layar `docs/tangkapan/komik/` |
+| 25.9 APK dan laporan | Lihat `LAPORAN-LANJUTAN-KOMIK.md` | |
+
+**Mengubah naskah komik:** ubah `scripts/buat-komik.py`, lalu `git checkout assets/paket/inggris-t3.json assets/paket/inggris-t4.json assets/paket/inggris-t5.json assets/paket/inggris-t6.json && python3 scripts/buat-komik.py && npx tsx scripts/periksa-komik.ts && npx tsx scripts/buat-naskah-guru.ts`.
+
+**Tangkapan layar komik:** `node scripts/tangkap-komik.cjs` dan `node scripts/tangkap-dampingi.cjs` (setelah build web).
 
 ## Berikutnya
 
-0. Pasang `20261103000000_gratis_pendaftaran.sql` di Supabase. Website baru dan halaman sambutan ditunda sampai Acut memutuskan (saran tim merah: uji ke pembeli dulu).
+0. Pasang `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` di Supabase (urutan di `docs/CARA-MENYAMBUNG-SUPABASE.md`). Guru memeriksa `docs/NASKAH-KOMIK-UNTUK-GURU.md`. Website baru dan halaman sambutan ditunda sampai Acut memutuskan (saran tim merah: uji ke pembeli dulu).
 1. Keputusan Acut 29 Okt sudah diterapkan (`docs/rancangan/keputusan.md` bagian K).
 2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
 3. Pasang SQL hubungkan HP anak di Supabase, lalu uji dua HP sungguhan (orang tua dan anak).

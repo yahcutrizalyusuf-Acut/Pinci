@@ -11,6 +11,8 @@ import { cekBelajar, ruteHalangan, useHitungWaktu } from '@/fitur/waktu';
 import { paketGudangTopik } from '@/isi/gudang/paket';
 import { ambilKartu } from '@/isi/gudang/pemuat';
 import { mainkanBunyi } from '@/layanan/bunyi';
+import { CobaDenganBenda } from '@/komponen/benda/CobaDenganBenda';
+import { ModelBatang } from '@/komponen/benda/ModelBatang';
 import { GambarIlmu } from '@/komponen/GambarIlmu';
 import { KepalaLayar, KotakPetunjuk, PapanAngka, Tombol, TombolSuara } from '@/komponen/dasar';
 import { Layar } from '@/komponen/Layar';
@@ -18,7 +20,7 @@ import { Pinci } from '@/komponen/Pinci';
 import { TeksKaya } from '@/komponen/tka/TeksKaya';
 import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
-type Tahap = 'kenali' | 'contoh' | 'latihan' | 'selesai';
+type Tahap = 'kenali' | 'benda' | 'contoh' | 'latihan' | 'selesai';
 
 function KartuIlmuLayarIsi() {
   const { id, mode } = useLocalSearchParams<{ id: string; mode?: string }>();
@@ -51,7 +53,8 @@ function KartuIlmuLayarIsi() {
   if (!ambil || !anakAktif) return null;
   const { kartu, topik, mapel } = ambil;
   const w = warnaMapel[mapel];
-  const langkahKe = ['kenali', 'contoh', 'latihan'].indexOf(tahap);
+  const daftarLangkah = kartu.cobaBenda ? ['Kenali', 'Benda', 'Contoh', 'Latihan'] : ['Kenali', 'Contoh', 'Latihan'];
+  const langkahKe = (kartu.cobaBenda ? ['kenali', 'benda', 'contoh', 'latihan'] : ['kenali', 'contoh', 'latihan']).indexOf(tahap);
   const soal = kartu.soal[soalKe];
 
   const periksa = (j: string) => {
@@ -119,10 +122,13 @@ function KartuIlmuLayarIsi() {
         besar
         onPress={() => {
           if (bagianKe + 1 < kartu.penjelasan.length) setBagianKe(bagianKe + 1);
-          else setTahap('contoh');
+          else setTahap(kartu.cobaBenda ? 'benda' : 'contoh');
         }}
       />
     );
+  } else if (tahap === 'benda' && kartu.cobaBenda) {
+    isi = <CobaDenganBenda coba={kartu.cobaBenda} onSelesai={() => setTahap('contoh')} />;
+    tombol = null;
   } else if (tahap === 'contoh') {
     const c = kartu.contohJadi[contohKe];
     isi = (
@@ -169,6 +175,11 @@ function KartuIlmuLayarIsi() {
           {soal.bacaan ? <TeksKaya teks={soal.bacaan} ukuran={16} warnaTeks={warna.teksKedua} /> : null}
           {soal.gambar ? <GambarIlmu g={soal.gambar} /> : null}
           <TeksKaya teks={soal.pertanyaan} ukuran={19} />
+          {soal.modelBatang ? (
+            <View style={{ alignItems: 'center', paddingTop: 6 }}>
+              <ModelBatang data={soal.modelBatang} lebar={280} />
+            </View>
+          ) : null}
         </View>
         {soal.bentuk === 'pg' ? (
           <View style={{ gap: 10 }}>
@@ -244,7 +255,7 @@ function KartuIlmuLayarIsi() {
       <KepalaLayar judul={topik.judul} />
       {tahap !== 'selesai' ? (
         <View style={{ flexDirection: 'row', gap: 8 }}>
-          {['Kenali', 'Contoh', 'Latihan'].map((l, n) => (
+          {daftarLangkah.map((l, n) => (
             <View key={l} style={{ flex: 1, gap: 4 }}>
               <View style={{ height: 8, borderRadius: 4, backgroundColor: n <= langkahKe ? w.utama : warna.kremBatang }} />
               <Text style={{ fontFamily: huruf.anak, fontSize: 13, color: warna.teksKedua, textAlign: 'center' }}>{l}</Text>
@@ -252,7 +263,15 @@ function KartuIlmuLayarIsi() {
           ))}
         </View>
       ) : null}
-      <ScrollView contentContainerStyle={{ gap: 12, paddingBottom: 8 }}>{isi}</ScrollView>
+      <ScrollView contentContainerStyle={{ gap: 12, paddingBottom: 8 }}>
+        {dampingi && kartu.pancingan && tahap !== 'selesai' ? (
+          <View style={{ backgroundColor: warna.oranyeMuda, borderRadius: 16, padding: 12, gap: 2 }}>
+            <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 13, color: '#B86E00' }}>Untuk {keluarga?.sapaanOrtu ?? 'Ayah'}</Text>
+            <Text style={{ fontFamily: huruf.ortu, fontSize: 15, color: warna.teks }}>{kartu.pancingan}</Text>
+          </View>
+        ) : null}
+        {isi}
+      </ScrollView>
     </Layar>
   );
 }

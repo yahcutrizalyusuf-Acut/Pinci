@@ -1,0 +1,1704 @@
+{
+  "id": "komik-t3",
+  "versi": "2026.11.11",
+  "tingkat": 3,
+  "petualangan": "Halo, Robi!",
+  "komik": [
+    {
+      "id": "t3-u01-komik",
+      "unit": "t3-u01",
+      "tingkat": 3,
+      "nomor": 1,
+      "judul": "Hello, {robi}!",
+      "pesanAkhlak": "Ramah dan menolong yang baru dikenal; berani walau takut.",
+      "pesanHariIni": {
+        "inggris": "Be kind to new friends.",
+        "arti": "Bersikaplah ramah pada teman baru."
+      },
+      "kataTarget": [
+        "hello",
+        "hi",
+        "I am",
+        "how are you",
+        "fine",
+        "please",
+        "thank you",
+        "goodbye"
+      ],
+      "panel": [
+        {
+          "id": "t3-u01-p1",
+          "nomor": 1,
+          "adegan": "Pagi setelah badai, daun berserakan di pematang sawah. {nisa} (memeluk boneka kancil) menunjuk robot kecil berlumpur di bawah pohon kelapa. {fathan} dan {dafi} berlari mendekat.",
+          "latar": "sawah",
+          "tokoh": [
+            {
+              "tokoh": "nisa",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "jongkok",
+              "posisi": "kanan",
+              "varian": "kotor"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "kaget",
+              "posisi": "tengah"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u01-p1-g1",
+              "tokoh": "nisa",
+              "teks": "A robot!",
+              "arti": "Sebuah robot!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "robot"
+          ],
+          "tipsBunyi": [
+            "robot dibaca ro-bot, tekanan di depan."
+          ]
+        },
+        {
+          "id": "t3-u01-p2",
+          "nomor": 2,
+          "adegan": "Mata layar robot menyala biru. Anak-anak kaget dan mundur; {fathan} bersembunyi di belakang {dafi}.",
+          "latar": "sawah",
+          "tokoh": [
+            {
+              "tokoh": "robi",
+              "pose": "berdiri",
+              "posisi": "kiri",
+              "varian": "kotor"
+            },
+            {
+              "tokoh": "dafi",
+              "pose": "kaget",
+              "posisi": "tengah_kanan"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "kaget",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u01-p2-g1",
+              "tokoh": "robi",
+              "teks": "Hello! I am {robi}.",
+              "arti": "Halo! Aku {robi}.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "Hello",
+            "I am…"
+          ],
+          "tipsBunyi": [
+            "I am dibaca ai em."
+          ]
+        },
+        {
+          "id": "t3-u01-p3",
+          "nomor": 3,
+          "adegan": "{dafi} melangkah maju dengan senyum malu, melambai. {nisa} mengintip dari sampingnya.",
+          "latar": "sawah",
+          "tokoh": [
+            {
+              "tokoh": "robi",
+              "pose": "berdiri",
+              "posisi": "kiri",
+              "varian": "kotor"
+            },
+            {
+              "tokoh": "dafi",
+              "pose": "melambai",
+              "posisi": "tengah"
+            },
+            {
+              "tokoh": "nisa",
+              "pose": "berdiri",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u01-p3-g1",
+              "tokoh": "dafi",
+              "teks": "Hi, {robi}! I am {dafi}.",
+              "arti": "Hai, {robi}! Aku {dafi}.",
+              "posisi": "tengah_atas",
+              "ekor": "tengah"
+            },
+            {
+              "id": "t3-u01-p3-g2",
+              "tokoh": "nisa",
+              "teks": "How are you?",
+              "arti": "Apa kabar?",
+              "posisi": "kanan_bawah",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "Hi",
+            "How are you?"
+          ],
+          "tipsBunyi": [
+            "How are you dibaca hau ar yu."
+          ]
+        },
+        {
+          "id": "t3-u01-p4",
+          "nomor": 4,
+          "adegan": "Layar {robi} menampilkan wajah sedih, kabel kecil di lengannya putus. Anak-anak berjongkok membersihkan lumpur dengan daun pisang; {fathan} ikut membantu.",
+          "latar": "sawah",
+          "tokoh": [
+            {
+              "tokoh": "robi",
+              "pose": "berdiri",
+              "posisi": "kiri",
+              "varian": "sedih"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "jongkok",
+              "posisi": "tengah"
+            },
+            {
+              "tokoh": "nisa",
+              "pose": "jongkok",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u01-p4-g1",
+              "tokoh": "robi",
+              "teks": "Help, please.",
+              "arti": "Tolong, ya.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "help",
+            "please"
+          ],
+          "tipsBunyi": [
+            "please: \"i\" panjang, pliiz; huruf p di akhir help tetap diucapkan."
+          ]
+        },
+        {
+          "id": "t3-u01-p5",
+          "nomor": 5,
+          "adegan": "Sore, langit jingga. {robi} bersih, dadanya menyala terang, tersenyum. Anak-anak melambai sambil berjalan pulang ke rumah panggung.",
+          "latar": "sore",
+          "tokoh": [
+            {
+              "tokoh": "robi",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "melambai",
+              "posisi": "tengah"
+            },
+            {
+              "tokoh": "nisa",
+              "pose": "melambai",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u01-p5-g1",
+              "tokoh": "robi",
+              "teks": "I am fine! Thank you!",
+              "arti": "Aku baik! Terima kasih!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u01-p5-g2",
+              "tokoh": "fathan",
+              "teks": "Goodbye, {robi}!",
+              "arti": "Sampai jumpa, {robi}!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "fine",
+            "thank you",
+            "goodbye"
+          ],
+          "tipsBunyi": [
+            "fine dibaca fain (e bisu).",
+            "thank: lidah keluar sedikit; goodbye dibaca gud-bai."
+          ]
+        }
+      ],
+      "cekPaham": [
+        {
+          "id": "t3-u01-c1",
+          "jenis": "urutkan",
+          "panel": [
+            "t3-u01-p2",
+            "t3-u01-p4",
+            "t3-u01-p5"
+          ]
+        },
+        {
+          "id": "t3-u01-c2",
+          "jenis": "siapa",
+          "gelembung": "t3-u01-p4-g1",
+          "pilihan": [
+            "robi",
+            "dafi",
+            "nisa"
+          ],
+          "kunci": "robi"
+        },
+        {
+          "id": "t3-u01-c3",
+          "jenis": "dengar_panel",
+          "gelembung": "t3-u01-p5-g2",
+          "pilihan": [
+            "t3-u01-p1",
+            "t3-u01-p3",
+            "t3-u01-p5"
+          ],
+          "kunci": "t3-u01-p5"
+        }
+      ],
+      "naskahOrangTua": {
+        "langkah": [
+          "Tunjuk panel 1. Tanyakan: What is this? (Apa ini?) Harapan: A robot!",
+          "Tunjuk panel 2 dan 3. Tanyakan: What do they say? (Mereka bilang apa?) Harapan: Hello, I am {robi}. Hi, I am {dafi}.",
+          "Coba main peran: Ayah/Bunda jadi {robi} dan bilang Help, please. Anak menjawab sebagai {dafi}.",
+          "Tutup dengan melambai bersama: Goodbye, {robi}!",
+          "Kalau ia memakai Bahasa Indonesia, tidak apa-apa. Ketuk kata bantu untuk mendengar contohnya, lalu minta ia menirukan."
+        ],
+        "renungan": "{fathan} awalnya takut, tapi {dafi} berani menyapa dan semua mau menolong. Kalau ada anak baru di kelasmu, apa yang akan kamu lakukan?",
+        "pancingan": "Tanyakan: Who is in the story? (Siapa saja tokohnya?) Biarkan ia menyebut nama dalam Bahasa Inggris."
+      },
+      "perbuatanBaik": "Ajak anak menyapa tetangga atau teman baru dengan \"Hello!\" minggu ini.",
+      "status": "belum_diperiksa"
+    },
+    {
+      "id": "t3-u02-komik",
+      "unit": "t3-u02",
+      "tingkat": 3,
+      "nomor": 2,
+      "judul": "One, Two, Three!",
+      "pesanAkhlak": "Berbagi dengan teman walau milik sendiri sedikit.",
+      "pesanHariIni": {
+        "inggris": "Let's share!",
+        "arti": "Mari berbagi!"
+      },
+      "kataTarget": [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five"
+      ],
+      "panel": [
+        {
+          "id": "t3-u02-p1",
+          "nomor": 1,
+          "adegan": "Jalan gampong pagi. {nisa} menunjuk tiga anak kucing di dekat pagar. {robi} berdiri di sampingnya, layarnya berkedip.",
+          "latar": "jalan",
+          "tokoh": [
+            {
+              "tokoh": "nisa",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "berdiri",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u02-p1-g1",
+              "tokoh": "nisa",
+              "teks": "Look! How many cats?",
+              "arti": "Lihat! Ada berapa kucing?",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u02-p1-g2",
+              "tokoh": "robi",
+              "teks": "One, two, three!",
+              "arti": "Satu, dua, tiga!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "how many",
+            "cats",
+            "three"
+          ],
+          "tipsBunyi": [
+            "three: ujung lidah keluar sedikit di antara gigi (th)."
+          ]
+        },
+        {
+          "id": "t3-u02-p2",
+          "nomor": 2,
+          "adegan": "{bima} datang membawa lima buah mangga di keranjang kecil. {fathan} terkagum-kagum.",
+          "latar": "jalan",
+          "tokoh": [
+            {
+              "tokoh": "bima",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "kaget",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u02-p2-g1",
+              "tokoh": "bima",
+              "teks": "I have five mangoes.",
+              "arti": "Aku punya lima mangga.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u02-p2-g2",
+              "tokoh": "fathan",
+              "teks": "Five? Wow!",
+              "arti": "Lima? Wah!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "I have",
+            "five"
+          ],
+          "tipsBunyi": [
+            "five: gigi atas menyentuh bibir bawah untuk bunyi v di akhir."
+          ]
+        },
+        {
+          "id": "t3-u02-p3",
+          "nomor": 3,
+          "adegan": "{nisa} memandang tangannya yang kosong, wajahnya sedikit sedih. {bima} memperhatikannya.",
+          "latar": "jalan",
+          "tokoh": [
+            {
+              "tokoh": "nisa",
+              "pose": "berdiri",
+              "posisi": "kiri",
+              "varian": "sedih"
+            },
+            {
+              "tokoh": "bima",
+              "pose": "berdiri",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u02-p3-g1",
+              "tokoh": "nisa",
+              "teks": "I have no mangoes.",
+              "arti": "Aku tidak punya mangga.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "I have",
+            "no"
+          ],
+          "tipsBunyi": [
+            "have: huruf e di akhir tidak dibunyikan, hev."
+          ]
+        },
+        {
+          "id": "t3-u02-p4",
+          "nomor": 4,
+          "adegan": "{bima} tersenyum lalu membagikan mangga kepada {nisa}, {fathan}, dan {robi}.",
+          "latar": "jalan",
+          "tokoh": [
+            {
+              "tokoh": "bima",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "nisa",
+              "pose": "gembira",
+              "posisi": "tengah"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u02-p4-g1",
+              "tokoh": "bima",
+              "teks": "One for you, one for you!",
+              "arti": "Satu untukmu, satu untukmu!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u02-p4-g2",
+              "tokoh": "robi",
+              "teks": "Thank you, friend!",
+              "arti": "Terima kasih, teman!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "one",
+            "for you",
+            "thank you"
+          ],
+          "tipsBunyi": [
+            "one dibaca wan."
+          ]
+        },
+        {
+          "id": "t3-u02-p5",
+          "nomor": 5,
+          "adegan": "Sore di tepi sawah. Para sahabat duduk makan mangga bersama sambil tertawa. {nisa} menghitung teman-temannya.",
+          "latar": "sore",
+          "tokoh": [
+            {
+              "tokoh": "nisa",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "gembira",
+              "posisi": "tengah_kiri"
+            },
+            {
+              "tokoh": "bima",
+              "pose": "gembira",
+              "posisi": "tengah_kanan"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u02-p5-g1",
+              "tokoh": "nisa",
+              "teks": "One, two, three, four, five!",
+              "arti": "Satu, dua, tiga, empat, lima!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u02-p5-g2",
+              "tokoh": "robi",
+              "teks": "Five friends!",
+              "arti": "Lima sahabat!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "four",
+            "five",
+            "friends"
+          ],
+          "tipsBunyi": [
+            "friends: bunyi s kecil di akhir tetap diucapkan."
+          ]
+        }
+      ],
+      "cekPaham": [
+        {
+          "id": "t3-u02-c1",
+          "jenis": "urutkan",
+          "panel": [
+            "t3-u02-p1",
+            "t3-u02-p2",
+            "t3-u02-p4"
+          ]
+        },
+        {
+          "id": "t3-u02-c2",
+          "jenis": "siapa",
+          "gelembung": "t3-u02-p4-g1",
+          "pilihan": [
+            "bima",
+            "nisa",
+            "robi"
+          ],
+          "kunci": "bima"
+        },
+        {
+          "id": "t3-u02-c3",
+          "jenis": "dengar_panel",
+          "gelembung": "t3-u02-p5-g2",
+          "pilihan": [
+            "t3-u02-p1",
+            "t3-u02-p3",
+            "t3-u02-p5"
+          ],
+          "kunci": "t3-u02-p5"
+        }
+      ],
+      "naskahOrangTua": {
+        "langkah": [
+          "Tunjuk panel 1. Tanyakan: How many cats? (Berapa kucing?) Biarkan ia menghitung dalam Bahasa Inggris.",
+          "Tunjuk panel 2. Tanyakan: How many mangoes? Harapan: Five!",
+          "Tunjuk panel 4. Tanyakan: What does {bima} say? (Apa kata {bima}?) Harapan: One for you!",
+          "Hitung bersama sahabat di panel 5: One, two, three, four, five!",
+          "Kalau ia lupa angkanya, ketuk kata bantu lalu tirukan bersama."
+        ],
+        "renungan": "{bima} membagi mangganya walau tinggal sedikit. Kalau kamu punya makanan dan temanmu tidak punya, apa yang akan kamu lakukan?",
+        "pancingan": "Minta ia menghitung benda di rumah dalam Bahasa Inggris. Tanyakan: How many?"
+      },
+      "perbuatanBaik": "Ajak anak berbagi makanan kecil dengan saudara atau teman minggu ini.",
+      "status": "belum_diperiksa"
+    },
+    {
+      "id": "t3-u03-komik",
+      "unit": "t3-u03",
+      "tingkat": 3,
+      "nomor": 3,
+      "judul": "Count to Twenty",
+      "pesanAkhlak": "Bekerja sama membantu guru dan tetap sabar saat ada yang salah.",
+      "pesanHariIni": {
+        "inggris": "Let's work together!",
+        "arti": "Ayo bekerja sama!"
+      },
+      "kataTarget": [
+        "eleven",
+        "twelve",
+        "fourteen",
+        "fifteen",
+        "nineteen",
+        "twenty"
+      ],
+      "panel": [
+        {
+          "id": "t3-u03-p1",
+          "nomor": 1,
+          "adegan": "Ruang kelas sepulang sekolah. Buku berserakan di meja. {lina} dan {fathan} mulai merapikan.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "lina",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "berdiri",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u03-p1-g1",
+              "tokoh": "lina",
+              "teks": "How many books?",
+              "arti": "Ada berapa buku?",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u03-p1-g2",
+              "tokoh": "fathan",
+              "teks": "Eleven, twelve…",
+              "arti": "Sebelas, dua belas…",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "how many",
+            "books",
+            "eleven"
+          ],
+          "tipsBunyi": [
+            "books: oo dibaca pendek, buks."
+          ]
+        },
+        {
+          "id": "t3-u03-p2",
+          "nomor": 2,
+          "adegan": "{fathan} terburu-buru dan tumpukan bukunya jatuh. Ia kaget, lalu memungutnya lagi.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "fathan",
+              "pose": "kaget",
+              "posisi": "tengah"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u03-p2-g1",
+              "tokoh": "fathan",
+              "teks": "Oops! Thirteen, fourteen…",
+              "arti": "Ups! Tiga belas, empat belas…",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "thirteen",
+            "fourteen"
+          ],
+          "tipsBunyi": [
+            "thirteen: lidah keluar sedikit untuk th."
+          ]
+        },
+        {
+          "id": "t3-u03-p3",
+          "nomor": 3,
+          "adegan": "{robi} datang membantu menghitung dengan cepat; lampu dadanya berkedip.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "robi",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "fathan",
+              "pose": "jongkok",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u03-p3-g1",
+              "tokoh": "robi",
+              "teks": "Fifteen, sixteen, seventeen!",
+              "arti": "Lima belas, enam belas, tujuh belas!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "fifteen",
+            "sixteen"
+          ],
+          "tipsBunyi": [
+            "fifteen: tekanan di akhir, fif-TIIN."
+          ]
+        },
+        {
+          "id": "t3-u03-p4",
+          "nomor": 4,
+          "adegan": "{dafi} dan {nisa} ikut menyusun buku di rak sampai rapi.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "dafi",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "nisa",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u03-p4-g1",
+              "tokoh": "dafi",
+              "teks": "Eighteen, nineteen, twenty!",
+              "arti": "Delapan belas, sembilan belas, dua puluh!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u03-p4-g2",
+              "tokoh": "nisa",
+              "teks": "I can count to twenty!",
+              "arti": "Aku bisa menghitung sampai dua puluh!",
+              "posisi": "kanan_bawah",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "nineteen",
+            "twenty",
+            "I can count"
+          ],
+          "tipsBunyi": [
+            "twenty: w dengan bibir membulat dulu."
+          ]
+        },
+        {
+          "id": "t3-u03-p5",
+          "nomor": 5,
+          "adegan": "{kak_fajar} mampir ke kelas dan tersenyum melihat rak buku yang rapi.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "kak_fajar",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "lina",
+              "pose": "melambai",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u03-p5-g1",
+              "tokoh": "kak_fajar",
+              "teks": "Thank you, students!",
+              "arti": "Terima kasih, anak-anak!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u03-p5-g2",
+              "tokoh": "lina",
+              "teks": "You are welcome!",
+              "arti": "Sama-sama!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "thank you",
+            "students"
+          ],
+          "tipsBunyi": [
+            "students: huruf t di akhir tetap diucapkan."
+          ]
+        }
+      ],
+      "cekPaham": [
+        {
+          "id": "t3-u03-c1",
+          "jenis": "urutkan",
+          "panel": [
+            "t3-u03-p1",
+            "t3-u03-p3",
+            "t3-u03-p5"
+          ]
+        },
+        {
+          "id": "t3-u03-c2",
+          "jenis": "siapa",
+          "gelembung": "t3-u03-p4-g2",
+          "pilihan": [
+            "nisa",
+            "dafi",
+            "lina"
+          ],
+          "kunci": "nisa"
+        },
+        {
+          "id": "t3-u03-c3",
+          "jenis": "dengar_panel",
+          "gelembung": "t3-u03-p3-g1",
+          "pilihan": [
+            "t3-u03-p2",
+            "t3-u03-p3",
+            "t3-u03-p5"
+          ],
+          "kunci": "t3-u03-p3"
+        }
+      ],
+      "naskahOrangTua": {
+        "langkah": [
+          "Tunjuk panel 1. Tanyakan: How many books? Biarkan ia menebak angkanya.",
+          "Tunjuk panel 2. Tanyakan: What happens? (Apa yang terjadi?) Bantu dengan kata Oops!",
+          "Hitung bersama dari eleven sampai twenty sambil menunjuk panel 3 dan 4.",
+          "Panel 5: Ayah/Bunda jadi {kak_fajar} dan bilang Thank you! Anak menjawab You are welcome!",
+          "Kalau angkanya tertukar, ketuk kata bantu dan hitung pelan bersama."
+        ],
+        "renungan": "{fathan} menjatuhkan buku, tapi teman-temannya tidak marah dan malah membantu. Apa yang kamu lakukan kalau temanmu membuat kesalahan?",
+        "pancingan": "Minta ia menghitung dari 11 sampai 20 dalam Bahasa Inggris saat merapikan mainan."
+      },
+      "perbuatanBaik": "Ajak anak membantu merapikan satu sudut rumah bersama minggu ini.",
+      "status": "belum_diperiksa"
+    },
+    {
+      "id": "t3-u04-komik",
+      "unit": "t3-u04",
+      "tingkat": 3,
+      "nomor": 4,
+      "judul": "{lina}'s Colors",
+      "pesanAkhlak": "Jujur mengakui kesalahan dan berani minta maaf.",
+      "pesanHariIni": {
+        "inggris": "Say sorry and be honest.",
+        "arti": "Katakan maaf dan jujurlah."
+      },
+      "kataTarget": [
+        "red",
+        "blue",
+        "yellow",
+        "green",
+        "brown",
+        "pink",
+        "purple"
+      ],
+      "panel": [
+        {
+          "id": "t3-u04-p1",
+          "nomor": 1,
+          "adegan": "Teras rumah panggung. {lina} menggambar {robi} di buku gambarnya. {robi} duduk diam seperti model.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "lina",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "berdiri",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u04-p1-g1",
+              "tokoh": "lina",
+              "teks": "{robi}, I like blue.",
+              "arti": "{robi}, aku suka biru.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u04-p1-g2",
+              "tokoh": "robi",
+              "teks": "My eyes are blue!",
+              "arti": "Mataku biru!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "I like",
+            "blue"
+          ],
+          "tipsBunyi": [
+            "blue: bibir maju membulat di akhir, bluu."
+          ]
+        },
+        {
+          "id": "t3-u04-p2",
+          "nomor": 2,
+          "adegan": "{lina} mewarnai gambar dengan banyak warna; gambar {robi} makin ceria.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "lina",
+              "pose": "gembira",
+              "posisi": "tengah"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u04-p2-g1",
+              "tokoh": "lina",
+              "teks": "Red, yellow, and green!",
+              "arti": "Merah, kuning, dan hijau!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "red",
+            "yellow",
+            "green"
+          ],
+          "tipsBunyi": [
+            "red: lidah tidak bergetar untuk r.",
+            "green: ee dibaca i panjang."
+          ]
+        },
+        {
+          "id": "t3-u04-p3",
+          "nomor": 3,
+          "adegan": "{bima} ingin membantu, tetapi tangannya menyenggol cat cokelat. Gambar {lina} ternoda.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "bima",
+              "pose": "kaget",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "lina",
+              "pose": "kaget",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u04-p3-g1",
+              "tokoh": "bima",
+              "teks": "Oh no! Brown!",
+              "arti": "Aduh! Cokelat!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "brown"
+          ],
+          "tipsBunyi": [
+            "brown dibaca braun."
+          ]
+        },
+        {
+          "id": "t3-u04-p4",
+          "nomor": 4,
+          "adegan": "{bima} menunduk dan berterus terang. {lina} tersenyum memaafkan.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "bima",
+              "pose": "berdiri",
+              "posisi": "kiri",
+              "varian": "sedih"
+            },
+            {
+              "tokoh": "lina",
+              "pose": "berdiri",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u04-p4-g1",
+              "tokoh": "bima",
+              "teks": "Sorry, {lina}. It was me.",
+              "arti": "Maaf, {lina}. Itu aku.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u04-p4-g2",
+              "tokoh": "lina",
+              "teks": "It is okay.",
+              "arti": "Tidak apa-apa.",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "sorry",
+            "it was me"
+          ],
+          "tipsBunyi": [
+            "sorry: r tidak bergetar, sori."
+          ]
+        },
+        {
+          "id": "t3-u04-p5",
+          "nomor": 5,
+          "adegan": "Sore hari. Noda cokelat diubah menjadi topi {robi}. Semua tertawa melihat hasilnya.",
+          "latar": "sore",
+          "tokoh": [
+            {
+              "tokoh": "robi",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "lina",
+              "pose": "gembira",
+              "posisi": "tengah"
+            },
+            {
+              "tokoh": "bima",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u04-p5-g1",
+              "tokoh": "robi",
+              "teks": "I like brown!",
+              "arti": "Aku suka cokelat!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u04-p5-g2",
+              "tokoh": "lina",
+              "teks": "Pink and purple too!",
+              "arti": "Merah muda dan ungu juga!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "pink",
+            "purple",
+            "too"
+          ],
+          "tipsBunyi": [
+            "purple: dua huruf p, per-pel."
+          ]
+        }
+      ],
+      "cekPaham": [
+        {
+          "id": "t3-u04-c1",
+          "jenis": "urutkan",
+          "panel": [
+            "t3-u04-p1",
+            "t3-u04-p3",
+            "t3-u04-p4"
+          ]
+        },
+        {
+          "id": "t3-u04-c2",
+          "jenis": "siapa",
+          "gelembung": "t3-u04-p4-g1",
+          "pilihan": [
+            "bima",
+            "fathan",
+            "lina"
+          ],
+          "kunci": "bima"
+        },
+        {
+          "id": "t3-u04-c3",
+          "jenis": "dengar_panel",
+          "gelembung": "t3-u04-p5-g1",
+          "pilihan": [
+            "t3-u04-p1",
+            "t3-u04-p3",
+            "t3-u04-p5"
+          ],
+          "kunci": "t3-u04-p5"
+        }
+      ],
+      "naskahOrangTua": {
+        "langkah": [
+          "Tunjuk panel 1 dan 2. Tanyakan: What colors? (Warna apa saja?) Biarkan ia menyebut warnanya.",
+          "Tunjuk panel 3. Tanyakan: What color is it? Harapan: Brown!",
+          "Tunjuk panel 4. Tanyakan: What does {bima} say? Harapan: Sorry, {lina}.",
+          "Panel 5: sebutkan bersama semua warna yang terlihat.",
+          "Ketuk kata bantu kalau ia lupa nama warnanya."
+        ],
+        "renungan": "{bima} berani berkata jujur walaupun takut. Pernahkah kamu tidak sengaja merusak sesuatu? Apa yang sebaiknya dilakukan?",
+        "pancingan": "Tanyakan warna benda di sekitar rumah: What color is it?"
+      },
+      "perbuatanBaik": "Kalau ada yang tidak sengaja rusak minggu ini, ajak anak berkata jujur dan meminta maaf.",
+      "status": "belum_diperiksa"
+    },
+    {
+      "id": "t3-u05-komik",
+      "unit": "t3-u05",
+      "tingkat": 3,
+      "nomor": 5,
+      "judul": "Meet My Family",
+      "pesanAkhlak": "Bersikap sopan dan hormat kepada orang tua dan nenek.",
+      "pesanHariIni": {
+        "inggris": "Be polite to parents.",
+        "arti": "Bersikap sopanlah kepada orang tua."
+      },
+      "kataTarget": [
+        "mother",
+        "father",
+        "grandmother",
+        "family"
+      ],
+      "panel": [
+        {
+          "id": "t3-u05-p1",
+          "nomor": 1,
+          "adegan": "Halaman rumah panggung. {nisa} mengajak {robi} bertemu ibunya yang sedang menjemur kain.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "nisa",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "melambai",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u05-p1-g1",
+              "tokoh": "nisa",
+              "teks": "{robi}, this is my mother.",
+              "arti": "{robi}, ini ibuku.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u05-p1-g2",
+              "tokoh": "robi",
+              "teks": "Hello! Good morning!",
+              "arti": "Halo! Selamat pagi!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "this is",
+            "mother"
+          ],
+          "tipsBunyi": [
+            "mother: th dengan lidah di antara gigi."
+          ]
+        },
+        {
+          "id": "t3-u05-p2",
+          "nomor": 2,
+          "adegan": "{fathan} mengenalkan ayahnya yang baru pulang dari sawah. {robi} membungkuk sopan.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "fathan",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "berdiri",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u05-p2-g1",
+              "tokoh": "fathan",
+              "teks": "This is my father.",
+              "arti": "Ini ayahku.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u05-p2-g2",
+              "tokoh": "robi",
+              "teks": "Nice to meet you.",
+              "arti": "Senang bertemu Bapak.",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "father",
+            "nice to meet you"
+          ],
+          "tipsBunyi": [
+            "father: a panjang, faa-der."
+          ]
+        },
+        {
+          "id": "t3-u05-p3",
+          "nomor": 3,
+          "adegan": "{robi} hampir masuk rumah dengan kaki berlumpur. {fathan} mengingatkannya; {robi} segera berhenti.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "fathan",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "kaget",
+              "posisi": "kanan",
+              "varian": "kotor"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u05-p3-g1",
+              "tokoh": "fathan",
+              "teks": "{robi}, please!",
+              "arti": "{robi}, tolong!",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u05-p3-g2",
+              "tokoh": "robi",
+              "teks": "Oh! Sorry!",
+              "arti": "Oh! Maaf!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "please",
+            "sorry"
+          ],
+          "tipsBunyi": [
+            "please: ea dibaca i panjang."
+          ]
+        },
+        {
+          "id": "t3-u05-p4",
+          "nomor": 4,
+          "adegan": "Di dalam rumah, nenek duduk di tikar. {nisa} mengenalkan neneknya dan {robi} menyapa dengan sopan.",
+          "latar": "rumah",
+          "tokoh": [
+            {
+              "tokoh": "nisa",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "melambai",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u05-p4-g1",
+              "tokoh": "nisa",
+              "teks": "She is my grandmother.",
+              "arti": "Dia nenekku.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u05-p4-g2",
+              "tokoh": "robi",
+              "teks": "Hello, grandmother!",
+              "arti": "Halo, Nenek!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "she is",
+            "grandmother"
+          ],
+          "tipsBunyi": [
+            "grandmother: huruf d hampir tidak terdengar, gran-ma-der."
+          ]
+        },
+        {
+          "id": "t3-u05-p5",
+          "nomor": 5,
+          "adegan": "Sore, keluarga makan bersama di rumah panggung. {robi} ikut duduk sopan dengan lampu dada menyala hangat.",
+          "latar": "sore",
+          "tokoh": [
+            {
+              "tokoh": "fathan",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "nisa",
+              "pose": "gembira",
+              "posisi": "tengah"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u05-p5-g1",
+              "tokoh": "fathan",
+              "teks": "I love my family.",
+              "arti": "Aku sayang keluargaku.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u05-p5-g2",
+              "tokoh": "robi",
+              "teks": "I love your family too!",
+              "arti": "Aku juga sayang keluargamu!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "I love",
+            "family"
+          ],
+          "tipsBunyi": [
+            "love: o dibaca seperti a pendek, lav."
+          ]
+        }
+      ],
+      "cekPaham": [
+        {
+          "id": "t3-u05-c1",
+          "jenis": "urutkan",
+          "panel": [
+            "t3-u05-p1",
+            "t3-u05-p2",
+            "t3-u05-p5"
+          ]
+        },
+        {
+          "id": "t3-u05-c2",
+          "jenis": "siapa",
+          "gelembung": "t3-u05-p3-g2",
+          "pilihan": [
+            "robi",
+            "fathan",
+            "nisa"
+          ],
+          "kunci": "robi"
+        },
+        {
+          "id": "t3-u05-c3",
+          "jenis": "dengar_panel",
+          "gelembung": "t3-u05-p4-g1",
+          "pilihan": [
+            "t3-u05-p2",
+            "t3-u05-p4",
+            "t3-u05-p5"
+          ],
+          "kunci": "t3-u05-p4"
+        }
+      ],
+      "naskahOrangTua": {
+        "langkah": [
+          "Tunjuk panel 1, 2, dan 4. Tanyakan: Who is this? (Siapa ini?) Harapan: mother, father, grandmother.",
+          "Tunjuk panel 3. Tanyakan: What does {robi} say? Harapan: Sorry!",
+          "Main peran: anak mengenalkan Ayah/Bunda kepada boneka: This is my mother/father.",
+          "Tutup dengan kalimat panel 5: I love my family.",
+          "Kalau ia diam, ketuk kata bantu dan ucapkan bersama."
+        ],
+        "renungan": "{robi} lupa membersihkan kakinya, lalu segera minta maaf. Bagaimana caramu bersikap sopan saat bertemu orang tua teman?",
+        "pancingan": "Minta ia mengenalkan anggota keluarga dalam Bahasa Inggris: This is my…"
+      },
+      "perbuatanBaik": "Ajak anak menyapa kakek, nenek, atau orang tua lain dengan sopan minggu ini.",
+      "status": "belum_diperiksa"
+    },
+    {
+      "id": "t3-u06-komik",
+      "unit": "t3-u06",
+      "tingkat": 3,
+      "nomor": 6,
+      "judul": "My Red Pencil",
+      "pesanAkhlak": "Jujur mengembalikan barang milik orang lain.",
+      "pesanHariIni": {
+        "inggris": "Give it back. Be honest.",
+        "arti": "Kembalikan. Jujurlah."
+      },
+      "kataTarget": [
+        "pencil",
+        "ruler",
+        "bag",
+        "notebook",
+        "crayon",
+        "book"
+      ],
+      "panel": [
+        {
+          "id": "t3-u06-p1",
+          "nomor": 1,
+          "adegan": "Kelas pagi. {dafi} membongkar tasnya, wajahnya bingung mencari pensil merah kesayangannya.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "dafi",
+              "pose": "kaget",
+              "posisi": "tengah"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u06-p1-g1",
+              "tokoh": "dafi",
+              "teks": "My pencil! Where is it?",
+              "arti": "Pensilku! Di mana ya?",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "my pencil",
+            "where"
+          ],
+          "tipsBunyi": [
+            "pencil dibaca pen-sel."
+          ]
+        },
+        {
+          "id": "t3-u06-p2",
+          "nomor": 2,
+          "adegan": "{robi} mengangkat sebuah penggaris dengan wajah polos. {dafi} tertawa kecil.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "robi",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "dafi",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u06-p2-g1",
+              "tokoh": "robi",
+              "teks": "Is this a pencil?",
+              "arti": "Apakah ini pensil?",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u06-p2-g2",
+              "tokoh": "dafi",
+              "teks": "No, it is a ruler.",
+              "arti": "Bukan, ini penggaris.",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "is this",
+            "ruler"
+          ],
+          "tipsBunyi": [
+            "ruler: r tidak bergetar, ruu-ler."
+          ]
+        },
+        {
+          "id": "t3-u06-p3",
+          "nomor": 3,
+          "adegan": "Di dekat kursinya, {bima} menemukan pensil merah. Ia memandanginya sebentar, ragu-ragu.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "bima",
+              "pose": "jongkok",
+              "posisi": "tengah"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u06-p3-g1",
+              "tokoh": "bima",
+              "teks": "A red pencil…",
+              "arti": "Pensil merah…",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            }
+          ],
+          "kataBantu": [
+            "red",
+            "pencil"
+          ],
+          "tipsBunyi": [
+            "red: lidah ditarik ke belakang, tidak bergetar."
+          ]
+        },
+        {
+          "id": "t3-u06-p4",
+          "nomor": 4,
+          "adegan": "{bima} berjalan ke meja {dafi} dan mengembalikan pensil itu. {dafi} tersenyum lega.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "bima",
+              "pose": "gembira",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "dafi",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u06-p4-g1",
+              "tokoh": "bima",
+              "teks": "{dafi}, this is your pencil.",
+              "arti": "{dafi}, ini pensilmu.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u06-p4-g2",
+              "tokoh": "dafi",
+              "teks": "Thank you, {bima}!",
+              "arti": "Terima kasih, {bima}!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "this is",
+            "your pencil"
+          ],
+          "tipsBunyi": [
+            "this: th dengan lidah di antara gigi."
+          ]
+        },
+        {
+          "id": "t3-u06-p5",
+          "nomor": 5,
+          "adegan": "{lina} dan {robi} merapikan meja. Buku, krayon, dan buku tulis masuk ke tas dengan rapi.",
+          "latar": "kelas",
+          "tokoh": [
+            {
+              "tokoh": "lina",
+              "pose": "menunjuk",
+              "posisi": "kiri"
+            },
+            {
+              "tokoh": "robi",
+              "pose": "gembira",
+              "posisi": "kanan"
+            }
+          ],
+          "gambar_sementara": true,
+          "gelembung": [
+            {
+              "id": "t3-u06-p5-g1",
+              "tokoh": "lina",
+              "teks": "Book, crayon, notebook in my bag.",
+              "arti": "Buku, krayon, buku tulis di tasku.",
+              "posisi": "kiri_atas",
+              "ekor": "kiri"
+            },
+            {
+              "id": "t3-u06-p5-g2",
+              "tokoh": "robi",
+              "teks": "Good, good!",
+              "arti": "Bagus, bagus!",
+              "posisi": "kanan_atas",
+              "ekor": "kanan"
+            }
+          ],
+          "kataBantu": [
+            "book",
+            "crayon",
+            "notebook",
+            "bag"
+          ],
+          "tipsBunyi": [
+            "book: oo pendek, buk.",
+            "bag: a pendek dengan mulut terbuka lebar."
+          ]
+        }
+      ],
+      "cekPaham": [
+        {
+          "id": "t3-u06-c1",
+          "jenis": "urutkan",
+          "panel": [
+            "t3-u06-p1",
+            "t3-u06-p3",
+            "t3-u06-p4"
+          ]
+        },
+        {
+          "id": "t3-u06-c2",
+          "jenis": "siapa",
+          "gelembung": "t3-u06-p4-g1",
+          "pilihan": [
+            "bima",
+            "lina",
+            "robi"
+          ],
+          "kunci": "bima"
+        },
+        {
+          "id": "t3-u06-c3",
+          "jenis": "dengar_panel",
+          "gelembung": "t3-u06-p2-g2",
+          "pilihan": [
+            "t3-u06-p2",
+            "t3-u06-p4",
+            "t3-u06-p5"
+          ],
+          "kunci": "t3-u06-p2"
+        }
+      ],
+      "naskahOrangTua": {
+        "langkah": [
+          "Tunjuk panel 1. Tanyakan: What is {dafi} looking for? (Apa yang dicari {dafi}?) Harapan: pencil.",
+          "Tunjuk panel 2. Tanyakan: Is it a pencil? Harapan: No, it is a ruler.",
+          "Tunjuk panel 4. Tanyakan: What does {bima} say? Harapan: This is your pencil.",
+          "Panel 5: sebutkan bersama benda yang masuk ke tas.",
+          "Ketuk kata bantu untuk mendengar contoh kalau ia lupa."
+        ],
+        "renungan": "{bima} menemukan pensil temannya dan memilih mengembalikannya. Kalau kamu menemukan barang milik orang lain, apa yang akan kamu lakukan?",
+        "pancingan": "Tunjuk benda sekolah di rumah dan tanyakan: What is this?"
+      },
+      "perbuatanBaik": "Ajak anak mengembalikan barang pinjaman tepat waktu minggu ini.",
+      "status": "belum_diperiksa"
+    }
+  ]
+}

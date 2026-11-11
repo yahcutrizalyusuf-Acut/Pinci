@@ -75,6 +75,88 @@ export interface SoalKartu {
   petunjuk: PetunjukBertahap;
   pembahasan: string;
   tingkat: TingkatSoal;
+  /** true = soal cerita berlatar Aceh/kehidupan sehari-hari (M4), kuncinya dihitung pembangkit */
+  cerita?: boolean;
+  /** model batang pendukung soal cerita (M2); bagian yang `dicari` bernilai sama dengan kunci */
+  modelBatang?: ModelBatangData;
+  /** status pemeriksaan guru untuk soal tambahan buatan sendiri */
+  status?: StatusPeriksa;
+}
+
+/**
+ * Model batang (M2). Setiap baris berisi ruas yang lebarnya sebanding dengan `nilai`.
+ * Aturan (diuji): ruas `dicari` berdampingan di satu baris; bila `keseluruhan` ada,
+ * nilainya = jumlah semua ruas; nilai yang dicari (jumlah ruas `dicari`, atau
+ * `keseluruhan` bila `keseluruhan.dicari`) = kunci soal.
+ */
+export interface RuasBatang {
+  nilai: number;
+  /** teks di dalam ruas; bila kosong, nilainya yang ditulis (atau kosong bila dicari) */
+  label?: string;
+  dicari?: boolean;
+}
+
+export interface BarisBatang {
+  /** nama baris, misal "Rani" */
+  label?: string;
+  ruas: RuasBatang[];
+}
+
+export interface ModelBatangData {
+  /** 1–2 baris */
+  baris: BarisBatang[];
+  keseluruhan?: { nilai: number; label?: string; dicari?: boolean };
+  /** tulisan di depan nilai, misal "Rp" */
+  depan?: string;
+  /** tulisan sesudah nilai, misal "kg" */
+  satuan?: string;
+  /** tulis nilai sebagai pecahan berpenyebut ini (disederhanakan), misal 4 → "3/4" */
+  penyebut?: number;
+}
+
+/**
+ * Garis bilangan dengan titik dan lompatan. Tanda garis dari `mulai` sampai `akhir`
+ * setiap `langkah` (paling banyak 13 tanda). `penyebut` = tulis tanda sebagai pecahan k/penyebut.
+ */
+export interface GarisBilanganData {
+  mulai: number;
+  akhir: number;
+  langkah: number;
+  penyebut?: number;
+  titik?: { nilai: number; label?: string }[];
+  lompatan?: { dari: number; ke: number; label?: string }[];
+  satuan?: string;
+}
+
+/** Benda yang dimainkan anak di layar "Coba dengan benda" (M1). */
+export type BendaInteraktif =
+  /** blok puluhan: susun bilangan `target` (1–999) dari ratusan, puluhan, satuan */
+  | { jenis: 'blok'; target: number }
+  /** potongan pecahan: warnai `target` dari `bagian` potong */
+  | { jenis: 'potongan'; bentuk: 'lingkaran' | 'batang'; bagian: number; target: number }
+  /** uang gaya Pasar Gampong: kumpulkan uang sampai `target` */
+  | { jenis: 'uang'; pilihan: number[]; target: number }
+  /** garis bilangan: lompat sejauh `lompat` dari `garis.mulai` sampai `target` */
+  | { jenis: 'lompat'; garis: GarisBilanganData; lompat: number; target: number };
+
+export type GambarLangkah = { jenis: 'batang'; data: ModelBatangData } | { jenis: 'garis'; data: GarisBilanganData };
+
+/** Langkah "Coba dengan benda": 1 layar benda → 1 layar gambar → angka (M1). */
+export interface CobaBenda {
+  /** situasi singkat (≤ 2 kalimat) */
+  soal: string;
+  /** perintah di layar benda, misal "Warnai 3 potong." */
+  perintah: string;
+  benda: BendaInteraktif;
+  /** kalimat di layar gambar */
+  teksGambar: string;
+  gambar: GambarLangkah;
+  /** kalimat hitung yang tampil, misal "3/4 × 12 = 9" */
+  kalimat: string;
+  /** ekspresi hitung (tata tulis `SoalKartu.hitung`) */
+  hitung: string;
+  /** dihitung pembangkit dari `hitung` */
+  jawaban: string;
 }
 
 export interface KartuIlmu {
@@ -87,6 +169,10 @@ export interface KartuIlmu {
   soal: SoalKartu[];
   /** saran singkat untuk orang tua (bahan Mode Dampingi), terutama untuk topik bersamaOrtu */
   petunjukOrtu?: string;
+  /** langkah "Coba dengan benda" sebelum contoh jadi (M1), opsional per kartu */
+  cobaBenda?: CobaBenda;
+  /** pertanyaan pancingan untuk orang tua (L1), tampil di Mode Dampingi */
+  pancingan?: string;
   status: StatusPeriksa;
   /** kode modul TKA sumber, misal "M03" atau "B05" */
   sumber: string;

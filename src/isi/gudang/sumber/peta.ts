@@ -4,6 +4,8 @@ import { KARTU_BI } from './bi';
 import { KARTU_MAT_BILANGAN } from './mat-bilangan';
 import { KARTU_MAT_DATA } from './mat-data';
 import { KARTU_MAT_UKUR } from './mat-ukur';
+import { pasangTambahan } from './pasang-tambahan';
+import { TAMBAHAN_K6 } from './tambahan-k6';
 
 /**
  * Peta topik Gudang Ilmu kelas 6. Urutan di daftar = urutan di peta.
@@ -191,7 +193,7 @@ export function bangunPaketGudang(): PaketGudang {
     dibuat: TANGGAL_GUDANG,
     sumber: 'Ditulis ulang dari modul kursus TKA SD M01–M24 dan B01–B12 (bahan/kursus-tka-sd).',
     mapel: [
-      susunMapel('mat', PETA_MAT, [...KARTU_MAT_BILANGAN, ...KARTU_MAT_UKUR, ...KARTU_MAT_DATA]),
+      pasangTambahan(susunMapel('mat', PETA_MAT, [...KARTU_MAT_BILANGAN, ...KARTU_MAT_UKUR, ...KARTU_MAT_DATA]), TAMBAHAN_K6),
       susunMapel('bi', PETA_BI, KARTU_BI),
     ],
   };

@@ -1,0 +1,16 @@
+{
+  "versi": "2026.11.11",
+  "latarCerita": "Gampong Bungong",
+  "tokoh": [
+    { "id": "narator", "nama": "Narator", "peran": "narator", "sifat": "Suara dewasa tenang", "warna": "#6B4423", "suara": { "bahasa": "en-US", "nada": 0.95, "kecepatan": 1.0 } },
+    { "id": "fathan", "nama": "Fathan", "peran": "anak", "umur": 10, "kelas": 4, "sifat": "Pemberani, pemimpin, suka terburu-buru; belajar sabar dan mendengar teman", "warna": "#E2463B", "suara": { "bahasa": "en-US", "nada": 1.35, "kecepatan": 1.05 } },
+    { "id": "nisa", "nama": "Nisa", "peran": "anak", "umur": 7, "kelas": 2, "sifat": "Adik Fathan, ingin tahu, banyak bertanya, polos dan lucu; membawa boneka kancil (Pinci)", "warna": "#F4C430", "suara": { "bahasa": "en-US", "nada": 1.7, "kecepatan": 1.05 } },
+    { "id": "dafi", "nama": "Dafi", "peran": "anak", "umur": 10, "kelas": 4, "sifat": "Kutu buku, suka merakit barang bekas, pemalu; belajar percaya diri", "warna": "#3A86FF", "suara": { "bahasa": "en-US", "nada": 1.3, "kecepatan": 0.9 } },
+    { "id": "lina", "nama": "Lina", "peran": "anak", "umur": 9, "kelas": 3, "sifat": "Jago menggambar dan menyanyi, ramah, keluarganya punya toko kelontong; belajar jujur", "warna": "#8FD3F4", "suara": { "bahasa": "en-US", "nada": 1.55, "kecepatan": 1.0 } },
+    { "id": "bima", "nama": "Bima", "peran": "anak", "umur": 11, "kelas": 5, "sifat": "Badan besar, suka makan, awalnya usil, sebenarnya baik hati; belajar tidak mengejek", "warna": "#2E9E5B", "suara": { "bahasa": "en-US", "nada": 1.1, "kecepatan": 0.95 } },
+    { "id": "robi", "nama": "Robi", "peran": "robot", "sifat": "Robot kecil bundar, polos, sopan, hanya bicara Bahasa Inggris; dadanya menyala oleh kata-kata baik", "warna": "#9AA7B8", "suara": { "bahasa": "en-US", "nada": 1.45, "kecepatan": 0.85 } },
+    { "id": "kabut", "nama": "Mister Kabut", "peran": "misteri", "sifat": "Sosok berjubah kelabu yang membawa kabut; lucu dan suka menggerutu, tidak menakutkan", "warna": "#8A8F98", "suara": { "bahasa": "en-US", "nada": 0.75, "kecepatan": 0.85 } },
+    { "id": "nek_ijah", "nama": "Nek Ijah", "peran": "dewasa", "sifat": "Nenek pemilik kedai, bijak, suka memberi kue", "warna": "#B5651D", "suara": { "bahasa": "en-US", "nada": 1.05, "kecepatan": 0.85 } },
+    { "id": "kak_fajar", "nama": "Kak Fajar", "peran": "dewasa", "sifat": "Mahasiswa pulang kampung, guru Bahasa Inggris tidak resmi anak-anak", "warna": "#4A7BB7", "suara": { "bahasa": "en-US", "nada": 0.9, "kecepatan": 0.95 } }
+  ]
+}

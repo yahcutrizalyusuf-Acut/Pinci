@@ -36,12 +36,21 @@ function samaPeriode(per: Periode, a: Date, b: Date): boolean {
 }
 
 /** Jumlah sesi yang sudah dipakai dalam periode jatah bagian ini. */
-export function jatahTerpakai(bagian: BagianSesi, sesi: Pick<Sesi, 'jenis' | 'mulai'>[], sekarang = new Date()): number {
-  const j = JATAH_GRATIS[bagian];
-  return sesi.filter((s) => j.jenis.includes(s.jenis) && samaPeriode(j.per, new Date(s.mulai), sekarang)).length;
+/**
+ * Sesi Bahasa Inggris dihitung sekali per unit: Sesi B (lanjutan Sesi A) dan Cek Dengar tidak memakai jatah,
+ * supaya anak Gratis tetap bisa menyelesaikan satu unit utuh per hari.
+ */
+function dihitungJatah(s: Pick<Sesi, 'jenis' | 'mulai'> & { tambahan?: Sesi['tambahan'] }): boolean {
+  if (s.jenis !== 'inggris') return true;
+  return s.tambahan?.sesi !== 'b' && s.tambahan?.cekDengar !== true;
 }
 
-export function jatahHabis(bagian: BagianSesi, sesi: Pick<Sesi, 'jenis' | 'mulai'>[], sekarang = new Date()): boolean {
+export function jatahTerpakai(bagian: BagianSesi, sesi: (Pick<Sesi, 'jenis' | 'mulai'> & { tambahan?: Sesi['tambahan'] })[], sekarang = new Date()): number {
+  const j = JATAH_GRATIS[bagian];
+  return sesi.filter((s) => j.jenis.includes(s.jenis) && dihitungJatah(s) && samaPeriode(j.per, new Date(s.mulai), sekarang)).length;
+}
+
+export function jatahHabis(bagian: BagianSesi, sesi: (Pick<Sesi, 'jenis' | 'mulai'> & { tambahan?: Sesi['tambahan'] })[], sekarang = new Date()): boolean {
   return jatahTerpakai(bagian, sesi, sekarang) >= JATAH_GRATIS[bagian].jumlah;
 }
 

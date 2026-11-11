@@ -11,6 +11,7 @@ import { huruf, warna } from '@/desain/token';
 import { FITUR_GURU, TKA_BUKA } from '@/fitur/konfig';
 import { Tombol } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
+import { gudangRekaman } from '@/layanan/rekaman';
 
 function Baris({ judul, sub, onPress }: { judul: string; sub?: string; onPress: () => void }) {
   return (
@@ -69,6 +70,7 @@ export default function Atur() {
         </Kelompok>
         <Kelompok judul="BANTUAN">
           <Baris judul="Mode Dampingi" sub="Latihan bersama anak" onPress={() => router.push('/dampingi')} />
+          <Baris judul="Rekaman suara (Izin 8)" sub="Pilihan. Rekaman hanya di HP ini" onPress={() => router.push('/ortu/rekaman')} />
           <Baris judul="Kirim masukan" sub="Masalah, saran, atau pujian untuk tim Pintar Main" onPress={() => router.push('/ortu/masukan')} />
           <Baris judul="Periksa isi TKA" sub="Untuk orang tua dan guru, sebelum TKA dibuka untuk anak" onPress={() => router.push('/ortu/periksa-tka')} />
           <Baris judul="Ganti PIN orang tua" onPress={() => router.push('/ortu/ganti-pin')} />
@@ -91,6 +93,7 @@ export default function Atur() {
             onPress={() =>
               konfirmasi('Hapus semua data?', 'Semua profil anak, hasil latihan, dan pesan di HP ini akan dihapus. Tindakan ini tidak bisa dibatalkan.', async () => {
                 await repo.hapusSemua();
+                await gudangRekaman().hapusSemua();
                 kunciOrtu();
                 router.replace('/selamat-datang');
               })

@@ -53,3 +53,30 @@ test('grafik 8 minggu dan salah terbanyak', () => {
   expect(salahTerbanyak(j)[0]).toEqual({ topik: '×8', salah: 2, total: 2 });
   expect(penyebabSalah([jw('s', false, 1, 'M03', 'S2'), jw('s', false, 1, 'M03', 'S2'), jw('s', true, 1, 'M03', 'S1')])).toEqual([{ kode: 'S2', jumlah: 2 }]);
 });
+
+describe('rapor Bahasa Inggris (Ceritakan Lagi dan Cek Dengar)', () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { raporInggris } = require('../rapor') as typeof import('../rapor');
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { cariKomik, teksTokoh } = require('../../isi/inggris/paketKomik') as typeof import('../../isi/inggris/paketKomik');
+  const senin = new Date(2026, 10, 9);
+  const cu = (tanggal: string, komikId: string, kata: string[]) => ({ id: tanggal + komikId, keluarga_id: 'k', anak_id: 'a', komikId, tanggal, waktu: `${tanggal}T10:00:00Z`, mode: 'dampingi' as const, centangTokoh: true, centangUrutan: true, centangInggris: false, centangSelesai: true, kataTargetDicentang: kata, adaRekaman: false });
+
+  it('kalimat kemajuan dari Ceritakan Lagi minggu ini, tanpa nilai', () => {
+    const r = raporInggris('Rani', [cu('2026-11-10', 't3-u01-komik', ['hello', 'robot']), cu('2026-11-11', 't3-u02-komik', ['one', 'hello']), cu('2026-11-01', 't3-u03-komik', ['ten'])], [], senin, cariKomik, teksTokoh);
+    expect(r.cerita).toBe('Minggu ini Rani menceritakan 2 komik dan memakai 3 kata baru: hello, robot, one.');
+    expect(r.membantu).toBeNull();
+  });
+
+  it('hasil Cek Dengar dan satu cara membantu dari komik terakhir', () => {
+    const sesi = [
+      { id: 's1', anak_id: 'a', jenis: 'inggris', mode: 'sendiri', kelas: 4, level: 1, rujukan: 't3-u01', mulai: '2026-11-10T09:00:00Z', selesai: '', durasiDetik: 60, benar: 0, jumlah: 0, tambahan: { sesi: 'a', komik: 't3-u01-komik' } },
+      { id: 's2', anak_id: 'a', jenis: 'inggris', mode: 'sendiri', kelas: 4, level: 1, rujukan: 't3-cek1', mulai: '2026-11-11T09:00:00Z', selesai: '', durasiDetik: 60, benar: 7, jumlah: 8, tambahan: { cekDengar: true, ke: 1 } },
+    ] as unknown as Parameters<typeof raporInggris>[2];
+    const r = raporInggris('Rani', [], sesi, senin, cariKomik, teksTokoh);
+    expect(r.cerita).toBeNull();
+    expect(r.cekDengar).toBe('Cek Dengar 1: Rani mengenali 7 dari 8 kata yang didengar.');
+    expect(r.membantu).toContain('Who is in the story?');
+    expect(r.perbuatanBaik).toContain('Hello!');
+  });
+});

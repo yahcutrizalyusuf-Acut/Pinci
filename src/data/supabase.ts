@@ -37,6 +37,8 @@ const KOLOM: Partial<Record<NamaTabel, string[]>> = {
   jawaban_pertanyaan: ['id', 'keluarga_id', 'kode', 'jawaban', 'waktu'],
   catatan_pemakaian: ['id', 'keluarga_id', 'anak_id', 'kejadian', 'layar', 'detik', 'waktu'],
   catatan_teknis: ['id', 'keluarga_id', 'pesan', 'tempat', 'versi_aplikasi', 'perangkat', 'waktu'],
+  // Hasil Ceritakan Lagi. Tidak ada kolom isi rekaman: hanya ada_rekaman ya/tidak (20261111000000_cerita_ulang.sql).
+  cerita_ulang: ['id', 'keluarga_id', 'anak_id', 'komik_id', 'tanggal', 'waktu', 'mode', 'centang_tokoh', 'centang_urutan', 'centang_inggris', 'centang_selesai', 'kata_target_dicentang', 'ada_rekaman'],
 };
 
 /** Tabel catatan yang dibuang bila server menolaknya (misalnya persetujuan sudah dicabut), supaya tidak dicoba tanpa henti. */
@@ -55,6 +57,7 @@ const KUNCI_LOKAL: Partial<Record<NamaTabel, string[]>> = {
   pemakaian: ['id', 'anak_id', 'tanggal', 'belajarDetik', 'mainDetik', 'blokDetik', 'istirahatSampai', 'intiSelesai'],
   catatan_pengawas: ['id', 'keluarga_id', 'anak_id', 'kelasId', 'isi', 'waktu', 'dibaca'],
   tugas: ['id', 'keluarga_id', 'anak_id', 'kelasId', 'jenis', 'rujukan', 'judul', 'pesan', 'dibuat', 'tenggat', 'selesai', 'dibatalkan'],
+  cerita_ulang: ['id', 'keluarga_id', 'anak_id', 'komikId', 'tanggal', 'waktu', 'mode', 'centangTokoh', 'centangUrutan', 'centangInggris', 'centangSelesai', 'kataTargetDicentang', 'adaRekaman'],
 };
 
 /** Kolom berisi waktu: dirapikan ke ISO supaya urutan teks sama dengan urutan waktu. */
@@ -66,6 +69,7 @@ const KOLOM_WAKTU: Partial<Record<NamaTabel, string[]>> = {
   kemajuan_topik: ['terakhir'],
   catatan_pengawas: ['waktu', 'dibaca'],
   tugas: ['dibuat', 'selesai'],
+  cerita_ulang: ['waktu'],
 };
 
 /**
@@ -93,7 +97,7 @@ export function keLokal(tabel: NamaTabel, baris: Record<string, unknown>): Recor
 }
 
 /** Tabel yang barisnya tidak pernah berubah: kiriman ulang diabaikan. */
-const HANYA_TAMBAH = new Set<NamaTabel>(['sesi', 'jawaban', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis']);
+const HANYA_TAMBAH = new Set<NamaTabel>(['sesi', 'jawaban', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis', 'cerita_ulang']);
 
 export function keSnake(nama: string): string {
   return nama.replace(/[A-Z]/g, (h) => `_${h.toLowerCase()}`);
@@ -131,6 +135,7 @@ const URUTAN_KIRIM: NamaTabel[] = [
   'jawaban_pertanyaan',
   'catatan_pemakaian',
   'catatan_teknis',
+  'cerita_ulang',
 ];
 
 export function buatPengirimSupabase(opsi: OpsiSupabase): PengirimSinkron {

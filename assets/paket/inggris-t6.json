@@ -198,6 +198,35 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "student",
+          "drawing",
+          "swimming",
+          "reading"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t6-u01-k05",
+          "jenis": "tulis",
+          "petunjuk": "Pura-pura menggambar!"
+        },
+        {
+          "kata": "t6-u01-k06",
+          "jenis": "putar",
+          "petunjuk": "Pura-pura berenang!"
+        },
+        {
+          "kata": "t6-u01-k07",
+          "jenis": "baca",
+          "petunjuk": "Pura-pura membaca!"
+        }
       ]
     },
     {
@@ -394,7 +423,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "left",
+          "right",
+          "straight",
+          "park"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t6-u03",
@@ -589,6 +631,40 @@
             "t6-u03-k10"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 11,
+        "bunyi": "akhiran -ed",
+        "kata": [
+          "played",
+          "watched",
+          "cooked",
+          "cleaned"
+        ],
+        "tips": "Ada tiga bunyi: played (pleid), wanted (wan-tid), walked (wokt).",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t6-u03-k01",
+          "jenis": "lompat",
+          "petunjuk": "Pura-pura bermain bola!"
+        },
+        {
+          "kata": "t6-u03-k02",
+          "jenis": "duduk",
+          "petunjuk": "Duduk manis seperti menonton!"
+        },
+        {
+          "kata": "t6-u03-k03",
+          "jenis": "cuci",
+          "petunjuk": "Pura-pura memasak!"
+        },
+        {
+          "kata": "t6-u03-k05",
+          "jenis": "lari",
+          "petunjuk": "Jalan di tempat!"
         }
       ]
     },
@@ -786,7 +862,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "elephant",
+          "giraffe",
+          "cheetah",
+          "mountain"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t6-u05",
@@ -982,7 +1071,19 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 3,
+        "bunyi": "bunyi th",
+        "kata": [
+          "toothache",
+          "thermometer",
+          "toothbrush"
+        ],
+        "tips": "Ujung lidah keluar sedikit di antara gigi: thank, three, this, mother.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t6-u06",
@@ -1177,6 +1278,35 @@
             "t6-u06-k10"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "fruit",
+          "milk",
+          "egg",
+          "bread"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t6-u06-k03",
+          "jenis": "minum",
+          "petunjuk": "Pura-pura minum!"
+        },
+        {
+          "kata": "t6-u06-k06",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan!"
+        },
+        {
+          "kata": "t6-u06-k07",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan roti!"
         }
       ]
     },
@@ -1374,6 +1504,24 @@
           ],
           "status": "belum_diperiksa"
         }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "weekend",
+          "camping",
+          "grandma"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t6-u07-k06",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan kue!"
+        }
       ]
     },
     {
@@ -1570,7 +1718,19 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "ship",
+          "island",
+          "ticket"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t6-u09",
@@ -1766,7 +1926,18 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 2,
+        "bunyi": "a pendek",
+        "kata": [
+          "bag",
+          "tap"
+        ],
+        "tips": "Mulut terbuka lebar seperti mau bilang \"e\" sambil tersenyum: cat, bag, apple.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t6-u10",
@@ -1962,7 +2133,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 13,
+        "bunyi": "suku kata lemah",
+        "kata": [
+          "computer",
+          "keyboard",
+          "printer",
+          "headphones"
+        ],
+        "tips": "Satu suku kata dibaca keras, yang lain pelan: banana, teacher.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     },
     {
       "id": "t6-u11",
@@ -2157,6 +2341,23 @@
             "t6-u11-k10"
           ],
           "status": "belum_diperiksa"
+        }
+      ],
+      "bunyiHariIni": {
+        "jebakan": 4,
+        "bunyi": "bunyi sh dan ch",
+        "kata": [
+          "cheese",
+          "sandwich"
+        ],
+        "tips": "sh dibaca \"sy\" panjang; ch dibaca seperti \"c\" Indonesia: fish, shoe, chair, lunch.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": [
+        {
+          "kata": "t6-u11-k01",
+          "jenis": "makan",
+          "petunjuk": "Pura-pura makan roti!"
         }
       ]
     },
@@ -2354,7 +2555,20 @@
           ],
           "status": "belum_diperiksa"
         }
-      ]
+      ],
+      "bunyiHariIni": {
+        "jebakan": 9,
+        "bunyi": "huruf mati di akhir kata",
+        "kata": [
+          "rabbit",
+          "ant",
+          "bird",
+          "forest"
+        ],
+        "tips": "Jangan buang huruf terakhir: hand, milk, big.",
+        "status": "belum_diperiksa"
+      },
+      "gerakan": []
     }
   ]
 }

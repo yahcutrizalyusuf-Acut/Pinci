@@ -133,6 +133,15 @@ Yang bisa dipakai sesudahnya:
 - **Catatan pemakaian** hanya dikirim bila orang tua mencentangnya (di layar Kelas dan pengawas; bisa dimatikan kapan saja). **Catatan masalah teknis** (pesan galat, versi, jenis HP) dikirim otomatis tanpa data pribadi.
 - **Pendaftar** dari halaman penjelasan, **Laporan mingguan**, dan **Tagihan les mitra** per bulan (murid aktif = latihan minimal 1 hari di bulan itu).
 
+## Batas pendaftaran dan Ceritakan Lagi (pasang sesudah bagian langganan)
+
+Tempel dan **Run** satu per satu di SQL Editor, urut:
+
+1. `supabase/migrations/20261104000000_batas_pendaftaran.sql` lalu ujinya `20261104000100_uji_batas_pendaftaran.sql` (batas 5 pendaftaran per kontak per hari).
+2. `supabase/migrations/20261111000000_cerita_ulang.sql` lalu ujinya `20261111000100_uji_cerita_ulang.sql` (hasil Ceritakan Lagi).
+
+Lulus kalau tidak ada pesan "GAGAL". Tabel `cerita_ulang` hanya berisi centang orang tua dan **ada_rekaman ya/tidak**. Rekaman suara anak tidak pernah dikirim ke server (tetap di HP), dan staf, pengawas, mitra les, serta guru tidak bisa membaca tabel ini.
+
 ## Halaman penjelasan dan brosur
 
 Folder `halaman/`: halaman keluarga (`index.html`), halaman mitra (`mitra.html`), dan brosur cetak (`brosur.html`). Tanpa kuki dan tanpa pelacak; asal pengunjung dicatat dari tautan, misalnya `…/index.html?dari=fb-tka-1`.
