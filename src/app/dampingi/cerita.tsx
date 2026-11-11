@@ -145,7 +145,7 @@ function Alur({ komik, izin8, anakId, nama, sapaan, repo, onKembali }: { komik: 
         <View style={{ flexDirection: 'row', gap: 10, alignSelf: 'stretch' }}>
           <Tombol label="Sebelumnya" varian="garis" nonaktif={ke === 0} style={{ flex: 1 }} onPress={() => setKe((x) => Math.max(0, x - 1))} />
           <Tombol
-            label={akhir ? 'Selesai bercerita' : 'Panel berikut'}
+            label={akhir ? 'Selesai bercerita' : 'Berikutnya'}
             style={{ flex: 1 }}
             onPress={() => {
               hentikanSuara();

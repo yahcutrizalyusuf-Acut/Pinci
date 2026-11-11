@@ -64,12 +64,23 @@ export function Perekam({ anakId, komikId, panelId, jenis, label, mulaiOtomatis,
   const denyut = useSharedValue(1);
   const gayaDenyut = useAnimatedStyle(() => ({ transform: [{ scale: denyut.value }], opacity: 2 - denyut.value }));
 
+  // Layar ditinggal saat masih merekam (misalnya pindah panel): hentikan mikrofon dan buang rekaman yang terputus.
   useEffect(
     () => () => {
-      if (jam.current) clearInterval(jam.current);
+      if (jam.current) {
+        clearInterval(jam.current);
+        jam.current = null;
+        perekam
+          .stop()
+          .catch(() => undefined)
+          .then(() => setAudioModeAsync({ allowsRecording: false }))
+          .catch(() => undefined)
+          .then(() => gudangRekaman().buangSementara())
+          .catch(() => undefined);
+      }
       cancelAnimation(denyut);
     },
-    [denyut],
+    [denyut, perekam],
   );
 
   const berhenti = async () => {

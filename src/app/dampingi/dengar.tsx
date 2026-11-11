@@ -109,7 +109,7 @@ function PerPanel({ komik, anakId, izin8, onSelesai }: { komik: Komik; anakId: s
       ) : null}
       <View style={{ flexDirection: 'row', gap: 10, alignSelf: 'stretch', marginTop: 4 }}>
         <Tombol label="Sebelumnya" varian="garis" nonaktif={ke === 0} style={{ flex: 1 }} onPress={() => pindah(ke - 1)} />
-        <Tombol label={akhir ? 'Selesai' : 'Panel berikut'} style={{ flex: 1 }} onPress={() => (akhir ? onSelesai() : pindah(ke + 1))} />
+        <Tombol label={akhir ? 'Selesai' : 'Berikutnya'} style={{ flex: 1 }} onPress={() => (akhir ? onSelesai() : pindah(ke + 1))} />
       </View>
     </ScrollView>
   );

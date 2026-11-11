@@ -20,6 +20,8 @@ export interface PenyimpanRekaman {
   hapusBerkas(berkas: string): Promise<void>;
   /** hapus seluruh folder rekaman (dipakai saat Izin 8 dicabut) */
   hapusFolder(): Promise<void>;
+  /** hapus berkas sementara perekam yang tertinggal (rekaman yang terputus) */
+  bersihkanSementara(): Promise<void>;
 }
 
 /** Penyimpan di memori: untuk uji dan web. */
@@ -44,6 +46,10 @@ export class PenyimpanMemori implements PenyimpanRekaman {
   async hapusFolder() {
     this.berkas.clear();
     this.daftar = [];
+  }
+  sementaraDibersihkan = 0;
+  async bersihkanSementara() {
+    this.sementaraDibersihkan += 1;
   }
 }
 
@@ -85,6 +91,13 @@ function buatPenyimpanBerkas(): PenyimpanRekaman {
     async hapusFolder() {
       const d = new Directory(Paths.document, 'rekaman');
       if (d.exists) d.delete();
+    },
+    async bersihkanSementara() {
+      // expo-audio menulis rekaman lebih dulu ke folder cache "Audio"; sisa rekaman yang terputus dihapus di sini.
+      for (const nama of ['Audio', 'ExpoAudio']) {
+        const d = new Directory(Paths.cache, nama);
+        if (d.exists) d.delete();
+      }
     },
   };
 }
@@ -133,7 +146,22 @@ export class GudangRekaman {
     return this.urut(async () => {
       for (const c of await this.penyimpan.bacaDaftar()) await this.penyimpan.hapusBerkas(c.berkas);
       await this.penyimpan.hapusFolder();
+      await this.penyimpan.bersihkanSementara();
       await this.penyimpan.tulisDaftar([]);
+    });
+  }
+
+  /** Buang berkas sementara perekam (rekaman yang terputus sebelum disimpan). */
+  buangSementara() {
+    return this.urut(() => this.penyimpan.bersihkanSementara());
+  }
+
+  /** Hapus semua rekaman satu anak (saat profil anak dihapus). */
+  hapusAnak(anakId: string) {
+    return this.urut(async () => {
+      const d = await this.penyimpan.bacaDaftar();
+      for (const c of d.filter((x) => x.anak_id === anakId)) await this.penyimpan.hapusBerkas(c.berkas);
+      await this.penyimpan.tulisDaftar(d.filter((x) => x.anak_id !== anakId));
     });
   }
 
@@ -147,16 +175,26 @@ export class GudangRekaman {
     });
   }
 
-  private async rapikanDalam(kini: Date) {
-    const { simpan, hapus } = rapikanRekaman(await this.penyimpan.bacaDaftar(), kini);
+  private async rapikanDalam(kini: Date, anakAda?: string[]) {
+    const semua = await this.penyimpan.bacaDaftar();
+    // rekaman milik profil anak yang sudah dihapus ikut dibuang
+    const yatim = anakAda ? semua.filter((c) => !anakAda.includes(c.anak_id)) : [];
+    const { simpan, hapus: lewat } = rapikanRekaman(semua.filter((c) => !yatim.includes(c)), kini);
+    const hapus = [...yatim, ...lewat];
     for (const c of hapus) await this.penyimpan.hapusBerkas(c.berkas);
     if (hapus.length) await this.penyimpan.tulisDaftar(simpan);
     return hapus.length;
   }
 
-  /** Penghapusan otomatis 30 hari dan batas 50 MB; dipanggil saat aplikasi dibuka. */
-  rapikan(kini = new Date()) {
-    return this.urut(() => this.rapikanDalam(kini));
+  /**
+   * Penghapusan otomatis 30 hari dan batas 50 MB; dipanggil saat aplikasi dibuka. Dengan `anakAda`, rekaman milik
+   * profil yang sudah tidak ada juga dihapus. Berkas sementara perekam yang tertinggal ikut dibersihkan.
+   */
+  rapikan(kini = new Date(), anakAda?: string[]) {
+    return this.urut(async () => {
+      await this.penyimpan.bersihkanSementara();
+      return this.rapikanDalam(kini, anakAda);
+    });
   }
 }
 

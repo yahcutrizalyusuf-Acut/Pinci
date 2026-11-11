@@ -60,6 +60,26 @@ describe('penyimpanan rekaman hanya di HP', () => {
     expect(await g.semua()).toHaveLength(0);
   });
 
+  it('hapus profil anak = rekamannya ikut terhapus, rekaman anak lain tetap', async () => {
+    const p = new PenyimpanMemori();
+    const g = new GudangRekaman(p);
+    await g.tambah({ anak_id: 'a1', komikId: 'k', panelId: 'p', jenis: 'kalimat', alamatSementara: 'x', detik: 5 });
+    await g.tambah({ anak_id: 'a2', komikId: 'k', panelId: 'p', jenis: 'kalimat', alamatSementara: 'y', detik: 5 });
+    await g.hapusAnak('a1');
+    expect((await g.semua()).map((c) => c.anak_id)).toEqual(['a2']);
+    expect(p.berkas.size).toBe(1);
+  });
+
+  it('saat aplikasi dibuka: rekaman profil yang sudah dihapus dibuang dan berkas sementara dibersihkan', async () => {
+    const p = new PenyimpanMemori();
+    const g = new GudangRekaman(p);
+    await g.tambah({ anak_id: 'hilang', komikId: 'k', panelId: 'p', jenis: 'kalimat', alamatSementara: 'x', detik: 5 });
+    await g.tambah({ anak_id: 'a1', komikId: 'k', panelId: 'p', jenis: 'kalimat', alamatSementara: 'y', detik: 5 });
+    expect(await g.rapikan(new Date(), ['a1'])).toBe(1);
+    expect((await g.semua()).map((c) => c.anak_id)).toEqual(['a1']);
+    expect(p.sementaraDibersihkan).toBeGreaterThan(0);
+  });
+
   it('sematan ditolak setelah 5 kenangan', async () => {
     const g = new GudangRekaman(new PenyimpanMemori());
     const ids: string[] = [];

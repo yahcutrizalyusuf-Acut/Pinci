@@ -28,7 +28,7 @@
         {
           "id": "t4-u01-p1",
           "nomor": 1,
-          "adegan": "Lapangan bola sore hari menjelang kenduri panen. {kak_fajar} mengajak anak-anak bermain tebak tubuh.",
+          "adegan": "Lapangan bola sore hari menjelang pesta panen. {kak_fajar} mengajak anak-anak bermain tebak tubuh.",
           "latar": "lapangan",
           "tokoh": [
             {
@@ -118,14 +118,14 @@
             {
               "id": "t4-u01-p3-g1",
               "tokoh": "kabut",
-              "teks": "Hmm… no help, no help!",
+              "teks": "Hmm… don't help, don't help!",
               "arti": "Hmm… jangan menolong, jangan menolong!",
               "posisi": "kiri_atas",
               "ekor": "kiri"
             }
           ],
           "kataBantu": [
-            "no help"
+            "don't help"
           ],
           "tipsBunyi": [
             "help: huruf p di akhir tetap diucapkan."
@@ -353,7 +353,7 @@
         {
           "id": "t4-u02-p1",
           "nomor": 1,
-          "adegan": "Kedai {nek_ijah} menjelang kenduri. Meja penuh nasi, ayam, dan telur. {nek_ijah} tersenyum.",
+          "adegan": "Kedai {nek_ijah} menjelang pesta panen. Meja penuh nasi, ayam, dan telur. {nek_ijah} tersenyum.",
           "latar": "kedai",
           "tokoh": [
             {
@@ -465,7 +465,7 @@
             "rice"
           ],
           "tipsBunyi": [
-            "more: r di akhir hampir tidak terdengar."
+            "more: o panjang, lalu r dibunyikan lembut, mor."
           ]
         },
         {
@@ -635,8 +635,8 @@
           "kataHilang": "chicken",
           "pilihan": [
             "chicken",
-            "bread",
-            "milk"
+            "window",
+            "happy"
           ]
         }
       ],
@@ -791,7 +791,7 @@
             "evening"
           ],
           "tipsBunyi": [
-            "party: r hampir tidak terdengar, paa-ti."
+            "party: a panjang, r dibunyikan lembut, par-ti."
           ]
         },
         {
@@ -854,8 +854,8 @@
             {
               "id": "t4-u03-p5-g2",
               "tokoh": "robi",
-              "teks": "Please, please!",
-              "arti": "Tolong, tenanglah!",
+              "teks": "Please, {fathan}!",
+              "arti": "Ayolah, {fathan}, sabar!",
               "posisi": "kanan_atas",
               "ekor": "kanan"
             }
@@ -1063,8 +1063,8 @@
             {
               "id": "t4-u04-p2-g2",
               "tokoh": "fathan",
-              "teks": "No… I sleep.",
-              "arti": "Tidak… aku tidur.",
+              "teks": "No, no… sleep!",
+              "arti": "Tidak, tidak… mau tidur!",
               "posisi": "kanan_atas",
               "ekor": "kanan"
             }
@@ -1506,7 +1506,7 @@
             "sorry"
           ],
           "tipsBunyi": [
-            "are you: r hampir tidak terdengar, aa yu."
+            "are you: r dibunyikan lembut, ar yu."
           ]
         },
         {
@@ -1893,8 +1893,8 @@
           "kataHilang": "mirror",
           "pilihan": [
             "mirror",
-            "key",
-            "sofa"
+            "happy",
+            "rice"
           ]
         }
       ],

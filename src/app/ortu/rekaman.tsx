@@ -86,7 +86,7 @@ export default function LayarIzinRekaman() {
           <View style={{ backgroundColor: warna.putih, borderRadius: 16, padding: 16, gap: 10 }}>
             <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 16, color: warna.teks }}>Rekaman tersimpan di HP ini</Text>
             <Text style={{ fontFamily: huruf.ortu, fontSize: 13, color: warna.teksKedua }}>
-              Sematkan paling banyak {ATURAN_REKAMAN.sematan} cerita utuh per anak sebagai kenangan. Yang lain terhapus sendiri setelah {ATURAN_REKAMAN.hari} hari.
+              Sematkan paling banyak {ATURAN_REKAMAN.sematan} cerita utuh sebagai kenangan. Yang lain terhapus sendiri setelah {ATURAN_REKAMAN.hari} hari.
             </Text>
             {daftar.length === 0 ? <Text style={{ fontFamily: huruf.ortu, fontSize: 15, color: warna.teksRedup }}>Belum ada rekaman.</Text> : null}
             {daftarAnak.map((a) => {
@@ -112,7 +112,7 @@ export default function LayarIzinRekaman() {
                               label={c.disematkan ? 'Lepas sematan' : '📌 Sematkan'}
                               onPress={async () => {
                                 const ok = await gudangRekaman().sematkan(c.id, !c.disematkan);
-                                setPesan(ok ? '' : `Sudah ada ${ATURAN_REKAMAN.sematan} kenangan untuk ${a.nama}. Lepas satu dulu.`);
+                                setPesan(ok ? '' : `Sudah ada ${ATURAN_REKAMAN.sematan} kenangan di HP ini. Lepas satu dulu.`);
                                 void muat();
                               }}
                             />

@@ -16,7 +16,7 @@ import { gudangRekaman } from '@/layanan/rekaman';
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function Isi() {
-  const { siap } = useData();
+  const { siap, daftarAnak } = useData();
   const [hurufSiap] = useFonts({
     Andika_400Regular,
     Andika_700Bold,
@@ -32,9 +32,14 @@ function Isi() {
     if (semua) SplashScreen.hideAsync().catch(() => undefined);
   }, [semua]);
   // Rekaman suara: hapus yang lewat 30 hari dan jaga batas 50 MB setiap aplikasi dibuka (CLAUDE.md aturan 12).
+  const idAnak = daftarAnak.map((a) => a.id).join(',');
   useEffect(() => {
-    gudangRekaman().rapikan().catch(() => undefined);
-  }, []);
+    if (!siap) return;
+    gudangRekaman()
+      // daftar anak kosong = belum termuat: jangan buang rekaman berdasarkan pemilik
+      .rapikan(new Date(), idAnak ? idAnak.split(',') : undefined)
+      .catch(() => undefined);
+  }, [siap, idAnak]);
   if (!semua) return null;
   return (
     <Stack

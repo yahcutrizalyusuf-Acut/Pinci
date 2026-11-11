@@ -498,7 +498,7 @@
         {
           "id": "t3-u02-p5",
           "nomor": 5,
-          "adegan": "Sore di tepi sawah. Lima sahabat duduk makan mangga bersama sambil tertawa. {nisa} menghitung teman-temannya.",
+          "adegan": "Sore di tepi sawah. Para sahabat duduk makan mangga bersama sambil tertawa. {nisa} menghitung teman-temannya.",
           "latar": "sore",
           "tokoh": [
             {
@@ -1023,7 +1023,7 @@
             {
               "id": "t3-u04-p4-g1",
               "tokoh": "bima",
-              "teks": "Sorry, {lina}. It is me.",
+              "teks": "Sorry, {lina}. It was me.",
               "arti": "Maaf, {lina}. Itu aku.",
               "posisi": "kiri_atas",
               "ekor": "kiri"
@@ -1039,7 +1039,7 @@
           ],
           "kataBantu": [
             "sorry",
-            "it is me"
+            "it was me"
           ],
           "tipsBunyi": [
             "sorry: r tidak bergetar, sori."
@@ -1373,8 +1373,8 @@
             {
               "id": "t3-u05-p5-g2",
               "tokoh": "robi",
-              "teks": "I love my family too!",
-              "arti": "Aku juga sayang keluargaku!",
+              "teks": "I love your family too!",
+              "arti": "Aku juga sayang keluargamu!",
               "posisi": "kanan_atas",
               "ekor": "kanan"
             }

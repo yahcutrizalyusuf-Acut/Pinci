@@ -26,15 +26,15 @@ describe('aturan rekaman suara (CLAUDE.md aturan 12)', () => {
     expect(sisaHari(muda, kini)).toBe(1);
   });
 
-  it('paling banyak 5 sematan per anak, hanya cerita utuh', () => {
+  it('paling banyak 5 sematan di HP ini, hanya cerita utuh', () => {
     const utuh = Array.from({ length: 6 }, (_, i) => rek({ jenis: 'utuh', panelId: null, disematkan: i < 5 }));
     expect(bisaSematkan(utuh, utuh[5].id)).toBe(false);
     expect(bisaSematkan(utuh, utuh[0].id)).toBe(true);
     const kalimat = rek();
     expect(bisaSematkan([kalimat], kalimat.id)).toBe(false);
-    // sematan anak lain tidak dihitung
+    // sematan anak lain ikut dihitung: batasnya 5 untuk seluruh HP
     const lain = rek({ anak_id: 'a2', jenis: 'utuh', panelId: null });
-    expect(bisaSematkan([...utuh, lain], lain.id)).toBe(true);
+    expect(bisaSematkan([...utuh, lain], lain.id)).toBe(false);
   });
 
   it('batas 50 MB: yang tertua dan tidak disematkan dihapus lebih dulu', () => {

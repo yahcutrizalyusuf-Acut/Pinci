@@ -20,6 +20,14 @@ fs.mkdirSync(KELUAR, { recursive: true });
   const konteks = await peramban.newContext({ viewport: { width: 360, height: 800 }, deviceScaleFactor: 2 });
   const p = await konteks.newPage();
   const galat = [];
+  // Uji tanpa sinyal: semua permintaan ke luar server lokal diblokir dan dicatat.
+  const keLuar = [];
+  await p.route('**/*', (r) => {
+    const u = new URL(r.request().url());
+    if (u.host === new URL(DASAR).host || u.protocol === 'data:' || u.protocol === 'blob:') return r.continue();
+    keLuar.push(u.host);
+    return r.abort();
+  });
   p.on('pageerror', (e) => galat.push(`pageerror: ${e.message}`));
   p.on('console', (m) => {
     if (m.type() === 'error' && !/Failed to load resource|net::ERR/.test(m.text())) galat.push(`console: ${m.text().slice(0, 200)}`);
@@ -103,5 +111,6 @@ fs.mkdirSync(KELUAR, { recursive: true });
   await foto('10-cek-paham-urutkan', 1200);
 
   console.log(galat.length ? `GALAT:\n${galat.join('\n')}` : 'tanpa galat halaman');
+  console.log(keLuar.length ? `Permintaan ke luar (diblokir): ${[...new Set(keLuar)].join(', ')}` : 'tanpa permintaan ke luar: jalan penuh tanpa sinyal');
   await peramban.close();
 })();

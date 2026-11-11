@@ -83,12 +83,12 @@ export function rapikanRekaman(daftar: CatatanRekaman[], kini: Date): { simpan: 
   return { simpan, hapus };
 }
 
-/** Rekaman boleh disematkan kalau berupa cerita utuh dan sematan anak ini belum 5. */
+/** Rekaman boleh disematkan kalau berupa cerita utuh dan sematan di HP ini belum 5 (CLAUDE.md aturan 12: paling banyak 5). */
 export function bisaSematkan(daftar: CatatanRekaman[], id: string): boolean {
   const c = daftar.find((x) => x.id === id);
   if (!c || c.jenis !== 'utuh') return false;
   if (c.disematkan) return true;
-  return daftar.filter((x) => x.disematkan && x.anak_id === c.anak_id).length < ATURAN_REKAMAN.sematan;
+  return daftar.filter((x) => x.disematkan).length < ATURAN_REKAMAN.sematan;
 }
 
 /** Hanya rekaman profil anak ini (kakak tidak bisa memutar rekaman adik dari profilnya). */

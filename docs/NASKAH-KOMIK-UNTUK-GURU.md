@@ -52,7 +52,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 | 3 | Nisa memandang tangannya yang kosong, wajahnya sedikit sedih. Bima memperhatikannya. | Nisa | I have no mangoes. | Aku tidak punya mangga. | have: huruf e di akhir tidak dibunyikan, hev. |
 | 4 | Bima tersenyum lalu membagikan mangga kepada Nisa, Fathan, dan Robi. | Bima | One for you, one for you! | Satu untukmu, satu untukmu! | one dibaca wan. |
 |  |  | Robi | Thank you, friend! | Terima kasih, teman! |  |
-| 5 | Sore di tepi sawah. Lima sahabat duduk makan mangga bersama sambil tertawa. Nisa menghitung teman-temannya. | Nisa | One, two, three, four, five! | Satu, dua, tiga, empat, lima! | friends: bunyi s kecil di akhir tetap diucapkan. |
+| 5 | Sore di tepi sawah. Para sahabat duduk makan mangga bersama sambil tertawa. Nisa menghitung teman-temannya. | Nisa | One, two, three, four, five! | Satu, dua, tiga, empat, lima! | friends: bunyi s kecil di akhir tetap diucapkan. |
 |  |  | Robi | Five friends! | Lima sahabat! |  |
 
 **Cek Paham:**
@@ -104,7 +104,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 |  |  | Robi | My eyes are blue! | Mataku biru! |  |
 | 2 | Lina mewarnai gambar dengan banyak warna; gambar Robi makin ceria. | Lina | Red, yellow, and green! | Merah, kuning, dan hijau! | red: lidah tidak bergetar untuk r. green: ee dibaca i panjang. |
 | 3 | Bima ingin membantu, tetapi tangannya menyenggol cat cokelat. Gambar Lina ternoda. | Bima | Oh no! Brown! | Aduh! Cokelat! | brown dibaca braun. |
-| 4 | Bima menunduk dan berterus terang. Lina tersenyum memaafkan. | Bima | Sorry, Lina. It is me. | Maaf, Lina. Itu aku. | sorry: r tidak bergetar, sori. |
+| 4 | Bima menunduk dan berterus terang. Lina tersenyum memaafkan. | Bima | Sorry, Lina. It was me. | Maaf, Lina. Itu aku. | sorry: r tidak bergetar, sori. |
 |  |  | Lina | It is okay. | Tidak apa-apa. |  |
 | 5 | Sore hari. Noda cokelat diubah menjadi topi Robi. Semua tertawa melihat hasilnya. | Robi | I like brown! | Aku suka cokelat! | purple: dua huruf p, per-pel. |
 |  |  | Lina | Pink and purple too! | Merah muda dan ungu juga! |  |
@@ -112,7 +112,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 **Cek Paham:**
 
 - Urutkan panel → kunci: 1 → 3 → 4
-- Siapa yang bilang *Sorry, Lina. It is me.* (pilihan: Bima / Fathan / Lina) → kunci: **Bima**
+- Siapa yang bilang *Sorry, Lina. It was me.* (pilihan: Bima / Fathan / Lina) → kunci: **Bima**
 - Dengar *I like brown!*, pilih panel (1 / 3 / 5) → kunci: **panel 5**
 
 **Renungan untuk orang tua:** Bima berani berkata jujur walaupun takut. Pernahkah kamu tidak sengaja merusak sesuatu? Apa yang sebaiknya dilakukan?
@@ -136,7 +136,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 | 4 | Di dalam rumah, nenek duduk di tikar. Nisa mengenalkan neneknya dan Robi menyapa dengan sopan. | Nisa | She is my grandmother. | Dia nenekku. | grandmother: huruf d hampir tidak terdengar, gran-ma-der. |
 |  |  | Robi | Hello, grandmother! | Halo, Nenek! |  |
 | 5 | Sore, keluarga makan bersama di rumah panggung. Robi ikut duduk sopan dengan lampu dada menyala hangat. | Fathan | I love my family. | Aku sayang keluargaku. | love: o dibaca seperti a pendek, lav. |
-|  |  | Robi | I love my family too! | Aku juga sayang keluargaku! |  |
+|  |  | Robi | I love your family too! | Aku juga sayang keluargamu! |  |
 
 **Cek Paham:**
 
@@ -185,10 +185,10 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 
 | Panel | Adegan | Tokoh | Gelembung Inggris | Arti | Tips bunyi |
 |---|---|---|---|---|---|
-| 1 | Lapangan bola sore hari menjelang kenduri panen. Kak Fajar mengajak anak-anak bermain tebak tubuh. | Kak Fajar | Touch your ears! Touch your nose! | Sentuh telingamu! Sentuh hidungmu! | touch: ou dibaca a pendek, tach. |
+| 1 | Lapangan bola sore hari menjelang pesta panen. Kak Fajar mengajak anak-anak bermain tebak tubuh. | Kak Fajar | Touch your ears! Touch your nose! | Sentuh telingamu! Sentuh hidungmu! | touch: ou dibaca a pendek, tach. |
 |  |  | Nisa | This is my nose! | Ini hidungku! |  |
 | 2 | Bima menunjuk matanya dan telinganya sambil bercanda; teman-teman tertawa. | Bima | I have two eyes and big ears! | Aku punya dua mata dan telinga besar! | eyes dibaca ais, bunyi z kecil di akhir. |
-| 3 | Malam turun. Kabut kelabu datang perlahan ke jalan gampong; Mister Kabut menggerutu lucu. | Mister Kabut | Hmm… no help, no help! | Hmm… jangan menolong, jangan menolong! | help: huruf p di akhir tetap diucapkan. |
+| 3 | Malam turun. Kabut kelabu datang perlahan ke jalan gampong; Mister Kabut menggerutu lucu. | Mister Kabut | Hmm… don't help, don't help! | Hmm… jangan menolong, jangan menolong! | help: huruf p di akhir tetap diucapkan. |
 | 4 | Pagi berkabut. Bima tersandung batu dan memegangi kakinya. Robi bergegas mendekat. | Bima | Ouch! My leg! My foot! | Aduh! Kakiku! Telapak kakiku! | foot: oo pendek, fut. |
 |  |  | Robi | Your leg? Let me help! | Kakimu? Biar kubantu! |  |
 | 5 | Dafi dan Fathan memapah Bima berdiri. Dafi mengulurkan tangan, Fathan memberi lengannya. | Dafi | Give me your hand, Bima. | Berikan tanganmu, Bima. | hand: huruf d di akhir jangan dibuang. |
@@ -215,10 +215,10 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 
 | Panel | Adegan | Tokoh | Gelembung Inggris | Arti | Tips bunyi |
 |---|---|---|---|---|---|
-| 1 | Kedai Nek Ijah menjelang kenduri. Meja penuh nasi, ayam, dan telur. Nek Ijah tersenyum. | Nek Ijah | Rice, chicken, and egg! Yummy! | Nasi, ayam, dan telur! Lezat! | rice: r tidak bergetar; ice dibaca ais. |
+| 1 | Kedai Nek Ijah menjelang pesta panen. Meja penuh nasi, ayam, dan telur. Nek Ijah tersenyum. | Nek Ijah | Rice, chicken, and egg! Yummy! | Nasi, ayam, dan telur! Lezat! | rice: r tidak bergetar; ice dibaca ais. |
 | 2 | Bima menunjuk makanan dengan gembira; Nisa menolak teh dengan menggeleng. | Bima | I like rice! I like chicken! | Aku suka nasi! Aku suka ayam! | chicken: ch dibaca seperti c Indonesia. |
 |  |  | Nisa | I don't like tea. | Aku tidak suka teh. |  |
-| 3 | Kabut kelabu masuk lewat jendela kedai. Mister Kabut berbisik pada Bima. | Mister Kabut | Hmm… more rice, more! | Hmm… nasi lagi, lagi! | more: r di akhir hampir tidak terdengar. |
+| 3 | Kabut kelabu masuk lewat jendela kedai. Mister Kabut berbisik pada Bima. | Mister Kabut | Hmm… more rice, more! | Hmm… nasi lagi, lagi! | more: o panjang, lalu r dibunyikan lembut, mor. |
 | 4 | Piring Bima penuh sekali. Ia duduk lemas dan bingung. | Bima | Oh no… too much rice. | Aduh… nasinya terlalu banyak. | much: u dibaca a pendek, mach. |
 | 5 | Robi dan Lina datang. Robi meminta dengan sopan, Lina membagi nasi Bima ke piring lain. | Robi | Can I have some, please? | Boleh aku minta sedikit? | some: o dibaca a pendek, sam. |
 |  |  | Lina | Some for you, some for me! | Sebagian untukmu, sebagian untukku! |  |
@@ -230,7 +230,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 - Urutkan panel → kunci: 1 → 4 → 6
 - Siapa yang bilang *Can I have some, please?* (pilihan: Robi / Bima / Lina) → kunci: **Robi**
 - Dengar *I don't like tea.*, pilih panel (2 / 3 / 6) → kunci: **panel 2**
-- Lengkapi *I like rice! I like chicken!* (pilihan: chicken / bread / milk) → kunci: **chicken**
+- Lengkapi *I like rice! I like chicken!* (pilihan: chicken / window / happy) → kunci: **chicken**
 
 **Renungan untuk orang tua:** Bima mengambil terlalu banyak nasi, lalu membaginya agar tidak terbuang. Bagaimana caramu supaya makanan di piring tidak tersisa?
 
@@ -247,11 +247,11 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 | 1 | Ruang tengah rumah panggung. Nisa menunjuk kalender di dinding; Fathan membaca tanggalnya. | Nisa | Look at the calendar! | Lihat kalendernya! | calendar: tekanan di depan, KE-len-der. |
 |  |  | Fathan | Today is Monday. | Hari ini hari Senin. |  |
 | 2 | Nisa melompat gembira menunjuk tanggal yang dilingkari. | Nisa | My birthday is in May! | Ulang tahunku bulan Mei! | birthday: th dengan lidah keluar sedikit. |
-| 3 | Lina dan Dafi merencanakan pesta kecil di kedai. | Lina | A party in the afternoon! | Pesta di siang hari! | party: r hampir tidak terdengar, paa-ti. |
+| 3 | Lina dan Dafi merencanakan pesta kecil di kedai. | Lina | A party in the afternoon! | Pesta di siang hari! | party: a panjang, r dibunyikan lembut, par-ti. |
 |  |  | Dafi | In the evening, please! | Di sore hari saja! |  |
 | 4 | Malam, kabut kelabu turun menutupi kedai. Mister Kabut menggerutu. | Mister Kabut | Hmm… no party at night! | Hmm… tidak ada pesta malam ini! | night: gh tidak dibunyikan, nait. |
 | 5 | Fathan kesal dan menghentakkan kaki; Robi menenangkannya dengan sopan. | Fathan | No! I want the party! | Tidak! Aku mau pestanya! | want: a dibaca seperti o pendek, wont. |
-|  |  | Robi | Please, please! | Tolong, tenanglah! |  |
+|  |  | Robi | Please, Fathan! | Ayolah, Fathan, sabar! |  |
 | 6 | Pagi cerah, kabut pergi. Semua merayakan ulang tahun Nisa dengan sederhana di kedai. | Fathan | Happy birthday, Nisa! | Selamat ulang tahun, Nisa! | happy: h diucapkan jelas, a pendek. |
 |  |  | Nisa | Thank you! Good morning! | Terima kasih! Selamat pagi! |  |
 
@@ -276,7 +276,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 |---|---|---|---|---|---|
 | 1 | Pagi yang berkabut di rumah panggung. Mister Kabut berbisik di jendela; semua masih tidur. | Mister Kabut | Sleep, sleep… no school! | Tidur, tidur… tidak usah sekolah! | sleep: ee dibaca i panjang. |
 | 2 | Robi membangunkan Fathan dengan sopan; Fathan masih mengantuk dan menarik selimut. | Robi | Fathan, wake up, please! | Fathan, bangun, ya! | wake: e di akhir bisu, weik. |
-|  |  | Fathan | No… I sleep. | Tidak… aku tidur. |  |
+|  |  | Fathan | No, no… sleep! | Tidak, tidak… mau tidur! |  |
 | 3 | Nisa sudah bangun, menunjuk jam dinding: jam enam pagi. | Nisa | I wake up at six! | Aku bangun jam enam! | six: huruf x dibaca ks. |
 | 4 | Dafi dan Nisa bersiap: menggosok gigi, mencuci tangan, lalu sarapan. | Dafi | Brush teeth, wash hands, eat breakfast! | Gosok gigi, cuci tangan, sarapan! | brush: sh dibaca sy panjang. |
 | 5 | Fathan bangun dan malu. Ia berterima kasih; dada Robi menyala dan Robi berubah menjadi Super Robi bersayap cahaya. | Fathan | Sorry, Robi. Thank you! | Maaf, Robi. Terima kasih! | magic: g dibaca j, ma-jik. |
@@ -308,7 +308,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 | 3 | Bima menertawakan robot buatan Dafi. | Bima | Ha! Your robot is bad! | Ha! Robotmu jelek! | bad: huruf d di akhir jangan dibuang. |
 | 4 | Dafi menunduk sedih. Lina mendekat dan bertanya dengan lembut. | Lina | How do you feel, Dafi? | Bagaimana perasaanmu, Dafi? | feel: ee dibaca i panjang. |
 |  |  | Dafi | I feel sad. | Aku merasa sedih. |  |
-| 5 | Super Robi datang dengan cahaya lembut dan bertanya kepada Bima. Bima tersadar dan meminta maaf. | Robi | Bima, are you angry? | Bima, apakah kamu marah? | are you: r hampir tidak terdengar, aa yu. |
+| 5 | Super Robi datang dengan cahaya lembut dan bertanya kepada Bima. Bima tersadar dan meminta maaf. | Robi | Bima, are you angry? | Bima, apakah kamu marah? | are you: r dibunyikan lembut, ar yu. |
 |  |  | Bima | Yes… sorry, Dafi. | Iya… maaf, Dafi. |  |
 | 6 | Sore. Kabut pergi. Dafi dan Bima tertawa bersama memperbaiki tangan robot. | Dafi | Thank you! I am happy! | Terima kasih! Aku senang! | excited: akhiran -ed dibaca id, ek-sai-tid. |
 |  |  | Bima | Me too! I am excited! | Aku juga! Aku bersemangat! |  |
@@ -346,7 +346,7 @@ Aturan naskah: tingkat 3 berisi 4–5 panel dan paling banyak 6 kata per gelembu
 - Urutkan panel → kunci: 1 → 4 → 6
 - Siapa yang bilang *Open the door, please!* (pilihan: Dafi / Lina / Nisa) → kunci: **Dafi**
 - Dengar *The key? Is it on the bed?*, pilih panel (2 / 3 / 5) → kunci: **panel 2**
-- Lengkapi *Clean the mirror and the window!* (pilihan: mirror / key / sofa) → kunci: **mirror**
+- Lengkapi *Clean the mirror and the window!* (pilihan: mirror / happy / rice) → kunci: **mirror**
 
 **Renungan untuk orang tua:** Anak-anak membersihkan rumah bersama sampai kabut pergi. Bagian rumah mana yang bisa kamu bantu rapikan?
 
