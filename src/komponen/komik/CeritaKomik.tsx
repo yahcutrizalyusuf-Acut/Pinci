@@ -7,7 +7,8 @@
  * Panel diam tanpa animasi; yang bergerak hanya sorotan kata.
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, ScrollView, Text, useWindowDimensions, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
+import { Pressable, Text, useWindowDimensions, View } from 'react-native';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 import { huruf, warna, warnaMapel } from '../../desain/token';
 import { artiKata, buatKamus, indeksDariHuruf, kepingKalimat, perkiraanWaktuKata } from '../../fitur/komik';
@@ -40,7 +41,6 @@ export function CeritaKomik({ komik, kelas, onSelesai, onCeritakan, sapaan = 'Ay
   const [bicara, setBicara] = useState<{ gid: string; sorot: number | null } | null>(null);
   const [artiTampil, setArtiTampil] = useState(false);
   const [kotakArti, setKotakArti] = useState<{ kata: string; arti: string } | null>(null);
-  const gulir = useRef<React.ComponentRef<typeof ScrollView>>(null);
   const pewaktu = useRef<ReturnType<typeof setTimeout>[]>([]);
   const putarOtomatis = useRef(true);
   const kamus = useMemo(() => buatKamus(Object.values(PAKET_INGGRIS), komik.tingkat), [komik.tingkat]);
@@ -93,7 +93,6 @@ export function CeritaKomik({ komik, kelas, onSelesai, onCeritakan, sapaan = 'Ay
       return;
     }
     setPanelKe(n);
-    gulir.current?.scrollTo({ x: n * (lebar + 16), animated: true });
     const gel = komik.panel[n].gelembung;
     const ucapKe = (j: number) => {
       if (!putarOtomatis.current) return;
@@ -123,12 +122,11 @@ export function CeritaKomik({ komik, kelas, onSelesai, onCeritakan, sapaan = 'Ay
     setPanelKe(0);
     setArtiTampil(false);
     setTahap('baca');
-    setTimeout(() => gulir.current?.scrollTo({ x: 0, animated: false }), 50);
   };
 
-  const geser = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const n = Math.round(e.nativeEvent.contentOffset.x / (lebar + 16));
-    if (n === panelKe) return;
+  /** Pindah panel karena anak menggeser (atau menekan tombol). */
+  const pindahPanel = (n: number) => {
+    if (n < 0 || n >= komik.panel.length || n === panelKe) return;
     setArtiTampil(false);
     setKotakArti(null);
     if (tahap === 'tonton') {
@@ -138,6 +136,25 @@ export function CeritaKomik({ komik, kelas, onSelesai, onCeritakan, sapaan = 'Ay
       tontonPanel(n);
     } else setPanelKe(n);
   };
+  // Gestur memanggil fungsi terbaru lewat ref (dipanggil di luar render, saat jari dilepas).
+  const pindahTerbaru = useRef<(arah: 1 | -1) => void>(() => undefined);
+  useEffect(() => {
+    pindahTerbaru.current = (arah) => pindahPanel(panelKe + arah);
+  });
+  // Gestur dibuat sekali; ref hanya dibaca di dalam onEnd (saat jari dilepas), tidak saat render.
+  /* eslint-disable react-hooks/refs */
+  const usap = useMemo(
+    () =>
+      Gesture.Pan()
+        .runOnJS(true)
+        .activeOffsetX([-24, 24])
+        .onEnd((e) => {
+          const arah = e.translationX < -50 ? 1 : e.translationX > 50 ? -1 : 0;
+          if (arah) pindahTerbaru.current(arah);
+        }),
+    [],
+  );
+  /* eslint-enable react-hooks/refs */
 
   if (tahap === 'pesan') {
     return (
@@ -151,8 +168,10 @@ export function CeritaKomik({ komik, kelas, onSelesai, onCeritakan, sapaan = 'Ay
             <Text style={{ fontFamily: huruf.anakTebal, fontSize: 17, color: UNGU.teks }}>🔊 Dengar lagi</Text>
           </Pressable>
         </View>
-        {onCeritakan ? <Tombol label={`Ceritakan ke ${sapaan}, yuk!`} varian="garis" onPress={onCeritakan} /> : null}
-        <Tombol label="Lanjut" besar onPress={onSelesai} />
+        <View style={{ width: '100%', gap: 10 }}>
+          {onCeritakan ? <Tombol label={`Ceritakan ke ${sapaan}, yuk!`} varian="garis" onPress={onCeritakan} /> : null}
+          <Tombol label="Lanjut" besar onPress={onSelesai} />
+        </View>
       </View>
     );
   }
@@ -168,33 +187,36 @@ export function CeritaKomik({ komik, kelas, onSelesai, onCeritakan, sapaan = 'Ay
           {panelKe + 1}/{komik.panel.length}
         </Text>
       </View>
-      <ScrollView ref={gulir} horizontal pagingEnabled={false} snapToInterval={lebar + 16} decelerationRate="fast" showsHorizontalScrollIndicator={false} onMomentumScrollEnd={geser} contentContainerStyle={{ gap: 16 }}>
-        {komik.panel.map((p) => (
-          <View key={p.id} style={{ width: lebar, height: lebar }}>
-            <GambarPanel panel={p} lebar={lebar} />
-            {p.gelembung.map((g) => (
-              <GelembungKomik
-                key={g.id}
-                gelembung={g}
-                lebarPanel={lebar}
-                aktif={bicara?.gid === g.id}
-                sorot={bicara?.gid === g.id ? bicara.sorot : null}
-                tombolSuara={tahap === 'baca' && kecil}
-                onKetukGelembung={tahap === 'baca' ? () => ucapkanGelembung(g) : undefined}
-                onKetukKata={
-                  tahap === 'baca'
-                    ? (kata, tampil) => {
-                        const k = artiKata(kamus, kata);
-                        setKotakArti({ kata: tampil.replace(/[.,!?]+$/, ''), arti: k?.arti ?? '' });
-                        ucapkan(kata, 'en-US');
-                      }
-                    : undefined
-                }
-              />
-            ))}
-          </View>
+      <GestureDetector gesture={usap}>
+        <View key={panel.id} accessibilityHint="Geser ke kiri atau kanan untuk pindah panel" style={{ width: lebar, height: lebar, alignSelf: 'center' }}>
+          <GambarPanel panel={panel} lebar={lebar} />
+          {panel.gelembung.map((g) => (
+            <GelembungKomik
+              key={g.id}
+              gelembung={g}
+              lebarPanel={lebar}
+              aktif={bicara?.gid === g.id}
+              sorot={bicara?.gid === g.id ? bicara.sorot : null}
+              tombolSuara={tahap === 'baca' && kecil}
+              onKetukGelembung={tahap === 'baca' ? () => ucapkanGelembung(g) : undefined}
+              onKetukKata={
+                tahap === 'baca'
+                  ? (kata, tampil) => {
+                      const k = artiKata(kamus, kata);
+                      setKotakArti({ kata: tampil.replace(/[.,!?]+$/, ''), arti: k?.arti ?? '' });
+                      ucapkan(kata, 'en-US');
+                    }
+                  : undefined
+              }
+            />
+          ))}
+        </View>
+      </GestureDetector>
+      <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
+        {komik.panel.map((p, n) => (
+          <Pressable key={p.id} accessibilityRole="button" accessibilityLabel={`Panel ${n + 1}`} onPress={() => pindahPanel(n)} hitSlop={8} style={{ width: n === panelKe ? 22 : 10, height: 10, borderRadius: 5, backgroundColor: n === panelKe ? UNGU.utama : '#D9CFF2' }} />
         ))}
-      </ScrollView>
+      </View>
 
       {tahap === 'baca' ? (
         <View style={{ gap: 8 }}>
@@ -223,12 +245,7 @@ export function CeritaKomik({ komik, kelas, onSelesai, onCeritakan, sapaan = 'Ay
               {panelKe + 1 < komik.panel.length ? (
                 <Tombol
                   label="Panel berikut"
-                  onPress={() => {
-                    gulir.current?.scrollTo({ x: (panelKe + 1) * (lebar + 16), animated: true });
-                    setPanelKe(panelKe + 1);
-                    setArtiTampil(false);
-                    setKotakArti(null);
-                  }}
+                  onPress={() => pindahPanel(panelKe + 1)}
                 />
               ) : (
                 <Tombol
