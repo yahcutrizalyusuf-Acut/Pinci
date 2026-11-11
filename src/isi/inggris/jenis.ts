@@ -1,4 +1,5 @@
 import type { StatusPeriksa } from '../jenis';
+import type { BunyiHariIni, Gerakan } from './komik';
 
 /**
  * Paket Belajar Bahasa Inggris (assets/paket/inggris-t3.json … inggris-t6.json).
@@ -72,6 +73,10 @@ export interface UnitInggris {
   /** kosong untuk tingkat 3 */
   susun: SoalSusun[];
   permainan: PermainanKata[];
+  /** Bunyi Hari Ini (phonics), ditambah 11 Nov 2026 */
+  bunyiHariIni?: BunyiHariIni;
+  /** gerakan untuk kata kerja dan perintah (TPR), ditambah 11 Nov 2026 */
+  gerakan?: Gerakan[];
 }
 
 export interface PaketInggris {
