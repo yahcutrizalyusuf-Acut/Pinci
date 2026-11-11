@@ -24,6 +24,15 @@ export function komikUnit(unitId: string): Komik | undefined {
   return PAKET_KOMIK[t]?.komik.find((k) => k.unit === unitId);
 }
 
+/** Komik berdasarkan id, misal "t3-u01-komik". */
+export function cariKomik(id: string): Komik | undefined {
+  for (const p of Object.values(PAKET_KOMIK)) {
+    const k = p?.komik.find((x) => x.id === id);
+    if (k) return k;
+  }
+  return undefined;
+}
+
 /** Ganti penanda nama di teks naskah dengan nama dari tokoh.json. */
 export function teksTokoh(teks: string): string {
   return isiNama(teks, NAMA_TOKOH);

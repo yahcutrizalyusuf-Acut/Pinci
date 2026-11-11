@@ -24,6 +24,7 @@ const SEMUA_TABEL: NamaTabel[] = [
   'jawaban_pertanyaan',
   'catatan_pemakaian',
   'catatan_teknis',
+  'cerita_ulang',
   'antrean',
   'nilai',
 ];

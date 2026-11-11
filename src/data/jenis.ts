@@ -247,6 +247,29 @@ export interface Tugas {
   dibatalkan?: boolean;
 }
 
+/**
+ * Hasil Ceritakan Lagi (D10, `13` bagian 3.4 dan 8). Tidak menjadi nilai.
+ * `adaRekaman` hanya ya/tidak: isi rekaman TIDAK PERNAH ada di tabel ini (CLAUDE.md aturan 12).
+ */
+export interface CeritaUlang {
+  id: string;
+  keluarga_id: string;
+  anak_id: string;
+  komikId: string;
+  /** YYYY-MM-DD (waktu HP) */
+  tanggal: string;
+  /** ISO */
+  waktu: string;
+  mode: 'dampingi';
+  centangTokoh: boolean;
+  centangUrutan: boolean;
+  centangInggris: boolean;
+  centangSelesai: boolean;
+  /** kata target yang didengar orang tua diucapkan anak */
+  kataTargetDicentang: string[];
+  adaRekaman: boolean;
+}
+
 export interface ItemAntrean {
   id: string;
   tabel: NamaTabel;
@@ -279,6 +302,7 @@ export type NamaTabel =
   | 'jawaban_pertanyaan'
   | 'catatan_pemakaian'
   | 'catatan_teknis'
+  | 'cerita_ulang'
   | 'antrean'
   | 'nilai';
 
@@ -298,9 +322,10 @@ export interface PetaTabel {
   jawaban_pertanyaan: JawabanPertanyaan;
   catatan_pemakaian: CatatanPemakaian;
   catatan_teknis: CatatanTeknis;
+  cerita_ulang: CeritaUlang;
   antrean: ItemAntrean;
   nilai: Nilai;
 }
 
 /** Tabel yang dikirim ke server lewat antrean sinkron. */
-export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik', 'catatan_pengawas', 'tugas', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis'];
+export const TABEL_SINKRON: NamaTabel[] = ['anak', 'sesi', 'jawaban', 'pesan', 'pengaturan_waktu', 'pemakaian', 'kemajuan_topik', 'catatan_pengawas', 'tugas', 'masukan', 'jawaban_pertanyaan', 'catatan_pemakaian', 'catatan_teknis', 'cerita_ulang'];

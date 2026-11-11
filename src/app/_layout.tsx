@@ -11,6 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { PenyediaData, useData } from '@/data/konteks';
 import { warna } from '@/desain/token';
+import { gudangRekaman } from '@/layanan/rekaman';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
@@ -30,6 +31,10 @@ function Isi() {
   useEffect(() => {
     if (semua) SplashScreen.hideAsync().catch(() => undefined);
   }, [semua]);
+  // Rekaman suara: hapus yang lewat 30 hari dan jaga batas 50 MB setiap aplikasi dibuka (CLAUDE.md aturan 12).
+  useEffect(() => {
+    gudangRekaman().rapikan().catch(() => undefined);
+  }, []);
   if (!semua) return null;
   return (
     <Stack

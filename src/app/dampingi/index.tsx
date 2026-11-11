@@ -72,6 +72,9 @@ export default function MenuDampingi() {
       <Text style={{ fontFamily: huruf.ortu, fontSize: 15, color: warna.teksKedua }}>
         Pilih kegiatan. {sapaan} membimbing, aplikasi menjadi alat bantu. Lembar yang didampingi tidak dihitung untuk naik level.
       </Text>
+      <Kegiatan emoji="📖" judul="Ceritakan Lagi" sub="Anak menceritakan komik Bahasa Inggris, orang tua mencentang" onPress={() => router.push('/dampingi/cerita')} />
+      <Kegiatan emoji="🎧" judul="Dengar Bedanya" sub="Dengar contoh, rekam suara sendiri, bandingkan" onPress={() => router.push('/dampingi/dengar')} />
+      <Kegiatan emoji="🤸" judul="Tebak Gerak" sub="Perintah Bahasa Inggris, bergerak bergantian" onPress={() => router.push('/dampingi/gerak')} />
       <Kegiatan emoji="💪" judul={`Tantang ${sapaan}`} sub="Bergantian menjawab 10 soal Lancar" onPress={() => router.push('/dampingi/tantang')} />
       <Kegiatan emoji="🧮" judul="Lembar didampingi" sub="Soal Lancar + kalimat untuk diucapkan orang tua" onPress={() => router.push('/dampingi/lancar')} />
       <Kegiatan emoji="👂" judul="Dengar Bacaan" sub="Anak membaca nyaring, orang tua menandai kata yang tersandung" nonaktif={!adaBacaGudang(anakAktif.kelas)} onPress={() => router.push('/dampingi/baca')} />

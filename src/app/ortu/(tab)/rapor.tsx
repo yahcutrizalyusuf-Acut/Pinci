@@ -6,7 +6,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useData, useMuat } from '@/data/konteks';
 import { HEWAN } from '@/data/jenis';
 import { huruf, warna } from '@/desain/token';
-import { grafikKecepatan, kalimatRapor, ringkasMinggu, salahTerbanyak, seninDari } from '@/fitur/rapor';
+import { grafikKecepatan, kalimatRapor, raporInggris, ringkasMinggu, salahTerbanyak, seninDari } from '@/fitur/rapor';
+import { cariKomik, teksTokoh } from '@/isi/inggris/paketKomik';
 import { raporTka } from '@/fitur/tka-rapor';
 import { Tombol } from '@/komponen/dasar';
 import { GrafikGaris } from '@/komponen/GrafikGaris';
@@ -52,7 +53,8 @@ export default function Rapor() {
       const salah = salahTerbanyak(jawaban.filter((j) => idLancar.has(j.sesi_id)));
       const rekor = sesi.filter((s) => s.tambahan?.rekorBaru && new Date(s.mulai) >= senin).length;
       const tka = anak.kelas === 6 ? await raporTka(r, anak) : null;
-      return { ini, kemarin, grafik: grafikKecepatan(sesi, jawaban), salah, rekor, kalimat: kalimatRapor(anak.nama, ini, kemarin, topik, salah), tka };
+      const inggris = raporInggris(anak.nama, await r.daftarCeritaUlang(anak.id), sesi, senin, cariKomik, teksTokoh);
+      return { ini, kemarin, grafik: grafikKecepatan(sesi, jawaban), salah, rekor, kalimat: kalimatRapor(anak.nama, ini, kemarin, topik, salah), tka, inggris };
     },
     null,
     [anak?.id],
@@ -69,6 +71,8 @@ export default function Rapor() {
       '',
       `Kemajuan: ${data.kalimat.kemajuan}`,
       `Langkah berikutnya: ${data.kalimat.langkah}`,
+      data.inggris.cerita ? `Bahasa Inggris: ${data.inggris.cerita}` : '',
+      data.inggris.cekDengar ?? '',
       '— Pintar Main',
     ]
       .filter(Boolean)
@@ -195,6 +199,28 @@ export default function Rapor() {
                 </View>
               ))}
             </View>
+            {data.inggris.cerita || data.inggris.cekDengar || data.inggris.membantu ? (
+              <View style={{ backgroundColor: warna.putih, borderRadius: 20, padding: 16, gap: 12 }}>
+                {[
+                  ['BAHASA INGGRIS', [data.inggris.cerita, data.inggris.cekDengar].filter(Boolean).join(' ') || `${anak.nama} belum bercerita komik minggu ini. Coba Ceritakan Lagi di Mode Dampingi.`],
+                  ['SATU CARA MEMBANTU', data.inggris.membantu],
+                ]
+                  .filter(([, t]) => t)
+                  .map(([j, t]) => (
+                    <View key={j} style={{ gap: 2 }}>
+                      <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 13, color: warna.hijauTua, letterSpacing: 0.3 }}>{j}</Text>
+                      <Text style={{ fontFamily: huruf.ortu, fontSize: 16, color: warna.teks }}>{t}</Text>
+                    </View>
+                  ))}
+              </View>
+            ) : null}
+            {data.inggris.perbuatanBaik ? (
+              <View style={{ backgroundColor: warna.oranyeMuda, borderRadius: 20, padding: 16, gap: 4 }}>
+                <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 13, color: '#B86E00', letterSpacing: 0.3 }}>PERBUATAN BAIK MINGGU INI (PILIHAN)</Text>
+                <Text style={{ fontFamily: huruf.ortu, fontSize: 16, color: warna.teks }}>{data.inggris.perbuatanBaik}</Text>
+                <Text style={{ fontFamily: huruf.ortu, fontSize: 13, color: warna.teksKedua }}>Ajakan saja. Tidak dinilai dan tidak diberi hadiah.</Text>
+              </View>
+            ) : null}
             <Tombol label="Kirim ke WhatsApp" ikon="bagikan" onPress={bagikan} />
           </>
         ) : null}

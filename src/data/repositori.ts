@@ -16,6 +16,7 @@ import {
   type CatatanPemakaian,
   type CatatanPengawas,
   type CatatanTeknis,
+  type CeritaUlang,
   type ItemAntrean,
   type Jawaban,
   type Keluarga,
@@ -53,7 +54,7 @@ export type StatusSimpan = 'tersimpan' | 'terkirim';
 const JEDA_MENIT = [1, 2, 5, 15];
 
 /** Tabel yang ditarik dari server, urut: sesi terakhir karena ikut menarik jawabannya. */
-const TABEL_TARIK: NamaTabel[] = ['anak', 'pengaturan_waktu', 'pesan', 'kemajuan_topik', 'pemakaian', 'catatan_pengawas', 'tugas', 'sesi'];
+const TABEL_TARIK: NamaTabel[] = ['anak', 'pengaturan_waktu', 'pesan', 'kemajuan_topik', 'pemakaian', 'catatan_pengawas', 'tugas', 'cerita_ulang', 'sesi'];
 
 /** Jenis sesi yang menyelesaikan tugas pengawas berjenis tertentu. */
 const SESI_UNTUK_TUGAS: Record<Tugas['jenis'], Sesi['jenis'][]> = {
@@ -367,7 +368,7 @@ export class Repositori {
       return berubah;
     }
     for (const b of baris as ({ id: string } & object)[]) {
-      const t = tabel as 'anak' | 'pengaturan_waktu' | 'pesan' | 'kemajuan_topik' | 'pemakaian';
+      const t = tabel as 'anak' | 'pengaturan_waktu' | 'pesan' | 'kemajuan_topik' | 'pemakaian' | 'cerita_ulang';
       const lokal = (await this.gudang.ambil(t, b.id)) as object | null;
       if (t === 'pemakaian') {
         const server = b as Pemakaian;
@@ -651,7 +652,7 @@ export class Repositori {
    * supaya tidak ditarik lagi dan penghapusan di server diulang saat sinkron berikutnya.
    */
   async hapusAnak(id: string) {
-    for (const t of ['sesi', 'jawaban', 'kemajuan_topik', 'pesan', 'pemakaian', 'catatan_pengawas', 'tugas', 'anggota_kelas'] as const) {
+    for (const t of ['sesi', 'jawaban', 'kemajuan_topik', 'pesan', 'pemakaian', 'catatan_pengawas', 'tugas', 'anggota_kelas', 'cerita_ulang'] as const) {
       for (const b of (await this.gudang.cari(t, { anak_id: id })) as { id: string }[]) await this.gudang.hapus(t, b.id);
     }
     for (const n of await this.gudang.cari('nilai', { anak_id: id })) await this.gudang.hapus('nilai', n.id);
@@ -849,6 +850,41 @@ export class Repositori {
     // Hanya memberi tahu layar bila ada yang berubah. Layar memanggil ini saat memuat; tanpa syarat ini
     // pemuatan memicu pemberitahuan, yang memicu pemuatan lagi, tanpa henti.
     if (berubah) this.ubah();
+  }
+
+  // ---------- Ceritakan Lagi (D10) ----------
+
+  /**
+   * Simpan satu hasil Ceritakan Lagi (hanya ditambah, tidak diubah). Masuk antrean sinkron biasa.
+   * Isi rekaman tidak pernah ikut: hanya `adaRekaman` ya/tidak.
+   */
+  async simpanCeritaUlang(data: Omit<CeritaUlang, 'id' | 'keluarga_id' | 'tanggal' | 'waktu' | 'mode'> & { waktu?: string }): Promise<CeritaUlang> {
+    const kel = await this.keluarga();
+    if (!kel) throw new Error('Keluarga belum dibuat');
+    const waktu = data.waktu ?? sekarangIso();
+    const c: CeritaUlang = {
+      id: buatId(),
+      keluarga_id: kel.id,
+      anak_id: data.anak_id,
+      komikId: data.komikId,
+      tanggal: tanggalLokal(new Date(waktu)),
+      waktu,
+      mode: 'dampingi',
+      centangTokoh: data.centangTokoh,
+      centangUrutan: data.centangUrutan,
+      centangInggris: data.centangInggris,
+      centangSelesai: data.centangSelesai,
+      kataTargetDicentang: [...data.kataTargetDicentang],
+      adaRekaman: data.adaRekaman === true,
+    };
+    await this.simpan('cerita_ulang', c);
+    this.ubah();
+    return c;
+  }
+
+  async daftarCeritaUlang(anakId: string): Promise<CeritaUlang[]> {
+    const semua = await this.gudang.cari('cerita_ulang', { anak_id: anakId });
+    return semua.sort((a, b) => a.waktu.localeCompare(b.waktu));
   }
 
   // ---------- hapus semua ----------

@@ -1,6 +1,7 @@
 /** Hitungan rapor mingguan dari sesi dan jawaban (fungsi murni). */
 import { tanggalLokal } from '../data/alat';
-import type { Jawaban, KemajuanTopik, Pemakaian, Sesi } from '../data/jenis';
+import type { CeritaUlang, Jawaban, KemajuanTopik, Pemakaian, Sesi } from '../data/jenis';
+import type { Komik } from '../isi/inggris/komik';
 
 export interface RingkasMinggu {
   mulai: string; // YYYY-MM-DD (Senin)
@@ -117,4 +118,49 @@ export function kalimatRapor(
     ? 'Buka Mode Dampingi dan kerjakan 3 soal bersama. Tanyakan "bagaimana caramu?", jangan langsung memberi jawaban.'
     : 'Puji usahanya, bukan nilainya. Contoh: "Ayah lihat kamu tidak menyerah."';
   return { kemajuan, langkah, membantu };
+}
+
+export interface RaporInggris {
+  /** "Minggu ini Rani menceritakan 2 komik dan memakai 5 kata baru: …" atau null bila belum ada */
+  cerita: string | null;
+  /** hasil Cek Dengar terakhir minggu ini */
+  cekDengar: string | null;
+  /** satu cara membantu dari pertanyaan pancingan komik terakhir yang dibaca */
+  membantu: string | null;
+  /** ajakan perbuatan baik dari komik terakhir (pilihan, tanpa nilai atau hadiah) */
+  perbuatanBaik: string | null;
+}
+
+/**
+ * Kalimat kemajuan Bahasa Inggris untuk rapor mingguan (PROMPT-LANJUTAN-KOMIK tahap 6 butir 7, rancangan 13 bagian 3.4).
+ * Ceritakan Lagi dan Cek Dengar TIDAK menjadi nilai: hanya kalimat kemajuan. `cariKomik` disuntikkan supaya mudah diuji.
+ */
+export function raporInggris(nama: string, cerita: CeritaUlang[], sesi: Sesi[], senin: Date, cariKomik: (id: string) => Komik | undefined, isiNama: (t: string) => string = (t) => t): RaporInggris {
+  const awal = tanggalLokal(senin);
+  const akhirD = new Date(senin);
+  akhirD.setDate(akhirD.getDate() + 6);
+  const akhir = tanggalLokal(akhirD);
+  const dalam = (tgl: string) => tgl >= awal && tgl <= akhir;
+  const ceritaIni = cerita.filter((c) => dalam(c.tanggal));
+  let teksCerita: string | null = null;
+  if (ceritaIni.length) {
+    const komik = new Set(ceritaIni.map((c) => c.komikId));
+    const kata = [...new Set(ceritaIni.flatMap((c) => c.kataTargetDicentang))];
+    teksCerita = `Minggu ini ${nama} menceritakan ${komik.size} komik${kata.length ? ` dan memakai ${kata.length} kata baru: ${kata.slice(0, 8).join(', ')}` : ''}.`;
+  }
+  const inggrisIni = sesi.filter((s) => s.jenis === 'inggris' && dalam(tanggalLokal(new Date(s.mulai))));
+  const cek = inggrisIni.filter((s) => (s.tambahan as { cekDengar?: boolean } | undefined)?.cekDengar).sort((a, b) => a.mulai.localeCompare(b.mulai)).pop();
+  const teksCek = cek ? `Cek Dengar ${cek.level ?? ''}: ${nama} mengenali ${cek.benar} dari ${cek.jumlah} kata yang didengar.`.replace('  ', ' ') : null;
+  const komikTerakhir = [...sesi]
+    .filter((s) => s.jenis === 'inggris' && (s.tambahan as { komik?: string } | undefined)?.komik)
+    .sort((a, b) => a.mulai.localeCompare(b.mulai))
+    .map((s) => cariKomik((s.tambahan as { komik: string }).komik))
+    .filter((k): k is Komik => !!k)
+    .pop();
+  return {
+    cerita: teksCerita,
+    cekDengar: teksCek,
+    membantu: komikTerakhir ? isiNama(komikTerakhir.naskahOrangTua.pancingan) : null,
+    perbuatanBaik: komikTerakhir ? isiNama(komikTerakhir.perbuatanBaik) : null,
+  };
 }
