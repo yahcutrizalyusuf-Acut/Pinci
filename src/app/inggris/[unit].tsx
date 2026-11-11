@@ -1,6 +1,9 @@
 /**
- * B05/K28 Unit Bahasa Inggris: kenal kata (🔊) → pola kalimat → dengar lalu pilih → susun kata (tingkat 4–6) → permainan kata.
- * Kata yang belum tepat masuk antrean ulang berjarak (1, 3, 7 hari).
+ * B05/K28 Unit Bahasa Inggris, bentuk baru 11 Nov 2026 (rancangan `11` bagian 2, `12` bagian 3):
+ * - Sesi A Kenal: Kenal Kata (+ gerakan) → Bunyi Hari Ini → Pola Kalimat → Cerita Komik (K30).
+ * - Sesi B Pakai: Cek Paham (K31) → Dengar lalu Pilih → Susun Kata (tingkat 4–6) → Permainan Kata.
+ * Sesi A dan B adalah dua kunjungan layar terpisah, jadi penjaga waktu memeriksa blok belajar di antara keduanya.
+ * Unit tanpa komik melewati langkah komik dan Cek Paham. Kata yang belum tepat masuk antrean ulang berjarak (1, 3, 7 hari).
  */
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -18,25 +21,41 @@ import { mainkanBunyi } from '@/layanan/bunyi';
 import { ucapkan } from '@/layanan/suara';
 import { buatAcak } from '@/mesin/lancar';
 import { KepalaLayar, Tombol, TombolSuara } from '@/komponen/dasar';
+import { GerakPinci, TombolGerak } from '@/komponen/GerakPinci';
+import { CekPahamKomik, type HasilCekPaham } from '@/komponen/komik/CekPahamKomik';
+import { CeritaKomik } from '@/komponen/komik/CeritaKomik';
+import { kataDariSoal } from '@/fitur/komik';
+import type { Gerakan } from '@/isi/inggris/komik';
+import { komikUnit } from '@/isi/inggris/paketKomik';
 import { KartuGambar } from '@/komponen/KartuGambar';
 import { Layar } from '@/komponen/Layar';
 import { Pinci } from '@/komponen/Pinci';
 import { PenjagaJatah } from '@/komponen/PenjagaJatah';
 
-type Bagian = 'kenal' | 'pola' | 'dengar' | 'susun' | 'main' | 'hasil';
+type Bagian = 'kenal' | 'bunyi' | 'pola' | 'komik' | 'selesai_a' | 'cek' | 'dengar' | 'susun' | 'main' | 'hasil';
 const UNGU = warnaMapel.ing;
 
 function UnitInggrisIsi() {
-  const { unit: idUnit } = useLocalSearchParams<{ unit: string }>();
+  const { unit: idUnit, sesi: sesiParam } = useLocalSearchParams<{ unit: string; sesi?: string }>();
+  const sesi: 'a' | 'b' = sesiParam === 'b' ? 'b' : 'a';
   const router = useRouter();
-  const { repo, anakAktif } = useData();
+  const { repo, anakAktif, keluarga } = useData();
   const anak = anakAktif!;
   const tingkat = (Number(idUnit.slice(1, 2)) || anak.tingkatInggris || 3) as 3 | 4 | 5 | 6;
   const paket = PAKET_INGGRIS[tingkat];
   const unit = paket.unit.find((u) => u.id === idUnit);
   const antreAwal = useMuat(async (r) => (await r.nilai<KataUlang[]>(`inggris_ulang:${anak.id}`)) ?? [], null, [anak.id]);
-  const urutan: Bagian[] = useMemo(() => ['kenal', 'pola', 'dengar', ...(unit && unit.susun.length ? (['susun'] as Bagian[]) : []), 'main', 'hasil'], [unit]);
-  const [bagian, setBagian] = useState<Bagian>('kenal');
+  const komik = unit ? komikUnit(unit.id) : undefined;
+  const urutan: Bagian[] = useMemo(
+    () =>
+      sesi === 'a'
+        ? ['kenal', ...(unit?.bunyiHariIni ? (['bunyi'] as Bagian[]) : []), 'pola', ...(komik ? (['komik'] as Bagian[]) : []), 'selesai_a']
+        : [...(komik ? (['cek'] as Bagian[]) : []), 'dengar', ...(unit && unit.susun.length ? (['susun'] as Bagian[]) : []), 'main', 'hasil'],
+    [unit, komik, sesi],
+  );
+  const [bagian, setBagian] = useState<Bagian>(urutan[0]);
+  const [gerak, setGerak] = useState<{ gerakan: Gerakan; ulang: number } | null>(null);
+  const hasilCek = useRef<HasilCekPaham[]>([]);
   const [i, setI] = useState(0);
   const [pilihan, setPilihan] = useState<string | null>(null);
   const [salahKe, setSalahKe] = useState(0);
@@ -73,10 +92,31 @@ function UnitInggrisIsi() {
     setSusunan([]);
     if (b === 'dengar' && dengar[0]) setTimeout(() => ucapkan(dengar[0].ucapan, 'en-US'), 300);
     if (b === 'hasil') simpan();
+    if (b === 'selesai_a') simpanA();
+  };
+  /** Sesi A tidak dinilai: dicatat sebagai sesi `inggris` dengan tambahan.sesi = 'a'. */
+  const simpanA = async () => {
+    await repo.simpanSesi(
+      { id: buatId(), anak_id: anak.id, jenis: 'inggris', mode: 'sendiri', kelas: anak.kelas, level: unit.nomor, rujukan: unit.id, mulai: new Date(mulai.current).toISOString(), selesai: sekarangIso(), durasiDetik: Math.round((kiniMs() - mulai.current) / 1000), benar: 0, jumlah: 0, tambahan: { tingkat, sesi: 'a', komik: komik ? komik.id : null } },
+      [],
+    );
+    await perbaruiInti(repo, anak);
+    mainkanBunyi(repo, anak.id, 'ting');
   };
   const simpan = async () => {
     const antre = (await repo.nilai<KataUlang[]>(`inggris_ulang:${anak.id}`)) ?? [];
     let a = antre;
+    // Kata dari soal Cek Paham yang belum tepat ikut masuk antrean ulang berjarak.
+    if (komik) {
+      for (const h of hasilCek.current) {
+        if (h.benar) continue;
+        const soal = komik.cekPaham.find((x) => x.id === h.soalId);
+        for (const kata of soal ? kataDariSoal(komik, soal) : []) {
+          const k = unit.kosakata.find((x) => x.kata.toLowerCase() === kata.toLowerCase());
+          if (k) a = perbaruiUlang(a, k.id, unit.id, false, kiniMs());
+        }
+      }
+    }
     for (const h of hasil.current) {
       const asal = paket.unit.find((u) => u.kosakata.some((k) => k.id === h.kataId));
       a = perbaruiUlang(a, h.kataId, asal?.id ?? unit.id, h.benar, kiniMs());
@@ -85,7 +125,7 @@ function UnitInggrisIsi() {
     const benar = hasil.current.filter((h) => h.benar).length;
     setRingkas({ benar, jumlah: hasil.current.length });
     await repo.simpanSesi(
-      { id: buatId(), anak_id: anak.id, jenis: 'inggris', mode: 'sendiri', kelas: anak.kelas, level: unit.nomor, rujukan: unit.id, mulai: new Date(mulai.current).toISOString(), selesai: sekarangIso(), durasiDetik: Math.round((kiniMs() - mulai.current) / 1000), benar, jumlah: hasil.current.length, tambahan: { tingkat } },
+      { id: buatId(), anak_id: anak.id, jenis: 'inggris', mode: 'sendiri', kelas: anak.kelas, level: unit.nomor, rujukan: unit.id, mulai: new Date(mulai.current).toISOString(), selesai: sekarangIso(), durasiDetik: Math.round((kiniMs() - mulai.current) / 1000), benar, jumlah: hasil.current.length, tambahan: { tingkat, sesi: 'b', cekPahamBenar: hasilCek.current.filter((h) => h.benar).length, cekPahamJumlah: hasilCek.current.length } },
       hasil.current.map((h, k) => ({ urutan: k + 1, soal: cariKata(paket, h.kataId)?.kata ?? h.kataId, butirId: h.kataId, kunci: cariKata(paket, h.kataId)?.kata ?? '', jawaban: '', benar: h.benar, detik: 0, hapusN: 0, topik: unit.id })),
     );
     await repo.catatTopik(anak.id, 'ing', unit.id, benar, hasil.current.length - benar);
@@ -100,21 +140,99 @@ function UnitInggrisIsi() {
   if (bagian === 'kenal') {
     isi = (
       <ScrollView contentContainerStyle={{ gap: 12, paddingBottom: 8 }}>
+        {gerak ? (
+          <View style={{ backgroundColor: warna.oranyeMuda, borderRadius: 20, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <GerakPinci gerakan={gerak.gerakan} ulang={gerak.ulang} ukuran={84} />
+            <Text style={{ flex: 1, fontFamily: huruf.anakTebal, fontSize: 18, color: warna.teks }}>{gerak.gerakan.petunjuk}</Text>
+          </View>
+        ) : null}
         {unit.kosakata.map((k) => (
           <Pressable key={k.id} accessibilityRole="button" accessibilityLabel={`${k.kata}, ${k.arti}`} onPress={() => ucapkan(k.kata, 'en-US')} style={{ flexDirection: 'row', alignItems: 'center', gap: 16, padding: 12, borderRadius: 24, backgroundColor: warna.putih }}>
             <View style={{ width: 72, height: 72, borderRadius: 18, backgroundColor: UNGU.muda, alignItems: 'center', justifyContent: 'center' }}>
               <Text style={{ fontSize: 42 }}>{k.emoji}</Text>
             </View>
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, gap: 4 }}>
               <Text style={{ fontFamily: huruf.judulTebal, fontSize: 26, color: warna.teks }}>{k.kata}</Text>
               <Text style={{ fontFamily: huruf.anak, fontSize: 16, color: warna.teksKedua }}>{k.arti}</Text>
+              {(() => {
+                const g = unit.gerakan?.find((x) => x.kata === k.id);
+                return g ? (
+                  <TombolGerak
+                    gerakan={g}
+                    onPress={() => {
+                      setGerak((x) => ({ gerakan: g, ulang: (x?.ulang ?? 0) + 1 }));
+                      ucapkan(k.kata, 'en-US');
+                    }}
+                  />
+                ) : null;
+              })()}
             </View>
             <TombolSuara teks={k.kata} bahasa="en-US" ukuran={52} latar={UNGU.utama} warnaIkon="#FFFFFF" />
           </Pressable>
         ))}
       </ScrollView>
     );
+    tombol = <Tombol label={unit.bunyiHariIni ? 'Lanjut: Bunyi Hari Ini' : 'Lanjut: pola kalimat'} besar onPress={lanjutBagian} />;
+  } else if (bagian === 'bunyi' && unit.bunyiHariIni) {
+    const b = unit.bunyiHariIni;
+    isi = (
+      <ScrollView contentContainerStyle={{ gap: 12 }}>
+        <View style={{ backgroundColor: warna.putih, borderRadius: 24, padding: 18, gap: 8, borderWidth: 3, borderColor: UNGU.utama }}>
+          <Text style={{ fontFamily: huruf.anakTebal, fontSize: 15, color: UNGU.teks }}>🔤 Bunyi Hari Ini</Text>
+          <Text style={{ fontFamily: huruf.judulTebal, fontSize: 26, color: warna.teks }}>{b.bunyi}</Text>
+          <Text style={{ fontFamily: huruf.anak, fontSize: 18, lineHeight: 26, color: warna.teks }}>{b.tips}</Text>
+        </View>
+        {b.kata.map((w) => (
+          <Pressable key={w} accessibilityRole="button" accessibilityLabel={`Dengar ${w}`} onPress={() => ucapkan(w, 'en-US')} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 20, backgroundColor: warna.putih }}>
+            <Text style={{ flex: 1, fontFamily: huruf.judulTebal, fontSize: 26, color: warna.teks }}>{w}</Text>
+            <TombolSuara teks={w} bahasa="en-US" ukuran={52} latar={UNGU.utama} warnaIkon="#FFFFFF" />
+          </Pressable>
+        ))}
+        <Text style={{ fontFamily: huruf.anak, fontSize: 16, color: warna.teksKedua }}>Dengar, lalu tirukan dengan suara keras.</Text>
+      </ScrollView>
+    );
     tombol = <Tombol label="Lanjut: pola kalimat" besar onPress={lanjutBagian} />;
+  } else if (bagian === 'komik' && komik) {
+    isi = (
+      <ScrollView contentContainerStyle={{ paddingBottom: 8 }}>
+        <CeritaKomik
+          komik={komik}
+          kelas={anak.kelas}
+          sapaan={keluarga?.sapaanOrtu ?? 'Ayah/Bunda'}
+          onCeritakan={() => router.push({ pathname: '/ortu/pin', params: { tujuan: `/dampingi/cerita?komik=${komik.id}` } })}
+          onSelesai={lanjutBagian}
+        />
+      </ScrollView>
+    );
+    tombol = null;
+  } else if (bagian === 'selesai_a') {
+    isi = (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+        <Pinci ekspresi="merayakan" ukuran={120} />
+        <Text style={{ fontFamily: huruf.judul, fontSize: 30, color: warna.hijauTua }}>Sesi A selesai!</Text>
+        <Text style={{ fontFamily: huruf.anak, fontSize: 18, color: warna.teks, textAlign: 'center' }}>Kamu sudah kenal kata dan cerita unit ini. Berikutnya Sesi B: pakai kata-katanya.</Text>
+      </View>
+    );
+    tombol = (
+      <View style={{ gap: 10 }}>
+        <Tombol label="Lanjut ke Sesi B" besar onPress={() => router.replace(`/inggris/${unit.id}?sesi=b`)} />
+        <Tombol label="Nanti saja" varian="garis" onPress={() => router.replace('/inggris')} />
+      </View>
+    );
+  } else if (bagian === 'cek' && komik) {
+    isi = (
+      <ScrollView contentContainerStyle={{ paddingBottom: 8 }}>
+        <CekPahamKomik
+          komik={komik}
+          kelas={anak.kelas}
+          onSelesai={(h) => {
+            hasilCek.current = h;
+            lanjutBagian();
+          }}
+        />
+      </ScrollView>
+    );
+    tombol = null;
   } else if (bagian === 'pola') {
     isi = (
       <ScrollView contentContainerStyle={{ gap: 12 }}>
@@ -129,7 +247,7 @@ function UnitInggrisIsi() {
         ))}
       </ScrollView>
     );
-    tombol = <Tombol label="Lanjut: dengar lalu pilih" besar onPress={lanjutBagian} />;
+    tombol = <Tombol label={komik ? 'Lanjut: Cerita Komik' : 'Selesai Sesi A'} besar onPress={lanjutBagian} />;
   } else if (bagian === 'dengar') {
     const d = dengar[i];
     const kunci = d ? cariKata(paket, d.kunci) : undefined;
@@ -307,12 +425,12 @@ function UnitInggrisIsi() {
     tombol = <Tombol label="Kembali ke daftar unit" besar onPress={() => router.replace('/inggris')} />;
   }
 
-  const labelBagian: Record<Bagian, string> = { kenal: 'Kenal kata', pola: 'Pola kalimat', dengar: 'Dengar lalu pilih', susun: 'Susun kata', main: 'Permainan', hasil: 'Selesai' };
+  const labelBagian: Record<Bagian, string> = { kenal: 'Kenal kata', bunyi: 'Bunyi', pola: 'Pola kalimat', komik: 'Komik', selesai_a: 'Selesai', cek: 'Cek Paham', dengar: 'Dengar lalu pilih', susun: 'Susun kata', main: 'Permainan', hasil: 'Selesai' };
   return (
-    <Layar bawah={<View style={{ padding: 16 }}>{tombol}</View>}>
+    <Layar bawah={tombol ? <View style={{ padding: 16 }}>{tombol}</View> : undefined}>
       <KepalaLayar judul={unit.tema} />
       <Text style={{ fontFamily: huruf.anakTebal, fontSize: 14, color: UNGU.teks, marginTop: -14, marginLeft: 52 }}>
-        Tingkat {tingkat} · Unit {unit.nomor} · {unit.judul}
+        Sesi {sesi === 'a' ? 'A · Kenal' : 'B · Pakai'} · Tingkat {tingkat} · Unit {unit.nomor}
       </Text>
       <View style={{ flexDirection: 'row', gap: 6 }}>
         {urutan.slice(0, -1).map((b, n) => (
@@ -330,6 +448,9 @@ function UnitInggrisIsi() {
 }
 
 export default function UnitInggris() {
+  const { sesi } = useLocalSearchParams<{ sesi?: string }>();
+  // Sesi B adalah lanjutan unit yang sama: jatah Gratis sudah dihitung saat Sesi A.
+  if (sesi === 'b') return <UnitInggrisIsi />;
   return (
     <PenjagaJatah bagian="inggris">
       <UnitInggrisIsi />

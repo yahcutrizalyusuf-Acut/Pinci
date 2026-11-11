@@ -65,7 +65,11 @@
       "/arsip-flutter/",
       "/bahan/",
       "/dist/",
-      "/dist-uji/"
+      "/dist-uji/",
+      "/.claude/"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/.claude/"
     ]
   }
 }
