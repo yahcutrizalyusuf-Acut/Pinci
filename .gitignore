@@ -10,3 +10,4 @@ ios/
 *.jks
 *.keystore
 dist-uji/
+.claude/worktrees/
