@@ -29,7 +29,7 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 | 22 Pendaftaran masa coba | Selesai (3 Nov), perlu pasang SQL | Online atau antre tatap muka, 8 pertanyaan pengenalan, telepon, izin. Halaman staf Pendaftar. Uji `scripts/uji-coba.cjs` |
 | 23 Perbaikan profil anak kembar | Selesai (3 Nov) | Profil kembar ditolak, tombol hapus profil anak, keluarga lama dipulihkan saat masuk ulang |
 | 24 Tim merah | Laporan (3 Nov) | Nilai 17/30, saran: uji 10 keluarga dan 2 les sebelum menambah fitur. https://claude.ai/artifact/EMxagKcTjHTJgJmMVfGwxY |
-| 25 Lanjutan Komik | Selesai (11 Nov), perlu pasang SQL dan diperiksa guru | 12 Cerita Komik (tingkat 3–4), unit Inggris Sesi A/B, Cek Dengar, Ceritakan Lagi, Dengar Bedanya + Izin 8 (rekaman hanya di HP), Tebak Gerak, rapor Inggris, Matematika benda → gambar → angka. Laporan: `LAPORAN-LANJUTAN-KOMIK.md`. Pasang `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` |
+| 25 Lanjutan Komik | Selesai (11 Nov), SQL terpasang (11 Nov), perlu diperiksa guru | 12 Cerita Komik (tingkat 3–4), unit Inggris Sesi A/B, Cek Dengar, Ceritakan Lagi, Dengar Bedanya + Izin 8 (rekaman hanya di HP), Tebak Gerak, rapor Inggris, Matematika benda → gambar → angka. Laporan: `LAPORAN-LANJUTAN-KOMIK.md`. SQL `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` sudah terpasang dan lulus uji di Supabase |
 
 ## Lanjutan Komik (Tahap 25, 11 Nov 2026)
 
@@ -52,7 +52,7 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 
 ## Berikutnya
 
-0. Pasang `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` di Supabase (urutan di `docs/CARA-MENYAMBUNG-SUPABASE.md`). Guru memeriksa `docs/NASKAH-KOMIK-UNTUK-GURU.md`. Website baru dan halaman sambutan ditunda sampai Acut memutuskan (saran tim merah: uji ke pembeli dulu).
+0. SQL batas pendaftaran dan `cerita_ulang` sudah terpasang (11 Nov). Guru memeriksa `docs/NASKAH-KOMIK-UNTUK-GURU.md`. Website baru dan halaman sambutan ditunda sampai Acut memutuskan (saran tim merah: uji ke pembeli dulu).
 1. Keputusan Acut 29 Okt sudah diterapkan (`docs/rancangan/keputusan.md` bagian K).
 2. Terapkan hasil pemeriksaan guru (`docs/DAFTAR-PERIKSA-GURU.md`). Untuk TKA: perbaiki bahan, lalu jalankan `npm run impor-tka`.
 3. Pasang SQL hubungkan HP anak di Supabase, lalu uji dua HP sungguhan (orang tua dan anak).
