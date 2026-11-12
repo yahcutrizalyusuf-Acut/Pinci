@@ -34,6 +34,8 @@ export type NamaIkon =
   | 'tanya'
   | 'bagikan'
   | 'dua_orang'
+  | 'titik_tiga'
+  | 'kilat'
   | 'grafik';
 
 interface Props {
@@ -250,6 +252,18 @@ export function Ikon({ nama, ukuran = 24, warna = '#2D3142', isi = false }: Prop
           <Circle cx={6} cy={12} r={2.5} {...g} />
           <Circle cx={18} cy={19} r={2.5} {...g} />
           <Path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" {...g} />
+        </>
+      );
+      break;
+    case 'kilat':
+      badan = <Path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z" fill={warna} />;
+      break;
+    case 'titik_tiga':
+      badan = (
+        <>
+          <Circle cx={12} cy={5} r={2} fill={warna} />
+          <Circle cx={12} cy={12} r={2} fill={warna} />
+          <Circle cx={12} cy={19} r={2} fill={warna} />
         </>
       );
       break;

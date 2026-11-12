@@ -15,7 +15,8 @@ import { Pinci } from './Pinci';
 interface Props {
   soal: SoalLancar[];
   kelas: number;
-  petunjukUntuk: (s: SoalLancar) => string;
+  /** petunjuk per soal; tanpa ini tombol Petunjuk tidak tampil (Hitung Kilat) */
+  petunjukUntuk?: (s: SoalLancar) => string;
   /** dipanggil setiap soal dijawab; kembalikan true untuk berhenti lebih awal (tes penempatan) */
   setelahJawab?: (semua: JawabanLancar[]) => boolean;
   onSelesai: (jawaban: JawabanLancar[]) => void;
@@ -23,9 +24,15 @@ interface Props {
   onJedaBerubah?: (jeda: boolean) => void;
   /** Mode Dampingi: tampilkan kunci untuk orang tua */
   tampilKunci?: boolean;
+  /** Hitung Kilat: tampilkan jam yang berjalan MAJU (bukan hitung mundur). Lancar tetap tanpa jam. */
+  jam?: boolean;
+  /** Hitung Kilat: jawaban diperiksa sendiri begitu panjangnya sama dengan kunci (tanpa menekan Cek) */
+  cekOtomatis?: boolean;
+  /** lama jawaban benar ditampilkan setelah jawaban belum tepat (ms) */
+  lamaTampilBenar?: number;
 }
 
-export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai, onKeluar, onJedaBerubah, tampilKunci }: Props) {
+export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai, onKeluar, onJedaBerubah, tampilKunci, jam, cekOtomatis, lamaTampilBenar = 1600 }: Props) {
   const [i, setI] = useState(0);
   const [isian, setIsian] = useState('');
   const [hapusN, setHapusN] = useState(0);
@@ -36,6 +43,9 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
   const mulaiSoal = useRef(0);
   const detikJeda = useRef(0);
   const mulaiJeda = useRef(0);
+  const [detikJalan, setDetikJalan] = useState(0);
+  const mulaiLembar = useRef(0);
+  const jedaLembar = useRef(0);
   const [getar] = useState(() => new Animated.Value(0));
   const [muncul] = useState(() => new Animated.Value(1));
   const s = soal[i];
@@ -43,7 +53,11 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
 
   const aturJeda = (v: boolean) => {
     if (v) mulaiJeda.current = kiniMs();
-    else detikJeda.current += (kiniMs() - mulaiJeda.current) / 1000;
+    else {
+      const lama = (kiniMs() - mulaiJeda.current) / 1000;
+      detikJeda.current += lama;
+      jedaLembar.current += lama;
+    }
     setJeda(v);
     onJedaBerubah?.(v);
   };
@@ -52,8 +66,16 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
     aturJedaRef.current = aturJeda;
   });
 
+  // Jam berjalan maju (hanya bila `jam`); berhenti saat jeda.
+  useEffect(() => {
+    if (!jam || jeda) return;
+    const t = setInterval(() => setDetikJalan((kiniMs() - mulaiLembar.current) / 1000 - jedaLembar.current), 500);
+    return () => clearInterval(t);
+  }, [jam, jeda]);
+
   useEffect(() => {
     mulaiSoal.current = kiniMs();
+    mulaiLembar.current = kiniMs();
     const b = BackHandler.addEventListener('hardwareBackPress', () => {
       aturJedaRef.current(true);
       return true;
@@ -78,11 +100,11 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
     setI(i + 1);
   };
 
-  const cek = () => {
-    if (!s || tampilBenar !== null || isian === '') return;
+  const cek = (isi = isian) => {
+    if (!s || tampilBenar !== null || isi === '') return;
     const detik = Math.max(0.3, (kiniMs() - mulaiSoal.current) / 1000 - detikJeda.current);
-    const benar = cocokJawaban(s, isian);
-    jawaban.current = [...jawaban.current, { soal: s, jawaban: rapikanJawaban(isian), benar, detik, hapusN }];
+    const benar = cocokJawaban(s, isi);
+    jawaban.current = [...jawaban.current, { soal: s, jawaban: rapikanJawaban(isi), benar, detik, hapusN }];
     if (benar) {
       lanjut();
       return;
@@ -94,7 +116,7 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
       Animated.timing(getar, { toValue: 0.6, duration: 60, useNativeDriver: true }),
       Animated.timing(getar, { toValue: 0, duration: 60, useNativeDriver: true }),
     ]).start();
-    setTimeout(lanjut, 1600);
+    setTimeout(lanjut, lamaTampilBenar);
   };
 
   if (!s) return null;
@@ -107,7 +129,12 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
     <Layar>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <TombolKecil label="Jeda" ikon="jeda" onPress={() => aturJeda(true)} />
-        <TombolKecil label="Petunjuk" ikon="lampu" onPress={() => setPetunjuk(true)} />
+        {jam ? (
+          <Text accessibilityLabel={`Waktu berjalan ${Math.floor(detikJalan)} detik`} style={{ fontFamily: huruf.judulTebal, fontSize: 22, color: warna.teksKedua, alignSelf: 'center' }}>
+            ⏱ {Math.floor(detikJalan / 60)}:{String(Math.floor(detikJalan) % 60).padStart(2, '0')}
+          </Text>
+        ) : null}
+        {petunjukUntuk ? <TombolKecil label="Petunjuk" ikon="lampu" onPress={() => setPetunjuk(true)} /> : null}
       </View>
       <BilahKemajuan nilai={i} maks={soal.length} label={`${i + 1} / ${soal.length}`} />
       <Animated.View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 20, opacity: muncul }}>
@@ -143,7 +170,7 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
         {tampilKunci ? (
           <Text style={{ fontFamily: huruf.ortuSedang, fontSize: 15, color: '#B86E00' }}>Kunci (untuk orang tua): {s.kunci}</Text>
         ) : null}
-        {petunjuk ? <KotakPetunjuk teks={petunjukUntuk(s)} /> : null}
+        {petunjuk && petunjukUntuk ? <KotakPetunjuk teks={petunjukUntuk(s)} /> : null}
         <Pinci ekspresi="diam" ukuran={48} tenang style={{ position: 'absolute', right: 0, bottom: 0 }} />
       </Animated.View>
       <PapanAngka
@@ -152,14 +179,16 @@ export function LembarSoal({ soal, kelas, petunjukUntuk, setelahJawab, onSelesai
         onAngka={(a) => {
           if (tampilBenar !== null || isian.length >= 7) return;
           if ((a === ',' || a === '/') && (isian.includes(',') || isian.includes('/'))) return;
-          setIsian(isian + a);
+          const baru = isian + a;
+          setIsian(baru);
+          if (cekOtomatis && baru.length >= s.kunci.length) cek(baru);
         }}
         onHapus={() => {
           if (!isian) return;
           setIsian(isian.slice(0, -1));
           setHapusN(hapusN + 1);
         }}
-        onCek={cek}
+        onCek={() => cek()}
       />
       <Modal visible={jeda} transparent animationType="fade" onRequestClose={() => aturJeda(false)}>
         <View style={{ flex: 1, backgroundColor: 'rgba(45,49,66,0.94)', justifyContent: 'center', padding: 24 }}>

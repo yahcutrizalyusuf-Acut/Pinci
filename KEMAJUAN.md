@@ -30,6 +30,7 @@ Sesi baru: baca berkas ini, `KEPUTUSAN-PEMBANGUNAN.md`, dan `git log`, lalu lanj
 | 23 Perbaikan profil anak kembar | Selesai (3 Nov) | Profil kembar ditolak, tombol hapus profil anak, keluarga lama dipulihkan saat masuk ulang |
 | 24 Tim merah | Laporan (3 Nov) | Nilai 17/30, saran: uji 10 keluarga dan 2 les sebelum menambah fitur. https://claude.ai/artifact/EMxagKcTjHTJgJmMVfGwxY |
 | 25 Lanjutan Komik | Selesai (11 Nov), SQL terpasang (11 Nov), perlu diperiksa guru | 12 Cerita Komik (tingkat 3–4), unit Inggris Sesi A/B, Cek Dengar, Ceritakan Lagi, Dengar Bedanya + Izin 8 (rekaman hanya di HP), Tebak Gerak, rapor Inggris, Matematika benda → gambar → angka. Laporan: `LAPORAN-LANJUTAN-KOMIK.md`. SQL `20261104000000_batas_pendaftaran.sql` dan `20261111000000_cerita_ulang.sql` sudah terpasang dan lulus uji di Supabase |
+| 26 Hitung Kilat dan menu ⋮ | Selesai (12 Nov), perlu pasang SQL | Latihan cepat hitung dasar di bawah 10, 7 tahap, lembar 30/50 soal dengan jam maju, rapor. Menu titik tiga di beranda anak (Ganti anak tanpa PIN, Pengaturan dengan PIN). Pasang `20261112000000_hitung_kilat.sql` |
 
 ## Lanjutan Komik (Tahap 25, 11 Nov 2026)
 

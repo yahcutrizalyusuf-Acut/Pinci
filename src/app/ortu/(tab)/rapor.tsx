@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useData, useMuat } from '@/data/konteks';
 import { HEWAN } from '@/data/jenis';
 import { huruf, warna } from '@/desain/token';
-import { grafikKecepatan, kalimatRapor, raporInggris, ringkasMinggu, salahTerbanyak, seninDari } from '@/fitur/rapor';
+import { grafikKecepatan, kalimatRapor, raporInggris, raporKilat, ringkasMinggu, salahTerbanyak, seninDari } from '@/fitur/rapor';
 import { cariKomik, teksTokoh } from '@/isi/inggris/paketKomik';
 import { raporTka } from '@/fitur/tka-rapor';
 import { Tombol } from '@/komponen/dasar';
@@ -54,7 +54,8 @@ export default function Rapor() {
       const rekor = sesi.filter((s) => s.tambahan?.rekorBaru && new Date(s.mulai) >= senin).length;
       const tka = anak.kelas === 6 ? await raporTka(r, anak) : null;
       const inggris = raporInggris(anak.nama, await r.daftarCeritaUlang(anak.id), sesi, senin, cariKomik, teksTokoh);
-      return { ini, kemarin, grafik: grafikKecepatan(sesi, jawaban), salah, rekor, kalimat: kalimatRapor(anak.nama, ini, kemarin, topik, salah), tka, inggris };
+      const kilat = raporKilat(anak.nama, sesi, senin);
+      return { ini, kemarin, grafik: grafikKecepatan(sesi, jawaban), salah, rekor, kalimat: kalimatRapor(anak.nama, ini, kemarin, topik, salah), tka, inggris, kilat };
     },
     null,
     [anak?.id],
@@ -73,6 +74,7 @@ export default function Rapor() {
       `Langkah berikutnya: ${data.kalimat.langkah}`,
       data.inggris.cerita ? `Bahasa Inggris: ${data.inggris.cerita}` : '',
       data.inggris.cekDengar ?? '',
+      data.kilat.kalimat ? `Hitung Kilat: ${data.kilat.kalimat}` : '',
       '— Pintar Main',
     ]
       .filter(Boolean)
@@ -199,6 +201,17 @@ export default function Rapor() {
                 </View>
               ))}
             </View>
+            {data.kilat.grafik.length ? (
+              <View style={{ backgroundColor: warna.putih, borderRadius: 20, padding: 16, gap: 6 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text style={{ fontFamily: huruf.ortuTebal, fontSize: 17 }}>Hitung Kilat</Text>
+                  <Text style={{ fontFamily: huruf.ortu, fontSize: 13, color: warna.teksKedua }}>detik per soal, 10 lembar terakhir</Text>
+                </View>
+                {data.kilat.grafik.length >= 2 ? <GrafikGaris nilai={data.kilat.grafik} tinggi={110} /> : null}
+                <Text style={{ fontFamily: huruf.ortu, fontSize: 15, color: warna.teks }}>{data.kilat.kalimat ?? `${anak.nama} belum mengerjakan Hitung Kilat minggu ini.`}</Text>
+                <Text style={{ fontFamily: huruf.ortu, fontSize: 13, color: warna.teksKedua }}>Makin rendah, makin cepat. Yang utama tetap tepat dan fokus sampai soal terakhir.</Text>
+              </View>
+            ) : null}
             {data.inggris.cerita || data.inggris.cekDengar || data.inggris.membantu ? (
               <View style={{ backgroundColor: warna.putih, borderRadius: 20, padding: 16, gap: 12 }}>
                 {[

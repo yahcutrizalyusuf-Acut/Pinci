@@ -122,7 +122,8 @@ async function telepon(peramban) {
   await anak2.p.context().close();
 
   // mode orang tua di HP anak diarahkan ke HP orang tua
-  await anak.p.getByLabel('Mode orang tua').click();
+  await anak.p.getByLabel('Menu', { exact: true }).click();
+  await anak.p.getByLabel('Pengaturan', { exact: true }).click();
   await anak.p.getByText('Pengaturan lewat HP orang tua').waitFor({ timeout: 10000 });
   cek(true, 'anak: mode orang tua tidak bisa dibuka di HP anak');
   await foto(anak, '7-anak-tanpa-mode-ortu');

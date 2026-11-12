@@ -142,6 +142,10 @@ Tempel dan **Run** satu per satu di SQL Editor, urut:
 
 Lulus kalau tidak ada pesan "GAGAL". Tabel `cerita_ulang` hanya berisi centang orang tua dan **ada_rekaman ya/tidak**. Rekaman suara anak tidak pernah dikirim ke server (tetap di HP), dan staf, pengawas, mitra les, serta guru tidak bisa membaca tabel ini.
 
+## Hitung Kilat (12 Nov 2026)
+
+Tempel dan **Run** di SQL Editor: `supabase/migrations/20261112000000_hitung_kilat.sql`, lalu ujinya `20261112000100_uji_hitung_kilat.sql`. Lulus kalau tidak ada pesan "GAGAL". Migrasi ini hanya menambah jenis sesi `kilat` supaya hasil Hitung Kilat bisa tersimpan di server.
+
 ## Halaman penjelasan dan brosur
 
 Folder `halaman/`: halaman keluarga (`index.html`), halaman mitra (`mitra.html`), dan brosur cetak (`brosur.html`). Tanpa kuki dan tanpa pelacak; asal pengunjung dicatat dari tautan, misalnya `…/index.html?dari=fb-tka-1`.
