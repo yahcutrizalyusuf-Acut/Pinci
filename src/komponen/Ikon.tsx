@@ -35,6 +35,7 @@ export type NamaIkon =
   | 'bagikan'
   | 'dua_orang'
   | 'titik_tiga'
+  | 'kilat'
   | 'grafik';
 
 interface Props {
@@ -253,6 +254,9 @@ export function Ikon({ nama, ukuran = 24, warna = '#2D3142', isi = false }: Prop
           <Path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" {...g} />
         </>
       );
+      break;
+    case 'kilat':
+      badan = <Path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z" fill={warna} />;
       break;
     case 'titik_tiga':
       badan = (

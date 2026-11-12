@@ -164,3 +164,45 @@ export function raporInggris(nama: string, cerita: CeritaUlang[], sesi: Sesi[], 
     perbuatanBaik: komikTerakhir ? isiNama(komikTerakhir.perbuatanBaik) : null,
   };
 }
+
+export interface RaporKilat {
+  lembarMingguIni: number;
+  /** rata-rata detik per soal minggu ini / minggu lalu (null bila belum ada lembar) */
+  detikIni: number | null;
+  detikLalu: number | null;
+  persenBenar: number | null;
+  /** detik per soal 10 lembar terakhir (untuk grafik) */
+  grafik: number[];
+  kalimat: string | null;
+}
+
+/** Ringkasan Hitung Kilat untuk rapor mingguan (lembar mode sendiri). */
+export function raporKilat(nama: string, sesi: Sesi[], senin: Date): RaporKilat {
+  const kilat = sesi.filter((s) => s.jenis === 'kilat' && s.mode === 'sendiri').sort((a, b) => a.mulai.localeCompare(b.mulai));
+  const awal = senin.getTime();
+  const lalu = awal - 7 * 24 * 60 * 60 * 1000;
+  const ini = kilat.filter((s) => new Date(s.mulai).getTime() >= awal);
+  const mingguLalu = kilat.filter((s) => new Date(s.mulai).getTime() >= lalu && new Date(s.mulai).getTime() < awal);
+  const rata = (d: Sesi[]) => {
+    const n = d.reduce((a, s) => a + s.jumlah, 0);
+    return n ? Math.round((d.reduce((a, s) => a + s.durasiDetik, 0) / n) * 10) / 10 : null;
+  };
+  const detikIni = rata(ini);
+  const detikLalu = rata(mingguLalu);
+  const soal = ini.reduce((a, s) => a + s.jumlah, 0);
+  const persen = soal ? Math.round((ini.reduce((a, s) => a + s.benar, 0) / soal) * 100) : null;
+  let kalimat: string | null = null;
+  if (ini.length) {
+    const koma = (n: number) => String(n).replace('.', ',');
+    kalimat = `${nama} mengerjakan ${ini.length} lembar Hitung Kilat, rata-rata ${koma(detikIni ?? 0)} detik per soal, ${persen}% tepat.`;
+    if (detikIni !== null && detikLalu !== null && detikIni < detikLalu) kalimat += ` Lebih cepat dari minggu lalu (${koma(detikLalu)} detik).`;
+  }
+  return {
+    lembarMingguIni: ini.length,
+    detikIni,
+    detikLalu,
+    persenBenar: persen,
+    grafik: kilat.slice(-10).map((s) => (s.jumlah ? Math.round((s.durasiDetik / s.jumlah) * 10) / 10 : 0)),
+    kalimat,
+  };
+}

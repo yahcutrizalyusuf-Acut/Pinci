@@ -50,6 +50,7 @@ export type JenisSesi =
   | 'baca'
   | 'inggris'
   | 'kartu'
+  | 'kilat'
   | 'game';
 
 export interface Sesi {

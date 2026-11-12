@@ -21,6 +21,7 @@ const JUDUL: Record<Sesi['jenis'], { judul: string; w: string }> = {
   baca: { judul: 'Baca Ulang', w: warnaMapel.bi.utama },
   inggris: { judul: 'Bahasa Inggris', w: warnaMapel.ing.utama },
   kartu: { judul: 'Kartu ilmu', w: warnaMapel.gudang.utama },
+  kilat: { judul: 'Hitung Kilat', w: '#F2994A' },
   game: { judul: 'Waktu main', w: warnaMapel.dampingi.utama },
 };
 

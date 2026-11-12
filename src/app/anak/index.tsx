@@ -15,6 +15,8 @@ import { GelembungPinci, Logo, TombolSuara } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
 import { MenuAnak } from '@/komponen/MenuAnak';
 import { KartuMapel } from '@/komponen/KartuMapel';
+import { riwayatKilat, WARNA_KILAT } from '@/fitur/kilat';
+import { TAHAP_KILAT, tahapSekarang } from '@/mesin/kilat';
 
 export default function BerandaBelajar() {
   const router = useRouter();
@@ -28,7 +30,8 @@ export default function BerandaBelajar() {
       const h = await hariIni(repo, anak);
       const lancar = await infoLancarAnak(repo, anak);
       const tugas = await repo.tugasTerbuka(anak.id);
-      return { terakhir, antre, h, lancar, diputus: await repo.hpDiputus(), tugas };
+      const kilat = tahapSekarang(await riwayatKilat(repo, anak.id), anak.kelas);
+      return { terakhir, antre, h, lancar, diputus: await repo.hpDiputus(), tugas, kilat };
     },
     null,
     [anak.id],
@@ -117,6 +120,14 @@ export default function BerandaBelajar() {
             {...warnaMapel.mat}
             selesai={sudah('lancar')}
             onPress={() => router.push(data?.lancar.perluPenempatan ? '/lancar/penempatan' : data?.lancar.perluJurus ? '/lancar/jurus' : '/lancar/lembar')}
+          />
+          <KartuMapel
+            judul="Hitung Kilat"
+            sub={data ? `Tahap ${data.kilat} · ${TAHAP_KILAT[data.kilat - 1].nama}` : 'Hitung cepat di bawah 10'}
+            ikon="kilat"
+            {...WARNA_KILAT}
+            selesai={sudah('kilat')}
+            onPress={() => router.push('/kilat')}
           />
           {baca ? (
             <KartuMapel

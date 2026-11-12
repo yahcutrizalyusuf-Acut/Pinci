@@ -20,6 +20,7 @@ const NAMA_JENIS: Record<Sesi['jenis'], string> = {
   baca: 'Baca Ulang',
   inggris: 'unit Bahasa Inggris',
   kartu: 'kartu ilmu',
+  kilat: 'lembar Hitung Kilat',
   game: 'babak game',
 };
 
