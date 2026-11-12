@@ -13,6 +13,7 @@ import { ruteTugas } from '@/fitur/kelas';
 import { infoLancarAnak } from '@/fitur/lancar';
 import { GelembungPinci, Logo, TombolSuara } from '@/komponen/dasar';
 import { Ikon } from '@/komponen/Ikon';
+import { MenuAnak } from '@/komponen/MenuAnak';
 import { KartuMapel } from '@/komponen/KartuMapel';
 
 export default function BerandaBelajar() {
@@ -57,14 +58,7 @@ export default function BerandaBelajar() {
             >
               <Ikon nama="dua_orang" ukuran={20} warna={warna.teksKedua} />
             </Pressable>
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Mode orang tua"
-              onPress={() => router.push('/ortu/pin')}
-              style={{ width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', opacity: 0.45 }}
-            >
-              <Ikon nama="gembok" ukuran={20} warna={warna.teksKedua} />
-            </Pressable>
+            <MenuAnak />
           </View>
         </View>
 
